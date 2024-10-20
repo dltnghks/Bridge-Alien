@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class UIManager
 {
     private int _order = 0;
     private Stack<UIPopup> _popupStack = new Stack<UIPopup>();
@@ -22,10 +21,10 @@ public class UIManager : MonoBehaviour
     {
         get
         {
-            GameObject root = GameObject.Find("@UI_Root");
+            GameObject root = GameObject.Find("@UIRoot");
             if (root == null)
             {
-                root = new GameObject(name = "@UI_Root");
+                root = new GameObject { name = "@UIRoot" };
             }
 
             return root;
@@ -34,7 +33,7 @@ public class UIManager : MonoBehaviour
 
     public void SetCanvas(GameObject go, bool sort = true)
     {
-        Canvas canvas = GetComponent<Canvas>();
+        Canvas canvas = Utils.GetOrAddComponent<Canvas>(go);
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.overrideSorting = true;
 
