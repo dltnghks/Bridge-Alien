@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Managers : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Managers : MonoBehaviour
 
     private static ResourceManager _resourceManager = new ResourceManager();
     private static UIManager _uiManager = new UIManager();
+    private static SceneManagerEx _sceneManager = new SceneManagerEx();
     
     public static ResourceManager Resource
     {
@@ -21,9 +23,14 @@ public class Managers : MonoBehaviour
     
     public static UIManager UI
     {
-        get{ Init(); return _uiManager;}
+        get{ Init(); return _uiManager; }
     }
 
+    public static SceneManagerEx Scene
+    {
+        get{ Init(); return _sceneManager; }
+    }
+    
     private static void Init()
     {
         if (_instance == null)
