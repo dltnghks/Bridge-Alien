@@ -9,7 +9,21 @@ public class UITitleScene : UIScene
     {
         GameStartButton,
     }
-    
+
+    enum Images
+    {
+        
+    }
+
+    enum Texts
+    {
+        
+    }
+
+    enum Objects
+    {
+    }
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -18,6 +32,10 @@ public class UITitleScene : UIScene
         }
         
         BindButton(typeof(Buttons));
+        BindImage(typeof(Images));
+        BindText(typeof(Texts));
+        BindObject(typeof(Objects));
+        
         
         GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnClickStartButton);
 
