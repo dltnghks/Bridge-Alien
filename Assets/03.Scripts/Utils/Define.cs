@@ -6,9 +6,11 @@ public class Define
 {
     public enum Scene
     {
-        UnKnown,
-        Dev,        // 개발 중
-        Game,       // 사용 가능
+        Unknown,
+        Dev,
+        Title,
+        House,
+        GameMap,
     }
     
     public enum UIEvent
