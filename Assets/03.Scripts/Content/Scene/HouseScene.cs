@@ -11,7 +11,7 @@ public class HouseScene : BaseScene
 
         SceneType = Define.Scene.Dev;
 
-        Managers.UI.ShowSceneUI<UITitleScene>();
+        Managers.UI.ShowSceneUI<UIHouseScene>();
         return true;
     }
 }
