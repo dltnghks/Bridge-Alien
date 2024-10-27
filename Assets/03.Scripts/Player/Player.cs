@@ -8,9 +8,10 @@ public class Player : MonoBehaviour
     private GameObject spriteObject;                    // 스프라이트 오브젝트
     private SpriteBillboard billboard;                  // 스프라이트 빌보드
     private SpriteRenderer spriteRenderer;              // 스프라이트 렌더러
-    private Rigidbody rb;                              // 리지드바디
+    private Rigidbody rb;                               // 리지드바디
     private bool canMoveForward = true;                 // 전방 이동 가능 여부
     private bool canMoveBackward = true;                // 후방 이동 가능 여부
+    private CharacterAnimator characterAnimator;        // 캐릭터 애니메이터
 
     void Start()
     {
@@ -29,6 +30,13 @@ public class Player : MonoBehaviour
         
         // 카메라 설정
         Camera.main.gameObject.AddComponent<ThirdPersonCamera>().Initialize(transform);
+
+        // 캐릭터 애니메이터 설정
+        characterAnimator = GetComponent<CharacterAnimator>();
+        if (characterAnimator == null)
+        {
+            characterAnimator = gameObject.AddComponent<CharacterAnimator>();
+        }
     }
 
     private void SetupSpriteObject()
@@ -151,6 +159,29 @@ public class Player : MonoBehaviour
         // Rigidbody를 통한 이동
         rb.velocity = movement * moveSpeed;
         rb.angularVelocity = Vector3.zero;
+
+        // 캐릭터 애니메이터 업데이트
+        characterAnimator.UpdateMovement(movement.magnitude * moveSpeed);
+    }
+
+    public void PlayWinPose()
+    {
+        characterAnimator.PlayWinPose();
+    }
+
+    public void PlayLosePose()
+    {
+        characterAnimator.PlayLosePose();
+    }
+
+    public void TriggerHoldUp()
+    {
+        characterAnimator.TriggerHoldUp();
+    }
+
+    public void TriggerHoldDown()
+    {
+        characterAnimator.TriggerHoldDown();
     }
 
     void OnDrawGizmos()

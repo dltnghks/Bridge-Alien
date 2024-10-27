@@ -45,19 +45,21 @@ public class CharacterAnimator : MonoBehaviour
         animator.SetFloat(PARAM_MOVE_SPEED, moveSpeed);                                     // 이동 속도 파라미터 설정
 
         // moveSpeed에 따라 Walk/Run 상태 결정
-        if (!isMoving) { ChangeState(CharacterState.Idle); }                                // 이동중 아니면 Idle 상태로 변경
-        else { ChangeState(moveSpeed > 1f ? CharacterState.Run : CharacterState.Walk); }    // 이동중이면 속도에 따라 Run/Walk 상태로 변경
+        if (!isMoving) { ChangeState(CharacterState.Idle); Debug.Log("Idle 상태");}                                // 이동중 아니면 Idle 상태로 변경
+        else { ChangeState(moveSpeed > 1f ? CharacterState.Run : CharacterState.Walk); Debug.Log("Walk/Run 상태"); }    // 이동중이면 속도에 따라 Run/Walk 상태로 변경
     }
 
     //~ 게임 결과 포즈
     public void PlayWinPose()
     {
+        Debug.Log("PlayWinPose");
         animator.SetTrigger(TRIGGER_WIN);
         ChangeState(CharacterState.WinPose);
     }
 
     public void PlayLosePose()
     {
+        Debug.Log("PlayLosePose");
         animator.SetTrigger(TRIGGER_LOSE);
         ChangeState(CharacterState.LosePose);
     }
@@ -65,10 +67,12 @@ public class CharacterAnimator : MonoBehaviour
     //~ Hold 액션
     public void TriggerHoldUp()
     {
+        Debug.Log("TriggerHoldUp");
         animator.SetTrigger(TRIGGER_HOLD_UP);
         ChangeState(CharacterState.HoldUp);
     }
 
+    //~ HoldDown 액션
     public void TriggerHoldDown()
     {
         animator.SetTrigger(TRIGGER_HOLD_DOWN);
