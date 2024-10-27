@@ -33,8 +33,8 @@ public class CharacterAnimator : MonoBehaviour
     //~ 초기화
     private void Awake()
     {
-        animator = GetComponent<Animator>();                                                // 애니메이터 컴포넌트 참조
-        currentState = CharacterState.Idle;                                                 // 초기 상태 설정
+        if (animator == null) { animator = GetComponent<Animator>(); }          // 애니메이터 컴포넌트 참조
+        currentState = CharacterState.Idle;                                     // 초기 상태 설정
     }           
 
     //~ 기본 이동 상태 제어          
