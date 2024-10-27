@@ -29,7 +29,8 @@ public class FadeManager : MonoBehaviour
     {
         Init();
         _onEndEvent = onEndEvent;
-        StartCoroutine(FadeRoutine(1)); // 1로 페이드 인
+        _canvasGroup.alpha = 1;
+        StartCoroutine(FadeRoutine(0)); // 밝아지게
     }
 
     // 페이드 아웃
@@ -37,7 +38,8 @@ public class FadeManager : MonoBehaviour
     {
         Init();
         _onEndEvent = onEndEvent;
-        StartCoroutine(FadeRoutine(0)); // 0으로 페이드 아웃
+        _canvasGroup.alpha = 0;
+        StartCoroutine(FadeRoutine(1)); // 어두워지게
     }
 
     private IEnumerator FadeRoutine(float targetAlpha)
