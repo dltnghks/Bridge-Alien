@@ -5,33 +5,79 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;      // 이동 속도
     [SerializeField] private float rayDistance = 1f;    // 레이캐스트 거리
 
+    private GameObject spriteObject;                    // 스프라이트 오브젝트
     private SpriteBillboard billboard;                  // 스프라이트 빌보드
     private SpriteRenderer spriteRenderer;              // 스프라이트 렌더러
+    private Rigidbody rb;                              // 리지드바디
     private bool canMoveForward = true;                 // 전방 이동 가능 여부
     private bool canMoveBackward = true;                // 후방 이동 가능 여부
 
-    //~ Start함수에서는 필요한 컴포넌트들 가져오기/추가하기
     void Start()
     {
-        // 필요한 컴포넌트들 가져오기/추가하기
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null) { spriteRenderer = gameObject.AddComponent<SpriteRenderer>(); }
+        // 리지드바디 설정
+        rb = GetComponent<Rigidbody>();
+        if (rb == null) { rb = gameObject.AddComponent<Rigidbody>(); }
+        
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.freezeRotation = true;
 
-        // SpriteBillboard 컴포넌트 추가
-        billboard = gameObject.AddComponent<SpriteBillboard>();
+        // 스프라이트 오브젝트 설정
+        SetupSpriteObject();
         
         // 카메라 설정
         Camera.main.gameObject.AddComponent<ThirdPersonCamera>().Initialize(transform);
     }
 
-    //~ Update 함수에서는 충돌 체크와 이동 처리를 실행합니다.
+    private void SetupSpriteObject()
+    {
+        // 부모의 스프라이트 렌더러에서 스프라이트 가져오기
+        SpriteRenderer parentRenderer = GetComponent<SpriteRenderer>();
+        Sprite originalSprite = parentRenderer ? parentRenderer.sprite : null;
+        
+        // 자식 스프라이트 오브젝트 생성
+        spriteObject = new GameObject("PlayerSprite");
+        spriteObject.transform.SetParent(transform);
+        spriteObject.transform.localPosition = Vector3.zero;
+        
+        // 스프라이트 렌더러 설정
+        spriteRenderer = spriteObject.AddComponent<SpriteRenderer>();
+        
+        // 원본 스프라이트와 기타 속성들 복사
+        if (parentRenderer != null)
+        {
+            spriteRenderer.sprite = originalSprite;
+            spriteRenderer.sortingOrder = parentRenderer.sortingOrder;
+            spriteRenderer.color = parentRenderer.color;
+            spriteRenderer.flipX = parentRenderer.flipX;
+            spriteRenderer.flipY = parentRenderer.flipY;
+            spriteRenderer.sortingLayerID = parentRenderer.sortingLayerID;
+        }
+        
+        // 기존 부모의 스프라이트 렌더러 제거
+        if (parentRenderer != null)
+        {
+            Destroy(parentRenderer);
+        }
+        
+        // 빌보드는 스프라이트 오브젝트에 추가
+        billboard = spriteObject.AddComponent<SpriteBillboard>();
+        billboard.billboardAxis = BillboardBase.BillboardAxis.All;
+        // freezeXZAxis는 기본값(false) 사용
+    }
+
     void Update()
     {
         CheckCollisions();
+    }
+
+    void FixedUpdate()
+    {
         PlayerMovement();
     }
 
-    //~ 충돌 체크
     void CheckCollisions()
     {
         // 전방 레이캐스트
@@ -63,18 +109,28 @@ public class Player : MonoBehaviour
         }
     }
 
-    //~ 이동 처리
     void PlayerMovement()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 movement = Vector3.zero;  // 이동 벡터 초기화
 
-        // x축(좌우) 이동
+        // x축(좌우) 이동과 스프라이트 방향 전환
         movement += transform.right * horizontal;
+        
+        // 스프라이트 방향 전환
+        if (Mathf.Abs(horizontal) > 0.01f)  // 좌우 이동이 있을 때만
+        {
+            Vector3 scale = spriteObject.transform.localScale;
+            if (horizontal > 0 && scale.x < 0 || horizontal < 0 && scale.x > 0)
+            {
+                scale.x *= -1;
+                spriteObject.transform.localScale = scale;
+            }
+        }
 
         // z축(전후) 이동 - 벽 체크 포함
-        if (Mathf.Abs(vertical) > 0.01f)  // vertical 입력이 있을 때만 처리
+        if (Mathf.Abs(vertical) > 0.01f)
         {
             if (vertical > 0 && canMoveForward)
             {
@@ -91,11 +147,12 @@ public class Player : MonoBehaviour
         {
             movement.Normalize();
         }
-        
-        transform.position += movement * Time.deltaTime * moveSpeed;
+
+        // Rigidbody를 통한 이동
+        rb.velocity = movement * moveSpeed;
+        rb.angularVelocity = Vector3.zero;
     }
 
-    //~ 디버그용 레이캐스트 시각화
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
