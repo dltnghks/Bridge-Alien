@@ -33,7 +33,7 @@ public abstract class BillboardBase : MonoBehaviour
         {
             // Rigidbody의 회전을 제한
             rb.freezeRotation = true;
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
         }
     }
 
