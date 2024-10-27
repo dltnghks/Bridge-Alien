@@ -11,6 +11,10 @@ public class GameMapScene : BaseScene
             return false;
         }
 
+        SceneType = Define.Scene.GameMap;
+
+        Managers.UI.ShowSceneUI<UIGameMapScene>();
+        
         return true;
     }
 }
