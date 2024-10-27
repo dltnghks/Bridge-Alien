@@ -15,6 +15,7 @@ public class Managers : MonoBehaviour
     private static ResourceManager _resourceManager = new ResourceManager();
     private static UIManager _uiManager = new UIManager();
     private static SceneManagerEx _sceneManager = new SceneManagerEx();
+    private static FadeManager _fadeManager;
     
     public static ResourceManager Resource
     {
@@ -31,6 +32,11 @@ public class Managers : MonoBehaviour
         get{ Init(); return _sceneManager; }
     }
     
+    public static FadeManager Fade
+    {
+        get{ Init(); return _fadeManager; }
+    }
+    
     private static void Init()
     {
         if (_instance == null)
@@ -42,6 +48,8 @@ public class Managers : MonoBehaviour
             _instance = Utils.GetOrAddComponent<Managers>(go);
             
             _resourceManager.Init();
+            _fadeManager = Utils.GetOrAddComponent<FadeManager>(go);
+            _fadeManager.Init();
             
             DontDestroyOnLoad(go);
         }
