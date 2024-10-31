@@ -4,19 +4,19 @@ using UnityEngine;
 [System.Serializable]
 public struct CameraSettings
 {
-    public Vector3 offset;
-    public float smoothSpeed;
-    public Vector2 rotationSpeed;
-    public Vector2 pitchMinMax;
-    public float distance;
+    public Vector3 offset;                       // 카메라 오프셋    
+    public float smoothSpeed;                    // 부드러운 카메라 이동 속도
+    public Vector2 rotationSpeed;                // 카메라 회전 속도 (좌우, 상하)
+    public Vector2 pitchMinMax;                  // 카메라 피치 범위 (상하 각도)
+    public float distance;                       // 카메라 거리
     
     public static CameraSettings Default => new CameraSettings
     {
-        offset = new Vector3(0, 2, -5),
-        smoothSpeed = 5f,
-        rotationSpeed = new Vector2(3f, 2f),
-        pitchMinMax = new Vector2(-30f, 60f),
-        distance = 5f
+        offset = new Vector3(0, 2, -5),         // 카메라 오프셋
+        smoothSpeed = 5f,                       // 부드러운 카메라 이동 속도    
+        rotationSpeed = new Vector2(3f, 2f),    // 카메라 회전 속도
+        pitchMinMax = new Vector2(-30f, 60f),   // 카메라 피치 범위
+        distance = 5f                           // 카메라 거리
     };
 }
 

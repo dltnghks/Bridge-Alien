@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e52fd218b0b424585c6760bf54687a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 8
   rayDistance: 1
 --- !u!65 &165059383
 BoxCollider:
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   settings:
     offset: {x: 0, y: 2, z: -5}
     smoothSpeed: 5
-    rotationSpeed: {x: 3, y: 2}
+    rotationSpeed: {x: 1, y: 2}
     pitchMinMax: {x: -30, y: 60}
     distance: 5
 --- !u!1 &1421694587

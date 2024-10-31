@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;      // 이동 속도
+    [SerializeField] private float moveSpeed = 8f;      // 이동 속도
     [SerializeField] private float rayDistance = 1f;    // 레이캐스트 거리
 
     private GameObject spriteObject;                    // 스프라이트 오브젝트
