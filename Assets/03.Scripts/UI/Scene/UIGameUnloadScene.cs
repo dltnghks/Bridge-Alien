@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UIGameUnloadScene : UIScene
+{
+    enum Objects
+    {
+        UITimer,
+        UIScoreBoard,
+        UIBoxPreview,
+        UIOption,
+    }
+    
+    private UITimer _uiTimer;
+    private UIScoreBoard _uiScoreBoard;
+    private UIBoxPreview _uiBoxPreview;
+    private UIOption _uiOption;
+    
+    public override bool Init()
+    {
+        if (base.Init() == false)
+        {
+            return false;
+        }
+
+        BindObject(typeof(Objects));
+        
+        _uiTimer = GetObject((int)Objects.UITimer).GetOrAddComponent<UITimer>();
+        _uiScoreBoard = GetObject((int)Objects.UIScoreBoard).GetOrAddComponent<UIScoreBoard>();
+        _uiBoxPreview = GetObject((int)Objects.UIBoxPreview).GetOrAddComponent<UIBoxPreview>();
+        _uiOption = GetObject((int)Objects.UIOption).GetOrAddComponent<UIOption>();
+        
+        //Test Code
+        _uiTimer.SetTimer(4.0f, EndGame);
+        _uiScoreBoard.AddScore(100);
+        
+        return true;
+    }
+
+    private void EndGame()
+    {
+        Debug.Log("EndGame");
+        
+        Managers.Scene.ChangeScene(Define.Scene.GameMap);
+    }
+}
