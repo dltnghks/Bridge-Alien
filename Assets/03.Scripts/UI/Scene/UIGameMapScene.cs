@@ -6,7 +6,9 @@ public class UIGameMapScene : UIScene
 {
     enum Buttons
     {
-        HouseButton,        
+        HouseButton,   
+        GameUnloadButton,
+        
     }
 
     public override bool Init()
@@ -19,6 +21,7 @@ public class UIGameMapScene : UIScene
         BindButton(typeof(Buttons));
         
         GetButton((int)Buttons.HouseButton).gameObject.BindEvent(OnClickHouseButton);
+        GetButton((int)Buttons.GameUnloadButton).gameObject.BindEvent(OnClickGameUnloadButton);
         
         return true;
     }
@@ -26,5 +29,10 @@ public class UIGameMapScene : UIScene
     private void OnClickHouseButton()
     {
         Managers.Scene.ChangeScene(Define.Scene.House);
+    }
+
+    private void OnClickGameUnloadButton()
+    {
+        Managers.Scene.ChangeScene(Define.Scene.GameUnload);
     }
 }

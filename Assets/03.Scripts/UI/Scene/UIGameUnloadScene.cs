@@ -32,9 +32,16 @@ public class UIGameUnloadScene : UIScene
         _uiOption = GetObject((int)Objects.UIOption).GetOrAddComponent<UIOption>();
         
         //Test Code
-        _uiTimer.SetTimer(4.0f, ()=>{Debug.Log("Time Out");});
+        _uiTimer.SetTimer(4.0f, EndGame);
         _uiScoreBoard.AddScore(100);
         
         return true;
+    }
+
+    private void EndGame()
+    {
+        Debug.Log("EndGame");
+        
+        Managers.Scene.ChangeScene(Define.Scene.GameMap);
     }
 }
