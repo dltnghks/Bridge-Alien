@@ -33,6 +33,7 @@ public class UIGameUnloadScene : UIScene
         
         //Test Code
         _uiTimer.SetTimer(4.0f, ()=>{Debug.Log("Time Out");});
+        _uiScoreBoard.AddScore(100);
         
         return true;
     }
