@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class UIGameUnloadScene : UIScene
 {
+    enum Objects
+    {
+        UITimer,
+        UIScoreBoard,
+        UIBoxPreview,
+        UIOption,
+    }
+    
+    private UITimer _uiTimer;
+    private UIScoreBoard _uiScoreBoard;
+    private UIBoxPreview _uiBoxPreview;
+    private UIOption _uiOption;
+    
     public override bool Init()
     {
         if (base.Init() == false)
@@ -11,6 +24,16 @@ public class UIGameUnloadScene : UIScene
             return false;
         }
 
+        BindObject(typeof(Objects));
+        
+        _uiTimer = GetObject((int)Objects.UITimer).GetOrAddComponent<UITimer>();
+        _uiScoreBoard = GetObject((int)Objects.UIScoreBoard).GetOrAddComponent<UIScoreBoard>();
+        _uiBoxPreview = GetObject((int)Objects.UIBoxPreview).GetOrAddComponent<UIBoxPreview>();
+        _uiOption = GetObject((int)Objects.UIOption).GetOrAddComponent<UIOption>();
+        
+        //Test Code
+        _uiTimer.SetTimer(4.0f, ()=>{Debug.Log("Time Out");});
+        
         return true;
     }
 }
