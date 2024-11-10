@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 8f;      // 이동 속도
     [SerializeField] private float rayDistance = 1f;    // 레이캐스트 거리
+    [SerializeField] private bool enableFlip = true;    // 플레이어 플립 활성화 여부
 
     private GameObject spriteObject;                    // 스프라이트 오브젝트
     private SpriteBillboard billboard;                  // 스프라이트 빌보드
@@ -126,8 +128,8 @@ public class Player : MonoBehaviour
         // x축(좌우) 이동과 스프라이트 방향 전환
         movement += transform.right * horizontal;
         
-        // 스프라이트 방향 전환
-        if (Mathf.Abs(horizontal) > 0.01f)  // 좌우 이동이 있을 때만
+        // 스프라이트 방향 전환 (enableFlip이 true일 때만 실행)
+        if (enableFlip && Mathf.Abs(horizontal) > 0.01f)
         {
             Vector3 scale = spriteObject.transform.localScale;
             if (horizontal > 0 && scale.x < 0 || horizontal < 0 && scale.x > 0)

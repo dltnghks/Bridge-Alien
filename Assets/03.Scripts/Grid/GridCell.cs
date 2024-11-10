@@ -16,6 +16,8 @@ public class GridCell : MonoBehaviour
         Color.green,      // 3: 세 번째 타입
     };
     
+    private Material cellMaterial;  // 셀의 머티리얼 참조 저장
+    
     //~ Initialize() 메서드는 셀의 행, 열, 값 정보를 받아와서 셀을 초기화합니다.
     public void Initialize(int row, int col, int value)
     {
@@ -30,48 +32,58 @@ public class GridCell : MonoBehaviour
             cellCollider.isTrigger = true;
         }
         
-        // 셀 시각화
-        UpdateCellVisualization();  // 셀의 시각화 업데이트
+        UpdateCellVisualization(0f);  // 초기 알파값 0으로 설정
+    }
+    
+    //~ 알파값을 설정하는 새로운 메서드
+    public void SetAlpha(float alpha)
+    {
+        if (cellMaterial != null)
+        {
+            Color color = cellMaterial.color;
+            color.a = alpha;
+            cellMaterial.color = color;
+        }
     }
     
     //~ UpdateCellVisualization() 메서드는 셀의 값에 따라 색상을 변경합니다.
-    private void UpdateCellVisualization()
+    private void UpdateCellVisualization(float initialAlpha = 0.7f)
     {
         var renderer = GetComponent<Renderer>();                        // 렌더러 컴포넌트 가져오기
         
         // 기본 머티리얼 설정
-        Material material = new Material(Shader.Find("Standard"));      // 표준 머티리얼 생성
-        material.SetFloat("_Glossiness", 0.2f);                         // 광택 설정
+        cellMaterial = new Material(Shader.Find("Standard"));      // 표준 머티리얼 생성
+        cellMaterial.SetFloat("_Glossiness", 0.2f);                         // 광택 설정
         
         // 값에 따라 색상 설정
         int colorIndex = Mathf.Clamp(Value, 0, cellColors.Length - 1);  // 색상 인덱스 계산
-        material.color = cellColors[colorIndex];                        // 색상 설정
+        cellMaterial.color = cellColors[colorIndex];                        // 색상 설정
         
-        // 약간의 투명도 추가
-        material.SetFloat("_Mode", 3);                                                          // Transparent 모드
-        material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);            // SrcAlpha 블렌딩
-        material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);    // OneMinusSrcAlpha 블렌딩
-        material.SetInt("_ZWrite", 0);                                                          // ZWrite 비활성화
-        material.DisableKeyword("_ALPHATEST_ON");                                               // 알파 테스트 비활성화
-        material.EnableKeyword("_ALPHABLEND_ON");                                               // 알파 블렌딩 활성화
-        material.DisableKeyword("_ALPHAPREMULTIPLY_ON");                                        // 사전 알파 블렌딩 비활성화
-        material.renderQueue = 3000;                                                            // 렌더 큐 설정
+        // 투명도 설정
+        cellMaterial.SetFloat("_Mode", 3);                                                          // Transparent 모드
+        cellMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);            // SrcAlpha 블렌딩
+        cellMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);    // OneMinusSrcAlpha 블렌딩
+        cellMaterial.SetInt("_ZWrite", 0);                                                          // ZWrite 비활성화
+        cellMaterial.DisableKeyword("_ALPHATEST_ON");                                               // 알파 테스트 비활성화
+        cellMaterial.EnableKeyword("_ALPHABLEND_ON");                                               // 알파 블렌딩 활성화
+        cellMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");                                        // 사전 알파 블렌딩 비활성화
+        cellMaterial.renderQueue = 3000;                                                            // 렌더 큐 설정
         
-        material.color = new Color(
-            material.color.r, 
-            material.color.g, 
-            material.color.b, 
-            0.7f
+        cellMaterial.color = new Color(
+            cellMaterial.color.r, 
+            cellMaterial.color.g, 
+            cellMaterial.color.b, 
+            initialAlpha
         );
         
-        renderer.material = material;                                                           // 머티리얼 설정
+        renderer.material = cellMaterial;                                                           // 머티리얼 설정
     }
     
     //~ OnDrawGizmos() 메서드는 셀 위치에 와이어프레임 큐브를 그리고 셀의 값도 표시합니다.
     void OnDrawGizmos()
     {
         // 셀 위치에 와이어프레임 큐브 그리기
-        Gizmos.color = new Color(1f, 1f, 1f, 0.3f);                                             // 색상 설정
+        Gizmos.color = new Color(1f, 1f, 1f, 0.1f);                                             // 색상 설정
         Gizmos.DrawWireCube(transform.position, transform.localScale);                          // 와이어프레임 큐브 그리기
         
         // 셀 값 표시
