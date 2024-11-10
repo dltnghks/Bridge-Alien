@@ -23,6 +23,13 @@ public class GridCell : MonoBehaviour
         Column = col;               // 열 정보 저장
         Value = value;              // 값 정보 저장
         
+        // 콜라이더가 있다면 트리거로 설정
+        Collider cellCollider = GetComponent<Collider>();
+        if (cellCollider != null)
+        {
+            cellCollider.isTrigger = true;
+        }
+        
         // 셀 시각화
         UpdateCellVisualization();  // 셀의 시각화 업데이트
     }
