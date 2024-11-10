@@ -29,6 +29,12 @@ public class UIScoreBoard : UISubItem
         return true;
     }
 
+    public void SetScore(int score)
+    {
+        _curScore = score;
+        SetScoreText(_curScore);
+    }
+
     public void AddScore(int score)
     {
         _curScore += score;

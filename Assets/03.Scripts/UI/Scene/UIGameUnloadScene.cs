@@ -18,6 +18,9 @@ public class UIGameUnloadScene : UIScene
     private UIBoxPreview _uiBoxPreview;
     private UIOption _uiOption;
     
+    public UITimer UITimer { get { return _uiTimer; } }
+    public UIScoreBoard UIScoreBoard { get { return _uiScoreBoard; } }
+    
     public override bool Init()
     {
         if (base.Init() == false)
@@ -34,14 +37,5 @@ public class UIGameUnloadScene : UIScene
         
         return true;
     }
-
-    public void SetGame(float gameTime, UnityAction endGame)
-    {
-        if (endGame == null)
-        {
-            Debug.LogError("endGame is null");
-            return;
-        }
-        _uiTimer.SetTimer(gameTime, endGame);
-    }
+    
 }
