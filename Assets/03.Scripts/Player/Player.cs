@@ -12,25 +12,25 @@ public class Player : MonoBehaviour
     private bool canMoveForward = true;                 // 전방 이동 가능 여부
     private bool canMoveBackward = true;                // 후방 이동 가능 여부
     private CharacterAnimator characterAnimator;        // 캐릭터 애니메이터
-
+    
     void Start()
     {
         // 리지드바디 설정
         rb = GetComponent<Rigidbody>();
         if (rb == null) { rb = gameObject.AddComponent<Rigidbody>(); }
         
-        rb.useGravity = false;
+        rb.useGravity = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         rb.freezeRotation = true;
-
+    
         // 스프라이트 오브젝트 설정
         SetupSpriteObject();
         
         // 카메라 설정
         Camera.main.gameObject.AddComponent<ThirdPersonCamera>().Initialize(transform);
-
+    
         // 캐릭터 애니메이터 설정
         characterAnimator = GetComponent<CharacterAnimator>();
         if (characterAnimator == null)
@@ -157,8 +157,11 @@ public class Player : MonoBehaviour
         }
 
         // Rigidbody를 통한 이동
-        rb.velocity = movement * moveSpeed;
-        rb.angularVelocity = Vector3.zero;
+    Vector3 horizontalVelocity = movement * moveSpeed;
+    horizontalVelocity.y = rb.velocity.y;  // 기존 수직 속도 유지
+    rb.velocity = horizontalVelocity;
+    rb.angularVelocity = Vector3.zero;
+
 
         // 캐릭터 애니메이터 업데이트
         characterAnimator.UpdateMovement(movement.magnitude * moveSpeed);
