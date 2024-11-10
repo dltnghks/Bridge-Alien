@@ -24,4 +24,11 @@ public class Define
         Drag,
         EndDrag,
     }
+
+    public enum MiniGameType
+    {
+        Unknown,
+        Unload,
+        
+    }
 }
