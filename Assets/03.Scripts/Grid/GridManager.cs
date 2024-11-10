@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 
 public class GridManager : MonoBehaviour
 {
@@ -15,17 +16,29 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GameObject type2Prefab;        // 값이 2일 때 생성할 프리팹
     [SerializeField] private GameObject type3Prefab;        // 값이 3일 때 생성할 프리팹
 
+    [Header("CSV Loading Settings")]
+    [SerializeField] private Object csvFolder;  // 폴더 레퍼런스로 변경
+    [SerializeField] private float loadInterval = 5f;
+    
+    private List<TextAsset> csvFiles = new List<TextAsset>();                    // 로드된 CSV 파일 리스트
+    private int currentFileIndex = 0;                                            // 현재 로드 중인 파일 인덱스
+    private GameObject currentGridContainer;                                      // 현재 그리드 컨테이너
+
     private int[,] gridArray;                               // CSV에서 읽어온 그리드 데이터
     private Vector3 gridOrigin;                             // 그리드의 시작점
     private Dictionary<int, GameObject> prefabDictionary = new Dictionary<int, GameObject>();   // 프리팹 딕셔너리 (키: 데이터 값, 값: 프리팹)
+
+    [Header("Spawn Delay Settings")]
+    [SerializeField] private float minSpawnDelay = 0.1f;    // 최소 스폰 딜레이
+    [SerializeField] private float maxSpawnDelay = 0.5f;    // 최대 스폰 딜레이
 
     //~ start() 에서는 InitializePrefabDictionary() 메서드를 호출하여 프리팹 딕셔너리를 초기화합니다.
     void Start()
     {
         InitializePrefabDictionary();       // 프리팹 딕셔너리 초기화
         gridOrigin = transform.position;    // 그리드 시작점 설정
-        LoadGridFromCSV();                  // CSV 파일 읽기
-        CreateGrid();                       // 그리드 생성
+        LoadAllCSVFiles();
+        StartCoroutine(LoadGridSequentially());
     }
 
     //~ InitializePrefabDictionary() 메서드는 type1Prefab과 type2Prefab이 할당되어 있을 때만 프리팹 딕셔너리를 초기화합니다.
@@ -92,8 +105,8 @@ public class GridManager : MonoBehaviour
         int cols = gridArray.GetLength(1);                          // 열 개수
 
         // 그리드 생성
-        GameObject gridContainer = new GameObject("GridContainer"); // 그리드 컨테이너 생성
-        gridContainer.transform.parent = transform;                 // 그리드 컨테이너를 GridManager의 자식으로 설정
+        currentGridContainer = new GameObject("GridContainer"); // 그리드 컨테이너 생성
+        currentGridContainer.transform.parent = transform;                 // 그리드 컨테이너를 GridManager의 자식으로 설정
 
         // row 순서를 반대로 순회 (rows-1부터 0까지)
         for (int row = rows - 1; row >= 0; row--)
@@ -106,7 +119,7 @@ public class GridManager : MonoBehaviour
                     (rows - 1 - row) * cellSize
                 );
 
-                CreateCell(cellPosition, row, col, gridContainer.transform);    // 셀 생성
+                CreateCell(cellPosition, row, col, currentGridContainer.transform);    // 셀 생성
             }
         }
     }
@@ -128,23 +141,89 @@ public class GridManager : MonoBehaviour
             cellComponent.Initialize(row, col, gridArray[row, col]);                                            // 셀 초기화
         }               
 
-        // 프리팹 생성 (셀 표시 여부와 관계없이)                
+        // 프리팹 생성을 코루틴으로 변경
         int cellValue = gridArray[row, col];                                                                    // 셀 데이터 값
         if (prefabDictionary.ContainsKey(cellValue))                                                            // 프리팹 딕셔너리에 해당 값이 있을 경우
         {               
             GameObject prefab = prefabDictionary[cellValue];                                                    // 프리팹 가져오기
             if (prefab != null)
             {
-                GameObject instance = Instantiate(prefab, position + Vector3.up * 0.5f, Quaternion.identity);   // 프리팹 생성
-                if (cell != null)                                                                               // 셀이 있을 경우에만 부모로 설정
-                {
-                    instance.transform.parent = cell.transform;                                                 // 부모 설정 (셀의 자식으로)
-                }
-                else
-                {
-                    instance.transform.parent = parent;                                                         // 부모 설정 (그리드 컨테이너의 자식으로)
-                }
+                StartCoroutine(SpawnPrefabWithDelay(prefab, position, cell != null ? cell.transform : parent));
             }
+        }
+    }
+
+    // 새로운 코루틴 메서드 추가
+    private System.Collections.IEnumerator SpawnPrefabWithDelay(GameObject prefab, Vector3 position, Transform parent)
+    {
+        float randomDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+        yield return new WaitForSeconds(randomDelay);
+
+        GameObject instance = Instantiate(prefab, position + Vector3.up * 0.5f, Quaternion.identity);
+        instance.transform.parent = parent;
+    }
+
+    private void LoadAllCSVFiles()
+    {
+        if (csvFolder == null)
+        {
+            Debug.LogError("CSV 폴더가 설정되지 않았습니다!");
+            return;
+        }
+
+        string folderPath = AssetDatabase.GetAssetPath(csvFolder);
+        if (!Directory.Exists(folderPath))
+        {
+            Debug.LogError($"폴더를 찾을 수 없습니다: {folderPath}");
+            return;
+        }
+
+        // 폴더 내의 모든 CSV 파일 검색
+        string[] csvPaths = Directory.GetFiles(folderPath, "*.csv");
+        csvFiles.Clear();
+
+        foreach (string csvPath in csvPaths)
+        {
+            TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(csvPath);
+            if (textAsset != null)
+            {
+                csvFiles.Add(textAsset);
+            }
+        }
+
+        if (csvFiles.Count == 0)
+        {
+            Debug.LogError($"'{folderPath}' 폴더에서 CSV 파일을 찾을 수 없습니다!");
+            return;
+        }
+
+        Debug.Log($"총 {csvFiles.Count}개의 CSV 파일을 로드했습니다.");
+    }
+
+    private System.Collections.IEnumerator LoadGridSequentially()
+    {
+        while (true)
+        {
+            if (csvFiles.Count > 0)
+            {
+                // 현재 그리드 삭제
+                if (currentGridContainer != null)
+                {
+                    Destroy(currentGridContainer);
+                }
+
+                // 다음 CSV 파일 로드
+                gridData = csvFiles[currentFileIndex];
+                Debug.Log($"레벨 데이터 로드: {csvFiles[currentFileIndex].name} ({currentFileIndex + 1}/{csvFiles.Count})");
+                
+                LoadGridFromCSV();
+                CreateGrid();
+
+                // 다음 파일 인덱스 계산
+                currentFileIndex = (currentFileIndex + 1) % csvFiles.Count;
+            }
+
+            yield return new WaitForSeconds(loadInterval);
         }
     }
 }
