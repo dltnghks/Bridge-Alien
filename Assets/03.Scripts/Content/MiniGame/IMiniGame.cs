@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IMiniGame
 {
+    bool IsActive { get; set; }
+    bool IsPause { get; set; }
     UIScene GameUI { get; set; }
     
     void StartGame();    // 게임 시작
