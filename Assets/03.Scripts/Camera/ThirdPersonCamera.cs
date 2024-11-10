@@ -4,14 +4,10 @@ using UnityEngine;
 public class ThirdPersonCamera : CameraController
 {
     private Vector3 targetPosition;                     // 타겟 위치
-    private float defaultPitch = 20f;                  // 기본 상하 회전 각도
-    private float defaultYaw;                          // 기본 좌우 회전 각도
     private float currentPitch;                        // 현재 피치 (상하 회전)
     private float currentYaw;                          // 현재 요 (좌우 회전)
-    private float returnSpeed = 10f;                   // 원래 위치로 돌아가는 속도
+    private float defaultYaw;                         // 추가: 기본 요우 각도
     private bool isBlocked;                            // 레이캐스트 감지 상태
-    private float minWallDistance = 0.5f;              // 벽과의 최소 거리
-    private float sphereCastRadius = 0.2f;             // 구체 캐스트 반경
     private float smoothDampVelocity;                  // SmoothDamp용 속도 변수
     private float currentBlockDistance;                // 현재 블록 거리
     private Vector3 previousHitPoint;                  // 이전 히트 포인트
@@ -20,7 +16,7 @@ public class ThirdPersonCamera : CameraController
     protected override void OnInitialized()
     {
         defaultYaw = target.eulerAngles.y;            
-        currentPitch = defaultPitch;                   
+        currentPitch = settings.defaultPitch;                   
         currentYaw = defaultYaw;                       
         currentDistance = settings.distance;           
         currentBlockDistance = currentDistance;
@@ -44,14 +40,16 @@ public class ThirdPersonCamera : CameraController
         }
         else
         {
-            currentYaw = Mathf.Lerp(currentYaw, defaultYaw, Time.deltaTime * returnSpeed);
-            currentPitch = Mathf.Lerp(currentPitch, defaultPitch, Time.deltaTime * returnSpeed);
+            currentYaw = Mathf.Lerp(currentYaw, defaultYaw, Time.deltaTime * settings.returnSpeed);
+            currentPitch = Mathf.Lerp(currentPitch, settings.defaultPitch, Time.deltaTime * settings.returnSpeed);
         }
         
         if (!isBlocked)
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            currentDistance = Mathf.Clamp(currentDistance - scroll * 5f, 2f, 10f);
+            currentDistance = Mathf.Clamp(currentDistance - scroll * 5f, 
+                settings.minZoomDistance, 
+                settings.distance);
             currentBlockDistance = currentDistance;
         }
     }
@@ -67,7 +65,7 @@ public class ThirdPersonCamera : CameraController
         RaycastHit hit;
         bool isHit = Physics.SphereCast(
             targetPosition,              // 시작점
-            sphereCastRadius,            // 구체 반경
+            settings.sphereCastRadius,    // 구체 반경
             -direction,                  // 방향
             out hit,                     // 히트 정보
             currentDistance + 0.5f       // 거리
@@ -76,10 +74,10 @@ public class ThirdPersonCamera : CameraController
         if (isHit)
         {
             // 벽과의 거리 계산 (sphereCast 반경 고려)
-            float distanceToWall = hit.distance + sphereCastRadius;
+            float distanceToWall = hit.distance + settings.sphereCastRadius;
             
             // 최소 거리 보장
-            float targetDistance = Mathf.Max(distanceToWall - minWallDistance, minWallDistance);
+            float targetDistance = Mathf.Max(distanceToWall - settings.minWallDistance, settings.minWallDistance);
             
             // 부드러운 거리 조정
             currentBlockDistance = Mathf.SmoothDamp(
@@ -112,7 +110,7 @@ public class ThirdPersonCamera : CameraController
         RaycastHit wallHit;
         if (Physics.Linecast(targetPosition, targetCameraPosition, out wallHit))
         {
-            targetCameraPosition = wallHit.point + (direction * minWallDistance);
+            targetCameraPosition = wallHit.point + (direction * settings.minWallDistance);
         }
         
         // 최종 위치 적용 (부드러운 이동)
@@ -131,7 +129,7 @@ public class ThirdPersonCamera : CameraController
         if (Application.isPlaying)
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
+            Gizmos.DrawWireSphere(transform.position, settings.sphereCastRadius);
         }
     }
 }
