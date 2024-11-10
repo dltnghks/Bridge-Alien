@@ -14,7 +14,7 @@ public class Managers : MonoBehaviour
 
     private static ResourceManager _resourceManager = new ResourceManager();
     private static UIManager _uiManager = new UIManager();
-    private static MiniGameManager  _miniGameManager = new MiniGameManager();
+    private static MiniGameManager  _miniGameManager;
     private static SceneManagerEx _sceneManager;
     private static FadeManager _fadeManager;
     
@@ -54,13 +54,15 @@ public class Managers : MonoBehaviour
             _instance = Utils.GetOrAddComponent<Managers>(go);
             
             _resourceManager.Init();
-            _miniGameManager.Init();
 
             _sceneManager = Utils.GetOrAddComponent<SceneManagerEx>(go);
             _sceneManager.Init();
             
             _fadeManager = Utils.GetOrAddComponent<FadeManager>(go);
             _fadeManager.Init();
+            
+            _miniGameManager = Utils.GetOrAddComponent<MiniGameManager>(go);
+            _miniGameManager.Init();
             
             DontDestroyOnLoad(go);
         }

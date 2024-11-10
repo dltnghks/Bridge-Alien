@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameManager
+public class MiniGameManager : MonoBehaviour
 {
     private IMiniGame _currentGame;
     private GameObject _gameUI;
@@ -22,7 +22,7 @@ public class MiniGameManager
         switch (gameType)
         {
             case Define.MiniGameType.Unload:
-                _currentGame = new MiniGameUnload();
+                _currentGame = Utils.GetOrAddComponent<MiniGameUnload>(gameObject);
                 break;
             // 새로운 미니게임을 추가하려면 여기에서 case 추가
             default:
