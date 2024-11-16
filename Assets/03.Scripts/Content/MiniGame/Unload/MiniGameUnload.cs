@@ -1,23 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
     // 게임을 플레이할 수 있는 시간
-    private int _gameTime = 5;
-
+    private float _gameTime = 60.0f;
+    private float _boxSpawnInterval = 3.0f;
+    
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
     public UIScene GameUI { get; set; }
     private UIGameUnloadScene _uiGameUnloadScene;
  
-    private MiniGameUnloadTimer _timer;
-    private MiniGameUnloadScore _score;
-
+    private TimerBase _timer;
+    private ScoreBase _score;
+    private MiniGameUnloadBoxPreview _boxPreview;
+    
     private void Update()
     {
         if (!IsActive || IsPause)
@@ -26,7 +29,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
         
         _timer.TimerUpdate();
-
+        _boxPreview.TimerUpdate();
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _score.AddScore(10);
@@ -38,11 +42,13 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         if (_uiGameUnloadScene)
         {
             Debug.Log("UnloadGame Starting game");
-            _timer = new MiniGameUnloadTimer();
-            _score = new MiniGameUnloadScore();
-
+            _timer = new TimerBase();
+            _score = new ScoreBase();
+            _boxPreview = new MiniGameUnloadBoxPreview();
+            
             _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
             _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
+            _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval);
             
             IsActive = true;
         }

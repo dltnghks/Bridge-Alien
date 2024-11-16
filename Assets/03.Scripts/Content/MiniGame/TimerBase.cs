@@ -5,10 +5,11 @@ using UnityEngine.Events;
 
 public class TimerBase
 {
-    public UITimer UITimer { get; set; }
-    public bool IsActive { get; set; }
-    public UnityAction EndTimerAction { get; set; }
-    public float CurTime { get; set; }
+    public UITimer UITimer { get; private set; }
+    public bool IsActive { get; private set; }
+    public UnityAction EndTimerAction { get; private set; }
+    public float StartTime { get; private set; }
+    public float CurTime { get; private set; }
     
     public void SetTimer(UITimer uiTimer, float time, UnityAction endTimerAction = null)
     {
@@ -16,6 +17,7 @@ public class TimerBase
         {
             UITimer = uiTimer;
             IsActive = true;
+            StartTime = time;
             CurTime = time;
             EndTimerAction = endTimerAction;
 
@@ -23,6 +25,15 @@ public class TimerBase
         }
     }
 
+    public void ResetTimer()
+    {
+        CurTime = StartTime;
+        UITimer.SetTimer(StartTime);
+        IsActive = true;
+        Debug.Log("Reset Timer");
+    }
+    
+    
     public void TimerUpdate()
     {
         float deltaTime = -Time.deltaTime;
@@ -49,6 +60,7 @@ public class TimerBase
         {
             EndTimerAction?.Invoke();
             IsActive = false;
+            Debug.Log("End Timer");
         }
     }
 }

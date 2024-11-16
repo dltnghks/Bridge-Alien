@@ -40,4 +40,11 @@ public class UIBoxPreview : UISubItem
 
         return true;
     }
+
+    public void SetPreviewBoxInfo(MiniGameUnloadBox box)
+    {
+        GetText((int)Texts.BoxNumberText).SetText(box.BoxNumber.ToString());
+        GetText((int)Texts.BoxTypeText).SetText(box.BoxType.ToString());
+        GetText((int)Texts.RegionText).SetText(box.Region);
+    }
 }
