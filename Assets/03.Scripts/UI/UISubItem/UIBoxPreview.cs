@@ -4,12 +4,39 @@ using UnityEngine;
 
 public class UIBoxPreview : UISubItem
 {
+    enum GameObjects
+    {
+        UITimer,
+    }
+
+    enum Texts
+    {
+        BoxNumberText,
+        RegionText,
+        BoxTypeText,
+    }
+    
+    private UITimer _uiTimer;
+    public UITimer UITimer
+    {
+        get
+        {
+            Init();
+            return _uiTimer;
+        }
+    }
+    
     public override bool Init()
     {
         if (base.Init() == false)
         {
             return false;
         }
+        
+        BindObject(typeof(GameObjects));
+        BindText(typeof(Texts));
+        
+        _uiTimer = GetObject((int)GameObjects.UITimer).GetOrAddComponent<UITimer>();
 
         return true;
     }

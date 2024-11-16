@@ -19,6 +19,7 @@ public class MiniGameManager : MonoBehaviour
     // 미니게임을 선택 및 생성하는 팩토리 메서드
     public void SelectMiniGame(Define.MiniGameType gameType)
     {
+        
         switch (gameType)
         {
             case Define.MiniGameType.Unload:

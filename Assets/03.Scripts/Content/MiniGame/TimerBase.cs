@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MiniGameUnloadTimer : ITimed
+public class TimerBase
 {
     public UITimer UITimer { get; set; }
     public bool IsActive { get; set; }
     public UnityAction EndTimerAction { get; set; }
     public float CurTime { get; set; }
- 
-    
     
     public void SetTimer(UITimer uiTimer, float time, UnityAction endTimerAction = null)
     {

@@ -20,6 +20,7 @@ public class UIGameUnloadScene : UIScene
     
     public UITimer UITimer { get { return _uiTimer; } }
     public UIScoreBoard UIScoreBoard { get { return _uiScoreBoard; } }
+    public UIBoxPreview UIBoxPreview { get { return _uiBoxPreview; } }
     
     public override bool Init()
     {

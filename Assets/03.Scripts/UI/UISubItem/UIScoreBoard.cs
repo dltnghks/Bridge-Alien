@@ -39,18 +39,18 @@ public class UIScoreBoard : UISubItem
     {
         _curScore += score;
         SetScoreText(_curScore);
-        
-        // DOTween을 이용한 점수 텍스트 확대/축소 애니메이션
-        var scoreText = GetText((int)Texts.ScoreText).transform;
-        scoreText.DOScale(_textScaleFactor, _textScaleDuration)
-            .SetEase(Ease.OutQuad)  // 부드러운 애니메이션을 위해 Ease 설정
-            .OnComplete(() => scoreText.DOScale(1f, _textScaleDuration).SetEase(Ease.InQuad)); // 원래 크기로 복귀
     }
 
     private void SetScoreText(int score)
     {
         string scoreFormat = GetScoreFormat(score);
         GetText((int)Texts.ScoreText).SetText(scoreFormat);
+        
+        // DOTween을 이용한 점수 텍스트 확대/축소 애니메이션
+        var scoreText = GetText((int)Texts.ScoreText).transform;
+        scoreText.DOScale(_textScaleFactor, _textScaleDuration)
+            .SetEase(Ease.OutQuad)  // 부드러운 애니메이션을 위해 Ease 설정
+            .OnComplete(() => scoreText.DOScale(1f, _textScaleDuration).SetEase(Ease.InQuad)); // 원래 크기로 복귀
     }
 
     private string GetScoreFormat(int score)
