@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 684133255}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 4.5, z: -13.38}
+  m_LocalPosition: {x: 0, y: 9.86, z: -24.35}
   m_LocalScale: {x: 50, y: 1, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -692,7 +692,7 @@ Transform:
   m_GameObject: {fileID: 1359333142}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 7.49, z: -7.51}
+  m_LocalPosition: {x: 0, y: 14.98, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -712,11 +712,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings:
-    offset: {x: 0, y: 2, z: -5}
+    offset: {x: 0, y: 8, z: -15}
     smoothSpeed: 5
-    rotationSpeed: {x: 1, y: 2}
+    rotationSpeed: {x: 1, y: 0.5}
     pitchMinMax: {x: -30, y: 60}
     distance: 10
+    defaultPitch: 20
+    returnSpeed: 10
+    minWallDistance: 0.5
+    sphereCastRadius: 0.2
+    minZoomDistance: 2
 --- !u!1 &1421694587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,7 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461d084e7d28f1f4196b9a42fa43a08c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 30
   moveDirection: {x: -1, y: 0, z: 0}
   blockSize: 50
 --- !u!4 &1797933354
