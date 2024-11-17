@@ -97,4 +97,19 @@ public class CameraManager : MonoBehaviour
 
         currentController.Initialize(target);
     }
+
+    public void UpdateCurrentCameraSettings()
+    {
+        if (currentController == null) return;
+
+        switch (currentCameraType)
+        {
+            case CameraType.TopDown:
+                currentController.UpdateSettings(topDownSettings);
+                break;
+            case CameraType.ThirdPerson:
+                currentController.UpdateSettings(thirdPersonSettings);
+                break;
+        }
+    }
 }

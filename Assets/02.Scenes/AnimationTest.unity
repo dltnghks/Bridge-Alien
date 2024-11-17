@@ -745,6 +745,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1654894222 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2263148129475462844, guid: 33cf08b6300218349a2ceeaecd668cd7, type: 3}
+  m_PrefabInstance: {fileID: 7988539044032788875}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1810680243
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +927,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2352267902268082660, guid: c6e49cb1764df7148bf03eb736f0cafe, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1654894222}
+    - target: {fileID: 2352267902268082660, guid: c6e49cb1764df7148bf03eb736f0cafe, type: 3}
+      propertyPath: topDownSettings.distance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352267902268082660, guid: c6e49cb1764df7148bf03eb736f0cafe, type: 3}
+      propertyPath: topDownSettings.defaultPitch
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352267902268082660, guid: c6e49cb1764df7148bf03eb736f0cafe, type: 3}
+      propertyPath: topDownSettings.minZoomDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3367609760668732989, guid: c6e49cb1764df7148bf03eb736f0cafe, type: 3}
       propertyPath: m_Name
       value: CameraManager
