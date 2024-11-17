@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2519765498198002301}
   - component: {fileID: 9117485643417542983}
   m_Layer: 5
-  m_Name: ConfirmButtonText
+  m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 260265034571924259}
   - component: {fileID: 788310954651670368}
   m_Layer: 5
-  m_Name: ConfirmButton
+  m_Name: ReturnToMapButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2625666806852905169}
   m_Layer: 0
-  m_Name: UIGameUnloadResultPopup
+  m_Name: UIGameResultPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
