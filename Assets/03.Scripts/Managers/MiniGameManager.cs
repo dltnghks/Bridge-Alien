@@ -12,6 +12,20 @@ public class MiniGameManager : MonoBehaviour
         get { return _currentGame; }
     }
     
+    public GameObject Root
+    {
+        get
+        {
+            GameObject root = GameObject.Find("@MiniGameRoot");
+            if (root == null)
+            {
+                root = new GameObject { name = "@MiniGameRoot" };
+            }
+
+            return root;
+        }
+    }
+    
     public void Init()
     {
     }

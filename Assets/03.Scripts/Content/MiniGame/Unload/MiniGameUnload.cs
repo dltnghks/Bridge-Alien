@@ -36,7 +36,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             _score.AddScore(10);
         }
     }
-
+    
     public void StartGame()
     {
         if (_uiGameUnloadScene)
@@ -44,7 +44,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             Debug.Log("UnloadGame Starting game");
             _timer = new TimerBase();
             _score = new ScoreBase();
-            _boxPreview = new MiniGameUnloadBoxPreview();
+            _boxPreview =  Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
             
             _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
             _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);

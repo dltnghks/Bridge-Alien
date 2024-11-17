@@ -10,27 +10,34 @@ public class TimerBase
     public UnityAction EndTimerAction { get; private set; }
     public float StartTime { get; private set; }
     public float CurTime { get; private set; }
+
+    public void OffTimer()
+    {
+        IsActive = false;
+    }
     
     public void SetTimer(UITimer uiTimer, float time, UnityAction endTimerAction = null)
     {
         if (!IsActive)
         {
             UITimer = uiTimer;
-            IsActive = true;
             StartTime = time;
             CurTime = time;
             EndTimerAction = endTimerAction;
 
             UITimer.SetTimer(time);
+            
+            Debug.Log(GetType().Name + " SetTimer() called");
+            IsActive = true;
         }
     }
 
-    public void ResetTimer()
+    public void RestartTimer()
     {
         CurTime = StartTime;
         UITimer.SetTimer(StartTime);
         IsActive = true;
-        Debug.Log("Reset Timer");
+        Debug.Log("Restart Timer");
     }
     
     

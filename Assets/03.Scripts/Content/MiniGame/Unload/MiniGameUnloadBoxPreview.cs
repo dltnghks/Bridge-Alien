@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameUnloadBoxPreview
+public class MiniGameUnloadBoxPreview : MonoBehaviour
 {
     private UIBoxPreview _uiBoxPreview;
     private TimerBase _timer;
     private float _boxSpawnInterval = 0;
+    private Vector3 _boxSpawnPosition;
     
     private Queue<MiniGameUnloadBox> _previewQueue = new Queue<MiniGameUnloadBox>();
     
@@ -17,8 +18,10 @@ public class MiniGameUnloadBoxPreview
         
         _uiBoxPreview = uiBoxPreview;
         _boxSpawnInterval = boxSpawnInterval;
+        _timer.OffTimer();
         _timer.SetTimer(_uiBoxPreview.UITimer, _boxSpawnInterval, CreatInGameBox);
         
+        _previewQueue.Clear();
         // 박스 만들기
         for (int i = 0; i < 20; i++)
         {
@@ -33,7 +36,7 @@ public class MiniGameUnloadBoxPreview
         _timer.TimerUpdate();
         if (_timer.CurTime <= 0)
         {
-            _timer.ResetTimer();
+            _timer.RestartTimer();
         }
     }
     
@@ -53,15 +56,18 @@ public class MiniGameUnloadBoxPreview
         bool randomIsFragile = random.Next(0, 2) == 1; // true 또는 false
 
         // 박스 생성 및 설정
-        MiniGameUnloadBox box = new MiniGameUnloadBox();
-        box.SetBoxInfo(randomBoxType, randomWeight, randomSize, randomRegion, randomIsFragile);
+        GameObject newBoxObj = Managers.Resource.Instantiate("Box", Managers.MiniGame.Root.transform);
+        newBoxObj.SetActive(false);
+        MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+        newBox.SetBoxInfo(randomBoxType, randomWeight, randomSize, randomRegion, randomIsFragile);
         
-        EnqueueBox(box);
+        EnqueueBox(newBox);
     }
 
     public void CreatInGameBox()
     {
-        DequeueBox();
+        MiniGameUnloadBox box = DequeueBox();
+        box.gameObject.SetActive(true);
     }
     
     private void EnqueueBox(MiniGameUnloadBox box)
@@ -69,12 +75,25 @@ public class MiniGameUnloadBoxPreview
         _previewQueue.Enqueue(box);
     }
     
-    private void DequeueBox()
+    private MiniGameUnloadBox DequeueBox()
     {
         if (_previewQueue.Count > 0)
         {
-            _previewQueue.Dequeue();
-            _uiBoxPreview.SetPreviewBoxInfo(_previewQueue.Peek());
+            MiniGameUnloadBox box = _previewQueue.Dequeue();
+            
+            if (_previewQueue.Count > 0)
+            {
+                _uiBoxPreview.SetPreviewBoxInfo(_previewQueue.Peek());
+            }
+            else
+            {
+                Debug.LogWarning("No preview box available");
+            }
+            
+            return box;
         }
+        
+        Debug.Log("No preview box found");
+        return null;
     }
 }

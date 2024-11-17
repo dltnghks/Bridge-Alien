@@ -2,22 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameUnloadBox
+public struct MiniGameUnloadBoxInfo
 {
-    public Define.BoxType BoxType { get; private set; }
-    public int BoxNumber { get; private set; }
-    public int Weight { get; private set; }
-    public string Region { get; private set; }
-    public bool IsFragileBox { get; private set; }
+    public Define.BoxType BoxType;
+    public int BoxNumber;
+    public int Weight;
+    public string Region;
+    public bool IsFragileBox;
+}
+
+public class MiniGameUnloadBox : MonoBehaviour
+{
+    private MiniGameUnloadBoxInfo _info;
+
+    public MiniGameUnloadBoxInfo Info
+    {
+        get => _info;
+        private set => _info = value;
+    }
     
-    
+    public void SetBoxInfo(MiniGameUnloadBoxInfo info)
+    {
+        Info = info;
+    }
+
     public void SetBoxInfo(Define.BoxType boxType, int boxNumber, int weight, string region, bool isFragileBox)
     {
-        BoxType = boxType;
-        BoxNumber = boxNumber;
-        Weight = weight;
-        Region = region;
-        IsFragileBox = isFragileBox;
+        _info.BoxType = boxType;
+        _info.BoxNumber = boxNumber;
+        _info.Weight = weight;
+        _info.Region = region;
+        _info.IsFragileBox = isFragileBox;
     }
+
 }
 
