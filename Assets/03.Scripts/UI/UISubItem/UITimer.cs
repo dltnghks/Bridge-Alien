@@ -10,10 +10,8 @@ public class UITimer : UISubItem
     {
         TimerText,        
     }
-
-    private bool _active;
+    
     private float _curTime;
-    private UnityAction _callback; 
     
     public override bool Init()
     {
@@ -24,32 +22,22 @@ public class UITimer : UISubItem
 
         BindText(typeof(Texts));
 
-        _active = false;
-        
         return true;
     }
 
-    public void Update()
+
+    public void SetTimer(float time)
     {
-        if (_active)
-        {
-            _curTime -= Time.deltaTime;
-            SetTimerText(_curTime);
-            if (_curTime <= 0.0f)
-            {
-                _callback?.Invoke();
-                _active = false;
-            }
-        }
+        _curTime = time;
+        SetTimerText(time);
     }
 
-    public void SetTimer(float time, UnityAction callback = null)
+    public void AddTime(float time)
     {
-        SetTimerText(time);
-        _callback = callback;
-        _curTime = time;
-        _active = true;
+        _curTime += time;
+        SetTimerText(_curTime);
     }
+    
 
     private void SetTimerText(float time)
     {
@@ -59,6 +47,11 @@ public class UITimer : UISubItem
 
     private string GetTimeFormat(float time)
     {
-        return $"{(int)time / 60:00}:{(int)time % 60:00}";
+        if (time <= 0)
+        {
+            return "00:00";    
+        }
+        
+        return $"{(int)time % 60:00}:{(time * 100) % 100:00}";
     }
 }

@@ -10,8 +10,8 @@ public class GameUnloadScene : BaseScene
             return false;
 
         SceneType = Define.Scene.GameUnload;
-
-        Managers.UI.ShowSceneUI<UIGameUnloadScene>();
+        
+        Managers.MiniGame.SelectMiniGame(Define.MiniGameType.Unload);
         return true;
     }
 }

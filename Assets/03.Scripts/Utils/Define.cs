@@ -24,4 +24,19 @@ public class Define
         Drag,
         EndDrag,
     }
+
+    public enum MiniGameType
+    {
+        Unknown,
+        Unload,
+        
+    }
+    
+    public enum BoxType
+    {
+        Post,           // 우편
+        SmallParcel,    // 소형 택배
+        StandardParcel, // 일반 택배
+        LargeParcel     // 대형 택배
+    }
 }

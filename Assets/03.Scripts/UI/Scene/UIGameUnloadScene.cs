@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIGameUnloadScene : UIScene
 {
@@ -17,6 +18,10 @@ public class UIGameUnloadScene : UIScene
     private UIBoxPreview _uiBoxPreview;
     private UIOption _uiOption;
     
+    public UITimer UITimer { get { return _uiTimer; } }
+    public UIScoreBoard UIScoreBoard { get { return _uiScoreBoard; } }
+    public UIBoxPreview UIBoxPreview { get { return _uiBoxPreview; } }
+    
     public override bool Init()
     {
         if (base.Init() == false)
@@ -31,17 +36,7 @@ public class UIGameUnloadScene : UIScene
         _uiBoxPreview = GetObject((int)Objects.UIBoxPreview).GetOrAddComponent<UIBoxPreview>();
         _uiOption = GetObject((int)Objects.UIOption).GetOrAddComponent<UIOption>();
         
-        //Test Code
-        _uiTimer.SetTimer(4.0f, EndGame);
-        _uiScoreBoard.AddScore(100);
-        
         return true;
     }
-
-    private void EndGame()
-    {
-        Debug.Log("EndGame");
-        
-        Managers.Scene.ChangeScene(Define.Scene.GameMap);
-    }
+    
 }
