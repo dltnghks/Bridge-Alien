@@ -15,11 +15,11 @@ public class CameraManagerEditor : Editor
     //~ 인스펙터가 활성화될 때 호출되는 메서드
     private void OnEnable()
     {
-        currentCameraType = serializedObject.FindProperty("currentCameraType");         // currentCameraType 속성 찾기
-        targetTransform = serializedObject.FindProperty("target");                      // target 속성 찾기
-        topDownSettings = serializedObject.FindProperty("topDownSettings");             // topDownSettings 속성 찾기
-        thirdPersonSettings = serializedObject.FindProperty("thirdPersonSettings");     // thirdPersonSettings 속성 찾기
-        cameraManager = target as CameraManager;                                        // CameraManager 인스턴스 찾기
+        currentCameraType = serializedObject.FindProperty("currentCameraType");         // currentCameraType 속성 찾기 (CameraManager 클래스의 currentCameraType 속성 참고)
+        targetTransform = serializedObject.FindProperty("target");                      // target 속성 찾기 (CameraManager 클래스의 target 속성 참고)
+        topDownSettings = serializedObject.FindProperty("topDownSettings");             // topDownSettings 속성 찾기 (CameraManager 클래스의 topDownSettings 속성 참고)
+        thirdPersonSettings = serializedObject.FindProperty("thirdPersonSettings");     // thirdPersonSettings 속성 찾기 (CameraManager 클래스의 thirdPersonSettings 속성 참고)
+        cameraManager = target as CameraManager;                                        // CameraManager 인스턴스 찾기 (CameraManager 클래스의 인스턴스 참고)
     }
 
     //~ 인스펙터 그래픽 인터페이스 그리기
