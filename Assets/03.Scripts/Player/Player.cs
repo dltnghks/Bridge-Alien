@@ -14,25 +14,25 @@ public class Player : MonoBehaviour
     private bool canMoveForward = true;                 // 전방 이동 가능 여부
     private bool canMoveBackward = true;                // 후방 이동 가능 여부
     private CharacterAnimator characterAnimator;        // 캐릭터 애니메이터
-    
+
     void Start()
     {
         // 리지드바디 설정
         rb = GetComponent<Rigidbody>();
         if (rb == null) { rb = gameObject.AddComponent<Rigidbody>(); }
-        
+
         rb.useGravity = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         rb.freezeRotation = true;
-    
+
         // 스프라이트 오브젝트 설정
         SetupSpriteObject();
-        
-        // 카메라 설정
-        Camera.main.gameObject.AddComponent<ThirdPersonCamera>().Initialize(transform);
-    
+
+        // 카메라 설정 (03.Scripts/Camera/CameraManager 싱글톤 인스턴스 사용)
+        CameraManager.Instance.Initialize(transform);
+
         // 캐릭터 애니메이터 설정
         characterAnimator = GetComponent<CharacterAnimator>();
         if (characterAnimator == null)
@@ -46,15 +46,15 @@ public class Player : MonoBehaviour
         // 부모의 스프라이트 렌더러에서 스프라이트 가져오기
         SpriteRenderer parentRenderer = GetComponent<SpriteRenderer>();
         Sprite originalSprite = parentRenderer ? parentRenderer.sprite : null;
-        
+
         // 자식 스프라이트 오브젝트 생성
         spriteObject = new GameObject("PlayerSprite");
         spriteObject.transform.SetParent(transform);
         spriteObject.transform.localPosition = Vector3.zero;
-        
+
         // 스프라이트 렌더러 설정
         spriteRenderer = spriteObject.AddComponent<SpriteRenderer>();
-        
+
         // 원본 스프라이트와 기타 속성들 복사
         if (parentRenderer != null)
         {
@@ -65,13 +65,13 @@ public class Player : MonoBehaviour
             spriteRenderer.flipY = parentRenderer.flipY;
             spriteRenderer.sortingLayerID = parentRenderer.sortingLayerID;
         }
-        
+
         // 기존 부모의 스프라이트 렌더러 제거
         if (parentRenderer != null)
         {
             Destroy(parentRenderer);
         }
-        
+
         // 빌보드는 스프라이트 오브젝트에 추가
         billboard = spriteObject.AddComponent<SpriteBillboard>();
         billboard.billboardAxis = BillboardBase.BillboardAxis.All;
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
 
         // x축(좌우) 이동과 스프라이트 방향 전환
         movement += transform.right * horizontal;
-        
+
         // 스프라이트 방향 전환 (enableFlip이 true일 때만 실행)
         if (enableFlip && Mathf.Abs(horizontal) > 0.01f)
         {
@@ -159,10 +159,10 @@ public class Player : MonoBehaviour
         }
 
         // Rigidbody를 통한 이동
-    Vector3 horizontalVelocity = movement * moveSpeed;
-    horizontalVelocity.y = rb.velocity.y;  // 기존 수직 속도 유지
-    rb.velocity = horizontalVelocity;
-    rb.angularVelocity = Vector3.zero;
+        Vector3 horizontalVelocity = movement * moveSpeed;
+        horizontalVelocity.y = rb.velocity.y;  // 기존 수직 속도 유지
+        rb.velocity = horizontalVelocity;
+        rb.angularVelocity = Vector3.zero;
 
 
         // 캐릭터 애니메이터 업데이트

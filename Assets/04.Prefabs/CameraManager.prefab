@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3961033239751432044}
-  - component: {fileID: 8154965918201759733}
+  - component: {fileID: 2352267902268082660}
   m_Layer: 0
   m_Name: CameraManager
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 6733859990056363855}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
---- !u!114 &8154965918201759733
+--- !u!114 &2352267902268082660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 3367609760668732989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db9d4410fcf944a76aa58a44309be38d, type: 3}
+  m_Script: {fileID: 11500000, guid: b8ee487e3b292d24e9f822a2af625da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings:
-    offset: {x: 0, y: 8, z: -15}
+  currentCameraType: 1
+  target: {fileID: 0}
+  topDownSettings:
+    offset: {x: 0, y: 2, z: -5}
     smoothSpeed: 5
     rotationSpeed: {x: 1, y: 0.5}
     pitchMinMax: {x: -30, y: 60}
-    distance: 10
+    distance: 30
+    defaultPitch: 20
+    returnSpeed: 10
+    minWallDistance: 0.5
+    sphereCastRadius: 0.2
+    minZoomDistance: 2
+  thirdPersonSettings:
+    offset: {x: 0, y: 2, z: -5}
+    smoothSpeed: 5
+    rotationSpeed: {x: 1, y: 0.5}
+    pitchMinMax: {x: -30, y: 60}
+    distance: 30
     defaultPitch: 20
     returnSpeed: 10
     minWallDistance: 0.5
@@ -67,6 +80,7 @@ GameObject:
   - component: {fileID: 6733859990056363855}
   - component: {fileID: 7571535357931606981}
   - component: {fileID: 1380586542818747664}
+  - component: {fileID: 4888315098209256815}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -148,3 +162,26 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4615457804195353713}
   m_Enabled: 1
+--- !u!114 &4888315098209256815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615457804195353713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71b5cd2d77e0cb45bd3063e8165946b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings:
+    offset: {x: 0, y: 2, z: -5}
+    smoothSpeed: 5
+    rotationSpeed: {x: 1, y: 0.5}
+    pitchMinMax: {x: -30, y: 60}
+    distance: 30
+    defaultPitch: 20
+    returnSpeed: 10
+    minWallDistance: 0.5
+    sphereCastRadius: 0.2
+    minZoomDistance: 2
