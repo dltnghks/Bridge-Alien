@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
     // 게임을 플레이할 수 있는 시간
-    private float _gameTime = 60.0f;
+    private float _gameTime = 6.0f;
     private float _boxSpawnInterval = 3.0f;
     
     public bool IsActive { get; set; }
@@ -83,7 +83,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
         
         IsActive = false;
-        Managers.Scene.ChangeScene(Define.Scene.GameMap);
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);
         Debug.Log("UnloadGame Ending game");
     }
 
