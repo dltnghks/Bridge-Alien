@@ -97,7 +97,7 @@ public class CanvasBillboard : BillboardBase
 [RequireComponent(typeof(ParticleSystem))]
 public class ParticleBillboard : BillboardBase
 {
-    protected ParticleSystem particleSystem;
+    protected new ParticleSystem particleSystem;
     
     protected override void Awake()
     {
