@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2625666806852905169}
   m_Layer: 0
-  m_Name: UIGameResultPopup
+  m_Name: UIGameUnloadResultPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

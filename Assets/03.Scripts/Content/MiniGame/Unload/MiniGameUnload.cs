@@ -83,7 +83,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
         
         IsActive = false;
-        Managers.UI.ShowPopUI<UIGameResultPopup>().SetResultScore(_score.CurrentScore);
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);
         Debug.Log("UnloadGame Ending game");
     }
 

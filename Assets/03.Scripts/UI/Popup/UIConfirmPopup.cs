@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIGameResultPopup : UIPopup
+public class UIConfirmPopup : UIPopup
 {
     enum Buttons
     {
@@ -11,7 +11,6 @@ public class UIGameResultPopup : UIPopup
     
     enum Texts
     {
-        ScoreText,
         ConfirmButtonText,
     }
 
@@ -23,25 +22,14 @@ public class UIGameResultPopup : UIPopup
         }
         
         BindButton(typeof(Buttons));
-        BindText(typeof(Texts));
         
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
         
         return true;
     }
 
-    public void SetResultScore(int score)
+    protected virtual void OnClickConfirmButton()
     {
-        if (Init())
-        {
-            string scoreText = $"Score : {score.ToString()}";
-            GetText((int)Texts.ScoreText).SetText(scoreText);
-        }
-    }
-
-    protected void OnClickConfirmButton()
-    {
-        Managers.Scene.ChangeScene(Define.Scene.GameMap);
+        Debug.Log("OnClickConfirmButton");
     } 
-    
 }
