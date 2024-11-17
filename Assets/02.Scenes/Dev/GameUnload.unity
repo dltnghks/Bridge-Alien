@@ -302,6 +302,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5784008680853761145, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_Name
+      value: RegionText
+      objectReference: {fileID: 0}
     - target: {fileID: 6164337620180750308, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_Name
       value: UIGameUnloadScene
