@@ -17,32 +17,15 @@ public class Managers : MonoBehaviour
     private static MiniGameManager  _miniGameManager;
     private static SceneManagerEx _sceneManager;
     private static FadeManager _fadeManager;
+    private static CameraManager _cameraManager;
     
-    public static ResourceManager Resource
-    {
-        get { Init(); return _resourceManager; }
-    }
     
-    public static UIManager UI
-    {
-        get{ Init(); return _uiManager; }
-    }
-
-    public static SceneManagerEx Scene
-    {
-        get{ Init(); return _sceneManager; }
-    }
-    
-    public static FadeManager Fade
-    {
-        get{ Init(); return _fadeManager; }
-    }
-
-    public static MiniGameManager MiniGame
-    {
-        get{ Init(); return _miniGameManager; }
-    }
-    
+    public static ResourceManager Resource { get { Init(); return _resourceManager; } }
+    public static UIManager UI { get{ Init(); return _uiManager; } }
+    public static SceneManagerEx Scene { get{ Init(); return _sceneManager; } }
+    public static FadeManager Fade { get{ Init(); return _fadeManager; } }
+    public static MiniGameManager MiniGame { get{ Init(); return _miniGameManager; } }
+    public static CameraManager Camera{get{Init(); return _cameraManager; }}
     private static void Init()
     {
         if (_instance == null)
@@ -63,6 +46,9 @@ public class Managers : MonoBehaviour
             
             _miniGameManager = Utils.GetOrAddComponent<MiniGameManager>(go);
             _miniGameManager.Init();
+
+            _cameraManager = Utils.GetOrAddComponent<CameraManager>(go);
+            _cameraManager.Init();
             
             DontDestroyOnLoad(go);
         }
