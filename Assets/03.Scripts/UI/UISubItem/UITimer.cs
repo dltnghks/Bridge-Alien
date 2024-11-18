@@ -28,6 +28,7 @@ public class UITimer : UISubItem
 
     public void SetTimer(float time)
     {
+        Init();
         _curTime = time;
         SetTimerText(time);
     }
