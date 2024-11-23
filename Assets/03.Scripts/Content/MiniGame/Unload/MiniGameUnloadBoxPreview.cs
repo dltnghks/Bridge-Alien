@@ -28,6 +28,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
             CreatePreviewBox();
         }
 
+        _boxSpawnPosition = GameObject.Find("BoxSpawnPoint").transform.position;
         DequeueBox();
     }
 
@@ -68,6 +69,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
     {
         MiniGameUnloadBox box = DequeueBox();
         box.gameObject.SetActive(true);
+        box.transform.position = _boxSpawnPosition;
     }
     
     private void EnqueueBox(MiniGameUnloadBox box)
