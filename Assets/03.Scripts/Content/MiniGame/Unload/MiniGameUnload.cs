@@ -54,7 +54,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval);
             
             PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();;
-            
+            PlayerController.Player = PlayerCharacter;
             IsActive = true;
         }
     }

@@ -36,16 +36,14 @@ public class UIPlayerInput : UISubItem
 
     private void OnClickInteractionButton()
     {
-        Debug.Log("OnClickInteractionButton");
+        Managers.MiniGame.CurrentGame.PlayerController.Interaction();
     }
 
     public void FixedUpdate()
     {
         if (Managers.MiniGame.CurrentGame.IsActive)
         {
-            Managers.MiniGame.CurrentGame.PlayerCharacter.PlayerMovement(_joystick.Direction);
+            Managers.MiniGame.CurrentGame.PlayerController.InputJoyStick(_joystick.Direction);
         }
-
-        //Managers.MiniGame.CurrentGame.PlayerController.InputJoyStick(_joystick.Direction);
     }
 }
