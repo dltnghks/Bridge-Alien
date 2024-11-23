@@ -37,7 +37,7 @@ public class MiniGameManager : MonoBehaviour
         switch (gameType)
         {
             case Define.MiniGameType.Unload:
-                _currentGame = Utils.GetOrAddComponent<MiniGameUnload>(gameObject);
+                _currentGame = Root.GetOrAddComponent<MiniGameUnload>();
                 break;
             // 새로운 미니게임을 추가하려면 여기에서 case 추가
             default:

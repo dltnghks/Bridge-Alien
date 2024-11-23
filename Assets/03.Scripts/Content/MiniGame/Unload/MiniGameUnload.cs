@@ -14,6 +14,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
+    public Player PlayerCharacter { get; set; }
+    public IPlayerController PlayerController { get; set; }
+    
     public UIScene GameUI { get; set; }
     private UIGameUnloadScene _uiGameUnloadScene;
  
@@ -49,6 +52,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
             _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
             _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval);
+            
+            PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();;
             
             IsActive = true;
         }

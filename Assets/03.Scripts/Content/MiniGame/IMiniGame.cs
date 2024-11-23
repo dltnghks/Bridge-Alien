@@ -8,6 +8,9 @@ public interface IMiniGame
     bool IsPause { get; set; }
     UIScene GameUI { get; set; }
     
+    Player PlayerCharacter { get; set; }
+    IPlayerController PlayerController { get; set; }
+    
     void StartGame();    // 게임 시작
     void PauseGame();    // 게임 일시정지
     void ResumeGame();   // 게임 재개
