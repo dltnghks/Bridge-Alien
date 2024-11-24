@@ -5,6 +5,7 @@ using UnityEngine;
 public interface IPlayerController
 {
     Player Player { get; set; }
+    public void Init(Player player);
     public void InputJoyStick(Vector2 input);
     public void Interaction();
 }

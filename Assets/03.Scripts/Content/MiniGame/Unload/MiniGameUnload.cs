@@ -7,10 +7,13 @@ using UnityEngine.Events;
 
 public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
+    [Header("Game Information")]
     // 게임을 플레이할 수 있는 시간
-    private float _gameTime = 6.0f;
-    private float _boxSpawnInterval = 3.0f;
-    
+    [SerializeField] private float _gameTime = 6.0f;
+    // 박스 생성 주기
+    [SerializeField] private float _boxSpawnInterval = 3.0f;
+    [SerializeField] private GameObject _boxSpawnPoint;
+    [SerializeField] private GameObject[] _endPointList;
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
@@ -42,21 +45,21 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     
     public void StartGame()
     {
-        if (_uiGameUnloadScene)
-        {
-            Debug.Log("UnloadGame Starting game");
-            _timer = new TimerBase();
-            _score = new ScoreBase();
-            _boxPreview =  Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
-            
-            _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
-            _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
-            _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval);
-            
-            PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();;
-            PlayerController.Player = PlayerCharacter;
-            IsActive = true;
-        }
+        Debug.Log("UnloadGame Starting game");
+        _timer = new TimerBase();
+        _score = new ScoreBase();
+        _boxPreview =  Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
+        
+        _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
+        _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
+        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval);
+        
+        PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();
+        
+        PlayerController = new MiniGameUnloadPlayerController();
+        PlayerController.Init(PlayerCharacter);
+        
+        IsActive = true;
     }
 
     public void PauseGame()
