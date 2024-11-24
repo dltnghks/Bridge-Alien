@@ -31,6 +31,7 @@ public class UIScoreBoard : UISubItem
 
     public void SetScore(int score)
     {
+        Init();
         _curScore = score;
         SetScoreText(_curScore);
     }
