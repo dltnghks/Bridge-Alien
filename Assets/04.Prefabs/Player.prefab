@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3091227573643367560}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   rayDistance: 1
-  enableFlip: 0
+  enableFlip: 1
 --- !u!212 &5343389713107772975
 SpriteRenderer:
   m_ObjectHideFlags: 0
