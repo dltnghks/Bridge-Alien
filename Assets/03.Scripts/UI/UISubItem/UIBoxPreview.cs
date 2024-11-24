@@ -45,6 +45,6 @@ public class UIBoxPreview : UISubItem
     {
         GetText((int)Texts.BoxNumberText).SetText(box.Info.BoxNumber.ToString());
         GetText((int)Texts.BoxTypeText).SetText(box.Info.BoxType.ToString());
-        GetText((int)Texts.RegionText).SetText(box.Info.Region);
+        GetText((int)Texts.RegionText).SetText(box.Info.Region.ToString());
     }
 }
