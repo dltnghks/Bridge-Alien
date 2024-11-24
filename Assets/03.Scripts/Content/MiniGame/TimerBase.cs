@@ -26,8 +26,6 @@ public class TimerBase
             EndTimerAction = endTimerAction;
 
             UITimer.SetTimer(time);
-            
-            Debug.Log(GetType().Name + " SetTimer() called");
             IsActive = true;
         }
     }
@@ -37,7 +35,6 @@ public class TimerBase
         CurTime = StartTime;
         UITimer.SetTimer(StartTime);
         IsActive = true;
-        Debug.Log("Restart Timer");
     }
     
     
@@ -67,7 +64,6 @@ public class TimerBase
         {
             EndTimerAction?.Invoke();
             IsActive = false;
-            Debug.Log("End Timer");
         }
     }
 }
