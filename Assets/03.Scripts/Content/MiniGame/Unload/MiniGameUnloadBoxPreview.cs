@@ -53,7 +53,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         Define.BoxType randomBoxType = (Define.BoxType)random.Next(0, (int)Define.BoxType.LargeParcel);
         int randomWeight = random.Next(1, 101); // 무게: 1~100
         int randomSize = random.Next(1, 201);  // 크기: 1~200
-        string randomRegion = regions[random.Next(regions.Length)]; // 지역 선택
+        Define.BoxRegion randomRegion = (Define.BoxRegion)random.Next(0, (int)Define.BoxRegion.Central); // 지역 선택
         bool randomIsFragile = random.Next(0, 2) == 1; // true 또는 false
 
         // 박스 생성 및 설정
@@ -68,8 +68,15 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
     public void CreatInGameBox()
     {
         MiniGameUnloadBox box = DequeueBox();
-        box.gameObject.SetActive(true);
-        box.transform.position = _boxSpawnPosition;
+        if (box != null)
+        {
+            box.gameObject.SetActive(true);
+            box.transform.position = _boxSpawnPosition;
+        }
+        else
+        {
+            Debug.LogWarning("Box could not be found");
+        }
     }
     
     private void EnqueueBox(MiniGameUnloadBox box)

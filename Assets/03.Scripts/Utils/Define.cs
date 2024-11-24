@@ -39,4 +39,13 @@ public class Define
         StandardParcel, // 일반 택배
         LargeParcel     // 대형 택배
     }
+
+    public enum BoxRegion
+    {
+        North,
+        South,
+        East,
+        West,
+        Central, 
+    }
 }
