@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Wall_Side
+  - Box
   layers:
   - Default
   - TransparentFX
