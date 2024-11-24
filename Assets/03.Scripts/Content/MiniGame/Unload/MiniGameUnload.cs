@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
@@ -13,7 +14,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     // 박스 생성 주기
     [SerializeField] private float _boxSpawnInterval = 3.0f;
     [SerializeField] private GameObject _boxSpawnPoint;
-    [SerializeField] private GameObject[] _endPointList;
+    [SerializeField] private GameObject[] _deliveryPointList;
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
@@ -101,5 +102,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _uiGameUnloadScene = Managers.UI.ShowSceneUI<UIGameUnloadScene>();
         GameUI = _uiGameUnloadScene;
     }
-   
+
+    public void AddScore(int score)
+    {
+        _score.AddScore(score);
+    }
+
 }
