@@ -12,14 +12,18 @@ public struct MiniGameUnloadBoxInfo
     public int Weight;
     public Define.BoxRegion Region;
     public bool IsFragileBox;
+    public float Size;
+    public bool IsGrab;
     
-    public MiniGameUnloadBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox)
+    public MiniGameUnloadBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
     {
         BoxType = boxType;
         BoxNumber = boxNumber;
         Weight = weight;
         Region = region;
         IsFragileBox = isFragileBox;
+        Size = size;
+        IsGrab = false;
     }
 }
 
@@ -40,17 +44,26 @@ public class MiniGameUnloadBox : MonoBehaviour
         Info = info;
     }
 
-    public void SetBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox)
+    public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
     {
-        
-        _info = new MiniGameUnloadBoxInfo(boxType, boxNumber, weight, region, isFragileBox);
+        gameObject.SetActive(value);
+        if(value)
+        {
+            transform.position = pos;
+        }
+    }
+
+    public void SetBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
+    {
+        _info = new MiniGameUnloadBoxInfo(boxType, boxNumber, weight, region, isFragileBox, size);
         
         TextObj.GetComponent<TextMeshPro>().SetText(
             $"{_info.BoxType.ToString()}\n" +
             $"{_info.BoxNumber.ToString()}\n" +
             $"{_info.Region.ToString()}\n" +
             $"{_info.Weight.ToString()}\n" +
-            $"{_info.IsFragileBox.ToString()}\n"
+            $"{_info.IsFragileBox.ToString()}\n" +
+            $"Size : {_info.Size.ToString()}\n"
             );
     }
 }

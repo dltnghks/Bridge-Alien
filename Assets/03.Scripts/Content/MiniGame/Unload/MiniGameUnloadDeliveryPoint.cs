@@ -35,18 +35,17 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         _action = action;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider coll)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (coll.gameObject.CompareTag("Player"))
         {
-            // UI ë³?ê²?
-            Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction();
+            Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.DropBox;
         }
 
-        if (collision.gameObject.CompareTag("Box"))
+        if (coll.gameObject.CompareTag("Box"))
         {
-            MiniGameUnloadBox box = collision.gameObject.GetComponent<MiniGameUnloadBox>();
-            collision.gameObject.SetActive(false);
+            MiniGameUnloadBox box = coll.gameObject.GetComponent<MiniGameUnloadBox>();
+            coll.gameObject.SetActive(false);
             if (CheckBoxInfo(box.Info))
             {
                 Debug.Log("True Region");
@@ -59,12 +58,11 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         }
     }
     
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider coll)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (coll.gameObject.CompareTag("Player"))
         {
-            // UI ë³?ê²?
-            Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction();
+            Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
         }
     }
 

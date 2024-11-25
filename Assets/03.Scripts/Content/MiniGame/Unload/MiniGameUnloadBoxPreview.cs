@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class MiniGameUnloadBoxPreview : MonoBehaviour
 {
+    [Header("Game Information")]
+    private float _boxSpawnInterval = 0;
+
+
     private UIBoxPreview _uiBoxPreview;
     private TimerBase _timer;
-    private float _boxSpawnInterval = 0;
-    private Vector3 _boxSpawnPosition;
-    
+   
     private Queue<MiniGameUnloadBox> _previewQueue = new Queue<MiniGameUnloadBox>();
-    
-    public void SetBoxPreview(UIBoxPreview uiBoxPreview, float boxSpawnInterval)
+    private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
+
+    public void SetBoxPreview(UIBoxPreview uiBoxPreview, float boxSpawnInterval, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint)
     {
         if(_timer == null)
             _timer = new TimerBase();
         
         _uiBoxPreview = uiBoxPreview;
         _boxSpawnInterval = boxSpawnInterval;
+        _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
+
         _timer.OffTimer();
         _timer.SetTimer(_uiBoxPreview.UITimer, _boxSpawnInterval, CreatInGameBox);
         
@@ -28,7 +33,6 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
             CreatePreviewBox();
         }
 
-        _boxSpawnPosition = GameObject.Find("BoxSpawnPoint").transform.position;
         DequeueBox();
     }
 
@@ -52,33 +56,34 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         // 랜덤 박스 정보 생성
         Define.BoxType randomBoxType = (Define.BoxType)random.Next(0, (int)Define.BoxType.LargeParcel);
         int randomWeight = random.Next(1, 101); // 무게: 1~100
-        int randomSize = random.Next(1, 201);  // 크기: 1~200
+        int randomNumber = random.Next(1, 201);  // 크기: 1~200
         Define.BoxRegion randomRegion = (Define.BoxRegion)random.Next(0, (int)Define.BoxRegion.Central); // 지역 선택
         bool randomIsFragile = random.Next(0, 2) == 1; // true 또는 false
+        float randomSize = random.Next(1, 1);
 
         // 박스 생성 및 설정
         GameObject newBoxObj = Managers.Resource.Instantiate("Box", Managers.MiniGame.Root.transform);
-        newBoxObj.SetActive(false);
         MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
-        newBox.SetBoxInfo(randomBoxType, randomWeight, randomSize, randomRegion, randomIsFragile);
+        newBox.SetBoxInfo(randomBoxType, randomNumber, randomWeight, randomRegion, randomIsFragile, randomSize);
+        newBox.SetInGameActive(false);
         
         EnqueueBox(newBox);
     }
 
     public void CreatInGameBox()
     {
-        MiniGameUnloadBox box = DequeueBox();
-        if (box != null)
+        MiniGameUnloadBox box = _previewQueue.Peek();
+        if (box != null && _miniGameUnloadBoxSpawnPoint.TrySpawnBox(box))
         {
-            box.gameObject.SetActive(true);
-            box.transform.position = _boxSpawnPosition;
+            DequeueBox();
         }
         else
         {
-            Debug.LogWarning("Box could not be found");
+            Debug.LogWarning("Fail CreateInGameBox");
         }
-    }
     
+    }
+
     private void EnqueueBox(MiniGameUnloadBox box)
     {
         _previewQueue.Enqueue(box);

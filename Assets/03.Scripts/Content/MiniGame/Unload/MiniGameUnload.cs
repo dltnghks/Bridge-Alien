@@ -13,11 +13,16 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [SerializeField] private float _gameTime = 6.0f;
     // 박스 생성 주기
     [SerializeField] private float _boxSpawnInterval = 3.0f;
-    [SerializeField] private GameObject _boxSpawnPoint;
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
+
+    [Header("Box Spawn Point")]
+    [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;    
+    [SerializeField] private int _maxSpawnBoxIndex = 3;
 
     [Header("Player Information")]
     [SerializeField] private float _detectionBoxRadius = 2f;
+    [SerializeField] private float _moveSpeedReductionRatio = 2.0f;
+
 
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
@@ -57,11 +62,13 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
-        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval);
+
+        _boxSpawnPoint.SetBoxSpawnPoint(_maxSpawnBoxIndex);
+        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval, _boxSpawnPoint);
         
         PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();
         
-        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _detectionBoxRadius);
+        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _detectionBoxRadius, _moveSpeedReductionRatio, _boxSpawnPoint);
         PlayerController.Init(PlayerCharacter);
         
         GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
