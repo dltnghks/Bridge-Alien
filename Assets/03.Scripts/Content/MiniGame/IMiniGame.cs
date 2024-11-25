@@ -16,6 +16,4 @@ public interface IMiniGame
     void ResumeGame();   // 게임 재개
     void EndGame();      // 게임 종료
     void InitializeUI() {}  // UI 초기화
-
-    void AddScore(int score);
 }

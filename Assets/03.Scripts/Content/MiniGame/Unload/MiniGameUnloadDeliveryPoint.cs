@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 
 [System.Serializable]
@@ -19,6 +21,8 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
 {
     [SerializeField] private MiniGameUnloadDeliveryPointInfo _info;
     
+    private UnityAction<int> _action;
+
     private BoxCollider _boxCollider;
 
     public void Start()
@@ -26,11 +30,16 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         _boxCollider = Utils.GetOrAddComponent<BoxCollider>(gameObject);
     }
 
+    public void SetAction(UnityAction<int> action)
+    {
+        _action = action;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // UI ë³€ê²½
+            // UI ë³?ê²?
             Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction();
         }
 
@@ -41,7 +50,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
             if (CheckBoxInfo(box.Info))
             {
                 Debug.Log("True Region");
-                Managers.MiniGame.CurrentGame.AddScore(box.Info.Weight);
+                _action?.Invoke(box.Info.Weight);
             }
             else
             {
@@ -54,7 +63,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // UI ë³€ê²½
+            // UI ë³?ê²?
             Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction();
         }
     }

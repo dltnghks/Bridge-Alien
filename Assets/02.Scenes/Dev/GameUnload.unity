@@ -214,6 +214,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &304527484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6437150647814517800, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+  m_PrefabInstance: {fileID: 1709339604}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &412991736 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6210921351327109585, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+  m_PrefabInstance: {fileID: 1709339604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88c4194411613a4ea4faeffec508920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &675380884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,10 +377,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23550f037866d8d46ba49e22c7f8819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameTime: 150
+  _gameTime: 30
   _boxSpawnInterval: 3
-  _boxSpawnPoint: {fileID: 0}
-  _deliveryPointList: []
+  _boxSpawnPoint: {fileID: 304527484}
+  _deliveryPointList:
+  - {fileID: 1811771975}
+  - {fileID: 1071607490}
+  - {fileID: 412991736}
+  _detectionBoxRadius: 2
+--- !u!114 &1071607490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6071137217854614001, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+  m_PrefabInstance: {fileID: 1709339604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88c4194411613a4ea4faeffec508920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1455764155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7134192550954805632, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
@@ -396,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4087626162270669587, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Name
-      value: DeliveryPoint
+      value: DeliveryPointList
       objectReference: {fileID: 0}
     - target: {fileID: 4426747912008192569, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Name
@@ -467,6 +498,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+--- !u!114 &1811771975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1723822799675930741, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+  m_PrefabInstance: {fileID: 1709339604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88c4194411613a4ea4faeffec508920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1917670128
 GameObject:
   m_ObjectHideFlags: 0

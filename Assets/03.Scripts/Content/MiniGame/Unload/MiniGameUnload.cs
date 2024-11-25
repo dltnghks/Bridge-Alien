@@ -14,7 +14,11 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     // 박스 생성 주기
     [SerializeField] private float _boxSpawnInterval = 3.0f;
     [SerializeField] private GameObject _boxSpawnPoint;
-    [SerializeField] private GameObject[] _deliveryPointList;
+    [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
+
+    [Header("Player Information")]
+    [SerializeField] private float _detectionBoxRadius = 2f;
+
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
@@ -57,9 +61,16 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         
         PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();
         
-        PlayerController = new MiniGameUnloadPlayerController();
+        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _detectionBoxRadius);
         PlayerController.Init(PlayerCharacter);
         
+        GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
+        Debug.Log(deliveryPoinListObj.name);
+        foreach(var deliveryPoint in deliveryPoinListObj.GetComponentsInChildren<MiniGameUnloadDeliveryPoint>()){
+            deliveryPoint.SetAction(AddScore);
+            _deliveryPointList.Add(deliveryPoint);
+        }
+
         IsActive = true;
     }
 
@@ -103,8 +114,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         GameUI = _uiGameUnloadScene;
     }
 
-    public void AddScore(int score)
+    public void AddScore(int weight)
     {
+        int score = weight * 10;
         _score.AddScore(score);
     }
 
