@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
 {
@@ -8,12 +9,15 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
     private Vector3 _boxSpawnPosition;
     public MiniGameUnloadBoxList BoxList {get; set;}
 
-    public void SetBoxSpawnPoint(int maxSpawnBoxIndex)
+    private UnityAction _triggerAction;
+
+    public void SetBoxSpawnPoint(int maxSpawnBoxIndex, UnityAction triggerAction = null)
     {
         _boxCollider = Utils.GetOrAddComponent<SphereCollider>(gameObject);
         _boxSpawnPosition = transform.position;
         BoxList = new MiniGameUnloadBoxList();
         BoxList.SetBoxList(maxSpawnBoxIndex);
+        _triggerAction = triggerAction;
     }
 
     public bool TrySpawnBox(MiniGameUnloadBox box){
@@ -49,6 +53,7 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
         {
             Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.PickUpBox;
         }
+        _triggerAction?.Invoke();
     }
     
     private void OnTriggerExit(Collider coll)
@@ -57,5 +62,6 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
         {
             Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
         }
+        _triggerAction?.Invoke();
     }
 }

@@ -22,7 +22,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     [SerializeField] private MiniGameUnloadDeliveryPointInfo _info;
     
     private UnityAction<int> _action;
-
+    private UnityAction _triggerAction;
     private BoxCollider _boxCollider;
 
     public void Start()
@@ -30,9 +30,10 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         _boxCollider = Utils.GetOrAddComponent<BoxCollider>(gameObject);
     }
 
-    public void SetAction(UnityAction<int> action)
+    public void SetAction(UnityAction<int> action, UnityAction triggerAction = null)
     {
         _action = action;
+        _triggerAction = triggerAction;
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -56,6 +57,8 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
                 Debug.Log("False Region");
             }
         }
+        
+        _triggerAction?.Invoke();
     }
     
     private void OnTriggerExit(Collider coll)
@@ -64,6 +67,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         {
             Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
         }
+        _triggerAction?.Invoke();
     }
 
     public bool CheckBoxInfo(MiniGameUnloadBoxInfo boxInfo)

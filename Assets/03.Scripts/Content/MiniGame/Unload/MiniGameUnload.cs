@@ -62,13 +62,13 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
         Debug.Log(deliveryPoinListObj.name);
         foreach(var deliveryPoint in deliveryPoinListObj.GetComponentsInChildren<MiniGameUnloadDeliveryPoint>()){
-            deliveryPoint.SetAction(AddScore);
+            deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
             _deliveryPointList.Add(deliveryPoint);
         }
 
         GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
         _boxSpawnPoint = boxSpawnPointObj.GetOrAddComponent<MiniGameUnloadBoxSpawnPoint>();
-        _boxSpawnPoint.SetBoxSpawnPoint(_maxSpawnBoxIndex);
+        _boxSpawnPoint.SetBoxSpawnPoint(_maxSpawnBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
 
         _timer = new TimerBase();
         _score = new ScoreBase();

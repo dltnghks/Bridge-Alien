@@ -7,6 +7,7 @@ public interface IMiniGame
 {
     bool IsActive { get; set; }
     bool IsPause { get; set; }
+    // 자기 씬 UI는 따로 선언하기
     UIScene GameUI { get; set; }
     
     Player PlayerCharacter { get; set; }
