@@ -48,7 +48,6 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     public void Interaction()
     {
-        Debug.Log(InteractionActionNumber);
         switch((MiniGameUnloadInteractionAction)InteractionActionNumber)
         {
             case MiniGameUnloadInteractionAction.None:
@@ -117,6 +116,9 @@ public class MiniGameUnloadPlayerController : IPlayerController
         MiniGameUnloadBox box = _boxList.RemoveAndGetTopInGameUnloadBoxList();
         if (box != null)
         {
+            
+            box.CheckBrokenBox(_boxList.CurrentUnloadBoxIndex);
+
             // 상자의 Rigidbody 활성화
             var boxRigidbody = box.GetComponent<Rigidbody>();
             if (boxRigidbody != null)

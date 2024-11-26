@@ -14,7 +14,7 @@ public struct MiniGameUnloadBoxInfo
     public Define.BoxRegion Region;
     public bool IsFragileBox;
     public float Size;
-    public bool IsGrab;
+    public bool IsBroken;
     
     public MiniGameUnloadBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
     {
@@ -24,13 +24,13 @@ public struct MiniGameUnloadBoxInfo
         Region = region;
         IsFragileBox = isFragileBox;
         Size = size;
-        IsGrab = false;
+        IsBroken = false;
     }
 }
 
 public class MiniGameUnloadBox : MonoBehaviour
 {
-    private MiniGameUnloadBoxInfo _info;
+    [SerializeField] private MiniGameUnloadBoxInfo _info;
     
     private SpriteRenderer spriteRenderer;
 
@@ -74,6 +74,18 @@ public class MiniGameUnloadBox : MonoBehaviour
             $"{_info.IsFragileBox.ToString()}\n" +
             $"Size : {_info.Size.ToString()}\n"
             );
+    }
+
+    public void CheckBrokenBox(int height)
+    {
+        if(_info.IsFragileBox && height > 0)
+        {
+            _info.IsBroken = true;
+        }
+        else
+        {
+            _info.IsBroken = false;
+        }
     }
 }
 

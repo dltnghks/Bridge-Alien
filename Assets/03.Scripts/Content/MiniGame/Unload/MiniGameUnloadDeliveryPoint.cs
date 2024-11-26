@@ -47,7 +47,13 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         {
             MiniGameUnloadBox box = coll.gameObject.GetComponent<MiniGameUnloadBox>();
             coll.gameObject.SetActive(false);
-            if (CheckBoxInfo(box.Info))
+
+            if(box.Info.IsBroken)
+            { 
+                Debug.Log("broken box");
+                _action?.Invoke(-10);
+            }
+            else if (CheckBoxInfo(box.Info))
             {
                 Debug.Log("True Region");
                 _action?.Invoke(box.Info.Weight);
