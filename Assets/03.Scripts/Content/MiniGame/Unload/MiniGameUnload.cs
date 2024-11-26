@@ -13,6 +13,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [SerializeField] private float _gameTime = 6.0f;
     // 박스 생성 주기
     [SerializeField] private float _boxSpawnInterval = 3.0f;
+
+    [Header("Delivery Point")]
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
 
     [Header("Box Spawn Point")]
@@ -77,6 +79,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             deliveryPoint.SetAction(AddScore);
             _deliveryPointList.Add(deliveryPoint);
         }
+
+        GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
+        _boxSpawnPoint = boxSpawnPointObj.GetOrAddComponent<MiniGameUnloadBoxSpawnPoint>();
 
         IsActive = true;
     }
