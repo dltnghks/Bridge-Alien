@@ -22,6 +22,9 @@ public class ScoreBase
     public void AddScore(int score)
     {
         _score += score;
+        
+        if(_score <= 0) _score = 0;
+
         ScoreBoard.SetScore(CurrentScore);
     }
 }

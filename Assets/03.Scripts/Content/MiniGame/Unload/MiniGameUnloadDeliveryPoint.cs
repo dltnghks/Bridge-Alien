@@ -55,6 +55,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
             else
             {
                 Debug.Log("False Region");
+                _action?.Invoke(-box.Info.Weight);
             }
         }
         

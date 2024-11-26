@@ -127,7 +127,12 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public void AddScore(int weight)
     {
-        int score = weight * 10;
+        int score = 0;
+        int bonus = 0;
+        if(weight > 0) bonus = 10;
+        else bonus = 5;
+             
+        score = weight * bonus;
         _score.AddScore(score);
     }
 
