@@ -58,21 +58,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     public void StartGame()
     {
         Debug.Log("UnloadGame Starting game");
-        _timer = new TimerBase();
-        _score = new ScoreBase();
-        _boxPreview =  Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
-        
-        _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
-        _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
 
-        _boxSpawnPoint.SetBoxSpawnPoint(_maxSpawnBoxIndex);
-        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval, _boxSpawnPoint);
-        
-        PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();
-        
-        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _detectionBoxRadius, _moveSpeedReductionRatio, _boxSpawnPoint);
-        PlayerController.Init(PlayerCharacter);
-        
         GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
         Debug.Log(deliveryPoinListObj.name);
         foreach(var deliveryPoint in deliveryPoinListObj.GetComponentsInChildren<MiniGameUnloadDeliveryPoint>()){
@@ -82,6 +68,19 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
         _boxSpawnPoint = boxSpawnPointObj.GetOrAddComponent<MiniGameUnloadBoxSpawnPoint>();
+        _boxSpawnPoint.SetBoxSpawnPoint(_maxSpawnBoxIndex);
+
+        _timer = new TimerBase();
+        _score = new ScoreBase();
+        _boxPreview =  Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
+        
+        _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
+        _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
+        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval, _boxSpawnPoint);
+        
+        PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();
+        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _detectionBoxRadius, _moveSpeedReductionRatio, _boxSpawnPoint);
+        PlayerController.Init(PlayerCharacter);
 
         IsActive = true;
     }

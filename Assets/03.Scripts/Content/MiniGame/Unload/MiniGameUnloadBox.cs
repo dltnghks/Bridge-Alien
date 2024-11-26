@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public struct MiniGameUnloadBoxInfo
@@ -31,6 +32,8 @@ public class MiniGameUnloadBox : MonoBehaviour
 {
     private MiniGameUnloadBoxInfo _info;
     
+    private SpriteRenderer spriteRenderer;
+
     public GameObject TextObj;
     
     public MiniGameUnloadBoxInfo Info
@@ -42,6 +45,11 @@ public class MiniGameUnloadBox : MonoBehaviour
     public void SetBoxInfo(MiniGameUnloadBoxInfo info)
     {
         Info = info;
+        GameObject spriteObj = Utils.FindChild(gameObject, "BoxSprite", true);
+        spriteObj.transform.SetParent(gameObject.transform);
+        spriteObj.transform.localPosition = Vector3.zero;
+        spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();
+        spriteObj.AddComponent<SpriteBillboard>();
     }
 
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
@@ -49,7 +57,8 @@ public class MiniGameUnloadBox : MonoBehaviour
         gameObject.SetActive(value);
         if(value)
         {
-            transform.position = pos;
+            transform.position = pos;    
+        
         }
     }
 

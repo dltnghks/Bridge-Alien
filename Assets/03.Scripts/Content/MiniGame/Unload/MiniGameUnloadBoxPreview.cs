@@ -54,7 +54,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         System.Random random = new System.Random();
 
         // 랜덤 박스 정보 생성
-        Define.BoxType randomBoxType = (Define.BoxType)random.Next(0, (int)Define.BoxType.LargeParcel);
+        Define.BoxType randomBoxType = (Define.BoxType)random.Next(0, (int)Define.BoxType.LargeBox);
         int randomWeight = random.Next(1, 101); // 무게: 1~100
         int randomNumber = random.Next(1, 201);  // 크기: 1~200
         Define.BoxRegion randomRegion = (Define.BoxRegion)random.Next(0, (int)Define.BoxRegion.Central); // 지역 선택
@@ -62,7 +62,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         float randomSize = random.Next(1, 1);
 
         // 박스 생성 및 설정
-        GameObject newBoxObj = Managers.Resource.Instantiate("Box", Managers.MiniGame.Root.transform);
+        GameObject newBoxObj = Managers.Resource.Instantiate(randomBoxType.ToString(), Managers.MiniGame.Root.transform);
         MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
         newBox.SetBoxInfo(randomBoxType, randomNumber, randomWeight, randomRegion, randomIsFragile, randomSize);
         newBox.SetInGameActive(false);

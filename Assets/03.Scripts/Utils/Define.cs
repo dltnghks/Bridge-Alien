@@ -35,9 +35,9 @@ public class Define
     public enum BoxType
     {
         Post,           // 우편
-        SmallParcel,    // 소형 택배
-        StandardParcel, // 일반 택배
-        LargeParcel     // 대형 택배
+        SmallBox,    // 소형 택배
+        StandardBox, // 일반 택배
+        LargeBox     // 대형 택배
     }
 
     public enum BoxRegion

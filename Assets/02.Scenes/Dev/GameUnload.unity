@@ -214,17 +214,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &304527486 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7421452372980663019, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-  m_PrefabInstance: {fileID: 1709339604}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a36dae94ef047649ac1ecc3301b916b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &675380884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,7 +364,7 @@ MonoBehaviour:
   _gameTime: 30
   _boxSpawnInterval: 3
   _deliveryPointList: []
-  _boxSpawnPoint: {fileID: 304527486}
+  _boxSpawnPoint: {fileID: 0}
   _maxSpawnBoxIndex: 3
   _detectionBoxRadius: 2
   _moveSpeedReductionRatio: 2

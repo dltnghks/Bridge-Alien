@@ -78,15 +78,16 @@ public class MiniGameUnloadPlayerController : IPlayerController
         {
             // 상자의 Rigidbody 비활성화
             var boxRigidbody = box.GetComponent<Rigidbody>();
-            if (boxRigidbody != null)
+            if (boxRigidbody != null && _boxList.IsEmpty)
             {
-                boxRigidbody.isKinematic = true; // 물리 효과 제거
+                // 위치 고정
+                boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
             }
 
             var boxCollision  = box.GetComponent<BoxCollider>();
             if (boxCollision != null)
             {
-                boxCollision.enabled = false;
+                //boxCollision.enabled = false;
             }
 
             // 상자를 스택에 추가하고 위치 설정
@@ -120,7 +121,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
             var boxRigidbody = box.GetComponent<Rigidbody>();
             if (boxRigidbody != null)
             {
-                boxRigidbody.isKinematic = false; // 물리 효과 다시 활성화
+                //boxRigidbody.isKinematic = false; // 물리 효과 다시 활성화
             }
 
             var boxCollision  = box.GetComponent<BoxCollider>();
