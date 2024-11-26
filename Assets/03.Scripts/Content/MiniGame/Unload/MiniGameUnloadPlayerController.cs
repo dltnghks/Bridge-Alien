@@ -121,7 +121,9 @@ public class MiniGameUnloadPlayerController : IPlayerController
             var boxRigidbody = box.GetComponent<Rigidbody>();
             if (boxRigidbody != null)
             {
-                //boxRigidbody.isKinematic = false; // 물리 효과 다시 활성화
+                boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
+                                           RigidbodyConstraints.FreezePositionZ |
+                                           RigidbodyConstraints.FreezeRotation;
             }
 
             var boxCollision  = box.GetComponent<BoxCollider>();

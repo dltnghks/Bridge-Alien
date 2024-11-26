@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 1759411546457766772}
   - component: {fileID: 1033148449703275637}
   m_Layer: 0
-  m_Name: SpriteRenderer
+  m_Name: BoxSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
