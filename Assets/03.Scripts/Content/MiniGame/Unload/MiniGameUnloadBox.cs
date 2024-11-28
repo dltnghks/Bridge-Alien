@@ -43,8 +43,8 @@ public class MiniGameUnloadBox : MonoBehaviour
         get => _info;
         private set => _info = value;
     }
-
-    public void SetBoxInfo(MiniGameUnloadBoxInfo info)
+    
+    private void SetBoxInfo(MiniGameUnloadBoxInfo info)
     {
         Info = info;
         GameObject spriteObj = Utils.FindChild(gameObject, "BoxSprite", true);
@@ -59,23 +59,27 @@ public class MiniGameUnloadBox : MonoBehaviour
         gameObject.SetActive(value);
         if(value)
         {
-            transform.position = pos;    
-        
+            transform.position = pos;
+            if (Info.IsFragileBox)
+            {
+                spriteRenderer.color = new Color(1, 0, 0, 0.7f);
+            }
         }
     }
 
     public void SetBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
     {
-        _info = new MiniGameUnloadBoxInfo(boxType, boxNumber, weight, region, isFragileBox, size);
+        MiniGameUnloadBoxInfo info = new MiniGameUnloadBoxInfo(boxType, boxNumber, weight, region, isFragileBox, size);
+        SetBoxInfo(info);
         
-        TextObj.GetComponent<TextMeshPro>().SetText(
+        /*TextObj.GetComponent<TextMeshPro>().SetText(
             $"{_info.BoxType.ToString()}\n" +
             $"{_info.BoxNumber.ToString()}\n" +
             $"{_info.Region.ToString()}\n" +
             $"{_info.Weight.ToString()}\n" +
             $"{_info.IsFragileBox.ToString()}\n" +
             $"Size : {_info.Size.ToString()}\n"
-            );
+            );*/
     }
 
     public void CheckBrokenBox(int height)

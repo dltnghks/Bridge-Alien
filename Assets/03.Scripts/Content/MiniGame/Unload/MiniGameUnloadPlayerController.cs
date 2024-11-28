@@ -131,7 +131,9 @@ public class MiniGameUnloadPlayerController : IPlayerController
             var boxRigidbody = box.GetComponent<Rigidbody>();
             if (boxRigidbody != null)
             {
-                 boxRigidbody.constraints = RigidbodyConstraints.None;
+                boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
+                                           RigidbodyConstraints.FreezePositionZ |
+                                           RigidbodyConstraints.FreezeRotation;
             }
 
             // 상자를 플레이어의 발 아래로 놓기
