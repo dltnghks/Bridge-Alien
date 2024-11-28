@@ -319,6 +319,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d2dfbe9d495c34e994a4cef4e9e95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _info:
+    BoxType: 0
+    BoxNumber: 0
+    Weight: 3
+    Region: 0
+    IsFragileBox: 0
+    Size: 0
+    IsBroken: 0
   TextObj: {fileID: 2455122999681315075}
 --- !u!1 &8038788508174928900
 GameObject:

@@ -4,6 +4,7 @@ using Unity.Collections;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 [System.Serializable]
 public struct MiniGameUnloadBoxInfo
@@ -15,7 +16,7 @@ public struct MiniGameUnloadBoxInfo
     public bool IsFragileBox;
     public float Size;
     public bool IsBroken;
-    
+    public bool IsGrab;
     public MiniGameUnloadBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
     {
         BoxType = boxType;
@@ -25,6 +26,7 @@ public struct MiniGameUnloadBoxInfo
         IsFragileBox = isFragileBox;
         Size = size;
         IsBroken = false;
+        IsGrab = false;
     }
 }
 
@@ -41,7 +43,7 @@ public class MiniGameUnloadBox : MonoBehaviour
         get => _info;
         private set => _info = value;
     }
-    
+
     public void SetBoxInfo(MiniGameUnloadBoxInfo info)
     {
         Info = info;
@@ -86,6 +88,11 @@ public class MiniGameUnloadBox : MonoBehaviour
         {
             _info.IsBroken = false;
         }
+    }
+
+    public void SetIsGrab(bool value)
+    {
+        _info.IsGrab = value;
     }
 }
 

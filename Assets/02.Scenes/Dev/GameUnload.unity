@@ -361,11 +361,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23550f037866d8d46ba49e22c7f8819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameTime: 30
+  _gameTime: 100
   _boxSpawnInterval: 3
   _deliveryPointList: []
   _boxSpawnPoint: {fileID: 0}
-  _maxSpawnBoxIndex: 3
+  _maxSpawnBoxIndex: 5
   _detectionBoxRadius: 2
   _moveSpeedReductionRatio: 2
 --- !u!4 &1455764155 stripped

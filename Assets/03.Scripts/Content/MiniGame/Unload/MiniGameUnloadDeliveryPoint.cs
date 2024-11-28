@@ -46,28 +46,30 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         if (coll.gameObject.CompareTag("Box"))
         {
             MiniGameUnloadBox box = coll.gameObject.GetComponent<MiniGameUnloadBox>();
-            coll.gameObject.SetActive(false);
 
-            if(box.Info.IsBroken)
-            { 
-                Debug.Log("broken box");
-                _action?.Invoke(-10);
-            }
-            else if (CheckBoxInfo(box.Info))
-            {
-                Debug.Log("True Region");
-                _action?.Invoke(box.Info.Weight);
-            }
-            else
-            {
-                Debug.Log("False Region");
-                _action?.Invoke(-box.Info.Weight);
+            if(!box.Info.IsGrab){
+                box.SetInGameActive(false);
+                if(box.Info.IsBroken)
+                { 
+                    Debug.Log("broken box");
+                    _action?.Invoke(-10);
+                }
+                else if (CheckBoxInfo(box.Info))
+                {
+                    Debug.Log("True Region");
+                    _action?.Invoke(box.Info.Weight);
+                }
+                else
+                {
+                    Debug.Log("False Region");
+                    _action?.Invoke(-box.Info.Weight);
+                }
             }
         }
         
         _triggerAction?.Invoke();
     }
-    
+
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))

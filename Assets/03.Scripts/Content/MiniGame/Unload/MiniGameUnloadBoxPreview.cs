@@ -55,7 +55,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
 
         // 랜덤 박스 정보 생성
         Define.BoxType randomBoxType = (Define.BoxType)random.Next(0, (int)Define.BoxType.LargeBox);
-        int randomWeight = random.Next(1, 101); // 무게: 1~100
+        int randomWeight = random.Next(1, 10); // 무게: 1~100
         int randomNumber = random.Next(1, 201);  // 크기: 1~200
         Define.BoxRegion randomRegion = (Define.BoxRegion)random.Next(0, (int)Define.BoxRegion.Central); // 지역 선택
         bool randomIsFragile = random.Next(0, 2) == 1; // true 또는 false

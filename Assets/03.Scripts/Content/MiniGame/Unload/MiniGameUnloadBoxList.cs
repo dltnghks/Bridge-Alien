@@ -27,6 +27,17 @@ public class MiniGameUnloadBoxList
         MaxUnloadBoxIndex = maxIndex;
     }
 
+    public MiniGameUnloadBox PeekBoxList(){
+        if(CurrentUnloadBoxIndex > 0)
+        {
+            return _inGameUnloadBoxList[CurrentUnloadBoxIndex-1];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public bool TryAddInGameUnloadBoxList(MiniGameUnloadBox newInGameUnloadBox)
     {
         if(MaxUnloadBoxIndex > CurrentUnloadBoxIndex)
