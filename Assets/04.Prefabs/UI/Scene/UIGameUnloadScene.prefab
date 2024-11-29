@@ -229,6 +229,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 334235066099728081}
     m_Modifications:
+    - target: {fileID: 9469041080585360, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445194172650812458, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
+      propertyPath: m_fontSize
+      value: 52.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3865960381902281285, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -308,6 +316,14 @@ PrefabInstance:
     - target: {fileID: 3865960381902281285, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957700894419569850, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298882648789943264, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
+      propertyPath: m_fontSize
+      value: 71.4
       objectReference: {fileID: 0}
     - target: {fileID: 9043915697874283396, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
       propertyPath: m_Name
@@ -437,6 +453,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UITimer
       objectReference: {fileID: 0}
+    - target: {fileID: 2249077023313151390, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260968993433312810, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5751742586178746076, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -517,6 +541,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6458467229547700675, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596786000896777728, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -538,6 +570,10 @@ PrefabInstance:
     - target: {fileID: 826705441531468717, guid: 628f39b2c6b3e8d4b825bf91e828d42d, type: 3}
       propertyPath: m_Name
       value: UIScoreBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475126551152804881, guid: 628f39b2c6b3e8d4b825bf91e828d42d, type: 3}
+      propertyPath: m_fontSize
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7427084472089756509, guid: 628f39b2c6b3e8d4b825bf91e828d42d, type: 3}
       propertyPath: m_Pivot.x

@@ -302,6 +302,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1837708098137102483, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2349953434417956163, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438795847827048688, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119362877984613764, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: _onTimerSlider
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5784008680853761145, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_Name
       value: RegionText
@@ -309,6 +325,14 @@ PrefabInstance:
     - target: {fileID: 6164337620180750308, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_Name
       value: UIGameUnloadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6731816565658425529, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7237381951287068009, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

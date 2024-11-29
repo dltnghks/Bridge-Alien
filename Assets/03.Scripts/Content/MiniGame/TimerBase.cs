@@ -25,7 +25,7 @@ public class TimerBase
             CurTime = time;
             EndTimerAction = endTimerAction;
 
-            UITimer.SetTimer(time);
+            UITimer.SetTimer(StartTime, CurTime);
             IsActive = true;
         }
     }

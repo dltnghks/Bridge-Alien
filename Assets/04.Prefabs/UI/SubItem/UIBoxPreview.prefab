@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.25
+  m_fontSize: 52.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.55
+  m_fontSize: 71.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -617,6 +617,18 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2249077023313151390, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260968993433312810, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826041148869185097, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5751742586178746076, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -699,7 +711,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6458467229547700675, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
       propertyPath: m_fontSize
-      value: 48.2
+      value: 64.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596786000896777728, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716580779304091373, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: _onTimerText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716580779304091373, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: _onTimerSlider
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
