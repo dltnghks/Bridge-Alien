@@ -40,7 +40,10 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.DropBox;
+            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
+            {
+                _triggerAction?.Invoke();
+            }
         }
 
         if (coll.gameObject.CompareTag("Box"))
@@ -66,17 +69,17 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
                 }
             }
         }
-        
-        _triggerAction?.Invoke();
     }
 
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
+            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.None))
+            {
+                _triggerAction?.Invoke();
+            }
         }
-        _triggerAction?.Invoke();
     }
 
     public bool CheckBoxInfo(MiniGameUnloadBoxInfo boxInfo)

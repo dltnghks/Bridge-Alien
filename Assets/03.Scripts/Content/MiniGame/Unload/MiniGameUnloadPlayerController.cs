@@ -69,6 +69,18 @@ public class MiniGameUnloadPlayerController : IPlayerController
         }
     }
 
+    public bool ChangeInteraction(int actionNum)
+    {
+        if(actionNum == (int)MiniGameUnloadInteractionAction.DropBox && 
+            _boxList.IsEmpty){
+            return false;
+        }
+
+        InteractionActionNumber = actionNum;
+
+        return true;
+    }
+
     private void PickupBox()
     {
         Debug.Log("PickupBox");

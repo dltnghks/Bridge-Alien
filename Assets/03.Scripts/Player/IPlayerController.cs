@@ -12,4 +12,5 @@ public interface IPlayerController
     public void Init(Player player);
     public void InputJoyStick(Vector2 input);
     public void Interaction();
+    public bool ChangeInteraction(int actionnNum);
 }

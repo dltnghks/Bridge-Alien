@@ -51,17 +51,20 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.PickUpBox;
+            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.PickUpBox)){
+                _triggerAction?.Invoke();
+            }
         }
-        _triggerAction?.Invoke();
     }
     
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
+            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.None)){
+                _triggerAction?.Invoke();
+            }
         }
-        _triggerAction?.Invoke();
+       
     }
 }
