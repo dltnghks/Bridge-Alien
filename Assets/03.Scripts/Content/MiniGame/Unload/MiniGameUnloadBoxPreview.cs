@@ -72,16 +72,17 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
 
     public void CreatInGameBox()
     {
-        MiniGameUnloadBox box = _previewQueue.Peek();
-        if (box != null && _miniGameUnloadBoxSpawnPoint.TrySpawnBox(box))
-        {
-            DequeueBox();
+        if(_previewQueue.Count > 0){
+            MiniGameUnloadBox box = _previewQueue.Peek();
+            if (box != null && _miniGameUnloadBoxSpawnPoint.TrySpawnBox(box))
+            {
+                DequeueBox();
+            }
+            else
+            {
+                Debug.LogWarning("Fail CreateInGameBox");
+            }
         }
-        else
-        {
-            Debug.LogWarning("Fail CreateInGameBox");
-        }
-    
     }
 
     private void EnqueueBox(MiniGameUnloadBox box)
