@@ -8,7 +8,7 @@ using Unity.VisualScripting.Dependencies.NCalc;
 
 [System.Serializable]
 public struct MiniGameUnloadBoxInfo
-{
+{   
     public Define.BoxType BoxType;
     public int BoxNumber;
     public int Weight;
@@ -17,6 +17,7 @@ public struct MiniGameUnloadBoxInfo
     public float Size;
     public bool IsBroken;
     public bool IsGrab;
+    
     public MiniGameUnloadBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
     {
         BoxType = boxType;
@@ -32,6 +33,9 @@ public struct MiniGameUnloadBoxInfo
 
 public class MiniGameUnloadBox : MonoBehaviour
 {
+    private int _defaultBoxLayer;
+    private int _grabBoxLayer;
+
     [SerializeField] private MiniGameUnloadBoxInfo _info;
     
     private SpriteRenderer spriteRenderer;
@@ -43,6 +47,12 @@ public class MiniGameUnloadBox : MonoBehaviour
         get => _info;
         private set => _info = value;
     }
+
+    private void Awake()
+    {
+        _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
+        _grabBoxLayer = LayerMask.NameToLayer("GrabBox");
+    }
     
     private void SetBoxInfo(MiniGameUnloadBoxInfo info)
     {
@@ -51,7 +61,7 @@ public class MiniGameUnloadBox : MonoBehaviour
         spriteObj.transform.SetParent(gameObject.transform);
         spriteObj.transform.localPosition = Vector3.zero;
         spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();
-        spriteObj.AddComponent<SpriteBillboard>();
+        //spriteObj.AddComponent<SpriteBillboard>();
     }
 
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
@@ -97,6 +107,11 @@ public class MiniGameUnloadBox : MonoBehaviour
     public void SetIsGrab(bool value)
     {
         _info.IsGrab = value;
+        if(value){
+            gameObject.layer = _grabBoxLayer;
+        }else{
+            gameObject.layer = _defaultBoxLayer;
+        }
     }
 }
 

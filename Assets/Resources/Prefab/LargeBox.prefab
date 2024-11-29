@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7028973399985246841}
   - component: {fileID: 7806089334483519040}
   - component: {fileID: 5003517731001136125}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoxInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 5707662648304632420}
   - component: {fileID: 8183768264941985313}
   - component: {fileID: 1711676726915456329}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LargeBox
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -327,6 +327,7 @@ MonoBehaviour:
     IsFragileBox: 0
     Size: 0
     IsBroken: 0
+    IsGrab: 0
   TextObj: {fileID: 2455122999681315075}
 --- !u!1 &8038788508174928900
 GameObject:
@@ -338,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1759411546457766772}
   - component: {fileID: 1033148449703275637}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BoxSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
