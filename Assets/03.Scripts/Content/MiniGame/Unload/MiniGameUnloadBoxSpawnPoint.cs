@@ -23,7 +23,7 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
     public bool TrySpawnBox(MiniGameUnloadBox box){
         if(BoxList.TryAddInGameUnloadBoxList(box))
         {
-            _boxSpawnPosition += Vector3.up * box.Info.Size;
+            _boxSpawnPosition += Vector3.up;
             box.SetInGameActive(true, _boxSpawnPosition);
             return true;
         }
@@ -37,7 +37,7 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
         MiniGameUnloadBox box = BoxList.RemoveAndGetTopInGameUnloadBoxList();
         if(box != null)
         {
-            _boxSpawnPosition -= Vector3.up * box.Info.Size;
+            _boxSpawnPosition -= Vector3.up;
             return box;
         }
         else

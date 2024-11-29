@@ -10,7 +10,7 @@ using Unity.VisualScripting.Dependencies.NCalc;
 public struct MiniGameUnloadBoxInfo
 {   
     public Define.BoxType BoxType;
-    public int BoxNumber;
+    public string BoxNumber;
     public int Weight;
     public Define.BoxRegion Region;
     public bool IsFragileBox;
@@ -18,7 +18,7 @@ public struct MiniGameUnloadBoxInfo
     public bool IsBroken;
     public bool IsGrab;
     
-    public MiniGameUnloadBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
+    public MiniGameUnloadBoxInfo(Define.BoxType boxType, string boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
     {
         BoxType = boxType;
         BoxNumber = boxNumber;
@@ -28,6 +28,48 @@ public struct MiniGameUnloadBoxInfo
         Size = size;
         IsBroken = false;
         IsGrab = false;
+    }
+
+    public void SetRandomInfo()
+    {
+        // 랜덤 박스 정보 생성
+        BoxType = (Define.BoxType)Random.Range(0, (int)Define.BoxType.LargeBox + 1);
+
+        if (BoxType == Define.BoxType.Post){ Weight = 1; }
+        else if (BoxType == Define.BoxType.SmallBox) { Weight = 3;}
+        else if (BoxType == Define.BoxType.StandardBox) { Weight = 5;}
+        else if (BoxType == Define.BoxType.LargeBox) { Weight = 10;}
+
+        BoxNumber = GenerateRandomString();  // AAA-0000형태
+        
+        Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.Central + 1); // 지역 선택
+
+        Size = (float)Weight / 10f;
+        
+        IsFragileBox = Random.Range(0, 10) < 2; // 20% 확률로 취급주의
+    }
+    
+    private string GenerateRandomString()
+    {
+        // 알파벳과 숫자를 랜덤으로 생성하여 결합
+        string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string digits = "0123456789";
+
+        // 3개의 알파벳과 4개의 숫자 생성 후 결합
+        return $"{GetRandomChars(letters, 3)}-{GetRandomChars(digits, 4)}";
+    }
+
+    private string GetRandomChars(string charSet, int length)
+    {
+        // 랜덤 생성기
+        System.Random random = new System.Random();
+        
+        char[] result = new char[length];
+        for (int i = 0; i < length; i++)
+        {
+            result[i] = charSet[random.Next(charSet.Length)];
+        }
+        return new string(result);
     }
 }
 
@@ -40,7 +82,8 @@ public class MiniGameUnloadBox : MonoBehaviour
     
     private SpriteRenderer spriteRenderer;
 
-    public GameObject TextObj;
+    [Header("Box Sprites")]
+    [SerializeField] private List<Sprite> _boxSpriteList = new List<Sprite>();
     
     public MiniGameUnloadBoxInfo Info
     {
@@ -48,20 +91,10 @@ public class MiniGameUnloadBox : MonoBehaviour
         private set => _info = value;
     }
 
-    private void Awake()
+    private void Start()
     {
         _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
         _grabBoxLayer = LayerMask.NameToLayer("GrabBox");
-    }
-    
-    private void SetBoxInfo(MiniGameUnloadBoxInfo info)
-    {
-        Info = info;
-        GameObject spriteObj = Utils.FindChild(gameObject, "BoxSprite", true);
-        spriteObj.transform.SetParent(gameObject.transform);
-        spriteObj.transform.localPosition = Vector3.zero;
-        spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();
-        //spriteObj.AddComponent<SpriteBillboard>();
     }
 
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
@@ -76,22 +109,7 @@ public class MiniGameUnloadBox : MonoBehaviour
             }
         }
     }
-
-    public void SetBoxInfo(Define.BoxType boxType, int boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
-    {
-        MiniGameUnloadBoxInfo info = new MiniGameUnloadBoxInfo(boxType, boxNumber, weight, region, isFragileBox, size);
-        SetBoxInfo(info);
-        
-        /*TextObj.GetComponent<TextMeshPro>().SetText(
-            $"{_info.BoxType.ToString()}\n" +
-            $"{_info.BoxNumber.ToString()}\n" +
-            $"{_info.Region.ToString()}\n" +
-            $"{_info.Weight.ToString()}\n" +
-            $"{_info.IsFragileBox.ToString()}\n" +
-            $"Size : {_info.Size.ToString()}\n"
-            );*/
-    }
-
+    
     public void CheckBrokenBox(int height)
     {
         if(_info.IsFragileBox && height > 0)
@@ -112,6 +130,31 @@ public class MiniGameUnloadBox : MonoBehaviour
         }else{
             gameObject.layer = _defaultBoxLayer;
         }
+    }
+
+    public void SetRandomInfo()
+    {
+        _info.SetRandomInfo();
+        
+        AddBoxSprite();
+        
+        int boxType = (int)_info.BoxType;
+        if (_boxSpriteList.Count > boxType)
+        {
+            spriteRenderer.sprite = _boxSpriteList[boxType];   
+        }
+        else
+        {
+            Debug.LogWarning($"Not enough box sprite list{_boxSpriteList.Count}, {boxType}");
+        }
+    }
+    
+    private void AddBoxSprite()
+    {
+        GameObject spriteObj = new GameObject("BoxSprite");
+        spriteObj.transform.SetParent(gameObject.transform);
+        spriteObj.transform.localPosition = Vector3.zero;
+        spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();
     }
 }
 

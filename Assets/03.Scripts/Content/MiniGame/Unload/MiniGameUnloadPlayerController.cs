@@ -17,7 +17,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
     private MiniGameUnloadBoxList _boxList = new MiniGameUnloadBoxList();
     private float _maxBoxWeight = 10f;
     private float _curBoxWeight = 0;
-    private float _boxHeight = 0f;
+    private float _boxHeight = 1f;
     private float _detectionBoxRadius = 2f;
     private float _moveSpeedReductionRatio = 2.0f;
     private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
@@ -110,7 +110,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
             _boxList.TryAddInGameUnloadBoxList(box);
 
             box.transform.SetParent(Player.CharacterTransform);
-            _boxHeight += box.Info.Size;
+            _boxHeight++;
             box.transform.localPosition  = Vector3.right + Vector3.up * _boxHeight/2;
             box.transform.localRotation = Quaternion.identity;
 
@@ -150,7 +150,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
             // 상자를 플레이어의 발 아래로 놓기
             box.transform.SetParent(Managers.MiniGame.Root.transform);
-            _boxHeight -= box.Info.Size;
+            _boxHeight--;
 
             Vector3 playerDirection;
             if (Player.IsRight) playerDirection = Vector3.right;

@@ -47,24 +47,15 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
     
     public void CreatePreviewBox()
     {   
-        // 가능한 지역 이름 리스트
-        string[] regions = { "North", "South", "East", "West", "Central" };
-
-        // 랜덤 생성기
-        System.Random random = new System.Random();
-
-        // 랜덤 박스 정보 생성
-        Define.BoxType randomBoxType = (Define.BoxType)random.Next(0, (int)Define.BoxType.LargeBox);
-        int randomWeight = random.Next(1, 10); // 무게: 1~100
-        int randomNumber = random.Next(1, 201);  // 크기: 1~200
-        Define.BoxRegion randomRegion = (Define.BoxRegion)random.Next(0, (int)Define.BoxRegion.Central); // 지역 선택
-        bool randomIsFragile = random.Next(0, 2) == 1; // true 또는 false
-        float randomSize = random.Next(1, 1);
-
         // 박스 생성 및 설정
-        GameObject newBoxObj = Managers.Resource.Instantiate(randomBoxType.ToString(), Managers.MiniGame.Root.transform);
+        GameObject newBoxObj = Managers.Resource.Instantiate("Box", Managers.MiniGame.Root.transform);
         MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
-        newBox.SetBoxInfo(randomBoxType, randomNumber, randomWeight, randomRegion, randomIsFragile, randomSize);
+        newBox.SetRandomInfo();
+            
+        Vector3 currentScale = transform.localScale; 
+        currentScale.y = newBox.Info.Size;
+        newBoxObj.GetOrAddComponent<BoxCollider>().size = currentScale;
+        
         newBox.SetInGameActive(false);
         
         EnqueueBox(newBox);
