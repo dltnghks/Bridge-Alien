@@ -12,7 +12,7 @@ public class NPC : MonoBehaviour
         
         if (mainCamera == null)
         {
-            Debug.LogError("메인 카메라를 찾을 수 없습니다!");
+            Logger.LogError("메인 카메라를 찾을 수 없습니다!");
             enabled = false;
         }
     }

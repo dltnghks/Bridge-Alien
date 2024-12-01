@@ -1010,7 +1010,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2043606441345460874, guid: 89169ece99963334b8657b1cc649468a, type: 3}
       propertyPath: spawnOrder
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043606441345460874, guid: 89169ece99963334b8657b1cc649468a, type: 3}
+      propertyPath: maxSpawnDelay
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043606441345460874, guid: 89169ece99963334b8657b1cc649468a, type: 3}
+      propertyPath: minSpawnDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3047710117990615615, guid: 89169ece99963334b8657b1cc649468a, type: 3}
       propertyPath: m_LocalPosition.x

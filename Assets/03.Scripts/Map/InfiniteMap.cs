@@ -26,7 +26,7 @@ public class InfiniteMap : MonoBehaviour
             blocks[i] = transform.GetChild(i);                              // i번째 자식 블록 가져오기
             if (blocks[i] == null)                                          // 블록이 없다면
             {   
-                Debug.LogError($"블록 {i}를 찾을 수 없습니다!");                  // 에러 메시지 출력
+                Logger.LogError($"블록 {i}를 찾을 수 없습니다!");             // 에러 메시지 출력
                 enabled = false;                                            // 컴포넌트 비활성화
                 return;                                                     // 메서드 종료
             }       

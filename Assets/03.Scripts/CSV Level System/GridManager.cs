@@ -70,7 +70,7 @@ public class GridManager : MonoBehaviour
     {
         if (gridData == null)
         {
-            Debug.LogError("CSV 파일이 할당되지 않았습니다!");
+            Logger.LogError("CSV 파일이 할당되지 않았습니다!");
             return;
         }
 
@@ -78,7 +78,7 @@ public class GridManager : MonoBehaviour
 
         if (lines.Length == 0)
         {
-            Debug.LogError("CSV 파일이 비어있습니다!");
+            Logger.LogError("CSV 파일이 비어있습니다!");
             return;
         }
 
@@ -92,7 +92,7 @@ public class GridManager : MonoBehaviour
             string[] values = lines[i].Trim().Split(',');
             if (values.Length != cols)
             {
-                Debug.LogError($"CSV 파일의 {i + 1}번째 행의 열 개수가 일치하지 않습니다!");
+                Logger.LogError($"CSV 파일의 {i + 1}번째 행의 열 개수가 일치하지 않습니다!");
                 continue;
             }
 
@@ -104,7 +104,7 @@ public class GridManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogError($"CSV 파일의 [{i},{j}] 위치의 값을 숫자로 변환할 수 없습니다: {values[j]}");
+                    Logger.LogError($"CSV 파일의 [{i},{j}] 위치의 값을 숫자로 변환할 수 없습니다: {values[j]}");
                     gridArray[i, j] = 0;
                 }
             }
@@ -362,14 +362,14 @@ public class GridManager : MonoBehaviour
     {
         if (csvFolder == null)
         {
-            Debug.LogError("CSV 폴더가 설정되지 않았습니다!");
+            Logger.LogError("CSV 폴더가 설정되지 않았습니다!");
             return;
         }
 
         string folderPath = AssetDatabase.GetAssetPath(csvFolder);
         if (!Directory.Exists(folderPath))
         {
-            Debug.LogError($"폴더를 찾을 수 없습니다: {folderPath}");
+            Logger.LogError($"폴더를 찾을 수 없습니다: {folderPath}");
             return;
         }
 
@@ -387,11 +387,11 @@ public class GridManager : MonoBehaviour
 
         if (csvFiles.Count == 0)
         {
-            Debug.LogError($"'{folderPath}' 폴더에서 CSV 파일을 찾을 수 없습니다!");
+            Logger.LogError($"'{folderPath}' 폴더에서 CSV 파일을 찾을 수 없습니다!");
             return;
         }
 
-        Debug.Log($"총 {csvFiles.Count}개의 CSV 파일을 로드했습니다.");
+        Logger.Log($"총 {csvFiles.Count}개의 CSV 파일을 로드했습니다.");
     }
 
     private System.Collections.IEnumerator LoadGridSequentially()    // CSV 파일들을 순차적으로 로드
@@ -406,7 +406,7 @@ public class GridManager : MonoBehaviour
                 }
 
                 gridData = csvFiles[currentFileIndex];      // 다음 CSV 파일 로드
-                Debug.Log($"레벨 데이터 로드: {csvFiles[currentFileIndex].name} ({currentFileIndex + 1}/{csvFiles.Count})");
+                Logger.Log($"레벨 데이터 로드: {csvFiles[currentFileIndex].name} ({currentFileIndex + 1}/{csvFiles.Count})");
 
                 LoadGridFromCSV();                         // 그리드 데이터 로드
                 CreateGrid();                              // 새 그리드 생성

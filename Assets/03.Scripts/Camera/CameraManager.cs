@@ -76,7 +76,7 @@ public class CameraManager : MonoBehaviour
         var mainCamera = Camera.main;                                                // 메인 카메라 찾기    
         if (mainCamera == null)                                                      // 메인 카메라가 없으면
         {
-            Debug.LogError("메인 카메라를 찾을 수 없습니다!");                         // 에러 메시지 출력
+            Logger.LogError("메인 카메라를 찾을 수 없습니다!");                        // 에러 메시지 출력
             return;                                                                  // 리턴
         }
 
