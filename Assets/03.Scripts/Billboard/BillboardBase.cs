@@ -22,7 +22,7 @@ public abstract class BillboardBase : MonoBehaviour
         
         if (mainCamera == null)                                         // 카메라 예외처리
         {
-            Debug.LogError("메인 카메라를 찾을 수 없습니다!");
+            Logger.LogError("메인 카메라를 찾을 수 없습니다!");
             enabled = false;
             return;
         }

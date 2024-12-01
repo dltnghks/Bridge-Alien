@@ -932,6 +932,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1654894222}
     - target: {fileID: 2352267902268082660, guid: c6e49cb1764df7148bf03eb736f0cafe, type: 3}
+      propertyPath: currentCameraType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2352267902268082660, guid: c6e49cb1764df7148bf03eb736f0cafe, type: 3}
       propertyPath: topDownSettings.distance
       value: 25
       objectReference: {fileID: 0}
@@ -1003,6 +1007,18 @@ PrefabInstance:
     - target: {fileID: 445123810520845711, guid: 89169ece99963334b8657b1cc649468a, type: 3}
       propertyPath: m_Name
       value: GridManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043606441345460874, guid: 89169ece99963334b8657b1cc649468a, type: 3}
+      propertyPath: spawnOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043606441345460874, guid: 89169ece99963334b8657b1cc649468a, type: 3}
+      propertyPath: maxSpawnDelay
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2043606441345460874, guid: 89169ece99963334b8657b1cc649468a, type: 3}
+      propertyPath: minSpawnDelay
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3047710117990615615, guid: 89169ece99963334b8657b1cc649468a, type: 3}
       propertyPath: m_LocalPosition.x
