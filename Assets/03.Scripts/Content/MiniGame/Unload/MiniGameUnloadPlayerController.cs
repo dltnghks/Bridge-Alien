@@ -38,7 +38,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
     {
         Player = player;
         // 플레이어 능력치를 기반으로 수정
-        _maxBoxWeight = 10f;
+        _maxBoxWeight = 1000f;
         _curBoxWeight = 0;
 
         _boxList.SetBoxList(999);
@@ -111,7 +111,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
             box.transform.SetParent(Player.CharacterTransform);
             _boxHeight++;
-            box.transform.localPosition  = Vector3.right + Vector3.up * _boxHeight/2;
+            box.transform.localPosition  = Vector3.right + Vector3.up * _boxHeight;
             box.transform.localRotation = Quaternion.identity;
 
             Debug.Log("Player Current Box Weight : " + _curBoxWeight);
@@ -158,6 +158,12 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
             box.transform.position = Player.CharacterTransform.position + playerDirection + Vector3.up * 2;
 
+            Vector3 currentScale = box.gameObject.GetOrAddComponent<BoxCollider>().size; 
+            currentScale.x = 0.1f;
+            currentScale.z = 0.1f;
+            box.gameObject.GetOrAddComponent<BoxCollider>().size = currentScale;
+            
+            
             box.SetIsGrab(false);
             
             Debug.Log("Player Current Box Weight : " + _curBoxWeight);

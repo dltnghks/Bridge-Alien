@@ -21,7 +21,7 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
     }
 
     public bool TrySpawnBox(MiniGameUnloadBox box){
-        if(BoxList.TryAddInGameUnloadBoxList(box))
+        if(!box.gameObject.activeSelf && BoxList.TryAddInGameUnloadBoxList(box))
         {
             _boxSpawnPosition += Vector3.up;
             box.SetInGameActive(true, _boxSpawnPosition);

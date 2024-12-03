@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.Collections;
 using UnityEngine;
 using TMPro;
@@ -91,14 +92,11 @@ public class MiniGameUnloadBox : MonoBehaviour
         private set => _info = value;
     }
 
-    private void Start()
+    public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
     {
         _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
         _grabBoxLayer = LayerMask.NameToLayer("GrabBox");
-    }
-
-    public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
-    {
+        
         gameObject.SetActive(value);
         if(value)
         {

@@ -38,10 +38,13 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
 
     public void TimerUpdate()
     {
-        _timer.TimerUpdate();
-        if (_timer.CurTime <= 0)
+        if (!_miniGameUnloadBoxSpawnPoint.BoxList.IsFull)
         {
-            _timer.RestartTimer();
+            _timer.TimerUpdate();
+            if (_timer.CurTime <= 0)
+            {
+                _timer.RestartTimer();
+            }
         }
     }
     
@@ -52,7 +55,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
         newBox.SetRandomInfo();
             
-        Vector3 currentScale = transform.localScale; 
+        Vector3 currentScale = newBoxObj.GetOrAddComponent<BoxCollider>().size; 
         currentScale.y = newBox.Info.Size;
         newBoxObj.GetOrAddComponent<BoxCollider>().size = currentScale;
         
@@ -68,6 +71,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
             if (box != null && _miniGameUnloadBoxSpawnPoint.TrySpawnBox(box))
             {
                 DequeueBox();
+                EnqueueBox(box);
             }
             else
             {
