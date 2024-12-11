@@ -48,11 +48,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         
         _timer.TimerUpdate();
         _boxPreview.TimerUpdate();
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _score.AddScore(10);
-        }
     }
     
     public void StartGame()
@@ -92,6 +87,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             Logger.LogError("Not Active MiniGame");
             return;
         }
+        IsPause = true;
         Logger.Log("UnloadGame Pausing game");
     }
 
@@ -102,6 +98,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             Logger.LogError("Not Active MiniGame");
             return;
         }
+        IsPause = false;
         Logger.Log("UnloadGame Resuming game");
     }
 
