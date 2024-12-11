@@ -99,21 +99,13 @@ public class MiniGameUnloadPlayerController : IPlayerController
             _miniGameUnloadBoxSpawnPoint.GetPickUpBox();
         
             _curBoxWeight += box.Info.Weight;
-            // 상자의 Rigidbody 비활성화
-            var boxRigidbody = box.GetComponent<Rigidbody>();
-            // if (boxRigidbody != null && _boxList.IsEmpty)
-            // {
-            // 위치 고정
-            boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-            //}
-        
             // 상자를 스택에 추가하고 위치 설정
             _boxList.TryAddInGameUnloadBoxList(box);
 
             box.transform.SetParent(Player.CharacterTransform);
             box.transform.localPosition  = Vector3.right + Vector3.up * (_boxHeight + (box.Info.Size/2));
-            _boxHeight += box.Info.Size;
             box.transform.localRotation = Quaternion.identity;
+            _boxHeight += box.Info.Size;
 
             Logger.Log("Player Current Box Weight : " + _curBoxWeight);
         }
@@ -144,33 +136,13 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
             box.CheckBrokenBox(_boxList.CurrentUnloadBoxIndex);
 
-            // 상자의 Rigidbody 활성화
-            var boxRigidbody = box.GetComponent<Rigidbody>();
-            if (boxRigidbody != null)
-            {
-                boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
-                                           RigidbodyConstraints.FreezePositionZ |
-                                           RigidbodyConstraints.FreezeRotation;
-            }
-
             // 상자를 플레이어의 발 아래로 놓기
             box.transform.SetParent(Managers.MiniGame.Root.transform);
-            _boxHeight -= box.Info.Size;
-
-            Vector3 playerDirection;
-            if (Player.IsRight) playerDirection = Vector3.right;
-            else playerDirection = Vector3.left;
-
-            box.transform.position = Player.CharacterTransform.position + playerDirection + Vector3.up * 2;
-
-            Vector3 currentScale = box.gameObject.GetOrAddComponent<BoxCollider>().size; 
-            currentScale.x = 0.1f;
-            currentScale.z = 0.1f;
-            box.gameObject.GetOrAddComponent<BoxCollider>().size = currentScale;
-            
-            
+            box.transform.position = Player.CharacterTransform.position + Vector3.up;
             box.SetIsGrab(false);
             
+            _boxHeight -= box.Info.Size;
+
             Logger.Log("Player Current Box Weight : " + _curBoxWeight);
         }
         else

@@ -88,6 +88,9 @@ public class MiniGameUnloadBox : MonoBehaviour
     [SerializeField] private List<Sprite> _boxSpriteList = new List<Sprite>();  
     [SerializeField] private List<Sprite> _regionSpriteList = new List<Sprite>();
 
+    private Rigidbody boxRigidbody;
+    private BoxCollider boxCollider;
+
     public MiniGameUnloadBoxInfo Info
     {
         get => _info;
@@ -108,11 +111,13 @@ public class MiniGameUnloadBox : MonoBehaviour
                 spriteRenderer.color = new Color(1, 0, 0, 0.7f);
             }
 
-            
-            Vector3 currentScale = gameObject.GetOrAddComponent<BoxCollider>().size; 
+            Vector3 currentScale = boxCollider.size; 
             currentScale.x = 1f;
             currentScale.z = 1f;
-            gameObject.GetOrAddComponent<BoxCollider>().size = currentScale;
+            boxCollider.size = currentScale;
+
+            // 생성될 때는 false
+            boxCollider.isTrigger = false;
         }
     }
     
@@ -133,8 +138,25 @@ public class MiniGameUnloadBox : MonoBehaviour
         _info.IsGrab = value;
         if(value){
             gameObject.layer = _grabBoxLayer;
+            
+            // 상자의 Rigidbody 비활성화
+            boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+
         }else{
             gameObject.layer = _defaultBoxLayer;
+            if(boxCollider)
+            {
+                // 놓을 때는 true
+                boxCollider.isTrigger = true;
+            }
+
+            // 상자의 Rigidbody 활성화
+            if (boxRigidbody != null)
+            {
+                boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
+                                           RigidbodyConstraints.FreezePositionZ |
+                                           RigidbodyConstraints.FreezeRotation;
+            }
         }
     }
 
@@ -164,6 +186,9 @@ public class MiniGameUnloadBox : MonoBehaviour
         {
             Logger.LogWarning($"Not enough region sprite list{_regionSpriteList.Count}, {regionType}");
         }
+
+        boxRigidbody = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
     }
     
     private void AddBoxSprite()
