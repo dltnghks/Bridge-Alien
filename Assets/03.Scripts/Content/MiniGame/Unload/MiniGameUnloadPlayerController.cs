@@ -47,6 +47,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
     
     public void InputJoyStick(Vector2 input)
     {
+        input = input - (input * (_boxList.CurrentUnloadBoxIndex * (100.0f *_moveSpeedReductionRatio)));
         // 플레이어 이동
         Player.PlayerMovement(input);
     }
