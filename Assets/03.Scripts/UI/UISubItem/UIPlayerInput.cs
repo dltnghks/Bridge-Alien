@@ -20,6 +20,8 @@ public class UIPlayerInput : UISubItem
     
     protected Joystick _joystick;
     protected Button _interactionButton;
+    private Vector2 _movementInput;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -31,29 +33,23 @@ public class UIPlayerInput : UISubItem
         
         _joystick = GetObject((int)Objects.Joystick).GetOrAddComponent<Joystick>();
         _interactionButton = GetButton((int)Buttons.InteractionButton);
-
-        _interactionButton.gameObject.BindEvent(OnClickInteractionButton);
         
         return true;
     }
-
-    public void OnJoyStick(InputValue _value){
-        if (Managers.MiniGame.CurrentGame.IsActive)
-        {
-            Managers.MiniGame.CurrentGame.PlayerController.InputJoyStick(_joystick.Direction);
-        }
+    
+    public void OnMove(InputValue value){
+        Logger.Log($"Move : {value.Get<Vector2>()}");
+        _movementInput = value.Get<Vector2>();
     }
 
-    protected  void OnClickInteractionButton()
-    {
+    public void OnInteraction(){
+        Logger.Log($"Interaction");
         Managers.MiniGame.CurrentGame.PlayerController.Interaction();
     }
 
-    public void FixedUpdate()
-    {
-        if (Managers.MiniGame.CurrentGame.IsActive)
-        {
-            Managers.MiniGame.CurrentGame.PlayerController.InputJoyStick(_joystick.Direction);
-        }
+    private void Update(){
+        if(Managers.MiniGame.CurrentGame.IsActive)
+            Managers.MiniGame.CurrentGame.PlayerController.InputJoyStick(_movementInput);
     }
+
 }
