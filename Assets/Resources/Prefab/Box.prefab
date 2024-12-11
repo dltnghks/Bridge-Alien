@@ -60,6 +60,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c9f97b8db0cb0874e9d996c6094910fc, type: 3}
   - {fileID: 21300000, guid: c9f97b8db0cb0874e9d996c6094910fc, type: 3}
   - {fileID: 21300000, guid: c9f97b8db0cb0874e9d996c6094910fc, type: 3}
+  _regionSpriteList: []
 --- !u!65 &4678780358310689977
 BoxCollider:
   m_ObjectHideFlags: 0

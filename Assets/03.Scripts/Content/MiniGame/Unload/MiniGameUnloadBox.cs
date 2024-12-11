@@ -82,10 +82,12 @@ public class MiniGameUnloadBox : MonoBehaviour
     [SerializeField] private MiniGameUnloadBoxInfo _info;
     
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer regionSpriteRenderer;
 
     [Header("Box Sprites")]
-    [SerializeField] private List<Sprite> _boxSpriteList = new List<Sprite>();
-    
+    [SerializeField] private List<Sprite> _boxSpriteList = new List<Sprite>();  
+    [SerializeField] private List<Sprite> _regionSpriteList = new List<Sprite>();
+
     public MiniGameUnloadBoxInfo Info
     {
         get => _info;
@@ -137,13 +139,24 @@ public class MiniGameUnloadBox : MonoBehaviour
         AddBoxSprite();
         
         int boxType = (int)_info.BoxType;
+        int regionType = (int)_info.Region;
         if (_boxSpriteList.Count > boxType)
         {
             spriteRenderer.sprite = _boxSpriteList[boxType];   
         }
         else
         {
-            Debug.LogWarning($"Not enough box sprite list{_boxSpriteList.Count}, {boxType}");
+            Logger.LogWarning($"Not enough box sprite list{_boxSpriteList.Count}, {boxType}");
+        }
+
+        
+        if (_regionSpriteList.Count > regionType)
+        {
+            regionSpriteRenderer.sprite = _regionSpriteList[boxType];   
+        }
+        else
+        {
+            Logger.LogWarning($"Not enough region sprite list{_regionSpriteList.Count}, {regionType}");
         }
     }
     
@@ -153,6 +166,11 @@ public class MiniGameUnloadBox : MonoBehaviour
         spriteObj.transform.SetParent(gameObject.transform);
         spriteObj.transform.localPosition = Vector3.zero;
         spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();
+
+        GameObject regionSpriteObj = new GameObject("region");
+        regionSpriteObj.transform.SetParent(gameObject.transform);
+        regionSpriteObj.transform.localPosition = Vector3.zero;
+        regionSpriteRenderer = regionSpriteObj.GetOrAddComponent<SpriteRenderer>();
     }
 }
 
