@@ -97,13 +97,13 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("No preview box available");
+                Logger.LogWarning("No preview box available");
             }
             
             return box;
         }
         
-        Debug.Log("No preview box found");
+        Logger.Log("No preview box found");
         return null;
     }
 }

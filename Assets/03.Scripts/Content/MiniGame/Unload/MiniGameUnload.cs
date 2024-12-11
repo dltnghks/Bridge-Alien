@@ -120,7 +120,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public void InitializeUI()
     {
-        Debug.Log("InitializeUI Starting game");
+        Logger.Log("InitializeUI Starting game");
         _uiGameUnloadScene = Managers.UI.ShowSceneUI<UIGameUnloadScene>();
         GameUI = _uiGameUnloadScene;
     }

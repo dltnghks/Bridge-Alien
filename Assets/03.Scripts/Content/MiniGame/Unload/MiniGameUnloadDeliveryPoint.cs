@@ -62,19 +62,19 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         if(!box.Info.IsGrab){
             if(box.Info.IsBroken)
             { 
-                Debug.Log("broken box");
+                Logger.Log("broken box");
                 _action?.Invoke(-10);
                 box.SetInGameActive(false);
                 return;
             }
             else if (CheckBoxInfo(box.Info))
             {
-                Debug.Log("True Region");
+                Logger.Log("True Region");
                 _action?.Invoke(box.Info.Weight);
             }
             else
             {
-                Debug.Log("False Region");
+                Logger.Log("False Region");
                 _action?.Invoke(-box.Info.Weight);
             }
         }

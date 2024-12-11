@@ -46,7 +46,7 @@ public class UIBase : MonoBehaviour
 
             if (objects[i] == null)
             {
-                Debug.Log($"Failed to bind({names[i]})");   
+                Logger.Log($"Failed to bind({names[i]})");   
             }
         }
     }

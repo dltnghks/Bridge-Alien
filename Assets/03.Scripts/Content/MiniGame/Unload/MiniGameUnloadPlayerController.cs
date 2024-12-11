@@ -64,7 +64,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
                 DropBox();
                 break;
             default:
-                Debug.LogWarning($"{InteractionActionNumber} : Undefined Interaction");
+                Logger.LogWarning($"{InteractionActionNumber} : Undefined Interaction");
                 break;
         }
     }
@@ -83,7 +83,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     private void PickupBox()
     {
-        Debug.Log("PickupBox");
+        Logger.Log("PickupBox");
         if(_boxList.IsFull)
         {
             return;
@@ -114,11 +114,11 @@ public class MiniGameUnloadPlayerController : IPlayerController
             box.transform.localPosition  = Vector3.right + Vector3.up * _boxHeight;
             box.transform.localRotation = Quaternion.identity;
 
-            Debug.Log("Player Current Box Weight : " + _curBoxWeight);
+            Logger.Log("Player Current Box Weight : " + _curBoxWeight);
         }
         else
         {
-            Debug.Log("No box to pick up!");
+            Logger.Log("No box to pick up!");
         }
 
     }
@@ -126,7 +126,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     private void DropBox()
     {
-        Debug.Log("DropBox");
+        Logger.Log("DropBox");
         if(_boxList.IsEmpty)
         {
             return;
@@ -166,11 +166,11 @@ public class MiniGameUnloadPlayerController : IPlayerController
             
             box.SetIsGrab(false);
             
-            Debug.Log("Player Current Box Weight : " + _curBoxWeight);
+            Logger.Log("Player Current Box Weight : " + _curBoxWeight);
         }
         else
         {
-            Debug.Log("No boxes to drop!");
+            Logger.Log("No boxes to drop!");
         }
     }
 }

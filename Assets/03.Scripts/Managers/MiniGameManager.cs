@@ -41,7 +41,7 @@ public class MiniGameManager : MonoBehaviour
                 break;
             // 새로운 미니게임을 추가하려면 여기에서 case 추가
             default:
-                Debug.LogError("Unknown game type!");
+                Logger.LogError("Unknown game type!");
                 break;
         }
         

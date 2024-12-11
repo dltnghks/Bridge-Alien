@@ -30,6 +30,6 @@ public class UIConfirmPopup : UIPopup
 
     protected virtual void OnClickConfirmButton()
     {
-        Debug.Log("OnClickConfirmButton");
+        Logger.Log("OnClickConfirmButton");
     } 
 }
