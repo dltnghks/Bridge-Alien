@@ -141,22 +141,16 @@ public class MiniGameUnloadBox : MonoBehaviour
             
             // 상자의 Rigidbody 비활성화
             boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            // 놓을 때는 true
+            boxCollider.isTrigger = true;
 
         }else{
             gameObject.layer = _defaultBoxLayer;
-            if(boxCollider)
-            {
-                // 놓을 때는 true
-                boxCollider.isTrigger = true;
-            }
 
             // 상자의 Rigidbody 활성화
-            if (boxRigidbody != null)
-            {
-                boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
-                                           RigidbodyConstraints.FreezePositionZ |
-                                           RigidbodyConstraints.FreezeRotation;
-            }
+            boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
+                                        RigidbodyConstraints.FreezePositionZ |
+                                        RigidbodyConstraints.FreezeRotation;
         }
     }
 
