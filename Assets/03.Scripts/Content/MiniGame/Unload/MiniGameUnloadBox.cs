@@ -107,6 +107,12 @@ public class MiniGameUnloadBox : MonoBehaviour
             {
                 spriteRenderer.color = new Color(1, 0, 0, 0.7f);
             }
+
+            
+            Vector3 currentScale = gameObject.GetOrAddComponent<BoxCollider>().size; 
+            currentScale.x = 1f;
+            currentScale.z = 1f;
+            gameObject.GetOrAddComponent<BoxCollider>().size = currentScale;
         }
     }
     

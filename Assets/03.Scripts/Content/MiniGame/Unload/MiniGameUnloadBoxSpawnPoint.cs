@@ -8,6 +8,7 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
     private SphereCollider _boxCollider;
     private Vector3 _boxSpawnPosition;
     public MiniGameUnloadBoxList BoxList {get; set;}
+    public float _boxHeight = 0;
 
     private UnityAction _triggerAction;
 
@@ -23,8 +24,9 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
     public bool TrySpawnBox(MiniGameUnloadBox box){
         if(!box.gameObject.activeSelf && BoxList.TryAddInGameUnloadBoxList(box))
         {
-            _boxSpawnPosition += Vector3.up;
-            box.SetInGameActive(true, _boxSpawnPosition);
+            Vector3 spawnPos = _boxSpawnPosition + Vector3.up * (_boxHeight + box.Info.Size/2);
+            _boxHeight += box.Info.Size;
+            box.SetInGameActive(true, spawnPos);
             return true;
         }
         else
@@ -37,7 +39,7 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
         MiniGameUnloadBox box = BoxList.RemoveAndGetTopInGameUnloadBoxList();
         if(box != null)
         {
-            _boxSpawnPosition -= Vector3.up;
+            _boxHeight -= box.Info.Size;
             return box;
         }
         else

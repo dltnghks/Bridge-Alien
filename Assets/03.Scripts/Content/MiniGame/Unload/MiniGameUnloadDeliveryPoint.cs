@@ -80,7 +80,8 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         }
 
         box.transform.DOMove(_endPointTransform.position, 1).OnComplete(() =>
-            box.SetInGameActive(false));
+            box.SetInGameActive(false)
+        );
     }
     
     private void OnTriggerExit(Collider coll)

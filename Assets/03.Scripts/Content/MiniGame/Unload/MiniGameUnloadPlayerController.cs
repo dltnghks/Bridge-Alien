@@ -17,7 +17,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
     private MiniGameUnloadBoxList _boxList = new MiniGameUnloadBoxList();
     private float _maxBoxWeight = 10f;
     private float _curBoxWeight = 0;
-    private float _boxHeight = 1f;
+    private float _boxHeight = 0f;
     private float _detectionBoxRadius = 2f;
     private float _moveSpeedReductionRatio = 2.0f;
     private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
@@ -47,7 +47,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
     
     public void InputJoyStick(Vector2 input)
     {
-        input = input - (input * (_boxList.CurrentUnloadBoxIndex * (100.0f *_moveSpeedReductionRatio)));
+        input = input - (input * (_boxList.CurrentUnloadBoxIndex * (_moveSpeedReductionRatio/100.0f)));
         // 플레이어 이동
         Player.PlayerMovement(input);
     }
@@ -101,25 +101,29 @@ public class MiniGameUnloadPlayerController : IPlayerController
             _curBoxWeight += box.Info.Weight;
             // 상자의 Rigidbody 비활성화
             var boxRigidbody = box.GetComponent<Rigidbody>();
-            if (boxRigidbody != null && _boxList.IsEmpty)
-            {
-                // 위치 고정
-                boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-            }
+            // if (boxRigidbody != null && _boxList.IsEmpty)
+            // {
+            // 위치 고정
+            boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            //}
         
             // 상자를 스택에 추가하고 위치 설정
             _boxList.TryAddInGameUnloadBoxList(box);
 
             box.transform.SetParent(Player.CharacterTransform);
-            _boxHeight++;
-            box.transform.localPosition  = Vector3.right + Vector3.up * _boxHeight;
+            box.transform.localPosition  = Vector3.right + Vector3.up * (_boxHeight + (box.Info.Size/2));
+            _boxHeight += box.Info.Size;
             box.transform.localRotation = Quaternion.identity;
 
             Logger.Log("Player Current Box Weight : " + _curBoxWeight);
         }
         else
         {
-            Logger.Log("No box to pick up!");
+            if (box == null)
+                Logger.Log("No box to pick up!");
+            else if(_curBoxWeight + box.Info.Weight >= _maxBoxWeight){
+                Logger.Log("The weight of the current box exceeds the player's weight limit.");
+            }
         }
 
     }
@@ -151,7 +155,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
             // 상자를 플레이어의 발 아래로 놓기
             box.transform.SetParent(Managers.MiniGame.Root.transform);
-            _boxHeight--;
+            _boxHeight -= box.Info.Size;
 
             Vector3 playerDirection;
             if (Player.IsRight) playerDirection = Vector3.right;
