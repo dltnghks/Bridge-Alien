@@ -75,7 +75,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Fail CreateInGameBox");
+                Logger.LogWarning("Fail CreateInGameBox");
             }
         }
     }

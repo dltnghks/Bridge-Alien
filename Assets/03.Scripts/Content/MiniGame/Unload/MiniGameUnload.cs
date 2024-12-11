@@ -57,10 +57,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     
     public void StartGame()
     {
-        Debug.Log("UnloadGame Starting game");
+        Logger.Log("UnloadGame Starting game");
 
         GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
-        Debug.Log(deliveryPoinListObj.name);
+        Logger.Log(deliveryPoinListObj.name);
         foreach(var deliveryPoint in deliveryPoinListObj.GetComponentsInChildren<MiniGameUnloadDeliveryPoint>()){
             deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
             _deliveryPointList.Add(deliveryPoint);
@@ -89,33 +89,33 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         if (!IsActive || IsPause)
         {
-            Debug.LogError("Not Active MiniGame");
+            Logger.LogError("Not Active MiniGame");
             return;
         }
-        Debug.Log("UnloadGame Pausing game");
+        Logger.Log("UnloadGame Pausing game");
     }
 
     public void ResumeGame()
     {
         if (!IsActive || !IsPause)
         {
-            Debug.LogError("Not Active MiniGame");
+            Logger.LogError("Not Active MiniGame");
             return;
         }
-        Debug.Log("UnloadGame Resuming game");
+        Logger.Log("UnloadGame Resuming game");
     }
 
     public void EndGame()
     {
         if (!IsActive)
         {
-            Debug.LogError("Not Active MiniGame");
+            Logger.LogError("Not Active MiniGame");
             return;
         }
         
         IsActive = false;
         Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);
-        Debug.Log("UnloadGame Ending game");
+        Logger.Log("UnloadGame Ending game");
     }
 
     public void InitializeUI()
