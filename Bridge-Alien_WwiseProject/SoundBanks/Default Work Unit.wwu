@@ -3,11 +3,10 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{9C5E31A8-D832-40D4-B368-6A66118A69B1}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="Main_SoundBank" ID="{A72308BF-77E4-4B67-B4FF-DE25B80ECA9F}">
-					<ObjectInclusionList/>
-					<ObjectExclusionList/>
-					<GameSyncExclusionList/>
-				</SoundBank>
+				<WorkUnit Name="Context" ID="{AF6F6709-93D7-48C6-9E2D-78DEFFC81509}" PersistMode="Reference"/>
+				<WorkUnit Name="General" ID="{6E4C7C43-F997-4A5B-B40E-B1BDD7DA7542}" PersistMode="Reference"/>
+				<WorkUnit Name="Region" ID="{EC148D40-D023-4950-8236-F6976489C4D3}" PersistMode="Reference"/>
+				<WorkUnit Name="All_In_One" ID="{CF1A99E9-C363-42B3-A555-BBA2F19A3F52}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>

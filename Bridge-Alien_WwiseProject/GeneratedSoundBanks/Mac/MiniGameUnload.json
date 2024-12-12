@@ -1,0 +1,57 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "314625631",
+    "Type": "User",
+    "GUID": "{A1B908A2-1584-4108-995D-58768368D076}",
+    "Language": "SFX",
+    "Hash": "{6CE20EDC-DA49-2E79-206C-29F336DDEC0C}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Region\\MiniGameUnload",
+    "ShortName": "MiniGameUnload",
+    "Path": "MiniGameUnload.bnk",
+    "Media": [
+     {
+      "Id": "640411273",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MiniGameUnloadBGM.wav",
+      "CachePath": "E3/{E32A271D-970A-1E53-764F-CD0A2DADFA46}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3026964974",
+      "Name": "Play_MiniGameUnloadBGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MiniGameUnloadBGM",
+      "GUID": "{3C7F040D-8586-40FE-B104-0587DB218369}",
+      "DurationType": "OneShot",
+      "DurationMin": "86.36082",
+      "DurationMax": "86.36082",
+      "MediaRefs": [
+       {
+        "Id": "640411273"
+       }
+      ]
+     },
+     {
+      "Id": "601402224",
+      "Name": "Stop_MiniGameUnloadBGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_MiniGameUnloadBGM",
+      "GUID": "{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{0B32FAFA-6187-0F86-9C7E-F4DC0BAC2F90}"
+ }
+}

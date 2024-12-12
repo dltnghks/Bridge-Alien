@@ -1,0 +1,7 @@
+Event	ID	Name			Wwise Object Path	Notes
+	601402224	Stop_MiniGameUnloadBGM			\Default Work Unit\Stop_MiniGameUnloadBGM	
+	3026964974	Play_MiniGameUnloadBGM			\Default Work Unit\Play_MiniGameUnloadBGM	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	640411273	MiniGameUnloadBGM	C:\Users\is104\Desktop\Fork\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\E3\{E32A271D-970A-1E53-764F-CD0A2DADFA46}.wem		\Actor-Mixer Hierarchy\Default Work Unit\BGM\MiniGameUnloadBGM		15234144
+

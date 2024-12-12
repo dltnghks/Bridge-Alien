@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: ec37f4ed46d39445b326cdd8dc843a54
     GuidInternal: 
-    m_lastTime: -8584677036846845671
+    m_lastTime: -8584676748345440719
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: a001c75d756c8b4f803cb4fd206035b2
     GuidInternal: 
-    m_lastTime: -8584677036847659784
+    m_lastTime: -8584676748346133794
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -55,6 +55,38 @@ MonoBehaviour:
         guid: d8a41415a61d2a41a17e75ca0c2149f3
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus
   BankWwu:
+  - PhysicalPath: SoundBanks\All_In_One.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: a8315e9c32d8d440b3686a66118a69b1
+    - ElementName: All_In_One
+      ObjectType: 12
+      guid: e9991acf63c3b342a555bba2f19a3f52
+    ParentPath: SoundBanks\Default Work Unit\All_In_One
+    guid: e9991acf63c3b342a555bba2f19a3f52
+    GuidInternal: 
+    m_lastTime: -8584676215565097284
+    List: []
+  - PhysicalPath: SoundBanks\Context.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: a8315e9c32d8d440b3686a66118a69b1
+    - ElementName: Context
+      ObjectType: 12
+      guid: 09676fafd793c6489e2d78deffc81509
+    ParentPath: SoundBanks\Default Work Unit\Context
+    guid: 09676fafd793c6489e2d78deffc81509
+    GuidInternal: 
+    m_lastTime: -8584676215375605677
+    List: []
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: SoundBanks
@@ -66,11 +98,43 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a8315e9c32d8d440b3686a66118a69b1
     GuidInternal: 
-    m_lastTime: -8584677027615369545
+    m_lastTime: -8584676215565182593
+    List: []
+  - PhysicalPath: SoundBanks\General.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: a8315e9c32d8d440b3686a66118a69b1
+    - ElementName: General
+      ObjectType: 12
+      guid: 437c4c6e97f95b4ab40eb1bdd7da7542
+    ParentPath: SoundBanks\Default Work Unit\General
+    guid: 437c4c6e97f95b4ab40eb1bdd7da7542
+    GuidInternal: 
+    m_lastTime: -8584676215489128917
+    List: []
+  - PhysicalPath: SoundBanks\Region.wwu
+    PathAndIcons:
+    - ElementName: SoundBanks
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: a8315e9c32d8d440b3686a66118a69b1
+    - ElementName: Region
+      ObjectType: 12
+      guid: 408d14ec23d050498236f6976489c4d3
+    ParentPath: SoundBanks\Default Work Unit\Region
+    guid: 408d14ec23d050498236f6976489c4d3
+    GuidInternal: 
+    m_lastTime: -8584676195737998964
     List:
-    - name: Main_SoundBank
-      guid: bf0823a7e477674bb4ffde25b80eca9f
-      id: 2228651116
+    - name: MiniGameUnload
+      guid: a208b9a184150841995d58768368d076
+      id: 314625631
       PathAndIcons:
       - ElementName: SoundBanks
         ObjectType: 5
@@ -78,10 +142,30 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: a8315e9c32d8d440b3686a66118a69b1
-      - ElementName: Main_SoundBank
+      - ElementName: Region
+        ObjectType: 12
+        guid: 408d14ec23d050498236f6976489c4d3
+      - ElementName: MiniGameUnload
         ObjectType: 7
-        guid: bf0823a7e477674bb4ffde25b80eca9f
-      Path: SoundBanks\Default Work Unit\Main_SoundBank
+        guid: a208b9a184150841995d58768368d076
+      Path: SoundBanks\Default Work Unit\Region\MiniGameUnload
+    - name: Title
+      guid: 0da6a0aacdd57444b0be6ff43fcaaa00
+      id: 3705726509
+      PathAndIcons:
+      - ElementName: SoundBanks
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: a8315e9c32d8d440b3686a66118a69b1
+      - ElementName: Region
+        ObjectType: 12
+        guid: 408d14ec23d050498236f6976489c4d3
+      - ElementName: Title
+        ObjectType: 7
+        guid: 0da6a0aacdd57444b0be6ff43fcaaa00
+      Path: SoundBanks\Default Work Unit\Region\Title
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -94,8 +178,42 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584677036847420808
-    List: []
+    m_lastTime: -8584676195813515102
+    List:
+    - name: Play_MiniGameUnloadBGM
+      guid: 0d047f3c8685fe40b1040587db218369
+      id: 3026964974
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: Play_MiniGameUnloadBGM
+        ObjectType: 3
+        guid: 0d047f3c8685fe40b1040587db218369
+      Path: Events\Default Work Unit\Play_MiniGameUnloadBGM
+      maxAttenuation: 0
+      maxDuration: 86.36082
+      minDuration: 86.36082
+    - name: Stop_MiniGameUnloadBGM
+      guid: 8dc8e394c039f34d8038977f7d8a1ce6
+      id: 601402224
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: Stop_MiniGameUnloadBGM
+        ObjectType: 3
+        guid: 8dc8e394c039f34d8038977f7d8a1ce6
+      Path: Events\Default Work Unit\Stop_MiniGameUnloadBGM
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -108,7 +226,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 7283ed376b74d34aba81186fc977eb36
     GuidInternal: 
-    m_lastTime: -8584677036847279934
+    m_lastTime: -8584676748347334348
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -122,7 +240,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 6c6ab8a28a3c3e4b849b1e39faddc5b7
     GuidInternal: 
-    m_lastTime: -8584677036847350030
+    m_lastTime: -8584676748345612678
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -136,7 +254,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: e911d4956d665849b16bc8e0b612f474
     GuidInternal: 
-    m_lastTime: -8584677036846775603
+    m_lastTime: -8584676748345547496
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -150,7 +268,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: e3db0410e7e6ba4ab8e8fcc37959276e
     GuidInternal: 
-    m_lastTime: -8584677036847900825
+    m_lastTime: -8584676748345491191
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 

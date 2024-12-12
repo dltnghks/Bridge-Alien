@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{50393233-F172-4901-A81D-A91BD1E15694}" SchemaVersion="123">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_MiniGameUnloadBGM" ID="{3C7F040D-8586-40FE-B104-0587DB218369}">
+					<ChildrenList>
+						<Action Name="" ID="{87801852-54F9-4976-B08F-01E4ED38A5F8}" ShortID="1028682">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_MiniGameUnloadBGM" ID="{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}">
+					<ChildrenList>
+						<Action Name="" ID="{1C04A468-7220-487A-A184-FC64AD322984}" ShortID="30693357">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

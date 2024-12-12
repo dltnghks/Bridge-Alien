@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EC148D40-D023-4950-8236-F6976489C4D3}" SchemaVersion="123" RootDocumentID="{9C5E31A8-D832-40D4-B368-6A66118A69B1}" ParentDocumentID="{9C5E31A8-D832-40D4-B368-6A66118A69B1}">
+	<SoundBanks>
+		<WorkUnit Name="Region" ID="{EC148D40-D023-4950-8236-F6976489C4D3}" OwnerID="{9C5E31A8-D832-40D4-B368-6A66118A69B1}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="2"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<SoundBank Name="MiniGameUnload" ID="{A1B908A2-1584-4108-995D-58768368D076}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_MiniGameUnloadBGM" ID="{3C7F040D-8586-40FE-B104-0587DB218369}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_MiniGameUnloadBGM" ID="{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Title" ID="{AAA0A60D-D5CD-4474-B0BE-6FF43FCAAA00}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

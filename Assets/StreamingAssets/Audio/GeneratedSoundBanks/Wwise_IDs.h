@@ -11,10 +11,17 @@
 
 namespace AK
 {
+    namespace EVENTS
+    {
+        static const AkUniqueID PLAY_MINIGAMEUNLOADBGM = 3026964974U;
+        static const AkUniqueID STOP_MINIGAMEUNLOADBGM = 601402224U;
+    } // namespace EVENTS
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
-        static const AkUniqueID MAIN_SOUNDBANK = 2228651116U;
+        static const AkUniqueID MINIGAMEUNLOAD = 314625631U;
+        static const AkUniqueID TITLE = 3705726509U;
     } // namespace BANKS
 
     namespace BUSSES
