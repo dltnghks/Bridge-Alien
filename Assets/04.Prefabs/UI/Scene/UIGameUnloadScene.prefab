@@ -235,7 +235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1445194172650812458, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
       propertyPath: m_fontSize
-      value: 52.35
+      value: 39.25
       objectReference: {fileID: 0}
     - target: {fileID: 3865960381902281285, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
       propertyPath: m_Pivot.x
@@ -321,9 +321,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5107120335699456889, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
+      propertyPath: m_fontSize
+      value: 48.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324821072581408890, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
+      propertyPath: m_Name
+      value: RegionText
+      objectReference: {fileID: 0}
     - target: {fileID: 6298882648789943264, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
       propertyPath: m_fontSize
-      value: 71.4
+      value: 53.55
       objectReference: {fileID: 0}
     - target: {fileID: 9043915697874283396, guid: 780b7c463e9520b40b9a0cb313e3730b, type: 3}
       propertyPath: m_Name
@@ -429,7 +437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5953020665588062577, guid: c27e112e8891e924b9de36b98057a878, type: 3}
       propertyPath: m_Name
-      value: UIOption
+      value: UIGameMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943427513749842797, guid: c27e112e8891e924b9de36b98057a878, type: 3}
+      propertyPath: m_Name
+      value: MenuButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -549,6 +561,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8716580779304091373, guid: e8fef03b0d7b7bf449ffbb273d9846dd, type: 3}
+      propertyPath: _onTimerSlider
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -573,7 +589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6475126551152804881, guid: 628f39b2c6b3e8d4b825bf91e828d42d, type: 3}
       propertyPath: m_fontSize
-      value: 72
+      value: 60.95
       objectReference: {fileID: 0}
     - target: {fileID: 7427084472089756509, guid: 628f39b2c6b3e8d4b825bf91e828d42d, type: 3}
       propertyPath: m_Pivot.x

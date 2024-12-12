@@ -47,6 +47,10 @@ public class MiniGameUnloadPlayerController : IPlayerController
     
     public void InputJoyStick(Vector2 input)
     {
+        if(Managers.MiniGame.CurrentGame.IsPause){
+           return; 
+        }
+
         input = input - (input * (_boxList.CurrentUnloadBoxIndex * (_moveSpeedReductionRatio/100.0f)));
         // 플레이어 이동
         Player.PlayerMovement(input);
@@ -54,6 +58,10 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     public void Interaction()
     {
+        if(Managers.MiniGame.CurrentGame.IsPause){
+           return; 
+        }
+
         switch((MiniGameUnloadInteractionAction)InteractionActionNumber)
         {
             case MiniGameUnloadInteractionAction.None:
