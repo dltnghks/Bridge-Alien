@@ -9,7 +9,7 @@ public class GameUnloadScene : BaseScene
         if (base.Init() == false)
             return false;
 
-        SceneType = Define.Scene.GameUnload;
+        SceneType = Define.Scene.MiniGameUnload;
         
         Managers.MiniGame.SelectMiniGame(Define.MiniGameType.Unload);
         return true;

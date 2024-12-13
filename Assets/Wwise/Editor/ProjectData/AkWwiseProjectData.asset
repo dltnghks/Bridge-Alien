@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: a001c75d756c8b4f803cb4fd206035b2
     GuidInternal: 
-    m_lastTime: -8584676748346133794
+    m_lastTime: -8584676172723524838
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -130,7 +130,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\Region
     guid: 408d14ec23d050498236f6976489c4d3
     GuidInternal: 
-    m_lastTime: -8584676195737998964
+    m_lastTime: -8584676169911498974
     List:
     - name: MiniGameUnload
       guid: a208b9a184150841995d58768368d076
@@ -178,7 +178,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584676195813515102
+    m_lastTime: -8584676169911591533
     List:
     - name: Play_MiniGameUnloadBGM
       guid: 0d047f3c8685fe40b1040587db218369
@@ -195,8 +195,25 @@ MonoBehaviour:
         guid: 0d047f3c8685fe40b1040587db218369
       Path: Events\Default Work Unit\Play_MiniGameUnloadBGM
       maxAttenuation: 0
-      maxDuration: 86.36082
-      minDuration: 86.36082
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_PickUpBox
+      guid: 9eca51dba69f7241945279c29ae1e21a
+      id: 3158537189
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: Play_PickUpBox
+        ObjectType: 3
+        guid: 9eca51dba69f7241945279c29ae1e21a
+      Path: Events\Default Work Unit\Play_PickUpBox
+      maxAttenuation: 0
+      maxDuration: 1.8546939
+      minDuration: 1.8546939
     - name: Stop_MiniGameUnloadBGM
       guid: 8dc8e394c039f34d8038977f7d8a1ce6
       id: 601402224
@@ -271,7 +288,7 @@ MonoBehaviour:
     m_lastTime: -8584676748345491191
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 
+  ExpandedWaapiItemIds: 0c0000000d00000011000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

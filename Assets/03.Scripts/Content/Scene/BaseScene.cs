@@ -10,6 +10,11 @@ public class BaseScene : MonoBehaviour
     private void Start()
     {
         Init();
+
+        string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), SceneType);
+        Managers.SoundBank.UnloadAllSoundBank();
+        Managers.SoundBank.LoadSoundBank(sceneTypeStr);
+        Managers.SoundBank.PlayBGM(sceneTypeStr);
     }
 
     protected virtual bool Init()

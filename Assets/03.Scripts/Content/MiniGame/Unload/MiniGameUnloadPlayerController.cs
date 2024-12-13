@@ -115,6 +115,8 @@ public class MiniGameUnloadPlayerController : IPlayerController
             box.transform.localRotation = Quaternion.identity;
             _boxHeight += box.Info.Size;
 
+            Managers.SoundBank.PlaySFX("PickUpBox", Player.gameObject);
+
             Logger.Log("Player Current Box Weight : " + _curBoxWeight);
         }
         else

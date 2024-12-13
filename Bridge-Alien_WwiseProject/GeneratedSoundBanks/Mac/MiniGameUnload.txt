@@ -1,7 +1,9 @@
 Event	ID	Name			Wwise Object Path	Notes
 	601402224	Stop_MiniGameUnloadBGM			\Default Work Unit\Stop_MiniGameUnloadBGM	
 	3026964974	Play_MiniGameUnloadBGM			\Default Work Unit\Play_MiniGameUnloadBGM	
+	3158537189	Play_PickUpBox			\Default Work Unit\Play_PickUpBox	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	640411273	MiniGameUnloadBGM	C:\Users\is104\Desktop\Fork\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\E3\{E32A271D-970A-1E53-764F-CD0A2DADFA46}.wem		\Actor-Mixer Hierarchy\Default Work Unit\BGM\MiniGameUnloadBGM		15234144
+	640411273	MiniGameUnloadBGM	C:\Users\is104\Desktop\Fork\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\44\{44E09ABC-7EDD-C179-ECED-B6EF1B72ABE6}.wem		\Actor-Mixer Hierarchy\Default Work Unit\BGM\MiniGameUnloadBGM		15234144
+	914004156	PickUpBox	C:\Users\is104\Desktop\Fork\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\74\{746057C5-B519-9CAA-AE4B-BFB0D703C2A4}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PickUpBox		163680
 

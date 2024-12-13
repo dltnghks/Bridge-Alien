@@ -4,6 +4,9 @@
 		<WorkUnit Name="BGM" ID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}" OwnerID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" PersistMode="Nested">
 			<ChildrenList>
 				<Sound Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" ShortID="76717813">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>

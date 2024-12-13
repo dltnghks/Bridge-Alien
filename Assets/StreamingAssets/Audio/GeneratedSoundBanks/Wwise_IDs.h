@@ -14,6 +14,7 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID PLAY_MINIGAMEUNLOADBGM = 3026964974U;
+        static const AkUniqueID PLAY_PICKUPBOX = 3158537189U;
         static const AkUniqueID STOP_MINIGAMEUNLOADBGM = 601402224U;
     } // namespace EVENTS
 

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{A1B908A2-1584-4108-995D-58768368D076}",
     "Language": "SFX",
-    "Hash": "{6CE20EDC-DA49-2E79-206C-29F336DDEC0C}",
+    "Hash": "{8B448B8E-AAA1-D065-C632-DA2E32324550}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Region\\MiniGameUnload",
     "ShortName": "MiniGameUnload",
     "Path": "MiniGameUnload.bnk",
@@ -21,7 +21,15 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "MiniGameUnloadBGM.wav",
-      "CachePath": "E3/{E32A271D-970A-1E53-764F-CD0A2DADFA46}.wem"
+      "CachePath": "44/{44E09ABC-7EDD-C179-ECED-B6EF1B72ABE6}.wem"
+     },
+     {
+      "Id": "914004156",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PickUpBox.wav",
+      "CachePath": "74/{746057C5-B519-9CAA-AE4B-BFB0D703C2A4}.wem"
      }
     ],
     "Events": [
@@ -30,12 +38,24 @@
       "Name": "Play_MiniGameUnloadBGM",
       "ObjectPath": "\\Events\\Default Work Unit\\Play_MiniGameUnloadBGM",
       "GUID": "{3C7F040D-8586-40FE-B104-0587DB218369}",
-      "DurationType": "OneShot",
-      "DurationMin": "86.36082",
-      "DurationMax": "86.36082",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "640411273"
+       }
+      ]
+     },
+     {
+      "Id": "3158537189",
+      "Name": "Play_PickUpBox",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PickUpBox",
+      "GUID": "{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8546939",
+      "DurationMax": "1.8546939",
+      "MediaRefs": [
+       {
+        "Id": "914004156"
        }
       ]
      },
@@ -52,6 +72,6 @@
     ]
    }
   ],
-  "FileHash": "{E8D2E2E5-DFC0-A91D-624E-CB0031671924}"
+  "FileHash": "{7B16A6D4-BDA7-88D7-B7C1-C0749FB1853D}"
  }
 }

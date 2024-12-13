@@ -33,6 +33,6 @@ public class UIGameMapScene : UIScene
 
     private void OnClickGameUnloadButton()
     {
-        Managers.Scene.ChangeScene(Define.Scene.GameUnload);
+        Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);
     }
 }

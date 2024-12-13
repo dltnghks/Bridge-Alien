@@ -10,6 +10,7 @@
 				<SoundBank Name="MiniGameUnload" ID="{A1B908A2-1584-4108-995D-58768368D076}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_MiniGameUnloadBGM" ID="{3C7F040D-8586-40FE-B104-0587DB218369}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_PickUpBox" ID="{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Stop_MiniGameUnloadBGM" ID="{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

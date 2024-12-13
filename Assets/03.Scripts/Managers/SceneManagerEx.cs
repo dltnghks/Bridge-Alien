@@ -28,9 +28,7 @@ public class SceneManagerEx : MonoBehaviour
     string GetSceneName(Define.Scene type)
     {
         string name = System.Enum.GetName(typeof(Define.Scene), type);
-        char[] letters = name.ToLower().ToCharArray();
-        letters[0] = char.ToUpper(letters[0]);
-        return new string(letters);
+        return new string(name);
     }
     
     public void ChangeScene(Define.Scene type)

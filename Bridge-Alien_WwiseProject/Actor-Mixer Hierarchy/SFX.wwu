@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{221D36FF-5204-421F-8168-86FCABDEFF36}" SchemaVersion="123" RootDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" ParentDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}">
 	<AudioObjects>
-		<WorkUnit Name="SFX" ID="{221D36FF-5204-421F-8168-86FCABDEFF36}" OwnerID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" PersistMode="Nested"/>
+		<WorkUnit Name="SFX" ID="{221D36FF-5204-421F-8168-86FCABDEFF36}" OwnerID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="PickUpBox" ID="{5B0581FA-F520-4ACF-BED0-8A512622E756}" ShortID="432224738">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="PickUpBox" ID="{69084C1C-4246-43EF-9481-FAED58C4AB5B}">
+							<Language>SFX</Language>
+							<AudioFile>PickUpBox.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="914004156"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="PickUpBox" ID="{69084C1C-4246-43EF-9481-FAED58C4AB5B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>
