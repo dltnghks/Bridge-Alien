@@ -56,6 +56,6 @@ public class UIScoreBoard : UISubItem
 
     private string GetScoreFormat(int score)
     {
-        return $"Score : {score.ToString()}";
+        return $"{score.ToString()}";
     }
 }

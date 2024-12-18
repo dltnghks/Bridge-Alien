@@ -13,13 +13,13 @@ public class UITimer : UISubItem
     }
 
     enum Objects{
-        TimerSlider,
+        TimerGauge,
     }
     
-    [SerializeField] private bool _onTimerSlider = false;
+    [SerializeField] private bool _onGauge = false;
     [SerializeField] private bool _onTimerText = true;  
 
-    private Slider _timerSlider;
+    private UIGauge _gauge;
     private float _curTime;
     private float _startTime;
 
@@ -33,10 +33,10 @@ public class UITimer : UISubItem
         BindText(typeof(Texts));
         BindObject(typeof(Objects));
 
-        _timerSlider = GetObject((int)Objects.TimerSlider).GetOrAddComponent<Slider>();
+        _gauge = GetObject((int)Objects.TimerGauge).GetOrAddComponent<UIGauge>();
 
-        if(!_onTimerSlider){
-            _timerSlider.gameObject.SetActive(false);
+        if(!_onGauge){
+            _gauge.gameObject.SetActive(false);
         }
         if(!_onTimerText){
             GetText((int)Texts.TimerText).gameObject.SetActive(false);
@@ -72,7 +72,8 @@ public class UITimer : UISubItem
         string timeFormat = GetTimeFormat(time);
         GetText((int)Texts.TimerText).SetText(timeFormat);
 
-        _timerSlider.value = time/_startTime;
+        _gauge.SetGauge(time/_startTime);
+        //_timerSlider.value = time/_startTime;
     }
 
     private string GetTimeFormat(float time)
@@ -84,4 +85,6 @@ public class UITimer : UISubItem
         
         return $"{(int)time % 60:00}:{(time * 100) % 100:00}";
     }
+
+
 }
