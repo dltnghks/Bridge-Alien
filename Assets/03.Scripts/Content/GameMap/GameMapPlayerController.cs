@@ -10,6 +10,7 @@ public class GameMapPlayerController : MonoBehaviour
 {
     public Camera MainCamera{get; private set;}
     public Player PlayerCharacter{get; private set;}
+    public List<MiniGamePoint> MiniGamePointList;
 
     // Pointer 위치 가져오기
     private Vector2 _touchPosition;
@@ -18,6 +19,17 @@ public class GameMapPlayerController : MonoBehaviour
     private void Start(){
         MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();
+        GameObject miniGamePointListObj = GameObject.Find("MiniGamePointList");
+        if(miniGamePointListObj){
+            foreach(var point in miniGamePointListObj.transform.GetComponentsInChildren<MiniGamePoint>()){
+                MiniGamePointList.Add(point);
+            }
+        
+            if(MiniGamePointList.Count > 0)
+                MoveToMiniGamePoint(MiniGamePointList[0]);
+        }else{
+            Logger.LogWarning("Point List가 없습니다.");
+        }
     }
 
     private void OnPointer(InputValue value)
