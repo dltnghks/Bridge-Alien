@@ -22,38 +22,11 @@ public class CameraManager : MonoBehaviour
     private static CameraManager instance;                                                  // 카메라 매니저는 싱글톤 패턴으로 구현
     private CameraController currentController;                                             // 현재 카메라 컨트롤러
 
-    //! 싱글톤 인스턴스 접근자
-    public static CameraManager Instance
+    public void Init()
     {
-        get
-        {
-            if (instance == null)                                                   // 인스턴스 생성이 안되었어?
-            {
-                instance = FindObjectOfType<CameraManager>();                       // 씬에서 카메라 매니저 찾기
-                if (instance == null)                                               // 카메라 매니저를 찾았는데도 없어?
-                {
-                    GameObject go = new GameObject("CameraManager");                // 새로운 게임 오브젝트 생성
-                    instance = go.AddComponent<CameraManager>();                    // 카메라 매니저 컴포넌트 추가
-                }
-            }
-            return instance;                                                        // 카메라 매니저 인스턴스 반환
-        }
+        
     }
-
-    //! Awake시, 카메라 매니저 인스턴스 생성
-    private void Awake()
-    {
-        if (instance == null)                                                       // 인스턴스가 없어?
-        {
-            instance = this;                                                        // 인스턴스 설정
-            DontDestroyOnLoad(gameObject);                                          // 씬 로드 시 카메라 매니저 제거 방지
-        }
-        else
-        {
-            Destroy(gameObject);                                                    // 씬에 이미 카메라 매니저가 존재하므로 중복 생성 방지를 위해 현재 오브젝트 제거
-        }
-    }
-
+    
     //! 카메라 매니저 초기화    
     public void Initialize(Transform target)
     {
@@ -76,7 +49,7 @@ public class CameraManager : MonoBehaviour
         var mainCamera = Camera.main;                                                // 메인 카메라 찾기    
         if (mainCamera == null)                                                      // 메인 카메라가 없으면
         {
-            Debug.LogError("메인 카메라를 찾을 수 없습니다!");                         // 에러 메시지 출력
+            Logger.LogError("메인 카메라를 찾을 수 없습니다!");                        // 에러 메시지 출력
             return;                                                                  // 리턴
         }
 

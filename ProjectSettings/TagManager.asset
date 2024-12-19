@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Wall_Side
+  - Box
+  - BoxSpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -13,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - GrabBox
+  - DefaultBox
   - 
   - 
   - 

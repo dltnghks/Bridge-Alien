@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class Player : MonoBehaviour
     private bool canMoveForward = true;                 // 전방 이동 가능 여부
     private bool canMoveBackward = true;                // 후방 이동 가능 여부
     private CharacterAnimator characterAnimator;        // 캐릭터 애니메이터
+    
+    private GameObject playerBody;
+    
+    public bool IsRight { get; private set; }
+
+    public Transform CharacterTransform => playerBody.transform;
 
     void Start()
     {
@@ -27,11 +34,18 @@ public class Player : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         rb.freezeRotation = true;
 
+        // 자식 스프라이트 오브젝트 생성
+        playerBody = new GameObject("PlayerBody");
+        playerBody.transform.SetParent(transform);
+        playerBody.transform.localPosition = Vector3.zero;
+
+        IsRight = true;
+        
         // 스프라이트 오브젝트 설정
         SetupSpriteObject();
-
+        
         // 카메라 설정 (03.Scripts/Camera/CameraManager 싱글톤 인스턴스 사용)
-        CameraManager.Instance.Initialize(transform);
+        Managers.Camera.Initialize(transform);
 
         // 캐릭터 애니메이터 설정
         characterAnimator = GetComponent<CharacterAnimator>();
@@ -49,7 +63,7 @@ public class Player : MonoBehaviour
 
         // 자식 스프라이트 오브젝트 생성
         spriteObject = new GameObject("PlayerSprite");
-        spriteObject.transform.SetParent(transform);
+        spriteObject.transform.SetParent(playerBody.transform);
         spriteObject.transform.localPosition = Vector3.zero;
 
         // 스프라이트 렌더러 설정
@@ -85,7 +99,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        PlayerMovement();
+        //PlayerMovement();
     }
 
     void CheckCollisions()
@@ -143,7 +157,7 @@ public class Player : MonoBehaviour
         if (Mathf.Abs(vertical) > 0.01f)
         {
             if (vertical > 0 && canMoveForward)
-            {
+            {  
                 movement += transform.forward * vertical;
             }
             else if (vertical < 0 && canMoveBackward)
@@ -165,6 +179,66 @@ public class Player : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
 
 
+        // 캐릭터 애니메이터 업데이트
+        characterAnimator.UpdateMovement(movement.magnitude * moveSpeed);
+    }
+    
+    
+    public void PlayerMovement(Vector2 joystickInput)
+    {
+        float horizontal = joystickInput.x;
+        float vertical = joystickInput.y;
+        Vector3 movement = Vector3.zero;  // 이동 벡터 초기화
+
+        // x축(좌우) 이동과 스프라이트 방향 전환
+        movement += transform.right * horizontal;
+
+        if (horizontal > 0)
+        {
+            playerBody.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            IsRight = true;
+        }
+        else if (horizontal < 0)
+        {
+            playerBody.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            IsRight = false;
+        }
+        // 스프라이트 방향 전환 (enableFlip이 true일 때만 실행)
+        if (enableFlip && Mathf.Abs(horizontal) > 0.01f)
+        {
+            Vector3 scale = spriteObject.transform.localScale;
+            if (horizontal > 0 && scale.x < 0 || horizontal < 0 && scale.x > 0)
+            {
+                scale.x *= -1;
+                spriteObject.transform.localScale = scale;
+            }
+        }
+
+        // z축(전후) 이동 - 벽 체크 포함
+        if (Mathf.Abs(vertical) > 0.01f)
+        {
+            if (vertical > 0 && canMoveForward)
+            {
+                movement += transform.forward * vertical;
+            }
+            else if (vertical < 0 && canMoveBackward)
+            {
+                movement += transform.forward * vertical;
+            }
+        }
+
+        // 이동 속도 정규화 및 적용
+        if (movement.magnitude > 1f)
+        {
+            movement.Normalize();
+        }
+
+        // Rigidbody를 통한 이동
+        Vector3 horizontalVelocity = movement * moveSpeed;
+        horizontalVelocity.y = rb.velocity.y;  // 기존 수직 속도 유지
+        rb.velocity = horizontalVelocity;
+        rb.angularVelocity = Vector3.zero;
+            
         // 캐릭터 애니메이터 업데이트
         characterAnimator.UpdateMovement(movement.magnitude * moveSpeed);
     }

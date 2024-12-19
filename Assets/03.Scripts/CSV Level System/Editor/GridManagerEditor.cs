@@ -21,7 +21,7 @@ public class GridManagerEditor : Editor
             }
             else
             {
-                Debug.LogError("올바른 폴더를 선택해주세요!");
+                Logger.LogError("올바른 폴더를 선택해주세요!");
             }
         }
 

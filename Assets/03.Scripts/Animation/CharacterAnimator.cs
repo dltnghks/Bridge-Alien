@@ -52,14 +52,14 @@ public class CharacterAnimator : MonoBehaviour
     //~ 게임 결과 포즈
     public void PlayWinPose()
     {
-        Debug.Log("PlayWinPose");
+        Logger.Log("PlayWinPose");
         animator.SetTrigger(TRIGGER_WIN);
         ChangeState(CharacterState.WinPose);
     }
 
     public void PlayLosePose()
     {
-        Debug.Log("PlayLosePose");
+        Logger.Log("PlayLosePose");
         animator.SetTrigger(TRIGGER_LOSE);
         ChangeState(CharacterState.LosePose);
     }
@@ -67,7 +67,7 @@ public class CharacterAnimator : MonoBehaviour
     //~ Hold 액션
     public void TriggerHoldUp()
     {
-        Debug.Log("TriggerHoldUp");
+        Logger.Log("TriggerHoldUp");
         animator.SetTrigger(TRIGGER_HOLD_UP);
         ChangeState(CharacterState.HoldUp);
     }
