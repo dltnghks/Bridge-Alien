@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class SceneManagerEx : MonoBehaviour
 {
     private Define.Scene _curSceneType = Define.Scene.Unknown;
+    private Define.Scene _selectedSceneType = Define.Scene.Unknown;
+    public event UnityAction<string> SelectedSceneAction;
     private float _minimumLoadTime = 2.0f;
     public Define.Scene CurrentSceneType
     {
@@ -19,6 +21,18 @@ public class SceneManagerEx : MonoBehaviour
         }
         set {  _curSceneType = value; }
     }
+
+    public Define.Scene SelectedSceneType
+    {
+        get { return _selectedSceneType; }
+        set 
+        {        
+            Logger.Log("Manager change selected Scene Type");
+            _selectedSceneType = value;
+            SelectedSceneAction?.Invoke(GetSceneName(_selectedSceneType));
+        }
+    }
+
     public BaseScene CurrentScene { get { return GameObject.Find("@Scene").GetComponent<BaseScene>(); } }
 
     public void Init()
@@ -33,9 +47,25 @@ public class SceneManagerEx : MonoBehaviour
     
     public void ChangeScene(Define.Scene type)
     {
+        if(type == Define.Scene.Unknown){
+            Logger.LogWarning("정의되지 않은 씬 타입입니다.");
+            return;
+        }
         // 현재 씬 클리어
         CurrentScene.Clear();
         _curSceneType = type;
+        StartLoading();
+    }
+
+    public void ChangeSelectedScene()
+    {
+        if(SelectedSceneType == Define.Scene.Unknown){
+            Logger.LogWarning("정의되지 않은 씬 타입입니다.");
+            return;
+        }
+        // 현재 씬 클리어
+        CurrentScene.Clear();
+        _curSceneType = SelectedSceneType;
         StartLoading();
     }
     

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MiniGamePoint : ClickableObject
 {
-    public Define.Scene MiniGameType = Define.Scene.Unknown;
+    public Define.Scene MiniGameSceneType = Define.Scene.Unknown;
 
     public override void OnClick()
     {
         Debug.Log($"{name} clicked!");
+        Managers.Scene.SelectedSceneType = MiniGameSceneType;
     }
 }

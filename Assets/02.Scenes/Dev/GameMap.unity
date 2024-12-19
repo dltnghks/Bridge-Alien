@@ -305,7 +305,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6601107039375330770, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: MiniGameType
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601107039375330770, guid: c27c903d9689155488d6b66e06a278de, type: 3}
+      propertyPath: MiniGameSceneType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8208166450632645526, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: m_Name
@@ -395,6 +399,7 @@ Transform:
   m_Children:
   - {fileID: 1960486611}
   - {fileID: 1243809934}
+  - {fileID: 1684914846}
   m_Father: {fileID: 507399304}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1182718985
@@ -409,7 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841d6fb1aa7d5cd4dbbcf64b59137890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadMap: {fileID: 1960486612}
 --- !u!114 &1182718986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,6 +578,10 @@ PrefabInstance:
       propertyPath: MiniGameType
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6601107039375330770, guid: c27c903d9689155488d6b66e06a278de, type: 3}
+      propertyPath: MiniGameSceneType
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8208166450632645526, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: m_Name
       value: MiniGamePoint
@@ -691,7 +699,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1960486611}
+    m_TransformParent: {fileID: 1182718984}
     m_Modifications:
     - target: {fileID: 2263148129475462844, guid: 33cf08b6300218349a2ceeaecd668cd7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -855,7 +863,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6601107039375330770, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: MiniGameType
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601107039375330770, guid: c27c903d9689155488d6b66e06a278de, type: 3}
+      propertyPath: MiniGameSceneType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8208166450632645526, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: m_Name
@@ -944,7 +956,6 @@ Transform:
   - {fileID: 1534344951}
   - {fileID: 788349618}
   - {fileID: 1895362152}
-  - {fileID: 1684914846}
   m_Father: {fileID: 1182718984}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1960486612

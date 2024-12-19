@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIGameMapScene : UIScene
 {
     enum Buttons
     {
         HouseButton,   
-        GameUnloadButton,
-        
+        //GameUnloadButton,
+        MiniGameStartButton,
+    }
+
+    enum Texts
+    {
+        MiniGameTypeText,
     }
 
     public override bool Init()
@@ -19,11 +25,19 @@ public class UIGameMapScene : UIScene
         }
 
         BindButton(typeof(Buttons));
+        BindText(typeof(Texts));
         
         GetButton((int)Buttons.HouseButton).gameObject.BindEvent(OnClickHouseButton);
-        GetButton((int)Buttons.GameUnloadButton).gameObject.BindEvent(OnClickGameUnloadButton);
+        GetButton((int)Buttons.MiniGameStartButton).gameObject.BindEvent(OnClicMiniGameStart);
         
+        Managers.Scene.SelectedSceneAction += SetMiniGameTypeText;
+
         return true;
+    }
+
+    public void SetMiniGameTypeText(string str){
+        Logger.Log("change selected Scene Type");
+        GetText((int)Texts.MiniGameTypeText).SetText(str);
     }
 
     private void OnClickHouseButton()
@@ -31,8 +45,9 @@ public class UIGameMapScene : UIScene
         Managers.Scene.ChangeScene(Define.Scene.House);
     }
 
-    private void OnClickGameUnloadButton()
+    private void OnClicMiniGameStart()
     {
-        Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);
+        Managers.Scene.ChangeSelectedScene();
+
     }
 }

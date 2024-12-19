@@ -36,20 +36,24 @@ public class GameMapPlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Debug.Log($"Touched on 3D Object: {hit.collider.gameObject.name}");
-
-            // IClickable 인터페이스 호출
-            hit.collider.GetComponent<MiniGamePoint>()?.OnClick();
             
             MiniGamePoint miniGamePoint = hit.collider.GetComponent<MiniGamePoint>();
-            if(miniGamePoint != null){
-                _selectedScene = miniGamePoint.MiniGameType;        
-                MoveToPoint(hit.collider.transform.position);
+            if(miniGamePoint != null){   
+                MoveToMiniGamePoint(miniGamePoint);
+            }
+            else{
+                // IClickable 인터페이스 호출
+               hit.collider.GetComponent<MiniGamePoint>()?.OnClick();
             }
         }
     }
 
-    private void MoveToPoint(Vector3 pos){
+    private void MoveToMiniGamePoint(MiniGamePoint miniGamePoint){
+        Vector3 pos = miniGamePoint.transform.position;
         pos.y += PlayerCharacter.transform.position.y;
-        PlayerCharacter.transform.DOMove(pos, 0.5f);
+        PlayerCharacter.transform.DOMove(pos, 0.5f).OnComplete(() =>
+            // UI 변경
+            miniGamePoint.OnClick()
+        );
     }
 }
