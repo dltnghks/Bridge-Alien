@@ -25,6 +25,270 @@
 						<ActiveSource Name="PickUpBox" ID="{69084C1C-4246-43EF-9481-FAED58C4AB5B}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="box1_hold" ID="{65335A95-EB5B-45B4-945C-8869CB4311A8}" ShortID="833401070">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box1_hold" ID="{9FC1F46B-57E3-4E2C-9F40-B2BDCB8A7B5E}">
+							<Language>SFX</Language>
+							<AudioFile>box1_hold.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="315293091"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box1_hold" ID="{9FC1F46B-57E3-4E2C-9F40-B2BDCB8A7B5E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box1_put" ID="{5A4D1680-7246-4ABD-A656-CCB67187D960}" ShortID="322251146">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box1_put" ID="{0D390500-45C0-4754-AC7A-AC16C6A0D530}">
+							<Language>SFX</Language>
+							<AudioFile>box1_put.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="427923044"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box1_put" ID="{0D390500-45C0-4754-AC7A-AC16C6A0D530}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box2_hold" ID="{81CE442C-96C9-4500-BB56-BBE125F4AF24}" ShortID="992247965">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box2_hold" ID="{92820D8B-B2FD-45AE-B098-B3A371A3BAAE}">
+							<Language>SFX</Language>
+							<AudioFile>box2_hold.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="387582705"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box2_hold" ID="{92820D8B-B2FD-45AE-B098-B3A371A3BAAE}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box2_put" ID="{1EA1CFBC-FFC7-4631-B663-2A5DD2A2D082}" ShortID="866217720">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box2_put" ID="{1AA86D27-B4E0-4474-8951-17FF3F8FD970}">
+							<Language>SFX</Language>
+							<AudioFile>box2_put.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="651511067"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box2_put" ID="{1AA86D27-B4E0-4474-8951-17FF3F8FD970}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box3_hold" ID="{C9CC72CF-281A-4B95-971C-6C37FB34AB9B}" ShortID="416146074">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box3_hold" ID="{FBE2E60B-A877-401F-A0B3-563F451B0B70}">
+							<Language>SFX</Language>
+							<AudioFile>box3_hold.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="624327706"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box3_hold" ID="{FBE2E60B-A877-401F-A0B3-563F451B0B70}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box3_put" ID="{3276629B-3C21-4EA3-B7D2-05B8E585156A}" ShortID="1000912985">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box3_put" ID="{05B92413-0B5B-4FB4-89B0-C4DACB815B50}">
+							<Language>SFX</Language>
+							<AudioFile>box3_put.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="756780069"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box3_put" ID="{05B92413-0B5B-4FB4-89B0-C4DACB815B50}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box5_hold" ID="{8F1651B2-A293-469F-8753-501A20CBB682}" ShortID="531908159">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box5_hold" ID="{D4A3FCBE-85A0-4D4B-9F0C-4BAE12410519}">
+							<Language>SFX</Language>
+							<AudioFile>box5_hold.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="596884453"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box5_hold" ID="{D4A3FCBE-85A0-4D4B-9F0C-4BAE12410519}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box5_put" ID="{168E9FAE-143F-45CB-8341-05B2D0FC1567}" ShortID="1033420737">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box5_put" ID="{4430C5A4-0C29-4983-9875-1CBBCECF4B4F}">
+							<Language>SFX</Language>
+							<AudioFile>box5_put.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1068933166"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box5_put" ID="{4430C5A4-0C29-4983-9875-1CBBCECF4B4F}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box6_hold" ID="{AA129873-F455-42F3-8141-037D3A4E4649}" ShortID="476712358">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box6_hold" ID="{F5C8CD07-FB57-4031-8907-E6D01B39626D}">
+							<Language>SFX</Language>
+							<AudioFile>box6_hold.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="883533581"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box6_hold" ID="{F5C8CD07-FB57-4031-8907-E6D01B39626D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box6_put" ID="{CB6867AE-0FF2-4377-A9D3-15A418C5204A}" ShortID="921024151">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box6_put" ID="{30ADB5C5-0C51-44BA-A493-E6BE86415415}">
+							<Language>SFX</Language>
+							<AudioFile>box6_put.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="659452326"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box6_put" ID="{30ADB5C5-0C51-44BA-A493-E6BE86415415}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box7_hold" ID="{04D0C445-E64E-416C-8B92-BE277B44D4DB}" ShortID="476818895">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box7_hold" ID="{355F4D3F-4A1B-48F5-8C9D-4F0430042CE9}">
+							<Language>SFX</Language>
+							<AudioFile>box7_hold.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="513573479"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box7_hold" ID="{355F4D3F-4A1B-48F5-8C9D-4F0430042CE9}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="box7_put" ID="{4680EAF9-ED25-45AE-9975-C07893FF5986}" ShortID="453186835">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="box7_put" ID="{6058A986-ADAC-4DB4-A09C-5FE4A29CE072}">
+							<Language>SFX</Language>
+							<AudioFile>box7_put.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="251979983"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="box7_put" ID="{6058A986-ADAC-4DB4-A09C-5FE4A29CE072}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

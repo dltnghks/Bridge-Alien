@@ -143,6 +143,9 @@ public class MiniGameUnloadBox : MonoBehaviour
             boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
             // 놓을 때는 true
             boxCollider.isTrigger = true;
+            
+            
+            Managers.SoundBank.PlaySFX($"{Info.BoxType.ToString()}_hold", gameObject);
 
         }else{
             gameObject.layer = _defaultBoxLayer;
@@ -151,6 +154,8 @@ public class MiniGameUnloadBox : MonoBehaviour
             boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
                                         RigidbodyConstraints.FreezePositionZ |
                                         RigidbodyConstraints.FreezeRotation;
+            
+            Managers.SoundBank.PlaySFX($"{Info.BoxType.ToString()}_put", gameObject);
         }
     }
 

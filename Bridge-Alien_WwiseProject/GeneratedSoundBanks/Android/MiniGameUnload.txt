@@ -1,9 +1,25 @@
 Event	ID	Name			Wwise Object Path	Notes
+	38838832	Play_LargeBox_put			\Default Work Unit\Play_LargeBox_put	
+	124719158	Play_LargeBox_hold			\Default Work Unit\Play_LargeBox_hold	
+	254803636	Play_SmallBox_put			\Default Work Unit\Play_SmallBox_put	
 	601402224	Stop_MiniGameUnloadBGM			\Default Work Unit\Stop_MiniGameUnloadBGM	
+	1376730890	Play_SmallBox_hold			\Default Work Unit\Play_SmallBox_hold	
+	2098465626	Play_Post_put			\Default Work Unit\Play_Post_put	
+	2396412504	Play_StandardBox_hold			\Default Work Unit\Play_StandardBox_hold	
 	3026964974	Play_MiniGameUnloadBGM			\Default Work Unit\Play_MiniGameUnloadBGM	
 	3158537189	Play_PickUpBox			\Default Work Unit\Play_PickUpBox	
+	3185390504	Play_Post_hold			\Default Work Unit\Play_Post_hold	
+	3994325130	Play_StandardBox_put			\Default Work Unit\Play_StandardBox_put	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	640411273	MiniGameUnloadBGM	C:\Users\is104\Desktop\Fork\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\44\{44E09ABC-7EDD-C179-ECED-B6EF1B72ABE6}.wem		\Actor-Mixer Hierarchy\Default Work Unit\BGM\MiniGameUnloadBGM		15234144
-	914004156	PickUpBox	C:\Users\is104\Desktop\Fork\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\74\{746057C5-B519-9CAA-AE4B-BFB0D703C2A4}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PickUpBox		163680
+	315293091	box1_hold	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\76\{76FE44A6-3F81-B1AF-02A2-A579C1BAB928}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\box1_hold		48560
+	387582705	box2_hold	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\B5\{B5C7E2C2-858C-74B3-936A-7D4FEEADFC85}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\box2_hold		56384
+	427923044	box1_put	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\54\{54853155-930B-7D01-F4AA-3CC97A18FC91}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\box1_put		41720
+	596884453	box5_hold	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\25\{253ACF63-FB15-1440-953D-3737D1BA7F33}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\box5_hold		46464
+	624327706	box3_hold	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\D1\{D1EDD0BB-DC30-E2EB-178E-FE40345C06F6}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\box3_hold		27912
+	640411273	MiniGameUnloadBGM	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\44\{44E09ABC-7EDD-C179-ECED-B6EF1B72ABE6}.wem		\Actor-Mixer Hierarchy\Default Work Unit\BGM\MiniGameUnloadBGM		15234144
+	651511067	box2_put	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\E6\{E688D18E-7509-C946-10D2-FDE86BB19D7F}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\box2_put		44340
+	756780069	box3_put	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\C3\{C3CB99D8-73DC-238F-BC6F-C79FF93B7260}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\box3_put		36136
+	914004156	PickUpBox	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\74\{746057C5-B519-9CAA-AE4B-BFB0D703C2A4}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\PickUpBox		163680
+	1068933166	box5_put	P:\Unity\Bridge-Alien\Bridge-Alien_WwiseProject\.cache\68\{6826D05F-6485-1DFB-62F6-631246838046}.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\box5_put		29260
 
