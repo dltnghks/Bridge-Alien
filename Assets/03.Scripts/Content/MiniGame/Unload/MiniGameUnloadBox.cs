@@ -144,8 +144,7 @@ public class MiniGameUnloadBox : MonoBehaviour
             // 놓을 때는 true
             boxCollider.isTrigger = true;
             
-            
-            Managers.SoundBank.PlaySFX($"{Info.BoxType.ToString()}_hold", gameObject);
+            Managers.SoundBank.PlaySFX(SoundType.MiniGameUnloadSFX, $"{Info.BoxType.ToString()}Hold", gameObject);
 
         }else{
             gameObject.layer = _defaultBoxLayer;
@@ -155,7 +154,7 @@ public class MiniGameUnloadBox : MonoBehaviour
                                         RigidbodyConstraints.FreezePositionZ |
                                         RigidbodyConstraints.FreezeRotation;
             
-            Managers.SoundBank.PlaySFX($"{Info.BoxType.ToString()}_put", gameObject);
+            Managers.SoundBank.PlaySFX(SoundType.MiniGameUnloadSFX, $"{Info.BoxType.ToString()}Put", gameObject);
         }
     }
 

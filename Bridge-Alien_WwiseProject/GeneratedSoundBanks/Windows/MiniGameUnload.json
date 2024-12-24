@@ -9,9 +9,8 @@
     "Id": "314625631",
     "Type": "User",
     "GUID": "{A1B908A2-1584-4108-995D-58768368D076}",
-    "Color": "2",
     "Language": "SFX",
-    "Hash": "{37962BB9-D768-B72C-81CD-8CC6E8D6EC14}",
+    "Hash": "{FE7479C5-7D89-463B-EACB-97E462A92FBE}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Region\\MiniGameUnload",
     "ShortName": "MiniGameUnload",
     "Path": "MiniGameUnload.bnk",
@@ -99,9 +98,9 @@
     ],
     "Events": [
      {
-      "Id": "124719158",
-      "Name": "Play_LargeBox_hold",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_LargeBox_hold",
+      "Id": "2606206533",
+      "Name": "Play_LargeBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_LargeBoxHold",
       "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
       "DurationType": "OneShot",
       "DurationMin": "0.144875",
@@ -113,9 +112,9 @@
       ]
      },
      {
-      "Id": "38838832",
-      "Name": "Play_LargeBox_put",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_LargeBox_put",
+      "Id": "3670728633",
+      "Name": "Play_LargeBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_LargeBoxPut",
       "GUID": "{094F8D77-21F6-43A9-8345-73A3F280AB72}",
       "DurationType": "OneShot",
       "DurationMin": "0.18770833",
@@ -153,9 +152,9 @@
       ]
      },
      {
-      "Id": "3185390504",
-      "Name": "Play_Post_hold",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Post_hold",
+      "Id": "3540212343",
+      "Name": "Play_PostHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PostHold",
       "GUID": "{3BA4FE24-6731-4E50-B72D-498D74776CE1}",
       "DurationType": "OneShot",
       "DurationMin": "0.29316667",
@@ -167,9 +166,9 @@
       ]
      },
      {
-      "Id": "2098465626",
-      "Name": "Play_Post_put",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Post_put",
+      "Id": "1869835011",
+      "Name": "Play_PostPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PostPut",
       "GUID": "{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}",
       "DurationType": "OneShot",
       "DurationMin": "0.2304375",
@@ -181,9 +180,9 @@
       ]
      },
      {
-      "Id": "1376730890",
-      "Name": "Play_SmallBox_hold",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_SmallBox_hold",
+      "Id": "2487093689",
+      "Name": "Play_SmallBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_SmallBoxHold",
       "GUID": "{1AB5F1BB-822A-4224-B046-009654321711}",
       "DurationType": "OneShot",
       "DurationMin": "0.2415",
@@ -195,9 +194,9 @@
       ]
      },
      {
-      "Id": "254803636",
-      "Name": "Play_SmallBox_put",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_SmallBox_put",
+      "Id": "3924693453",
+      "Name": "Play_SmallBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_SmallBoxPut",
       "GUID": "{1D626541-BF42-414B-A673-E9BD2218AB5E}",
       "DurationType": "OneShot",
       "DurationMin": "0.15189584",
@@ -209,9 +208,9 @@
       ]
      },
      {
-      "Id": "2396412504",
-      "Name": "Play_StandardBox_hold",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBox_hold",
+      "Id": "2379227943",
+      "Name": "Play_StandardBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBoxHold",
       "GUID": "{FA9A97F0-B75E-444F-98D4-E8916C72F397}",
       "DurationType": "OneShot",
       "DurationMin": "0.25241667",
@@ -223,9 +222,9 @@
       ]
      },
      {
-      "Id": "3994325130",
-      "Name": "Play_StandardBox_put",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBox_put",
+      "Id": "2557702835",
+      "Name": "Play_StandardBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBoxPut",
       "GUID": "{7D9AF864-E4E6-4692-B965-B8086BA3EB21}",
       "DurationType": "OneShot",
       "DurationMin": "0.21679166",
@@ -249,6 +248,6 @@
     ]
    }
   ],
-  "FileHash": "{84FF9BD5-BAC3-DC2E-1E0D-060B7E4494EC}"
+  "FileHash": "{0929771B-5E6D-9ADA-CC8A-FB6ADCB63CF1}"
  }
 }

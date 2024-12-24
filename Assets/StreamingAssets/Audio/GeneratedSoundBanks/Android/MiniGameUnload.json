@@ -1,0 +1,253 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "314625631",
+    "Type": "User",
+    "GUID": "{A1B908A2-1584-4108-995D-58768368D076}",
+    "Language": "SFX",
+    "Hash": "{FE7479C5-7D89-463B-EACB-97E462A92FBE}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Region\\MiniGameUnload",
+    "ShortName": "MiniGameUnload",
+    "Path": "MiniGameUnload.bnk",
+    "Media": [
+     {
+      "Id": "315293091",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "box1_hold.wav",
+      "CachePath": "76/{76FE44A6-3F81-B1AF-02A2-A579C1BAB928}.wem"
+     },
+     {
+      "Id": "387582705",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "box2_hold.wav",
+      "CachePath": "B5/{B5C7E2C2-858C-74B3-936A-7D4FEEADFC85}.wem"
+     },
+     {
+      "Id": "427923044",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "box1_put.wav",
+      "CachePath": "54/{54853155-930B-7D01-F4AA-3CC97A18FC91}.wem"
+     },
+     {
+      "Id": "596884453",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "box5_hold.wav",
+      "CachePath": "25/{253ACF63-FB15-1440-953D-3737D1BA7F33}.wem"
+     },
+     {
+      "Id": "624327706",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "box3_hold.wav",
+      "CachePath": "D1/{D1EDD0BB-DC30-E2EB-178E-FE40345C06F6}.wem"
+     },
+     {
+      "Id": "640411273",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MiniGameUnloadBGM.wav",
+      "CachePath": "44/{44E09ABC-7EDD-C179-ECED-B6EF1B72ABE6}.wem"
+     },
+     {
+      "Id": "651511067",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "box2_put.wav",
+      "CachePath": "E6/{E688D18E-7509-C946-10D2-FDE86BB19D7F}.wem"
+     },
+     {
+      "Id": "756780069",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "box3_put.wav",
+      "CachePath": "C3/{C3CB99D8-73DC-238F-BC6F-C79FF93B7260}.wem"
+     },
+     {
+      "Id": "914004156",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PickUpBox.wav",
+      "CachePath": "74/{746057C5-B519-9CAA-AE4B-BFB0D703C2A4}.wem"
+     },
+     {
+      "Id": "1068933166",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "box5_put.wav",
+      "CachePath": "68/{6826D05F-6485-1DFB-62F6-631246838046}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2606206533",
+      "Name": "Play_LargeBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_LargeBoxHold",
+      "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.144875",
+      "DurationMax": "0.144875",
+      "MediaRefs": [
+       {
+        "Id": "624327706"
+       }
+      ]
+     },
+     {
+      "Id": "3670728633",
+      "Name": "Play_LargeBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_LargeBoxPut",
+      "GUID": "{094F8D77-21F6-43A9-8345-73A3F280AB72}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.18770833",
+      "DurationMax": "0.18770833",
+      "MediaRefs": [
+       {
+        "Id": "756780069"
+       }
+      ]
+     },
+     {
+      "Id": "3026964974",
+      "Name": "Play_MiniGameUnloadBGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MiniGameUnloadBGM",
+      "GUID": "{3C7F040D-8586-40FE-B104-0587DB218369}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "640411273"
+       }
+      ]
+     },
+     {
+      "Id": "3158537189",
+      "Name": "Play_PickUpBox",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PickUpBox",
+      "GUID": "{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8546939",
+      "DurationMax": "1.8546939",
+      "MediaRefs": [
+       {
+        "Id": "914004156"
+       }
+      ]
+     },
+     {
+      "Id": "3540212343",
+      "Name": "Play_PostHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PostHold",
+      "GUID": "{3BA4FE24-6731-4E50-B72D-498D74776CE1}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.29316667",
+      "DurationMax": "0.29316667",
+      "MediaRefs": [
+       {
+        "Id": "387582705"
+       }
+      ]
+     },
+     {
+      "Id": "1869835011",
+      "Name": "Play_PostPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PostPut",
+      "GUID": "{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.2304375",
+      "DurationMax": "0.2304375",
+      "MediaRefs": [
+       {
+        "Id": "651511067"
+       }
+      ]
+     },
+     {
+      "Id": "2487093689",
+      "Name": "Play_SmallBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_SmallBoxHold",
+      "GUID": "{1AB5F1BB-822A-4224-B046-009654321711}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.2415",
+      "DurationMax": "0.2415",
+      "MediaRefs": [
+       {
+        "Id": "596884453"
+       }
+      ]
+     },
+     {
+      "Id": "3924693453",
+      "Name": "Play_SmallBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_SmallBoxPut",
+      "GUID": "{1D626541-BF42-414B-A673-E9BD2218AB5E}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.15189584",
+      "DurationMax": "0.15189584",
+      "MediaRefs": [
+       {
+        "Id": "1068933166"
+       }
+      ]
+     },
+     {
+      "Id": "2379227943",
+      "Name": "Play_StandardBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBoxHold",
+      "GUID": "{FA9A97F0-B75E-444F-98D4-E8916C72F397}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.25241667",
+      "DurationMax": "0.25241667",
+      "MediaRefs": [
+       {
+        "Id": "315293091"
+       }
+      ]
+     },
+     {
+      "Id": "2557702835",
+      "Name": "Play_StandardBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBoxPut",
+      "GUID": "{7D9AF864-E4E6-4692-B965-B8086BA3EB21}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.21679166",
+      "DurationMax": "0.21679166",
+      "MediaRefs": [
+       {
+        "Id": "427923044"
+       }
+      ]
+     },
+     {
+      "Id": "601402224",
+      "Name": "Stop_MiniGameUnloadBGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_MiniGameUnloadBGM",
+      "GUID": "{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{59ED8D81-A795-B8E7-B577-685DD5CCAF9F}"
+ }
+}

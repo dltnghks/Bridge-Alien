@@ -13,16 +13,16 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID PLAY_LARGEBOX_HOLD = 124719158U;
-        static const AkUniqueID PLAY_LARGEBOX_PUT = 38838832U;
+        static const AkUniqueID PLAY_LARGEBOXHOLD = 2606206533U;
+        static const AkUniqueID PLAY_LARGEBOXPUT = 3670728633U;
         static const AkUniqueID PLAY_MINIGAMEUNLOADBGM = 3026964974U;
         static const AkUniqueID PLAY_PICKUPBOX = 3158537189U;
-        static const AkUniqueID PLAY_POST_HOLD = 3185390504U;
-        static const AkUniqueID PLAY_POST_PUT = 2098465626U;
-        static const AkUniqueID PLAY_SMALLBOX_HOLD = 1376730890U;
-        static const AkUniqueID PLAY_SMALLBOX_PUT = 254803636U;
-        static const AkUniqueID PLAY_STANDARDBOX_HOLD = 2396412504U;
-        static const AkUniqueID PLAY_STANDARDBOX_PUT = 3994325130U;
+        static const AkUniqueID PLAY_POSTHOLD = 3540212343U;
+        static const AkUniqueID PLAY_POSTPUT = 1869835011U;
+        static const AkUniqueID PLAY_SMALLBOXHOLD = 2487093689U;
+        static const AkUniqueID PLAY_SMALLBOXPUT = 3924693453U;
+        static const AkUniqueID PLAY_STANDARDBOXHOLD = 2379227943U;
+        static const AkUniqueID PLAY_STANDARDBOXPUT = 2557702835U;
         static const AkUniqueID STOP_MINIGAMEUNLOADBGM = 601402224U;
     } // namespace EVENTS
 
