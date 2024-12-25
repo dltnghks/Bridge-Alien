@@ -18,7 +18,7 @@ public class Managers : MonoBehaviour
     private static SceneManagerEx _sceneManager;
     private static FadeManager _fadeManager;
     private static CameraManager _cameraManager;
-    private static SoundManager _wwiseSoundBankManager;
+    private static SoundManager _soundManager;
     
     
     public static ResourceManager Resource { get { Init(); return _resourceManager; } }
@@ -27,7 +27,7 @@ public class Managers : MonoBehaviour
     public static FadeManager Fade { get{ Init(); return _fadeManager; } }
     public static MiniGameManager MiniGame { get{ Init(); return _miniGameManager; } }
     public static CameraManager Camera{get{Init(); return _cameraManager; }}
-    public static SoundManager SoundBank{get{Init(); return _wwiseSoundBankManager; }}
+    public static SoundManager Sound{get{Init(); return _soundManager; }}
 
     private static void Init()
     {
@@ -53,8 +53,8 @@ public class Managers : MonoBehaviour
             _cameraManager = Utils.GetOrAddComponent<CameraManager>(go);
             _cameraManager.Init();
 
-            _wwiseSoundBankManager = Utils.GetOrAddComponent<SoundManager>(go);
-            _wwiseSoundBankManager.Init();
+            _soundManager = Utils.GetOrAddComponent<SoundManager>(go);
+            _soundManager.Init();
 
             
             DontDestroyOnLoad(go);

@@ -38,25 +38,25 @@ public class UIOption : UIPopup
         if (_allSlider != null)
         {
             _allSlider.maxValue = 100f;
-            _allSlider.value = Managers.SoundBank.AllVolume;
+            _allSlider.value = Managers.Sound.AllVolume;
         }
         
         if (_bgmSlider != null)
         {
             _bgmSlider.maxValue = 100f;
-            _bgmSlider.value = Managers.SoundBank.BGMVolume;
+            _bgmSlider.value = Managers.Sound.BGMVolume;
         }
 
         if (_sfxSlider != null)
         {
             _sfxSlider.maxValue = 100f;
-            _sfxSlider.value = Managers.SoundBank.SFXVolume;
+            _sfxSlider.value = Managers.Sound.SFXVolume;
         }
         
         // 슬라이더 값 변경 이벤트 연결
-        _allSlider.onValueChanged.AddListener(Managers.SoundBank.SetAllVolume);
-        _bgmSlider.onValueChanged.AddListener(Managers.SoundBank.SetBGMVolume);
-        _sfxSlider.onValueChanged.AddListener(Managers.SoundBank.SetSFXVolume);
+        _allSlider.onValueChanged.AddListener(Managers.Sound.SetAllVolume);
+        _bgmSlider.onValueChanged.AddListener(Managers.Sound.SetBGMVolume);
+        _sfxSlider.onValueChanged.AddListener(Managers.Sound.SetSFXVolume);
         
         GetButton((int)Buttons.ExitButton).gameObject.BindEvent(OnClickExitButton);
         
