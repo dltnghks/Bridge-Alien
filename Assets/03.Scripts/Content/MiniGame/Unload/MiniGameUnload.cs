@@ -52,6 +52,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     
     public void StartGame()
     {
+
         Logger.Log("UnloadGame Starting game");
 
         GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);

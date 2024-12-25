@@ -34,6 +34,7 @@ public class UIGameMenuPopup : UIPopup
     private void OnClickOptionButton()
     {
         Logger.Log("OnClickOption");
+        Managers.UI.ShowPopUI<UIOption>();
     }
 
     private void OnClickExitButton()

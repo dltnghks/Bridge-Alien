@@ -38,7 +38,6 @@ public class UIPlayerInput : UISubItem
     }
     
     public void OnMove(InputValue value){
-        Logger.Log($"Move : {value.Get<Vector2>()}");
         _movementInput = value.Get<Vector2>();
     }
 

@@ -11,7 +11,7 @@ public class Define
         Title,
         House,
         GameMap,
-        GameUnload,
+        MiniGameUnload,
     }
     
     public enum UIEvent
