@@ -1,9 +1,22 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SoundManager : MonoBehaviour
 {
     private SoundEvent _soundEvent;
-    public void Init(){
+
+    // Sound Parameters 
+    public float AllVolume { get; private set; }
+    public float BGMVolume { get; private set; }
+    public float SFXVolume { get; private set; }
+    
+    
+    
+    public void Init()
+    {
+        SetAllVolume(100f);
+        SetSFXVolume(100f);
+        SetBGMVolume(100f);
         LoadSoundEvent();
     }
 
@@ -81,5 +94,26 @@ public class SoundManager : MonoBehaviour
 
     public void PauseSFX(){
 
+    }
+    
+    public void SetAllVolume(float volume)
+    {
+        AllVolume = Mathf.Clamp(volume, 0f, 100f);
+        AkUnitySoundEngine.SetRTPCValue("AllVolume", AllVolume);
+        Debug.Log($"All Volume set to {AllVolume}");
+    }
+    
+    public void SetSFXVolume(float volume)
+    {
+        SFXVolume = Mathf.Clamp(volume, 0f, 100f);
+        AkUnitySoundEngine.SetRTPCValue("SFXVolume", SFXVolume);
+        Debug.Log($"SFX Volume set to {SFXVolume}");
+    }
+    
+    public void SetBGMVolume(float volume)
+    {
+        BGMVolume = Mathf.Clamp(volume, 0f, 100f);
+        AkUnitySoundEngine.SetRTPCValue("BGMVolume", BGMVolume);
+        Debug.Log($"BGM Volume set to {BGMVolume}");
     }
 }
