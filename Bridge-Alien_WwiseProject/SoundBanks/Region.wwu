@@ -10,16 +10,19 @@
 				<SoundBank Name="MiniGameUnload" ID="{A1B908A2-1584-4108-995D-58768368D076}">
 					<ObjectInclusionList>
 						<ObjectRef Name="Play_MiniGameUnloadBGM" ID="{3C7F040D-8586-40FE-B104-0587DB218369}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_SmallBox_put" ID="{1D626541-BF42-414B-A673-E9BD2218AB5E}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SmallBoxPut" ID="{1D626541-BF42-414B-A673-E9BD2218AB5E}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_PickUpBox" ID="{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_Post_put" ID="{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_SmallBox_hold" ID="{1AB5F1BB-822A-4224-B046-009654321711}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_LargeBox_put" ID="{094F8D77-21F6-43A9-8345-73A3F280AB72}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_StandardBox_hold" ID="{FA9A97F0-B75E-444F-98D4-E8916C72F397}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_LargeBox_hold" ID="{50A5816E-416F-451A-B46B-1EAE765C30B6}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_StandardBox_put" ID="{7D9AF864-E4E6-4692-B965-B8086BA3EB21}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_PostPut" ID="{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SmallBoxHold" ID="{1AB5F1BB-822A-4224-B046-009654321711}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_LargeBoxPut" ID="{094F8D77-21F6-43A9-8345-73A3F280AB72}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_StandardBoxHold" ID="{FA9A97F0-B75E-444F-98D4-E8916C72F397}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_LargeBoxHold" ID="{50A5816E-416F-451A-B46B-1EAE765C30B6}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_StandardBoxPut" ID="{7D9AF864-E4E6-4692-B965-B8086BA3EB21}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="SFX-Mixer" ID="{2E855A4F-64D7-47A3-BB10-5E4D74A59622}" WorkUnitID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="BGM-Mixer" ID="{C2CC684D-24E8-4AD5-959D-0257DD8ABC4F}" WorkUnitID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Stop_MiniGameUnloadBGM" ID="{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
-						<ObjectRef Name="Play_Post_hold" ID="{3BA4FE24-6731-4E50-B72D-498D74776CE1}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_PostHold" ID="{3BA4FE24-6731-4E50-B72D-498D74776CE1}" WorkUnitID="{50393233-F172-4901-A81D-A91BD1E15694}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

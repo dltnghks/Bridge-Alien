@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{E8C73C05-9AC5-A17E-EA11-491BBCB2A45E}",
+    "Hash": "{5E2ED405-34B1-82FD-66DF-DEB54621F014}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -41,9 +41,29 @@
       "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus",
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
      }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     },
+     {
+      "Id": "2731583604",
+      "Name": "AllVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\AllVolume",
+      "GUID": "{7A5833E9-0AE0-4050-82F9-A8015E392E34}"
+     },
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
     ]
    }
   ],
-  "FileHash": "{E5CEAEC5-CAEE-BD3B-3C9F-B05FCDA04967}"
+  "FileHash": "{C7ABB9B0-BCB8-7103-78EF-12E868DFF9B0}"
  }
 }

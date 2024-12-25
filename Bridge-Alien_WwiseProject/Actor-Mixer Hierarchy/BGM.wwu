@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}" SchemaVersion="123" RootDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" ParentDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}">
 	<AudioObjects>
-		<WorkUnit Name="BGM" ID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}" OwnerID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" PersistMode="Nested">
+		<WorkUnit Name="BGM" ID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}" OwnerID="{C2CC684D-24E8-4AD5-959D-0257DD8ABC4F}" PersistMode="Nested">
 			<ChildrenList>
 				<Sound Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" ShortID="76717813">
 					<PropertyList>
