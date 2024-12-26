@@ -360,6 +360,8 @@ public class GridManager : MonoBehaviour
 
     private void LoadAllCSVFiles()                         // 지정된 폴더에서 모든 CSV 파일 로드
     {
+        
+#if UNITY_EDITOR
         if (csvFolder == null)
         {
             Logger.LogError("CSV 폴더가 설정되지 않았습니다!");
@@ -392,6 +394,8 @@ public class GridManager : MonoBehaviour
         }
 
         Logger.Log($"총 {csvFiles.Count}개의 CSV 파일을 로드했습니다.");
+        
+#endif
     }
 
     private System.Collections.IEnumerator LoadGridSequentially()    // CSV 파일들을 순차적으로 로드
