@@ -27,19 +27,19 @@ MonoBehaviour:
     - Key: 2
       Value:
         _keyValueList:
-        - Key: PostBoxPut
-          Value: Play_PostBoxPut
         - Key: SmallBoxPut
           Value: Play_SmallBoxPut
         - Key: StandardBoxPut
           Value: Play_StandardBoxPut
         - Key: LargeBoxPut
           Value: Play_LargeBoxPut
-        - Key: PostBoxHold
-          Value: Play_PostBoxHold
         - Key: SmallBoxHold
           Value: Play_SmallBoxHold
         - Key: StandardBoxHold
           Value: Play_StandardBoxHold
         - Key: LargeBoxPHold
           Value: Play_LargeBoxPHold
+        - Key: PostPut
+          Value: Play_PostPut
+        - Key: PostHold
+          Value: Play_PostHold

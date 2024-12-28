@@ -9,11 +9,20 @@ public class SoundManager : MonoBehaviour
     public float AllVolume { get; private set; }
     public float BGMVolume { get; private set; }
     public float SFXVolume { get; private set; }
-    
-    
+
+    private string _basePath;
     
     public void Init()
     {
+        /*foreach (var childEvent in _soundEvent.EventDict[SoundType.MiniGameUnloadSFX])
+        {
+            foreach (var var in childEvent.Key)
+            {
+                Logger.Log(var);
+            }
+        }*/
+        
+        
         SetAllVolume(100f);
         SetSFXVolume(100f);
         SetBGMVolume(100f);
@@ -85,11 +94,11 @@ public class SoundManager : MonoBehaviour
     private void PlayEvent(string eventName, GameObject soundGameObject){
         // 유효성 검사.. 어떻게 함
 
-        if(soundGameObject == null)
+        /*if(soundGameObject == null)
         {
             soundGameObject = gameObject;
         }
-        AkUnitySoundEngine.PostEvent(eventName, soundGameObject);
+        AkUnitySoundEngine.PostEvent(eventName, soundGameObject);*/
     }
 
     public void PauseSFX(){

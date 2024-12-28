@@ -36,9 +36,23 @@ public class GameMapPlayerController : MonoBehaviour
         // Pointer 위치 가져오기
         _touchPosition = value.Get<Vector2>();
     }
+    
+    private bool IsPointerOverUI()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition // 터치 입력일 경우, Input.GetTouch(0).position 사용
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, results);
+
+        return results.Count > 0;
+    }
+
 
     private void OnTouch(){
-        if(EventSystem.current.IsPointerOverGameObject()){
+        if(IsPointerOverUI()){
             Debug.Log("Clicked on UI");
             return; // UI 클릭 시 뒤 오브젝트 처리 중단
         }

@@ -12,12 +12,12 @@ public class BaseScene : MonoBehaviour
         Init();
 
         string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), SceneType);
-        Managers.Sound.UnloadAllSoundBank();
+        /*Managers.Sound.UnloadAllSoundBank();
         if (SceneType == Define.Scene.MiniGameUnload)
         {
             Managers.Sound.LoadSoundBank(sceneTypeStr);
             Managers.Sound.PlayBGM(sceneTypeStr);
-        }
+        }*/
     }
 
     protected virtual bool Init()

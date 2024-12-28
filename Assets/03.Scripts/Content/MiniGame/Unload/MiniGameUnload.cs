@@ -52,35 +52,75 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     
     public void StartGame()
     {
-
         Logger.Log("UnloadGame Starting game");
 
+        // DeliveryPointList 확인
         GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
-        Logger.Log(deliveryPoinListObj.name);
-        foreach(var deliveryPoint in deliveryPoinListObj.GetComponentsInChildren<MiniGameUnloadDeliveryPoint>()){
+        if (deliveryPoinListObj == null)
+        {
+            Logger.LogError("DeliveryPointList object not found!");
+            return;
+        }
+        Logger.Log($"Found DeliveryPointList: {deliveryPoinListObj.name}");
+
+        // DeliveryPoint 초기화
+        foreach (var deliveryPoint in deliveryPoinListObj.GetComponentsInChildren<MiniGameUnloadDeliveryPoint>())
+        {
+            if (deliveryPoint == null)
+            {
+                Logger.LogError("Null deliveryPoint encountered!");
+                continue;
+            }
             deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
             _deliveryPointList.Add(deliveryPoint);
         }
 
+        // BoxSpawnPoint 확인
         GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
+        if (boxSpawnPointObj == null)
+        {
+            Logger.LogError("BoxSpawnPoint object not found!");
+            return;
+        }
         _boxSpawnPoint = boxSpawnPointObj.GetOrAddComponent<MiniGameUnloadBoxSpawnPoint>();
+        if (_boxSpawnPoint == null)
+        {
+            Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
+            return;
+        }
         _boxSpawnPoint.SetBoxSpawnPoint(_maxSpawnBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
 
+        // Timer, Score, BoxPreview 초기화
         _timer = new TimerBase();
         _score = new ScoreBase();
-        _boxPreview =  Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
-        
+        _boxPreview = Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
+
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
         _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval, _boxSpawnPoint);
-        
-        PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();
+
+        // PlayerCharacter 초기화
+        PlayerCharacter = GameObject.Find("Player")?.GetComponent<Player>();
+        if (PlayerCharacter == null)
+        {
+            Logger.LogError("PlayerCharacter not found or does not have a Player component!");
+            return;
+        }
+
         PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _detectionBoxRadius, _moveSpeedReductionRatio, _boxSpawnPoint);
+        if (PlayerController == null)
+        {
+            Logger.LogError("Failed to initialize PlayerController!");
+            return;
+        }
         PlayerController.Init(PlayerCharacter);
 
+        // 게임 활성화
         IsActive = true;
+        Logger.Log("Game successfully started.");
     }
 
+    
     public void PauseGame()
     {
         if (!IsActive || IsPause)
@@ -121,6 +161,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         Logger.Log("InitializeUI Starting game");
         _uiGameUnloadScene = Managers.UI.ShowSceneUI<UIGameUnloadScene>();
         GameUI = _uiGameUnloadScene;
+        GameUI.Init();
     }
 
     public void AddScore(int weight)

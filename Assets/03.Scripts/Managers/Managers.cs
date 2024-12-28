@@ -28,7 +28,7 @@ public class Managers : MonoBehaviour
     public static MiniGameManager MiniGame { get{ Init(); return _miniGameManager; } }
     public static CameraManager Camera{get{Init(); return _cameraManager; }}
     public static SoundManager Sound{get{Init(); return _soundManager; }}
-
+    
     private static void Init()
     {
         if (_instance == null)

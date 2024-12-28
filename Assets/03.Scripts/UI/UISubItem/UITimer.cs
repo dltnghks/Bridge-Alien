@@ -34,7 +34,8 @@ public class UITimer : UISubItem
         BindObject(typeof(Objects));
 
         _gauge = GetObject((int)Objects.TimerGauge).GetOrAddComponent<UIGauge>();
-
+        _gauge.Init();
+        
         if(!_onGauge){
             _gauge.gameObject.SetActive(false);
         }
