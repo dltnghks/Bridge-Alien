@@ -79,6 +79,7 @@ public class UIManager
         GameObject go = GameObject.Find($"{name}");
         T sceneUI = Utils.GetOrAddComponent<T>(go);
         SceneUI = sceneUI;
+        SceneUI.Init();
         
         go.transform.SetParent(Root.transform);
 

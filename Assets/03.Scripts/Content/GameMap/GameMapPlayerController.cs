@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -8,27 +9,36 @@ using UnityEngine.InputSystem;
 public class GameMapPlayerController : MonoBehaviour
 {
     public Camera MainCamera{get; private set;}
-    public Player PlayerCharacter{get; private set;}
+    public GameObject PlayerCharacter{get; private set;}
     public List<MiniGamePoint> MiniGamePointList;
 
     // Pointer 위치 가져오기
     private Vector2 _touchPosition;
-    private Define.Scene _selectedScene;
 
+    private bool _initialized = false; 
+    
     private void Start(){
         MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        PlayerCharacter = GameObject.Find("Player").GetComponent<Player>();
+        PlayerCharacter = GameObject.FindGameObjectWithTag("Player");
         GameObject miniGamePointListObj = GameObject.Find("MiniGamePointList");
+        
         if(miniGamePointListObj){
             foreach(var point in miniGamePointListObj.transform.GetComponentsInChildren<MiniGamePoint>()){
                 MiniGamePointList.Add(point);
+
+                if (point.MiniGameSceneType == Managers.Scene.SelectedSceneType)
+                {
+                    Logger.Log($"Selected MiniGamePoint : {point.transform.position}");
+                    Vector3 pos = point.transform.position;
+                    pos.y = PlayerCharacter.transform.position.y;
+                    PlayerCharacter.transform.position = pos;
+                }
             }
-        
-            if(MiniGamePointList.Count > 0)
-                MoveToMiniGamePoint(MiniGamePointList[0]);
         }else{
             Logger.LogWarning("Point List가 없습니다.");
         }
+        
+        _initialized = true;
     }
 
     private void OnPointer(InputValue value)
@@ -52,7 +62,7 @@ public class GameMapPlayerController : MonoBehaviour
 
 
     private void OnTouch(){
-        if(IsPointerOverUI()){
+        if(IsPointerOverUI() || !_initialized){
             Debug.Log("Clicked on UI");
             return; // UI 클릭 시 뒤 오브젝트 처리 중단
         }
@@ -73,7 +83,13 @@ public class GameMapPlayerController : MonoBehaviour
         }
     }
 
-    private void MoveToMiniGamePoint(MiniGamePoint miniGamePoint){
+    private void MoveToMiniGamePoint(MiniGamePoint miniGamePoint)
+    {
+        if (!_initialized)
+        {
+            return;
+        }
+        
         Vector3 pos = miniGamePoint.transform.position;
         pos.y += PlayerCharacter.transform.position.y;
         PlayerCharacter.transform.DOMove(pos, 0.5f).OnComplete(() =>

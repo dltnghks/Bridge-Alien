@@ -32,7 +32,7 @@ public class ThirdPersonCamera : CameraController
     //~ 입력 처리
     private void HandleInput()
     {
-        if (Input.GetMouseButton(1))                   
+        /*if (Input.GetMouseButton(1))                   
         {
             currentYaw += Input.GetAxis("Mouse X") * settings.rotationSpeed.x;
             currentPitch -= Input.GetAxis("Mouse Y") * settings.rotationSpeed.y;
@@ -51,7 +51,7 @@ public class ThirdPersonCamera : CameraController
                 settings.minZoomDistance, 
                 settings.distance);
             currentBlockDistance = currentDistance;
-        }
+        }*/
     }
     
     //~ 카메라 위치 계산
