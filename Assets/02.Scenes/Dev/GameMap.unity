@@ -583,7 +583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1301189709467912543, guid: 80c8d3a1c48664d448ae86d7999d4565, type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1301189709467912543, guid: 80c8d3a1c48664d448ae86d7999d4565, type: 3}
       propertyPath: m_IsKinematic

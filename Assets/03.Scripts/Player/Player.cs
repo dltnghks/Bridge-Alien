@@ -22,19 +22,18 @@ public class Player : MonoBehaviour
 
     public Transform CharacterTransform => playerBody.transform;
 
-    void Awake()
+    void Start()
     {
         // 리지드바디 설정
         rb = GetComponent<Rigidbody>();
-        if (rb == null)
-        {
-            rb = gameObject.AddComponent<Rigidbody>(); 
-            rb.useGravity = true;
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
-            rb.interpolation = RigidbodyInterpolation.Interpolate;
-            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            rb.freezeRotation = true;            
-        }
+        if (rb == null){ rb = gameObject.AddComponent<Rigidbody>(); }
+
+        rb.useGravity = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.freezeRotation = true;            
+    
 
         // 자식 스프라이트 오브젝트 생성
         playerBody = new GameObject("PlayerBody");

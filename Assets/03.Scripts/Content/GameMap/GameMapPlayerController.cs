@@ -19,7 +19,10 @@ public class GameMapPlayerController : MonoBehaviour
     
     private void Start(){
         MainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        
         PlayerCharacter = GameObject.FindGameObjectWithTag("Player");
+        PlayerCharacter.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.None;
+        
         GameObject miniGamePointListObj = GameObject.Find("MiniGamePointList");
         
         if(miniGamePointListObj){
