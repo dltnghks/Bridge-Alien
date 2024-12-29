@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2379227943",
+    "Type": "Event",
+    "GUID": "{FA9A97F0-B75E-444F-98D4-E8916C72F397}",
+    "Language": "SFX",
+    "Hash": "{9CEC970E-1A43-D0DD-9624-BCBD92606AE5}",
+    "ObjectPath": "Play_StandardBoxHold",
+    "ShortName": "Play_StandardBoxHold",
+    "Path": "Event/Play_StandardBoxHold.bnk",
+    "Media": [
+     {
+      "Id": "315293091",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box1_hold.wav",
+      "Path": "Media/315293091.wem",
+      "CachePath": "76/{76FE44A6-3F81-B1AF-02A2-A579C1BAB928}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2379227943",
+      "Name": "Play_StandardBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBoxHold",
+      "GUID": "{FA9A97F0-B75E-444F-98D4-E8916C72F397}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.25241667",
+      "DurationMax": "0.25241667",
+      "MediaRefs": [
+       {
+        "Id": "315293091"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{F6CBB061-C8AF-A0C4-254C-31183E00895C}"
+ }
+}

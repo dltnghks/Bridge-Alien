@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2487093689",
+    "Type": "Event",
+    "GUID": "{1AB5F1BB-822A-4224-B046-009654321711}",
+    "Language": "SFX",
+    "Hash": "{26D9BBE8-B29A-B62D-F359-CB64545F3E4E}",
+    "ObjectPath": "Play_SmallBoxHold",
+    "ShortName": "Play_SmallBoxHold",
+    "Path": "Event/Play_SmallBoxHold.bnk",
+    "Media": [
+     {
+      "Id": "596884453",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box5_hold.wav",
+      "Path": "Media/596884453.wem",
+      "CachePath": "25/{253ACF63-FB15-1440-953D-3737D1BA7F33}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2487093689",
+      "Name": "Play_SmallBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_SmallBoxHold",
+      "GUID": "{1AB5F1BB-822A-4224-B046-009654321711}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.2415",
+      "DurationMax": "0.2415",
+      "MediaRefs": [
+       {
+        "Id": "596884453"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{FE72AC42-9F15-1EF1-D598-358792A89DA3}"
+ }
+}

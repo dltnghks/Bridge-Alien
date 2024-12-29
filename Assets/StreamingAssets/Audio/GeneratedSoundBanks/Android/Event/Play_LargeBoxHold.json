@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2606206533",
+    "Type": "Event",
+    "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
+    "Language": "SFX",
+    "Hash": "{4B37498C-8183-17F1-162E-EBD551A85A6F}",
+    "ObjectPath": "Play_LargeBoxHold",
+    "ShortName": "Play_LargeBoxHold",
+    "Path": "Event/Play_LargeBoxHold.bnk",
+    "Media": [
+     {
+      "Id": "624327706",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box3_hold.wav",
+      "Path": "Media/624327706.wem",
+      "CachePath": "D1/{D1EDD0BB-DC30-E2EB-178E-FE40345C06F6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2606206533",
+      "Name": "Play_LargeBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_LargeBoxHold",
+      "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.144875",
+      "DurationMax": "0.144875",
+      "MediaRefs": [
+       {
+        "Id": "624327706"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{08F74018-AA0E-2BEE-1632-16AF9ADB4EDA}"
+ }
+}

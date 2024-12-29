@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3891211119	Play_box6_hold			\Default Work Unit\Play_box6_hold	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

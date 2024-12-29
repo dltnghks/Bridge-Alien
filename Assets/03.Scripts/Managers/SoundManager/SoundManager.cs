@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class SoundManager : MonoBehaviour
 {
@@ -14,21 +13,13 @@ public class SoundManager : MonoBehaviour
     
     public void Init()
     {
-        /*foreach (var childEvent in _soundEvent.EventDict[SoundType.MiniGameUnloadSFX])
-        {
-            foreach (var var in childEvent.Key)
-            {
-                Logger.Log(var);
-            }
-        }*/
-        
-        
         SetAllVolume(100f);
         SetSFXVolume(100f);
         SetBGMVolume(100f);
         LoadSoundEvent();
     }
 
+    
     private void LoadSoundEvent()
     {
         _soundEvent = Managers.Resource.Load<SoundEvent>("Sound/SoundEvent");
@@ -79,11 +70,11 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        if (_soundEvent.EventDict[type].TryGetValue(key, out string eventName))
+        if (_soundEvent.EventDict[type].TryGetValue(key, out AK.Wwise.Event soundEvent))
         {
-            Debug.Log($"Playing sound: {eventName}");
+            Debug.Log($"Playing sound: {soundEvent}");
             // Wwise 또는 Unity Audio를 호출하는 코드 추가
-            PlayEvent(eventName, soundGameObject);
+            PlayEvent(soundEvent, soundGameObject);
         }
         else
         {
@@ -91,14 +82,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void PlayEvent(string eventName, GameObject soundGameObject){
+    private void PlayEvent(AK.Wwise.Event soundEvent, GameObject soundGameObject){
         // 유효성 검사.. 어떻게 함
 
-        /*if(soundGameObject == null)
+        if(soundGameObject == null)
         {
             soundGameObject = gameObject;
         }
-        AkUnitySoundEngine.PostEvent(eventName, soundGameObject);*/
+        soundEvent.Post(soundGameObject);
     }
 
     public void PauseSFX(){

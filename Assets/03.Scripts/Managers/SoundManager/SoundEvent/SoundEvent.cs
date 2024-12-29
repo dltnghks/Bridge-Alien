@@ -36,7 +36,7 @@ public enum MiniGameUnloadSoundSFX{
 [CreateAssetMenu(menuName = "Sound/SoundEvent")]
 public class SoundEvent : ScriptableObject
 {
-    public SerializableDictionary<SoundType, SerializableDictionary<string, string>> EventDict = new SerializableDictionary<SoundType, SerializableDictionary<string, string>>();
+    public SerializableDictionary<SoundType, SerializableDictionary<string, AK.Wwise.Event>> EventDict = new SerializableDictionary<SoundType, SerializableDictionary<string, AK.Wwise.Event>>();
 
     public void InitEventDict()
     {
@@ -64,7 +64,7 @@ public class SoundEvent : ScriptableObject
 
         // Dictionary 초기화
         if (!EventDict.ContainsKey(type))
-            EventDict[type] = new SerializableDictionary<string, string>();
+            EventDict[type] = new SerializableDictionary<string, AK.Wwise.Event>();
 
 
         // Enum 값의 Key를 HashSet으로 수집 (빠른 검사용)
@@ -91,12 +91,7 @@ public class SoundEvent : ScriptableObject
             string keyString = Enum.GetName(enumType, value);
             if (!string.IsNullOrEmpty(keyString) && !EventDict[type].ContainsKey(keyString))
             {
-                string eventName = $"Play_{keyString}";
-                EventDict[type].Add(keyString, eventName);
-            }
-            else if(string.IsNullOrEmpty(EventDict[type][keyString])){
-                string eventName = $"Play_{keyString}";
-                EventDict[type][keyString] = eventName;
+                EventDict[type].Add(keyString, null);
             }
         }
     }

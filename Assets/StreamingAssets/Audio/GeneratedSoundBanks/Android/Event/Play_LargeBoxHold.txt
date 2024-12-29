@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2606206533	Play_LargeBoxHold			\Default Work Unit\Play_LargeBoxHold	
+

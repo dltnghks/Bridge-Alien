@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2092292987",
+    "Type": "Event",
+    "GUID": "{EA492A81-94EB-4548-8E1F-6022B836AFA0}",
+    "Language": "SFX",
+    "Hash": "{8842469F-2A20-86C2-3751-ACC88CD7A63B}",
+    "ObjectPath": "Play_box6_put",
+    "ShortName": "Play_box6_put",
+    "Path": "Event/Play_box6_put.bnk",
+    "Media": [
+     {
+      "Id": "659452326",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box6_put.wav",
+      "Path": "Media/659452326.wem",
+      "CachePath": "E7/{E7EBF7D4-DC44-3044-2171-D80A10D82ED4}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2092292987",
+      "Name": "Play_box6_put",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_box6_put",
+      "GUID": "{EA492A81-94EB-4548-8E1F-6022B836AFA0}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.15466666",
+      "DurationMax": "0.15466666",
+      "MediaRefs": [
+       {
+        "Id": "659452326"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{1485FBD0-8E4C-D8DC-6236-3C45D692A2F1}"
+ }
+}

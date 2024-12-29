@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3492520348	Play_box7_hold			\Default Work Unit\Play_box7_hold	
+

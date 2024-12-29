@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="Project" SchemaVersion="123" WwiseVersion="v2024.1.1" WwiseBuild="8691">
+<WwiseDocument Type="Project" SchemaVersion="123" WwiseVersion="v2024.1.0" WwiseBuild="8669">
 	<ProjectInfo>
 		<Project Name="Bridge-Alien_WwiseProject" ID="{D7EB7EBC-0611-46DE-BB2E-805F0D9ACDCB}">
 			<Platforms>
@@ -14,6 +14,7 @@
 				<Language Name="SFX" ID="{38F23F97-15D7-41B3-969F-536D26A7A511}" />
 			</LanguageList>
 			<PropertyList>
+				<Property Name="AutoSoundBankEnabled" Type="bool" Value="True" />
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
 						<Value Platform="Windows"></Value>
@@ -23,13 +24,13 @@
 				</Property>
 				<Property Name="ExternalSourcesOutputPath" Type="string">
 					<ValueList>
-						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
-						<Value Platform="Android">GeneratedSoundBanks\Android\</Value>
-						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
+						<Value Platform="Windows">GeneratedSoundBanks\Windows</Value>
+						<Value Platform="Android">GeneratedSoundBanks\Android</Value>
+						<Value Platform="Mac">GeneratedSoundBanks\Mac</Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankGenerateHeaderFile" Type="bool" Value="True" />
-				<Property Name="SoundBankGenerateEstimatedDuration" Type="bool" Value="True" /><Property Name="SoundBankHeaderFilePath" Type="string" Value="../../Bridge-Alien/Assets/StreamingAssets/Audio/GeneratedSoundBanks" />
+				<Property Name="SoundBankGenerateEstimatedDuration" Type="bool" Value="True" /><Property Name="SoundBankHeaderFilePath" Type="string" Value="..\..\Bridge-Alien\Assets\StreamingAssets\Audio\GeneratedSoundBanks" />
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>
 						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
@@ -67,6 +68,10 @@
 				</Property>
 				<Property Name="WwiseVersionWhenCreated" Type="string" Value="Branch=wwise_v2024.1.0|Build=8669|VersionName=v2024.1.0|Config=Release" />
 			</PropertyList>
+			<MiscSettings>
+				<MiscSettingEntry Name="Cache"><![CDATA[.cache]]></MiscSettingEntry>
+				<MiscSettingEntry Name="Originals"><![CDATA[Originals]]></MiscSettingEntry>
+			</MiscSettings>
 			<SharedValues>
 				<SharedPropertyList ClassName="AudioFileSource" PluginType="0" CompanyID="1" PluginID="0">
 					<PropertyList>
@@ -952,11 +957,6 @@
 							</ValueList>
 						</Property>
 						<Property Name="SoundBankGenerateMaxAttenuationInfo" Type="bool">
-							<ValueList>
-								<Value>True</Value>
-							</ValueList>
-						</Property>
-						<Property Name="SoundBankGeneratePrintColor" Type="bool">
 							<ValueList>
 								<Value>True</Value>
 							</ValueList>
@@ -6765,11 +6765,6 @@
 							</ValueList>
 						</Property>
 						<Property Name="SoundBankGenerateMaxAttenuationInfo" Type="bool">
-							<ValueList>
-								<Value>True</Value>
-							</ValueList>
-						</Property>
-						<Property Name="SoundBankGeneratePrintColor" Type="bool">
 							<ValueList>
 								<Value>True</Value>
 							</ValueList>

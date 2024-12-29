@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2557702835",
+    "Type": "Event",
+    "GUID": "{7D9AF864-E4E6-4692-B965-B8086BA3EB21}",
+    "Language": "SFX",
+    "Hash": "{C09BB0C0-603D-B628-823F-9714462D0C7C}",
+    "ObjectPath": "Play_StandardBoxPut",
+    "ShortName": "Play_StandardBoxPut",
+    "Path": "Event/Play_StandardBoxPut.bnk",
+    "Media": [
+     {
+      "Id": "427923044",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box1_put.wav",
+      "Path": "Media/427923044.wem",
+      "CachePath": "54/{54853155-930B-7D01-F4AA-3CC97A18FC91}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2557702835",
+      "Name": "Play_StandardBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBoxPut",
+      "GUID": "{7D9AF864-E4E6-4692-B965-B8086BA3EB21}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.21679166",
+      "DurationMax": "0.21679166",
+      "MediaRefs": [
+       {
+        "Id": "427923044"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{7BEFD6CB-4AC6-476B-5BB2-DA9BA1A4D229}"
+ }
+}

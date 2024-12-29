@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2379227943	Play_StandardBoxHold			\Default Work Unit\Play_StandardBoxHold	
+

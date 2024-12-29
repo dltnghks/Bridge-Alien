@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "601402224",
+    "Type": "Event",
+    "GUID": "{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}",
+    "Language": "SFX",
+    "Hash": "{1B8F9876-E764-2ADF-8D54-C04B3FFB63C4}",
+    "ObjectPath": "Stop_MiniGameUnloadBGM",
+    "ShortName": "Stop_MiniGameUnloadBGM",
+    "Path": "Event/Stop_MiniGameUnloadBGM.bnk",
+    "Events": [
+     {
+      "Id": "601402224",
+      "Name": "Stop_MiniGameUnloadBGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_MiniGameUnloadBGM",
+      "GUID": "{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{A40C73BE-E590-AFEB-0EBF-D02A91019F01}"
+ }
+}

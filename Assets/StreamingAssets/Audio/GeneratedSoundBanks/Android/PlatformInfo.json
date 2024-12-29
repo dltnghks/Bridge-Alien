@@ -14,7 +14,7 @@
   },
   "DefaultAlign": "16",
   "Settings": {
-   "AutoSoundBankDefinition": "false",
+   "AutoSoundBankDefinition": "true",
    "CopyLooseStreamedMediaFiles": "true",
    "SubFoldersForGeneratedFiles": "false",
    "RemoveUnusedGeneratedFiles": "true",
@@ -32,6 +32,6 @@
    "PrintObjectGuid": "true",
    "PrintObjectPath": "true"
   },
-  "FileHash": "{03E831EC-C4B9-5214-05AA-0734B88EC797}"
+  "FileHash": "{CE8760A9-F415-6624-125A-BA951B55C1DA}"
  }
 }

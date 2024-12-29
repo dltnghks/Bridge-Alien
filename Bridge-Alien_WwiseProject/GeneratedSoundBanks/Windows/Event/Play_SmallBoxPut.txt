@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3924693453	Play_SmallBoxPut			\Default Work Unit\Play_SmallBoxPut	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

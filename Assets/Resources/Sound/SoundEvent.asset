@@ -18,28 +18,58 @@ MonoBehaviour:
       Value:
         _keyValueList:
         - Key: MiniGameUnloadBGM
-          Value: Play_MiniGameUnloadBGM
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 399cc16595ac66c4592f062de937b771, type: 2}
     - Key: 1
       Value:
         _keyValueList:
         - Key: MenuButtonClick
-          Value: Play_MenuButtonClick
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 68378a7357ada3b43ba7f9ce53d05f91, type: 2}
     - Key: 2
       Value:
         _keyValueList:
-        - Key: SmallBoxPut
-          Value: Play_SmallBoxPut
-        - Key: StandardBoxPut
-          Value: Play_StandardBoxPut
-        - Key: LargeBoxPut
-          Value: Play_LargeBoxPut
-        - Key: SmallBoxHold
-          Value: Play_SmallBoxHold
-        - Key: StandardBoxHold
-          Value: Play_StandardBoxHold
-        - Key: LargeBoxPHold
-          Value: Play_LargeBoxPHold
         - Key: PostPut
-          Value: Play_PostPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 3d93908766c9c884f82dca3f57603393, type: 2}
+        - Key: SmallBoxPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: facc76ff2123f0a4194547fcd02bf772, type: 2}
+        - Key: StandardBoxPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
+        - Key: LargeBoxPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: b12bd8155ee415541844bc3b532b5df9, type: 2}
         - Key: PostHold
-          Value: Play_PostHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 9a573629793a9f54a9078a7255849916, type: 2}
+        - Key: SmallBoxHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 5e1a6f3adac62f24ead008e1df5f4060, type: 2}
+        - Key: StandardBoxHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 41b834f982b80fe49b91ca09557b6b8e, type: 2}
+        - Key: LargeBoxPHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 02ac5ab39b3efcf42822a462b6d94d8a, type: 2}

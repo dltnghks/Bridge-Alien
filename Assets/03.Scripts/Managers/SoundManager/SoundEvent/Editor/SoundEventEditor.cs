@@ -10,10 +10,10 @@ public class SoundEventEditor : Editor
     {
         SoundEvent soundEvent = (SoundEvent)target;
 
-        //soundEvent.InitEventDict();
+        soundEvent.InitEventDict();
 
-
-        // Dictionary의 Key 리스트를 복사
+        base.OnInspectorGUI();
+        /*// Dictionary의 Key 리스트를 복사
         var soundTypeKeys = new List<SoundType>(soundEvent.EventDict.Keys);
 
         for (int i = 0; i < soundTypeKeys.Count; i++)
@@ -53,6 +53,6 @@ public class SoundEventEditor : Editor
         if (GUI.changed)
         {
             EditorUtility.SetDirty(soundEvent);
-        }
+        }*/
     }
 }

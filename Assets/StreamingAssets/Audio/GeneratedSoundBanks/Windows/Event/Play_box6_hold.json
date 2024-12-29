@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3891211119",
+    "Type": "Event",
+    "GUID": "{55840090-558F-4D9C-BDB7-DDC692D199DD}",
+    "Language": "SFX",
+    "Hash": "{FF395475-1883-400A-936B-FE2E19F02849}",
+    "ObjectPath": "Play_box6_hold",
+    "ShortName": "Play_box6_hold",
+    "Path": "Event/Play_box6_hold.bnk",
+    "Media": [
+     {
+      "Id": "883533581",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box6_hold.wav",
+      "Path": "Media/883533581.wem",
+      "CachePath": "82/{82BDF3E2-43E4-BB6C-0B9A-BEFEF7D3B294}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3891211119",
+      "Name": "Play_box6_hold",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_box6_hold",
+      "GUID": "{55840090-558F-4D9C-BDB7-DDC692D199DD}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.1236875",
+      "DurationMax": "0.1236875",
+      "MediaRefs": [
+       {
+        "Id": "883533581"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{6A315514-8CA9-562C-9508-325FE0D08817}"
+ }
+}
