@@ -10,7 +10,8 @@ public class BaseScene : MonoBehaviour
     private void Start()
     {
         Init();
-
+        
+        Managers.Sound.StopBGM();
         string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), SceneType);
         if (SceneType == Define.Scene.MiniGameUnload)
         {

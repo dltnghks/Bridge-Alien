@@ -17,7 +17,12 @@ MonoBehaviour:
     - Key: 0
       Value:
         _keyValueList:
-        - Key: MiniGameUnloadBGM
+        - Key: GameMap
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 399cc16595ac66c4592f062de937b771, type: 2}
+        - Key: MiniGameUnload
           Value:
             idInternal: 0
             valueGuidInternal: 
@@ -25,12 +30,30 @@ MonoBehaviour:
     - Key: 1
       Value:
         _keyValueList:
-        - Key: MenuButtonClick
+        - Key: CommonButtonClick
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 68378a7357ada3b43ba7f9ce53d05f91, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 02ac5ab39b3efcf42822a462b6d94d8a, type: 2}
+        - Key: FootStepPlayerCharacter
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: b12bd8155ee415541844bc3b532b5df9, type: 2}
     - Key: 2
+      Value:
+        _keyValueList:
+        - Key: ClickGamePoint
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 41b834f982b80fe49b91ca09557b6b8e, type: 2}
+        - Key: MoveCharacter
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
+    - Key: 3
       Value:
         _keyValueList:
         - Key: PostPut
@@ -69,6 +92,16 @@ MonoBehaviour:
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 41b834f982b80fe49b91ca09557b6b8e, type: 2}
         - Key: LargeBoxPHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 02ac5ab39b3efcf42822a462b6d94d8a, type: 2}
+        - Key: BrokenBox
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
+        - Key: Conveyor
           Value:
             idInternal: 0
             valueGuidInternal: 

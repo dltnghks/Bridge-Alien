@@ -7,17 +7,25 @@ using UnityEngine.PlayerLoop;
 public enum SoundType
 {
     SceneBGM,
-    CommonSFX,
+    CommonSoundSFX,
+    GameMapSFX,
     MiniGameUnloadSFX,
 
 }
 
 public enum SceneBGM{
-    MiniGameUnloadBGM,
+    MiniGameUnload,
+    GameMap,
 }
 public enum CommonSoundSFX{
-    //common
-    MenuButtonClick,
+    CommonButtonClick,
+    FootStepPlayerCharacter,
+}
+
+public enum GameMapSFX
+{
+    MoveCharacter,
+    ClickGamePoint,
 }
 public enum MiniGameUnloadSoundSFX{
     
@@ -31,6 +39,13 @@ public enum MiniGameUnloadSoundSFX{
     SmallBoxHold,
     StandardBoxHold,
     LargeBoxPHold,
+    
+    BrokenBox,
+    
+    
+    // Ambient
+    Conveyor
+    
 }
 
 [CreateAssetMenu(menuName = "Sound/SoundEvent")]
@@ -53,7 +68,8 @@ public class SoundEvent : ScriptableObject
         Type enumType = type switch
         {
             SoundType.SceneBGM => typeof(SceneBGM),
-            SoundType.CommonSFX => typeof(CommonSoundSFX),
+            SoundType.GameMapSFX => typeof(GameMapSFX),
+            SoundType.CommonSoundSFX => typeof(CommonSoundSFX),
             SoundType.MiniGameUnloadSFX => typeof(MiniGameUnloadSoundSFX),
             _ => null,
         };

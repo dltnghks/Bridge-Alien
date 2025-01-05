@@ -22,8 +22,14 @@ public class UIGameMenu : UISubItem
     }
 
     public void OnClickOptionButton(){
+        if (Managers.MiniGame.CurrentGame.IsPause)
+        {
+            return;
+        }
+        
         Logger.Log("OnClickOption");
         Managers.MiniGame.PauseGame();
         Managers.UI.ShowPopUI<UIGameMenuPopup>();
+    
     }
 }

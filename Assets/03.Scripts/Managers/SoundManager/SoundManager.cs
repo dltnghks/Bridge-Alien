@@ -55,9 +55,14 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayBGM(string eventName){
-        PlaySound(SoundType.SceneBGM, $"{eventName}BGM");
+        PlaySound(SoundType.SceneBGM, eventName);
     }
 
+    public void StopBGM()
+    {
+        AkUnitySoundEngine.StopAll();
+    }
+    
     public void PlaySFX(SoundType type, string eventName, GameObject soundGameObject = null){
         PlaySound(type, eventName, soundGameObject);
     }

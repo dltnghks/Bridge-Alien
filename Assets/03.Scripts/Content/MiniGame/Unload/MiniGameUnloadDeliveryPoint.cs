@@ -65,6 +65,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
                 Logger.Log("broken box");
                 _action?.Invoke(-10);
                 box.SetInGameActive(false);
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BrokenBox.ToString(), gameObject);
                 return;
             }
             else if (CheckBoxInfo(box.Info))
