@@ -29,7 +29,7 @@
      {
       "Id": "3924693453",
       "Name": "Play_SmallBoxPut",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_SmallBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SmallBoxPut",
       "GUID": "{1D626541-BF42-414B-A673-E9BD2218AB5E}",
       "DurationType": "OneShot",
       "DurationMin": "0.15189584",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{95FA0E8D-3956-CA4F-5732-12F993488B6D}"
+  "FileHash": "{7F0D9FEB-B869-0E86-01C9-E9B329A8285F}"
  }
 }

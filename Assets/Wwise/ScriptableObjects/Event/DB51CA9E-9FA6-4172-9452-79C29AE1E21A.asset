@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc32ec4493e5094458058d6dfe8a05d2, type: 3}
-  m_Name: 55840090-558F-4D9C-BDB7-DDC692D199DD
+  m_Name: DB51CA9E-9FA6-4172-9452-79C29AE1E21A
   m_EditorClassIdentifier: 
-  objectName: Play_box6_hold
-  id: 3891211119
-  guid: 55840090-558F-4D9C-BDB7-DDC692D199DD
+  objectName: Play_PickUpBox
+  id: 3158537189
+  guid: DB51CA9E-9FA6-4172-9452-79C29AE1E21A
   IsInUserDefinedSoundBank: 0
   IsAutoBankLoaded: 1

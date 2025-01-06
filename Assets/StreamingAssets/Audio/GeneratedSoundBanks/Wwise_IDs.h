@@ -13,10 +13,6 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID PLAY_BOX6_HOLD = 3891211119U;
-        static const AkUniqueID PLAY_BOX6_PUT = 2092292987U;
-        static const AkUniqueID PLAY_BOX7_HOLD = 3492520348U;
-        static const AkUniqueID PLAY_BOX7_PUT = 3330118158U;
         static const AkUniqueID PLAY_LARGEBOXHOLD = 2606206533U;
         static const AkUniqueID PLAY_LARGEBOXPUT = 3670728633U;
         static const AkUniqueID PLAY_MINIGAMEUNLOADBGM = 3026964974U;

@@ -29,7 +29,7 @@
      {
       "Id": "3158537189",
       "Name": "Play_PickUpBox",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_PickUpBox",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_PickUpBox",
       "GUID": "{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}",
       "DurationType": "OneShot",
       "DurationMin": "1.8546939",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{4B7F8F88-A235-BC2C-15F1-18DDBBFD58B2}"
+  "FileHash": "{B172FBF9-0AB8-0BE9-5502-FA0FEF990F29}"
  }
 }

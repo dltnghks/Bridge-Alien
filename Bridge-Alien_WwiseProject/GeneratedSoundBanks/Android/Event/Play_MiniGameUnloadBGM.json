@@ -29,7 +29,7 @@
      {
       "Id": "3026964974",
       "Name": "Play_MiniGameUnloadBGM",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_MiniGameUnloadBGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_MiniGameUnloadBGM",
       "GUID": "{3C7F040D-8586-40FE-B104-0587DB218369}",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{91F43901-DBA4-FB7B-3D53-8A65FCF48906}"
+  "FileHash": "{33D4AB9C-33E5-4848-D88C-EE536A2CC858}"
  }
 }

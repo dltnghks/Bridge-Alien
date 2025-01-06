@@ -29,7 +29,7 @@
      {
       "Id": "1869835011",
       "Name": "Play_PostPut",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_PostPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_PostPut",
       "GUID": "{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}",
       "DurationType": "OneShot",
       "DurationMin": "0.2304375",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{A1A3FF4F-572E-8739-AB3C-FEC0989CC44F}"
+  "FileHash": "{8B4E77FD-6E15-33CF-B9A6-6D048A92857D}"
  }
 }

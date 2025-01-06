@@ -18,7 +18,7 @@
      {
       "Id": "601402224",
       "Name": "Stop_MiniGameUnloadBGM",
-      "ObjectPath": "\\Events\\Default Work Unit\\Stop_MiniGameUnloadBGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Stop_MiniGameUnloadBGM",
       "GUID": "{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}",
       "MaxAttenuation": "0",
       "DurationType": "OneShot",
@@ -28,6 +28,6 @@
     ]
    }
   ],
-  "FileHash": "{40439C75-5C65-8438-E5E9-1AA28D2BB926}"
+  "FileHash": "{CE1E4B67-08E4-718F-F091-65563E962198}"
  }
 }

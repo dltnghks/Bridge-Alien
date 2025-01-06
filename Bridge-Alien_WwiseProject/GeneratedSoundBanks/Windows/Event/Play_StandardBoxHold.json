@@ -29,7 +29,7 @@
      {
       "Id": "2379227943",
       "Name": "Play_StandardBoxHold",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_StandardBoxHold",
       "GUID": "{FA9A97F0-B75E-444F-98D4-E8916C72F397}",
       "DurationType": "OneShot",
       "DurationMin": "0.25241667",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{BC0BF77E-DB76-FBD0-9599-4BC9CDEEDB53}"
+  "FileHash": "{732E4B18-BEDE-FE86-EBB4-E26AA69D379F}"
  }
 }
