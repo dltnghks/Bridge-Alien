@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 442358387930060806}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.9050884, y: 5.1684585, z: -2.911917}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57,9 +57,9 @@ MonoBehaviour:
     IsGrab: 0
   _boxSpriteList:
   - {fileID: 21300000, guid: c436a71e23a6793458059625cf5f8af7, type: 3}
-  - {fileID: 21300000, guid: c9f97b8db0cb0874e9d996c6094910fc, type: 3}
-  - {fileID: 21300000, guid: c9f97b8db0cb0874e9d996c6094910fc, type: 3}
-  - {fileID: 21300000, guid: c9f97b8db0cb0874e9d996c6094910fc, type: 3}
+  - {fileID: 21300000, guid: 21c0af12d0a26ec49bfc700ffbd76102, type: 3}
+  - {fileID: 21300000, guid: 2cfeba4b23c1b3d4c8afd99c163d67a8, type: 3}
+  - {fileID: 21300000, guid: ecfd8582e79e6f6419275ef31e4b4e99, type: 3}
   _regionSpriteList: []
 --- !u!65 &4678780358310689977
 BoxCollider:

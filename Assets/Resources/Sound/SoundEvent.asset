@@ -21,12 +21,12 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 399cc16595ac66c4592f062de937b771, type: 2}
+            WwiseObjectReference: {fileID: 0}
         - Key: MiniGameUnload
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 399cc16595ac66c4592f062de937b771, type: 2}
+            WwiseObjectReference: {fileID: 0}
     - Key: 1
       Value:
         _keyValueList:

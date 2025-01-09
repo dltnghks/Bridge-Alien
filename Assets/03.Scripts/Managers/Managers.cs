@@ -50,7 +50,10 @@ public class Managers : MonoBehaviour
             _miniGameManager = Utils.GetOrAddComponent<MiniGameManager>(go);
             _miniGameManager.Init();
 
-            _cameraManager = Utils.GetOrAddComponent<CameraManager>(go);
+            if ((_cameraManager = FindObjectOfType<CameraManager>()) == null)
+            {
+                _cameraManager = Utils.GetOrAddComponent<CameraManager>(go);
+            }
             _cameraManager.Init();
 
             _soundManager = Utils.GetOrAddComponent<SoundManager>(go);

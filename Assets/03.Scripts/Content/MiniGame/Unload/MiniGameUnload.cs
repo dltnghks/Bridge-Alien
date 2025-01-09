@@ -11,8 +11,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [Header("Game Information")]
     // 게임을 플레이할 수 있는 시간
     [SerializeField] private float _gameTime = 6.0f;
-    // 박스 생성 주기
-    [SerializeField] private float _boxSpawnInterval = 3.0f;
 
     [Header("Delivery Point")]
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
@@ -20,6 +18,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [Header("Box Spawn Point")]
     [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;    
     [SerializeField] private int _maxSpawnBoxIndex = 3;
+    [SerializeField] private float _boxSpawnInterval = 3.0f;                    // 박스 생성 주기
 
     [Header("Player Information")]
     [SerializeField] private float _detectionBoxRadius = 2f;
