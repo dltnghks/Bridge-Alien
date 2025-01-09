@@ -74,7 +74,7 @@ public class ThirdPersonCamera : CameraController
         if (isHit)
         {
             // 벽과의 거리 계산 (sphereCast 반경 고려)
-            float distanceToWall = hit.distance + settings.sphereCastRadius;
+            /*float distanceToWall = hit.distance + settings.sphereCastRadius;
             
             // 최소 거리 보장
             float targetDistance = Mathf.Max(distanceToWall - settings.minWallDistance, settings.minWallDistance);
@@ -86,6 +86,7 @@ public class ThirdPersonCamera : CameraController
                 ref smoothDampVelocity,   // 속도 참조
                 0.1f                      // 부드러움 정도
             );
+            */
             
             isBlocked = true;
             previousHitPoint = hit.point;
@@ -106,18 +107,22 @@ public class ThirdPersonCamera : CameraController
         // 최종 카메라 위치 계산
         Vector3 targetCameraPosition = targetPosition - direction * currentBlockDistance;
         
+        
         // 추가 레이캐스트로 얇은 벽 통과 방지
-        RaycastHit wallHit;
-        if (Physics.Linecast(targetPosition, targetCameraPosition, out wallHit))
+        if (isBlocked)
         {
-            targetCameraPosition = wallHit.point + (direction * settings.minWallDistance);
+            targetCameraPosition.x = transform.position.x;
+        }
+        else
+        {
+            // 카메라가 항상 타겟을 바라보도록 함
+            transform.LookAt(targetPosition);
         }
         
         // 최종 위치 적용 (부드러운 이동)
-        transform.position = Vector3.Lerp(transform.position, targetCameraPosition, settings.smoothSpeed * Time.deltaTime);
-        
-        // 카메라가 항상 타겟을 바라보도록 함
-        transform.LookAt(targetPosition);
+        //transform.position = Vector3.Lerp(transform.position, targetCameraPosition, settings.smoothSpeed * Time.deltaTime);
+
+        transform.position = targetCameraPosition;
         
         // 디버그 시각화
         Debug.DrawLine(targetPosition, transform.position, isBlocked ? Color.red : Color.green);
