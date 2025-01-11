@@ -66,7 +66,7 @@ public abstract class BillboardBase : MonoBehaviour
     }
 }
 
-//! 스프라이트 빌보드
+/*//! 스프라이트 빌보드
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteBillboard : BillboardBase
 {
@@ -77,7 +77,7 @@ public class SpriteBillboard : BillboardBase
         base.Awake();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-}
+}*/
 
 //! 캔버스 빌보드
 [RequireComponent(typeof(Canvas))]

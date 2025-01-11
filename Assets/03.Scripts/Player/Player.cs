@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -79,6 +80,11 @@ public class Player : MonoBehaviour
             spriteRenderer.flipX = parentRenderer.flipX;
             spriteRenderer.flipY = parentRenderer.flipY;
             spriteRenderer.sortingLayerID = parentRenderer.sortingLayerID;
+            
+            // 그림자 설정 복사
+            spriteRenderer.shadowCastingMode = parentRenderer.shadowCastingMode;
+            spriteRenderer.receiveShadows = parentRenderer.receiveShadows;
+            spriteRenderer.sharedMaterial = parentRenderer.sharedMaterial;
         }
 
         // 기존 부모의 스프라이트 렌더러 제거
