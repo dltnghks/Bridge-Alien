@@ -26,6 +26,10 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
         if(!box.gameObject.activeSelf && BoxList.TryAddInGameUnloadBoxList(box))
         {
             Vector3 spawnPos = _boxSpawnPosition + Vector3.up * (_boxHeight + box.Info.Size/2);
+            
+            // z-ordering, 겹치면 렌더링 충돌나서 z를 살짝 조절, 위로 올라갈수록 앞으로
+            //spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
+            
             _boxHeight += box.Info.Size;
             box.SetInGameActive(true, spawnPos);
             return true;

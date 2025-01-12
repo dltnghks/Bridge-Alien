@@ -194,10 +194,24 @@ public class MiniGameUnloadBox : MonoBehaviour
     {
         if (spriteRenderer == null)
         {
+            /*GameObject spriteObj = new GameObject("BoxSprite");
+            spriteObj.transform.SetParent(gameObject.transform);
+            spriteObj.transform.localPosition = Vector3.zero;
+            spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();*/
+            
+            
             GameObject spriteObj = new GameObject("BoxSprite");
             spriteObj.transform.SetParent(gameObject.transform);
             spriteObj.transform.localPosition = Vector3.zero;
             spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();
+            SpriteRenderer parentSpriteRenderer = gameObject.GetOrAddComponent<SpriteRenderer>();
+            spriteRenderer.material = parentSpriteRenderer.material;
+            spriteRenderer.receiveShadows = parentSpriteRenderer.receiveShadows;
+            spriteRenderer.shadowCastingMode = parentSpriteRenderer.shadowCastingMode;
+            
+            
+            spriteObj.AddComponent<SpriteBillboard>();
+            
         }
 
         if (regionSpriteRenderer)
