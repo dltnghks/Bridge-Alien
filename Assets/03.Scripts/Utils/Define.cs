@@ -42,10 +42,10 @@ public class Define
 
     public enum BoxRegion
     {
-        North,
-        South,
-        East,
-        West,
-        Central, 
+        CapitalArea,
+        ChungcheongArea,
+        YeongnamArea,
+        HonamArea,
+        GangwonArea, 
     }
 }

@@ -14,6 +14,7 @@ public class UITimer : UISubItem
 
     enum Objects{
         TimerGauge,
+        Background,
     }
     
     [SerializeField] private bool _onGauge = false;
@@ -41,6 +42,7 @@ public class UITimer : UISubItem
         }
         if(!_onTimerText){
             GetText((int)Texts.TimerText).gameObject.SetActive(false);
+            GetObject((int)Objects.Background).gameObject.SetActive(false);
         }
 
         return true;

@@ -20,6 +20,8 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
             _timer = new TimerBase();
         
         _uiBoxPreview = uiBoxPreview;
+        _uiBoxPreview.Init();
+        
         _boxSpawnInterval = boxSpawnInterval;
         _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
 

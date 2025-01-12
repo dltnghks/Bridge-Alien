@@ -43,7 +43,7 @@ public struct MiniGameUnloadBoxInfo
 
         BoxNumber = GenerateRandomString();  // AAA-0000형태
         
-        Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.Central + 1); // 지역 선택
+        Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.GangwonArea + 1); // 지역 선택
 
         Size = (float)Weight / 10f;
         
@@ -72,6 +72,33 @@ public struct MiniGameUnloadBoxInfo
         }
         return new string(result);
     }
+
+    public string GetBoxRegion()
+    {
+        switch (Region)
+        {
+            case Define.BoxRegion.GangwonArea: return "강원권";
+            case Define.BoxRegion.ChungcheongArea: return "충남권";
+            case Define.BoxRegion.YeongnamArea: return "영남권";
+            case Define.BoxRegion.CapitalArea: return "수도권";
+            case Define.BoxRegion.HonamArea: return "호남권";
+        }
+
+        return "정의되지 않은 배송지역";
+    }
+
+    public string GetBoxType()
+    {
+        switch (BoxType)
+        {
+            case Define.BoxType.Post: return "우편";
+            case Define.BoxType.LargeBox: return "대형 택배";
+            case Define.BoxType.SmallBox: return "소형 택배";
+            case Define.BoxType.StandardBox: return "일반 택배";
+        }
+
+        return "정의되지 않은 박스 타입";
+    }
 }
 
 public class MiniGameUnloadBox : MonoBehaviour
@@ -90,6 +117,11 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     private Rigidbody boxRigidbody;
     private BoxCollider boxCollider;
+
+    public SpriteRenderer SpriteRenderer
+    {
+        get { return spriteRenderer; }
+    }
 
     public MiniGameUnloadBoxInfo Info
     {
