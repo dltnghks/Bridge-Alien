@@ -19,7 +19,7 @@ public class Managers : MonoBehaviour
     private static FadeManager _fadeManager;
     private static CameraManager _cameraManager;
     private static SoundManager _soundManager;
-    
+    private static PoolManager _poolManager = new PoolManager();    
     
     public static ResourceManager Resource { get { Init(); return _resourceManager; } }
     public static UIManager UI { get{ Init(); return _uiManager; } }
@@ -28,6 +28,8 @@ public class Managers : MonoBehaviour
     public static MiniGameManager MiniGame { get{ Init(); return _miniGameManager; } }
     public static CameraManager Camera{get{Init(); return _cameraManager; }}
     public static SoundManager Sound{get{Init(); return _soundManager; }}
+    
+    public static PoolManager Pool { get{ Init(); return _poolManager; } }
     
     private static void Init()
     {
@@ -40,6 +42,7 @@ public class Managers : MonoBehaviour
             _instance = Utils.GetOrAddComponent<Managers>(go);
             
             _resourceManager.Init();
+            _poolManager.Init();
 
             _sceneManager = Utils.GetOrAddComponent<SceneManagerEx>(go);
             _sceneManager.Init();
