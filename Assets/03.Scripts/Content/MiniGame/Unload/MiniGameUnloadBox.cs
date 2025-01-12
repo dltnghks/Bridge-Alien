@@ -106,6 +106,7 @@ public class MiniGameUnloadBox : MonoBehaviour
         if(value)
         {
             transform.position = pos;
+            spriteRenderer.color = new Color(1, 1, 1, 1);
             if (Info.IsFragileBox)
             {
                 spriteRenderer.color = new Color(1, 0, 0, 0.7f);
@@ -191,15 +192,21 @@ public class MiniGameUnloadBox : MonoBehaviour
     
     private void AddBoxSprite()
     {
-        GameObject spriteObj = new GameObject("BoxSprite");
-        spriteObj.transform.SetParent(gameObject.transform);
-        spriteObj.transform.localPosition = Vector3.zero;
-        spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();
+        if (spriteRenderer == null)
+        {
+            GameObject spriteObj = new GameObject("BoxSprite");
+            spriteObj.transform.SetParent(gameObject.transform);
+            spriteObj.transform.localPosition = Vector3.zero;
+            spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();
+        }
 
-        GameObject regionSpriteObj = new GameObject("region");
-        regionSpriteObj.transform.SetParent(gameObject.transform);
-        regionSpriteObj.transform.localPosition = Vector3.zero;
-        regionSpriteRenderer = regionSpriteObj.GetOrAddComponent<SpriteRenderer>();
+        if (regionSpriteRenderer)
+        {
+            GameObject regionSpriteObj = new GameObject("region");
+            regionSpriteObj.transform.SetParent(gameObject.transform);
+            regionSpriteObj.transform.localPosition = Vector3.zero;
+            regionSpriteRenderer = regionSpriteObj.GetOrAddComponent<SpriteRenderer>();
+        }
     }
 }
 

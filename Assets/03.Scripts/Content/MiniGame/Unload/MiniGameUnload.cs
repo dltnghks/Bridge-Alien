@@ -164,14 +164,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         GameUI.Init();
     }
 
-    public void AddScore(int weight)
-    {
-        int score = 0;
-        int bonus = 0;
-        if(weight > 0) bonus = 10;
-        else bonus = 5;
-             
-        score = weight * bonus;
+    public void AddScore(int score)
+    {        
         _score.AddScore(score);
     }
 

@@ -59,30 +59,48 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
 
     private void MoveBoxToEndPoint(MiniGameUnloadBox box)
     {
+        int score = 0;
         if(!box.Info.IsGrab){
             if(box.Info.IsBroken)
             { 
                 Logger.Log("broken box");
-                _action?.Invoke(-10);
-                box.SetInGameActive(false);
+                score = -50;
+                
+                Managers.Resource.Destroy(box.gameObject);
                 Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BrokenBox.ToString(), gameObject);
                 return;
             }
             else if (CheckBoxInfo(box.Info))
             {
                 Logger.Log("True Region");
-                _action?.Invoke(box.Info.Weight);
+                score = box.Info.Weight * 10;
             }
             else
             {
                 Logger.Log("False Region");
-                _action?.Invoke(-box.Info.Weight);
+                score = -box.Info.Weight * 10;
             }
         }
 
         box.transform.DOMove(_endPointTransform.position, 1).OnComplete(() =>
-            box.SetInGameActive(false)
+            {
+                _action?.Invoke(score);
+                
+                // 획득 점수 표시
+                if(score < 0)
+                    GenerateScoreTextObj(score, Color.red);
+                else
+                    GenerateScoreTextObj(score, Color.green);
+                
+                Managers.Resource.Destroy(box.gameObject);
+            }
         );
+    }
+
+    private void GenerateScoreTextObj(int amount, Color color)
+    {
+        InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
+        scoreTextObj.Init(transform.position, amount, color, 0.5f);
     }
     
     private void OnTriggerExit(Collider coll)

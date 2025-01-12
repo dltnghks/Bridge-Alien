@@ -559,6 +559,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3522436406818075755, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.104400635
+      objectReference: {fileID: 0}
     - target: {fileID: 5119362877984613764, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: _onGauge
       value: 1
@@ -673,7 +677,7 @@ MonoBehaviour:
   _deliveryPointList: []
   _boxSpawnPoint: {fileID: 0}
   _maxSpawnBoxIndex: 5
-  _boxSpawnInterval: 3
+  _boxSpawnInterval: 1
   _detectionBoxRadius: 2
   _moveSpeedReductionRatio: 2
 --- !u!4 &842736089 stripped

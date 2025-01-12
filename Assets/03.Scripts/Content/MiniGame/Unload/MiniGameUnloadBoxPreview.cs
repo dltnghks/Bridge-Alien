@@ -27,11 +27,9 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         _timer.SetTimer(_uiBoxPreview.UITimer, _boxSpawnInterval, CreatInGameBox);
         
         _previewQueue.Clear();
+        _previewQueue.Enqueue(null);
         // 박스 만들기
-        for (int i = 0; i < 20; i++)
-        {
-            CreatePreviewBox();
-        }
+        CreatePreviewBox();
 
         DequeueBox();
     }
@@ -50,33 +48,45 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
     
     public void CreatePreviewBox()
     {   
-        // 박스 생성 및 설정
-        GameObject newBoxObj = Managers.Resource.Instantiate("Box", Managers.MiniGame.Root.transform);
-        MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
-        newBox.SetRandomInfo();
-            
-        Vector3 currentScale = newBoxObj.GetOrAddComponent<BoxCollider>().size; 
-        currentScale.y = newBox.Info.Size;
-        newBoxObj.GetOrAddComponent<BoxCollider>().size = currentScale;
-        
-        newBox.SetInGameActive(false);
-        
-        EnqueueBox(newBox);
+        // 박스 생성 및 설정, 오브젝트 풀에서 5개씩 가져와서 queue에다 넣기
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject newBoxObj = Managers.Resource.Instantiate("Box", Managers.MiniGame.Root.transform);
+            MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+            newBox.SetRandomInfo();
+
+            Vector3 currentScale = newBoxObj.GetOrAddComponent<BoxCollider>().size;
+            currentScale.y = newBox.Info.Size;
+            newBoxObj.GetOrAddComponent<BoxCollider>().size = currentScale;
+
+            newBox.SetInGameActive(false);
+
+            EnqueueBox(newBox);
+        }
     }
 
     public void CreatInGameBox()
     {
+        // 여유 박스가 없으면 생성해서 넣기
+        if (_previewQueue.Count <= 1)
+        {
+            CreatePreviewBox();
+        }
+        
         if(_previewQueue.Count > 0){
             MiniGameUnloadBox box = _previewQueue.Peek();
             if (box != null && _miniGameUnloadBoxSpawnPoint.TrySpawnBox(box))
             {
                 DequeueBox();
-                EnqueueBox(box);
             }
             else
             {
                 Logger.LogWarning("Fail CreateInGameBox");
             }
+        }
+        else
+        {
+            Logger.LogWarning("Fail CreateInGameBox");
         }
     }
 
@@ -90,7 +100,6 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         if (_previewQueue.Count > 0)
         {
             MiniGameUnloadBox box = _previewQueue.Dequeue();
-            
             if (_previewQueue.Count > 0)
             {
                 _uiBoxPreview.SetPreviewBoxInfo(_previewQueue.Peek());
