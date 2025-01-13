@@ -24,13 +24,27 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [SerializeField] private float _detectionBoxRadius = 2f;
     [SerializeField] private float _moveSpeedReductionRatio = 2.0f;
 
-
+    [Header("Game Camera Settings")]
+    [SerializeField] private CameraManager.CameraType _cameraType;
+    [SerializeField] private CameraSettings _cameraSettings;
+    
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
     public Player PlayerCharacter { get; set; }
     public IPlayerController PlayerController { get; set; }
-    
+    public CameraManager.CameraType CameraType
+    {
+        get { return _cameraType;}
+        set { _cameraType = value; }
+    }
+
+    public CameraSettings CameraSettings
+    {
+        get { return _cameraSettings; }
+        set { _cameraSettings = value; }
+    }
+
     public UIScene GameUI { get; set; }
     private UIGameUnloadScene _uiGameUnloadScene;
  

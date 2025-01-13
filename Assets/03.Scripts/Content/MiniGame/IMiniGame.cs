@@ -13,6 +13,9 @@ public interface IMiniGame
     Player PlayerCharacter { get; set; }
     IPlayerController PlayerController { get; set; }
     
+    CameraManager.CameraType CameraType { get; set; }
+    CameraSettings CameraSettings { get; set; } 
+    
     void StartGame();    // 게임 시작
     void PauseGame();    // 게임 일시정지
     void ResumeGame();   // 게임 재개

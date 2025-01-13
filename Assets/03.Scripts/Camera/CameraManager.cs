@@ -22,9 +22,19 @@ public class CameraManager : MonoBehaviour
     private static CameraManager instance;                                                  // 카메라 매니저는 싱글톤 패턴으로 구현
     private CameraController currentController;                                             // 현재 카메라 컨트롤러
 
-    public void Init()
+    public void Init(CameraType cameraType, CameraSettings cameraSettings)
     {
+        currentCameraType = cameraType;
+        if (cameraType == CameraType.ThirdPerson)
+        {
+            thirdPersonSettings = cameraSettings;
+        }
+        else if (cameraType == CameraType.TopDown)
+        {
+            topDownSettings = cameraSettings;
+        }
         
+        SetupCamera();
     }
     
     //! 카메라 매니저 초기화    

@@ -50,7 +50,6 @@ public class UIBoxPreview : UISubItem
 
     public void SetPreviewBoxInfo(MiniGameUnloadBox box)
     {
-        Logger.Log(GetImage((int)Images.BoxImage).name);
         Image boxImage = GetImage((int)Images.BoxImage);
         Sprite sprite = box.SpriteRenderer.sprite;
         if (sprite != null)
