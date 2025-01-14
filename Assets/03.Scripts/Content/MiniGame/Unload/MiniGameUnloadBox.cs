@@ -18,6 +18,7 @@ public struct MiniGameUnloadBoxInfo
     public float Size;
     public bool IsBroken;
     public bool IsGrab;
+    public bool IsUnloaded;
     
     public MiniGameUnloadBoxInfo(Define.BoxType boxType, string boxNumber, int weight, Define.BoxRegion region, bool isFragileBox, float size)
     {
@@ -29,6 +30,7 @@ public struct MiniGameUnloadBoxInfo
         Size = size;
         IsBroken = false;
         IsGrab = false;
+        IsUnloaded = false;
     }
 
     public void SetRandomInfo()
@@ -129,6 +131,12 @@ public class MiniGameUnloadBox : MonoBehaviour
         private set => _info = value;
     }
 
+    public bool IsUnloaded
+    {
+        get { return _info.IsUnloaded; } 
+        set { _info.IsUnloaded = value; }
+    }
+
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
     {
         _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
@@ -151,6 +159,7 @@ public class MiniGameUnloadBox : MonoBehaviour
 
             // 생성될 때는 false
             boxCollider.isTrigger = false;
+            IsUnloaded = false;
         }
     }
     

@@ -53,7 +53,11 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         if (coll.gameObject.CompareTag("Box"))
         {
             MiniGameUnloadBox box = coll.gameObject.GetComponent<MiniGameUnloadBox>();
-            MoveBoxToEndPoint(box);
+            if (!box.IsUnloaded)
+            {
+                box.IsUnloaded = true;
+                MoveBoxToEndPoint(box);
+            }
         }
     }
 
@@ -68,6 +72,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
                 
                 Managers.Resource.Destroy(box.gameObject);
                 Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BrokenBox.ToString(), gameObject);
+                GenerateScoreTextObj(score, Color.red);
                 return;
             }
             else if (CheckBoxInfo(box.Info))
