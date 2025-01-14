@@ -22,7 +22,7 @@ public class InGameTextIndicator : MonoBehaviour
 
     public void Init(Vector3 pos, float amount, Color color, float size)
     {
-        /*
+        
         // 만약 호출된 값이 0이라면 리턴
         if(Mathf.RoundToInt(amount) == 0)
         {
@@ -50,7 +50,7 @@ public class InGameTextIndicator : MonoBehaviour
         transform.DOLocalMoveY(3, 1).OnComplete(() =>
             // UI 변경
             Managers.Resource.Destroy(gameObject)
-        );*/
+        );
 
     }
 }

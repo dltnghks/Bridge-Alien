@@ -81,6 +81,8 @@ public class SceneManagerEx : MonoBehaviour
             {
                 // 페이드 인 시작
                 Managers.Fade.FadeIn();
+                Managers.Pool.Clear();
+                Managers.Camera.Init(CameraManager.CameraType.ThirdPerson, CameraSettings.Default);
             });
         });
     }
