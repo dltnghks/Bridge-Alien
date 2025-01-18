@@ -65,6 +65,7 @@ public class UIOption : UIPopup
 
     private void OnClickExitButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         ClosePopupUI();
     }
 

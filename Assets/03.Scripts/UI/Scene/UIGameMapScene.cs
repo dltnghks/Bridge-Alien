@@ -28,7 +28,7 @@ public class UIGameMapScene : UIScene
         BindText(typeof(Texts));
         
         GetButton((int)Buttons.HouseButton).gameObject.BindEvent(OnClickHouseButton);
-        GetButton((int)Buttons.MiniGameStartButton).gameObject.BindEvent(OnClicMiniGameStart);
+        GetButton((int)Buttons.MiniGameStartButton).gameObject.BindEvent(OnClickMiniGameStart);
         
         Managers.Scene.SelectedSceneAction += SetMiniGameTypeText;
 
@@ -42,11 +42,13 @@ public class UIGameMapScene : UIScene
 
     private void OnClickHouseButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Managers.Scene.ChangeScene(Define.Scene.House);
     }
 
-    private void OnClicMiniGameStart()
+    private void OnClickMiniGameStart()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Managers.Scene.ChangeSelectedScene();
 
     }

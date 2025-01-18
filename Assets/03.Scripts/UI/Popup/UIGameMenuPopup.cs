@@ -26,6 +26,7 @@ public class UIGameMenuPopup : UIPopup
 
     private void OnClickResumeButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickResume");
         Managers.MiniGame.ResumeGame();
         Managers.UI.ClosePopupUI(this);
@@ -33,12 +34,14 @@ public class UIGameMenuPopup : UIPopup
 
     private void OnClickOptionButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickOption");
         Managers.UI.ShowPopUI<UIOption>();
     }
 
     private void OnClickExitButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickExit");
         Managers.Scene.ChangeScene(Define.Scene.GameMap);
     }

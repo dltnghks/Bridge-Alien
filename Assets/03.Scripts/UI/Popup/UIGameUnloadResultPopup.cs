@@ -34,6 +34,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
 
     protected override void OnClickConfirmButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Managers.Scene.ChangeScene(Define.Scene.GameMap);
     } 
     

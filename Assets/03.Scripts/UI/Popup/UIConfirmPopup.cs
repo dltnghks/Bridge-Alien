@@ -30,6 +30,7 @@ public class UIConfirmPopup : UIPopup
 
     protected virtual void OnClickConfirmButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickConfirmButton");
     } 
 }

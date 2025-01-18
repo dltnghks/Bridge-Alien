@@ -67,7 +67,7 @@ public class SoundManager : MonoBehaviour
         PlaySound(type, eventName, soundGameObject);
     }
 
-    public void PlaySound(SoundType type, string key, GameObject soundGameObject = null)
+    private void PlaySound(SoundType type, string key, GameObject soundGameObject = null)
     {
         if (_soundEvent == null || !_soundEvent.EventDict.ContainsKey(type))
         {

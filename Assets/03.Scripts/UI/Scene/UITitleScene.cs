@@ -44,6 +44,7 @@ public class UITitleScene : UIScene
     
     public void OnClickStartButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Managers.Scene.ChangeScene(Define.Scene.House);
 
     }

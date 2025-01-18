@@ -160,6 +160,9 @@ public class MiniGameUnloadBox : MonoBehaviour
             // 생성될 때는 false
             boxCollider.isTrigger = false;
             IsUnloaded = false;
+
+            PlayBoxPutSound();
+            
         }
     }
     
@@ -186,7 +189,7 @@ public class MiniGameUnloadBox : MonoBehaviour
             // 놓을 때는 true
             boxCollider.isTrigger = true;
             
-            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, $"{Info.BoxType.ToString()}Hold", gameObject);
+            PlayBoxHoldSound();
 
         }else{
             gameObject.layer = _defaultBoxLayer;
@@ -195,8 +198,46 @@ public class MiniGameUnloadBox : MonoBehaviour
             boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
                                         RigidbodyConstraints.FreezePositionZ |
                                         RigidbodyConstraints.FreezeRotation;
-            
-            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, $"{Info.BoxType.ToString()}Put", gameObject);
+
+            PlayBoxPutSound();
+        }
+    }
+
+    private void PlayBoxHoldSound()
+    {
+        switch (Info.BoxType)
+        {
+            case Define.BoxType.Post: 
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PostHold.ToString()); 
+                break;
+            case Define.BoxType.SmallBox: 
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.SmallBoxHold.ToString()); 
+                break;
+            case Define.BoxType.StandardBox: 
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.StandardBoxHold.ToString()); 
+                break;
+            case Define.BoxType.LargeBox: 
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.LargeBoxPHold.ToString()); 
+                break;
+        }
+    }
+    
+    private void PlayBoxPutSound()
+    {
+        switch (Info.BoxType)
+        {
+            case Define.BoxType.Post: 
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PostPut.ToString(), gameObject); 
+                break;
+            case Define.BoxType.SmallBox: 
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.SmallBoxPut.ToString(), gameObject); 
+                break;
+            case Define.BoxType.StandardBox: 
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.StandardBoxPut.ToString(),gameObject); 
+                break;
+            case Define.BoxType.LargeBox: 
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.LargeBoxPut.ToString(),gameObject); 
+                break;
         }
     }
 
