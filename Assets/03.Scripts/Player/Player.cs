@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
+    private enum Direction { Forward, Back, Left, Right }
+    
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 8f;      // 이동 속도
     [SerializeField] private float rayDistance = 1f;    // 레이캐스트 거리
@@ -15,6 +18,14 @@ public class Player : MonoBehaviour
     private Rigidbody rb;                               // 리지드바디
     private bool canMoveForward = true;                 // 전방 이동 가능 여부
     private bool canMoveBackward = true;                // 후방 이동 가능 여부
+    private bool[] canMove = { true, true, true, true };
+    private Vector3[] directions = {
+        Vector3.forward,  // 앞쪽
+        Vector3.back,     // 뒤쪽
+        Vector3.left,     // 왼쪽
+        Vector3.right     // 오른쪽
+    };
+    
     private CharacterAnimator characterAnimator;        // 캐릭터 애니메이터
     
     private GameObject playerBody;
@@ -112,33 +123,32 @@ public class Player : MonoBehaviour
 
     void CheckCollisions()
     {
-        // 전방 레이캐스트
-        RaycastHit hitForward;
-        if (Physics.Raycast(transform.position, transform.forward, out hitForward, rayDistance))
+        for (int i = 0; i < directions.Length; i++)
         {
-            if (hitForward.collider.CompareTag("Wall"))
+            RaycastHit hit;
+            Vector3 direction = directions[i];
+            if (Physics.Raycast(transform.position, direction, out hit, rayDistance))
             {
-                canMoveForward = false;
+                if (hit.collider.CompareTag("Wall"))
+                {
+                    canMove[i] = false;    
+                }
+                else
+                {
+                    canMove[i] = true;
+                }
             }
-        }
-        else
-        {
-            canMoveForward = true;
+            else
+            {
+                canMove[i] = true;
+            }
         }
 
-        // 후방 레이캐스트
-        RaycastHit hitBackward;
-        if (Physics.Raycast(transform.position, -transform.forward, out hitBackward, rayDistance))
+        /*for (int i = 0; i < canMove.Length; i++)
         {
-            if (hitBackward.collider.CompareTag("Wall"))
-            {
-                canMoveBackward = false;
-            }
-        }
-        else
-        {
-            canMoveBackward = true;
-        }
+            Logger.Log($"{i} : {canMove[i]}");
+        }*/
+        
     }
 
     void PlayerMovement()
@@ -164,11 +174,11 @@ public class Player : MonoBehaviour
         // z축(전후) 이동 - 벽 체크 포함
         if (Mathf.Abs(vertical) > 0.01f)
         {
-            if (vertical > 0 && canMoveForward)
+            if (vertical > 0 && canMove[(int)Direction.Forward])
             {  
                 movement += transform.forward * vertical;
             }
-            else if (vertical < 0 && canMoveBackward)
+            else if (vertical < 0 && canMove[(int)Direction.Back])
             {
                 movement += transform.forward * vertical;
             }
@@ -199,18 +209,19 @@ public class Player : MonoBehaviour
         Vector3 movement = Vector3.zero;  // 이동 벡터 초기화
 
         // x축(좌우) 이동과 스프라이트 방향 전환
-        movement += transform.right * horizontal;
-
-        if (horizontal > 0)
+        if (horizontal > 0 && canMove[(int)Direction.Right])
         {
+            movement += transform.right * horizontal;
             playerBody.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             IsRight = true;
         }
-        else if (horizontal < 0)
+        else if (horizontal < 0 && canMove[(int)Direction.Left])
         {
+            movement += transform.right * horizontal;
             playerBody.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             IsRight = false;
         }
+        
         // 스프라이트 방향 전환 (enableFlip이 true일 때만 실행)
         if (enableFlip && Mathf.Abs(horizontal) > 0.01f)
         {
@@ -225,11 +236,11 @@ public class Player : MonoBehaviour
         // z축(전후) 이동 - 벽 체크 포함
         if (Mathf.Abs(vertical) > 0.01f)
         {
-            if (vertical > 0 && canMoveForward)
-            {
+            if (vertical > 0 && canMove[(int)Direction.Forward])
+            {  
                 movement += transform.forward * vertical;
             }
-            else if (vertical < 0 && canMoveBackward)
+            else if (vertical < 0 && canMove[(int)Direction.Back])
             {
                 movement += transform.forward * vertical;
             }
@@ -276,5 +287,9 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * rayDistance);
         Gizmos.DrawRay(transform.position, -transform.forward * rayDistance);
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, transform.right * rayDistance);
+        Gizmos.DrawRay(transform.position, -transform.right * rayDistance);
     }
 }
