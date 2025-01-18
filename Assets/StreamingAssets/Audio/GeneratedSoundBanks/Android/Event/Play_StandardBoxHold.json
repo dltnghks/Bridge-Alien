@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{FA9A97F0-B75E-444F-98D4-E8916C72F397}",
     "Language": "SFX",
-    "Hash": "{9CEC970E-1A43-D0DD-9624-BCBD92606AE5}",
+    "Hash": "{CCA1BA15-24DD-93AE-AFEA-C159FA402C7F}",
     "ObjectPath": "Play_StandardBoxHold",
     "ShortName": "Play_StandardBoxHold",
     "Path": "Event/Play_StandardBoxHold.bnk",
@@ -29,7 +29,7 @@
      {
       "Id": "2379227943",
       "Name": "Play_StandardBoxHold",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_StandardBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_StandardBoxHold",
       "GUID": "{FA9A97F0-B75E-444F-98D4-E8916C72F397}",
       "DurationType": "OneShot",
       "DurationMin": "0.25241667",
@@ -40,9 +40,17 @@
        }
       ]
      }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
     ]
    }
   ],
-  "FileHash": "{5E9AFE7B-38AF-921F-5FF1-5B1E7E21A701}"
+  "FileHash": "{09C50452-BB2B-C355-F3CD-6CED7F372D99}"
  }
 }

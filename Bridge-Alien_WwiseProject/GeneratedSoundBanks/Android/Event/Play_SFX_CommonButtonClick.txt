@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1147630695	Play_SFX_CommonButtonClick			\Default Work Unit\Common\Play_SFX_CommonButtonClick	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

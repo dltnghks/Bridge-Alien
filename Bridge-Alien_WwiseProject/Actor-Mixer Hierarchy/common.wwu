@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E4905E00-02FA-454D-8397-6843E05F30B4}" SchemaVersion="123" RootDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" ParentDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}">
+	<AudioObjects>
+		<WorkUnit Name="common" ID="{E4905E00-02FA-454D-8397-6843E05F30B4}" OwnerID="{2E855A4F-64D7-47A3-BB10-5E4D74A59622}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="SFX_CommonButtonClick" ID="{F7B3D23F-5748-407C-8DD0-4A8B417F87ED}" ShortID="633101939">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SFX_CommonButtonClick" ID="{E90CD0B4-97AC-4B71-B3FC-DD2FCF01E012}">
+							<Language>SFX</Language>
+							<AudioFile>SFX_CommonButtonClick.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="281243175"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SFX_CommonButtonClick" ID="{E90CD0B4-97AC-4B71-B3FC-DD2FCF01E012}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_FootStep_PlayerCharacter" ID="{0CB2E42F-8894-476A-B96F-32CCA70613AD}" ShortID="237569728">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SFX_FootStep_PlayerCharacter" ID="{2F54FCFE-95C2-4D32-B1D2-D26ED17F9FC5}">
+							<Language>SFX</Language>
+							<AudioFile>SFX_FootStep_PlayerCharacter.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="815274733"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SFX_FootStep_PlayerCharacter" ID="{2F54FCFE-95C2-4D32-B1D2-D26ED17F9FC5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

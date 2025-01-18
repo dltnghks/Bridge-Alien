@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{3C7F040D-8586-40FE-B104-0587DB218369}",
     "Language": "SFX",
-    "Hash": "{9E28C10A-D8DE-25E4-8312-1BE9804987C0}",
+    "Hash": "{F0FD5E95-7344-ADBB-A49E-333EA9BC6776}",
     "ObjectPath": "Play_MiniGameUnloadBGM",
     "ShortName": "Play_MiniGameUnloadBGM",
     "Path": "Event/Play_MiniGameUnloadBGM.bnk",
@@ -29,7 +29,7 @@
      {
       "Id": "3026964974",
       "Name": "Play_MiniGameUnloadBGM",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_MiniGameUnloadBGM",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_MiniGameUnloadBGM",
       "GUID": "{3C7F040D-8586-40FE-B104-0587DB218369}",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -38,9 +38,17 @@
        }
       ]
      }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
     ]
    }
   ],
-  "FileHash": "{AC9BE773-58F8-4744-3B42-B736857634CF}"
+  "FileHash": "{33D4AB9C-33E5-4848-D88C-EE536A2CC858}"
  }
 }

@@ -13,12 +13,24 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_AMB_CONVEYOR_1 = 2349852502U;
+        static const AkUniqueID PLAY_AMB_CONVEYOR_2 = 2349852501U;
         static const AkUniqueID PLAY_LARGEBOXHOLD = 2606206533U;
         static const AkUniqueID PLAY_LARGEBOXPUT = 3670728633U;
         static const AkUniqueID PLAY_MINIGAMEUNLOADBGM = 3026964974U;
         static const AkUniqueID PLAY_PICKUPBOX = 3158537189U;
         static const AkUniqueID PLAY_POSTHOLD = 3540212343U;
         static const AkUniqueID PLAY_POSTPUT = 1869835011U;
+        static const AkUniqueID PLAY_SFX_BROKENBOX = 776408140U;
+        static const AkUniqueID PLAY_SFX_CLICKDECIDE = 3480358650U;
+        static const AkUniqueID PLAY_SFX_COMMONBUTTONCLICK = 1147630695U;
+        static const AkUniqueID PLAY_SFX_DROPALL = 2810680534U;
+        static const AkUniqueID PLAY_SFX_FOOTSTEP_PLAYERCHARACTER = 562923629U;
+        static const AkUniqueID PLAY_SFX_MOVECHARACTER = 3538692530U;
+        static const AkUniqueID PLAY_SFX_PICKUPLARGEBOX = 2478644074U;
+        static const AkUniqueID PLAY_SFX_PICKUPPOST = 596290888U;
+        static const AkUniqueID PLAY_SFX_PICKUPSMALLBOX = 3053722294U;
+        static const AkUniqueID PLAY_SFX_PICKUPSTANDARDBOX = 118618168U;
         static const AkUniqueID PLAY_SMALLBOXHOLD = 2487093689U;
         static const AkUniqueID PLAY_SMALLBOXPUT = 3924693453U;
         static const AkUniqueID PLAY_STANDARDBOXHOLD = 2379227943U;

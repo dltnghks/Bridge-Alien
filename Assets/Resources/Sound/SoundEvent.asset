@@ -34,12 +34,12 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 02ac5ab39b3efcf42822a462b6d94d8a, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 00b49ff2ca0b68f4e9a47ae2189af323, type: 2}
         - Key: FootStepPlayerCharacter
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: b12bd8155ee415541844bc3b532b5df9, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 44c8736196fe52148aaa3e009ca06601, type: 2}
     - Key: 2
       Value:
         _keyValueList:

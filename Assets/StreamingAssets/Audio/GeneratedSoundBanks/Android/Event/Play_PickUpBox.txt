@@ -1,3 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
 	3158537189	Play_PickUpBox			\Default Work Unit\Play_PickUpBox	
 
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+
