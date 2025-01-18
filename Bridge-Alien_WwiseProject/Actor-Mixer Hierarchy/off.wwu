@@ -58,6 +58,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="SFX_BrokenBox" ID="{B78825A4-3AC4-43D0-89C7-09BFBD9AC3DC}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>SFX_BrokenBox.wav</AudioFile>
 							<MediaIDList>

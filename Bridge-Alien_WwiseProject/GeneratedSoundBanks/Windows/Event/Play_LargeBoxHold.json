@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
     "Language": "SFX",
-    "Hash": "{CCE5B2B8-884B-CB56-CDE0-E014F7D5B036}",
+    "Hash": "{F63686D3-6C2A-23CB-87B2-968B2D517EE3}",
     "ObjectPath": "Play_LargeBoxHold",
     "ShortName": "Play_LargeBoxHold",
     "Path": "Event/Play_LargeBoxHold.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{78CF542D-37A5-3F43-1D1D-A2E1F8BC8E1D}"
+  "FileHash": "{6B61B5FD-80E7-E031-68AC-DC0D09BA77E7}"
  }
 }

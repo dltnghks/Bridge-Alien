@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}",
     "Language": "SFX",
-    "Hash": "{2D167937-5BC3-538F-03E5-04D24D974F62}",
+    "Hash": "{0E47061F-A9FA-6870-D7F4-0A7598D1C7A1}",
     "ObjectPath": "Play_PostPut",
     "ShortName": "Play_PostPut",
     "Path": "Event/Play_PostPut.bnk",
@@ -29,7 +29,7 @@
      {
       "Id": "1869835011",
       "Name": "Play_PostPut",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_PostPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_PostPut",
       "GUID": "{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}",
       "DurationType": "OneShot",
       "DurationMin": "0.2304375",
@@ -40,9 +40,17 @@
        }
       ]
      }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
     ]
    }
   ],
-  "FileHash": "{8A474E78-16B3-D27C-6C93-2B17102E568D}"
+  "FileHash": "{84A64B20-F969-3510-3517-0E2F742D042B}"
  }
 }

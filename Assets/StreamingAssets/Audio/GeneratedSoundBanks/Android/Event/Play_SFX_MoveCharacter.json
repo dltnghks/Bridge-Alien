@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{0CD9DACC-EA35-4CAB-ACCC-3D875BF6BD52}",
     "Language": "SFX",
-    "Hash": "{40E9B70E-BD8A-99BE-656F-62971942BF59}",
+    "Hash": "{A3D1C117-B6DA-D021-E63D-0323CF5A3AEA}",
     "ObjectPath": "Play_SFX_MoveCharacter",
     "ShortName": "Play_SFX_MoveCharacter",
     "Path": "Event/Play_SFX_MoveCharacter.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{E1AF130B-6AE0-823F-275A-420C5E9ECE71}"
+  "FileHash": "{D190FA50-9C5F-3D89-AF8F-EB65748DF4EC}"
  }
 }

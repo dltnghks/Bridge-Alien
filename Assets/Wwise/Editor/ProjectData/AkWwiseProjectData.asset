@@ -201,8 +201,8 @@ MonoBehaviour:
         guid: de4caac45e99c8489d909e9bf5c3914e
       Path: Events\Default Work Unit\Common\Play_SFX_CommonButtonClick
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.27151933
+      minDuration: 0.27151933
     - name: Play_SFX_FootStep_PlayerCharacter
       guid: 4892b9c7648b164e9122f0065bf6f468
       id: 562923629
@@ -221,8 +221,8 @@ MonoBehaviour:
         guid: 4892b9c7648b164e9122f0065bf6f468
       Path: Events\Default Work Unit\Common\Play_SFX_FootStep_PlayerCharacter
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.1
+      minDuration: 0.1
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
     - ElementName: Events
@@ -270,8 +270,8 @@ MonoBehaviour:
         guid: 777cc484913b5c44ad46901bd472a8b1
       Path: Events\Default Work Unit\GameMap\Play_SFX_Clickdecide
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.425
+      minDuration: 0.425
     - name: Play_SFX_MoveCharacter
       guid: ccdad90c35eaab4caccc3d875bf6bd52
       id: 3538692530
@@ -290,8 +290,8 @@ MonoBehaviour:
         guid: ccdad90c35eaab4caccc3d875bf6bd52
       Path: Events\Default Work Unit\GameMap\Play_SFX_MoveCharacter
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.34375
+      minDuration: 0.34375
   - PhysicalPath: Events\MiniGameUnload.wwu
     PathAndIcons:
     - ElementName: Events
@@ -326,8 +326,8 @@ MonoBehaviour:
         guid: 159c0da87a60074f83713037d8131bb9
       Path: Events\Default Work Unit\MiniGameUnload\Play_AMB_Conveyor_1
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 141.16571
+      minDuration: 141.16571
     - name: Play_AMB_Conveyor_2
       guid: 980889ea7bee594c8f6d334a3a8ac173
       id: 2349852501
@@ -346,8 +346,8 @@ MonoBehaviour:
         guid: 980889ea7bee594c8f6d334a3a8ac173
       Path: Events\Default Work Unit\MiniGameUnload\Play_AMB_Conveyor_2
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 123.402664
+      minDuration: 123.402664
     - name: Play_LargeBoxHold
       guid: 6e81a5506f411a45b46b1eae765c30b6
       id: 2606206533
@@ -486,8 +486,8 @@ MonoBehaviour:
         guid: 9292bbcd8e89314aae416ab499fc76ec
       Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_BrokenBox
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.36666667
+      minDuration: 0.36666667
     - name: Play_SFX_Dropall
       guid: 63b0738bf947e84fbd5fb452f7a7057d
       id: 2810680534
@@ -506,8 +506,8 @@ MonoBehaviour:
         guid: 63b0738bf947e84fbd5fb452f7a7057d
       Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_Dropall
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.375
+      minDuration: 1.375
     - name: Play_SFX_PickupLargeBox
       guid: 0fd211447a8dc24aa129554045d20be4
       id: 2478644074
@@ -526,8 +526,8 @@ MonoBehaviour:
         guid: 0fd211447a8dc24aa129554045d20be4
       Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_PickupLargeBox
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.144875
+      minDuration: 0.144875
     - name: Play_SFX_PickupPost
       guid: 9d8a7650552f1847a97eb6909d82e8be
       id: 596290888
@@ -546,8 +546,8 @@ MonoBehaviour:
         guid: 9d8a7650552f1847a97eb6909d82e8be
       Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_PickupPost
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.29316667
+      minDuration: 0.29316667
     - name: Play_SFX_PickupSmallBox
       guid: 9b5acb779d96514ea456086551ae4e0d
       id: 3053722294
@@ -566,8 +566,8 @@ MonoBehaviour:
         guid: 9b5acb779d96514ea456086551ae4e0d
       Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_PickupSmallBox
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.2415
+      minDuration: 0.2415
     - name: Play_SFX_PickupStandardBox
       guid: 0140526edf7c66449679962ff2d37410
       id: 118618168
@@ -586,8 +586,8 @@ MonoBehaviour:
         guid: 0140526edf7c66449679962ff2d37410
       Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_PickupStandardBox
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0.25241667
+      minDuration: 0.25241667
     - name: Play_SmallBoxHold
       guid: bbf1b51a2a822442b046009654321711
       id: 2487093689
@@ -787,7 +787,7 @@ MonoBehaviour:
     m_lastTime: -8584644007224511710
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 01000000020000000300000005000000060000000700000008000000090000000c0000000d0000001100000018000000190000001a0000001b0000001d0000002400000025000000
+  ExpandedWaapiItemIds: 0100000002000000030000000500000006000000090000000c0000000d0000001100000018000000190000001a0000001b0000001d0000002400000025000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

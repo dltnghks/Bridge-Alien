@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{A80D9C15-607A-4F07-8371-3037D8131BB9}",
     "Language": "SFX",
-    "Hash": "{E5BC5E11-D983-2C75-7A54-EFE7D247858A}",
+    "Hash": "{76A7DE20-AB75-6778-E919-27E4A61F0AD8}",
     "ObjectPath": "Play_AMB_Conveyor_1",
     "ShortName": "Play_AMB_Conveyor_1",
     "Path": "Event/Play_AMB_Conveyor_1.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{12141178-5DF8-25A1-64BE-C083E06E6203}"
+  "FileHash": "{495C9B0B-088C-6CB9-6CEB-0EC9191DB578}"
  }
 }

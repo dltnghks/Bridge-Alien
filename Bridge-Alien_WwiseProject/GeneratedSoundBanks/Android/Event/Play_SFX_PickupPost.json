@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{50768A9D-2F55-4718-A97E-B6909D82E8BE}",
     "Language": "SFX",
-    "Hash": "{85B3D362-B5F9-F998-9D08-CBAD13145301}",
+    "Hash": "{8A442883-254C-0B27-CE9E-346AC173EB26}",
     "ObjectPath": "Play_SFX_PickupPost",
     "ShortName": "Play_SFX_PickupPost",
     "Path": "Event/Play_SFX_PickupPost.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{B108880D-AF49-AC16-DA51-95F77BD433EB}"
+  "FileHash": "{8574AC10-E0C5-7589-28D7-E688C2FE2F05}"
  }
 }

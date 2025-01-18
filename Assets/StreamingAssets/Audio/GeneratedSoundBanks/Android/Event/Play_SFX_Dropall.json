@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
     "Language": "SFX",
-    "Hash": "{2F576F0E-3F16-3643-6808-1B97AA3CB7FD}",
+    "Hash": "{19649730-2E14-B9E9-4898-6CEBB0050F81}",
     "ObjectPath": "Play_SFX_Dropall",
     "ShortName": "Play_SFX_Dropall",
     "Path": "Event/Play_SFX_Dropall.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{FBF54DA7-F1DB-857F-A3AC-68EFAA09DBEA}"
+  "FileHash": "{B3917F83-6F08-A9BD-C6D1-D9971F8429C9}"
  }
 }
