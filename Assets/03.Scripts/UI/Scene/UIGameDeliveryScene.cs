@@ -8,15 +8,18 @@ public class UIGameDeliveryScene : UIScene
     {
         UITimer,
         UIScoreBoard,
+        UIGameMenu,
         UIMiniGameDeliveryPlayerInput,
     }
     
     private UITimer _uiTimer;
     private UIScoreBoard _uiScoreBoard;
+    private UIGameMenu _uiGameMenu;
+    private UIMiniGameDeliveryPlayerInput _uiPlayerInput;
     
     public UITimer UITimer { get { return _uiTimer; } }
     public UIScoreBoard UIScoreBoard { get { return _uiScoreBoard; } }
-//    public UIMiniGameUnloadPlayerInput UIPlayerInput { get { return _uiPlayerInput; } }
+    public UIMiniGameDeliveryPlayerInput UIPlayerInput { get { return _uiPlayerInput; } }
     
     public override bool Init()
     {
@@ -29,7 +32,8 @@ public class UIGameDeliveryScene : UIScene
         
         _uiTimer = GetObject((int)Objects.UITimer).GetOrAddComponent<UITimer>();
         _uiScoreBoard = GetObject((int)Objects.UIScoreBoard).GetOrAddComponent<UIScoreBoard>();
-        //_uiPlayerInput = GetObject((int)Objects.UIMiniGameUnloadPlayerInput).GetOrAddComponent<UIMiniGameUnloadPlayerInput>();
+        _uiGameMenu = GetObject((int)Objects.UIGameMenu).GetOrAddComponent<UIGameMenu>();
+        _uiPlayerInput = GetObject((int)Objects.UIMiniGameDeliveryPlayerInput).GetOrAddComponent<UIMiniGameDeliveryPlayerInput>();
         
         return true;
     }

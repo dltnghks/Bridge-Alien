@@ -20,6 +20,7 @@ public class TimerBase
     {
         if (!IsActive)
         {
+            Logger.Log("Set timer");
             UITimer = uiTimer;
             StartTime = time;
             CurTime = time;

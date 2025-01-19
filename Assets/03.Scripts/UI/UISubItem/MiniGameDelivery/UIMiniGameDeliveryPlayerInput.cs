@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameDeliveryPlayerInput : UIPlayerInput
+public class UIMiniGameDeliveryPlayerInput : UIPlayerInput
 {
     public override bool Init()
     {

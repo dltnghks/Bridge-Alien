@@ -30,9 +30,29 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     }
     
     public UIScene GameUI { get; set; }
+    private UIGameDeliveryScene _uiGameDeliveryScene;
+ 
+    private TimerBase _timer;
+    private ScoreBase _score;
+    
+    private void Update()
+    {
+        if (!IsActive || IsPause)
+        {
+            return;
+        }
+        
+        _timer.TimerUpdate();
+    }
+    
     
     public void StartGame()
     {
+        
+        // Timer, Score, BoxPreview 초기화
+        _timer = new TimerBase();
+        _timer.SetTimer(_uiGameDeliveryScene.UITimer, _gameTime, EndGame);
+        
         // PlayerCharacter 초기화
         PlayerCharacter = GameObject.Find("Player")?.GetComponent<Player>();
         if (PlayerCharacter == null)
@@ -55,16 +75,44 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
 
     public void PauseGame()
     {
-        throw new System.NotImplementedException();
+        if (!IsActive || IsPause)
+        {
+            Logger.LogError("Not Active MiniGame");
+            return;
+        }
+        IsPause = true;
+        Logger.Log("UnloadGame Pausing game");
     }
 
     public void ResumeGame()
     {
-        throw new System.NotImplementedException();
+        if (!IsActive || !IsPause)
+        {
+            Logger.LogError("Not Active MiniGame");
+            return;
+        }
+        IsPause = false;
+        Logger.Log("UnloadGame Resuming game");
     }
 
     public void EndGame()
     {
-        throw new System.NotImplementedException();
+        if (!IsActive)
+        {
+            Logger.LogError("Not Active MiniGame");
+            return;
+        }
+        
+        IsActive = false;
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);
+        Logger.Log("UnloadGame Ending game");
+    }
+    
+    public void InitializeUI()
+    {
+        Logger.Log("InitializeUI Starting game");
+        _uiGameDeliveryScene = Managers.UI.ShowSceneUI<UIGameDeliveryScene>();
+        GameUI = _uiGameDeliveryScene;
+        GameUI.Init();
     }
 }
