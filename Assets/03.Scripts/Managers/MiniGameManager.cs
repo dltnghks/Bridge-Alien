@@ -38,6 +38,9 @@ public class MiniGameManager : MonoBehaviour
             case Define.MiniGameType.Unload:
                 _currentGame = Root.GetOrAddComponent<MiniGameUnload>();
                 break;
+            case Define.MiniGameType.Delivery:
+                _currentGame = Root.GetOrAddComponent<MiniGameDelivery>();
+                break;
             // 새로운 미니게임을 추가하려면 여기에서 case 추가
             default:
                 Logger.LogError("Unknown game type!");
