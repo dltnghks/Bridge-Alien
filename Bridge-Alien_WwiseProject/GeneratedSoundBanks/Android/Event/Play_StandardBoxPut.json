@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{7D9AF864-E4E6-4692-B965-B8086BA3EB21}",
     "Language": "SFX",
-    "Hash": "{75B6478D-5565-C74E-96BF-03A67E40D01F}",
+    "Hash": "{93CED942-5A39-043C-1FE2-7F224E137C07}",
     "ObjectPath": "Play_StandardBoxPut",
     "ShortName": "Play_StandardBoxPut",
     "Path": "Event/Play_StandardBoxPut.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{21A400F4-DFAD-12EA-1B51-382990297BC5}"
+  "FileHash": "{EC055AF1-1264-3913-2B22-50F8A50B9C14}"
  }
 }
