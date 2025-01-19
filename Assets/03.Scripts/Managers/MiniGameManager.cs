@@ -66,7 +66,6 @@ public class MiniGameManager : MonoBehaviour
 
     public void EndGame()
     {
-        Managers.Sound.UnloadSoundBank("MiniGameunload");
         _currentGame?.EndGame();
     }
     

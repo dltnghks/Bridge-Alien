@@ -105,4 +105,14 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: d46b4a315ba693d479eac696bdf7343f, type: 2}
+        - Key: PlusScore
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 02ac5ab39b3efcf42822a462b6d94d8a, type: 2}
+        - Key: MinusScore
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 399cc16595ac66c4592f062de937b771, type: 2}

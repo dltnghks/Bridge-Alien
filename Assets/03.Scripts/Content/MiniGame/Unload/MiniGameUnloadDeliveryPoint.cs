@@ -38,6 +38,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     {
         _action = action;
         _triggerAction = triggerAction;
+        Managers.Sound.PlayAMB(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Conveyor.ToString(), gameObject);
     }
 
     private void OnTriggerEnter(Collider coll)
