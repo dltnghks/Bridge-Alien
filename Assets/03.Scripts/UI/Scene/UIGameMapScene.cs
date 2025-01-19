@@ -17,6 +17,11 @@ public class UIGameMapScene : UIScene
         MiniGameTypeText,
     }
 
+    enum GameObjects
+    {
+        MiniGameTypeGameObject,
+    }
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -26,6 +31,7 @@ public class UIGameMapScene : UIScene
 
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
+        BindObject(typeof(GameObjects));
         
         GetButton((int)Buttons.HouseButton).gameObject.BindEvent(OnClickHouseButton);
         GetButton((int)Buttons.MiniGameStartButton).gameObject.BindEvent(OnClickMiniGameStart);
@@ -36,8 +42,16 @@ public class UIGameMapScene : UIScene
     }
 
     public void SetMiniGameTypeText(string str){
-        Logger.Log("change selected Scene Type");
-        GetText((int)Texts.MiniGameTypeText).SetText(str);
+        if (str == Define.Scene.Unknown.ToString())
+        {
+            GetObject((int)GameObjects.MiniGameTypeGameObject).gameObject.SetActive(false);
+        }
+        else
+        {
+            GetObject((int)GameObjects.MiniGameTypeGameObject).gameObject.SetActive(true);
+            Logger.Log($"change selected Scene Type : {str}");
+            GetText((int)Texts.MiniGameTypeText).SetText(str);
+        }
     }
 
     private void OnClickHouseButton()
