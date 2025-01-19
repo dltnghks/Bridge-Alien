@@ -10,9 +10,6 @@ public class CameraManager : MonoBehaviour
         ThirdPerson
     }
 
-    private static CameraManager instance;                                                  // 카메라 매니저는 싱글톤 패턴으로 구현
-    private CameraController currentController;                                             // 현재 카메라 컨트롤러
-
     [Header("Camera Settings")]
     [SerializeField] private CameraType currentCameraType = CameraType.ThirdPerson;         // 기본 카메라 타입 (기본은 3인칭)
     [SerializeField] private Transform target;                                              // 카메라 타겟 (플레이어의 위치)
@@ -28,8 +25,8 @@ public class CameraManager : MonoBehaviour
     [Header("Third Person Camera Settings")]
     [SerializeField] private CameraSettings thirdPersonSettings = CameraSettings.Default;   // 세 번째 인치 카메라 설정은 CameraController의 Setting 에서 가져옴
 
-    private static CameraManager instance;                                                  // 카메라 매니저는 싱글톤 패턴으로 구현
     private CameraController currentController;                                             // 현재 카메라 컨트롤러
+    private Camera mainCamera;
 
     public void Init(CameraType cameraType, CameraSettings cameraSettings)
     {
@@ -47,19 +44,6 @@ public class CameraManager : MonoBehaviour
     }
 
     //***************** 초기화 & 업데이트 *****************
-    //~ Awake시, 카메라 매니저 인스턴스 생성
-    private void Awake()
-    {
-        if (instance == null)                                                       // 인스턴스가 없어?
-        {
-            instance = this;                                                        // 인스턴스 설정
-            DontDestroyOnLoad(gameObject);                                          // 씬 로드 시 카메라 매니저 제거 방지
-        }
-        else
-        {
-            Destroy(gameObject);                                                    // 씬에 이미 카메라 매니저가 존재하므로 중복 생성 방지를 위해 현재 오브젝트 제거
-        }
-    }
 
     //~ 마지막 업데이트 이후에 흔들림 효과 적용
     private void LateUpdate()
@@ -70,9 +54,9 @@ public class CameraManager : MonoBehaviour
             shakeOffset = Random.insideUnitSphere * currentShakeIntensity;               // 흔들림 오프셋 계산      
 
             // 현재 카메라 컨트롤러가 계산한 위치에 흔들림 효과 추가
-            if (Camera.main != null && currentController != null)                           // 메인 카메라와 현재 카메라 컨트롤러가 있으면
+            if (mainCamera != null && currentController != null)                           // 메인 카메라와 현재 카메라 컨트롤러가 있으면
             {
-                Camera.main.transform.position += shakeOffset;                              // 흔들림 효과 추가
+                mainCamera.transform.position += shakeOffset;                              // 흔들림 효과 추가
             }
 
             currentShakeIntensity -= shakeDecay;                                         // 흔들림 강도 감쇠
@@ -99,7 +83,7 @@ public class CameraManager : MonoBehaviour
     {
         if (target == null) return;                                                  // 타겟이 없으면 리턴
 
-        var mainCamera = Camera.main;                                                // 메인 카메라 찾기    
+        mainCamera = Camera.main;                                                // 메인 카메라 찾기    
         if (mainCamera == null)                                                      // 메인 카메라가 없으면
         {
             Logger.LogError("메인 카메라를 찾을 수 없습니다!");                        // 에러 메시지 출력

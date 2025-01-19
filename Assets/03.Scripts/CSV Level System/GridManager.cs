@@ -119,7 +119,7 @@ public class GridManager : MonoBehaviour
     //~ 그리드 데이터를 기반으로 실제 그리드 생성
     private void CreateGrid()                               // 그리드 데이터를 기반으로 실제 그리드 생성
     {
-        CameraManager.Instance.ShakeCamera(0.5f, 0.8f);
+        Managers.Camera.ShakeCamera(0.5f, 0.8f);
         if (gridArray == null) return;
 
         int rows = gridArray.GetLength(0);
@@ -209,125 +209,6 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
-
-        if (spawnOrder == SpawnOrder.Random)
-        {
-            // 랜덤 순서로 섞기
-            for (int i = spawnDataList.Count - 1; i > 0; i--)
-            {
-                int j = Random.Range(0, i + 1);
-                var temp = spawnDataList[i];
-                spawnDataList[i] = spawnDataList[j];
-                spawnDataList[j] = temp;
-            }
-        }
-
-        StartCoroutine(SpawnCellsSequentially(spawnDataList));
-    }
-
-    private void CreateLeftToRight(int rows, int cols)
-    {
-        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
-
-        // 각 열을 하나의 라인으로 처리 (왼쪽에서 오른쪽으로)
-        for (int col = 0; col < cols; col++)
-        {
-            List<CellSpawnData> lineData = new List<CellSpawnData>();
-            // 위에서 아래로 셀 추가
-            for (int row = rows - 1; row >= 0; row--)
-            {
-                Vector3 cellPosition = GetCellPosition(row, col, rows);
-                lineData.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
-            }
-            spawnDataList.AddRange(lineData);
-        }
-
-        StartCoroutine(SpawnLinesSequentially(spawnDataList, rows));
-    }
-
-    private void CreateRightToLeft(int rows, int cols)
-    {
-        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
-
-        // 각 열을 하나의 라인으로 처리 (오른쪽에서 왼쪽으로)
-        for (int col = cols - 1; col >= 0; col--)
-        {
-            List<CellSpawnData> lineData = new List<CellSpawnData>();
-            // 아래에서 위로 셀 추가
-            for (int row = 0; row < rows; row++)
-            {
-                Vector3 cellPosition = GetCellPosition(row, col, rows);
-                lineData.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
-            }
-            spawnDataList.AddRange(lineData);
-        }
-
-        StartCoroutine(SpawnLinesSequentially(spawnDataList, rows));
-    }
-
-    private void CreateTopToBottom(int rows, int cols)
-    {
-        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
-
-        // 각 행을 하나의 라인으로 처리 (아래에서 위로)
-        for (int row = 0; row < rows; row++)
-        {
-            List<CellSpawnData> lineData = new List<CellSpawnData>();
-            // 왼쪽에서 오른쪽으로  추가
-            for (int col = 0; col < cols; col++)
-            {
-                Vector3 cellPosition = GetCellPosition(row, col, rows);
-                lineData.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
-            }
-            spawnDataList.AddRange(lineData);
-        }
-
-        StartCoroutine(SpawnLinesSequentially(spawnDataList, cols));
-    }
-
-    private void CreateBottomToTop(int rows, int cols)
-    {
-        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
-
-        // 각 행을 하나의 라인으로 처리 (아래에서 위로)
-        for (int row = rows - 1; row >= 0; row--)
-        {
-            List<CellSpawnData> lineData = new List<CellSpawnData>();
-            // 왼쪽에서 오른쪽으로 셀 추가
-            for (int col = 0; col < cols; col++)
-            {
-                Vector3 cellPosition = GetCellPosition(row, col, rows);
-                lineData.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
-            }
-            spawnDataList.AddRange(lineData);
-        }
-
-        StartCoroutine(SpawnLinesSequentially(spawnDataList, cols));
-    }
-
-    private void CreateInstantOrder(int rows, int cols)
-    {
-        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
-
-        for (int row = rows - 1; row >= 0; row--)
-        {
-            for (int col = 0; col < cols; col++)
-            {
-                Vector3 cellPosition = GetCellPosition(row, col, rows);
-                spawnDataList.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
-            }
-        }
-
-        StartCoroutine(SpawnCellsSequentially(spawnDataList));
-    }
-
-    private Vector3 GetCellPosition(int row, int col, int totalRows)
-    {
-        return gridOrigin + new Vector3(
-            col * cellSize,
-            gridHeight,
-            (totalRows - 1 - row) * cellSize
-        );
     }
 
     //~ 왼쪽에서 오른쪽으로 그리드 프리팹 생성
@@ -559,8 +440,6 @@ public class GridManager : MonoBehaviour
     //~ 지정된 폴더에서 모든 CSV 파일 로드
     private void LoadAllCSVFiles()                         // 지정된 폴더에서 모든 CSV 파일 로드
     {
-        
-#if UNITY_EDITOR
         if (csvFolder == null)
         {
             Logger.LogError("CSV 폴더가 설정되지 않았습니다!");
