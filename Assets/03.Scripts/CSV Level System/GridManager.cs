@@ -13,6 +13,8 @@ public enum SpawnOrder
     Instant         // 즉시 생성
 }
 
+
+
 public class GridManager : MonoBehaviour
 {
     [Header("Grid Settings")]
@@ -51,6 +53,7 @@ public class GridManager : MonoBehaviour
     [Header("Spawn Order Settings")]
     [SerializeField] private SpawnOrder spawnOrder = SpawnOrder.Random;    // 생성 순서 설정
 
+    //~ 초기화 함수
     void Start()                                            // 초기화 함수
     {
         InitializePrefabDictionary();                       // 프리팹 딕셔너리 초기화
@@ -59,6 +62,7 @@ public class GridManager : MonoBehaviour
         StartCoroutine(LoadGridSequentially());             // 순차적 그리드 로드 시작
     }
 
+    //~ 프리팹과 CSV 값을 매핑하는 딕셔너리 초기화
     private void InitializePrefabDictionary()               // 프리팹과 CSV 값을 매핑하는 딕셔너리 초기화
     {
         if (type1Prefab != null) prefabDictionary[1] = type1Prefab;
@@ -66,6 +70,7 @@ public class GridManager : MonoBehaviour
         if (type3Prefab != null) prefabDictionary[3] = type3Prefab;
     }
 
+    //~ CSV 파일에서 그리드 데이터 읽어오기
     private void LoadGridFromCSV()                          // CSV 파일에서 그리드 데이터 읽어오기
     {
         if (gridData == null)
@@ -111,8 +116,10 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    //~ 그리드 데이터를 기반으로 실제 그리드 생성
     private void CreateGrid()                               // 그리드 데이터를 기반으로 실제 그리드 생성
     {
+        CameraManager.Instance.ShakeCamera(0.5f, 0.8f);
         if (gridArray == null) return;
 
         int rows = gridArray.GetLength(0);
@@ -145,6 +152,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    //~ 랜덤 순서로 그리드 생성
     private void CreateRandomOrder(int rows, int cols)
     {
         List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
@@ -153,8 +161,52 @@ public class GridManager : MonoBehaviour
         {
             for (int col = 0; col < cols; col++)
             {
-                Vector3 cellPosition = GetCellPosition(row, col, rows);
-                spawnDataList.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
+                int cellValue = gridArray[row, col];
+                // 0이 아닌 값을 가진 셀만 생성
+                if (cellValue != 0 && prefabDictionary.ContainsKey(cellValue))
+                {
+                    Vector3 cellPosition = GetCellPosition(row, col, rows);
+                    spawnDataList.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
+                }
+            }
+        }
+
+        // 모덤 순서로 섞기
+        for (int i = spawnDataList.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            var temp = spawnDataList[i];
+            spawnDataList[i] = spawnDataList[j];
+            spawnDataList[j] = temp;
+        }
+
+        // 모든 셀을 동시에 생성하되, 각각 랜덤한 페이드 효과 적용
+        foreach (var spawnData in spawnDataList)
+        {
+            GameObject cell = null;
+
+            if (showGridCells)
+            {
+                cell = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cell.transform.parent = spawnData.parent;
+                cell.transform.position = spawnData.position;
+                cell.transform.localScale = new Vector3(cellSize * 0.9f, 0.1f, cellSize * 0.9f);
+                cell.name = $"Cell_{spawnData.row}_{spawnData.col}";
+
+                GridCell cellComponent = cell.AddComponent<GridCell>();
+                cellComponent.Initialize(spawnData.row, spawnData.col, gridArray[spawnData.row, spawnData.col]);
+                cellComponent.SetAlpha(0f); // 초기 알파값 0으로 설정
+            }
+
+            int cellValue = gridArray[spawnData.row, spawnData.col];
+            if (prefabDictionary.ContainsKey(cellValue))
+            {
+                GameObject prefab = prefabDictionary[cellValue];
+                if (prefab != null)
+                {
+                    StartCoroutine(SpawnPrefabWithDelay(prefab, spawnData.position,
+                        cell != null ? cell.transform : spawnData.parent));
+                }
             }
         }
 
@@ -278,7 +330,152 @@ public class GridManager : MonoBehaviour
         );
     }
 
-    private void CreateCell(Vector3 position, int row, int col, Transform parent)    // 개별 그리드 셀 생성
+    //~ 왼쪽에서 오른쪽으로 그리드 프리팹 생성
+    private void CreateLeftToRight(int rows, int cols)
+    {
+        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
+
+        // 각 열을 하나의 라인으로 처리 (왼쪽에서 오른쪽으로)
+        for (int col = 0; col < cols; col++)
+        {
+            List<CellSpawnData> lineData = new List<CellSpawnData>();
+            // 위에서 아래로 셀 추가
+            for (int row = rows - 1; row >= 0; row--)
+            {
+                Vector3 cellPosition = GetCellPosition(row, col, rows);
+                lineData.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
+            }
+            spawnDataList.AddRange(lineData);
+        }
+
+        StartCoroutine(SpawnLinesSequentially(spawnDataList, rows));
+    }
+
+    //~ 오른쪽에서 왼쪽으로 그리드 프리팹 생성
+    private void CreateRightToLeft(int rows, int cols)
+    {
+        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
+
+        // 각 열을 하나의 라인으로 처리 (오른쪽에서 왼쪽으로)
+        for (int col = cols - 1; col >= 0; col--)
+        {
+            List<CellSpawnData> lineData = new List<CellSpawnData>();
+            // 아래에서 위로 셀 추가
+            for (int row = 0; row < rows; row++)
+            {
+                Vector3 cellPosition = GetCellPosition(row, col, rows);
+                lineData.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
+            }
+            spawnDataList.AddRange(lineData);
+        }
+
+        StartCoroutine(SpawnLinesSequentially(spawnDataList, rows));
+    }
+
+    //~ 위에서 아래로 그리드 프리팹 생성
+    private void CreateTopToBottom(int rows, int cols)
+    {
+        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
+
+        // 각 행을 하나의 라인으로 처리 (아래에서 위로)
+        for (int row = 0; row < rows; row++)
+        {
+            List<CellSpawnData> lineData = new List<CellSpawnData>();
+            // 왼쪽에서 오른쪽으로  추가
+            for (int col = 0; col < cols; col++)
+            {
+                Vector3 cellPosition = GetCellPosition(row, col, rows);
+                lineData.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
+            }
+            spawnDataList.AddRange(lineData);
+        }
+
+        StartCoroutine(SpawnLinesSequentially(spawnDataList, cols));
+    }
+
+    //~ 아래에서 위로 그리드 프리팹 생성
+    private void CreateBottomToTop(int rows, int cols)
+    {
+        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
+
+        // 각 행을 하나의 라인으로 처리 (아래에서 위로)
+        for (int row = rows - 1; row >= 0; row--)
+        {
+            List<CellSpawnData> lineData = new List<CellSpawnData>();
+            // 왼쪽에서 오른쪽으로 셀 추가
+            for (int col = 0; col < cols; col++)
+            {
+                Vector3 cellPosition = GetCellPosition(row, col, rows);
+                lineData.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
+            }
+            spawnDataList.AddRange(lineData);
+        }
+
+        StartCoroutine(SpawnLinesSequentially(spawnDataList, cols));
+    }
+
+    //~ 즉시 그리드 프리팹 생성
+    private void CreateInstantOrder(int rows, int cols)
+    {
+        List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
+
+        for (int row = rows - 1; row >= 0; row--)
+        {
+            for (int col = 0; col < cols; col++)
+            {
+                int cellValue = gridArray[row, col];
+                // 0이 아닌 값을 가진 셀만 생성
+                if (cellValue != 0 && prefabDictionary.ContainsKey(cellValue))
+                {
+                    Vector3 cellPosition = GetCellPosition(row, col, rows);
+                    spawnDataList.Add(new CellSpawnData(cellPosition, row, col, currentGridContainer.transform));
+                }
+            }
+        }
+
+        // 모든 셀을 동시에 생성하되, 페이드 효과는 유지
+        foreach (var spawnData in spawnDataList)
+        {
+            GameObject cell = null;
+
+            if (showGridCells)
+            {
+                cell = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cell.transform.parent = spawnData.parent;
+                cell.transform.position = spawnData.position;
+                cell.transform.localScale = new Vector3(cellSize * 0.9f, 0.1f, cellSize * 0.9f);
+                cell.name = $"Cell_{spawnData.row}_{spawnData.col}";
+
+                GridCell cellComponent = cell.AddComponent<GridCell>();
+                cellComponent.Initialize(spawnData.row, spawnData.col, gridArray[spawnData.row, spawnData.col]);
+                cellComponent.SetAlpha(0f); // 초기 알파값 0으로 설정
+            }
+
+            int cellValue = gridArray[spawnData.row, spawnData.col];
+            if (prefabDictionary.ContainsKey(cellValue))
+            {
+                GameObject prefab = prefabDictionary[cellValue];
+                if (prefab != null)
+                {
+                    StartCoroutine(SpawnPrefabWithDelay(prefab, spawnData.position,
+                        cell != null ? cell.transform : spawnData.parent));
+                }
+            }
+        }
+    }
+
+    //~ 셀 위치 계산
+    private Vector3 GetCellPosition(int row, int col, int totalRows)
+    {
+        return gridOrigin + new Vector3(
+            col * cellSize,
+            gridHeight,
+            (totalRows - 1 - row) * cellSize
+        );
+    }
+
+    //~ 개별 그리드 셀 생성
+    private void CreateCell(Vector3 position, int row, int col, Transform parent)
     {
         GameObject cell = null;
 
@@ -305,6 +502,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    //~ 프리팹 생성 딜레이 처리
     private System.Collections.IEnumerator SpawnPrefabWithDelay(GameObject prefab, Vector3 position, Transform parent)
     {
         float delay = spawnOrder == SpawnOrder.Random ?
@@ -342,7 +540,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    // 개별 셀을 페이드아웃하는 코루틴
+    //~ 개별 셀을 페이드아웃하는 코루틴
     private System.Collections.IEnumerator FadeOutCell(GridCell cell)
     {
         float elapsedTime = 0f;
@@ -358,6 +556,7 @@ public class GridManager : MonoBehaviour
         cell.SetAlpha(0f);
     }
 
+    //~ 지정된 폴더에서 모든 CSV 파일 로드
     private void LoadAllCSVFiles()                         // 지정된 폴더에서 모든 CSV 파일 로드
     {
         
@@ -394,10 +593,9 @@ public class GridManager : MonoBehaviour
         }
 
         Logger.Log($"총 {csvFiles.Count}개의 CSV 파일을 로드했습니다.");
-        
-#endif
     }
 
+    //~ CSV 파일들을 순차적으로 로드
     private System.Collections.IEnumerator LoadGridSequentially()    // CSV 파일들을 순차적으로 로드
     {
         while (true)
@@ -422,6 +620,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    //~ 셀을 순차적으로 생성
     private System.Collections.IEnumerator SpawnCellsSequentially(List<CellSpawnData> spawnDataList)
     {
         foreach (var spawnData in spawnDataList)
@@ -456,6 +655,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    //~ 라인 단위로 셀 생성
     private System.Collections.IEnumerator SpawnLinesSequentially(List<CellSpawnData> spawnDataList, int colCount)
     {
         // 라인 단위로 처리
@@ -496,7 +696,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    // 셀 생성 데이터를 저장하는 구조체
+    //~ 셀 생성 데이터를 저장하는 구조체
     private struct CellSpawnData
     {
         public Vector3 position;
