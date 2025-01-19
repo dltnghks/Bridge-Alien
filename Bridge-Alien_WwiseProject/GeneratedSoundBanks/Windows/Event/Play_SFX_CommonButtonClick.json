@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1147630695",
+    "Type": "Event",
+    "GUID": "{C4AA4CDE-995E-48C8-9D90-9E9BF5C3914E}",
+    "Language": "SFX",
+    "Hash": "{4A2EB64E-E333-6E8A-1AFF-89CB9F21B434}",
+    "ObjectPath": "Play_SFX_CommonButtonClick",
+    "ShortName": "Play_SFX_CommonButtonClick",
+    "Path": "Event/Play_SFX_CommonButtonClick.bnk",
+    "Media": [
+     {
+      "Id": "281243175",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_CommonButtonClick.wav",
+      "Path": "Media/281243175.wem",
+      "CachePath": "4F/{4FD655BA-6FD2-96A6-7D6E-4A1046EB6EEC}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1147630695",
+      "Name": "Play_SFX_CommonButtonClick",
+      "ObjectPath": "\\Events\\Default Work Unit\\Common\\Play_SFX_CommonButtonClick",
+      "GUID": "{C4AA4CDE-995E-48C8-9D90-9E9BF5C3914E}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.27151933",
+      "DurationMax": "0.27151933",
+      "MediaRefs": [
+       {
+        "Id": "281243175"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{6BAAD363-2251-69A9-3B91-E51B1BDA540B}"
+ }
+}

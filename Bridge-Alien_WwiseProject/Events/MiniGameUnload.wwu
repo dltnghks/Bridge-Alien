@@ -127,6 +127,94 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SFX_PickupPost" ID="{50768A9D-2F55-4718-A97E-B6909D82E8BE}">
+					<ChildrenList>
+						<Action Name="" ID="{D354CAD0-2902-4B2C-9F9A-2E9639798D96}" ShortID="146021235">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_PickupPost" ID="{9C066764-DE8C-4993-A903-9AF554713763}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Dropall" ID="{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}">
+					<ChildrenList>
+						<Action Name="" ID="{D6CC46CC-954A-4A69-AEC3-8D22E35EADAD}" ShortID="710033523">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Dropall" ID="{EE2238E0-F4A2-42EF-987D-A4C02B4FE6A4}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_PickupStandardBox" ID="{6E524001-7CDF-4466-9679-962FF2D37410}">
+					<ChildrenList>
+						<Action Name="" ID="{F09DB7B2-7775-4EC5-9576-2FBABCFE34B2}" ShortID="745607277">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_PickupStandardBox" ID="{0C32976E-B9E2-4EF9-90C2-BDD18D89281C}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AMB_Conveyor_1" ID="{A80D9C15-607A-4F07-8371-3037D8131BB9}">
+					<ChildrenList>
+						<Action Name="" ID="{8F5118CA-F86F-4BF4-996C-DD073856F72D}" ShortID="547580613">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Conveyor-1" ID="{DD35E757-F7C1-419C-8E4D-FC5F60F03062}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_BrokenBox" ID="{CDBB9292-898E-4A31-AE41-6AB499FC76EC}">
+					<ChildrenList>
+						<Action Name="" ID="{976CFB38-329C-481F-80EB-35D27496F695}" ShortID="876013077">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_BrokenBox" ID="{D21B8796-338C-4559-8587-8CF607E11FD6}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AMB_Conveyor_2" ID="{EA890898-EE7B-4C59-8F6D-334A3A8AC173}">
+					<ChildrenList>
+						<Action Name="" ID="{214D50F1-6FF5-4997-B3F6-C0E71013EF71}" ShortID="1034113805">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Conveyor-2" ID="{62793202-413F-418B-BC0E-1C8A25109824}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_PickupSmallBox" ID="{77CB5A9B-969D-4E51-A456-086551AE4E0D}">
+					<ChildrenList>
+						<Action Name="" ID="{72AEB34D-470C-4B52-9254-70CEC73BF266}" ShortID="511547728">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_PickupSmallBox" ID="{46986FE4-F37E-4658-9488-A894B0B0BCA3}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_PickupLargeBox" ID="{4411D20F-8D7A-4AC2-A129-554045D20BE4}">
+					<ChildrenList>
+						<Action Name="" ID="{3B04D181-3271-4624-B950-0465EDC92421}" ShortID="261472609">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_PickupLargeBox" ID="{BA40C3C9-7537-496C-9EFF-69D63C39B4B2}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

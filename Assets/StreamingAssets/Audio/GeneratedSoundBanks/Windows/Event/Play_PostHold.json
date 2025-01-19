@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{3BA4FE24-6731-4E50-B72D-498D74776CE1}",
     "Language": "SFX",
-    "Hash": "{B42BE6DA-4426-ED2B-4C05-EE84F8CD3EDE}",
+    "Hash": "{CA938197-6E49-4A30-8740-20AD5106C56D}",
     "ObjectPath": "Play_PostHold",
     "ShortName": "Play_PostHold",
     "Path": "Event/Play_PostHold.bnk",
@@ -29,7 +29,7 @@
      {
       "Id": "3540212343",
       "Name": "Play_PostHold",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_PostHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_PostHold",
       "GUID": "{3BA4FE24-6731-4E50-B72D-498D74776CE1}",
       "DurationType": "OneShot",
       "DurationMin": "0.29316667",
@@ -40,9 +40,17 @@
        }
       ]
      }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
     ]
    }
   ],
-  "FileHash": "{DA042349-B4B9-1834-0AB6-164C3AAA6A4C}"
+  "FileHash": "{BA8D943A-1286-B0F8-B62E-515F359C16F0}"
  }
 }

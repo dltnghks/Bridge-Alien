@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{3DE6F73A-367E-43BF-8F1F-C86EE257D798}" SchemaVersion="123" RootDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" ParentDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}">
+	<AudioObjects>
+		<WorkUnit Name="gamemap" ID="{3DE6F73A-367E-43BF-8F1F-C86EE257D798}" OwnerID="{2E855A4F-64D7-47A3-BB10-5E4D74A59622}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="SFX_Clickdecide" ID="{65712592-80F6-405C-9E13-29A6F7971EEA}" ShortID="908180903">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SFX_Clickdecide" ID="{8FB5A830-D7B5-4F14-84FB-0C34ECDC8756}">
+							<Language>SFX</Language>
+							<AudioFile>SFX_Clickdecide.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="754186002"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SFX_Clickdecide" ID="{8FB5A830-D7B5-4F14-84FB-0C34ECDC8756}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_MoveCharacter" ID="{EDA4CFF0-922F-44DA-8E19-F8353E235931}" ShortID="1023090371">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SFX_MoveCharacter" ID="{219AD005-5BA7-4600-BCAE-2C4397734035}">
+							<Language>SFX</Language>
+							<AudioFile>SFX_MoveCharacter.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="456878743"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SFX_MoveCharacter" ID="{219AD005-5BA7-4600-BCAE-2C4397734035}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

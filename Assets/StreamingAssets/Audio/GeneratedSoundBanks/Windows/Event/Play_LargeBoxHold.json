@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
     "Language": "SFX",
-    "Hash": "{4B37498C-8183-17F1-162E-EBD551A85A6F}",
+    "Hash": "{F63686D3-6C2A-23CB-87B2-968B2D517EE3}",
     "ObjectPath": "Play_LargeBoxHold",
     "ShortName": "Play_LargeBoxHold",
     "Path": "Event/Play_LargeBoxHold.bnk",
@@ -29,7 +29,7 @@
      {
       "Id": "2606206533",
       "Name": "Play_LargeBoxHold",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_LargeBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_LargeBoxHold",
       "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
       "DurationType": "OneShot",
       "DurationMin": "0.144875",
@@ -40,9 +40,17 @@
        }
       ]
      }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
     ]
    }
   ],
-  "FileHash": "{AEB5D03F-6554-909C-1719-3A53A03D5B89}"
+  "FileHash": "{6B61B5FD-80E7-E031-68AC-DC0D09BA77E7}"
  }
 }

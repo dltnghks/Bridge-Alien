@@ -1,5 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
-	2557702835	Play_StandardBoxPut			\Default Work Unit\Play_StandardBoxPut	
+	2557702835	Play_StandardBoxPut			\Default Work Unit\MiniGameUnload\Play_StandardBoxPut	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	988953028	SFXVolume			\Default Work Unit\SFXVolume	

@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2810680534",
+    "Type": "Event",
+    "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
+    "Language": "SFX",
+    "Hash": "{19649730-2E14-B9E9-4898-6CEBB0050F81}",
+    "ObjectPath": "Play_SFX_Dropall",
+    "ShortName": "Play_SFX_Dropall",
+    "Path": "Event/Play_SFX_Dropall.bnk",
+    "Media": [
+     {
+      "Id": "100706031",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Dropall.wav",
+      "Path": "Media/100706031.wem",
+      "CachePath": "0B/{0B6D55F9-2F24-9F55-5926-3358FAF04694}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2810680534",
+      "Name": "Play_SFX_Dropall",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_Dropall",
+      "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.375",
+      "DurationMax": "1.375",
+      "MediaRefs": [
+       {
+        "Id": "100706031"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{B3917F83-6F08-A9BD-C6D1-D9971F8429C9}"
+ }
+}

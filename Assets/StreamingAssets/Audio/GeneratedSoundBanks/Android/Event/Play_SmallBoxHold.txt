@@ -1,3 +1,6 @@
 Event	ID	Name			Wwise Object Path	Notes
-	2487093689	Play_SmallBoxHold			\Default Work Unit\Play_SmallBoxHold	
+	2487093689	Play_SmallBoxHold			\Default Work Unit\MiniGameUnload\Play_SmallBoxHold	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
 

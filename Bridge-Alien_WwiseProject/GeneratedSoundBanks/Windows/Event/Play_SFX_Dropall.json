@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2810680534",
+    "Type": "Event",
+    "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
+    "Language": "SFX",
+    "Hash": "{07A53833-8695-4B8A-AFB8-7BC641156C2C}",
+    "ObjectPath": "Play_SFX_Dropall",
+    "ShortName": "Play_SFX_Dropall",
+    "Path": "Event/Play_SFX_Dropall.bnk",
+    "Media": [
+     {
+      "Id": "100706031",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Dropall.wav",
+      "Path": "Media/100706031.wem",
+      "CachePath": "98/{987123B1-EDB5-7E89-193E-3C45639FC6F8}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2810680534",
+      "Name": "Play_SFX_Dropall",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_Dropall",
+      "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.43486446",
+      "DurationMax": "0.43486446",
+      "MediaRefs": [
+       {
+        "Id": "100706031"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{F53DB894-D7B2-5047-9751-CB354A9635E0}"
+ }
+}

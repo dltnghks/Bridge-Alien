@@ -34,12 +34,12 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 02ac5ab39b3efcf42822a462b6d94d8a, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 00b49ff2ca0b68f4e9a47ae2189af323, type: 2}
         - Key: FootStepPlayerCharacter
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: b12bd8155ee415541844bc3b532b5df9, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 44c8736196fe52148aaa3e009ca06601, type: 2}
     - Key: 2
       Value:
         _keyValueList:
@@ -60,22 +60,22 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 3d93908766c9c884f82dca3f57603393, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 82b6191b9edc59a4090d0c5b0a034730, type: 2}
         - Key: SmallBoxPut
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: facc76ff2123f0a4194547fcd02bf772, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 82b6191b9edc59a4090d0c5b0a034730, type: 2}
         - Key: StandardBoxPut
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 82b6191b9edc59a4090d0c5b0a034730, type: 2}
         - Key: LargeBoxPut
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: b12bd8155ee415541844bc3b532b5df9, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 82b6191b9edc59a4090d0c5b0a034730, type: 2}
         - Key: PostHold
           Value:
             idInternal: 0

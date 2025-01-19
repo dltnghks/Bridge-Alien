@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{3BA4FE24-6731-4E50-B72D-498D74776CE1}",
     "Language": "SFX",
-    "Hash": "{75A0AAC7-E3F4-9847-CC9C-5CC113523578}",
+    "Hash": "{CA938197-6E49-4A30-8740-20AD5106C56D}",
     "ObjectPath": "Play_PostHold",
     "ShortName": "Play_PostHold",
     "Path": "Event/Play_PostHold.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{63C91D8C-5F60-799D-92B1-3D0EB8061C80}"
+  "FileHash": "{933C1B4D-A040-2E40-D4B8-DF701C0D2217}"
  }
 }

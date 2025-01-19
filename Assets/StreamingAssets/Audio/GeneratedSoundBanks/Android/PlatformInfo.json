@@ -3,14 +3,14 @@
   "Platform": {
    "Name": "Android",
    "BasePlatform": "Android",
-   "Generator": "2024.1.0.8669"
+   "Generator": "2024.1.1.8691"
   },
   "RootPaths": {
-   "ProjectRoot": "../..",
-   "SourceFilesRoot": "../../.cache",
+   "ProjectRoot": "../../../../../Bridge-Alien_WwiseProject",
+   "SourceFilesRoot": "../../../../../Bridge-Alien_WwiseProject/.cache",
    "SoundBanksRoot": ".",
    "ExternalSourcesInputFile": "",
-   "ExternalSourcesOutputRoot": "."
+   "ExternalSourcesOutputRoot": "../../../../../Bridge-Alien_WwiseProject/GeneratedSoundBanks/Android"
   },
   "DefaultAlign": "16",
   "Settings": {
@@ -30,8 +30,9 @@
    "MaxAttenuationInfo": "true",
    "EstimatedDurationInfo": "true",
    "PrintObjectGuid": "true",
-   "PrintObjectPath": "true"
+   "PrintObjectPath": "true",
+   "PrintObjectColor": "true"
   },
-  "FileHash": "{CE8760A9-F415-6624-125A-BA951B55C1DA}"
+  "FileHash": "{DD85CF83-0457-AA07-D1A0-1AD561E5161D}"
  }
 }

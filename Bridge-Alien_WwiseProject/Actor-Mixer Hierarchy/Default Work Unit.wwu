@@ -300,6 +300,9 @@
 								<ActiveSource Name="box5_put" ID="{4430C5A4-0C29-4983-9875-1CBBCECF4B4F}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<WorkUnit Name="common" ID="{E4905E00-02FA-454D-8397-6843E05F30B4}" PersistMode="Reference"/>
+						<WorkUnit Name="gamemap" ID="{3DE6F73A-367E-43BF-8F1F-C86EE257D798}" PersistMode="Reference"/>
+						<WorkUnit Name="off" ID="{922C8016-7EC9-49D1-A7D7-263589613A6C}" PersistMode="Reference"/>
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="RTPC">
