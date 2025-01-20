@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -6,6 +7,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 8f;      // 이동 속도
     [SerializeField] private float rayDistance = 1f;    // 레이캐스트 거리
     [SerializeField] private bool enableFlip = true;    // 플레이어 플립 활성화 여부
+
+    [Header("Health Settings")]
+    [SerializeField] private float maxHealth = 100f;    // 최대 HP
+    [SerializeField] private float currentHealth;       // 현재 HP
+
+    public event Action<float, float> OnHealthChanged;  // HP 변경 이벤트
+    public event Action OnPlayerDeath;                  // 플레이어 사망 이벤트
 
     private GameObject spriteObject;                    // 스프라이트 오브젝트
     private SpriteBillboard billboard;                  // 스프라이트 빌보드
@@ -17,6 +25,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        currentHealth = maxHealth;
+        
         // 리지드바디 설정
         rb = GetComponent<Rigidbody>();
         if (rb == null) { rb = gameObject.AddComponent<Rigidbody>(); }
@@ -195,4 +205,46 @@ public class Player : MonoBehaviour
         Gizmos.DrawRay(transform.position, transform.forward * rayDistance);
         Gizmos.DrawRay(transform.position, -transform.forward * rayDistance);
     }
+
+    //~ HP 관련 함수
+    public void TakeDamage(float damage)
+    {
+        if (damage < 0) return;
+        Debug.Log($"Player took {damage} damage");
+
+        currentHealth = Mathf.Max(0, currentHealth - damage);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        ShakeCamera(0.5f);                 // 데미지 비율에 따른 흔들림 강도 계산
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void ShakeCamera(float intensity, float duration = 0.3f)
+    {
+        CameraManager.Instance.ShakeCamera(intensity, duration);
+    }
+
+    public void Heal(float amount)
+    {
+        if (amount < 0) return;
+
+        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
+    private void Die()
+    {
+        OnPlayerDeath?.Invoke();
+        // 여기에 사망 시 추가 로직 구현
+        // 예: 애니메이션 재생, 게임오버 처리 등
+    }
+
+
+    public float GetCurrentHealth() => currentHealth;
+    public float GetMaxHealth() => maxHealth;
+    public float GetHealthPercentage() => currentHealth / maxHealth;
 }
