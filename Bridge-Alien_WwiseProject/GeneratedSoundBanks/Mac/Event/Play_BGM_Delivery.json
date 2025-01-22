@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3454433139",
+    "Type": "Event",
+    "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
+    "Language": "SFX",
+    "Hash": "{0BC603AA-5099-10E0-14FD-F0670BB06FE1}",
+    "ObjectPath": "Play_BGM_Delivery",
+    "ShortName": "Play_BGM_Delivery",
+    "Path": "Event/Play_BGM_Delivery.bnk",
+    "Media": [
+     {
+      "Id": "113552982",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "deliverybgm.wav",
+      "Path": "Media/113552982.wem",
+      "CachePath": "B3/{B34FD41A-5214-68E9-788E-C55D56D7D0D1}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3454433139",
+      "Name": "Play_BGM_Delivery",
+      "ObjectPath": "\\Events\\BGM\\Play_BGM_Delivery",
+      "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
+      "DurationType": "OneShot",
+      "DurationMin": "100.4636",
+      "DurationMax": "100.4636",
+      "MediaRefs": [
+       {
+        "Id": "113552982"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{752905E4-BE98-A856-8428-0DB49A164CB8}"
+ }
+}

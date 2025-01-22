@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3670728633",
+    "Type": "Event",
+    "GUID": "{094F8D77-21F6-43A9-8345-73A3F280AB72}",
+    "Language": "SFX",
+    "Hash": "{4B60002B-26D8-8378-7000-4D2D81FDE48D}",
+    "ObjectPath": "Play_LargeBoxPut",
+    "ShortName": "Play_LargeBoxPut",
+    "Path": "Event/Play_LargeBoxPut.bnk",
+    "Media": [
+     {
+      "Id": "756780069",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box3_put.wav",
+      "Path": "Media/756780069.wem",
+      "CachePath": "C3/{C3CB99D8-73DC-238F-BC6F-C79FF93B7260}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3670728633",
+      "Name": "Play_LargeBoxPut",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_LargeBoxPut",
+      "GUID": "{094F8D77-21F6-43A9-8345-73A3F280AB72}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.18770833",
+      "DurationMax": "0.18770833",
+      "MediaRefs": [
+       {
+        "Id": "756780069"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{CCAB0553-6738-58BA-A36B-477D18032E90}"
+ }
+}

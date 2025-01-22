@@ -8,35 +8,35 @@
    {
     "Id": "3454433139",
     "Type": "Event",
-    "GUID": "{01759CC8-8C42-4E73-AC15-F20D0EDF87A6}",
+    "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
     "Language": "SFX",
-    "Hash": "{3ECE17A6-766F-89F3-3E1D-C1A5AF51C30C}",
+    "Hash": "{4F671B0B-EBA6-2E34-848D-B09A536CF60C}",
     "ObjectPath": "Play_BGM_Delivery",
     "ShortName": "Play_BGM_Delivery",
     "Path": "Event/Play_BGM_Delivery.bnk",
     "Media": [
      {
-      "Id": "990116329",
+      "Id": "113552982",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
       "ShortName": "deliverybgm.wav",
-      "Path": "Media/990116329.wem",
-      "CachePath": "D6/{D6D90E09-30B8-5105-1C45-882CBF88B6F9}.wem"
+      "Path": "Media/113552982.wem",
+      "CachePath": "67/{679B4ED4-DA04-8F78-5BB9-C1A5307C0751}.wem"
      }
     ],
     "Events": [
      {
       "Id": "3454433139",
       "Name": "Play_BGM_Delivery",
-      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Delivery",
-      "GUID": "{01759CC8-8C42-4E73-AC15-F20D0EDF87A6}",
+      "ObjectPath": "\\Events\\BGM\\Play_BGM_Delivery",
+      "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
       "DurationType": "OneShot",
-      "DurationMin": "100.10151",
-      "DurationMax": "100.10151",
+      "DurationMin": "100.4636",
+      "DurationMax": "100.4636",
       "MediaRefs": [
        {
-        "Id": "990116329"
+        "Id": "113552982"
        }
       ]
      }
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{ADCA36F1-E8F4-EC3C-C2B5-B4EFEBC85EBE}"
+  "FileHash": "{7D60D85C-B232-42AC-0FA7-79BF00316C66}"
  }
 }

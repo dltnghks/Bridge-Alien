@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2852335006	Play_SFX_Idle_Flying			\Default Work Unit\delivery\Play_SFX_Idle_Flying	
-

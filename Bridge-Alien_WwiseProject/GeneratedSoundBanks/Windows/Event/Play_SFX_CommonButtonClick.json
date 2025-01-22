@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{C4AA4CDE-995E-48C8-9D90-9E9BF5C3914E}",
     "Language": "SFX",
-    "Hash": "{4826268C-4642-D6D2-D489-D56874097BEB}",
+    "Hash": "{A07E8A2A-392F-A796-D790-D2BC54949155}",
     "ObjectPath": "Play_SFX_CommonButtonClick",
     "ShortName": "Play_SFX_CommonButtonClick",
     "Path": "Event/Play_SFX_CommonButtonClick.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{6764E76B-DCED-5222-2544-6F0CC87F7591}"
+  "FileHash": "{048846D1-AC0E-2B28-8E4F-EAE7C0EC6CA7}"
  }
 }

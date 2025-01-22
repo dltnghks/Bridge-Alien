@@ -31,13 +31,11 @@ namespace AK
         static const AkUniqueID PLAY_SFX_DROPALL = 2810680534U;
         static const AkUniqueID PLAY_SFX_FAILED = 3929437841U;
         static const AkUniqueID PLAY_SFX_FOOTSTEP_PLAYERCHARACTER = 562923629U;
-        static const AkUniqueID PLAY_SFX_IDLE_FLYING = 2852335006U;
         static const AkUniqueID PLAY_SFX_MOVECHARACTER = 3538692530U;
         static const AkUniqueID PLAY_SFX_PICKUPLARGEBOX = 2478644074U;
         static const AkUniqueID PLAY_SFX_PICKUPPOST = 596290888U;
         static const AkUniqueID PLAY_SFX_PICKUPSMALLBOX = 3053722294U;
         static const AkUniqueID PLAY_SFX_PICKUPSTANDARDBOX = 118618168U;
-        static const AkUniqueID PLAY_SFX_PLAYER_BEATTACKED = 2437488212U;
         static const AkUniqueID PLAY_SFX_RUSH_2 = 1896826979U;
         static const AkUniqueID PLAY_SFX_RUSH_PRE = 2883951734U;
         static const AkUniqueID PLAY_SFX_RUSH_PRE_2 = 2242457109U;

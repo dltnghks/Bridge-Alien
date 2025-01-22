@@ -21,12 +21,12 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: dc6ecb04ef5e13946baec89eed72ed15, type: 2}
         - Key: MiniGameUnload
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: d37369134653a3d4d82749b8783c9883, type: 2}
     - Key: 1
       Value:
         _keyValueList:
@@ -105,4 +105,14 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: a19d7e7081c164a478183ff6e8265dd6, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: fb87a3d154fd6c9408d974dc9658f774, type: 2}
+        - Key: PlusScore
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 82b6191b9edc59a4090d0c5b0a034730, type: 2}
+        - Key: MinusScore
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 1d2112c4da05b6346912b2b335d43159, type: 2}

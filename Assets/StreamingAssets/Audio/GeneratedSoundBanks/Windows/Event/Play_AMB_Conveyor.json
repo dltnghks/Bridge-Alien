@@ -8,20 +8,20 @@
    {
     "Id": "3092289078",
     "Type": "Event",
-    "GUID": "{9669FDA6-01BC-4815-9989-63973B78032E}",
+    "GUID": "{0C6692A6-D4B8-442E-A78A-04C86EC7FF24}",
     "Language": "SFX",
-    "Hash": "{A1B9ACDC-895A-2330-5D34-73CC8D5BFA13}",
+    "Hash": "{820636E6-FF51-D1BB-B05F-5C8033F75045}",
     "ObjectPath": "Play_AMB_Conveyor",
     "ShortName": "Play_AMB_Conveyor",
     "Path": "Event/Play_AMB_Conveyor.bnk",
     "Media": [
      {
-      "Id": "430754444",
+      "Id": "300363380",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
       "ShortName": "AMB_Conveyor.wav",
-      "Path": "Media/430754444.wem",
+      "Path": "Media/300363380.wem",
       "CachePath": "A7/{A7B1C00B-F057-BEF4-2841-273EB1238D4A}.wem"
      }
     ],
@@ -29,12 +29,13 @@
      {
       "Id": "3092289078",
       "Name": "Play_AMB_Conveyor",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_AMB_Conveyor",
-      "GUID": "{9669FDA6-01BC-4815-9989-63973B78032E}",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_AMB_Conveyor",
+      "GUID": "{0C6692A6-D4B8-442E-A78A-04C86EC7FF24}",
+      "MaxAttenuation": "15",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
-        "Id": "430754444"
+        "Id": "300363380"
        }
       ]
      }
@@ -49,6 +50,6 @@
     ]
    }
   ],
-  "FileHash": "{6E8493E4-CB4B-0749-179D-C7B5C074D33F}"
+  "FileHash": "{7CDB063E-6489-2FC3-F950-97AA79CE0B82}"
  }
 }

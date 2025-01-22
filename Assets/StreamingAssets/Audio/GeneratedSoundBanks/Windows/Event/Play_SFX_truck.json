@@ -8,20 +8,20 @@
    {
     "Id": "1117495919",
     "Type": "Event",
-    "GUID": "{A6B604BF-9CA8-4E02-A911-6A83AD2105A2}",
+    "GUID": "{9EEC8B1C-C99F-4F67-AA2E-5408C277CF11}",
     "Language": "SFX",
-    "Hash": "{D98AC841-723A-3589-4E45-1F57017537FE}",
+    "Hash": "{B26AAD09-4437-5F08-8B78-67C886E328DC}",
     "ObjectPath": "Play_SFX_truck",
     "ShortName": "Play_SFX_truck",
     "Path": "Event/Play_SFX_truck.bnk",
     "Media": [
      {
-      "Id": "595672574",
+      "Id": "761617789",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
       "ShortName": "SFX_truck.wav",
-      "Path": "Media/595672574.wem",
+      "Path": "Media/761617789.wem",
       "CachePath": "DB/{DBFC884A-23B7-FF3E-828B-D00E6ED4BAFE}.wem"
      }
     ],
@@ -29,12 +29,12 @@
      {
       "Id": "1117495919",
       "Name": "Play_SFX_truck",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_SFX_truck",
-      "GUID": "{A6B604BF-9CA8-4E02-A911-6A83AD2105A2}",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_truck",
+      "GUID": "{9EEC8B1C-C99F-4F67-AA2E-5408C277CF11}",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
-        "Id": "595672574"
+        "Id": "761617789"
        }
       ]
      }
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{2154FE73-D2CB-F7FB-2D2D-FDFAE407BEC1}"
+  "FileHash": "{A8B8A22C-3CF8-0291-2867-6018527C9896}"
  }
 }

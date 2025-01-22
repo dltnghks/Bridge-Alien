@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc32ec4493e5094458058d6dfe8a05d2, type: 3}
+  m_Name: 16BEABF8-1C79-4E48-9A0B-ACF2CFE2CDAE
+  m_EditorClassIdentifier: 
+  objectName: Play_BGM_Gamemaploop
+  id: 1914102211
+  guid: 16BEABF8-1C79-4E48-9A0B-ACF2CFE2CDAE
+  IsInUserDefinedSoundBank: 0
+  IsAutoBankLoaded: 0

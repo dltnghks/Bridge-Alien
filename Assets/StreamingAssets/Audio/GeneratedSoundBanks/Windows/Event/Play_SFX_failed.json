@@ -8,35 +8,35 @@
    {
     "Id": "3929437841",
     "Type": "Event",
-    "GUID": "{7D83C3E8-466F-4797-960B-5205B0C842FA}",
+    "GUID": "{C1E574B1-1EE8-4C33-9FD0-AA4845BEF1F5}",
     "Language": "SFX",
-    "Hash": "{E79A1B57-92D4-F1E4-5539-F9DA4ABD613F}",
+    "Hash": "{DDAADF32-EA11-5D48-BE95-8594BFD81F55}",
     "ObjectPath": "Play_SFX_failed",
     "ShortName": "Play_SFX_failed",
     "Path": "Event/Play_SFX_failed.bnk",
     "Media": [
      {
-      "Id": "1024507831",
+      "Id": "410912351",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
       "ShortName": "SFX_failed.wav",
-      "Path": "Media/1024507831.wem",
-      "CachePath": "2A/{2A550837-4ED1-4F27-2DA3-E9CCC7564A5D}.wem"
+      "Path": "Media/410912351.wem",
+      "CachePath": "65/{65D31556-5500-8D16-DC00-D39EAA733D48}.wem"
      }
     ],
     "Events": [
      {
       "Id": "3929437841",
       "Name": "Play_SFX_failed",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_SFX_failed",
-      "GUID": "{7D83C3E8-466F-4797-960B-5205B0C842FA}",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_failed",
+      "GUID": "{C1E574B1-1EE8-4C33-9FD0-AA4845BEF1F5}",
       "DurationType": "OneShot",
-      "DurationMin": "0.31174698",
-      "DurationMax": "0.31174698",
+      "DurationMin": "0.30525228",
+      "DurationMax": "0.30525228",
       "MediaRefs": [
        {
-        "Id": "1024507831"
+        "Id": "410912351"
        }
       ]
      }
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{3F5B7C40-CD24-4831-A193-7A712458BAFA}"
+  "FileHash": "{0A8CB862-489C-3B53-A35B-D4BD5F3145CA}"
  }
 }

@@ -8,20 +8,20 @@
    {
     "Id": "3092289078",
     "Type": "Event",
-    "GUID": "{9669FDA6-01BC-4815-9989-63973B78032E}",
+    "GUID": "{0C6692A6-D4B8-442E-A78A-04C86EC7FF24}",
     "Language": "SFX",
-    "Hash": "{A1B9ACDC-895A-2330-5D34-73CC8D5BFA13}",
+    "Hash": "{AFAE53AC-5DEE-95F5-1B6B-96B79C3B590C}",
     "ObjectPath": "Play_AMB_Conveyor",
     "ShortName": "Play_AMB_Conveyor",
     "Path": "Event/Play_AMB_Conveyor.bnk",
     "Media": [
      {
-      "Id": "430754444",
+      "Id": "300363380",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
       "ShortName": "AMB_Conveyor.wav",
-      "Path": "Media/430754444.wem",
+      "Path": "Media/300363380.wem",
       "CachePath": "A7/{A7B1C00B-F057-BEF4-2841-273EB1238D4A}.wem"
      }
     ],
@@ -30,11 +30,11 @@
       "Id": "3092289078",
       "Name": "Play_AMB_Conveyor",
       "ObjectPath": "\\Events\\Default Work Unit\\Play_AMB_Conveyor",
-      "GUID": "{9669FDA6-01BC-4815-9989-63973B78032E}",
+      "GUID": "{0C6692A6-D4B8-442E-A78A-04C86EC7FF24}",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
-        "Id": "430754444"
+        "Id": "300363380"
        }
       ]
      }
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{BF43313C-F0F6-D663-FC4D-9354B03CCABD}"
+  "FileHash": "{0DDFAE23-6E66-293F-A97A-27216793B163}"
  }
 }

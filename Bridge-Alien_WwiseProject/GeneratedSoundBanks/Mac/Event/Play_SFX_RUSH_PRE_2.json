@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2242457109",
+    "Type": "Event",
+    "GUID": "{29EA3150-51AD-4193-A4F1-4A24566AEC1B}",
+    "Language": "SFX",
+    "Hash": "{1B32B751-DCED-208F-64D3-7C7B778FED12}",
+    "ObjectPath": "Play_SFX_RUSH_PRE_2",
+    "ShortName": "Play_SFX_RUSH_PRE_2",
+    "Path": "Event/Play_SFX_RUSH_PRE_2.bnk",
+    "Media": [
+     {
+      "Id": "433243864",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX-RUSH_FRE-2.wav",
+      "Path": "Media/433243864.wem",
+      "CachePath": "4C/{4C639505-E629-9BF3-EB30-6A4D114BC8D9}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2242457109",
+      "Name": "Play_SFX_RUSH_PRE_2",
+      "ObjectPath": "\\Events\\delivery\\Play_SFX_RUSH_PRE_2",
+      "GUID": "{29EA3150-51AD-4193-A4F1-4A24566AEC1B}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.86104417",
+      "DurationMax": "0.86104417",
+      "MediaRefs": [
+       {
+        "Id": "433243864"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{0517B56F-BFCA-CB1F-4412-E966619AF0FA}"
+ }
+}

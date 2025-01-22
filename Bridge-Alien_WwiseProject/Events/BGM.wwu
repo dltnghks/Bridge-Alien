@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" SchemaVersion="123" RootDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}" ParentDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}">
+<WwiseDocument Type="WorkUnit" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" SchemaVersion="123">
 	<Events>
-		<WorkUnit Name="BGM" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" OwnerID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Nested"/>
+		<WorkUnit Name="BGM" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Bgm_Unload" ID="{79DF991E-E52E-4AFC-A538-E019B7A29F1A}">
+					<ChildrenList>
+						<Action Name="" ID="{B93DBEED-3362-4719-A09B-44577E8AA3B3}" ShortID="524972685">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bgm_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BGM_Delivery" ID="{70A44CB3-D02A-4DA1-93D4-967262509001}">
+					<ChildrenList>
+						<Action Name="" ID="{93891346-5FCA-4A31-BDFA-751EC030255B}" ShortID="960925833">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM_Delivery" ID="{8DF81BC4-BDE1-453A-8B75-5A47A34DF3B5}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BGM_Gamemaploop" ID="{16BEABF8-1C79-4E48-9A0B-ACF2CFE2CDAE}">
+					<ChildrenList>
+						<Action Name="" ID="{2569218B-AADF-41BA-95D1-5699D85AEDF6}" ShortID="59968411">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM_Gamemaploop" ID="{DDC4D1DF-3BB6-4DF7-89F8-79E2A7AC11C4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

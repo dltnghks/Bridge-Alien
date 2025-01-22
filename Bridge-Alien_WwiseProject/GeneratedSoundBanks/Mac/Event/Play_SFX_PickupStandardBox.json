@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "118618168",
+    "Type": "Event",
+    "GUID": "{6E524001-7CDF-4466-9679-962FF2D37410}",
+    "Language": "SFX",
+    "Hash": "{D0CFA68A-D8E6-B53C-5367-70E0A12C6559}",
+    "ObjectPath": "Play_SFX_PickupStandardBox",
+    "ShortName": "Play_SFX_PickupStandardBox",
+    "Path": "Event/Play_SFX_PickupStandardBox.bnk",
+    "Media": [
+     {
+      "Id": "597744730",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_PickupStandardBox.wav",
+      "Path": "Media/597744730.wem",
+      "CachePath": "76/{76FE44A6-3F81-B1AF-02A2-A579C1BAB928}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "118618168",
+      "Name": "Play_SFX_PickupStandardBox",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_PickupStandardBox",
+      "GUID": "{6E524001-7CDF-4466-9679-962FF2D37410}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.25241667",
+      "DurationMax": "0.25241667",
+      "MediaRefs": [
+       {
+        "Id": "597744730"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{69FB4FEC-A9A5-163C-C3F2-9DB414A959CA}"
+ }
+}

@@ -25,20 +25,6 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Stop_MiniGameUnloadBGM" ID="{94E3C88D-39C0-4DF3-8038-977F7D8A1CE6}">
-					<ChildrenList>
-						<Action Name="" ID="{1C04A468-7220-487A-A184-FC64AD322984}" ShortID="30693357">
-							<PropertyList>
-								<Property Name="ActionType" Type="int16" Value="2"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Play_PostPut" ID="{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}">
 					<ChildrenList>
 						<Action Name="" ID="{E8C20927-4746-4388-858C-C2C2F077A379}" ShortID="884326205">
@@ -89,17 +75,6 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="box3_hold" ID="{C9CC72CF-281A-4B95-971C-6C37FB34AB9B}" WorkUnitID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_MiniGameUnloadBGM" ID="{3C7F040D-8586-40FE-B104-0587DB218369}">
-					<ChildrenList>
-						<Action Name="" ID="{87801852-54F9-4976-B08F-01E4ED38A5F8}" ShortID="1028682">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -160,34 +135,12 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_AMB_Conveyor_1" ID="{A80D9C15-607A-4F07-8371-3037D8131BB9}">
-					<ChildrenList>
-						<Action Name="" ID="{8F5118CA-F86F-4BF4-996C-DD073856F72D}" ShortID="547580613">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_Conveyor-1" ID="{DD35E757-F7C1-419C-8E4D-FC5F60F03062}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
 				<Event Name="Play_SFX_BrokenBox" ID="{CDBB9292-898E-4A31-AE41-6AB499FC76EC}">
 					<ChildrenList>
 						<Action Name="" ID="{976CFB38-329C-481F-80EB-35D27496F695}" ShortID="876013077">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="SFX_BrokenBox" ID="{D21B8796-338C-4559-8587-8CF607E11FD6}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_AMB_Conveyor_2" ID="{EA890898-EE7B-4C59-8F6D-334A3A8AC173}">
-					<ChildrenList>
-						<Action Name="" ID="{214D50F1-6FF5-4997-B3F6-C0E71013EF71}" ShortID="1034113805">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="AMB_Conveyor-2" ID="{62793202-413F-418B-BC0E-1C8A25109824}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -210,6 +163,39 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="SFX_PickupLargeBox" ID="{BA40C3C9-7537-496C-9EFF-69D63C39B4B2}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_AMB_Conveyor" ID="{0C6692A6-D4B8-442E-A78A-04C86EC7FF24}">
+					<ChildrenList>
+						<Action Name="" ID="{40BAC87F-3191-4425-9373-5B432C256D91}" ShortID="1019398774">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMB_Conveyor" ID="{D3C98E20-0B36-4D20-84B2-22780FBE45B5}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_failed" ID="{C1E574B1-1EE8-4C33-9FD0-AA4845BEF1F5}">
+					<ChildrenList>
+						<Action Name="" ID="{1DFC10BF-7E9C-4EB8-AFFB-32E8F03E21BC}" ShortID="225283347">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_failed" ID="{880D62CC-0AFB-4598-961B-2579B07E5AE5}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_truck" ID="{9EEC8B1C-C99F-4F67-AA2E-5408C277CF11}">
+					<ChildrenList>
+						<Action Name="" ID="{B08C2BE3-19AA-46C0-8EAB-F8ED73150DCF}" ShortID="796143429">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_truck" ID="{CDD51361-4C3D-4EC4-8284-BF3B51A6E480}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

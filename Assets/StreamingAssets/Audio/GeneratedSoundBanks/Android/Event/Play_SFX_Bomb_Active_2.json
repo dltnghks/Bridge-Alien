@@ -8,41 +8,41 @@
    {
     "Id": "2174444108",
     "Type": "Event",
-    "GUID": "{45D0EC3E-F519-4B55-A1CB-200B4128AEA7}",
+    "GUID": "{68F40EDB-6825-4063-8395-74EB6436D195}",
     "Language": "SFX",
-    "Hash": "{4A86A619-B2BD-E1AC-881E-2FB8ECF6B95A}",
+    "Hash": "{63F569AE-A693-1A32-841F-B12AB221A9D1}",
     "ObjectPath": "Play_SFX_Bomb_Active_2",
     "ShortName": "Play_SFX_Bomb_Active_2",
     "Path": "Event/Play_SFX_Bomb_Active_2.bnk",
     "Media": [
      {
-      "Id": "658263311",
+      "Id": "948139635",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Loose",
       "ShortName": "SFX_Bomb_Active-2.wav",
-      "Path": "Media/658263311.wem",
-      "CachePath": "11/{11135F87-7103-3A93-6269-A5A8875CFB58}.wem"
+      "Path": "Media/948139635.wem",
+      "CachePath": "1C/{1C487487-D4C2-4B93-4013-9D67370A7B0B}.wem"
      }
     ],
     "Events": [
      {
       "Id": "2174444108",
       "Name": "Play_SFX_Bomb_Active_2",
-      "ObjectPath": "\\Events\\Default Work Unit\\delivery\\Play_SFX_Bomb_Active_2",
-      "GUID": "{45D0EC3E-F519-4B55-A1CB-200B4128AEA7}",
+      "ObjectPath": "\\Events\\delivery\\Play_SFX_Bomb_Active_2",
+      "GUID": "{68F40EDB-6825-4063-8395-74EB6436D195}",
       "DurationType": "OneShot",
-      "DurationMin": "1.2901983",
-      "DurationMax": "1.2901983",
+      "DurationMin": "1.2873996",
+      "DurationMax": "1.2873996",
       "MediaRefs": [
        {
-        "Id": "658263311"
+        "Id": "948139635"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{07FC6FD6-99A4-5E3D-475B-7796478999B9}"
+  "FileHash": "{288C9554-DBB8-F661-D664-9D4B279DEE34}"
  }
 }

@@ -1,6 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{D6CD38E2-973E-4AF3-A2B8-29BE2A9B2413}" SchemaVersion="123" RootDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}" ParentDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}">
+<WwiseDocument Type="WorkUnit" ID="{D6CD38E2-973E-4AF3-A2B8-29BE2A9B2413}" SchemaVersion="123">
 	<Events>
-		<WorkUnit Name="delivery" ID="{D6CD38E2-973E-4AF3-A2B8-29BE2A9B2413}" OwnerID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Nested"/>
+		<WorkUnit Name="delivery" ID="{D6CD38E2-973E-4AF3-A2B8-29BE2A9B2413}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_SFX_DROP_STONE" ID="{9CAE3225-A46F-428E-A514-424DD7CD1CC5}">
+					<ChildrenList>
+						<Action Name="" ID="{D61DA264-FBAC-44E8-B0AE-A24B15D2BF39}" ShortID="600420789">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_DROP_STONE" ID="{B7E37D2A-8A66-4081-BC6B-1DBE4D034036}" WorkUnitID="{E6A2B4D6-1563-480B-9481-01FB3260778D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Bomb_PRE_2" ID="{1014A415-4E7F-406C-8565-D3CC1FE95D67}">
+					<ChildrenList>
+						<Action Name="" ID="{443B7EE6-52BF-42F3-A53C-9650257CB0C6}" ShortID="423320668">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Bomb_PRE-2" ID="{887783E0-9C6B-40FF-9D06-D2FED9EFF8E8}" WorkUnitID="{E6A2B4D6-1563-480B-9481-01FB3260778D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Bomb_Active_2" ID="{68F40EDB-6825-4063-8395-74EB6436D195}">
+					<ChildrenList>
+						<Action Name="" ID="{01CA498B-AA15-4A99-A11C-CD216E2A762E}" ShortID="879332851">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Bomb_Active-2" ID="{9A16931A-3314-422C-A4F7-D1B4F52106C1}" WorkUnitID="{E6A2B4D6-1563-480B-9481-01FB3260778D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_RUSH_PRE" ID="{F3104F24-D048-4947-9F00-7D0A7954F8E9}">
+					<ChildrenList>
+						<Action Name="" ID="{9D96E23B-254B-4F02-BD38-799DE5BB4378}" ShortID="549312984">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX-RUSH_PRE" ID="{265AE0E6-9A41-48BA-BBC0-5AB257F54EF3}" WorkUnitID="{E6A2B4D6-1563-480B-9481-01FB3260778D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_RUSH_2" ID="{AEC07DEB-6C8F-461B-B7AC-398509E2ABB7}">
+					<ChildrenList>
+						<Action Name="" ID="{E841627D-C0CF-4AEF-83FC-7D858BD0F244}" ShortID="383139474">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX-RUSH-2" ID="{7A33D9B0-AD53-445E-BE94-A53A682F7111}" WorkUnitID="{E6A2B4D6-1563-480B-9481-01FB3260778D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_RUSH_PRE_2" ID="{29EA3150-51AD-4193-A4F1-4A24566AEC1B}">
+					<ChildrenList>
+						<Action Name="" ID="{61163F42-E1DA-4C42-A283-04D9F59B7B7D}" ShortID="295477651">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX-RUSH_FRE-2" ID="{FFB777E6-DBF4-49CD-A1C1-AE2BE23F8428}" WorkUnitID="{E6A2B4D6-1563-480B-9481-01FB3260778D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

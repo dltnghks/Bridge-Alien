@@ -183,7 +183,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         {
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
         }
-        else if (score > 0)
+        else if (score < 0)
         {
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.MinusScore.ToString());
         }
