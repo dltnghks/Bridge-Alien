@@ -12,6 +12,7 @@ public class GameMapPlayerController : MonoBehaviour
     public GameObject PlayerCharacter{get; private set;}
     public List<MiniGamePoint> MiniGamePointList;
 
+    private int _currentMiniGamePoint = 0;
     // Pointer 위치 가져오기
     private Vector2 _touchPosition;
 
@@ -35,6 +36,8 @@ public class GameMapPlayerController : MonoBehaviour
                     Vector3 pos = point.transform.position;
                     pos.y = PlayerCharacter.transform.position.y;
                     PlayerCharacter.transform.position = pos;
+                    
+                    _currentMiniGamePoint = MiniGamePointList.IndexOf(point);
                 }
             }
         }else{
@@ -76,7 +79,8 @@ public class GameMapPlayerController : MonoBehaviour
             Debug.Log($"Touched on 3D Object: {hit.collider.gameObject.name}");
             
             MiniGamePoint miniGamePoint = hit.collider.GetComponent<MiniGamePoint>();
-            if(miniGamePoint != null){   
+            if(miniGamePoint != null){ 
+                Managers.Scene.SelectedSceneType = Define.Scene.Unknown;
                 MoveToMiniGamePoint(miniGamePoint);
             }
             else{
@@ -92,12 +96,32 @@ public class GameMapPlayerController : MonoBehaviour
         {
             return;
         }
-        
-        Vector3 pos = miniGamePoint.transform.position;
-        pos.y += PlayerCharacter.transform.position.y;
-        PlayerCharacter.transform.DOMove(pos, 0.5f).OnComplete(() =>
+     
+        int destIndex = MiniGamePointList.IndexOf(miniGamePoint);
+
+        if (_currentMiniGamePoint == destIndex)
+        {
             // UI 변경
-            miniGamePoint.OnClick()
+            miniGamePoint.OnClick();
+            return;
+        }
+        
+        if(_currentMiniGamePoint < destIndex) destIndex = _currentMiniGamePoint+1;
+        else if(_currentMiniGamePoint > destIndex) destIndex = _currentMiniGamePoint-1;
+
+        if (destIndex < 0 || destIndex >= MiniGamePointList.Count)
+        {
+            return;
+        }
+        
+        Vector3 pos = MiniGamePointList[destIndex].transform.position;
+        pos.y += PlayerCharacter.transform.position.y;
+        
+        PlayerCharacter.transform.DOMove(pos, 0.2f).OnComplete(() =>
+            {
+                _currentMiniGamePoint = destIndex;
+                MoveToMiniGamePoint(miniGamePoint);
+            }
         );
     }
 }

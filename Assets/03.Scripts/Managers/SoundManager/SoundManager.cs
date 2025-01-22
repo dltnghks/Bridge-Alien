@@ -67,6 +67,16 @@ public class SoundManager : MonoBehaviour
         PlaySound(type, eventName, soundGameObject);
     }
 
+    public void PlayAMB(SoundType type, string eventName, GameObject soundGameObject)
+    {
+        if (soundGameObject == null)
+        {
+            Logger.LogWarning("Sound GameObject is null!");
+            return;
+        }
+        PlaySound(type, eventName, soundGameObject);
+    }
+    
     private void PlaySound(SoundType type, string key, GameObject soundGameObject = null)
     {
         if (_soundEvent == null || !_soundEvent.EventDict.ContainsKey(type))
@@ -88,12 +98,12 @@ public class SoundManager : MonoBehaviour
     }
 
     private void PlayEvent(AK.Wwise.Event soundEvent, GameObject soundGameObject){
-        // 유효성 검사.. 어떻게 함
 
         if(soundGameObject == null)
         {
             soundGameObject = gameObject;
         }
+
         soundEvent.Post(soundGameObject);
     }
 

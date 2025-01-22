@@ -42,6 +42,8 @@ public enum MiniGameUnloadSoundSFX{
     
     BrokenBox,
     
+    PlusScore,
+    MinusScore,
     
     // Ambient
     Conveyor

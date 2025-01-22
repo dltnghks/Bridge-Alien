@@ -38,13 +38,14 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     {
         _action = action;
         _triggerAction = triggerAction;
+        Managers.Sound.PlayAMB(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Conveyor.ToString(), gameObject);
     }
 
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
+            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox)) 
             {
                 _triggerAction?.Invoke();
             }

@@ -87,7 +87,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
             _deliveryPointList.Add(deliveryPoint);
         }
-        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Conveyor.ToString());
 
         // BoxSpawnPoint 확인
         GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
@@ -179,8 +178,17 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     }
 
     public void AddScore(int score)
-    {        
-        _score.AddScore(score);
+    {
+        if (score > 0)
+        {
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
+        }
+        else if (score > 0)
+        {
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.MinusScore.ToString());
+        }
+
+    _score.AddScore(score);
     }
 
 }

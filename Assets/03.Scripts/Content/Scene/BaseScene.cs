@@ -11,7 +11,6 @@ public class BaseScene : MonoBehaviour
     {
         Init();
         
-        Managers.Sound.StopBGM();
         string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), SceneType);
         if (SceneType == Define.Scene.MiniGameUnload)
         {

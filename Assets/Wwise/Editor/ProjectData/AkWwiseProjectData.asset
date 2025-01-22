@@ -69,7 +69,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\All_In_One
     guid: e9991acf63c3b342a555bba2f19a3f52
     GuidInternal: 
-    m_lastTime: -8584644007224531400
+    m_lastTime: -8584643975291913286
     List: []
   - PhysicalPath: SoundBanks\Context.wwu
     PathAndIcons:
@@ -85,7 +85,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\Context
     guid: 09676fafd793c6489e2d78deffc81509
     GuidInternal: 
-    m_lastTime: -8584644007224531400
+    m_lastTime: -8584643975291913286
     List: []
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -98,7 +98,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a8315e9c32d8d440b3686a66118a69b1
     GuidInternal: 
-    m_lastTime: -8584644007224521354
+    m_lastTime: -8584643975291913286
     List: []
   - PhysicalPath: SoundBanks\General.wwu
     PathAndIcons:
@@ -114,7 +114,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\General
     guid: 437c4c6e97f95b4ab40eb1bdd7da7542
     GuidInternal: 
-    m_lastTime: -8584644007224521354
+    m_lastTime: -8584643975291913286
     List: []
   - PhysicalPath: SoundBanks\Region.wwu
     PathAndIcons:
@@ -130,7 +130,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\Region
     guid: 408d14ec23d050498236f6976489c4d3
     GuidInternal: 
-    m_lastTime: -8584644007224521354
+    m_lastTime: -8584643975291872698
     List:
     - name: MiniGameUnload
       guid: a208b9a184150841995d58768368d076
@@ -181,7 +181,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\Common
     guid: 407965b083924744a196c0a1d52f073d
     GuidInternal: 
-    m_lastTime: -8584644001708538770
+    m_lastTime: -8584643299847774258
     List:
     - name: Play_SFX_CommonButtonClick
       guid: de4caac45e99c8489d909e9bf5c3914e
@@ -201,8 +201,8 @@ MonoBehaviour:
         guid: de4caac45e99c8489d909e9bf5c3914e
       Path: Events\Default Work Unit\Common\Play_SFX_CommonButtonClick
       maxAttenuation: 0
-      maxDuration: 0.27151933
-      minDuration: 0.27151933
+      maxDuration: 0.55
+      minDuration: 0.55
     - name: Play_SFX_FootStep_PlayerCharacter
       guid: 4892b9c7648b164e9122f0065bf6f468
       id: 562923629
@@ -234,7 +234,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584644001708598771
+    m_lastTime: -8584643300622474360
     List: []
   - PhysicalPath: Events\GameMap.wwu
     PathAndIcons:
@@ -250,7 +250,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\GameMap
     guid: 48ad820df5418445a0f9c48fcf129823
     GuidInternal: 
-    m_lastTime: -8584644001708468770
+    m_lastTime: -8584643299847774258
     List:
     - name: Play_SFX_Clickdecide
       guid: 777cc484913b5c44ad46901bd472a8b1
@@ -306,7 +306,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\MiniGameUnload
     guid: 0173d73202b00a4091b7dd334cf670bc
     GuidInternal: 
-    m_lastTime: -8584644001708668770
+    m_lastTime: -8584643299847774258
     List:
     - name: Play_AMB_Conveyor_1
       guid: 159c0da87a60074f83713037d8131bb9
@@ -325,7 +325,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 159c0da87a60074f83713037d8131bb9
       Path: Events\Default Work Unit\MiniGameUnload\Play_AMB_Conveyor_1
-      maxAttenuation: 0
+      maxAttenuation: 100
       maxDuration: 141.16571
       minDuration: 141.16571
     - name: Play_AMB_Conveyor_2
@@ -345,7 +345,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 980889ea7bee594c8f6d334a3a8ac173
       Path: Events\Default Work Unit\MiniGameUnload\Play_AMB_Conveyor_2
-      maxAttenuation: 0
+      maxAttenuation: 100
       maxDuration: 123.402664
       minDuration: 123.402664
     - name: Play_LargeBoxHold

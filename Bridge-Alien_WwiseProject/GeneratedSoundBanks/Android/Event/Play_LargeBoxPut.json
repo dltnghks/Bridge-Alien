@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{094F8D77-21F6-43A9-8345-73A3F280AB72}",
     "Language": "SFX",
-    "Hash": "{4B60002B-26D8-8378-7000-4D2D81FDE48D}",
+    "Hash": "{0DCB6E81-9E88-1625-BAE6-EC2D551C7195}",
     "ObjectPath": "Play_LargeBoxPut",
     "ShortName": "Play_LargeBoxPut",
     "Path": "Event/Play_LargeBoxPut.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{BBBC458F-3782-794E-2CF4-0359D14F3088}"
+  "FileHash": "{600E5FEF-BCD8-5BFB-8DAB-7F14CBBE3869}"
  }
 }
