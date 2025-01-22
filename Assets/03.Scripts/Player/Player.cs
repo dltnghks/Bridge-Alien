@@ -174,6 +174,11 @@ public class Player : MonoBehaviour
         characterAnimator.TriggerHoldDown();
     }
 
+    public void EventFootStepSound()
+    {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.FootStepPlayerCharacter.ToString());
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
