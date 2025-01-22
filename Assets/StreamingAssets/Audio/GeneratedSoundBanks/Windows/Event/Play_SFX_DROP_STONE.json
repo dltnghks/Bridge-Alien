@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2700155087",
+    "Type": "Event",
+    "GUID": "{CE4362E8-5E20-4D3B-BB61-FA4537C4C5AD}",
+    "Language": "SFX",
+    "Hash": "{ABC1F142-5931-A96B-E7E6-452FB12D4A5F}",
+    "ObjectPath": "Play_SFX_DROP_STONE",
+    "ShortName": "Play_SFX_DROP_STONE",
+    "Path": "Event/Play_SFX_DROP_STONE.bnk",
+    "Media": [
+     {
+      "Id": "623200478",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_DROP_STONE.wav",
+      "Path": "Media/623200478.wem",
+      "CachePath": "AA/{AAD5EF11-BC48-3D8D-3D05-4E1EAB500023}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2700155087",
+      "Name": "Play_SFX_DROP_STONE",
+      "ObjectPath": "\\Events\\Default Work Unit\\delivery\\Play_SFX_DROP_STONE",
+      "GUID": "{CE4362E8-5E20-4D3B-BB61-FA4537C4C5AD}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.89351153",
+      "DurationMax": "0.89351153",
+      "MediaRefs": [
+       {
+        "Id": "623200478"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{D3611BFC-92EC-8CEE-1E66-4C597F8977BC}"
+ }
+}

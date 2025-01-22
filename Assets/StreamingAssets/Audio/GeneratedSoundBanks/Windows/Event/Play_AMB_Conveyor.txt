@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3092289078	Play_AMB_Conveyor			\Default Work Unit\Play_AMB_Conveyor	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

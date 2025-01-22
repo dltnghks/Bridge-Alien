@@ -14,6 +14,12 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="SFX_CommonButtonClick" ID="{E90CD0B4-97AC-4B71-B3FC-DD2FCF01E012}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.0238536612050748"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.116959582938091"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.388478912161777"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>SFX_CommonButtonClick.wav</AudioFile>
 							<MediaIDList>

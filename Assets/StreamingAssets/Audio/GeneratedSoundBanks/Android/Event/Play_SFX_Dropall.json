@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
     "Language": "SFX",
-    "Hash": "{19649730-2E14-B9E9-4898-6CEBB0050F81}",
+    "Hash": "{C043FE78-69C0-0882-C80E-9EE15E848953}",
     "ObjectPath": "Play_SFX_Dropall",
     "ShortName": "Play_SFX_Dropall",
     "Path": "Event/Play_SFX_Dropall.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_Dropall.wav",
       "Path": "Media/100706031.wem",
-      "CachePath": "0B/{0B6D55F9-2F24-9F55-5926-3358FAF04694}.wem"
+      "CachePath": "76/{76A93970-5FBC-E499-E5E9-98391409774D}.wem"
      }
     ],
     "Events": [
@@ -32,8 +32,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_Dropall",
       "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
       "DurationType": "OneShot",
-      "DurationMin": "1.375",
-      "DurationMax": "1.375",
+      "DurationMin": "0.43486446",
+      "DurationMax": "0.43486446",
       "MediaRefs": [
        {
         "Id": "100706031"
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{B3917F83-6F08-A9BD-C6D1-D9971F8429C9}"
+  "FileHash": "{1C4F7B1A-7B65-DA6E-B248-A95D131F0EE9}"
  }
 }

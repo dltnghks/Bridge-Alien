@@ -74,6 +74,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="SFX_Dropall" ID="{EE2238E0-F4A2-42EF-987D-A4C02B4FE6A4}" ShortID="907872218">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-5</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
@@ -84,6 +91,12 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="SFX_Dropall" ID="{AB297F6F-1E62-4C86-B669-E13F32827FEC}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.252635542168675"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.646084337349398"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.08094879518072"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>SFX_Dropall.wav</AudioFile>
 							<MediaIDList>

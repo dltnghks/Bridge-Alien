@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" SchemaVersion="123" RootDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}" ParentDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}">
+	<Events>
+		<WorkUnit Name="BGM" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" OwnerID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Nested"/>
+	</Events>
+</WwiseDocument>

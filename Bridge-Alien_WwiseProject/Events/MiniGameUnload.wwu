@@ -33,7 +33,7 @@
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" WorkUnitID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}"/>
+									<ObjectRef Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -99,7 +99,7 @@
 						<Action Name="" ID="{87801852-54F9-4976-B08F-01E4ED38A5F8}" ShortID="1028682">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" WorkUnitID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}"/>
+									<ObjectRef Name="MiniGameUnloadBGM" ID="{3E69180E-99A2-42AA-BF41-AE440D561F8B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

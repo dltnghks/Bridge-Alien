@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2852335006",
+    "Type": "Event",
+    "GUID": "{8A0F4107-B0D1-4E26-9D7F-F4E007941190}",
+    "Language": "SFX",
+    "Hash": "{BEAD6EF4-901A-2ACA-E213-32C9D581FFE1}",
+    "ObjectPath": "Play_SFX_Idle_Flying",
+    "ShortName": "Play_SFX_Idle_Flying",
+    "Path": "Event/Play_SFX_Idle_Flying.bnk",
+    "Media": [
+     {
+      "Id": "293653551",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Idle_Flying.wav",
+      "Path": "Media/293653551.wem",
+      "CachePath": "B4/{B430BAED-F895-FBDE-5E1B-6C59474B423A}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2852335006",
+      "Name": "Play_SFX_Idle_Flying",
+      "ObjectPath": "\\Events\\Default Work Unit\\delivery\\Play_SFX_Idle_Flying",
+      "GUID": "{8A0F4107-B0D1-4E26-9D7F-F4E007941190}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.0233107",
+      "DurationMax": "2.0233107",
+      "MediaRefs": [
+       {
+        "Id": "293653551"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3DB033FE-8CC8-B8C2-A4D9-DD541D997653}"
+ }
+}

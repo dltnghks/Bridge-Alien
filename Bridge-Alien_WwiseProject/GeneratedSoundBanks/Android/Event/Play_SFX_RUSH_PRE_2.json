@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2242457109",
+    "Type": "Event",
+    "GUID": "{85399F29-A0CD-495C-8BEF-E3D79FA701BB}",
+    "Language": "SFX",
+    "Hash": "{F3163771-8719-2E20-99B2-7026D074394E}",
+    "ObjectPath": "Play_SFX_RUSH_PRE_2",
+    "ShortName": "Play_SFX_RUSH_PRE_2",
+    "Path": "Event/Play_SFX_RUSH_PRE_2.bnk",
+    "Media": [
+     {
+      "Id": "23374168",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX-RUSH_FRE-2.wav",
+      "Path": "Media/23374168.wem",
+      "CachePath": "FC/{FC0BFB2F-E878-1208-E6EA-5C69869C52EF}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2242457109",
+      "Name": "Play_SFX_RUSH_PRE_2",
+      "ObjectPath": "\\Events\\Default Work Unit\\delivery\\Play_SFX_RUSH_PRE_2",
+      "GUID": "{85399F29-A0CD-495C-8BEF-E3D79FA701BB}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.85263556",
+      "DurationMax": "0.85263556",
+      "MediaRefs": [
+       {
+        "Id": "23374168"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{AE67EF55-F8B5-F87D-E1BA-4CDD89E386A9}"
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3454433139",
+    "Type": "Event",
+    "GUID": "{01759CC8-8C42-4E73-AC15-F20D0EDF87A6}",
+    "Language": "SFX",
+    "Hash": "{3ECE17A6-766F-89F3-3E1D-C1A5AF51C30C}",
+    "ObjectPath": "Play_BGM_Delivery",
+    "ShortName": "Play_BGM_Delivery",
+    "Path": "Event/Play_BGM_Delivery.bnk",
+    "Media": [
+     {
+      "Id": "990116329",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "deliverybgm.wav",
+      "Path": "Media/990116329.wem",
+      "CachePath": "D6/{D6D90E09-30B8-5105-1C45-882CBF88B6F9}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3454433139",
+      "Name": "Play_BGM_Delivery",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Delivery",
+      "GUID": "{01759CC8-8C42-4E73-AC15-F20D0EDF87A6}",
+      "DurationType": "OneShot",
+      "DurationMin": "100.10151",
+      "DurationMax": "100.10151",
+      "MediaRefs": [
+       {
+        "Id": "990116329"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{E2F5A877-B0E0-32DE-27EF-FD35C4EC731A}"
+ }
+}

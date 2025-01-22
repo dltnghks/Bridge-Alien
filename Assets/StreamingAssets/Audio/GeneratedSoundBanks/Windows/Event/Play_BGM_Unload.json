@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1390403282",
+    "Type": "Event",
+    "GUID": "{50A77EF0-B0B5-4205-A0EE-8E853D5BE513}",
+    "Language": "SFX",
+    "Hash": "{B6652B3E-0CDE-F344-7381-9D553D504B40}",
+    "ObjectPath": "Play_BGM_Unload",
+    "ShortName": "Play_BGM_Unload",
+    "Path": "Event/Play_BGM_Unload.bnk",
+    "Media": [
+     {
+      "Id": "496193204",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "unloadbgm.wav",
+      "Path": "Media/496193204.wem",
+      "CachePath": "3B/{3BAF3F74-4A42-A68D-31B3-0393AF2F6ECE}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1390403282",
+      "Name": "Play_BGM_Unload",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Unload",
+      "GUID": "{50A77EF0-B0B5-4205-A0EE-8E853D5BE513}",
+      "DurationType": "OneShot",
+      "DurationMin": "100.57964",
+      "DurationMax": "100.57964",
+      "MediaRefs": [
+       {
+        "Id": "496193204"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{AC83FCE5-9968-433A-4DA8-00C593D3EEA6}"
+ }
+}

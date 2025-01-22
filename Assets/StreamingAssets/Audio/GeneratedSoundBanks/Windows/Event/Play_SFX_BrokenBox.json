@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{CDBB9292-898E-4A31-AE41-6AB499FC76EC}",
     "Language": "SFX",
-    "Hash": "{E855C084-198B-A835-EDE1-4F3A18C1C7CF}",
+    "Hash": "{F4937BED-33BA-8DE6-E880-935BE3E3E932}",
     "ObjectPath": "Play_SFX_BrokenBox",
     "ShortName": "Play_SFX_BrokenBox",
     "Path": "Event/Play_SFX_BrokenBox.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_BrokenBox.wav",
       "Path": "Media/523048749.wem",
-      "CachePath": "B2/{B21AF509-07BB-BFB6-E425-BB18549E34F0}.wem"
+      "CachePath": "72/{72FB0145-8CE4-9E83-3735-84F893EEA577}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{FB2A1346-7390-B234-A31C-3F8C1148A7EE}"
+  "FileHash": "{D14478A8-AC24-F59D-AFF5-C89954F8A9F0}"
  }
 }

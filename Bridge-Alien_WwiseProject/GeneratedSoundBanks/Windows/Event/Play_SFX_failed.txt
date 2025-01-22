@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3929437841	Play_SFX_failed			\Default Work Unit\Play_SFX_failed	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

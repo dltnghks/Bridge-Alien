@@ -1,0 +1,54 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3092289078",
+    "Type": "Event",
+    "GUID": "{9669FDA6-01BC-4815-9989-63973B78032E}",
+    "Language": "SFX",
+    "Hash": "{A1B9ACDC-895A-2330-5D34-73CC8D5BFA13}",
+    "ObjectPath": "Play_AMB_Conveyor",
+    "ShortName": "Play_AMB_Conveyor",
+    "Path": "Event/Play_AMB_Conveyor.bnk",
+    "Media": [
+     {
+      "Id": "430754444",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "AMB_Conveyor.wav",
+      "Path": "Media/430754444.wem",
+      "CachePath": "A7/{A7B1C00B-F057-BEF4-2841-273EB1238D4A}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3092289078",
+      "Name": "Play_AMB_Conveyor",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_AMB_Conveyor",
+      "GUID": "{9669FDA6-01BC-4815-9989-63973B78032E}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "430754444"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{6E8493E4-CB4B-0749-179D-C7B5C074D33F}"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "287468067",
+    "Type": "Event",
+    "GUID": "{5AFF54B2-B775-4AAA-BAFA-5A43A3B8C9CF}",
+    "Language": "SFX",
+    "Hash": "{358E4E44-C272-093C-FE80-9EE68BE68247}",
+    "ObjectPath": "Play_SFX_Bomb_PRE_2",
+    "ShortName": "Play_SFX_Bomb_PRE_2",
+    "Path": "Event/Play_SFX_Bomb_PRE_2.bnk",
+    "Media": [
+     {
+      "Id": "1044409016",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Bomb_PRE-2.wav",
+      "Path": "Media/1044409016.wem",
+      "CachePath": "A1/{A19922C7-874F-284D-1890-4037759D519D}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "287468067",
+      "Name": "Play_SFX_Bomb_PRE_2",
+      "ObjectPath": "\\Events\\Default Work Unit\\delivery\\Play_SFX_Bomb_PRE_2",
+      "GUID": "{5AFF54B2-B775-4AAA-BAFA-5A43A3B8C9CF}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.56664157",
+      "DurationMax": "0.56664157",
+      "MediaRefs": [
+       {
+        "Id": "1044409016"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{9162DCDA-16BE-24C6-7A91-B882D5D7592B}"
+ }
+}

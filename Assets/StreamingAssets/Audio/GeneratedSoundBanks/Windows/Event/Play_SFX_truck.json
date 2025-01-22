@@ -1,0 +1,54 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1117495919",
+    "Type": "Event",
+    "GUID": "{A6B604BF-9CA8-4E02-A911-6A83AD2105A2}",
+    "Language": "SFX",
+    "Hash": "{D98AC841-723A-3589-4E45-1F57017537FE}",
+    "ObjectPath": "Play_SFX_truck",
+    "ShortName": "Play_SFX_truck",
+    "Path": "Event/Play_SFX_truck.bnk",
+    "Media": [
+     {
+      "Id": "595672574",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_truck.wav",
+      "Path": "Media/595672574.wem",
+      "CachePath": "DB/{DBFC884A-23B7-FF3E-828B-D00E6ED4BAFE}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1117495919",
+      "Name": "Play_SFX_truck",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_SFX_truck",
+      "GUID": "{A6B604BF-9CA8-4E02-A911-6A83AD2105A2}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "595672574"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{2154FE73-D2CB-F7FB-2D2D-FDFAE407BEC1}"
+ }
+}

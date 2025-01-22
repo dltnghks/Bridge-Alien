@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
     "Language": "SFX",
-    "Hash": "{07A53833-8695-4B8A-AFB8-7BC641156C2C}",
+    "Hash": "{C043FE78-69C0-0882-C80E-9EE15E848953}",
     "ObjectPath": "Play_SFX_Dropall",
     "ShortName": "Play_SFX_Dropall",
     "Path": "Event/Play_SFX_Dropall.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_Dropall.wav",
       "Path": "Media/100706031.wem",
-      "CachePath": "98/{987123B1-EDB5-7E89-193E-3C45639FC6F8}.wem"
+      "CachePath": "76/{76A93970-5FBC-E499-E5E9-98391409774D}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{F53DB894-D7B2-5047-9751-CB354A9635E0}"
+  "FileHash": "{AB7DCC43-64B9-DD4C-08CF-E89077777EF2}"
  }
 }

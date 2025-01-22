@@ -1,0 +1,54 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1914102211",
+    "Type": "Event",
+    "GUID": "{673AF740-0B1F-44B4-A5A5-FA2A5013D4BD}",
+    "Language": "SFX",
+    "Hash": "{9A2B7985-E2EB-06A6-FD87-4F522187EBDE}",
+    "ObjectPath": "Play_BGM_Gamemaploop",
+    "ShortName": "Play_BGM_Gamemaploop",
+    "Path": "Event/Play_BGM_Gamemaploop.bnk",
+    "Media": [
+     {
+      "Id": "837089168",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "gmaemaploop_bgm.wav",
+      "Path": "Media/837089168.wem",
+      "CachePath": "54/{548D1CE6-342E-F55D-24AD-A5D3E5C93371}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1914102211",
+      "Name": "Play_BGM_Gamemaploop",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Gamemaploop",
+      "GUID": "{673AF740-0B1F-44B4-A5A5-FA2A5013D4BD}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "837089168"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{615E40E9-F2AE-86F3-2A70-A8D16318E811}"
+ }
+}
