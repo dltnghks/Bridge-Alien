@@ -50,12 +50,13 @@ public class Player : MonoBehaviour
         // 자식 스프라이트 오브젝트 생성
         playerBody = new GameObject("PlayerBody");
         playerBody.transform.SetParent(transform);
-        playerBody.transform.localPosition = Vector3.zero;
+        // 박스 들 때, Sprite가 겹쳐서 앞으로 살짝 뺌
+        playerBody.transform.localPosition = -Vector3.forward/10f;
 
         IsRight = true;
         
         // 스프라이트 오브젝트 설정
-        SetupSpriteObject();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         
         // 카메라 설정 (03.Scripts/Camera/CameraManager 싱글톤 인스턴스 사용)
         Managers.Camera.Initialize(transform);
@@ -68,59 +69,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void SetupSpriteObject()
-    {
-        // 부모의 스프라이트 렌더러에서 스프라이트 가져오기
-        SpriteRenderer parentRenderer = GetComponent<SpriteRenderer>();
-        Sprite originalSprite = parentRenderer ? parentRenderer.sprite : null;
-
-        // 자식 스프라이트 오브젝트 생성
-        spriteObject = new GameObject("PlayerSprite");
-        spriteObject.transform.SetParent(playerBody.transform);
-        spriteObject.transform.localPosition = Vector3.zero;
-
-        // 스프라이트 렌더러 설정
-        spriteRenderer = spriteObject.AddComponent<SpriteRenderer>();
-
-        // 원본 스프라이트와 기타 속성들 복사
-        if (parentRenderer != null)
-        {
-            spriteRenderer.sprite = originalSprite;
-            spriteRenderer.sortingOrder = parentRenderer.sortingOrder;
-            spriteRenderer.color = parentRenderer.color;
-            spriteRenderer.flipX = parentRenderer.flipX;
-            spriteRenderer.flipY = parentRenderer.flipY;
-            spriteRenderer.sortingLayerID = parentRenderer.sortingLayerID;
-            
-            // 그림자 설정 복사
-            spriteRenderer.shadowCastingMode = parentRenderer.shadowCastingMode;
-            spriteRenderer.receiveShadows = parentRenderer.receiveShadows;
-            spriteRenderer.sharedMaterial = parentRenderer.sharedMaterial;
-        }
-
-        // 기존 부모의 스프라이트 렌더러 제거
-        if (parentRenderer != null)
-        {
-            Destroy(parentRenderer);
-        }
-
-        // 빌보드는 스프라이트 오브젝트에 추가
-        billboard = spriteObject.AddComponent<SpriteBillboard>();
-        billboard.billboardAxis = BillboardBase.BillboardAxis.All;
-        // freezeXZAxis는 기본값(false) 사용
-    }
-
     void Update()
     {
         CheckCollisions();
     }
-
-    void FixedUpdate()
-    {
-        //PlayerMovement();
-        //Logger.Log(CharacterTransform.position);
-    }
-
+    
     void CheckCollisions()
     {
         for (int i = 0; i < directions.Length; i++)
@@ -150,57 +103,6 @@ public class Player : MonoBehaviour
         }*/
         
     }
-
-    void PlayerMovement()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 movement = Vector3.zero;  // 이동 벡터 초기화
-
-        // x축(좌우) 이동과 스프라이트 방향 전환
-        movement += transform.right * horizontal;
-
-        // 스프라이트 방향 전환 (enableFlip이 true일 때만 실행)
-        if (enableFlip && Mathf.Abs(horizontal) > 0.01f)
-        {
-            Vector3 scale = spriteObject.transform.localScale;
-            if (horizontal > 0 && scale.x < 0 || horizontal < 0 && scale.x > 0)
-            {
-                scale.x *= -1;
-                spriteObject.transform.localScale = scale;
-            }
-        }
-
-        // z축(전후) 이동 - 벽 체크 포함
-        if (Mathf.Abs(vertical) > 0.01f)
-        {
-            if (vertical > 0 && canMove[(int)Direction.Forward])
-            {  
-                movement += transform.forward * vertical;
-            }
-            else if (vertical < 0 && canMove[(int)Direction.Back])
-            {
-                movement += transform.forward * vertical;
-            }
-        }
-
-        // 이동 속도 정규화 및 적용
-        if (movement.magnitude > 1f)
-        {
-            movement.Normalize();
-        }
-
-        // Rigidbody를 통한 이동
-        Vector3 horizontalVelocity = movement * moveSpeed;
-        horizontalVelocity.y = rb.velocity.y;  // 기존 수직 속도 유지
-        rb.velocity = horizontalVelocity;
-        rb.angularVelocity = Vector3.zero;
-
-
-        // 캐릭터 애니메이터 업데이트
-        characterAnimator.UpdateMovement(movement.magnitude * moveSpeed);
-    }
-    
     
     public void PlayerMovement(Vector2 joystickInput)
     {
@@ -221,17 +123,7 @@ public class Player : MonoBehaviour
             playerBody.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             IsRight = false;
         }
-        
-        // 스프라이트 방향 전환 (enableFlip이 true일 때만 실행)
-        if (enableFlip && Mathf.Abs(horizontal) > 0.01f)
-        {
-            Vector3 scale = spriteObject.transform.localScale;
-            if (horizontal > 0 && scale.x < 0 || horizontal < 0 && scale.x > 0)
-            {
-                scale.x *= -1;
-                spriteObject.transform.localScale = scale;
-            }
-        }
+        spriteRenderer.flipX = IsRight;
 
         // z축(전후) 이동 - 벽 체크 포함
         if (Mathf.Abs(vertical) > 0.01f)
