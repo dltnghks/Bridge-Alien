@@ -8,6 +8,7 @@ TagManager:
   - Wall_Side
   - Box
   - BoxSpawnPoint
+  - BoxUnloadPoint
   layers:
   - Default
   - TransparentFX
