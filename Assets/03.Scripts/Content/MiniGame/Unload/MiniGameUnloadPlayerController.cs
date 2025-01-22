@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -92,6 +94,13 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     private void PickupBox()
     {
+        // 가까운 박스 생성 장소 찾기 ( 트럭 여러 대인 경우, 찾아서 가져오기 )
+        /*Transform point = CheckPoint("BoxSpawnPoint");
+        if (point == null)
+        {
+            return;
+        }*/
+        
         Logger.Log("PickupBox");
         if(_boxList.IsFull)
         {
@@ -131,6 +140,13 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     private void DropBox()
     {
+        // 가까운 박스 하차 포인트 확인
+        Transform point = CheckPoint("BoxUnloadPoint");
+        if (point == null)
+        {
+            return;
+        }
+        
         Logger.Log("DropBox");
         if(_boxList.IsEmpty)
         {
@@ -146,7 +162,8 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
             // 상자를 플레이어의 발 아래로 놓기
             box.transform.SetParent(Managers.MiniGame.Root.transform);
-            box.transform.position = Player.CharacterTransform.position + Vector3.up;
+            //box.transform.position = Player.CharacterTransform.position + Vector3.up;
+            box.transform.DOMove(point.position, 1f, false);
             box.SetIsGrab(false);
             
             _boxHeight -= box.Info.Size;
@@ -158,4 +175,29 @@ public class MiniGameUnloadPlayerController : IPlayerController
             Logger.Log("No boxes to drop!");
         }
     }
+    
+    private Transform CheckPoint(string tagName)
+    {
+        Collider[] results = new Collider[10]; // 최대 10개의 충돌체 저장
+        int numDetected = Physics.OverlapSphereNonAlloc(Player.transform.position, _detectionBoxRadius, results);
+
+        if (numDetected > 0)
+        {
+            // "BoxUnloadPoint" 태그를 가진 오브젝트 필터링 및 거리 정렬
+            var closestCollider = results
+                .Where(collider => collider != null && collider.CompareTag(tagName)) // Null 제거 및 태그 필터
+                .OrderBy(collider => Vector3.Distance(Player.transform.position, collider.transform.position)) // 거리 정렬
+                .FirstOrDefault(); // 가장 가까운 오브젝트 가져오기
+
+            if (closestCollider != null)
+            {
+                Debug.Log($"Closest object: {closestCollider.name}");
+                return closestCollider.transform; // 가장 가까운 오브젝트의 Transform 반환
+            }
+        }
+
+        Debug.Log("No valid objects found.");
+        return null; // 타겟을 찾지 못한 경우 null 반환
+    }
+
 }

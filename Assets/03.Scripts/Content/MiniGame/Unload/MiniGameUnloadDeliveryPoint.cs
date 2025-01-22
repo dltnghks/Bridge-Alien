@@ -45,7 +45,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
+            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox)) 
             {
                 _triggerAction?.Invoke();
             }
