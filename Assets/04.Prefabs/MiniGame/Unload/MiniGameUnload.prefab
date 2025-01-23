@@ -873,7 +873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2880000055150962118}
   m_Layer: 0
-  m_Name: Bus
+  m_Name: Truck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1394,6 +1394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4112743012068161995}
   - component: {fileID: 525191491397340254}
+  - component: {fileID: 1777266729483801270}
   m_Layer: 0
   m_Name: icon
   m_TagString: Untagged
@@ -1468,6 +1469,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1777266729483801270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7406711022078886063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a499c43eb95b4924c9d39cd4d712cb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionShakeAmount: 0.02
+  rotationShakeAmount: 0.02
+  shakeSpeed: 10
 --- !u!1 &8675032683953567209
 GameObject:
   m_ObjectHideFlags: 0
