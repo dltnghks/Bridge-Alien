@@ -526,6 +526,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2874611895005733358, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: fadeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874611895005733358, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: gameStartImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3522436406818075755, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.104400635
@@ -566,6 +574,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIGameUnloadScene
       objectReference: {fileID: 0}
+    - target: {fileID: 6652653950161776733, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_Name
+      value: UIGameStartPopup
+      objectReference: {fileID: 0}
     - target: {fileID: 6731816565658425529, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -600,7 +612,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 479253228068718428, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6652653950161776733, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5390176897701165833, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
@@ -652,7 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23550f037866d8d46ba49e22c7f8819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameTime: 100
+  _gameTime: 3
   _deliveryPointList: []
   _boxSpawnPoint: {fileID: 0}
   _maxSpawnBoxIndex: 5

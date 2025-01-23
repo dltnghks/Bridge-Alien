@@ -54,7 +54,9 @@ public class MiniGameManager : MonoBehaviour
     public void StartGame()
     {
         Managers.Camera.Init(CurrentGame.CameraType, CurrentGame.CameraSettings);
-        _currentGame?.StartGame();
+
+        UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
+        uIGameStart.PlayGameStartEffect(_currentGame.StartGame);
     }
 
     public void PauseGame()
