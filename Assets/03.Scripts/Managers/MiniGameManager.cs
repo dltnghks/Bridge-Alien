@@ -59,9 +59,9 @@ public class MiniGameManager : MonoBehaviour
         uIGameStart.PlayGameStartEffect(_currentGame.StartGame);
     }
 
-    public void PauseGame()
+    public bool PauseGame()
     {
-        _currentGame?.PauseGame();
+        return _currentGame.PauseGame();
     }
 
     public void ResumeGame()
