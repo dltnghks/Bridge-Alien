@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{68F40EDB-6825-4063-8395-74EB6436D195}",
     "Language": "SFX",
-    "Hash": "{3A26A6E9-150C-7471-EC1B-7F1DF3C76CAF}",
+    "Hash": "{63F569AE-A693-1A32-841F-B12AB221A9D1}",
     "ObjectPath": "Play_SFX_Bomb_Active_2",
     "ShortName": "Play_SFX_Bomb_Active_2",
     "Path": "Event/Play_SFX_Bomb_Active_2.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_Bomb_Active-2.wav",
       "Path": "Media/948139635.wem",
-      "CachePath": "16/{1606D584-8F1C-C338-2C07-ECB6F77B7D08}.wem"
+      "CachePath": "1C/{1C487487-D4C2-4B93-4013-9D67370A7B0B}.wem"
      }
     ],
     "Events": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{7942D880-77BC-5375-8302-D8C54597B362}"
+  "FileHash": "{42F099B6-2603-C847-EEFC-8A04E0B74A8C}"
  }
 }

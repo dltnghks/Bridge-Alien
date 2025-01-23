@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{29EA3150-51AD-4193-A4F1-4A24566AEC1B}",
     "Language": "SFX",
-    "Hash": "{1B32B751-DCED-208F-64D3-7C7B778FED12}",
+    "Hash": "{79FD3050-0AC6-99A5-9CD1-C4E94023D06E}",
     "ObjectPath": "Play_SFX_RUSH_PRE_2",
     "ShortName": "Play_SFX_RUSH_PRE_2",
     "Path": "Event/Play_SFX_RUSH_PRE_2.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX-RUSH_FRE-2.wav",
       "Path": "Media/433243864.wem",
-      "CachePath": "4C/{4C639505-E629-9BF3-EB30-6A4D114BC8D9}.wem"
+      "CachePath": "DD/{DD26B14A-FCE4-E5A9-C8CC-A7D403EF7CCA}.wem"
      }
     ],
     "Events": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{0517B56F-BFCA-CB1F-4412-E966619AF0FA}"
+  "FileHash": "{102C7C44-EB33-D25C-0073-7F7EF1854AA2}"
  }
 }

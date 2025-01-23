@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{FA9A97F0-B75E-444F-98D4-E8916C72F397}",
     "Language": "SFX",
-    "Hash": "{A94F148F-0656-DDC8-594A-A498E37CA82B}",
+    "Hash": "{CCA1BA15-24DD-93AE-AFEA-C159FA402C7F}",
     "ObjectPath": "Play_StandardBoxHold",
     "ShortName": "Play_StandardBoxHold",
     "Path": "Event/Play_StandardBoxHold.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{514CE880-AA27-9777-195D-7C950C0D6BD4}"
+  "FileHash": "{58B60C92-6672-F1AC-5553-24DF13575E1D}"
  }
 }

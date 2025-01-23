@@ -116,3 +116,8 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 1d2112c4da05b6346912b2b335d43159, type: 2}
+        - Key: Truck
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 92fac1c09aaed2e48bf72db194c414d0, type: 2}

@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: ec37f4ed46d39445b326cdd8dc843a54
     GuidInternal: 
-    m_lastTime: -8584644007224511710
+    m_lastTime: -8584640080304454705
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: a001c75d756c8b4f803cb4fd206035b2
     GuidInternal: 
-    m_lastTime: -8584644007226341748
+    m_lastTime: -8584640080316750292
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -69,7 +69,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\All_In_One
     guid: e9991acf63c3b342a555bba2f19a3f52
     GuidInternal: 
-    m_lastTime: -8584643975291913286
+    m_lastTime: -8584640080304813649
     List: []
   - PhysicalPath: SoundBanks\Context.wwu
     PathAndIcons:
@@ -85,7 +85,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\Context
     guid: 09676fafd793c6489e2d78deffc81509
     GuidInternal: 
-    m_lastTime: -8584643975291913286
+    m_lastTime: -8584640080304782485
     List: []
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -98,7 +98,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a8315e9c32d8d440b3686a66118a69b1
     GuidInternal: 
-    m_lastTime: -8584643975291913286
+    m_lastTime: -8584640080304732497
     List: []
   - PhysicalPath: SoundBanks\General.wwu
     PathAndIcons:
@@ -114,7 +114,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\General
     guid: 437c4c6e97f95b4ab40eb1bdd7da7542
     GuidInternal: 
-    m_lastTime: -8584643975291913286
+    m_lastTime: -8584640080304723058
     List: []
   - PhysicalPath: SoundBanks\Region.wwu
     PathAndIcons:
@@ -130,7 +130,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\Region
     guid: 408d14ec23d050498236f6976489c4d3
     GuidInternal: 
-    m_lastTime: -8584643975291872698
+    m_lastTime: -8584640080304723058
     List:
     - name: MiniGameUnload
       guid: a208b9a184150841995d58768368d076
@@ -178,7 +178,7 @@ MonoBehaviour:
     ParentPath: Events\BGM
     guid: 87a70d1a2511654d9554b502e9cf44e9
     GuidInternal: 
-    m_lastTime: -8584640527120683387
+    m_lastTime: -8584640080075763452
     List:
     - name: Play_BGM_Delivery
       guid: b34ca4702ad0a14d93d4967262509001
@@ -245,7 +245,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\Common
     guid: 407965b083924744a196c0a1d52f073d
     GuidInternal: 
-    m_lastTime: -8584643299847774258
+    m_lastTime: -8584640080325014445
     List:
     - name: Play_SFX_CommonButtonClick
       guid: de4caac45e99c8489d909e9bf5c3914e
@@ -298,7 +298,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584640508843872695
+    m_lastTime: -8584640080325004450
     List: []
   - PhysicalPath: Events\delivery.wwu
     PathAndIcons:
@@ -311,7 +311,7 @@ MonoBehaviour:
     ParentPath: Events\delivery
     guid: e238cdd63e97f34aa2b829be2a9b2413
     GuidInternal: 
-    m_lastTime: -8584640527120773089
+    m_lastTime: -8584640080075754178
     List:
     - name: Play_SFX_Bomb_Active_2
       guid: db0ef46825686340839574eb6436d195
@@ -429,7 +429,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\GameMap
     guid: 48ad820df5418445a0f9c48fcf129823
     GuidInternal: 
-    m_lastTime: -8584640508844138381
+    m_lastTime: -8584640080325004450
     List:
     - name: Play_SFX_Clickdecide
       guid: 777cc484913b5c44ad46901bd472a8b1
@@ -485,7 +485,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\MiniGameUnload
     guid: 0173d73202b00a4091b7dd334cf670bc
     GuidInternal: 
-    m_lastTime: -8584640508844267947
+    m_lastTime: -8584640080075754178
     List:
     - name: Play_AMB_Conveyor
       guid: a692660cb8d42e44a78a04c86ec7ff24
@@ -504,7 +504,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: a692660cb8d42e44a78a04c86ec7ff24
       Path: Events\Default Work Unit\MiniGameUnload\Play_AMB_Conveyor
-      maxAttenuation: 15
+      maxAttenuation: 20
       maxDuration: 0
       minDuration: 0
     - name: Play_LargeBoxHold
@@ -764,7 +764,7 @@ MonoBehaviour:
         ObjectType: 3
         guid: 1c8bec9e9fc9674faa2e5408c277cf11
       Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_truck
-      maxAttenuation: 0
+      maxAttenuation: 20
       maxDuration: 0
       minDuration: 0
     - name: Play_SmallBoxHold
@@ -859,7 +859,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 7283ed376b74d34aba81186fc977eb36
     GuidInternal: 
-    m_lastTime: -8584644007229287153
+    m_lastTime: -8584640080324994447
     List:
     - name: AllVolume
       guid: e933587ae00a504082f9a8015e392e34
@@ -915,7 +915,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 6c6ab8a28a3c3e4b849b1e39faddc5b7
     GuidInternal: 
-    m_lastTime: -8584644007224521354
+    m_lastTime: -8584640080304673144
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -929,7 +929,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: e911d4956d665849b16bc8e0b612f474
     GuidInternal: 
-    m_lastTime: -8584644007224521354
+    m_lastTime: -8584640080304512515
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -943,10 +943,10 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: e3db0410e7e6ba4ab8e8fcc37959276e
     GuidInternal: 
-    m_lastTime: -8584644007224511710
+    m_lastTime: -8584640080304484699
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 0100000002000000030000000500000006000000090000000a0000000b0000000c0000000d0000001100000018000000190000001a0000001b0000001d0000002400000025000000
+  ExpandedWaapiItemIds: 010000000200000003000000050000000600000007000000090000000a0000000b0000000c0000000d0000001100000018000000190000001a0000001b0000001d0000002400000025000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

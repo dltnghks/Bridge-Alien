@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{9CAE3225-A46F-428E-A514-424DD7CD1CC5}",
     "Language": "SFX",
-    "Hash": "{88EA55CB-DCB0-A502-129B-F1319E77286F}",
+    "Hash": "{CBFE5239-507C-4E83-4EC5-786C28FFD6B2}",
     "ObjectPath": "Play_SFX_DROP_STONE",
     "ShortName": "Play_SFX_DROP_STONE",
     "Path": "Event/Play_SFX_DROP_STONE.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_DROP_STONE.wav",
       "Path": "Media/957570541.wem",
-      "CachePath": "27/{279C1308-64D4-3CDF-DA04-8864F340DD20}.wem"
+      "CachePath": "3E/{3E799889-49A1-1113-F988-C460971220E9}.wem"
      }
     ],
     "Events": [
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{F6EEB4EE-C7B0-77AB-989F-CA81E57D4BAD}"
+  "FileHash": "{5B09FF9C-C701-640F-FD91-FA4BBAA94E6F}"
  }
 }

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{C7B99248-8B64-4E16-9122-F0065BF6F468}",
     "Language": "SFX",
-    "Hash": "{6C6121FB-E911-B61F-FFD3-C14CD9A512C2}",
+    "Hash": "{97D9B6F4-D81C-A843-5A00-D4B60A662CD7}",
     "ObjectPath": "Play_SFX_FootStep_PlayerCharacter",
     "ShortName": "Play_SFX_FootStep_PlayerCharacter",
     "Path": "Event/Play_SFX_FootStep_PlayerCharacter.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{AD80289C-50BE-BB2F-F255-741CF3E18171}"
+  "FileHash": "{E938758C-D0E1-7DA8-DAD7-3729A7801495}"
  }
 }

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{79DF991E-E52E-4AFC-A538-E019B7A29F1A}",
     "Language": "SFX",
-    "Hash": "{EB336CAA-434C-F2A6-2D14-C0FB10CB953F}",
+    "Hash": "{DA814EDA-E77A-8A7C-E914-5DE42B71DBB1}",
     "ObjectPath": "Play_Bgm_Unload",
     "ShortName": "Play_Bgm_Unload",
     "Path": "Event/Play_Bgm_Unload.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "unloadbgm.wav",
       "Path": "Media/402840400.wem",
-      "CachePath": "F4/{F4A2EEE4-DE6C-88DA-4D44-258CEF33540C}.wem"
+      "CachePath": "DF/{DF8D1DD1-1977-E3BA-AA77-DE847C168048}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{89E5320F-C551-62CF-DD9E-55D08B032067}"
+  "FileHash": "{5F53E0B6-6477-9411-FFB1-C0FFC9102032}"
  }
 }

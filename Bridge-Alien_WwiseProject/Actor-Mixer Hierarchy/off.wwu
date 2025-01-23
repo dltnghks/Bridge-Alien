@@ -229,9 +229,19 @@
 				</Sound>
 				<Sound Name="SFX_truck" ID="{CDD51361-4C3D-4EC4-8284-BF3B51A6E480}" ShortID="291887478">
 					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
 						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="OverridePositioning" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="conveyor" ID="{33EB82B1-5915-4E13-96D0-F9D7217FD23B}" WorkUnitID="{5DB731DD-D561-4345-B2BF-0B76A545C786}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
 						</Reference>

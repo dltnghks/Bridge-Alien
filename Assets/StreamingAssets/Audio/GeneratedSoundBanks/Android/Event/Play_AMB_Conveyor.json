@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{0C6692A6-D4B8-442E-A78A-04C86EC7FF24}",
     "Language": "SFX",
-    "Hash": "{820636E6-FF51-D1BB-B05F-5C8033F75045}",
+    "Hash": "{028250F5-4F14-4FE7-A007-FB46B18236A7}",
     "ObjectPath": "Play_AMB_Conveyor",
     "ShortName": "Play_AMB_Conveyor",
     "Path": "Event/Play_AMB_Conveyor.bnk",
@@ -31,7 +31,7 @@
       "Name": "Play_AMB_Conveyor",
       "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_AMB_Conveyor",
       "GUID": "{0C6692A6-D4B8-442E-A78A-04C86EC7FF24}",
-      "MaxAttenuation": "15",
+      "MaxAttenuation": "20",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -50,6 +50,6 @@
     ]
    }
   ],
-  "FileHash": "{9BC27EBA-46FE-9F7D-7EFA-695A78974DEF}"
+  "FileHash": "{724536D4-4D62-94CB-7BD3-3F0E81BC21D8}"
  }
 }

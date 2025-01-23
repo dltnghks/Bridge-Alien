@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{9EEC8B1C-C99F-4F67-AA2E-5408C277CF11}",
     "Language": "SFX",
-    "Hash": "{B26AAD09-4437-5F08-8B78-67C886E328DC}",
+    "Hash": "{4069BB34-91E2-F810-2DD5-AE5B534F9CE6}",
     "ObjectPath": "Play_SFX_truck",
     "ShortName": "Play_SFX_truck",
     "Path": "Event/Play_SFX_truck.bnk",
@@ -31,6 +31,7 @@
       "Name": "Play_SFX_truck",
       "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_truck",
       "GUID": "{9EEC8B1C-C99F-4F67-AA2E-5408C277CF11}",
+      "MaxAttenuation": "20",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -49,6 +50,6 @@
     ]
    }
   ],
-  "FileHash": "{F90CDD53-352C-BE08-8237-72B097688526}"
+  "FileHash": "{56D86E84-9613-DCA1-0CE6-9B46E8ACACA9}"
  }
 }

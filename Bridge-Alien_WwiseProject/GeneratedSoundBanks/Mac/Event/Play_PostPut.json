@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{206ABA2E-C4D6-41B1-9997-B31EFAF9581A}",
     "Language": "SFX",
-    "Hash": "{0E47061F-A9FA-6870-D7F4-0A7598D1C7A1}",
+    "Hash": "{56A618EF-655B-3055-DC73-E408095193FA}",
     "ObjectPath": "Play_PostPut",
     "ShortName": "Play_PostPut",
     "Path": "Event/Play_PostPut.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{F2C657A8-E2B9-DFBE-AF53-377390A11AF4}"
+  "FileHash": "{99D0D06F-A680-E374-A409-A0F0636A9C8C}"
  }
 }

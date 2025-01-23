@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{CDBB9292-898E-4A31-AE41-6AB499FC76EC}",
     "Language": "SFX",
-    "Hash": "{E855C084-198B-A835-EDE1-4F3A18C1C7CF}",
+    "Hash": "{63E78050-D3E7-432A-64E1-5BA579B8B4A4}",
     "ObjectPath": "Play_SFX_BrokenBox",
     "ShortName": "Play_SFX_BrokenBox",
     "Path": "Event/Play_SFX_BrokenBox.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{F6337D37-4470-89F0-2854-469D03C00867}"
+  "FileHash": "{BD54C88F-3BDC-FAE9-A354-D3194C586557}"
  }
 }

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
     "Language": "SFX",
-    "Hash": "{0BC603AA-5099-10E0-14FD-F0670BB06FE1}",
+    "Hash": "{4F671B0B-EBA6-2E34-848D-B09A536CF60C}",
     "ObjectPath": "Play_BGM_Delivery",
     "ShortName": "Play_BGM_Delivery",
     "Path": "Event/Play_BGM_Delivery.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "deliverybgm.wav",
       "Path": "Media/113552982.wem",
-      "CachePath": "B3/{B34FD41A-5214-68E9-788E-C55D56D7D0D1}.wem"
+      "CachePath": "67/{679B4ED4-DA04-8F78-5BB9-C1A5307C0751}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{752905E4-BE98-A856-8428-0DB49A164CB8}"
+  "FileHash": "{BEDBEA8D-D6FE-C64B-14AB-F113241EE750}"
  }
 }
