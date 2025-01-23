@@ -73,15 +73,16 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         IsActive = true;
     }
 
-    public void PauseGame()
+    public bool PauseGame()
     {
         if (!IsActive || IsPause)
         {
             Logger.LogError("Not Active MiniGame");
-            return;
+            return false;
         }
         IsPause = true;
         Logger.Log("UnloadGame Pausing game");
+        return true;
     }
 
     public void ResumeGame()

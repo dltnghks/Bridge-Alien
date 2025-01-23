@@ -554,6 +554,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2874611895005733358, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: fadeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874611895005733358, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: gameStartImage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3522436406818075755, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.104400635
@@ -561,6 +569,10 @@ PrefabInstance:
     - target: {fileID: 5119362877984613764, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: _onGauge
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119362877984613764, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: _onTimerText
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5261962879067572844, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_AnchorMax.y
@@ -589,6 +601,10 @@ PrefabInstance:
     - target: {fileID: 6164337620180750308, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_Name
       value: UIGameUnloadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652653950161776733, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_Name
+      value: UIGameStartPopup
       objectReference: {fileID: 0}
     - target: {fileID: 6731816565658425529, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_AnchorMax.y
@@ -624,7 +640,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 479253228068718428, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6652653950161776733, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5390176897701165833, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
@@ -676,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23550f037866d8d46ba49e22c7f8819e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameTime: 100
+  _gameTime: 3
   _deliveryPointList: []
   _boxSpawnPoint: {fileID: 0}
   _maxSpawnBoxIndex: 5
@@ -909,10 +926,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.1
       objectReference: {fileID: 0}
-    - target: {fileID: 6381758389441880163, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
     - target: {fileID: 7134192550954805632, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -952,10 +965,6 @@ PrefabInstance:
     - target: {fileID: 7134192550954805632, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845739480520266741, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: m_TagString
-      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3036134615311588124, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}

@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3454433139",
+    "Type": "Event",
+    "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
+    "Language": "SFX",
+    "Hash": "{4F671B0B-EBA6-2E34-848D-B09A536CF60C}",
+    "ObjectPath": "Play_BGM_Delivery",
+    "ShortName": "Play_BGM_Delivery",
+    "Path": "Event/Play_BGM_Delivery.bnk",
+    "Media": [
+     {
+      "Id": "113552982",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "deliverybgm.wav",
+      "Path": "Media/113552982.wem",
+      "CachePath": "67/{679B4ED4-DA04-8F78-5BB9-C1A5307C0751}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3454433139",
+      "Name": "Play_BGM_Delivery",
+      "ObjectPath": "\\Events\\BGM\\Play_BGM_Delivery",
+      "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
+      "DurationType": "OneShot",
+      "DurationMin": "100.4636",
+      "DurationMax": "100.4636",
+      "MediaRefs": [
+       {
+        "Id": "113552982"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{7D60D85C-B232-42AC-0FA7-79BF00316C66}"
+ }
+}

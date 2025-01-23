@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{1D626541-BF42-414B-A673-E9BD2218AB5E}",
     "Language": "SFX",
-    "Hash": "{B1BAE2CA-D33F-47B5-D7A6-7C526E2E250B}",
+    "Hash": "{92309838-54D4-A0A9-F9F8-8133257D3769}",
     "ObjectPath": "Play_SmallBoxPut",
     "ShortName": "Play_SmallBoxPut",
     "Path": "Event/Play_SmallBoxPut.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{EBDB831E-AC16-949D-0ACA-31E4E753E1BD}"
+  "FileHash": "{47D305C0-B4B9-DCF5-9CBB-21E8473AE23F}"
  }
 }

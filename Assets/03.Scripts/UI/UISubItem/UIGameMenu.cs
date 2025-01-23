@@ -29,8 +29,9 @@ public class UIGameMenu : UISubItem
         
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickOption");
-        Managers.MiniGame.PauseGame();
-        Managers.UI.ShowPopUI<UIGameMenuPopup>();
-    
+        
+        if(Managers.MiniGame.PauseGame()){
+            Managers.UI.ShowPopUI<UIGameMenuPopup>();
+        };
     }
 }

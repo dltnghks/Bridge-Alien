@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1896826979	Play_SFX_RUSH_2			\delivery\Play_SFX_RUSH_2	
+

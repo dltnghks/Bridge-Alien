@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}" SchemaVersion="123" RootDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}" ParentDocumentID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}">
 	<AudioObjects>
-		<WorkUnit Name="BGM" ID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}" OwnerID="{C2CC684D-24E8-4AD5-959D-0257DD8ABC4F}" PersistMode="Nested"/>
+		<WorkUnit Name="BGM" ID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}" OwnerID="{C2CC684D-24E8-4AD5-959D-0257DD8ABC4F}" PersistMode="Nested">
+			<ChildrenList>
+				<Sound Name="BGM_Gamemaploop" ID="{DDC4D1DF-3BB6-4DF7-89F8-79E2A7AC11C4}" ShortID="906796333">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="gmaemaploop_bgm" ID="{A1AADB8A-6104-49CD-8EF0-22E344423789}">
+							<PropertyList>
+								<Property Name="LoopEnd" Type="Real64" Value="68.6616606139426"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="85.6797243990122"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>gmaemaploop_bgm.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="837089168"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="gmaemaploop_bgm" ID="{A1AADB8A-6104-49CD-8EF0-22E344423789}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="BGM_Delivery" ID="{8DF81BC4-BDE1-453A-8B75-5A47A34DF3B5}" ShortID="462463742">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="deliverybgm" ID="{2A70B06A-6EC7-407A-8204-497D6409B241}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="100.463598912603"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>deliverybgm.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="113552982"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="deliverybgm" ID="{2A70B06A-6EC7-407A-8204-497D6409B241}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Bgm_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" ShortID="1072400016">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="unloadbgm" ID="{9E207081-FD1B-4B4F-B1C1-1790C0D5D9A0}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="100.262359018577"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>unloadbgm.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="402840400"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="unloadbgm" ID="{9E207081-FD1B-4B4F-B1C1-1790C0D5D9A0}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

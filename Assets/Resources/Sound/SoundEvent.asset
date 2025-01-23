@@ -21,12 +21,12 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: dc6ecb04ef5e13946baec89eed72ed15, type: 2}
         - Key: MiniGameUnload
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: d37369134653a3d4d82749b8783c9883, type: 2}
     - Key: 1
       Value:
         _keyValueList:
@@ -100,12 +100,12 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 31b3a4b576c0dbf4ca46fa92aaf7dab6, type: 2}
         - Key: Conveyor
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: f6860fff3da99f34d85bbf50da0b816a, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: fb87a3d154fd6c9408d974dc9658f774, type: 2}
         - Key: PlusScore
           Value:
             idInternal: 0
@@ -115,4 +115,9 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 31b3a4b576c0dbf4ca46fa92aaf7dab6, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: 1d2112c4da05b6346912b2b335d43159, type: 2}
+        - Key: Truck
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 92fac1c09aaed2e48bf72db194c414d0, type: 2}

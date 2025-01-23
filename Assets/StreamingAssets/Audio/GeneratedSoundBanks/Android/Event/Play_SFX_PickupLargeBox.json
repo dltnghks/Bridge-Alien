@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{4411D20F-8D7A-4AC2-A129-554045D20BE4}",
     "Language": "SFX",
-    "Hash": "{DB94748F-70E4-BD62-507C-B5CF28FA260C}",
+    "Hash": "{A1E6DDCC-A741-BF41-CACA-0340D62E9CF6}",
     "ObjectPath": "Play_SFX_PickupLargeBox",
     "ShortName": "Play_SFX_PickupLargeBox",
     "Path": "Event/Play_SFX_PickupLargeBox.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{E7ABB223-7CF1-0CA5-1328-617420800F66}"
+  "FileHash": "{09CDEF87-FD0D-500E-B44F-B134CE5BCDDA}"
  }
 }

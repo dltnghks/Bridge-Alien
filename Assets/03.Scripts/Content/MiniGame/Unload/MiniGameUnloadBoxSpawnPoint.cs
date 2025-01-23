@@ -14,6 +14,8 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
 
     public void SetBoxSpawnPoint(int maxSpawnBoxIndex, UnityAction triggerAction = null)
     {
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Truck.ToString(), gameObject);
+
         _boxCollider = Utils.GetOrAddComponent<SphereCollider>(gameObject);
         _boxSpawnPosition = transform.position;
         _boxSpawnPosition.y = 0;

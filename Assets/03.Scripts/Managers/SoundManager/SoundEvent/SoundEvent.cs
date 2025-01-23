@@ -46,7 +46,8 @@ public enum MiniGameUnloadSoundSFX{
     MinusScore,
     
     // Ambient
-    Conveyor
+    Conveyor,
+    Truck,
     
 }
 
