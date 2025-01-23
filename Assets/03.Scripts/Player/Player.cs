@@ -16,8 +16,6 @@ public class Player : MonoBehaviour
     private SpriteBillboard billboard;                  // 스프라이트 빌보드
     private SpriteRenderer spriteRenderer;              // 스프라이트 렌더러
     private Rigidbody rb;                               // 리지드바디
-    private bool canMoveForward = true;                 // 전방 이동 가능 여부
-    private bool canMoveBackward = true;                // 후방 이동 가능 여부
     private bool[] canMove = { true, true, true, true };
     private Vector3[] directions = {
         Vector3.forward,  // 앞쪽
@@ -123,7 +121,12 @@ public class Player : MonoBehaviour
             playerBody.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             IsRight = false;
         }
-        spriteRenderer.flipX = IsRight;
+        
+        // 회전이 가능한 경우에만 진행
+        if(enableFlip)
+        {
+            spriteRenderer.flipX = IsRight;
+        }
 
         // z축(전후) 이동 - 벽 체크 포함
         if (Mathf.Abs(vertical) > 0.01f)
