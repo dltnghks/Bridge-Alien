@@ -32,15 +32,19 @@ public class MiniGameDeliveryEnemy : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Managers.MiniGame.CurrentGame.IsPause)
             return;
+        */
         _currentState?.UpdateState();
     }
 
     public void MoveToDestination(Vector3 destination, float speed, Action onArrival = null)
     {
+        /*
         if (Managers.MiniGame.CurrentGame.IsPause)
             return;
+        */
 
         // 목적지와 현재 위치의 거리 계산
         float distance = Vector3.Distance(transform.position, destination);
