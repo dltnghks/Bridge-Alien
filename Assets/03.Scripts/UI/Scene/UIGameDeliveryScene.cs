@@ -6,21 +6,19 @@ public class UIGameDeliveryScene : UIScene
 {
     enum Objects
     {
-        UITimer,
-        UIScoreBoard,
+        UIHPGauge,
+        UIPathProgressBar,
         UIGameMenu,
         UIMiniGameDeliveryPlayerInput,
     }
     
-    private UITimer _uiTimer;
-    private UIScoreBoard _uiScoreBoard;
     private UIGameMenu _uiGameMenu;
     private UIMiniGameDeliveryPlayerInput _uiPlayerInput;
+    private UIPathProgressBar _uiPathProgressBar;
     
-    public UITimer UITimer { get { return _uiTimer; } }
-    public UIScoreBoard UIScoreBoard { get { return _uiScoreBoard; } }
     public UIMiniGameDeliveryPlayerInput UIPlayerInput { get { return _uiPlayerInput; } }
-    
+    public UIPathProgressBar UIPathProgressBar { get { return _uiPathProgressBar;}}
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -29,11 +27,10 @@ public class UIGameDeliveryScene : UIScene
         }
 
         BindObject(typeof(Objects));
-        
-        _uiTimer = GetObject((int)Objects.UITimer).GetOrAddComponent<UITimer>();
-        _uiScoreBoard = GetObject((int)Objects.UIScoreBoard).GetOrAddComponent<UIScoreBoard>();
+
         _uiGameMenu = GetObject((int)Objects.UIGameMenu).GetOrAddComponent<UIGameMenu>();
         _uiPlayerInput = GetObject((int)Objects.UIMiniGameDeliveryPlayerInput).GetOrAddComponent<UIMiniGameDeliveryPlayerInput>();
+        _uiPathProgressBar = GetObject((int)Objects.UIPathProgressBar).GetOrAddComponent<UIPathProgressBar>();
         
         return true;
     }

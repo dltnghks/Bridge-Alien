@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
@@ -32,8 +33,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public UIScene GameUI { get; set; }
     private UIGameDeliveryScene _uiGameDeliveryScene;
  
-    private TimerBase _timer;
-    private ScoreBase _score;
+    public MiniGameDeliveryPathProgress _pathPrgressBar;
     
     private void Update()
     {
@@ -41,18 +41,18 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         {
             return;
         }
-        
-        _timer.TimerUpdate();
+
+        _pathPrgressBar?.ProgressUpdate();
     }
     
     
     public void StartGame()
     {
-        
-        // Timer, Score, BoxPreview 초기화
-        _timer = new TimerBase();
-        _timer.SetTimer(_uiGameDeliveryScene.UITimer, _gameTime, EndGame);
-        
+        // 게임에 사용되는 요소들 초기화
+        _pathPrgressBar = new MiniGameDeliveryPathProgress();
+        _pathPrgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, _gameTime, EndGame);
+    
+
         // PlayerCharacter 초기화
         PlayerCharacter = GameObject.Find("Player")?.GetComponent<Player>();
         if (PlayerCharacter == null)
@@ -68,7 +68,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
         PlayerController.Init(PlayerCharacter);
-
+        
         // 게임 활성화
         IsActive = true;
     }
@@ -105,7 +105,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         }
         
         IsActive = false;
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathPrgressBar.CurValue);
         Logger.Log("UnloadGame Ending game");
     }
     
