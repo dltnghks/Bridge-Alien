@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.6, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cf0bdf51151fd9d439ddb819bde002ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27f93c9a7c0cea544842746300961398, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -147,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 7571066374363211147}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2250da4c827144c1c9a76afe4eee744e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a666054d6138c4448ba204b537744c3d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -172,7 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   rayDistance: 1
-  enableFlip: 1
+  enableFlip: 0
+  healthGauge: {fileID: 0}
 --- !u!114 &3077894172840078021
 MonoBehaviour:
   m_ObjectHideFlags: 0
