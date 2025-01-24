@@ -178,6 +178,9 @@ public class MiniGameUnloadBox : MonoBehaviour
             boxCollider.isTrigger = false;
             IsUnloaded = false;
 
+            // 이전 중력이 남아있음. -> 속도 초기화
+            boxRigidbody.velocity = Vector3.zero;
+
             PlayBoxPutSound();
             
         }
