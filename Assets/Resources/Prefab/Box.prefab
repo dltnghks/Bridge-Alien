@@ -61,10 +61,10 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8310830534412151151}
   regionText: {fileID: 5205448816360835407}
   _boxSpriteList:
-  - {fileID: 21300000, guid: c436a71e23a6793458059625cf5f8af7, type: 3}
-  - {fileID: 21300000, guid: 21c0af12d0a26ec49bfc700ffbd76102, type: 3}
-  - {fileID: 21300000, guid: 2cfeba4b23c1b3d4c8afd99c163d67a8, type: 3}
-  - {fileID: 21300000, guid: ecfd8582e79e6f6419275ef31e4b4e99, type: 3}
+  - {fileID: 21300000, guid: 84ce57dbb1b2aee4d83da991efec756a, type: 3}
+  - {fileID: 21300000, guid: ccf55a863dcc8594f90115c868a6e4a6, type: 3}
+  - {fileID: 21300000, guid: 5fd4c989fdb728d49b2b297edacfc8c2, type: 3}
+  - {fileID: 21300000, guid: 6e73a05de9c3ae04aaa571b4a6bd2cb7, type: 3}
   _regionSpriteList: []
 --- !u!65 &4678780358310689977
 BoxCollider:
@@ -85,7 +85,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3666450618659498224
 Rigidbody:
@@ -154,7 +154,7 @@ RectTransform:
   m_GameObject: {fileID: 3121166781502130765}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6666667, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3152850990016492037}
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\uACBD\uAE30\uAD8C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5cef455e77d8954babab04c108446f6, type: 2}
   m_sharedMaterial: {fileID: -3118823961064641592, guid: b5cef455e77d8954babab04c108446f6, type: 2}
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.487508, y: 2.2351887, z: 9.553892, w: 1.9753511}
+  m_margin: {x: 9.487508, y: 2.412634, z: 9.553892, w: 2.3250983}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -373,7 +373,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2cfeba4b23c1b3d4c8afd99c163d67a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ccf55a863dcc8594f90115c868a6e4a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

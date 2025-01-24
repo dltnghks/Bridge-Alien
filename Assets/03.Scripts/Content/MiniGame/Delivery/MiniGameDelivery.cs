@@ -107,7 +107,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         }
         
         IsActive = false;
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathPrgressBar.CurValue);
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathPrgressBar.CurValue * 100);
         Logger.Log("UnloadGame Ending game");
     }
     

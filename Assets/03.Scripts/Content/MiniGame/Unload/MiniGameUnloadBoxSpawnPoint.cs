@@ -18,7 +18,8 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
 
         _boxCollider = Utils.GetOrAddComponent<SphereCollider>(gameObject);
         _boxSpawnPosition = transform.position;
-        _boxSpawnPosition.y = 0;
+        // 초기 스폰 위치 살짝 올려두기
+        _boxSpawnPosition.y = 0.5f;
         BoxList = new MiniGameUnloadBoxList();
         BoxList.SetBoxList(maxSpawnBoxIndex);
         _triggerAction = triggerAction;

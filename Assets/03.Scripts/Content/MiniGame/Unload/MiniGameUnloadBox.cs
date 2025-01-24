@@ -154,10 +154,24 @@ public class MiniGameUnloadBox : MonoBehaviour
             {
                 spriteRenderer.color = new Color(1, 0, 0, 0.7f);
             }
+            
 
             Vector3 currentScale = boxCollider.size; 
             currentScale.x = 1f;
             currentScale.z = 1f;
+            currentScale.y = Info.Size;
+            // 콜라이더 크기 설정 
+            
+            boxCollider.size = currentScale;
+            
+            // offset 계산 및 적용
+            float frontHeight = Info.Size;   // 앞면 높이
+            float totalHeight = Info.Size + Info.Size*0.4f; // 전체 높이
+            
+            // 앞면 중앙에 맞추기 위해 offset 계산
+            float offsetY = -totalHeight / 2 + frontHeight / 2;
+            boxCollider.center = new Vector3(0f, offsetY, 0f);
+            
             boxCollider.size = currentScale;
 
             // 생성될 때는 false
