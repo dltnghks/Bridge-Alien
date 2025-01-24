@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine.UI;
 
 public class UIHPGauge : UISubItem
@@ -8,11 +9,8 @@ public class UIHPGauge : UISubItem
         HPGaugeImage,
 
     }
-
+    
     private Image _hpImage;
-
-    private float _maxHP = 100f;
-    private float _curHP = 100f;
 
     public override bool Init()
     {
@@ -23,18 +21,16 @@ public class UIHPGauge : UISubItem
         BindImage(typeof(Images));
 
         _hpImage = GetImage((int)Images.HPGaugeImage);
-
+        _hpImage.fillAmount = 1;
+        
         return true;
     }
 
-    public void InitHP(float maxHP){
-        _maxHP = maxHP;
-        _hpImage.fillAmount = 1;
-    }
-
-    public void SetHP(float value){
-        _curHP = value;
-        _hpImage.fillAmount = _curHP/_maxHP;
+    public void SetHP(float value, float maxHP){
+        float targetFillAmount = value / maxHP;
+        
+        // DOTween으로 fillAmount를 부드럽게 변경
+        _hpImage.DOFillAmount(targetFillAmount, 0.5f).SetEase(Ease.OutCubic); // 0.5초 동안 부드럽게 감소
     }
 
 }

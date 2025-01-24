@@ -33,7 +33,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public UIScene GameUI { get; set; }
     private UIGameDeliveryScene _uiGameDeliveryScene;
  
-    public MiniGameDeliveryPathProgress _pathPrgressBar;
+    private MiniGameDeliveryPathProgress _pathPrgressBar;
     
     private void Update()
     {
@@ -53,8 +53,10 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _pathPrgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, _gameTime, EndGame);
     
 
+        
+        
         // PlayerCharacter 초기화
-        PlayerCharacter = Utils.FindChild<Player>(gameObject, "MiniGameDeliveryPlayer", true);
+        PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "MiniGameDeliveryPlayer", true);
         if (PlayerCharacter == null)
         {
             Logger.LogError("PlayerCharacter not found or does not have a Player component!");

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2263148129475462844}
   - component: {fileID: 5488191188019622525}
   - component: {fileID: 1182972692698098610}
-  - component: {fileID: 8407519136343659438}
   - component: {fileID: 5343389713107772975}
   - component: {fileID: 3091227573643367560}
-  - component: {fileID: -8499292375635695847}
+  - component: {fileID: 7986316718878728669}
+  - component: {fileID: 3077894172840078021}
   m_Layer: 0
   m_Name: MiniGameDeliveryPlayer
   m_TagString: Player
@@ -85,21 +85,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8407519136343659438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7571066374363211147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e52fd218b0b424585c6760bf54687a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 8
-  rayDistance: 1
-  enableFlip: 1
 --- !u!212 &5343389713107772975
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -173,7 +158,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-8499292375635695847
+--- !u!114 &7986316718878728669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,8 +167,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 7571066374363211147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4c9681bf6e6304bb2597e04fcb4faa, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e26c788c5f99004ca0a2a7ebe334a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHP: 0
-  _maxHP: 100
+  moveSpeed: 8
+  rayDistance: 1
+  enableFlip: 1
+--- !u!114 &3077894172840078021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571066374363211147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad5f5027432ceb4fa755d9fe78db24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100

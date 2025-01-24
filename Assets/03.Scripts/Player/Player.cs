@@ -5,34 +5,34 @@ using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
-    private enum Direction { Forward, Back, Left, Right }
+    protected enum Direction { Forward, Back, Left, Right }
     
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 8f;      // 이동 속도
-    [SerializeField] private float rayDistance = 1f;    // 레이캐스트 거리
-    [SerializeField] private bool enableFlip = true;    // 플레이어 플립 활성화 여부
+    [SerializeField] protected float moveSpeed = 8f;      // 이동 속도
+    [SerializeField] protected float rayDistance = 1f;    // 레이캐스트 거리
+    [SerializeField] protected bool enableFlip = true;    // 플레이어 플립 활성화 여부
 
-    private GameObject spriteObject;                    // 스프라이트 오브젝트
-    private SpriteBillboard billboard;                  // 스프라이트 빌보드
-    private SpriteRenderer spriteRenderer;              // 스프라이트 렌더러
-    private Rigidbody rb;                               // 리지드바디
-    private bool[] canMove = { true, true, true, true };
-    private Vector3[] directions = {
+    protected GameObject spriteObject;                    // 스프라이트 오브젝트
+    protected SpriteBillboard billboard;                  // 스프라이트 빌보드
+    protected SpriteRenderer spriteRenderer;              // 스프라이트 렌더러
+    protected Rigidbody rb;                               // 리지드바디
+    protected bool[] canMove = { true, true, true, true };
+    protected Vector3[] directions = {
         Vector3.forward,  // 앞쪽
         Vector3.back,     // 뒤쪽
         Vector3.left,     // 왼쪽
         Vector3.right     // 오른쪽
     };
     
-    private CharacterAnimator characterAnimator;        // 캐릭터 애니메이터
+    protected CharacterAnimator characterAnimator;        // 캐릭터 애니메이터
     
-    private GameObject playerBody;
+    protected GameObject playerBody;
     
-    public bool IsRight { get; private set; }
+    public bool IsRight { get; protected set; }
 
     public Transform CharacterTransform => playerBody.transform;
 
-    void Start()
+    public void Start()
     {
         // 리지드바디 설정
         rb = GetComponent<Rigidbody>();
@@ -67,12 +67,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Update()
+    protected void Update()
     {
         CheckCollisions();
     }
     
-    void CheckCollisions()
+    protected void CheckCollisions()
     {
         for (int i = 0; i < directions.Length; i++)
         {
@@ -182,7 +182,7 @@ public class Player : MonoBehaviour
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.FootStepPlayerCharacter.ToString());
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * rayDistance);
