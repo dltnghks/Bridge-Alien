@@ -12,7 +12,7 @@
     "GUID": "{99FD8EA7-4D52-4871-9E33-C11BA9968968}",
     "BasePlatform": "Android",
     "BasePlatformGUID": "{A2D401DE-B8B6-4FEB-8142-137C34D507CA}",
-    "Path": "Android"
+    "Path": "../../../../Bridge-Alien_WwiseProject/GeneratedSoundBanks/Android"
    },
    {
     "Name": "Mac",
@@ -26,7 +26,7 @@
     "GUID": "{6A7C3125-E402-4788-BAAA-8C772F90116B}",
     "BasePlatform": "Windows",
     "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
-    "Path": "Windows"
+    "Path": "../../../../Bridge-Alien_WwiseProject/GeneratedSoundBanks/Windows"
    }
   ],
   "Languages": [
@@ -38,6 +38,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{157952E5-41C9-AE10-C1EC-CBA810C504F0}"
+  "FileHash": "{95D66439-E326-7168-9F86-17E16F3EE2BE}"
  }
 }

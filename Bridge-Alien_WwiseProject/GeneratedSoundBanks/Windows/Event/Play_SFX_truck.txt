@@ -1,5 +1,5 @@
 Event	ID	Name			Wwise Object Path	Notes
-	1117495919	Play_SFX_truck			\Default Work Unit\Play_SFX_truck	
+	1117495919	Play_SFX_truck			\Default Work Unit\MiniGameUnload\Play_SFX_truck	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	988953028	SFXVolume			\Default Work Unit\SFXVolume	

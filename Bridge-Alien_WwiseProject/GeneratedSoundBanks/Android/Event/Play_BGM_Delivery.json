@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
     "Language": "SFX",
-    "Hash": "{2B7EDB4A-338E-F9CA-11B5-D0B098A5518C}",
+    "Hash": "{4F671B0B-EBA6-2E34-848D-B09A536CF60C}",
     "ObjectPath": "Play_BGM_Delivery",
     "ShortName": "Play_BGM_Delivery",
     "Path": "Event/Play_BGM_Delivery.bnk",
@@ -29,7 +29,7 @@
      {
       "Id": "3454433139",
       "Name": "Play_BGM_Delivery",
-      "ObjectPath": "\\Events\\BGM\\Play_BGM_Delivery",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Delivery",
       "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
       "DurationType": "OneShot",
       "DurationMin": "100.4636",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{2B2C695D-4905-0ED1-A75F-F60310CC6311}"
+  "FileHash": "{0598AD7A-071A-CD4A-EBF7-D6506EB6DB69}"
  }
 }

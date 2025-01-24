@@ -6,6 +6,8 @@
 				<WorkUnit Name="MiniGameUnload" ID="{32D77301-B002-400A-91B7-DD334CF670BC}" PersistMode="Reference"/>
 				<WorkUnit Name="Common" ID="{B0657940-9283-4447-A196-C0A1D52F073D}" PersistMode="Reference"/>
 				<WorkUnit Name="GameMap" ID="{0D82AD48-41F5-4584-A0F9-C48FCF129823}" PersistMode="Reference"/>
+				<WorkUnit Name="BGM" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" PersistMode="Reference"/>
+				<WorkUnit Name="MiniGameDelivery" ID="{D6CD38E2-973E-4AF3-A2B8-29BE2A9B2413}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -10,10 +10,10 @@
     "Type": "Event",
     "GUID": "{79DF991E-E52E-4AFC-A538-E019B7A29F1A}",
     "Language": "SFX",
-    "Hash": "{DA814EDA-E77A-8A7C-E914-5DE42B71DBB1}",
-    "ObjectPath": "Play_Bgm_Unload",
-    "ShortName": "Play_Bgm_Unload",
-    "Path": "Event/Play_Bgm_Unload.bnk",
+    "Hash": "{6B588BB1-3AD9-C62D-35AC-CC32DD0C2199}",
+    "ObjectPath": "Play_BGM_Unload",
+    "ShortName": "Play_BGM_Unload",
+    "Path": "Event/Play_BGM_Unload.bnk",
     "Media": [
      {
       "Id": "402840400",
@@ -28,8 +28,8 @@
     "Events": [
      {
       "Id": "1390403282",
-      "Name": "Play_Bgm_Unload",
-      "ObjectPath": "\\Events\\BGM\\Play_Bgm_Unload",
+      "Name": "Play_BGM_Unload",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Unload",
       "GUID": "{79DF991E-E52E-4AFC-A538-E019B7A29F1A}",
       "DurationType": "OneShot",
       "DurationMin": "100.26236",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{5F53E0B6-6477-9411-FFB1-C0FFC9102032}"
+  "FileHash": "{0EF8A773-A9D3-8B6A-0F9F-6A0D5F638F21}"
  }
 }

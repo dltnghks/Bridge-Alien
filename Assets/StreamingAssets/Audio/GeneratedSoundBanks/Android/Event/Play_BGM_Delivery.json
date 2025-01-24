@@ -29,7 +29,7 @@
      {
       "Id": "3454433139",
       "Name": "Play_BGM_Delivery",
-      "ObjectPath": "\\Events\\BGM\\Play_BGM_Delivery",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Delivery",
       "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
       "DurationType": "OneShot",
       "DurationMin": "100.4636",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{2CA749E2-346D-A69F-98E6-267C8BBE807D}"
+  "FileHash": "{0598AD7A-071A-CD4A-EBF7-D6506EB6DB69}"
  }
 }

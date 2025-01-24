@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{C7B99248-8B64-4E16-9122-F0065BF6F468}",
     "Language": "SFX",
-    "Hash": "{E50B8C08-F28B-5049-909D-837DEE633FAB}",
+    "Hash": "{97D9B6F4-D81C-A843-5A00-D4B60A662CD7}",
     "ObjectPath": "Play_SFX_FootStep_PlayerCharacter",
     "ShortName": "Play_SFX_FootStep_PlayerCharacter",
     "Path": "Event/Play_SFX_FootStep_PlayerCharacter.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_FootStep_PlayerCharacter.wav",
       "Path": "Media/815274733.wem",
-      "CachePath": "9E/{9E7C03B7-50E1-EB4D-51B9-E07B6C2D8078}.wem"
+      "CachePath": "1E/{1E7DB730-67E0-E7FB-31BB-53D6876E59C6}.wem"
      }
     ],
     "Events": [
@@ -32,8 +32,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Common\\Play_SFX_FootStep_PlayerCharacter",
       "GUID": "{C7B99248-8B64-4E16-9122-F0065BF6F468}",
       "DurationType": "OneShot",
-      "DurationMin": "0.08313253",
-      "DurationMax": "0.08313253",
+      "DurationMin": "0.1",
+      "DurationMax": "0.1",
       "MediaRefs": [
        {
         "Id": "815274733"
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{86D2F13A-E1E6-B442-8566-77880A5BC06F}"
+  "FileHash": "{963FBAAB-2E21-CB97-552D-ADB8C6BC7DDE}"
  }
 }

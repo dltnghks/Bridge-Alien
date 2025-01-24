@@ -29,7 +29,7 @@
      {
       "Id": "287468067",
       "Name": "Play_SFX_Bomb_PRE_2",
-      "ObjectPath": "\\Events\\delivery\\Play_SFX_Bomb_PRE_2",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_Bomb_PRE_2",
       "GUID": "{1014A415-4E7F-406C-8565-D3CC1FE95D67}",
       "DurationType": "OneShot",
       "DurationMin": "0.625",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{FF69D621-5D60-557A-8789-4F8E059B8F8B}"
+  "FileHash": "{34592F8E-1BB8-4304-7224-7DF83AC4EF37}"
  }
 }

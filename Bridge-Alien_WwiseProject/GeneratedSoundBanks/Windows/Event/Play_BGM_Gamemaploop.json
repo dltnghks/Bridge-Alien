@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{16BEABF8-1C79-4E48-9A0B-ACF2CFE2CDAE}",
     "Language": "SFX",
-    "Hash": "{3F689C83-1823-7069-F84C-6551A2DF1144}",
+    "Hash": "{1D9A214D-7620-98CE-004A-13CE2D3CFA88}",
     "ObjectPath": "Play_BGM_Gamemaploop",
     "ShortName": "Play_BGM_Gamemaploop",
     "Path": "Event/Play_BGM_Gamemaploop.bnk",
@@ -29,7 +29,7 @@
      {
       "Id": "1914102211",
       "Name": "Play_BGM_Gamemaploop",
-      "ObjectPath": "\\Events\\BGM\\Play_BGM_Gamemaploop",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Gamemaploop",
       "GUID": "{16BEABF8-1C79-4E48-9A0B-ACF2CFE2CDAE}",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{E4E5A6E7-7D89-E1D0-FED5-613984742C80}"
+  "FileHash": "{B6A5A1C0-4EB2-8EFE-5F4E-BC5A0BAB5C5E}"
  }
 }

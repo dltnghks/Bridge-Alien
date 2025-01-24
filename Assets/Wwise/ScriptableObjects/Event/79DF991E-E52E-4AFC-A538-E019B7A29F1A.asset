@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc32ec4493e5094458058d6dfe8a05d2, type: 3}
   m_Name: 79DF991E-E52E-4AFC-A538-E019B7A29F1A
   m_EditorClassIdentifier: 
-  objectName: Play_Bgm_Unload
+  objectName: Play_BGM_Unload
   id: 1390403282
   guid: 79DF991E-E52E-4AFC-A538-E019B7A29F1A
   IsInUserDefinedSoundBank: 0

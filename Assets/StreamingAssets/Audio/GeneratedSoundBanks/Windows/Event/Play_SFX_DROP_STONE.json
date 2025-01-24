@@ -29,7 +29,7 @@
      {
       "Id": "2700155087",
       "Name": "Play_SFX_DROP_STONE",
-      "ObjectPath": "\\Events\\delivery\\Play_SFX_DROP_STONE",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_DROP_STONE",
       "GUID": "{9CAE3225-A46F-428E-A514-424DD7CD1CC5}",
       "DurationType": "OneShot",
       "DurationMin": "0.8953313",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{E6B706F6-AACE-D150-A246-6AD7C6840C58}"
+  "FileHash": "{9DCE8A46-8E0D-F40A-EFD7-7C8C18D87016}"
  }
 }

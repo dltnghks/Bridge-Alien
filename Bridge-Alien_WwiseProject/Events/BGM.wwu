@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" SchemaVersion="123">
+<WwiseDocument Type="WorkUnit" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" SchemaVersion="123" RootDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}" ParentDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}">
 	<Events>
-		<WorkUnit Name="BGM" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" PersistMode="Standalone">
+		<WorkUnit Name="BGM" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" OwnerID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Nested">
 			<ChildrenList>
-				<Event Name="Play_Bgm_Unload" ID="{79DF991E-E52E-4AFC-A538-E019B7A29F1A}">
+				<Event Name="Play_BGM_Unload" ID="{79DF991E-E52E-4AFC-A538-E019B7A29F1A}">
 					<ChildrenList>
 						<Action Name="" ID="{B93DBEED-3362-4719-A09B-44577E8AA3B3}" ShortID="524972685">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Bgm_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+									<ObjectRef Name="BGM_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

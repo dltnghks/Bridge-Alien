@@ -172,13 +172,16 @@ MonoBehaviour:
     - ElementName: Events
       ObjectType: 5
       guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 3332395072f10149a81da91bd1e15694
     - ElementName: BGM
       ObjectType: 12
       guid: 87a70d1a2511654d9554b502e9cf44e9
-    ParentPath: Events\BGM
+    ParentPath: Events\Default Work Unit\BGM
     guid: 87a70d1a2511654d9554b502e9cf44e9
     GuidInternal: 
-    m_lastTime: -8584640080075763452
+    m_lastTime: -8584638827382788944
     List:
     - name: Play_BGM_Delivery
       guid: b34ca4702ad0a14d93d4967262509001
@@ -187,13 +190,16 @@ MonoBehaviour:
       - ElementName: Events
         ObjectType: 5
         guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
       - ElementName: BGM
         ObjectType: 12
         guid: 87a70d1a2511654d9554b502e9cf44e9
       - ElementName: Play_BGM_Delivery
         ObjectType: 3
         guid: b34ca4702ad0a14d93d4967262509001
-      Path: Events\BGM\Play_BGM_Delivery
+      Path: Events\Default Work Unit\BGM\Play_BGM_Delivery
       maxAttenuation: 0
       maxDuration: 100.4636
       minDuration: 100.4636
@@ -204,30 +210,36 @@ MonoBehaviour:
       - ElementName: Events
         ObjectType: 5
         guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
       - ElementName: BGM
         ObjectType: 12
         guid: 87a70d1a2511654d9554b502e9cf44e9
       - ElementName: Play_BGM_Gamemaploop
         ObjectType: 3
         guid: f8abbe16791c484e9a0bacf2cfe2cdae
-      Path: Events\BGM\Play_BGM_Gamemaploop
+      Path: Events\Default Work Unit\BGM\Play_BGM_Gamemaploop
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
-    - name: Play_Bgm_Unload
+    - name: Play_BGM_Unload
       guid: 1e99df792ee5fc4aa538e019b7a29f1a
       id: 1390403282
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
         guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
       - ElementName: BGM
         ObjectType: 12
         guid: 87a70d1a2511654d9554b502e9cf44e9
-      - ElementName: Play_Bgm_Unload
+      - ElementName: Play_BGM_Unload
         ObjectType: 3
         guid: 1e99df792ee5fc4aa538e019b7a29f1a
-      Path: Events\BGM\Play_Bgm_Unload
+      Path: Events\Default Work Unit\BGM\Play_BGM_Unload
       maxAttenuation: 0
       maxDuration: 100.26236
       minDuration: 100.26236
@@ -298,123 +310,8 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584640080325004450
+    m_lastTime: -8584638829485322053
     List: []
-  - PhysicalPath: Events\delivery.wwu
-    PathAndIcons:
-    - ElementName: Events
-      ObjectType: 5
-      guid: 00000000000000000000000000000000
-    - ElementName: delivery
-      ObjectType: 12
-      guid: e238cdd63e97f34aa2b829be2a9b2413
-    ParentPath: Events\delivery
-    guid: e238cdd63e97f34aa2b829be2a9b2413
-    GuidInternal: 
-    m_lastTime: -8584640080075754178
-    List:
-    - name: Play_SFX_Bomb_Active_2
-      guid: db0ef46825686340839574eb6436d195
-      id: 2174444108
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: delivery
-        ObjectType: 12
-        guid: e238cdd63e97f34aa2b829be2a9b2413
-      - ElementName: Play_SFX_Bomb_Active_2
-        ObjectType: 3
-        guid: db0ef46825686340839574eb6436d195
-      Path: Events\delivery\Play_SFX_Bomb_Active_2
-      maxAttenuation: 0
-      maxDuration: 1.2873996
-      minDuration: 1.2873996
-    - name: Play_SFX_Bomb_PRE_2
-      guid: 15a414107f4e6c408565d3cc1fe95d67
-      id: 287468067
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: delivery
-        ObjectType: 12
-        guid: e238cdd63e97f34aa2b829be2a9b2413
-      - ElementName: Play_SFX_Bomb_PRE_2
-        ObjectType: 3
-        guid: 15a414107f4e6c408565d3cc1fe95d67
-      Path: Events\delivery\Play_SFX_Bomb_PRE_2
-      maxAttenuation: 0
-      maxDuration: 0.625
-      minDuration: 0.625
-    - name: Play_SFX_DROP_STONE
-      guid: 2532ae9c6fa48e42a514424dd7cd1cc5
-      id: 2700155087
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: delivery
-        ObjectType: 12
-        guid: e238cdd63e97f34aa2b829be2a9b2413
-      - ElementName: Play_SFX_DROP_STONE
-        ObjectType: 3
-        guid: 2532ae9c6fa48e42a514424dd7cd1cc5
-      Path: Events\delivery\Play_SFX_DROP_STONE
-      maxAttenuation: 0
-      maxDuration: 0.8953313
-      minDuration: 0.8953313
-    - name: Play_SFX_RUSH_2
-      guid: eb7dc0ae8f6c1b46b7ac398509e2abb7
-      id: 1896826979
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: delivery
-        ObjectType: 12
-        guid: e238cdd63e97f34aa2b829be2a9b2413
-      - ElementName: Play_SFX_RUSH_2
-        ObjectType: 3
-        guid: eb7dc0ae8f6c1b46b7ac398509e2abb7
-      Path: Events\delivery\Play_SFX_RUSH_2
-      maxAttenuation: 0
-      maxDuration: 1.7157379
-      minDuration: 1.7157379
-    - name: Play_SFX_RUSH_PRE
-      guid: 244f10f348d047499f007d0a7954f8e9
-      id: 2883951734
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: delivery
-        ObjectType: 12
-        guid: e238cdd63e97f34aa2b829be2a9b2413
-      - ElementName: Play_SFX_RUSH_PRE
-        ObjectType: 3
-        guid: 244f10f348d047499f007d0a7954f8e9
-      Path: Events\delivery\Play_SFX_RUSH_PRE
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: Play_SFX_RUSH_PRE_2
-      guid: 5031ea29ad519341a4f14a24566aec1b
-      id: 2242457109
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: delivery
-        ObjectType: 12
-        guid: e238cdd63e97f34aa2b829be2a9b2413
-      - ElementName: Play_SFX_RUSH_PRE_2
-        ObjectType: 3
-        guid: 5031ea29ad519341a4f14a24566aec1b
-      Path: Events\delivery\Play_SFX_RUSH_PRE_2
-      maxAttenuation: 0
-      maxDuration: 0.86104417
-      minDuration: 0.86104417
   - PhysicalPath: Events\GameMap.wwu
     PathAndIcons:
     - ElementName: Events
@@ -471,6 +368,142 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.34375
       minDuration: 0.34375
+  - PhysicalPath: Events\MiniGameDelivery.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 3332395072f10149a81da91bd1e15694
+    - ElementName: MiniGameDelivery
+      ObjectType: 12
+      guid: e238cdd63e97f34aa2b829be2a9b2413
+    ParentPath: Events\Default Work Unit\MiniGameDelivery
+    guid: e238cdd63e97f34aa2b829be2a9b2413
+    GuidInternal: 
+    m_lastTime: -8584638829547266443
+    List:
+    - name: Play_SFX_Bomb_Active_2
+      guid: db0ef46825686340839574eb6436d195
+      id: 2174444108
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: MiniGameDelivery
+        ObjectType: 12
+        guid: e238cdd63e97f34aa2b829be2a9b2413
+      - ElementName: Play_SFX_Bomb_Active_2
+        ObjectType: 3
+        guid: db0ef46825686340839574eb6436d195
+      Path: Events\Default Work Unit\MiniGameDelivery\Play_SFX_Bomb_Active_2
+      maxAttenuation: 0
+      maxDuration: 1.2873996
+      minDuration: 1.2873996
+    - name: Play_SFX_Bomb_PRE_2
+      guid: 15a414107f4e6c408565d3cc1fe95d67
+      id: 287468067
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: MiniGameDelivery
+        ObjectType: 12
+        guid: e238cdd63e97f34aa2b829be2a9b2413
+      - ElementName: Play_SFX_Bomb_PRE_2
+        ObjectType: 3
+        guid: 15a414107f4e6c408565d3cc1fe95d67
+      Path: Events\Default Work Unit\MiniGameDelivery\Play_SFX_Bomb_PRE_2
+      maxAttenuation: 0
+      maxDuration: 0.625
+      minDuration: 0.625
+    - name: Play_SFX_DROP_STONE
+      guid: 2532ae9c6fa48e42a514424dd7cd1cc5
+      id: 2700155087
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: MiniGameDelivery
+        ObjectType: 12
+        guid: e238cdd63e97f34aa2b829be2a9b2413
+      - ElementName: Play_SFX_DROP_STONE
+        ObjectType: 3
+        guid: 2532ae9c6fa48e42a514424dd7cd1cc5
+      Path: Events\Default Work Unit\MiniGameDelivery\Play_SFX_DROP_STONE
+      maxAttenuation: 0
+      maxDuration: 0.8953313
+      minDuration: 0.8953313
+    - name: Play_SFX_RUSH_2
+      guid: eb7dc0ae8f6c1b46b7ac398509e2abb7
+      id: 1896826979
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: MiniGameDelivery
+        ObjectType: 12
+        guid: e238cdd63e97f34aa2b829be2a9b2413
+      - ElementName: Play_SFX_RUSH_2
+        ObjectType: 3
+        guid: eb7dc0ae8f6c1b46b7ac398509e2abb7
+      Path: Events\Default Work Unit\MiniGameDelivery\Play_SFX_RUSH_2
+      maxAttenuation: 0
+      maxDuration: 1.7157379
+      minDuration: 1.7157379
+    - name: Play_SFX_RUSH_PRE
+      guid: 244f10f348d047499f007d0a7954f8e9
+      id: 2883951734
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: MiniGameDelivery
+        ObjectType: 12
+        guid: e238cdd63e97f34aa2b829be2a9b2413
+      - ElementName: Play_SFX_RUSH_PRE
+        ObjectType: 3
+        guid: 244f10f348d047499f007d0a7954f8e9
+      Path: Events\Default Work Unit\MiniGameDelivery\Play_SFX_RUSH_PRE
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_SFX_RUSH_PRE_2
+      guid: 5031ea29ad519341a4f14a24566aec1b
+      id: 2242457109
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: MiniGameDelivery
+        ObjectType: 12
+        guid: e238cdd63e97f34aa2b829be2a9b2413
+      - ElementName: Play_SFX_RUSH_PRE_2
+        ObjectType: 3
+        guid: 5031ea29ad519341a4f14a24566aec1b
+      Path: Events\Default Work Unit\MiniGameDelivery\Play_SFX_RUSH_PRE_2
+      maxAttenuation: 0
+      maxDuration: 0.86104417
+      minDuration: 0.86104417
   - PhysicalPath: Events\MiniGameUnload.wwu
     PathAndIcons:
     - ElementName: Events
@@ -485,7 +518,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\MiniGameUnload
     guid: 0173d73202b00a4091b7dd334cf670bc
     GuidInternal: 
-    m_lastTime: -8584640080075754178
+    m_lastTime: -8584639638213046849
     List:
     - name: Play_AMB_Conveyor
       guid: a692660cb8d42e44a78a04c86ec7ff24
@@ -946,7 +979,7 @@ MonoBehaviour:
     m_lastTime: -8584640080304484699
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 010000000200000003000000050000000600000007000000090000000a0000000b0000000c0000000d0000001100000018000000190000001a0000001b0000001d0000002400000025000000
+  ExpandedWaapiItemIds: 01000000020000000300000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000001100000018000000190000001a0000001b0000001d0000002400000025000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

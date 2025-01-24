@@ -29,7 +29,7 @@
      {
       "Id": "1896826979",
       "Name": "Play_SFX_RUSH_2",
-      "ObjectPath": "\\Events\\delivery\\Play_SFX_RUSH_2",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_RUSH_2",
       "GUID": "{AEC07DEB-6C8F-461B-B7AC-398509E2ABB7}",
       "DurationType": "OneShot",
       "DurationMin": "1.7157379",
@@ -43,6 +43,6 @@
     ]
    }
   ],
-  "FileHash": "{61770F1A-C42D-25FF-26AB-35383EACD159}"
+  "FileHash": "{C4AC3BD9-4B05-BE5A-23F7-B51F68296C90}"
  }
 }
