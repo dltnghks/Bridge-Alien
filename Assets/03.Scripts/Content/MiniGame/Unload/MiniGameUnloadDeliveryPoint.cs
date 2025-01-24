@@ -35,7 +35,8 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         _boxCollider = Utils.GetOrAddComponent<BoxCollider>(gameObject);
         _endPointTransform = Utils.FindChild<Transform>(gameObject, "EndPoint", true);
         _ViewDeliveryRegionText = Utils.FindChild<TextMeshPro>(gameObject,"ViewDeliveryRegionText", true);
-        String regionName = "None";
+        
+        string regionName = "None";
         switch(_info.Region){
             case Define.BoxRegion.CapitalArea: regionName = "수도권"; break;
             case Define.BoxRegion.HonamArea: regionName = "호남권"; break;

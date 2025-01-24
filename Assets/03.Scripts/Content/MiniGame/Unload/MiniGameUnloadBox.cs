@@ -110,8 +110,8 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     [SerializeField] private MiniGameUnloadBoxInfo _info;
     
-    private SpriteRenderer spriteRenderer;
-    private SpriteRenderer regionSpriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private TextMeshPro regionText;
 
     [Header("Box Sprites")]
     [SerializeField] private List<Sprite> _boxSpriteList = new List<Sprite>();  
@@ -137,10 +137,13 @@ public class MiniGameUnloadBox : MonoBehaviour
         set { _info.IsUnloaded = value; }
     }
 
+
+
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
     {
         _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
         _grabBoxLayer = LayerMask.NameToLayer("GrabBox");
+        
         
         gameObject.SetActive(value);
         if(value)
@@ -252,20 +255,15 @@ public class MiniGameUnloadBox : MonoBehaviour
         if (_boxSpriteList.Count > boxType)
         {
             spriteRenderer.sprite = _boxSpriteList[boxType];   
+            if(boxType != 0){
+                regionText.SetText(_info.GetBoxRegion());
+            }else{
+                regionText.SetText("");
+            }
         }
         else
         {
             Logger.LogWarning($"Not enough box sprite list{_boxSpriteList.Count}, {boxType}");
-        }
-
-        
-        if (_regionSpriteList.Count > regionType)
-        {
-            regionSpriteRenderer.sprite = _regionSpriteList[boxType];   
-        }
-        else
-        {
-            Logger.LogWarning($"Not enough region sprite list{_regionSpriteList.Count}, {regionType}");
         }
 
         boxRigidbody = GetComponent<Rigidbody>();
@@ -276,12 +274,6 @@ public class MiniGameUnloadBox : MonoBehaviour
     {
         if (spriteRenderer == null)
         {
-            /*GameObject spriteObj = new GameObject("BoxSprite");
-            spriteObj.transform.SetParent(gameObject.transform);
-            spriteObj.transform.localPosition = Vector3.zero;
-            spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();*/
-            
-            
             GameObject spriteObj = new GameObject("BoxSprite");
             spriteObj.transform.SetParent(gameObject.transform);
             spriteObj.transform.localPosition = Vector3.zero;
@@ -296,13 +288,6 @@ public class MiniGameUnloadBox : MonoBehaviour
             
         }
 
-        if (regionSpriteRenderer)
-        {
-            GameObject regionSpriteObj = new GameObject("region");
-            regionSpriteObj.transform.SetParent(gameObject.transform);
-            regionSpriteObj.transform.localPosition = Vector3.zero;
-            regionSpriteRenderer = regionSpriteObj.GetOrAddComponent<SpriteRenderer>();
-        }
     }
 }
 
