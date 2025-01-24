@@ -32,10 +32,28 @@ public class MiniGameDeliveryEnemy : MonoBehaviour
 
     private void Update()
     {
-        /*
-        if (Managers.MiniGame.CurrentGame.IsPause)
-            return;
-        */
+        // 테스트용 키 입력 처리
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetState(new ChargeState(this));
+            Logger.Log("Charge State로 변경");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetState(new BombState(this));
+            Logger.Log("Bomb State로 변경");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetState(new DropRockState(this));
+            Logger.Log("DropRock State로 변경");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SetState(new IdleState(this));
+            Logger.Log("Idle State로 변경");
+        }
+
         _currentState?.UpdateState();
     }
 

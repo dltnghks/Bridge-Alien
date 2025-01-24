@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombState : MonoBehaviour // 이거 왜 IEnemyState 안쓰는거임? 딴 State들은 상속받던데?
+public class BombState : IEnemyState
 {
     private GridManager gridManager;                    // 그리드 매니저
+    
     public MiniGameDeliveryEnemy Enemy { get; set; }
     
     public BombState(MiniGameDeliveryEnemy enemy)
@@ -16,16 +17,25 @@ public class BombState : MonoBehaviour // 이거 왜 IEnemyState 안쓰는거임
     public void EnterState()
     {
         Debug.Log("Enter Bomb State");
-        if (gridManager != null) { gridManager.ExecuteRandomPattern(); } // 랜덤 패턴 실행
+        ExecuteGridPattern(); // 상태 진입시 한 번만 실행
     }
 
     public void UpdateState()
     {
-        // 돌진 중 동작 로직 (추적 등)
+        // 그리드 패턴 실행 제거
     }
 
     public void ExitState()
     {
-        Debug.Log("Exit Charge State");
+        Debug.Log("Exit Bomb State");
+    }
+
+    private void ExecuteGridPattern()
+    {
+        if (gridManager != null)
+        {
+            // 폭탄 상태에서는 랜덤 패턴 사용
+            gridManager.ExecuteRandomPattern();
+        }
     }
 }

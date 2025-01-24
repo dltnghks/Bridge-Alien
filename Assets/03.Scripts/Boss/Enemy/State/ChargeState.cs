@@ -33,10 +33,7 @@ public class ChargeState : IEnemyState
     public void EnterState()
     {
         Debug.Log("Enter Charge State");
-        if (gridManager != null)
-        {
-            gridManager.ExecuteLeftToRightPattern(); // 왼쪽에서 오른쪽으로 그리드 프리팹 생성
-        }
+        ExecuteGridPattern();
         
         _chargeState = EChargeState.Ready;
         
@@ -71,7 +68,7 @@ public class ChargeState : IEnemyState
             {
                 _chargeState = EChargeState.Warning;
                 _chargeStartPosition.x += 40.0f;
-                // 경고 영역 표시
+                ExecuteGridPattern(); // 경고 상태로 전환할 때 새로운 그리드 패턴 생성
                 CreateWarningArea();
             });
         }
@@ -104,4 +101,12 @@ public class ChargeState : IEnemyState
         // 경고 영역 생성 및 설정
     }
     
+    private void ExecuteGridPattern()
+    {
+        if (gridManager != null)
+        {
+            // 돌진 상태에서는 왼쪽에서 오른쪽으로 패턴 사용
+            gridManager.ExecuteLeftToRightPattern();
+        }
+    }
 }
