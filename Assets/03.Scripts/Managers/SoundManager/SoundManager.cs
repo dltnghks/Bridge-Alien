@@ -87,8 +87,8 @@ public class SoundManager : MonoBehaviour
 
         if (_soundEvent.EventDict[type].TryGetValue(key, out AK.Wwise.Event soundEvent))
         {
-            Debug.Log($"Playing sound: {soundEvent}");
-            // Wwise 또는 Unity Audio를 호출하는 코드 추가
+            //Debug.Log($"Playing sound: {soundEvent}");
+            // 이벤트 호출
             PlayEvent(soundEvent, soundGameObject);
         }
         else
