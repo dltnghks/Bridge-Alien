@@ -54,12 +54,18 @@ public class GridManager : MonoBehaviour
     [SerializeField] private SpawnOrder spawnOrder = SpawnOrder.Random;    // 생성 순서 설정
 
     //~ 초기화 함수
-    void Start()                                            // 초기화 함수
+    void Start()
     {
-        InitializePrefabDictionary();                       // 프리팹 딕셔너리 초기화
-        gridOrigin = transform.position;                    // 그리드 시작점 설정
-        LoadAllCSVFiles();                                  // 모든 CSV 파일 로드
-        StartCoroutine(LoadGridSequentially());             // 순차적 그리드 로드 시작
+        InitializePrefabDictionary();                        // 프리팹 딕셔너리 초기화
+        gridOrigin = transform.position;                     // 그리드 원점 설정
+        LoadAllCSVFiles();                                   // 모든 CSV 파일 로드
+        
+        // 초기 CSV 파일 로드
+        if (csvFiles.Count > 0)
+        {
+            gridData = csvFiles[0];
+            LoadGridFromCSV();
+        }
     }
 
     //~ 프리팹과 CSV 값을 매핑하는 딕셔너리 초기화
@@ -214,6 +220,8 @@ public class GridManager : MonoBehaviour
     //~ 왼쪽에서 오른쪽으로 그리드 프리팹 생성
     private void CreateLeftToRight(int rows, int cols)
     {
+        if (gridArray == null || currentGridContainer == null) return;  // 그리드 배열이나 컨테이너가 없으면 종료
+        
         List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
 
         // 각 열을 하나의 라인으로 처리 (왼쪽에서 오른쪽으로)
@@ -438,7 +446,7 @@ public class GridManager : MonoBehaviour
     }
 
     //~ 지정된 폴더에서 모든 CSV 파일 로드
-    private void LoadAllCSVFiles()                         // 지정된 폴더에서 모든 CSV 파일 로드
+    private void LoadAllCSVFiles()                         
     {
         if (csvFolder == null)
         {
@@ -453,10 +461,10 @@ public class GridManager : MonoBehaviour
             return;
         }
 
-        string[] csvPaths = Directory.GetFiles(folderPath, "*.csv");    // CSV 파일 검색
+        string[] csvPaths = Directory.GetFiles(folderPath, "*.csv");    
         csvFiles.Clear();
 
-        foreach (string csvPath in csvPaths)               // 찾은 CSV 파일들을 리스트에 추가
+        foreach (string csvPath in csvPaths)               
         {
             TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(csvPath);
             if (textAsset != null)
@@ -469,33 +477,6 @@ public class GridManager : MonoBehaviour
         {
             Logger.LogError($"'{folderPath}' 폴더에서 CSV 파일을 찾을 수 없습니다!");
             return;
-        }
-
-        Logger.Log($"총 {csvFiles.Count}개의 CSV 파일을 로드했습니다.");
-    }
-
-    //~ CSV 파일들을 순차적으로 로드
-    private System.Collections.IEnumerator LoadGridSequentially()    // CSV 파일들을 순차적으로 로드
-    {
-        while (true)
-        {
-            if (csvFiles.Count > 0)
-            {
-                if (currentGridContainer != null)           // 이전 그리드 제거
-                {
-                    Destroy(currentGridContainer);
-                }
-
-                gridData = csvFiles[currentFileIndex];      // 다음 CSV 파일 로드
-                Logger.Log($"레벨 데이터 로드: {csvFiles[currentFileIndex].name} ({currentFileIndex + 1}/{csvFiles.Count})");
-
-                LoadGridFromCSV();                         // 그리드 데이터 로드
-                CreateGrid();                              // 새 그리드 생성
-
-                currentFileIndex = (currentFileIndex + 1) % csvFiles.Count;    // 다음 파일 인덱스 계산
-            }
-
-            yield return new WaitForSeconds(loadInterval);    // 다음 로드까지 대기
         }
     }
 
@@ -590,5 +571,124 @@ public class GridManager : MonoBehaviour
             col = c;
             parent = p;
         }
+    }
+
+    //~ 그리드 초기화를 위한 새로운 메서드
+    private void InitializeGridFromCSV()
+    {
+        LoadGridFromCSV();
+        gridOrigin = transform.position;
+        InitializePrefabDictionary();
+    }
+
+    // 외부에서 호출 가능한 public 메서드들 추가
+    public void ExecuteRandomPattern()
+    {
+        if (currentGridContainer != null)
+        {
+            Destroy(currentGridContainer);
+        }
+        
+        if (csvFolder == null)
+        {
+            LoadAllCSVFiles();
+        }
+        
+        gridData = csvFiles[Random.Range(0, csvFiles.Count)];
+        InitializeGridFromCSV();
+        CreateRandomOrder(gridArray.GetLength(0), gridArray.GetLength(1));
+    }
+
+    public void ExecuteLeftToRightPattern()
+    {
+        if (currentGridContainer != null)
+        {
+            Destroy(currentGridContainer);
+        }
+        
+        // CSV 파일이 없으면 로드 시도
+        if (csvFiles.Count == 0)
+        {
+            LoadAllCSVFiles();
+            if (csvFiles.Count == 0) return;  // 여전히 없으면 종료
+        }
+        
+        // 랜덤한 CSV 파일 선택 및 로드
+        gridData = csvFiles[Random.Range(0, csvFiles.Count)];
+        LoadGridFromCSV();
+        
+        // 그리드 컨테이너 생성
+        currentGridContainer = new GameObject("GridContainer");
+        currentGridContainer.transform.parent = transform;
+        
+        CreateLeftToRight(gridArray.GetLength(0), gridArray.GetLength(1));
+    }
+
+    public void ExecuteRightToLeftPattern()
+    {
+        if (currentGridContainer != null)
+        {
+            Destroy(currentGridContainer);
+        }
+        
+        if (csvFolder == null)
+        {
+            LoadAllCSVFiles();
+        }
+        
+        gridData = csvFiles[Random.Range(0, csvFiles.Count)];
+        InitializeGridFromCSV();
+        CreateRightToLeft(gridArray.GetLength(0), gridArray.GetLength(1));
+    }
+
+    public void ExecuteTopToBottomPattern()
+    {
+        if (currentGridContainer != null)
+        {
+            Destroy(currentGridContainer);
+        }
+        
+        if (csvFolder == null)
+        {
+            LoadAllCSVFiles();
+        }
+        
+        gridData = csvFiles[Random.Range(0, csvFiles.Count)];
+        InitializeGridFromCSV();
+        CreateTopToBottom(gridArray.GetLength(0), gridArray.GetLength(1));
+    }
+
+    public void ExecuteBottomToTopPattern()
+    {
+        if (currentGridContainer != null)
+        {
+            Destroy(currentGridContainer);
+        }
+        
+        if (csvFolder == null)
+        {
+            LoadAllCSVFiles();
+        }
+        
+        gridData = csvFiles[Random.Range(0, csvFiles.Count)];
+        InitializeGridFromCSV();
+        CreateBottomToTop(gridArray.GetLength(0), gridArray.GetLength(1));
+    }
+
+    public void ExecuteInstantPattern()
+    {
+        if (currentGridContainer != null)
+        {
+            Destroy(currentGridContainer);
+        }
+        
+        if (csvFolder == null)
+        {
+            LoadAllCSVFiles();
+        }
+        
+        gridData = csvFiles[Random.Range(0, csvFiles.Count)];
+        InitializeGridFromCSV();
+        CreateInstantOrder(gridArray.GetLength(0), gridArray.GetLength(1));
     }
 }

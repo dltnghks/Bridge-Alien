@@ -20,17 +20,23 @@ public class ChargeState : IEnemyState
     
     private EChargeState _chargeState = EChargeState.Ready;           // true 돌진 중, false 준비 중
     
+    private GridManager gridManager;            // 그리드 매니저
+    
     public MiniGameDeliveryEnemy Enemy { get; set; }
     
     public ChargeState(MiniGameDeliveryEnemy enemy)
     {
         Enemy = enemy;
+        gridManager = GameObject.FindObjectOfType<GridManager>();   // 그리드 매니저 찾기
     }
-
 
     public void EnterState()
     {
         Debug.Log("Enter Charge State");
+        if (gridManager != null)
+        {
+            gridManager.ExecuteLeftToRightPattern(); // 왼쪽에서 오른쪽으로 그리드 프리팹 생성
+        }
         
         _chargeState = EChargeState.Ready;
         
@@ -41,7 +47,24 @@ public class ChargeState : IEnemyState
 
     public void UpdateState()
     {
-        // 돌진 중 동작 로직 (추적 등)
+        // 테스트용 키 입력 처리 추가
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            _chargeState = EChargeState.Ready;
+            Debug.Log("Ready 상태로 변경");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            _chargeState = EChargeState.Warning;
+            Debug.Log("Warning 상태로 변경");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            _chargeState = EChargeState.Charging;
+            Debug.Log("Charging 상태로 변경");
+        }
+
+        // 기존 상태 업데이트 로직
         if (_chargeState == EChargeState.Ready)
         {
             Enemy.MoveToDestination(_chargeStartPosition, _chargeSpeed, () =>

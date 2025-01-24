@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class DropRockState : IEnemyState
 {
+    private GridManager gridManager;                    // 그리드 매니저
     public MiniGameDeliveryEnemy Enemy { get; set; }
     
     public DropRockState(MiniGameDeliveryEnemy enemy)
     {
         Enemy = enemy;
+        gridManager = GameObject.FindObjectOfType<GridManager>();   // 그리드 매니저 찾기
     }
 
     public void EnterState()
     {
-        Debug.Log("Enter Charge State");
+        Debug.Log("Enter DropRock State");
+        if (gridManager != null) { gridManager.ExecuteRandomPattern(); } // 랜덤 패턴 실행
     }
 
     public void UpdateState()
@@ -23,6 +26,6 @@ public class DropRockState : IEnemyState
 
     public void ExitState()
     {
-        Debug.Log("Exit Charge State");
+        Debug.Log("Exit DropRock State");
     }
 }
