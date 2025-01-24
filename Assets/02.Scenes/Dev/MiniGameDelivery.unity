@@ -122,6 +122,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &63760243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2580320845076287262, guid: 4580b0f911c21e246a742568ffd94dc7, type: 3}
+  m_PrefabInstance: {fileID: 977946074515821449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad643d1b6757d02428cb8966bfb96211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &231961479
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,6 +865,22 @@ PrefabInstance:
     - target: {fileID: 3071920516637687323, guid: 667f674e5c28fad469a59efe71b9d48a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192507654198991031, guid: 667f674e5c28fad469a59efe71b9d48a, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461390478259412193, guid: 667f674e5c28fad469a59efe71b9d48a, type: 3}
+      propertyPath: healthGauge
+      value: 
+      objectReference: {fileID: 63760243}
+    - target: {fileID: 8464073577559333124, guid: 667f674e5c28fad469a59efe71b9d48a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996479911235608630, guid: 667f674e5c28fad469a59efe71b9d48a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

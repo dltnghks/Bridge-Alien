@@ -56,7 +56,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         
         
         // PlayerCharacter 초기화
-        PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "MiniGameDeliveryPlayer", true);
+        PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
         {
             Logger.LogError("PlayerCharacter not found or does not have a Player component!");

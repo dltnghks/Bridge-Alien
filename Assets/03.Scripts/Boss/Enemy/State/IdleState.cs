@@ -33,13 +33,6 @@ public class IdleState : IEnemyState
         
         // 보스를 타겟 위치로 부드럽게 이동
         Enemy.MoveToDestination(targetPosition, followSpeed);
-        
-        curTime += Time.deltaTime;
-        if (curTime >= 3f)
-        {
-            Enemy.SetState(new ChargeState(Enemy));
-            curTime = 0;
-        }
     }
 
     public void ExitState()

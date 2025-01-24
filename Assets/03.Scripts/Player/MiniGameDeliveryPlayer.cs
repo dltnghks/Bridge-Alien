@@ -6,31 +6,25 @@ using UnityEngine.Rendering;
 
 public class MiniGameDeliveryPlayer : Player
 {
-    private IHealthPoint healthPoint;
+    private IHealthPoint _healthPoint;
     
     public UIHPGauge healthGauge;
 
     public void Start()
     {
         base.Start();
-        healthPoint = GetComponent<IHealthPoint>();
+        _healthPoint = GetComponent<IHealthPoint>();
 
-        if (healthPoint != null)
+        if (_healthPoint != null)
         {
-            healthPoint.OnHealthChanged += healthGauge.SetHP;
+            _healthPoint.OnHealthChanged += healthGauge.SetHP;
         }
     }
-
-    private void UpdateHealthUI(float currentHealth)
-    {
-        Debug.Log($"Player Health: {currentHealth}/{healthPoint.MaxHealth}");
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            healthPoint.TakeDamage(10f);
+            _healthPoint.TakeDamage(10f);
         }
     }
 }

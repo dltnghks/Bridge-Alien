@@ -30,7 +30,7 @@ public class AttackObject : MonoBehaviour
             Player player = other.GetComponent<Player>();
             if (player != null)
             {
-                player.TakeDamage(damage);
+                //player.TakeDamage(damage);
                 hasHit = true;
                 
                 // 타격 후 오브젝트 제거

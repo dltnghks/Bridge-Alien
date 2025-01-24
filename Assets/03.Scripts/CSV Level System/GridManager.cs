@@ -125,7 +125,7 @@ public class GridManager : MonoBehaviour
     //~ 그리드 데이터를 기반으로 실제 그리드 생성
     private void CreateGrid()                               // 그리드 데이터를 기반으로 실제 그리드 생성
     {
-        Managers.Camera.ShakeCamera(0.5f, 0.8f);
+        // CameraManager.Instance.ShakeCamera(0.5f, 0.8f); // 카메라 흔들기 (CameraManager.cs에서 호출)
         if (gridArray == null) return;
 
         int rows = gridArray.GetLength(0);
