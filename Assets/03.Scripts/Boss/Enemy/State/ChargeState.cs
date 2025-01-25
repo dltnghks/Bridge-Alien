@@ -45,7 +45,7 @@ public class ChargeState : IEnemyState
     public void UpdateState()
     {
         // 테스트용 키 입력 처리 추가
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        /*if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             _chargeState = EChargeState.Ready;
             Debug.Log("Ready 상태로 변경");
@@ -59,7 +59,7 @@ public class ChargeState : IEnemyState
         {
             _chargeState = EChargeState.Charging;
             Debug.Log("Charging 상태로 변경");
-        }
+        }*/
 
         // 기존 상태 업데이트 로직
         if (_chargeState == EChargeState.Ready)
