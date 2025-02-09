@@ -8,8 +8,12 @@ jobs:
   add-to-project:
     runs-on: ubuntu-latest
     steps:
+      - name: "이슈 ID 가져오기"
+        run: echo "ISSUE_ID=${{ github.event.issue.node_id }}" >> $GITHUB_ENV
+
       - name: "이슈를 프로젝트에 추가"
-        uses: actions/add-to-project@v0.4.0
-        with:
-          project-url: "https://github.com/users/dltnghks/projects/3"
-          github-token: ${{ secrets.GH_PROJECT_TOKEN }}
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.GH_PROJECT_TOKEN }}" \
+               -H "Content-Type: application/json" \
+               -d '{"query": "mutation { addProjectV2ItemById(input: { projectId: \"PVT_kwHOA0ys2M4AxyBm\", contentId: \"'"$ISSUE_ID"'\" }) { item { id } } }"}' \
+               https://api.github.com/graphql
