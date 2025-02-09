@@ -12,7 +12,7 @@ jobs:
         run: echo "ISSUE_ID=${{ github.event.issue.node_id }}" >> $GITHUB_ENV
 
       - name: "이슈를 프로젝트에 추가"
-        if: contains(github.event.issue.labels.*.name, 'Task')
+        if: contains(github.event.issue.labels.*.name, 'task')
         run: |
           curl -X POST -H "Authorization: Bearer ${{ secrets.GH_PROJECT_TOKEN }}" \
                -H "Content-Type: application/json" \
@@ -20,7 +20,7 @@ jobs:
                https://api.github.com/graphql
                
       - name: "프로젝트 Status 설정"
-        if: contains(github.event.issue.labels.*.name, 'Task')
+        if: contains(github.event.issue.labels.*.name, 'task')
         run: |
           curl -X POST -H "Authorization: Bearer ${{ secrets.GH_PROJECT_TOKEN }}" \
                -H "Content-Type: application/json" \
