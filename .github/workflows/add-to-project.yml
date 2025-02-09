@@ -2,7 +2,7 @@ name: "이슈 자동 프로젝트 할당"
 
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]  # 라벨이 추가되거나 이슈가 생성될 때 실행
 
 jobs:
   add-to-project:
@@ -12,8 +12,17 @@ jobs:
         run: echo "ISSUE_ID=${{ github.event.issue.node_id }}" >> $GITHUB_ENV
 
       - name: "이슈를 프로젝트에 추가"
+        if: contains(github.event.issue.labels.*.name, 'Task')
         run: |
           curl -X POST -H "Authorization: Bearer ${{ secrets.GH_PROJECT_TOKEN }}" \
                -H "Content-Type: application/json" \
                -d '{"query": "mutation { addProjectV2ItemById(input: { projectId: \"PVT_kwHOA0ys2M4AxyBm\", contentId: \"'"$ISSUE_ID"'\" }) { item { id } } }"}' \
+               https://api.github.com/graphql
+               
+      - name: "프로젝트 Status 설정"
+        if: contains(github.event.issue.labels.*.name, 'Task')
+        run: |
+          curl -X POST -H "Authorization: Bearer ${{ secrets.GH_PROJECT_TOKEN }}" \
+               -H "Content-Type: application/json" \
+               -d '{"query": "mutation { updateProjectV2ItemFieldValue(input: { projectId: \"PVT_kwHOA0ys2M4AxyBm\", itemId: \"${{ env.ISSUE_ID }}\", fieldId: \"f75ad846\", value: { singleSelectOptionId: \"STATUS_TODO_ID\" } }) { clientMutationId } }"}' \
                https://api.github.com/graphql
