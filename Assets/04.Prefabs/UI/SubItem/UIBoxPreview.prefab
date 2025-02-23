@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Deliver Region : - '
+  m_text: "\uBC30\uC1A1 \uC9C0\uC5ED\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5cef455e77d8954babab04c108446f6, type: 2}
   m_sharedMaterial: {fileID: -3118823961064641592, guid: b5cef455e77d8954babab04c108446f6, type: 2}
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Box Type : -'
+  m_text: "\uBC15\uC2A4 \uC885\uB958"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5cef455e77d8954babab04c108446f6, type: 2}
   m_sharedMaterial: {fileID: -3118823961064641592, guid: b5cef455e77d8954babab04c108446f6, type: 2}
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ecfd8582e79e6f6419275ef31e4b4e99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e73a05de9c3ae04aaa571b4a6bd2cb7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Box Number : -'
+  m_text: "\uBC15\uC2A4 \uBC88\uD638"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5cef455e77d8954babab04c108446f6, type: 2}
   m_sharedMaterial: {fileID: -3118823961064641592, guid: b5cef455e77d8954babab04c108446f6, type: 2}
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.05
+  m_fontSize: 59.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -3,7 +3,7 @@
   "Platform": {
    "Name": "Android",
    "BasePlatform": "Android",
-   "Generator": "2024.1.1.8691"
+   "Generator": "2024.1.0.8669"
   },
   "RootPaths": {
    "ProjectRoot": "../../../../../Bridge-Alien_WwiseProject",
@@ -30,9 +30,8 @@
    "MaxAttenuationInfo": "true",
    "EstimatedDurationInfo": "true",
    "PrintObjectGuid": "true",
-   "PrintObjectPath": "true",
-   "PrintObjectColor": "true"
+   "PrintObjectPath": "true"
   },
-  "FileHash": "{DD85CF83-0457-AA07-D1A0-1AD561E5161D}"
+  "FileHash": "{C2D34B17-1A12-CBEE-C33E-9F4B5E9F69FB}"
  }
 }

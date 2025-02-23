@@ -57,10 +57,6 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
             MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
             newBox.SetRandomInfo();
 
-            Vector3 currentScale = newBoxObj.GetOrAddComponent<BoxCollider>().size;
-            currentScale.y = newBox.Info.Size;
-            newBoxObj.GetOrAddComponent<BoxCollider>().size = currentScale;
-
             newBox.SetInGameActive(false);
 
             EnqueueBox(newBox);

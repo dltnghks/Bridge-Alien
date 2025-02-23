@@ -13,29 +13,37 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID PLAY_AMB_CONVEYOR_1 = 2349852502U;
-        static const AkUniqueID PLAY_AMB_CONVEYOR_2 = 2349852501U;
+        static const AkUniqueID PLAY_AMB_CONVEYOR = 3092289078U;
+        static const AkUniqueID PLAY_BGM_DELIVERY = 3454433139U;
+        static const AkUniqueID PLAY_BGM_GAMEMAPLOOP = 1914102211U;
+        static const AkUniqueID PLAY_BGM_UNLOAD = 1390403282U;
         static const AkUniqueID PLAY_LARGEBOXHOLD = 2606206533U;
         static const AkUniqueID PLAY_LARGEBOXPUT = 3670728633U;
-        static const AkUniqueID PLAY_MINIGAMEUNLOADBGM = 3026964974U;
         static const AkUniqueID PLAY_PICKUPBOX = 3158537189U;
         static const AkUniqueID PLAY_POSTHOLD = 3540212343U;
         static const AkUniqueID PLAY_POSTPUT = 1869835011U;
+        static const AkUniqueID PLAY_SFX_BOMB_ACTIVE_2 = 2174444108U;
+        static const AkUniqueID PLAY_SFX_BOMB_PRE_2 = 287468067U;
         static const AkUniqueID PLAY_SFX_BROKENBOX = 776408140U;
         static const AkUniqueID PLAY_SFX_CLICKDECIDE = 3480358650U;
         static const AkUniqueID PLAY_SFX_COMMONBUTTONCLICK = 1147630695U;
+        static const AkUniqueID PLAY_SFX_DROP_STONE = 2700155087U;
         static const AkUniqueID PLAY_SFX_DROPALL = 2810680534U;
+        static const AkUniqueID PLAY_SFX_FAILED = 3929437841U;
         static const AkUniqueID PLAY_SFX_FOOTSTEP_PLAYERCHARACTER = 562923629U;
         static const AkUniqueID PLAY_SFX_MOVECHARACTER = 3538692530U;
         static const AkUniqueID PLAY_SFX_PICKUPLARGEBOX = 2478644074U;
         static const AkUniqueID PLAY_SFX_PICKUPPOST = 596290888U;
         static const AkUniqueID PLAY_SFX_PICKUPSMALLBOX = 3053722294U;
         static const AkUniqueID PLAY_SFX_PICKUPSTANDARDBOX = 118618168U;
+        static const AkUniqueID PLAY_SFX_RUSH_2 = 1896826979U;
+        static const AkUniqueID PLAY_SFX_RUSH_PRE = 2883951734U;
+        static const AkUniqueID PLAY_SFX_RUSH_PRE_2 = 2242457109U;
+        static const AkUniqueID PLAY_SFX_TRUCK = 1117495919U;
         static const AkUniqueID PLAY_SMALLBOXHOLD = 2487093689U;
         static const AkUniqueID PLAY_SMALLBOXPUT = 3924693453U;
         static const AkUniqueID PLAY_STANDARDBOXHOLD = 2379227943U;
         static const AkUniqueID PLAY_STANDARDBOXPUT = 2557702835U;
-        static const AkUniqueID STOP_MINIGAMEUNLOADBGM = 601402224U;
     } // namespace EVENTS
 
     namespace GAME_PARAMETERS

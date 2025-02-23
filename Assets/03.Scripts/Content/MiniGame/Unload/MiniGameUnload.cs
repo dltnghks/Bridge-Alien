@@ -134,22 +134,23 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     }
 
     
-    public void PauseGame()
+    public bool PauseGame()
     {
         if (!IsActive || IsPause)
         {
-            Logger.LogError("Not Active MiniGame");
-            return;
+            Logger.LogWarning("Not Active MiniGame");
+            return false;
         }
         IsPause = true;
         Logger.Log("UnloadGame Pausing game");
+        return true;
     }
 
     public void ResumeGame()
     {
         if (!IsActive || !IsPause)
         {
-            Logger.LogError("Not Active MiniGame");
+            Logger.LogWarning("Not Active MiniGame");
             return;
         }
         IsPause = false;
@@ -160,7 +161,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         if (!IsActive)
         {
-            Logger.LogError("Not Active MiniGame");
+            Logger.LogWarning("Not Active MiniGame");
             return;
         }
         
@@ -183,12 +184,12 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         {
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
         }
-        else if (score > 0)
+        else if (score < 0)
         {
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.MinusScore.ToString());
         }
 
-    _score.AddScore(score);
+        _score.AddScore(score);
     }
 
 }

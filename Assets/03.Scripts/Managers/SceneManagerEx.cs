@@ -38,13 +38,17 @@ public class SceneManagerEx : MonoBehaviour
     public void Init()
     {
     }
-    
+
     string GetSceneName(Define.Scene type)
     {
         string name = System.Enum.GetName(typeof(Define.Scene), type);
         return new string(name);
     }
-    
+
+    public void SetSelectedSceneAction(UnityAction<string> action)
+    {
+        SelectedSceneAction = action;
+    }
     public void ChangeScene(Define.Scene type)
     {
         if(type == Define.Scene.Unknown){

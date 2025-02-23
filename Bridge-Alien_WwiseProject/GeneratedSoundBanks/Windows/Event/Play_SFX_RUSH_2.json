@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1896826979",
+    "Type": "Event",
+    "GUID": "{AEC07DEB-6C8F-461B-B7AC-398509E2ABB7}",
+    "Language": "SFX",
+    "Hash": "{0366504E-E54B-0C8E-742E-FA0318592078}",
+    "ObjectPath": "Play_SFX_RUSH_2",
+    "ShortName": "Play_SFX_RUSH_2",
+    "Path": "Event/Play_SFX_RUSH_2.bnk",
+    "Media": [
+     {
+      "Id": "595336988",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX-RUSH-2.wav",
+      "Path": "Media/595336988.wem",
+      "CachePath": "9A/{9A775CC2-6402-F33C-480E-C03C963C0D19}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1896826979",
+      "Name": "Play_SFX_RUSH_2",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_RUSH_2",
+      "GUID": "{AEC07DEB-6C8F-461B-B7AC-398509E2ABB7}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.7157379",
+      "DurationMax": "1.7157379",
+      "MediaRefs": [
+       {
+        "Id": "595336988"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C4AC3BD9-4B05-BE5A-23F7-B51F68296C90}"
+ }
+}

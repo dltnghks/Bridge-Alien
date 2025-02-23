@@ -35,8 +35,8 @@ public class UIGameMapScene : UIScene
         
         GetButton((int)Buttons.HouseButton).gameObject.BindEvent(OnClickHouseButton);
         GetButton((int)Buttons.MiniGameStartButton).gameObject.BindEvent(OnClickMiniGameStart);
-        
-        Managers.Scene.SelectedSceneAction += SetMiniGameTypeText;
+
+        Managers.Scene.SetSelectedSceneAction(SetMiniGameTypeText);
 
         return true;
     }

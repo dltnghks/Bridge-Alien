@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{C4AA4CDE-995E-48C8-9D90-9E9BF5C3914E}",
     "Language": "SFX",
-    "Hash": "{881C044E-A986-8FA3-85C5-6681C87E777B}",
+    "Hash": "{A07E8A2A-392F-A796-D790-D2BC54949155}",
     "ObjectPath": "Play_SFX_CommonButtonClick",
     "ShortName": "Play_SFX_CommonButtonClick",
     "Path": "Event/Play_SFX_CommonButtonClick.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_CommonButtonClick.wav",
       "Path": "Media/281243175.wem",
-      "CachePath": "59/{59DB8DD0-293C-B91D-CC21-CCDB3303A381}.wem"
+      "CachePath": "6B/{6B2506B0-7AB4-81C4-9D78-141E784A968E}.wem"
      }
     ],
     "Events": [
@@ -32,8 +32,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Common\\Play_SFX_CommonButtonClick",
       "GUID": "{C4AA4CDE-995E-48C8-9D90-9E9BF5C3914E}",
       "DurationType": "OneShot",
-      "DurationMin": "0.55",
-      "DurationMax": "0.55",
+      "DurationMin": "0.27151933",
+      "DurationMax": "0.27151933",
       "MediaRefs": [
        {
         "Id": "281243175"
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{D26B7B73-45F1-5800-E0E1-6D2909137E85}"
+  "FileHash": "{048846D1-AC0E-2B28-8E4F-EAE7C0EC6CA7}"
  }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -21,6 +22,7 @@ public struct MiniGameUnloadDeliveryPointInfo
 public class MiniGameUnloadDeliveryPoint : MonoBehaviour
 {
     [SerializeField] private MiniGameUnloadDeliveryPointInfo _info;
+    [SerializeField] private TextMeshPro _ViewDeliveryRegionText;
     
     private Transform _endPointTransform;
     
@@ -32,6 +34,18 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     {
         _boxCollider = Utils.GetOrAddComponent<BoxCollider>(gameObject);
         _endPointTransform = Utils.FindChild<Transform>(gameObject, "EndPoint", true);
+        _ViewDeliveryRegionText = Utils.FindChild<TextMeshPro>(gameObject,"ViewDeliveryRegionText", true);
+        
+        string regionName = "None";
+        switch(_info.Region){
+            case Define.BoxRegion.CapitalArea: regionName = "수도권"; break;
+            case Define.BoxRegion.HonamArea: regionName = "호남권"; break;
+            case Define.BoxRegion.ChungcheongArea: regionName = "충남권"; break;
+            case Define.BoxRegion.YeongnamArea: regionName = "영남권"; break;
+            case Define.BoxRegion.GangwonArea: regionName = "강원권"; break;
+            default: regionName = "None"; break;
+        }
+        _ViewDeliveryRegionText.SetText(regionName);
     }
 
     public void SetAction(UnityAction<int> action, UnityAction triggerAction = null)
@@ -45,7 +59,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
+            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox)) 
             {
                 _triggerAction?.Invoke();
             }

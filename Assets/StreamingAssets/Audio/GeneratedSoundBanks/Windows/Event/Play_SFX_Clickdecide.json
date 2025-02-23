@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{84C47C77-3B91-445C-AD46-901BD472A8B1}",
     "Language": "SFX",
-    "Hash": "{45EC55CA-3A2B-B6C0-3BBD-E38AE495F310}",
+    "Hash": "{35032315-2E02-1B8A-3F5F-03A040391D6C}",
     "ObjectPath": "Play_SFX_Clickdecide",
     "ShortName": "Play_SFX_Clickdecide",
     "Path": "Event/Play_SFX_Clickdecide.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{1AC72B3A-5B24-E584-9CCC-CC0B42E94726}"
+  "FileHash": "{2860B220-866B-2779-0407-2E00A61C5AAE}"
  }
 }

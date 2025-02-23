@@ -110,8 +110,8 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     [SerializeField] private MiniGameUnloadBoxInfo _info;
     
-    private SpriteRenderer spriteRenderer;
-    private SpriteRenderer regionSpriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private TextMeshPro regionText;
 
     [Header("Box Sprites")]
     [SerializeField] private List<Sprite> _boxSpriteList = new List<Sprite>();  
@@ -137,10 +137,13 @@ public class MiniGameUnloadBox : MonoBehaviour
         set { _info.IsUnloaded = value; }
     }
 
+
+
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
     {
         _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
         _grabBoxLayer = LayerMask.NameToLayer("GrabBox");
+        
         
         gameObject.SetActive(value);
         if(value)
@@ -151,15 +154,32 @@ public class MiniGameUnloadBox : MonoBehaviour
             {
                 spriteRenderer.color = new Color(1, 0, 0, 0.7f);
             }
+            
 
             Vector3 currentScale = boxCollider.size; 
             currentScale.x = 1f;
             currentScale.z = 1f;
+            currentScale.y = Info.Size;
+            // 콜라이더 크기 설정 
+            
+            boxCollider.size = currentScale;
+            
+            // offset 계산 및 적용
+            float frontHeight = Info.Size;   // 앞면 높이
+            float totalHeight = Info.Size + Info.Size*0.4f; // 전체 높이
+            
+            // 앞면 중앙에 맞추기 위해 offset 계산
+            float offsetY = -totalHeight / 2 + frontHeight / 2;
+            boxCollider.center = new Vector3(0f, offsetY, 0f);
+            
             boxCollider.size = currentScale;
 
             // 생성될 때는 false
             boxCollider.isTrigger = false;
             IsUnloaded = false;
+
+            // 이전 중력이 남아있음. -> 속도 초기화
+            boxRigidbody.velocity = Vector3.zero;
 
             PlayBoxPutSound();
             
@@ -252,20 +272,15 @@ public class MiniGameUnloadBox : MonoBehaviour
         if (_boxSpriteList.Count > boxType)
         {
             spriteRenderer.sprite = _boxSpriteList[boxType];   
+            if(boxType != 0){
+                regionText.SetText(_info.GetBoxRegion());
+            }else{
+                regionText.SetText("");
+            }
         }
         else
         {
             Logger.LogWarning($"Not enough box sprite list{_boxSpriteList.Count}, {boxType}");
-        }
-
-        
-        if (_regionSpriteList.Count > regionType)
-        {
-            regionSpriteRenderer.sprite = _regionSpriteList[boxType];   
-        }
-        else
-        {
-            Logger.LogWarning($"Not enough region sprite list{_regionSpriteList.Count}, {regionType}");
         }
 
         boxRigidbody = GetComponent<Rigidbody>();
@@ -276,12 +291,6 @@ public class MiniGameUnloadBox : MonoBehaviour
     {
         if (spriteRenderer == null)
         {
-            /*GameObject spriteObj = new GameObject("BoxSprite");
-            spriteObj.transform.SetParent(gameObject.transform);
-            spriteObj.transform.localPosition = Vector3.zero;
-            spriteRenderer = spriteObj.GetOrAddComponent<SpriteRenderer>();*/
-            
-            
             GameObject spriteObj = new GameObject("BoxSprite");
             spriteObj.transform.SetParent(gameObject.transform);
             spriteObj.transform.localPosition = Vector3.zero;
@@ -296,13 +305,6 @@ public class MiniGameUnloadBox : MonoBehaviour
             
         }
 
-        if (regionSpriteRenderer)
-        {
-            GameObject regionSpriteObj = new GameObject("region");
-            regionSpriteObj.transform.SetParent(gameObject.transform);
-            regionSpriteObj.transform.localPosition = Vector3.zero;
-            regionSpriteRenderer = regionSpriteObj.GetOrAddComponent<SpriteRenderer>();
-        }
     }
 }
 

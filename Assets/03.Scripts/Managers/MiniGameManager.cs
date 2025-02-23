@@ -38,6 +38,9 @@ public class MiniGameManager : MonoBehaviour
             case Define.MiniGameType.Unload:
                 _currentGame = Root.GetOrAddComponent<MiniGameUnload>();
                 break;
+            case Define.MiniGameType.Delivery:
+                _currentGame = Root.GetOrAddComponent<MiniGameDelivery>();
+                break;
             // 새로운 미니게임을 추가하려면 여기에서 case 추가
             default:
                 Logger.LogError("Unknown game type!");
@@ -50,22 +53,29 @@ public class MiniGameManager : MonoBehaviour
     
     public void StartGame()
     {
+        Logger.Log($"{_currentGame.GetType().Name} | Game Start");
         Managers.Camera.Init(CurrentGame.CameraType, CurrentGame.CameraSettings);
-        _currentGame?.StartGame();
+
+        //_currentGame?.StartGame();
+        UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
+        uIGameStart.PlayGameStartEffect(_currentGame.StartGame);
     }
 
-    public void PauseGame()
+    public bool PauseGame()
     {
-        _currentGame?.PauseGame();
+        Logger.Log("Pause Game");
+        return _currentGame.PauseGame();
     }
 
     public void ResumeGame()
     {
+        Logger.Log("Resume Game");
         _currentGame?.ResumeGame();
     }
 
     public void EndGame()
     {
+        Logger.Log("End Game");
         _currentGame?.EndGame();
     }
     

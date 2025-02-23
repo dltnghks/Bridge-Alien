@@ -12,6 +12,8 @@ public class Define
         House,
         GameMap,
         MiniGameUnload,
+        MiniGameDelivery,
+        
     }
     
     public enum UIEvent
@@ -29,7 +31,7 @@ public class Define
     {
         Unknown,
         Unload,
-        
+        Delivery,
     }
     
     public enum BoxType

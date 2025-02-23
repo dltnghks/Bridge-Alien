@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{77CB5A9B-969D-4E51-A456-086551AE4E0D}",
     "Language": "SFX",
-    "Hash": "{2F873E37-0AD7-4DF2-20C7-F968B523E0B6}",
+    "Hash": "{2E51278E-8D34-DDEF-747E-E49B6B6C8B21}",
     "ObjectPath": "Play_SFX_PickupSmallBox",
     "ShortName": "Play_SFX_PickupSmallBox",
     "Path": "Event/Play_SFX_PickupSmallBox.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{C9CB60B8-B933-2AED-4BAD-7FFD44DFE3E6}"
+  "FileHash": "{07EC7BE7-4333-2F33-5538-C0A1F76E6EDF}"
  }
 }

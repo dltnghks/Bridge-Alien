@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}",
     "Language": "SFX",
-    "Hash": "{3069016C-7C9D-5F29-6B98-E93026339F3E}",
+    "Hash": "{CF3BEF89-ACD8-68A6-F0E4-C8F1357D74DE}",
     "ObjectPath": "Play_PickUpBox",
     "ShortName": "Play_PickUpBox",
     "Path": "Event/Play_PickUpBox.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{12BA28D3-5E26-0CEB-EAEE-42FD084D5A84}"
+  "FileHash": "{D2BF5E3F-163A-4E21-8458-99BB8DC46711}"
  }
 }

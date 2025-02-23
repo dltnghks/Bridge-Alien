@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	3026964974	Play_MiniGameUnloadBGM			\Default Work Unit\Play_MiniGameUnloadBGM	
-
-Game Parameter	ID	Name			Wwise Object Path	Notes
-	3043206523	BGMVolume			\Default Work Unit\BGMVolume	
-

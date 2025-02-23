@@ -253,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8770898941868112128, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 8770898941868112128, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: m_LocalRotation.w
@@ -311,7 +311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6601107039375330770, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: MiniGameSceneType
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8208166450632645526, guid: c27c903d9689155488d6b66e06a278de, type: 3}
       propertyPath: m_Name
@@ -414,6 +414,18 @@ PrefabInstance:
     - target: {fileID: 2263148129475462844, guid: 33cf08b6300218349a2ceeaecd668cd7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488191188019622525, guid: 33cf08b6300218349a2ceeaecd668cd7, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488191188019622525, guid: 33cf08b6300218349a2ceeaecd668cd7, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488191188019622525, guid: 33cf08b6300218349a2ceeaecd668cd7, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7571066374363211147, guid: 33cf08b6300218349a2ceeaecd668cd7, type: 3}
       propertyPath: m_Name
