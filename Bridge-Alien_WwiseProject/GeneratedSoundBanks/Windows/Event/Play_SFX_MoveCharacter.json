@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3538692530",
+    "Type": "Event",
+    "GUID": "{0CD9DACC-EA35-4CAB-ACCC-3D875BF6BD52}",
+    "Language": "SFX",
+    "Hash": "{40E9B70E-BD8A-99BE-656F-62971942BF59}",
+    "ObjectPath": "Play_SFX_MoveCharacter",
+    "ShortName": "Play_SFX_MoveCharacter",
+    "Path": "Event/Play_SFX_MoveCharacter.bnk",
+    "Media": [
+     {
+      "Id": "456878743",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_MoveCharacter.wav",
+      "Path": "Media/456878743.wem",
+      "CachePath": "49/{4941EF9B-E98D-07A2-4C6E-5A88D7B2AB88}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3538692530",
+      "Name": "Play_SFX_MoveCharacter",
+      "ObjectPath": "\\Events\\Default Work Unit\\GameMap\\Play_SFX_MoveCharacter",
+      "GUID": "{0CD9DACC-EA35-4CAB-ACCC-3D875BF6BD52}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.34375",
+      "DurationMax": "0.34375",
+      "MediaRefs": [
+       {
+        "Id": "456878743"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C5C83632-BB76-FE28-9329-1F8181DDC68D}"
+ }
+}

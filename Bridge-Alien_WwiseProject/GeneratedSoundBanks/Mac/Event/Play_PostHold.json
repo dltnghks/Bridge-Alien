@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3540212343",
+    "Type": "Event",
+    "GUID": "{3BA4FE24-6731-4E50-B72D-498D74776CE1}",
+    "Language": "SFX",
+    "Hash": "{75A0AAC7-E3F4-9847-CC9C-5CC113523578}",
+    "ObjectPath": "Play_PostHold",
+    "ShortName": "Play_PostHold",
+    "Path": "Event/Play_PostHold.bnk",
+    "Media": [
+     {
+      "Id": "387582705",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box2_hold.wav",
+      "Path": "Media/387582705.wem",
+      "CachePath": "B5/{B5C7E2C2-858C-74B3-936A-7D4FEEADFC85}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3540212343",
+      "Name": "Play_PostHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_PostHold",
+      "GUID": "{3BA4FE24-6731-4E50-B72D-498D74776CE1}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.29316667",
+      "DurationMax": "0.29316667",
+      "MediaRefs": [
+       {
+        "Id": "387582705"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{6382845F-29A2-30B2-ABB9-F0AD2A0BC55B}"
+ }
+}

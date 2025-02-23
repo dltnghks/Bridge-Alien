@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2606206533",
+    "Type": "Event",
+    "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
+    "Language": "SFX",
+    "Hash": "{CCE5B2B8-884B-CB56-CDE0-E014F7D5B036}",
+    "ObjectPath": "Play_LargeBoxHold",
+    "ShortName": "Play_LargeBoxHold",
+    "Path": "Event/Play_LargeBoxHold.bnk",
+    "Media": [
+     {
+      "Id": "624327706",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box3_hold.wav",
+      "Path": "Media/624327706.wem",
+      "CachePath": "D1/{D1EDD0BB-DC30-E2EB-178E-FE40345C06F6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2606206533",
+      "Name": "Play_LargeBoxHold",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_LargeBoxHold",
+      "GUID": "{50A5816E-416F-451A-B46B-1EAE765C30B6}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.144875",
+      "DurationMax": "0.144875",
+      "MediaRefs": [
+       {
+        "Id": "624327706"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{825FBE51-8A1F-AA11-BDDC-5D544FF234E3}"
+ }
+}

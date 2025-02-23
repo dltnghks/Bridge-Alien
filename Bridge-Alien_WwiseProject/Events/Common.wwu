@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B0657940-9283-4447-A196-C0A1D52F073D}" SchemaVersion="123" RootDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}" ParentDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}">
+	<Events>
+		<WorkUnit Name="Common" ID="{B0657940-9283-4447-A196-C0A1D52F073D}" OwnerID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_SFX_CommonButtonClick" ID="{C4AA4CDE-995E-48C8-9D90-9E9BF5C3914E}">
+					<ChildrenList>
+						<Action Name="" ID="{E2238D00-93AF-42AB-BA69-E9F7463380C9}" ShortID="305103608">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_CommonButtonClick" ID="{F7B3D23F-5748-407C-8DD0-4A8B417F87ED}" WorkUnitID="{E4905E00-02FA-454D-8397-6843E05F30B4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_FootStep_PlayerCharacter" ID="{C7B99248-8B64-4E16-9122-F0065BF6F468}">
+					<ChildrenList>
+						<Action Name="" ID="{C7E1F7BA-731E-4E4A-AB70-6AD737556218}" ShortID="220376459">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_FootStep_PlayerCharacter" ID="{0CB2E42F-8894-476A-B96F-32CCA70613AD}" WorkUnitID="{E4905E00-02FA-454D-8397-6843E05F30B4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

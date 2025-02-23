@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553c3922789c22044ab2fde358806555, type: 3}
+  m_Name: SoundEvent
+  m_EditorClassIdentifier: 
+  EventDict:
+    _keyValueList:
+    - Key: 0
+      Value:
+        _keyValueList:
+        - Key: GameMap
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: dc6ecb04ef5e13946baec89eed72ed15, type: 2}
+        - Key: MiniGameUnload
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: d37369134653a3d4d82749b8783c9883, type: 2}
+    - Key: 1
+      Value:
+        _keyValueList:
+        - Key: CommonButtonClick
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 00b49ff2ca0b68f4e9a47ae2189af323, type: 2}
+        - Key: FootStepPlayerCharacter
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 44c8736196fe52148aaa3e009ca06601, type: 2}
+    - Key: 2
+      Value:
+        _keyValueList:
+        - Key: ClickGamePoint
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 41b834f982b80fe49b91ca09557b6b8e, type: 2}
+        - Key: MoveCharacter
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
+    - Key: 3
+      Value:
+        _keyValueList:
+        - Key: PostPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 3d93908766c9c884f82dca3f57603393, type: 2}
+        - Key: SmallBoxPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: facc76ff2123f0a4194547fcd02bf772, type: 2}
+        - Key: StandardBoxPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
+        - Key: LargeBoxPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: b12bd8155ee415541844bc3b532b5df9, type: 2}
+        - Key: PostHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 9a573629793a9f54a9078a7255849916, type: 2}
+        - Key: SmallBoxHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 5e1a6f3adac62f24ead008e1df5f4060, type: 2}
+        - Key: StandardBoxHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 41b834f982b80fe49b91ca09557b6b8e, type: 2}
+        - Key: LargeBoxPHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 02ac5ab39b3efcf42822a462b6d94d8a, type: 2}
+        - Key: BrokenBox
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 31b3a4b576c0dbf4ca46fa92aaf7dab6, type: 2}
+        - Key: Conveyor
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: fb87a3d154fd6c9408d974dc9658f774, type: 2}
+        - Key: PlusScore
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 82b6191b9edc59a4090d0c5b0a034730, type: 2}
+        - Key: MinusScore
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 1d2112c4da05b6346912b2b335d43159, type: 2}
+        - Key: Truck
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 92fac1c09aaed2e48bf72db194c414d0, type: 2}

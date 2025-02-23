@@ -1,0 +1,21 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "314625631",
+    "Type": "User",
+    "GUID": "{A1B908A2-1584-4108-995D-58768368D076}",
+    "Language": "SFX",
+    "Hash": "{90278427-A0A8-D39A-AA0F-A7C111F145BC}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Region\\MiniGameUnload",
+    "ShortName": "MiniGameUnload",
+    "Path": "MiniGameUnload.bnk"
+   }
+  ],
+  "FileHash": "{D865FED9-8F4E-CF53-86E6-6BFC57D828E0}"
+ }
+}

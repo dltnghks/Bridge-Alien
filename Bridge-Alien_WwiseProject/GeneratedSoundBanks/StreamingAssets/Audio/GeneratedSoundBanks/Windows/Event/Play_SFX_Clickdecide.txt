@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3480358650	Play_SFX_Clickdecide			\Default Work Unit\GameMap\Play_SFX_Clickdecide	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

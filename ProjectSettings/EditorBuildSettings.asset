@@ -6,6 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+    path: Assets/02.Scenes/Dev/Title.unity
+    guid: 6d0be948051d7e1469d03909561fa973
+  - enabled: 1
+    path: Assets/02.Scenes/Dev/House.unity
+    guid: a477417d57ffed145b5ea031d6a3cf73
+  - enabled: 1
+    path: Assets/02.Scenes/Dev/GameMap.unity
+    guid: 44dbfa3c32ccf624ba3efa1f7bf9f8b4
+  - enabled: 1
+    path: Assets/02.Scenes/Dev/MiniGameUnload.unity
+    guid: 8e8077fa7be7c1b4287197ef9a43ec7b
+  - enabled: 1
+    path: Assets/02.Scenes/Dev/MiniGameDelivery.unity
+    guid: 1a7bdb7b0cd067841bb7c72150b3e154
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 666ef87e05f60ed41b8881022fc0dfa6, type: 3}

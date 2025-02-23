@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2700155087",
+    "Type": "Event",
+    "GUID": "{9CAE3225-A46F-428E-A514-424DD7CD1CC5}",
+    "Language": "SFX",
+    "Hash": "{CBFE5239-507C-4E83-4EC5-786C28FFD6B2}",
+    "ObjectPath": "Play_SFX_DROP_STONE",
+    "ShortName": "Play_SFX_DROP_STONE",
+    "Path": "Event/Play_SFX_DROP_STONE.bnk",
+    "Media": [
+     {
+      "Id": "957570541",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_DROP_STONE.wav",
+      "Path": "Media/957570541.wem",
+      "CachePath": "3E/{3E799889-49A1-1113-F988-C460971220E9}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2700155087",
+      "Name": "Play_SFX_DROP_STONE",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_DROP_STONE",
+      "GUID": "{9CAE3225-A46F-428E-A514-424DD7CD1CC5}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8953313",
+      "DurationMax": "0.8953313",
+      "MediaRefs": [
+       {
+        "Id": "957570541"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{D03CBC67-D8B6-B41F-EBB5-9AC4FEF65A89}"
+ }
+}

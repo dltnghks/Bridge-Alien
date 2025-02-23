@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "562923629",
+    "Type": "Event",
+    "GUID": "{C7B99248-8B64-4E16-9122-F0065BF6F468}",
+    "Language": "SFX",
+    "Hash": "{77015AB7-96EE-CAB2-A1A9-8686B56091FA}",
+    "ObjectPath": "Play_SFX_FootStep_PlayerCharacter",
+    "ShortName": "Play_SFX_FootStep_PlayerCharacter",
+    "Path": "Event/Play_SFX_FootStep_PlayerCharacter.bnk",
+    "Media": [
+     {
+      "Id": "815274733",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_FootStep_PlayerCharacter.wav",
+      "Path": "Media/815274733.wem",
+      "CachePath": "1E/{1E7DB730-67E0-E7FB-31BB-53D6876E59C6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "562923629",
+      "Name": "Play_SFX_FootStep_PlayerCharacter",
+      "ObjectPath": "\\Events\\Default Work Unit\\Common\\Play_SFX_FootStep_PlayerCharacter",
+      "GUID": "{C7B99248-8B64-4E16-9122-F0065BF6F468}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.1",
+      "DurationMax": "0.1",
+      "MediaRefs": [
+       {
+        "Id": "815274733"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3259D647-D7A2-A1C9-3A7C-42218241C3A3}"
+ }
+}

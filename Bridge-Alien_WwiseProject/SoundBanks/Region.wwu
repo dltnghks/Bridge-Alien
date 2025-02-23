@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EC148D40-D023-4950-8236-F6976489C4D3}" SchemaVersion="123" RootDocumentID="{9C5E31A8-D832-40D4-B368-6A66118A69B1}" ParentDocumentID="{9C5E31A8-D832-40D4-B368-6A66118A69B1}">
+	<SoundBanks>
+		<WorkUnit Name="Region" ID="{EC148D40-D023-4950-8236-F6976489C4D3}" OwnerID="{9C5E31A8-D832-40D4-B368-6A66118A69B1}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="2"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<SoundBank Name="MiniGameUnload" ID="{A1B908A2-1584-4108-995D-58768368D076}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+				<SoundBank Name="Title" ID="{AAA0A60D-D5CD-4474-B0BE-6FF43FCAAA00}">
+					<ObjectInclusionList/>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>
