@@ -50,4 +50,9 @@ public class Define
         HonamArea,
         GangwonArea, 
     }
+
+    public enum DataType
+    {
+        Dialog,
+    }
 }
