@@ -55,4 +55,10 @@ public class Define
     {
         Dialog,
     }
+
+    public enum DialogType
+    {
+        TUTORIAL_STORY_01,
+        TUTORIAL_SOTRY_02,
+    }
 }

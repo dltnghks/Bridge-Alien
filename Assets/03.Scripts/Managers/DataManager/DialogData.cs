@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 [System.Serializable]
-public class DialogueData
+public class DialogData
 {
-    public string DialogueKey;
-    public string Character;
-    public string Dialogue;
-    public string Speaker;
+    [JsonProperty("DialogueKey")]
+    public string DialogKey { get; set; }
+
+    [JsonProperty("Character")]
+    public string Character { get; set; }
+
+    [JsonProperty("Dialogue")]
+    public string Dialog { get; set; }
+
+    [JsonProperty("Speaker")]
+    public string Speaker { get; set; }
 }
