@@ -130,6 +130,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         // 게임 활성화
         IsActive = true;
+
+        // 대화 팝업 테스트
+        Managers.UI.ShowPopUI<UIDialogPopup>().SetDialogs(Define.DialogType.TUTORIAL_STORY_01);
+        
         Logger.Log("Game successfully started.");
     }
 

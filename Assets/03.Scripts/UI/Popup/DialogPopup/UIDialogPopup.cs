@@ -6,8 +6,15 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIDialog : UIPopup
+public class UIDialogPopup : UIPopup
 {
+    
+    /*
+     *
+     * Popup으로 생성하고 SetDialog로 세팅해주기
+     * 
+     */
+    
     enum Texts
     {
         NameText,
@@ -18,14 +25,19 @@ public class UIDialog : UIPopup
     {
         LeftCharacterImage,
         RightCharacterImage,
-        ArrowImage,
+    }
+
+    enum Buttons
+    {
+        SkipButton,
+        NextButton,
     }
     
     public float TypingSpeed = 0.01f; // 글자 타이핑 속도
     
     private List<Image> _speakerCharacterImages = new List<Image>();
     private TextMeshProUGUI _dialogText;  
-    private Image _arrowImage;
+    private Button _nextButton;
 
     private List<DialogData> _currentDialogs;
     private int _currentDialogIndex;
@@ -39,16 +51,33 @@ public class UIDialog : UIPopup
         }
         BindText(typeof(Texts));
         BindImage(typeof(Images));
+        BindButton(typeof(Buttons));
 
         _dialogText = GetText((int)Texts.DialogText);
         
-        _arrowImage = GetImage((int)Images.ArrowImage);
-        _arrowImage.gameObject.SetActive(false);    
         _speakerCharacterImages.Add(GetImage((int)Images.LeftCharacterImage));
         _speakerCharacterImages.Add(GetImage((int)Images.RightCharacterImage));
         
+        GetButton((int)Buttons.SkipButton).gameObject.BindEvent(OnClickScreenButton);
+        GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
+        
+        _nextButton = GetButton((int)Buttons.NextButton);
+        _nextButton.gameObject.SetActive(false);   
+        
         UpdateDialog();
         return true;
+    }
+
+    private void OnClickScreenButton()
+    {
+        Logger.Log("OnClickScreenButton");
+        SkipTyping();
+    }
+    
+    private void OnClickNextButton()
+    {
+        Logger.Log("OnClickNextButton");
+        UpdateDialog();
     }
 
     public void SetDialogs(Define.DialogType dialogueType)
@@ -79,35 +108,12 @@ public class UIDialog : UIPopup
         }
     }
     
-    // 지울 함수
-    private void Update()
-    {
-        // 테스트 코드
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            if (_typingTween == null || !_typingTween.IsActive())
-            {
-                UpdateDialog();
-            }
-            else
-            {
-                SkipTyping();
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SetDialogs(Define.DialogType.TUTORIAL_STORY_01);
-        }
-    }
-
-
     private void UpdateDialog()
     {
         if (_currentDialogIndex >= _currentDialogs.Count)
         {
             // 대화 종료
-            
+            ClosePopupUI();
             Logger.Log("Dialog Index out of range.");
             return;
         }
@@ -140,7 +146,7 @@ public class UIDialog : UIPopup
 
         // 스크립트 작성 사운드 추가
         
-        _arrowImage.gameObject.SetActive(false);    // 화살표 끄기
+        _nextButton.gameObject.SetActive(false);    // 화살표 끄기
         
         _dialogText.text = ""; // 텍스트 초기화
         Sequence sequence = DOTween.Sequence(); // 시퀀스 애니메이션 생성
@@ -171,7 +177,7 @@ public class UIDialog : UIPopup
 
     private void EndTyping()
     {
-        _arrowImage.gameObject.SetActive(true);
+        _nextButton.gameObject.SetActive(true);
         _currentDialogIndex++;
     }
 }
