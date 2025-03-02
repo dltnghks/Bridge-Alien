@@ -55,6 +55,7 @@ public class Define
     public enum DataType
     {
         Dialog,
+        MiniGameSetting,
         End,
     }
 

@@ -8,10 +8,13 @@ using UnityEngine.Serialization;
 
 public class DataManager : MonoBehaviour
 {
-    private const string _dialogDataURL = "https://script.google.com/macros/s/AKfycbzuvwBUm_3OQSiRMeq8sH3B9bwk1zHblthyrvoRK4JqZeKlNqd2mgh-PO0OEpqriTb_/exec"; // Google Apps Script에서 생성한 URL
+    // Google Apps Script에서 생성한 URL
+    private const string _dialogDataURL = "https://script.google.com/macros/s/AKfycbzuvwBUm_3OQSiRMeq8sH3B9bwk1zHblthyrvoRK4JqZeKlNqd2mgh-PO0OEpqriTb_/exec"; 
+    private const string _miniGameSettingDataURL = "https://script.google.com/macros/s/AKfycbyCzaXRCmG8TwN7bjGK23w-YysJzMeB6_SBvJ_zDz4j8h1FmPJmw51V-x0FqMFpt-NI/exec"; 
     
     // 각 데이터를 관리하는 매니저
     public DialogDataManager DialogDataManager;
+    public MiniGameSettingDataManager MiniGameSettingDataManager;
     
     // 데이터 로드 완료 이벤트 (필요하면 UI 업데이트 등과 연결 가능)
     public event Action<Define.DataType> OnDataLoaded;
@@ -25,6 +28,8 @@ public class DataManager : MonoBehaviour
     public void Init()
     {   
         DialogDataManager = new DialogDataManager();
+        MiniGameSettingDataManager = new MiniGameSettingDataManager();
+        
     }
     
     
@@ -37,9 +42,12 @@ public class DataManager : MonoBehaviour
             StartCoroutine(LoadDataRoutine(Define.DataType.Dialog, _dialogDataURL,
                 (json) => { DialogDataManager.SetData(json); }));
 
+            StartCoroutine(LoadDataRoutine(Define.DataType.MiniGameSetting, _miniGameSettingDataURL,
+                (json) => { MiniGameSettingDataManager.SetData(json); }));
+
+            
             // 추가적으로 필요한 데이터 로드
-
-
+            
             IsLoading = true;
         }
     }
@@ -48,13 +56,12 @@ public class DataManager : MonoBehaviour
     private IEnumerator LoadDataRoutine(Define.DataType dataType, string url, Action<string> onSuccess)
     {
         using (UnityWebRequest request = UnityWebRequest.Get(url))
-        {
-            // 로드 시작 액션
+        {   
+            yield return request.SendWebRequest();
+            
             Logger.Log("로드 시작");
             OnDataLoaded?.Invoke(dataType);
             
-            yield return request.SendWebRequest();
-
             if (request.result == UnityWebRequest.Result.Success)
             {
                 string jsonText = request.downloadHandler.text;
