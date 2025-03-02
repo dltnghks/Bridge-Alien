@@ -8,6 +8,7 @@ public class Define
     {
         Unknown,
         Dev,
+        DataLoading,
         Title,
         House,
         GameMap,
@@ -54,6 +55,7 @@ public class Define
     public enum DataType
     {
         Dialog,
+        End,
     }
 
     public enum DialogType

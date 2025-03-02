@@ -642,6 +642,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5274280300467875941, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.11016846
+      objectReference: {fileID: 0}
     - target: {fileID: 5514984712207514350, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -649,6 +653,14 @@ PrefabInstance:
     - target: {fileID: 6164337620180750308, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_Name
       value: UIGameUnloadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174404301134104126, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.009735107
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174404301134104126, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.284729
       objectReference: {fileID: 0}
     - target: {fileID: 6652653950161776733, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_Name
