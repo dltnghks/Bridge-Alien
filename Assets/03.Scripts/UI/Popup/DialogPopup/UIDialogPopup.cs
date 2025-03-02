@@ -88,6 +88,7 @@ public class UIDialogPopup : UIPopup
         if (_currentDialogs == null || _currentDialogs.Count == 0)
         {
             Logger.LogError("Dialogs not found");
+            EndDialog();
             return;
         }
         UpdateDialog();
@@ -113,7 +114,7 @@ public class UIDialogPopup : UIPopup
         if (_currentDialogIndex >= _currentDialogs.Count)
         {
             // 대화 종료
-            ClosePopupUI();
+            EndDialog();
             Logger.Log("Dialog Index out of range.");
             return;
         }
@@ -179,5 +180,10 @@ public class UIDialogPopup : UIPopup
     {
         _nextButton.gameObject.SetActive(true);
         _currentDialogIndex++;
+    }
+
+    private void EndDialog()
+    {
+        ClosePopupUI();
     }
 }
