@@ -12,6 +12,9 @@ public class DataLoadingScene : BaseScene
         SceneType = Define.Scene.DataLoading;
 
         Managers.UI.ShowSceneUI<UIDataLoadingScene>();
+        
+        Managers.Data.LoadAllData();
+        
         return true;
     }
 }
