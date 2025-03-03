@@ -56,11 +56,13 @@ public class Define
     {
         Dialog,
         MiniGameSetting,
+        Daily,
         End,
     }
 
     public enum DialogType
     {
+        Unknown,
         TUTORIAL_STORY_01,
         TUTORIAL_SOTRY_02,
     }

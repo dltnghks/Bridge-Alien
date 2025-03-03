@@ -12,6 +12,9 @@ public class HouseScene : BaseScene
         SceneType = Define.Scene.Dev;
 
         Managers.UI.ShowSceneUI<UIHouseScene>();
+        
+        // 테스트 코드
+        Managers.Daily.AddDate();
         return true;
     }
 }

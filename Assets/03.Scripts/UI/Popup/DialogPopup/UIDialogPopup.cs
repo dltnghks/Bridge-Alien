@@ -43,6 +43,8 @@ public class UIDialogPopup : UIPopup
     private int _currentDialogIndex;
     private Tween _typingTween; // 현재 실행 중인 트윈
     
+    private Action _callback;
+    
     public override bool Init()
     {
         if (base.Init() == false)
@@ -80,8 +82,9 @@ public class UIDialogPopup : UIPopup
         UpdateDialog();
     }
 
-    public void SetDialogs(Define.DialogType dialogueType)
+    public void SetDialogs(Define.DialogType dialogueType, Action callback)
     {
+        _callback = callback; 
         _currentDialogs = Managers.Data.DialogDataManager.GetData(Define.DialogType.TUTORIAL_STORY_01);
         _currentDialogIndex = 0;
 
@@ -168,7 +171,7 @@ public class UIDialogPopup : UIPopup
     
     public void SkipTyping()
     {
-        if (_typingTween != null && _typingTween.IsActive())
+        if (_typingTween != null && _typingTween.IsActive() && _currentDialogIndex < _speakerCharacterImages.Count)
         {
             _typingTween.Complete(); // 즉시 전체 텍스트 출력
 
@@ -184,6 +187,7 @@ public class UIDialogPopup : UIPopup
 
     private void EndDialog()
     {
+        _callback?.Invoke();
         ClosePopupUI();
     }
 }

@@ -10,11 +10,13 @@ public class DataManager : MonoBehaviour
 {
     // Google Apps Script에서 생성한 URL
     private const string _dialogDataURL = "https://script.google.com/macros/s/AKfycbzuvwBUm_3OQSiRMeq8sH3B9bwk1zHblthyrvoRK4JqZeKlNqd2mgh-PO0OEpqriTb_/exec"; 
-    private const string _miniGameSettingDataURL = "https://script.google.com/macros/s/AKfycbyCzaXRCmG8TwN7bjGK23w-YysJzMeB6_SBvJ_zDz4j8h1FmPJmw51V-x0FqMFpt-NI/exec"; 
+    private const string _miniGameSettingDataURL = "https://script.google.com/macros/s/AKfycbyCzaXRCmG8TwN7bjGK23w-YysJzMeB6_SBvJ_zDz4j8h1FmPJmw51V-x0FqMFpt-NI/exec";
+    private const string _dailyDataURL = "https://script.google.com/macros/s/AKfycby0iTsBcBmQ6zzWPfbS0FQylx_7txq6JyrB65AlJgp7aClgChXycrZrodxg_-tezb9Baw/exec";
     
     // 각 데이터를 관리하는 매니저
     public DialogDataManager DialogDataManager;
     public MiniGameSettingDataManager MiniGameSettingDataManager;
+    public DailyDataManager DailyDataManager;
     
     // 데이터 로드 완료 이벤트 (필요하면 UI 업데이트 등과 연결 가능)
     public event Action<Define.DataType> OnDataLoaded;
@@ -29,7 +31,7 @@ public class DataManager : MonoBehaviour
     {   
         DialogDataManager = new DialogDataManager();
         MiniGameSettingDataManager = new MiniGameSettingDataManager();
-        
+        DailyDataManager = new DailyDataManager();
     }
     
     
@@ -44,6 +46,11 @@ public class DataManager : MonoBehaviour
 
             StartCoroutine(LoadDataRoutine(Define.DataType.MiniGameSetting, _miniGameSettingDataURL,
                 (json) => { MiniGameSettingDataManager.SetData(json); }));
+
+            
+            StartCoroutine(LoadDataRoutine(Define.DataType.Daily, _dailyDataURL,
+                (json) => { DailyDataManager.SetData(json); }));
+
 
             
             // 추가적으로 필요한 데이터 로드
