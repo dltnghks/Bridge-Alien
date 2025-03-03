@@ -11,8 +11,7 @@ public class Managers : MonoBehaviour
     {
         get { Init();  return _instance; }
     }
-    
-    private static DataManager _dataManager;
+
     private static ResourceManager _resourceManager = new ResourceManager();
     private static UIManager _uiManager = new UIManager();
     private static MiniGameManager  _miniGameManager;
@@ -22,7 +21,6 @@ public class Managers : MonoBehaviour
     private static SoundManager _soundManager;
     private static PoolManager _poolManager = new PoolManager();    
     
-    public static DataManager Data {get { Init(); return _dataManager;}}
     public static ResourceManager Resource { get { Init(); return _resourceManager; } }
     public static UIManager UI { get{ Init(); return _uiManager; } }
     public static SceneManagerEx Scene { get{ Init(); return _sceneManager; } }
@@ -42,13 +40,10 @@ public class Managers : MonoBehaviour
                 go = new GameObject { name = "@Managers" };
 
             _instance = Utils.GetOrAddComponent<Managers>(go);
-
+            
             _resourceManager.Init();
             _poolManager.Init();
 
-            _dataManager = Utils.GetOrAddComponent<DataManager>(go);
-            _dataManager.Init();
-            
             _sceneManager = Utils.GetOrAddComponent<SceneManagerEx>(go);
             _sceneManager.Init();
             

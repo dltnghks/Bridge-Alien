@@ -8,7 +8,6 @@ public class Define
     {
         Unknown,
         Dev,
-        DataLoading,
         Title,
         House,
         GameMap,
@@ -50,18 +49,5 @@ public class Define
         YeongnamArea,
         HonamArea,
         GangwonArea, 
-    }
-
-    public enum DataType
-    {
-        Dialog,
-        MiniGameSetting,
-        End,
-    }
-
-    public enum DialogType
-    {
-        TUTORIAL_STORY_01,
-        TUTORIAL_SOTRY_02,
     }
 }

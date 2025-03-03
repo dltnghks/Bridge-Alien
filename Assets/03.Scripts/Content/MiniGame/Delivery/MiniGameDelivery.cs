@@ -5,8 +5,9 @@ using UnityEngine.UIElements;
 
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
-    [Header("Game Setting")]
-    [SerializeField] private MiniGameDeliverySetting _gameSetting;
+    [Header("Game Information")]
+    // 게임을 플레이할 수 있는 시간
+    [SerializeField] private float _gameTime = 60.0f;
 
     [Header("Game Camera Settings")]
     [SerializeField] private CameraManager.CameraType _cameraType;
@@ -47,11 +48,12 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     
     public void StartGame()
     {
-        SetGameInfo();
-        
         // 게임에 사용되는 요소들 초기화
         _pathPrgressBar = new MiniGameDeliveryPathProgress();
-        _pathPrgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, _gameSetting.GamePlayTime, EndGame);
+        _pathPrgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, _gameTime, EndGame);
+    
+
+        
         
         // PlayerCharacter 초기화
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
@@ -71,16 +73,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         
         // 게임 활성화
         IsActive = true;
-    }
-    
-    private void SetGameInfo()
-    {
-        _gameSetting = Managers.Data.MiniGameSettingDataManager.GetMiniGameSettings<MiniGameDeliverySetting>(Define.MiniGameType.Delivery);
-        
-        if (_gameSetting == null)
-        {
-            Logger.LogError("Not Found Game Information");
-        }
     }
 
     public bool PauseGame()

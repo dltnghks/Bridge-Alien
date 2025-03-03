@@ -13,11 +13,7 @@ public class BaseScene : MonoBehaviour
         
         string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), SceneType);
        
-        Managers.Sound.PlayBGM(sceneTypeStr);
-    
-        // 기본적으로 DataLoadingScene에서 데이터를 로드하지만, 로드되지 않은 경우 여기서 함.
-        Managers.Data.LoadAllData();
-        
+            Managers.Sound.PlayBGM(sceneTypeStr);
        
     }
 
