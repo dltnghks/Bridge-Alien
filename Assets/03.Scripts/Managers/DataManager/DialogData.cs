@@ -6,15 +6,9 @@ using Newtonsoft.Json;
 [System.Serializable]
 public class DialogData
 {
-    [JsonProperty("DialogueKey")]
-    public string DialogKey { get; set; }
-
-    [JsonProperty("Character")]
-    public string Character { get; set; }
-
-    [JsonProperty("Dialogue")]
-    public string Dialog { get; set; }
-
-    [JsonProperty("Speaker")]
-    public string Speaker { get; set; }
+    public string DialogID { get; set; }
+    public string CharacterName { get; set; }
+    public string Script { get; set; }
+    public string NextDialogID { get; set; }
+    public Define.DialogType Type { get; set; }
 }

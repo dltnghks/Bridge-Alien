@@ -60,10 +60,19 @@ public class Define
         End,
     }
 
-    public enum DialogType
+    public enum Dialog
     {
         Unknown,
         TUTORIAL_STORY_01,
         TUTORIAL_SOTRY_02,
+    }
+
+    public enum DialogType
+    {
+        Unknown,
+        Monolog,
+        Dialog,
+        Choice,
+        END,
     }
 }

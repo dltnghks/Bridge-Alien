@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using DG.Tweening;
 using UnityEngine;
@@ -32,15 +33,25 @@ public class UIDialogPopup : UIPopup
         SkipButton,
         NextButton,
     }
+
+    enum Objects
+    {
+        UIChoiceGroup,
+    }
     
     public float TypingSpeed = 0.01f; // 글자 타이핑 속도
     
     private List<Image> _speakerCharacterImages = new List<Image>();
     private TextMeshProUGUI _dialogText;  
     private Button _nextButton;
+    private VerticalLayoutGroup _choiceGroup;
+    private List<UIChoiceButton> _choiceButtons = new List<UIChoiceButton>();
 
-    private List<DialogData> _currentDialogs;
-    private int _currentDialogIndex;
+    private Dictionary<string, DialogData> _dialogsDict = new Dictionary<string, DialogData>();
+    private Dictionary<string, List<DialogData>> _choiceDict = new Dictionary<string, List<DialogData>>();
+    private DialogData _currentDialog;
+    private List<DialogData> _currentChoices = new List<DialogData>();
+    
     private Tween _typingTween; // 현재 실행 중인 트윈
     
     private Action _callback;
@@ -54,6 +65,7 @@ public class UIDialogPopup : UIPopup
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindButton(typeof(Buttons));
+        BindObject(typeof(Objects));
 
         _dialogText = GetText((int)Texts.DialogText);
         
@@ -64,9 +76,17 @@ public class UIDialogPopup : UIPopup
         GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
         
         _nextButton = GetButton((int)Buttons.NextButton);
-        _nextButton.gameObject.SetActive(false);   
+        _nextButton.gameObject.SetActive(false);
+
+        _choiceGroup = GetObject((int)Objects.UIChoiceGroup).GetOrAddComponent<VerticalLayoutGroup>();
+        _choiceButtons = _choiceGroup.GetComponentsInChildren<UIChoiceButton>().ToList();
+        Logger.Log("_choiceButtons : " + _choiceButtons.Count);
+        foreach (var choiceButton in _choiceButtons)
+        {
+            choiceButton.gameObject.SetActive(false);
+        }
         
-        UpdateDialog();
+        
         return true;
     }
 
@@ -79,66 +99,145 @@ public class UIDialogPopup : UIPopup
     private void OnClickNextButton()
     {
         Logger.Log("OnClickNextButton");
-        UpdateDialog();
+        
+        NextDialog();
     }
-
-    public void SetDialogs(Define.DialogType dialogueType, Action callback)
+    
+    private void OnClickChoiceButton(string nextDialogID)
     {
-        _callback = callback; 
-        _currentDialogs = Managers.Data.DialogDataManager.GetData(Define.DialogType.TUTORIAL_STORY_01);
-        _currentDialogIndex = 0;
+        ClearChoices();
+        NextDialog(nextDialogID);
+    }
+    
+    private void NextDialog(string nextDialogID = null)
+    {
+        Logger.Log("NextDialog");
 
-        if (_currentDialogs == null || _currentDialogs.Count == 0)
+        if (nextDialogID == null && _dialogsDict.ContainsKey(_currentDialog.NextDialogID))
+        {
+            nextDialogID = _currentDialog.NextDialogID;
+        }
+        
+        if (nextDialogID != null)
+        {
+            Logger.Log($"{nextDialogID}");
+            _currentDialog = _dialogsDict[nextDialogID];
+            UpdateDialog();
+        }
+        else
+        {
+            Logger.Log("NextDialog Not Found");
+            _currentChoices = _choiceDict[_currentDialog.NextDialogID];
+            ShowChoices();
+        }
+    }
+    
+    public void SetDialogs(Define.Dialog dialogue, Action callback = null)
+    {
+        Init();
+        
+        _callback = callback; 
+        List<DialogData> currentDialogs = Managers.Data.DialogDataManager.GetData(Define.Dialog.TUTORIAL_STORY_01);
+        
+        foreach (var dialog in currentDialogs)
+        {
+            if (dialog.Type == Define.DialogType.Choice)
+            {
+                if (!_choiceDict.ContainsKey(dialog.DialogID))
+                {
+                    _choiceDict[dialog.DialogID] = new List<DialogData>();
+                }
+                _choiceDict[dialog.DialogID].Add(dialog);
+            }
+            else
+            {
+                _dialogsDict[dialog.DialogID] = dialog;
+            }
+        }
+        
+
+        if (currentDialogs.Count == 0)
         {
             Logger.LogError("Dialogs not found");
             EndDialog();
             return;
         }
-        UpdateDialog();
-    }
-
-    private void SetCharacterImages(int speakerIndex)
-    {
-        foreach (Image image in _speakerCharacterImages)
-        {
-            image.color = new Color(0.5f, 0.5f, 0.5f, 1);
-        }
         
-        Logger.Log(speakerIndex);
-        // 이름으로 이미지를 변경?
-        if (!(_currentDialogIndex >= _speakerCharacterImages.Count && speakerIndex < 0))
-        {
-            _speakerCharacterImages[speakerIndex].color = new Color(1, 1, 1, 1);
-        }
+        _currentDialog = currentDialogs[0];
+        
+        UpdateDialog();
     }
     
     private void UpdateDialog()
-    {
-        if (_currentDialogIndex >= _currentDialogs.Count)
+    {   
+        if (_currentDialog.Type == Define.DialogType.END)
         {
             // 대화 종료
             EndDialog();
-            Logger.Log("Dialog Index out of range.");
             return;
         }
-        
-        string speakerName = _currentDialogs[_currentDialogIndex].Character;
-        string dialogText = _currentDialogs[_currentDialogIndex].Dialog;
-        int speakerIndex = -1;
-        switch (_currentDialogs[_currentDialogIndex].Speaker)
+
+        switch (_currentDialog.Type)
         {
-            case "LEFT": speakerIndex = 0; break;
-            case "RIGHT": speakerIndex = 1;break;
-            case "NONE": speakerIndex = -1; break;
-        } 
-        // 이미지 변경
-        SetCharacterImages(speakerIndex);
-        // 이름 변경
-        SetNameText(speakerName);
-        // 대화 변경
-        StartTyping(dialogText);
+            case Define.DialogType.Dialog :
+                Logger.Log("Dialog");
+                string characterName = _currentDialog.CharacterName;
+                string dialogText = _currentDialog.Script;
+        
+                // 이름 변경
+                SetNameText(characterName);
+                // 대화 변경
+                StartTyping(dialogText);
+                break;
+            case Define.DialogType.Unknown:
+                Logger.Log("Unknown");
+                break;
+            default:
+                Logger.LogError("Unknown dialog type");
+                break;
+        }
+    }
+    
+    private void UpdateDialog(string dialogID)
+    {
+        
+    }
+    
+    private void ShowChoices()
+    {
+        _nextButton.gameObject.SetActive(false);    // 화살표 끄기
+        
+        if (_currentChoices.Count == 0)
+        {
+            Logger.LogError("No choices found");
+            return;
+        }
+
+        int index = 0;
+        foreach (var choiceData in _currentChoices)
+        {
+            if (index >= _choiceButtons.Count)
+            {
+                var newChoiceButton = Managers.Resource.Instantiate(_choiceButtons[0].gameObject, _choiceGroup.transform);
+                _choiceButtons.Add(newChoiceButton.GetOrAddComponent<UIChoiceButton>());
+            }
+            
+            
+            var choiceButton = _choiceButtons[index];
+            choiceButton.gameObject.SetActive(true);
+            choiceButton.SetChoiceButton(choiceData, OnClickChoiceButton);
+            index++;
+        }
     }
 
+    private void ClearChoices()
+    {
+        foreach (var choiceButton in _choiceButtons)
+        {
+            choiceButton.gameObject.SetActive(false);
+        }
+    }
+    
     private void SetNameText(string characterName)
     {
         GetText((int)Texts.NameText).SetText(characterName);
@@ -168,25 +267,26 @@ public class UIDialogPopup : UIPopup
         _typingTween = sequence; // 현재 실행 중인 트윈 저장
         _typingTween.OnComplete(EndTyping); // 현재 트윈이 끝나면 타이핑 종료 함수 호출
     }
+
     
     public void SkipTyping()
     {
-        if (_typingTween != null && _typingTween.IsActive() && _currentDialogIndex < _speakerCharacterImages.Count)
+        if (_typingTween != null && _typingTween.IsActive())
         {
             _typingTween.Complete(); // 즉시 전체 텍스트 출력
 
-            _dialogText.text = _currentDialogs[_currentDialogIndex].Dialog;
+            _dialogText.text = _currentDialog.Script;
         }
     }
 
     private void EndTyping()
     {
         _nextButton.gameObject.SetActive(true);
-        _currentDialogIndex++;
     }
 
     private void EndDialog()
     {
+        Logger.Log("EndDialog");
         _callback?.Invoke();
         ClosePopupUI();
     }

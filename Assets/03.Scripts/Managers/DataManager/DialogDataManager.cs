@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogDataManager
 {
-    private Dictionary<Define.DialogType, List<DialogData>> dialogData = new Dictionary<Define.DialogType, List<DialogData>>();
+    private Dictionary<Define.Dialog, List<DialogData>> dialogData = new Dictionary<Define.Dialog, List<DialogData>>();
 
     /// <summary>
     /// DataManager에서 JSON을 받아와 데이터를 설정하는 함수
@@ -15,7 +15,7 @@ public class DialogDataManager
 
         foreach (var key in parsedData.Keys)
         {
-            if (System.Enum.TryParse(key, out Define.DialogType dialogType))
+            if (System.Enum.TryParse(key, out Define.Dialog dialogType))
             {
                 dialogData[dialogType] = parsedData[key];
             }
@@ -28,14 +28,14 @@ public class DialogDataManager
         Debug.Log($"✅ Dialog Data Loaded: {dialogData.Count} types loaded.");
     }
 
-    public List<DialogData> GetData(Define.DialogType dialogType)
+    public List<DialogData> GetData(Define.Dialog dialog)
     {
-        if (dialogData.ContainsKey(dialogType))
+        if (dialogData.ContainsKey(dialog))
         {
-            return dialogData[dialogType];
+            return dialogData[dialog];
         }
 
-        Debug.LogWarning($"⚠️ Dialog Data {dialogType} is null");
+        Debug.LogWarning($"⚠️ Dialog Data {dialog} is null");
         return null;
     }
 }
