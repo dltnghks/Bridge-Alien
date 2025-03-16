@@ -73,7 +73,6 @@ public class UIDataLoadingScene : UIScene
             _loadingTween.Kill();
             _progressBar.DOValue(_curValue, _animationSpeed).SetEase(Ease.OutQuad).OnComplete(() =>
             {
-                Managers.Daily.SetDailyData();
                 // 씬 전환
                 Managers.Scene.ChangeScene(Define.Scene.Title);
             });

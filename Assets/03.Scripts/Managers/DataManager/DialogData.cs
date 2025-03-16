@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using UnityEngine.Rendering;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class DialogData
 {
-    public string DialogID { get; set; }
-    public string CharacterName { get; set; }
-    public string Script { get; set; }
-    public string NextDialogID { get; set; }
-    public Define.DialogType Type { get; set; }
+    public string DialogID; 
+    public string CharacterName;
+    public string Script;
+    public string NextDialogID;
+    public Define.DialogType Type;
 }

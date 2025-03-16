@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 [System.Serializable]
 public class DailyData
 {
-    public string EventID { get; set; }
-    public int Time { get; set; }
-    public Define.DailyEventType EventType { get; set; }
-    public string Parameter { get; set; }
-    public string NextEventID { get; set; }
+    public string EventID;
+    public int Time;
+    public Define.DailyEventType EventType;
+    public string Parameter;
+    public string NextEventID;
 
     public T GetParameter<T>()
     {

@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class DialogDataManager
+[CreateAssetMenu(fileName = "DialogData", menuName = "Game/Data/DialogData")]
+public class DialogDataScriptableObject : ScriptableObject
 {
-    private Dictionary<Define.Dialog, List<DialogData>> dialogData = new Dictionary<Define.Dialog, List<DialogData>>();
+    public SerializedDictionary<Define.Dialog, List<DialogData>> DialogData = new SerializedDictionary<Define.Dialog, List<DialogData>>();
 
     /// <summary>
     /// DataManager에서 JSON을 받아와 데이터를 설정하는 함수
@@ -17,7 +19,7 @@ public class DialogDataManager
         {
             if (System.Enum.TryParse(key, out Define.Dialog dialogType))
             {
-                dialogData[dialogType] = parsedData[key];
+                DialogData[dialogType] = parsedData[key];
             }
             else
             {
@@ -25,14 +27,14 @@ public class DialogDataManager
             }
         }
 
-        Debug.Log($"✅ Dialog Data Loaded: {dialogData.Count} types loaded.");
+        Debug.Log($"✅ Dialog Data Loaded: {DialogData.Count} types loaded.");
     }
 
     public List<DialogData> GetData(Define.Dialog dialog)
     {
-        if (dialogData.ContainsKey(dialog))
+        if (DialogData.ContainsKey(dialog))
         {
-            return dialogData[dialog];
+            return DialogData[dialog];
         }
 
         Debug.LogWarning($"⚠️ Dialog Data {dialog} is null");

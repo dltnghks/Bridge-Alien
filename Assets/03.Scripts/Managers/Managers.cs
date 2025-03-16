@@ -44,10 +44,6 @@ public class Managers : MonoBehaviour
 
             _instance = Utils.GetOrAddComponent<Managers>(go);
 
-            _resourceManager.Init();
-            _poolManager.Init();
-            _dailyManager.Init();
-
             _dataManager = Utils.GetOrAddComponent<DataManager>(go);
             _dataManager.Init();
             
@@ -65,6 +61,9 @@ public class Managers : MonoBehaviour
             _soundManager = Utils.GetOrAddComponent<SoundManager>(go);
             _soundManager.Init();
 
+            _resourceManager.Init();
+            _poolManager.Init();
+            _dailyManager.Init();
             
             DontDestroyOnLoad(go);
         }

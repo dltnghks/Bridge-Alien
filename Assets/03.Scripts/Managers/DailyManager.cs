@@ -12,9 +12,10 @@ public class DailyManager
 
     private UIDialogPopup _dialogPopup = null;
     
-    public void Init()
+    public void Init(int initData = 1)
     {
-        _curDate = 1;
+        _curDate = initData;
+        SetDailyData();
     }
     
     // 일차 진행
@@ -36,9 +37,9 @@ public class DailyManager
 
     public void SetDailyData()
     {
-        Logger.Log("SetDailyData");
+        Logger.Log($"SetDailyData Day{_curDate}");
         // DataManager에서 curDate 세팅 값 가져오기
-        _currentDailyDataDict = Managers.Data.DailyDataManager.GetData("Day" + _curDate);
+        _currentDailyDataDict = Managers.Data.DailyData.GetData("Day" + _curDate);
         _currentDailyData = _currentDailyDataDict["Start"];
     }
     
@@ -126,7 +127,7 @@ public class DailyManager
     {
         Managers.Scene.ChangeScene(Define.Scene.House);
     }
-
+    
     private void EndDay()
     {
         AddDate();

@@ -8,53 +8,49 @@ using UnityEngine.Serialization;
 
 public class DataManager : MonoBehaviour
 {
-    // Google Apps Script에서 생성한 URL
-    private const string _dialogDataURL = "https://script.google.com/macros/s/AKfycbwgAd7p7krlRhlz0xeJHxjA8BhQ5hUEkTmdIrOGZNqPHXyvAPIkZCC-yAJ9PRaaqPU8/exec"; 
-    private const string _miniGameSettingDataURL = "https://script.google.com/macros/s/AKfycbyCzaXRCmG8TwN7bjGK23w-YysJzMeB6_SBvJ_zDz4j8h1FmPJmw51V-x0FqMFpt-NI/exec";
-    private const string _dailyDataURL = "https://script.google.com/macros/s/AKfycbztQL4Jix2cBBlocYbbYOuUuPCbU-ExjG1q1cgoXlAwCL2dsRK_vyBnk_uiEBXyPPbNgw/exec";
-    
     // 각 데이터를 관리하는 매니저
-    public DialogDataManager DialogDataManager;
-    public MiniGameSettingDataManager MiniGameSettingDataManager;
-    public DailyDataManager DailyDataManager;
+    public DialogDataScriptableObject DialogData;
+    public MiniGameSettingDataScriptableObject MiniGameData;
+    public DailyDataScriptableObject DailyData;
     
     // 데이터 로드 완료 이벤트 (필요하면 UI 업데이트 등과 연결 가능)
     public event Action<Define.DataType> OnDataLoaded;
 
-    public int TotalLoadCount = (int)Define.DataType.End; // 로드해야 할 데이터 개수
+    public int TotalLoadCount = 0; // (int)Define.DataType.End-1; // 로드해야 할 데이터 개수
     public int LoadedCount = 0;
     public bool IsLoading = false;
 
     public event Action OnAllDataLoaded; // 모든 데이터가 로드되었을 때 발생하는 이벤트
 
     public void Init()
-    {   
-        DialogDataManager = new DialogDataManager();
-        MiniGameSettingDataManager = new MiniGameSettingDataManager();
-        DailyDataManager = new DailyDataManager();
+    {
+        LoadAllData();
     }
     
     
     /// 모든 데이터를 로드하는 함수 (게임 시작 시 실행)
     public void LoadAllData()
     {
-        // 데이터를 로드하지 않았을 때만 로드하기
         if (IsLoading == false)
         {
-            StartCoroutine(LoadDataRoutine(Define.DataType.Dialog, _dialogDataURL,
-                (json) => { DialogDataManager.SetData(json); }));
+            string dialogDataPath = Define.DataType.Dialog.ToString() + "Data";
+            string miniGameDataPath = Define.DataType.MiniGameSetting.ToString() + "Data";
+            string dailyDataPath = Define.DataType.Daily.ToString() + "Data";
 
-            StartCoroutine(LoadDataRoutine(Define.DataType.MiniGameSetting, _miniGameSettingDataURL,
-                (json) => { MiniGameSettingDataManager.SetData(json); }));
+            Debug.Log($"🔍 Loading DialogData from: {dialogDataPath}");
+            DialogData = Resources.Load<DialogDataScriptableObject>(dialogDataPath);
 
-            
-            StartCoroutine(LoadDataRoutine(Define.DataType.Daily, _dailyDataURL,
-                (json) => { DailyDataManager.SetData(json); }));
+            Debug.Log($"🔍 Loading MiniGameSettingData from: {miniGameDataPath}");
+            MiniGameData = Resources.Load<MiniGameSettingDataScriptableObject>(miniGameDataPath);
 
+            Debug.Log($"🔍 Loading DailyData from: {dailyDataPath}");
+            DailyData = Resources.Load<DailyDataScriptableObject>(dailyDataPath);
 
-            
-            // 추가적으로 필요한 데이터 로드
-            
+            // 데이터가 정상적으로 로드되었는지 확인
+            if (DialogData == null) Debug.LogError("❌ DialogDataScriptableObject not found!");
+            if (MiniGameData == null) Debug.LogError("❌ MiniGameSettingDataScriptableObject not found!");
+            if (DailyData == null) Debug.LogError("❌ DailyDataScriptableObject not found!");
+
             IsLoading = true;
         }
     }

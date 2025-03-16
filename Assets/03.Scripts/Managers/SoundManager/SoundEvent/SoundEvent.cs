@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -54,7 +55,7 @@ public enum MiniGameUnloadSoundSFX{
 [CreateAssetMenu(menuName = "Sound/SoundEvent")]
 public class SoundEvent : ScriptableObject
 {
-    public SerializableDictionary<SoundType, SerializableDictionary<string, AK.Wwise.Event>> EventDict = new SerializableDictionary<SoundType, SerializableDictionary<string, AK.Wwise.Event>>();
+    public SerializedDictionary<SoundType, SerializedDictionary<string, AK.Wwise.Event>> EventDict = new SerializedDictionary<SoundType, SerializedDictionary<string, AK.Wwise.Event>>();
 
     public void InitEventDict()
     {
@@ -83,7 +84,7 @@ public class SoundEvent : ScriptableObject
 
         // Dictionary 초기화
         if (!EventDict.ContainsKey(type))
-            EventDict[type] = new SerializableDictionary<string, AK.Wwise.Event>();
+            EventDict[type] = new SerializedDictionary<string, AK.Wwise.Event>();
 
 
         // Enum 값의 Key를 HashSet으로 수집 (빠른 검사용)

@@ -1,34 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class DailyDataManager
+[CreateAssetMenu(fileName = "DailyData", menuName = "Game/Data/DailyData")]
+public class DailyDataScriptableObject : ScriptableObject
 {
-    private Dictionary<string, List<DailyData>> dailyData = new Dictionary<string, List<DailyData>>();
+    public SerializedDictionary<string, List<DailyData>> DailyData = new SerializedDictionary<string, List<DailyData>>();
 
-    /// <summary>
-    /// DataManager에서 JSON을 받아와 데이터를 설정하는 함수
-    /// </summary>
     public void SetData(string jsonText)
     {
         Dictionary<string, List<DailyData>> parsedData = JsonConvert.DeserializeObject<Dictionary<string, List<DailyData>>>(jsonText);
 
         foreach (var key in parsedData.Keys)
         {
-            dailyData[key] = parsedData[key];
+            DailyData[key] = parsedData[key];
         }
 
-        Debug.Log($"✅ Dialog Data Loaded: {dailyData.Count} types loaded.");
+        Debug.Log($"✅ Dialog Data Loaded: {DailyData.Count} types loaded.");
     }
-
+    
     public Dictionary<string, DailyData> GetData(string date)
     {
-        if (dailyData.ContainsKey(date))
+        if (DailyData.ContainsKey(date))
         {
             Dictionary<string, DailyData> returnData = new Dictionary<string, DailyData>();
 
-            foreach (DailyData data in dailyData[date])
+            foreach (DailyData data in DailyData[date])
             {
                 returnData[data.EventID] = data;
             }

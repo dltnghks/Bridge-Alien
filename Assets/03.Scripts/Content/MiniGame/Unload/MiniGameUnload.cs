@@ -80,7 +80,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private void SetGameInfo()
     {
-        _gameSetting = Managers.Data.MiniGameSettingDataManager.GetMiniGameSettings<MiniGameUnloadSetting>(Define.MiniGameType.Unload);
+        _gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameUnloadSetting>(Define.MiniGameType.Unload);
         
         if (_gameSetting == null)
         {

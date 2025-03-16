@@ -13,8 +13,6 @@ public class DataLoadingScene : BaseScene
 
         Managers.UI.ShowSceneUI<UIDataLoadingScene>();
         
-        Managers.Data.LoadAllData();
-        
         return true;
     }
 }

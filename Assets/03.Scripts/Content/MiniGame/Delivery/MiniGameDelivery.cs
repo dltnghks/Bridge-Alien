@@ -75,7 +75,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     
     private void SetGameInfo()
     {
-        _gameSetting = Managers.Data.MiniGameSettingDataManager.GetMiniGameSettings<MiniGameDeliverySetting>(Define.MiniGameType.Delivery);
+        _gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameDeliverySetting>(Define.MiniGameType.Delivery);
         
         if (_gameSetting == null)
         {

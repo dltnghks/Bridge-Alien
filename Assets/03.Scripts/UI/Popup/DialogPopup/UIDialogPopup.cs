@@ -139,7 +139,7 @@ public class UIDialogPopup : UIPopup
         Logger.Log($"SetDialogs : {dialogue}");   
         
         _callback = callback; 
-        List<DialogData> currentDialogs = Managers.Data.DialogDataManager.GetData(Define.Dialog.TUTORIAL_STORY_01);
+        List<DialogData> currentDialogs = Managers.Data.DialogData.GetData(Define.Dialog.TUTORIAL_STORY_01);
         
         foreach (var dialog in currentDialogs)
         {
