@@ -80,7 +80,7 @@ public class UIDialogPopup : UIPopup
 
         _choiceGroup = GetObject((int)Objects.UIChoiceGroup).GetOrAddComponent<VerticalLayoutGroup>();
         _choiceButtons = _choiceGroup.GetComponentsInChildren<UIChoiceButton>().ToList();
-        Logger.Log("_choiceButtons : " + _choiceButtons.Count);
+        
         foreach (var choiceButton in _choiceButtons)
         {
             choiceButton.gameObject.SetActive(false);
@@ -136,6 +136,8 @@ public class UIDialogPopup : UIPopup
     {
         Init();
         
+        Logger.Log($"SetDialogs : {dialogue}");   
+        
         _callback = callback; 
         List<DialogData> currentDialogs = Managers.Data.DialogDataManager.GetData(Define.Dialog.TUTORIAL_STORY_01);
         
@@ -180,7 +182,6 @@ public class UIDialogPopup : UIPopup
         switch (_currentDialog.Type)
         {
             case Define.DialogType.Dialog :
-                Logger.Log("Dialog");
                 string characterName = _currentDialog.CharacterName;
                 string dialogText = _currentDialog.Script;
         

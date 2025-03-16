@@ -16,20 +16,27 @@ public class DailyDataManager
 
         foreach (var key in parsedData.Keys)
         {
-            dailyData["default"] = parsedData[key];
+            dailyData[key] = parsedData[key];
         }
 
         Debug.Log($"✅ Dialog Data Loaded: {dailyData.Count} types loaded.");
     }
 
-    public DailyData GetData(int date, string dailyDataType = "default")
+    public Dictionary<string, DailyData> GetData(string date)
     {
-        if (dailyData.ContainsKey(dailyDataType) && dailyData[dailyDataType].Count > date)
+        if (dailyData.ContainsKey(date))
         {
-            return dailyData[dailyDataType][date];
+            Dictionary<string, DailyData> returnData = new Dictionary<string, DailyData>();
+
+            foreach (DailyData data in dailyData[date])
+            {
+                returnData[data.EventID] = data;
+            }
+            
+            return returnData;
         }
 
-        Debug.LogWarning($"⚠️ Dialog Data {dailyDataType} is null");
+        Debug.LogWarning($"⚠️ Daily Data {date} is null");
         return null;
     }
 }

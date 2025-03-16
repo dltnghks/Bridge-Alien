@@ -14,7 +14,7 @@ public class Define
         GameMap,
         MiniGameUnload,
         MiniGameDelivery,
-        
+        Ending,
     }
     
     public enum UIEvent
@@ -50,6 +50,14 @@ public class Define
         YeongnamArea,
         HonamArea,
         GangwonArea, 
+    }
+
+    public enum DailyEventType
+    {
+        Unknown,
+        Dialog,
+        MiniGame,
+        End,
     }
 
     public enum DataType

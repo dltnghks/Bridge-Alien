@@ -9,9 +9,9 @@ using UnityEngine.Serialization;
 public class DataManager : MonoBehaviour
 {
     // Google Apps Script에서 생성한 URL
-    private const string _dialogDataURL = "https://script.google.com/macros/s/AKfycbzrA7WYYdxkcJdw0J-neGPuHwxUjHibutPTj-Qi_0LpjLFY12gSyHqyviu_GOWInClB/exec"; 
+    private const string _dialogDataURL = "https://script.google.com/macros/s/AKfycbwgAd7p7krlRhlz0xeJHxjA8BhQ5hUEkTmdIrOGZNqPHXyvAPIkZCC-yAJ9PRaaqPU8/exec"; 
     private const string _miniGameSettingDataURL = "https://script.google.com/macros/s/AKfycbyCzaXRCmG8TwN7bjGK23w-YysJzMeB6_SBvJ_zDz4j8h1FmPJmw51V-x0FqMFpt-NI/exec";
-    private const string _dailyDataURL = "https://script.google.com/macros/s/AKfycby0iTsBcBmQ6zzWPfbS0FQylx_7txq6JyrB65AlJgp7aClgChXycrZrodxg_-tezb9Baw/exec";
+    private const string _dailyDataURL = "https://script.google.com/macros/s/AKfycbztQL4Jix2cBBlocYbbYOuUuPCbU-ExjG1q1cgoXlAwCL2dsRK_vyBnk_uiEBXyPPbNgw/exec";
     
     // 각 데이터를 관리하는 매니저
     public DialogDataManager DialogDataManager;
