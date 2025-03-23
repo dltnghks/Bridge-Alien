@@ -65,6 +65,7 @@ public class Define
         Dialog,
         MiniGameSetting,
         Daily,
+        PlayerStat,
         End,
     }
 
@@ -82,5 +83,12 @@ public class Define
         Dialog,
         Choice,
         END,
+    public enum PlayerStatType
+    {
+        Strength,
+        Dexterity,
+        Vitality,
+        Intelligence,
+        Luck,
     }
 }

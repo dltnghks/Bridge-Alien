@@ -12,6 +12,7 @@ public class DataManager : MonoBehaviour
     public DialogDataScriptableObject DialogData;
     public MiniGameSettingDataScriptableObject MiniGameData;
     public DailyDataScriptableObject DailyData;
+    public PlayerStatDataScriptableObject PlayerStatData;
     
     // 데이터 로드 완료 이벤트 (필요하면 UI 업데이트 등과 연결 가능)
     public event Action<Define.DataType> OnDataLoaded;
@@ -33,23 +34,36 @@ public class DataManager : MonoBehaviour
     {
         if (IsLoading == false)
         {
-            string dialogDataPath = Define.DataType.Dialog.ToString() + "Data";
-            string miniGameDataPath = Define.DataType.MiniGameSetting.ToString() + "Data";
-            string dailyDataPath = Define.DataType.Daily.ToString() + "Data";
+            foreach (Define.DataType dataType in Enum.GetValues(typeof(Define.DataType)))
+            {
+                string path = dataType.ToString() + "Data";
+                Debug.Log($"🔍 Loading {dataType} from: {path}");
 
-            Debug.Log($"🔍 Loading DialogData from: {dialogDataPath}");
-            DialogData = Resources.Load<DialogDataScriptableObject>(dialogDataPath);
-
-            Debug.Log($"🔍 Loading MiniGameSettingData from: {miniGameDataPath}");
-            MiniGameData = Resources.Load<MiniGameSettingDataScriptableObject>(miniGameDataPath);
-
-            Debug.Log($"🔍 Loading DailyData from: {dailyDataPath}");
-            DailyData = Resources.Load<DailyDataScriptableObject>(dailyDataPath);
-
+                switch (dataType)
+                {
+                    case Define.DataType.Dialog:
+                        DialogData = Resources.Load<DialogDataScriptableObject>(path);
+                        break;
+                    case Define.DataType.MiniGameSetting:
+                        MiniGameData = Resources.Load<MiniGameSettingDataScriptableObject>(path);
+                        break;
+                    case Define.DataType.Daily:
+                        DailyData = Resources.Load<DailyDataScriptableObject>(path);
+                        break;
+                    case Define.DataType.PlayerStat:
+                        PlayerStatData = Resources.Load<PlayerStatDataScriptableObject>(path);
+                        break;
+                    default:
+                        Debug.LogWarning($"⚠️ Unknown DataType: {dataType}");
+                        break;
+                }
+            }
+            
             // 데이터가 정상적으로 로드되었는지 확인
             if (DialogData == null) Debug.LogError("❌ DialogDataScriptableObject not found!");
             if (MiniGameData == null) Debug.LogError("❌ MiniGameSettingDataScriptableObject not found!");
             if (DailyData == null) Debug.LogError("❌ DailyDataScriptableObject not found!");
+            if (PlayerStatData == null) Debug.LogError("❌ PlayerStatDataScriptableObject not found!");
 
             IsLoading = true;
         }
