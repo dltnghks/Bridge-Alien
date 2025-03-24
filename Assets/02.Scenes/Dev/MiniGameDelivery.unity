@@ -618,6 +618,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8121512189649979272, guid: 4580b0f911c21e246a742568ffd94dc7, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121512189649979272, guid: 4580b0f911c21e246a742568ffd94dc7, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121512189649979272, guid: 4580b0f911c21e246a742568ffd94dc7, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8121512189649979272, guid: 4580b0f911c21e246a742568ffd94dc7, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 8574028007968528546, guid: 4580b0f911c21e246a742568ffd94dc7, type: 3}
       propertyPath: m_Name
       value: UIGameDeliveryScene
