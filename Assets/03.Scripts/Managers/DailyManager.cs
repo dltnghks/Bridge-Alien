@@ -5,30 +5,55 @@ using UnityEngine;
 public class DailyManager
 {
     private int _curDate;
-    private int _dueDate = 2;
+    private readonly int _dueDate = 2;
     
     private DailyData _currentDailyData;
     private Dictionary<string, DailyData> _currentDailyDataDict = new Dictionary<string, DailyData>();
 
     private UIDialogPopup _dialogPopup = null;
-    
-    public void Init(int initData = 1)
+
+    public int CurrentDate
     {
-        _curDate = initData;
+        get{return _curDate;}
+    }
+    public DailyData CurrentDailyData
+    {
+        get { return _currentDailyData; }
+    }
+
+
+    public void Init()
+    {
+        int initData = 1; //Managers.Data.SaveData.GetDate(); save 데이터로 시작하기
+        SetCurrentData(initData);
         SetDailyData();
+    }
+
+    private void SetCurrentData(int value)
+    {
+        _curDate = value;
+        
+        Logger.Log($"진행일 : {_curDate}");
+    }
+    
+    private void AddCurrentData(int value)
+    {
+        _curDate += value;
     }
     
     // 일차 진행
     public void AddDate()
     {
-        _curDate++;
-        Logger.Log($"진행일 : {_curDate}");
+        AddCurrentData(1);
 
-        if (_curDate == _dueDate)
+        if (_curDate >= _dueDate)
         {
             EndGame();
             return;
         }
+        
+        // 플레이어 일차 변화
+        Managers.Data.PlayerData.AddDate();
         
         // 오늘자 데이터 세팅
         SetDailyData();

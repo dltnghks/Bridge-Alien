@@ -87,10 +87,10 @@ public class Define
 
     public enum PlayerStatType
     {
-        Strength,
-        Dexterity,
-        Vitality,
-        Intelligence,
-        Luck,
+        Fatigue,               // 피로도
+        Experience,            // 작업 숙련
+        GravityAdaptation,     // 중력 적응
+        Intelligence,          // 지능
+        Luck,                  // 운
     }
 }
