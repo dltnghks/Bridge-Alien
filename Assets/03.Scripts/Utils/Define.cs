@@ -82,7 +82,9 @@ public class Define
         Monolog,
         Dialog,
         Choice,
-        END,
+        End,
+    }
+
     public enum PlayerStatType
     {
         Strength,

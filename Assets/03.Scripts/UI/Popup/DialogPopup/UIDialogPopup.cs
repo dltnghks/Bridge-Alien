@@ -172,7 +172,7 @@ public class UIDialogPopup : UIPopup
     
     private void UpdateDialog()
     {   
-        if (_currentDialog.Type == Define.DialogType.END)
+        if (_currentDialog.Type == Define.DialogType.End)
         {
             // 대화 종료
             EndDialog();
