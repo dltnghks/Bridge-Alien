@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+// 미니 게임에서 중앙이 되는 스크립트
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
     [Header("Game Information")]
@@ -12,7 +13,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     [Header("Game Camera Settings")]
     [SerializeField] private CameraManager.CameraType _cameraType;
     [SerializeField] private CameraSettings _cameraSettings;
-    
+
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
@@ -20,7 +21,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public IPlayerController PlayerController { get; set; }
     public CameraManager.CameraType CameraType
     {
-        get { return _cameraType;}
+        get { return _cameraType; }
         set { _cameraType = value; }
     }
 
@@ -29,12 +30,11 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         get { return _cameraSettings; }
         set { _cameraSettings = value; }
     }
-    
+
     public UIScene GameUI { get; set; }
     private UIGameDeliveryScene _uiGameDeliveryScene;
- 
-    private MiniGameDeliveryPathProgress _pathPrgressBar;
-    
+    private MiniGameDeliveryPathProgress _pathProgressBar;
+
     private void Update()
     {
         if (!IsActive || IsPause)
@@ -42,19 +42,13 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
 
-        _pathPrgressBar?.ProgressUpdate();
+        _pathProgressBar?.ProgressUpdate();
     }
-    
-    
+
+
     public void StartGame()
     {
-        // 게임에 사용되는 요소들 초기화
-        _pathPrgressBar = new MiniGameDeliveryPathProgress();
-        _pathPrgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, _gameTime, EndGame);
-    
 
-        
-        
         // PlayerCharacter 초기화
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
@@ -62,7 +56,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             Logger.LogError("PlayerCharacter not found or does not have a Player component!");
             return;
         }
-        
+
         PlayerController = new MiniGameDeliveryPlayerController(PlayerCharacter);
         if (PlayerController == null)
         {
@@ -70,7 +64,11 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
         PlayerController.Init(PlayerCharacter);
-        
+
+        // 게임에 사용되는 요소들 초기화
+        _pathProgressBar = new MiniGameDeliveryPathProgress();
+        _pathProgressBar.Initialize(_uiGameDeliveryScene.UIPathProgressBar, PlayerCharacter.transform, new Vector3(300f, 0f, 0f), EndGame);
+
         // 게임 활성화
         IsActive = true;
     }
@@ -105,12 +103,12 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             Logger.LogError("Not Active MiniGame");
             return;
         }
-        
+
         IsActive = false;
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathPrgressBar.CurValue * 100);
+        // Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathProgressBar.CurValue * 100);
         Logger.Log("UnloadGame Ending game");
     }
-    
+
     public void InitializeUI()
     {
         Logger.Log("InitializeUI Starting game");

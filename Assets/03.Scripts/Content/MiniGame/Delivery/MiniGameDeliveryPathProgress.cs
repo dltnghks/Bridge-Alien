@@ -5,54 +5,48 @@ using UnityEngine.Events;
 
 public class MiniGameDeliveryPathProgress
 {
-    public UIPathProgressBar UIPathProgressBar { get; private set; }
-    public bool IsActive { get; private set; }
-    public UnityAction EndAction { get; private set; }
-    public float EndValue { get; private set; }
-    public float CurValue { get; private set; }
-
-    public void SetProgressBar(UIPathProgressBar uIPathProgressBar, float endTime, UnityAction endAction = null){
-        if (!IsActive)
-        {
-            UIPathProgressBar = uIPathProgressBar;
-            EndValue = endTime;
-            CurValue = 0;
-            EndAction = endAction;
-
-
-            UIPathProgressBar.Init();
-            UIPathProgressBar.SetProgressBar(endTime);
-            
-            IsActive = true;
-        }
-    }
-
-    public void ProgressUpdate(){
-        float deltaTime = Time.deltaTime;
-        AddProgress(deltaTime);
-            
-        if (CurValue >= EndValue && IsActive)
-        {
-            EndProgress();
-        }
-    }
+    private UIPathProgressBar _uiPathProgressBar;
+    private UnityAction _endAction;
     
-    public void AddProgress(float time)
+    // 현재 ProgressBar가 활성화 되어 있는지 확인하는 변수
+    private bool _isActive;
+    
+    // 시간에 관련된 변수
+    private float _currentRatio = .0f;
+    private const float EndRatio = 1f;
+
+    private Transform _target;
+    private Vector3 _endPosition;
+
+    public void Initialize(UIPathProgressBar uIPathProgressBar, Transform target, Vector3 endPosition, UnityAction endAction = null)
     {
-        if (IsActive)
-        {
-            CurValue += time;
-            UIPathProgressBar.AddProgress(time);
-        }
+        if (_isActive) return;
+        _isActive = true;
+
+        _uiPathProgressBar = uIPathProgressBar;
+        _target = target;
+        _endAction = endAction;
+        _endPosition = endPosition;
+        
+        _currentRatio = target.position.x / endPosition.x;
+        
+        _uiPathProgressBar.Init();
     }
 
-    public void EndProgress()
+    public void ProgressUpdate()
     {
-        Logger.Log("EndProgress");
-        if (IsActive)
-        {
-            EndAction?.Invoke();
-            IsActive = false;
-        }
+        _currentRatio = _target.position.x / _endPosition.x;
+        _uiPathProgressBar.UpdateProgress(_currentRatio);
+        
+        if ((_currentRatio >= EndRatio) && _isActive)
+            OnProgressComplete();
+    }
+
+    public void OnProgressComplete()
+    {
+        if (_isActive == false) return;
+        
+        _endAction?.Invoke();
+        _isActive = false;
     }
 }

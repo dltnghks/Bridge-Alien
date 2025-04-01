@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 public class UIPathProgressBar : UISubItem
 {
-    enum Objects{
+    enum Objects
+    {
         PathProgressBar,
     }
 
     private Slider _progressBar;
-
-    private float _endValue = 0;
-    private float _curValue = 0;
 
     public override bool Init()
     {
@@ -25,22 +23,11 @@ public class UIPathProgressBar : UISubItem
         _progressBar = GetObject((int)Objects.PathProgressBar).GetComponent<Slider>();
         _progressBar.value = 0;
 
-        _init = true;
-
-        return true;
+        return _init = true;
     }
 
-    public void SetProgressBar(float endValue){
-        _endValue = endValue;
-        _progressBar.maxValue = endValue;
-        _curValue = 0;
-        _progressBar.minValue = 0;
+    public void UpdateProgress(float value)
+    {
+        _progressBar.value = value;
     }
-
-    public void AddProgress(float value){
-        _curValue += value;
-        _progressBar.value += value;
-    }
-
-
 }
