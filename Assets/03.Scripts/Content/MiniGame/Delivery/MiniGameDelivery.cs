@@ -35,6 +35,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     private UIGameDeliveryScene _uiGameDeliveryScene;
     private MiniGameDeliveryPathProgress _pathProgressBar;
 
+    private Vector3 _endPosition;
+
     private void Update()
     {
         if (!IsActive || IsPause)
@@ -65,9 +67,11 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         }
         PlayerController.Init(PlayerCharacter);
 
+        _endPosition = GameObject.Find("End").transform.position;
+
         // 게임에 사용되는 요소들 초기화
         _pathProgressBar = new MiniGameDeliveryPathProgress();
-        _pathProgressBar.Initialize(_uiGameDeliveryScene.UIPathProgressBar, PlayerCharacter.transform, new Vector3(300f, 0f, 0f), EndGame);
+        _pathProgressBar.Initialize(_uiGameDeliveryScene.UIPathProgressBar, PlayerCharacter.transform, _endPosition, EndGame);
 
         // 게임 활성화
         IsActive = true;
