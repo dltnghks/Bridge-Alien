@@ -15,25 +15,15 @@ public class GroundPositionPicker : MonoBehaviour
     {
         _groundMinWidth = transform.position.x - (transform.localScale.x * 0.5f);
         _groundMaxWidth = transform.position.x + (transform.localScale.x * 0.5f);
-        
         _groundMinHeight = transform.position.z - (transform.localScale.z * 0.5f);
         _groundMaxHeight = transform.position.z + (transform.localScale.z * 0.5f);
-    }
-    
-    public float GetPositionX(float xPercent)
-    {
-        return GetPosition(xPercent, 0f).x;
-    }
-    
-    public float GetPositionY(float yPercent)
-    {
-        return GetPosition(0f, yPercent).y;
     }
     
     public Vector2 GetPosition(float xPercent, float yPercent)
     {
         float x = Mathf.Lerp(_groundMinWidth, _groundMaxWidth, xPercent);
         float y = Mathf.Lerp(_groundMinHeight, _groundMaxHeight, yPercent);
+        
         return new Vector2(x, y);
     }
 
