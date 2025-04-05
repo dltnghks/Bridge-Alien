@@ -12,6 +12,12 @@ public class PlayerDataScriptableObject : ScriptableObject
     public readonly int[] FatigueReductionRates = { 30, 25, 20, 20 };
     
     public PlayerData playerData = new PlayerData();
+
+    public void Init()
+    {
+        // 세이브 데이터 없으면 초기화
+        playerData = new PlayerData();
+    }
     
     public void SetData(string jsonText)
     {

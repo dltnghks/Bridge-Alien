@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System;
+using Unity.VisualScripting;
 using UnityEngine.Serialization;
 
 public class DataManager : MonoBehaviour
@@ -52,6 +53,7 @@ public class DataManager : MonoBehaviour
                         break;
                     case Define.DataType.PlayerStat:
                         PlayerData = Resources.Load<PlayerDataScriptableObject>(path);
+                        PlayerData.Init();
                         break;
                     default:
                         Debug.LogWarning($"⚠️ Unknown DataType: {dataType}");

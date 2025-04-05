@@ -12,3 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9c6063c4ef2f945b7676e9635daf0e, type: 3}
   m_Name: PlayerStatData
   m_EditorClassIdentifier: 
+  playerData:
+    PlayerGold: -1
+    Stats:
+      _serializedList:
+      - Key: 0
+        Value: 30
+      - Key: 1
+        Value: 0
+      - Key: 2
+        Value: 0
+      - Key: 3
+        Value: 0
+      - Key: 4
+        Value: 0
