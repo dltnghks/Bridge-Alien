@@ -20,7 +20,7 @@ public class UIHouseScene : UIScene
         PopupBackground,
     }
 
-    private UIPlayerStatusPopup _uIPlayerStatusPopup = null;
+    private UIPopup _currentPopup = null;
     
     public override bool Init()
     {
@@ -43,20 +43,27 @@ public class UIHouseScene : UIScene
 
     private void OnClickPlayerStatusButton()
     {
-        if (_uIPlayerStatusPopup)
+        if (_currentPopup)
         {
-            _uIPlayerStatusPopup.ClosePopupUI();
+            _currentPopup.ClosePopupUI();
             return;
         }
         
-        _uIPlayerStatusPopup = Managers.UI.ShowPopUI<UIPlayerStatusPopup>();
+        _currentPopup = Managers.UI.ShowPopUI<UIPlayerStatusPopup>();
     }
 
     private void OnClickTaskButton()
     {
         // 일과 팝업 생성
+        if (_currentPopup)
+        {
+            _currentPopup.ClosePopupUI();
+            return;
+        }
+        
+        _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
     }
-    
+
     private void SetDayText()
     {
         GetText((int)Texts.DayText).SetText($"Day {Managers.Daily.CurrentDate}");

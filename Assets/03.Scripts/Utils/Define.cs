@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Define
@@ -92,5 +93,13 @@ public class Define
         GravityAdaptation,     // 중력 적응
         Intelligence,          // 지능
         Luck,                  // 운
+    }
+
+    public enum TaskType
+    {
+        Unknown,
+        SelfDevelopment,
+        Entertainment,
+        Investment,
     }
 }

@@ -1,0 +1,123 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UIPlayerTaskPopup : UIPopup
+{
+    enum Texts
+    {
+        
+    }
+
+    enum Images
+    {
+        BlurBackground,
+    }
+
+    enum Buttons
+    {
+        SelfDevelopmentButton,
+        EntertainmentButton,
+        InvestmentButton,
+    }
+
+    enum Objects
+    {
+        UITaskGroup,
+    }
+
+    private Define.TaskType _currentTaskType = Define.TaskType.Unknown;
+    private UITaskTabButton _currentTaskTab = null;
+    private UITaskButton _currentTaskButton = null;
+    private UITaskGroup _uiTaskGroup = null;
+    private ScrollRect _scrollRect = null;
+    
+    public override bool Init()
+    {
+        if (base.Init() == false)
+        {
+            return false;
+        }
+        
+        BindButton(typeof(Buttons));
+        BindImage(typeof(Images));
+        BindObject(typeof(Objects));
+        
+        GetImage((int)Images.BlurBackground).gameObject.BindEvent(OnClickBlurBackground);
+
+        InitTabGroup();
+        InitTaskGroup();
+        
+        // 초기화가 끝난 후, 첫 번째 탭 선택
+        SelectButton(GetButton((int)Buttons.SelfDevelopmentButton).GetComponent<UITaskTabButton>());
+        
+        return true;
+    }
+
+    private void InitTabGroup()
+    {
+        // 버튼 3개 세팅
+        GetButton((int)Buttons.SelfDevelopmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.SelfDevelopment);
+        GetButton((int)Buttons.EntertainmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.Entertainment);
+        GetButton((int)Buttons.InvestmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.Investment);
+    }
+        
+
+    private void InitTaskGroup()
+    {
+        _uiTaskGroup = GetObject((int)Objects.UITaskGroup).GetOrAddComponent<UITaskGroup>();
+        _uiTaskGroup.Init(this);
+        
+        // 처음 킬 때 스크롤 제일 위로 올려두기
+        _scrollRect = _uiTaskGroup.GetOrAddComponent<ScrollRect>();
+        _scrollRect.verticalNormalizedPosition = 1.0f;
+    }
+    
+    private void OnClickBlurBackground()
+    {
+        ClosePopupUI();
+    }
+    
+    public void SelectButton(UITaskTabButton taskTabButton)
+    {
+        // 현재 고른 Task Type 변경
+        if (_currentTaskTab != null)
+        {
+            _currentTaskTab.Deselect();
+        }
+
+        _currentTaskTab = taskTabButton;
+        _currentTaskTab.Select();
+        SetTaskGroup();
+    }
+
+    // 타입을 가지고 task 세팅
+    private void SetTaskGroup()
+    {
+        Logger.Log($"{_currentTaskTab.TaskType} task group set");
+        if (_uiTaskGroup != null)
+        {
+            _uiTaskGroup.Setup(_currentTaskTab.TaskType);   
+        }
+
+        if (_currentTaskButton != null)
+        {
+            _currentTaskButton.Deselect();   
+        }
+    }
+
+    public void SelectTaskButton(UITaskButton taskButton)
+    {
+        // 현재 고른 Task 변경
+        if (_currentTaskButton != null)
+        {
+            _currentTaskButton.Deselect();
+        }
+
+        _currentTaskButton = taskButton;
+        _currentTaskButton.Select();
+    }
+}
