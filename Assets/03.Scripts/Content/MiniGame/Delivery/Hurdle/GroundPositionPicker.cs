@@ -21,6 +21,8 @@ public class GroundPositionPicker : MonoBehaviour
     
     public Vector2 GetPosition(float xPercent, float zPercent)
     {
+        Awake();
+        
         float x = Mathf.Lerp(_groundMinWidth, _groundMaxWidth, xPercent);
         float z = Mathf.Lerp(_groundMinHeight, _groundMaxHeight, zPercent);
         

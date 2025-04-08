@@ -23,6 +23,16 @@ public class GroundManager : MonoBehaviour
         }
     }
 
+    public Vector2 GetGroundStartPosition()
+    {
+        return groundPositionPickers[0].GetPosition(1f, 1f);
+    }
+
+    public Vector2 GetGroundEndPosition()
+    {
+        return groundPositionPickers[^1].GetPosition(0f, 0f);
+    }
+
     private void OnDrawGizmosSelected()
     {
         _startWidth = groundPositionPickers[0].GetPosition(startRatio, startRatio).x;

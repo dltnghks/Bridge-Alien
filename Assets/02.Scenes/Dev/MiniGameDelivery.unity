@@ -3054,6 +3054,7 @@ GameObject:
   - component: {fileID: 6391729413905124719}
   - component: {fileID: 5952530282525956235}
   - component: {fileID: 2436637592338306335}
+  - component: {fileID: 6745458709998981887}
   m_Layer: 0
   m_Name: Start Ground
   m_TagString: Untagged
@@ -3193,6 +3194,7 @@ GameObject:
   - component: {fileID: 6391729414579833497}
   - component: {fileID: 5952530282933280637}
   - component: {fileID: 2436637591672017641}
+  - component: {fileID: 6745458709599917321}
   m_Layer: 0
   m_Name: End Ground
   m_TagString: Untagged
@@ -7384,6 +7386,18 @@ Transform:
   - {fileID: 417471105}
   m_Father: {fileID: 8485893772558090237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6745458709599917321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847458300285871513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a22b56e9b966234784f5fd849bec50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6745458709714706970
 Transform:
   m_ObjectHideFlags: 0
@@ -7460,6 +7474,18 @@ Transform:
   - {fileID: 2610933928895609130}
   m_Father: {fileID: 8485893772558090237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6745458709998981887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847458299611161199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a22b56e9b966234784f5fd849bec50d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6745458710158524791
 Transform:
   m_ObjectHideFlags: 0
@@ -7823,7 +7849,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd5c00328a1b2647a1368cb32c52bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundPositionPickers: []
+  groundPositionPickers:
+  - {fileID: 6745458709998981887}
+  - {fileID: 6745458709813688249}
+  - {fileID: 6745458710326007682}
+  - {fileID: 6745458710203899440}
+  - {fileID: 6745458710158524792}
+  - {fileID: 6745458709714706971}
+  - {fileID: 6745458709566993342}
+  - {fileID: 6745458709527378147}
+  - {fileID: 6745458709599917321}
+  startRatio: 1
+  endRatio: 1
 --- !u!114 &8485893772558090239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7836,6 +7873,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cfe159776e1b85408e16538943617b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <HurdlePattern>k__BackingField:
+  - {fileID: 11400000, guid: 23edc8004fc34a049a5b81ef1e345d0c, type: 2}
+  minRandWidth: 0
+  maxRandWidth: 155
+  examplePrefab: {fileID: 5685847789167108943, guid: a20dccf9cb0fc3f4c95a1feba2ed27f4, type: 3}
 --- !u!1 &8969506914654509745
 GameObject:
   m_ObjectHideFlags: 0

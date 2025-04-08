@@ -12,5 +12,4 @@ public enum HurdleName
 public struct HurdlePatternData
 {
     public HurdleName hurdleName;
-    public float createTime;
 }
