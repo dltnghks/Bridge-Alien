@@ -19,12 +19,12 @@ public class GroundPositionPicker : MonoBehaviour
         _groundMaxHeight = transform.position.z + (transform.localScale.z * 0.5f);
     }
     
-    public Vector2 GetPosition(float xPercent, float yPercent)
+    public Vector2 GetPosition(float xPercent, float zPercent)
     {
         float x = Mathf.Lerp(_groundMinWidth, _groundMaxWidth, xPercent);
-        float y = Mathf.Lerp(_groundMinHeight, _groundMaxHeight, yPercent);
+        float z = Mathf.Lerp(_groundMinHeight, _groundMaxHeight, zPercent);
         
-        return new Vector2(x, y);
+        return new Vector2(x, z);
     }
 
     public void OnDrawGizmosSelected()
