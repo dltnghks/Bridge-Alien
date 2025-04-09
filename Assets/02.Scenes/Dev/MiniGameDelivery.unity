@@ -133,6 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad643d1b6757d02428cb8966bfb96211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &197641688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1847458300996108237, guid: a099317c49a6607489bb7e929ab07e81, type: 3}
+  m_PrefabInstance: {fileID: 6504572909316404054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &231961479
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5250824066746151963}
   - component: {fileID: 7936382472336994082}
+  - component: {fileID: 7936382472336994083}
   m_Layer: 0
   m_Name: Stage
   m_TagString: Untagged
@@ -939,6 +945,21 @@ MonoBehaviour:
   moveSpeed: 30
   moveDirection: {x: -1, y: 0, z: 0}
   blockSize: 50
+--- !u!114 &7936382472336994083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6067250156558462702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26379b0a60fce4c4a944413e0e63329a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapWidthOffset: 0.9
+  mapHeightOffset: 0.9
+  groundPrefab: {fileID: 197641688}
 --- !u!1001 &8815639669679569286
 PrefabInstance:
   m_ObjectHideFlags: 0
