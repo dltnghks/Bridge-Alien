@@ -54,7 +54,6 @@ public class DataManager : MonoBehaviour
                         break;
                     case Define.DataType.PlayerStat:
                         PlayerData = Resources.Load<PlayerDataScriptableObject>(path);
-                        PlayerData.Init();
                         break;
                     case Define.DataType.PlayerTask:
                         PlayerTaskData = Resources.Load<PlayerTaskDataScriptableObject>(path);

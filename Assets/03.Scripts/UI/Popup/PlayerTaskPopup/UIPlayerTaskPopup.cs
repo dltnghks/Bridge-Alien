@@ -95,17 +95,17 @@ public class UIPlayerTaskPopup : UIPopup
         // 일과 수행
         PlayerTaskData taskData = _currentTaskButton.PlayerTaskData;
         
-        if(Managers.Data.PlayerData.GetStat(Define.PlayerStatType.Fatigue) < taskData.RequirementGold)
+        if(Managers.Player.GetStat(Define.PlayerStatType.Fatigue) < taskData.RequirementGold)
         {
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;
         }
         
-        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Fatigue, taskData.FatigueValue);
-        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Experience, taskData.ExperienceValue);
-        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Intelligence, taskData.IntelligenceValue);
-        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.GravityAdaptation, taskData.GravityAdaptationValue);
-        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Luck, Random.Range(taskData.LuckMinValue, taskData.LuckMaxValue)); 
+        Managers.Player.AddStat(Define.PlayerStatType.Fatigue, taskData.FatigueValue);
+        Managers.Player.AddStat(Define.PlayerStatType.Experience, taskData.ExperienceValue);
+        Managers.Player.AddStat(Define.PlayerStatType.Intelligence, taskData.IntelligenceValue);
+        Managers.Player.AddStat(Define.PlayerStatType.GravityAdaptation, taskData.GravityAdaptationValue);
+        Managers.Player.AddStat(Define.PlayerStatType.Luck, Random.Range(taskData.LuckMinValue, taskData.LuckMaxValue)); 
         
         // 일과 종료
         ClosePopupUI();

@@ -53,7 +53,7 @@ public class DailyManager
         }
         
         // 플레이어 일차 변화
-        Managers.Data.PlayerData.AddDate();
+        Managers.Player.AddDate();
         
         // 오늘자 데이터 세팅
         SetDailyData();

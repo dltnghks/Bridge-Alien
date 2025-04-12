@@ -76,7 +76,7 @@ public class MiniGameManager : MonoBehaviour
     public void EndGame()
     {
         Logger.Log("End Game");
-        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Fatigue, -30);
+        Managers.Player.AddStat(Define.PlayerStatType.Fatigue, -30);
         _currentGame?.EndGame();
     }
     
