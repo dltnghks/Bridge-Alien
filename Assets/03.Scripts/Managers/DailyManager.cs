@@ -5,7 +5,7 @@ using UnityEngine;
 public class DailyManager
 {
     private int _curDate;
-    private readonly int _dueDate = 2;
+    private readonly int _dueDate = 3;
     
     private DailyData _currentDailyData;
     private Dictionary<string, DailyData> _currentDailyDataDict = new Dictionary<string, DailyData>();
@@ -65,6 +65,8 @@ public class DailyManager
         Logger.Log($"SetDailyData Day{_curDate}");
         // DataManager에서 curDate 세팅 값 가져오기
         _currentDailyDataDict = Managers.Data.DailyData.GetData("Day" + _curDate);
+        
+        // 시작 이벤트 구분하기
         _currentDailyData = _currentDailyDataDict["Start"];
     }
     
@@ -91,9 +93,6 @@ public class DailyManager
                 break;
             case 2:
                 Logger.Log("daily time is 2");
-                break;
-            case 3:
-                Logger.Log("daily time is 3");
                 break;
             default:
                 Logger.Log("daily time is null");

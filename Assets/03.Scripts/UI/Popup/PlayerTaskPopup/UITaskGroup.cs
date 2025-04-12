@@ -48,20 +48,21 @@ public class UITaskGroup : UISubItem
     {
         Init();
         // type으로 데이터 가져오기
-        //List<string> tasks = Managers.Data.Task.GetData(type);
-        List<string> tasks = new List<string>(){$"{type}", "test2", "test3"};
+        List<PlayerTaskData> taskDatas = Managers.Data.PlayerTaskData.GetData(type);
         
         int i = 0;
-        for (i = 0; i < tasks.Count; i++)
+        for (i = 0; i < taskDatas.Count; i++)
         {
+            // 부족한 버튼은 생성해서 넣어주기
             if (_taskButtons.Count <= i)
             {
                 AddTaskButton();
             }
             _taskButtons[i].gameObject.SetActive(true);
-            _taskButtons[i].SetData(tasks[i]);
+            _taskButtons[i].SetData(taskDatas[i]);
         }
 
+        // 남은 버튼은 꺼두기
         for (; i < _taskButtons.Count; i++)
         {
             _taskButtons[i].gameObject.SetActive(false);

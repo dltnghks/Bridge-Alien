@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class UIPlayerTaskPopup : UIPopup
 {
@@ -22,6 +23,7 @@ public class UIPlayerTaskPopup : UIPopup
         SelfDevelopmentButton,
         EntertainmentButton,
         InvestmentButton,
+        ConfirmButton,
     }
 
     enum Objects
@@ -51,6 +53,8 @@ public class UIPlayerTaskPopup : UIPopup
         InitTabGroup();
         InitTaskGroup();
         
+        GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+        
         // 초기화가 끝난 후, 첫 번째 탭 선택
         SelectButton(GetButton((int)Buttons.SelfDevelopmentButton).GetComponent<UITaskTabButton>());
         
@@ -78,6 +82,33 @@ public class UIPlayerTaskPopup : UIPopup
     
     private void OnClickBlurBackground()
     {
+        ClosePopupUI();
+    }
+
+    private void OnClickConfirmButton()
+    {
+        if (_currentTaskButton == null)
+        {
+            Logger.LogWarning("Nothing to click");
+            return;
+        }
+        
+        // 일과 수행
+        PlayerTaskData taskData = _currentTaskButton.PlayerTaskData;
+        
+        if(Managers.Data.PlayerData.GetStat(Define.PlayerStatType.Fatigue) < taskData.RequirementGold)
+        {
+            Logger.LogWarning("You do not have enough gold to complete task!");
+            return;
+        }
+        
+        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Fatigue, taskData.FatigueValue);
+        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Experience, taskData.ExperienceValue);
+        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Intelligence, taskData.IntelligenceValue);
+        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.GravityAdaptation, taskData.GravityAdaptationValue);
+        Managers.Data.PlayerData.AddStat(Define.PlayerStatType.Luck, Random.Range(taskData.LuckMinValue, taskData.LuckMaxValue)); 
+        
+        // 일과 종료
         ClosePopupUI();
     }
     

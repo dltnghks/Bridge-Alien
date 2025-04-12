@@ -32,4 +32,15 @@ public class PlayerTaskDataScriptableObject : ScriptableObject
         Debug.Log($"✅ Dialog Data Loaded: {PlayerTaskData.Count} types loaded.");
     }
 
+    public List<PlayerTaskData> GetData(Define.TaskType taskType)
+    {
+        if (PlayerTaskData.ContainsKey(taskType))
+        {
+            return PlayerTaskData[taskType];
+        }
+        
+        Logger.LogError("Not Found PlayerTaskData");
+        return null;
+    }
+
 }

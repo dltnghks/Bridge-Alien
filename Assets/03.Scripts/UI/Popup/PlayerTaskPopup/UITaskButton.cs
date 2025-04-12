@@ -11,8 +11,8 @@ public class UITaskButton : UISubItem
     }
     
     private UIPlayerTaskPopup _tabController;
+    public PlayerTaskData PlayerTaskData { get; private set; }
 
-    
     public override bool Init()
     {
         if (base.Init() == false)
@@ -38,9 +38,10 @@ public class UITaskButton : UISubItem
         _tabController.SelectTaskButton(this);
     }
     
-    public void SetData(string task)
+    public void SetData(PlayerTaskData data)
     {
-        GetText((int)Texts.TaskButtonText).text = task;
+        GetText((int)Texts.TaskButtonText).text = data.TaskName;
+        PlayerTaskData = data;
     }
     
     public void Select()
