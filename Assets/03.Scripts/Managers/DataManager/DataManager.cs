@@ -14,6 +14,7 @@ public class DataManager : MonoBehaviour
     public MiniGameSettingDataScriptableObject MiniGameData;
     public DailyDataScriptableObject DailyData;
     public PlayerDataScriptableObject PlayerData;
+    public PlayerTaskDataScriptableObject PlayerTaskData;
     
     // 데이터 로드 완료 이벤트 (필요하면 UI 업데이트 등과 연결 가능)
     public event Action<Define.DataType> OnDataLoaded;
@@ -54,6 +55,9 @@ public class DataManager : MonoBehaviour
                     case Define.DataType.PlayerStat:
                         PlayerData = Resources.Load<PlayerDataScriptableObject>(path);
                         PlayerData.Init();
+                        break;
+                    case Define.DataType.PlayerTask:
+                        PlayerTaskData = Resources.Load<PlayerTaskDataScriptableObject>(path);
                         break;
                     default:
                         Debug.LogWarning($"⚠️ Unknown DataType: {dataType}");

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15df0a05db3b5644b8b82435c74c456, type: 3}
+  m_Name: PlayerTaskData
+  m_EditorClassIdentifier: 
+  PlayerTaskData:
+    _serializedList:
+    - Key: 1
+      Value:
+      - TaskType: 0
+        TaskName: "\uC6B4\uB3D9"
+        RequirementGold: 100000
+        FatigueValue: 0
+        ExperienceValue: 0
+        GravityAdaptationValue: 5
+        IntelligenceValue: 0
+        LuckMaxValue: 0
+        LuckMinValue: 0
+    - Key: 2
+      Value:
+      - TaskType: 0
+        TaskName: "\uB178\uB798"
+        RequirementGold: 100000
+        FatigueValue: 0
+        ExperienceValue: 5
+        GravityAdaptationValue: 0
+        IntelligenceValue: 0
+        LuckMaxValue: 0
+        LuckMinValue: 0
+    - Key: 3
+      Value:
+      - TaskType: 0
+        TaskName: "\uD22C\uC790"
+        RequirementGold: 100000
+        FatigueValue: 0
+        ExperienceValue: 0
+        GravityAdaptationValue: 0
+        IntelligenceValue: 5
+        LuckMaxValue: 0
+        LuckMinValue: 0

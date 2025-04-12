@@ -58,6 +58,7 @@ public class Define
         Unknown,
         Dialog,
         MiniGame,
+        Task,
         End,
     }
 
@@ -67,6 +68,7 @@ public class Define
         MiniGameSetting,
         Daily,
         PlayerStat,
+        PlayerTask,
         End,
     }
 
@@ -98,8 +100,8 @@ public class Define
     public enum TaskType
     {
         Unknown,
-        SelfDevelopment,
-        Entertainment,
-        Investment,
+        SelfDevelopment,    // 자기개발
+        Entertainment,      // 유흥
+        Investment,         // 투자
     }
 }

@@ -91,11 +91,6 @@ MonoBehaviour:
           \uB0B4\uAC00 \uBB34\uC5C7\uC744 \uD560 \uC218 \uC788\uB294\uC9C0\""
         NextDialogID: D11_03_03B_01
         Type: 3
-      - DialogID: STALL
-        CharacterName: 
-        Script: 
-        NextDialogID: 
-        Type: 0
       - DialogID: D11_03_03A_01
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\"\uC774 \uC77C\uC5D4 \uAD00\uC5EC\uD558\uACE0 \uC2F6\uC9C0 \uC54A\uC544\uC694.

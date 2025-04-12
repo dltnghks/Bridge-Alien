@@ -11,6 +11,7 @@ public class GoogleSheetsImporter : EditorWindow
     private string _dialogDataURL = "https://script.google.com/macros/s/AKfycbwgAd7p7krlRhlz0xeJHxjA8BhQ5hUEkTmdIrOGZNqPHXyvAPIkZCC-yAJ9PRaaqPU8/exec"; 
     private string _miniGameSettingDataURL = "https://script.google.com/macros/s/AKfycbyCzaXRCmG8TwN7bjGK23w-YysJzMeB6_SBvJ_zDz4j8h1FmPJmw51V-x0FqMFpt-NI/exec";
     private string _dailyDataURL = "https://script.google.com/macros/s/AKfycbztQL4Jix2cBBlocYbbYOuUuPCbU-ExjG1q1cgoXlAwCL2dsRK_vyBnk_uiEBXyPPbNgw/exec";
+    private string _playerTaskDataURL = "https://script.google.com/macros/s/AKfycbycs1iOHWpQoMCrt-OWwXdaH0sqgoG5GzvRagF0cBDqO4U0MEoRiRlx-q_SV7uWFSl1/exec";
     private string savePath = "Assets/Resources";
 
     [MenuItem("Tools/GoogleSheetsImporter")]
@@ -22,16 +23,31 @@ public class GoogleSheetsImporter : EditorWindow
     private void OnGUI()
     {
         GUILayout.Label("Google Sheets Importer", EditorStyles.boldLabel);
-        _dialogDataURL = EditorGUILayout.TextField("DialogData Sheet URL", _dialogDataURL);
-        _miniGameSettingDataURL = EditorGUILayout.TextField("MiniGameSettingData Sheet URL", _miniGameSettingDataURL);
-        _dailyDataURL = EditorGUILayout.TextField("DailyData Sheet URL", _dailyDataURL);
+        
         savePath = EditorGUILayout.TextField("Save Path", savePath);
+        
+        _dialogDataURL = EditorGUILayout.TextField("DialogData Sheet URL", _dialogDataURL);
+        if (GUILayout.Button("Import Dialog Data"))
+            ImportData(_dialogDataURL, Define.DataType.Dialog);
+        
+        _miniGameSettingDataURL = EditorGUILayout.TextField("MiniGameSettingData Sheet URL", _miniGameSettingDataURL);
+        if (GUILayout.Button("Import MiniGameSetting Data"))
+            ImportData(_miniGameSettingDataURL, Define.DataType.MiniGameSetting);
+            
+        _dailyDataURL = EditorGUILayout.TextField("DailyData Sheet URL", _dailyDataURL);
+        if (GUILayout.Button("Import Daily Data"))
+            ImportData(_dailyDataURL, Define.DataType.Daily);
+            
+        _playerTaskDataURL = EditorGUILayout.TextField("PlayerTaskData Sheet URL", _playerTaskDataURL);
+        if (GUILayout.Button("Import PlayerTask Data"))
+            ImportData(_playerTaskDataURL, Define.DataType.PlayerTask);
 
-        if (GUILayout.Button("Import Data"))
+        if (GUILayout.Button("Import All Data"))
         {
             ImportData(_dialogDataURL, Define.DataType.Dialog);
             ImportData(_miniGameSettingDataURL, Define.DataType.MiniGameSetting);
             ImportData(_dailyDataURL, Define.DataType.Daily);
+            ImportData(_playerTaskDataURL, Define.DataType.PlayerTask);
         }
     }
 
@@ -80,6 +96,11 @@ public class GoogleSheetsImporter : EditorWindow
                 MiniGameSettingDataScriptableObject miniGameData = CreateInstance<MiniGameSettingDataScriptableObject>();
                 miniGameData.SetData(jsonData);
                 AssetDatabase.CreateAsset(miniGameData, assetPath);
+                break;
+            case Define.DataType.PlayerTask:
+                PlayerTaskDataScriptableObject playerTaskData = CreateInstance<PlayerTaskDataScriptableObject>();
+                playerTaskData.SetData(jsonData);
+                AssetDatabase.CreateAsset(playerTaskData, assetPath);
                 break;
         }
 
