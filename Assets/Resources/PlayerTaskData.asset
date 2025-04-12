@@ -18,7 +18,7 @@ MonoBehaviour:
       Value:
       - TaskType: 0
         TaskName: "\uC6B4\uB3D9"
-        RequirementGold: 100000
+        RequirementGold: 0
         FatigueValue: 0
         ExperienceValue: 0
         GravityAdaptationValue: 5

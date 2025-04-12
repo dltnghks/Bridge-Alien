@@ -56,7 +56,7 @@ public class UIPlayerTaskPopup : UIPopup
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
         
         // 초기화가 끝난 후, 첫 번째 탭 선택
-        SelectButton(GetButton((int)Buttons.SelfDevelopmentButton).GetComponent<UITaskTabButton>());
+        SelectTabButton(GetButton((int)Buttons.SelfDevelopmentButton).GetComponent<UITaskTabButton>());
         
         return true;
     }
@@ -77,7 +77,6 @@ public class UIPlayerTaskPopup : UIPopup
         
         // 처음 킬 때 스크롤 제일 위로 올려두기
         _scrollRect = _uiTaskGroup.GetOrAddComponent<ScrollRect>();
-        _scrollRect.verticalNormalizedPosition = 1.0f;
     }
     
     private void OnClickBlurBackground()
@@ -112,7 +111,7 @@ public class UIPlayerTaskPopup : UIPopup
         ClosePopupUI();
     }
     
-    public void SelectButton(UITaskTabButton taskTabButton)
+    public void SelectTabButton(UITaskTabButton taskTabButton)
     {
         // 현재 고른 Task Type 변경
         if (_currentTaskTab != null)
@@ -123,6 +122,9 @@ public class UIPlayerTaskPopup : UIPopup
         _currentTaskTab = taskTabButton;
         _currentTaskTab.Select();
         SetTaskGroup();
+        
+        // 스크롤 제일 위로 올리기
+        _scrollRect.verticalNormalizedPosition = 1.0f;
     }
 
     // 타입을 가지고 task 세팅
@@ -136,7 +138,7 @@ public class UIPlayerTaskPopup : UIPopup
 
         if (_currentTaskButton != null)
         {
-            _currentTaskButton.Deselect();   
+            _currentTaskButton.Deselect();
         }
     }
 

@@ -8,9 +8,11 @@ public class UITaskButton : UISubItem
     enum Texts
     {
         TaskButtonText,
+        GoldText,
     }
     
     private UIPlayerTaskPopup _tabController;
+    private Outline _outline;
     public PlayerTaskData PlayerTaskData { get; private set; }
 
     public override bool Init()
@@ -30,7 +32,11 @@ public class UITaskButton : UISubItem
     public void Init(UIPlayerTaskPopup tabController)
     {
         Init();
+        
+        _outline = GetComponent<Outline>();
         _tabController = tabController;
+        
+        Deselect();
     }
     
     private void OnSelectTab()
@@ -41,16 +47,17 @@ public class UITaskButton : UISubItem
     public void SetData(PlayerTaskData data)
     {
         GetText((int)Texts.TaskButtonText).text = data.TaskName;
+        GetText((int)Texts.GoldText).text = data.RequirementGold.ToString();
         PlayerTaskData = data;
     }
     
     public void Select()
     {
-        GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
+        _outline.enabled = true;
     }
 
     public void Deselect()
     {
-        GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        _outline.enabled = false;
     }
 }

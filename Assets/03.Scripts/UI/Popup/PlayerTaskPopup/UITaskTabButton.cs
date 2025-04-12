@@ -11,10 +11,13 @@ public class UITaskTabButton : UISubItem
     {
         ButtonText,
     }
+
+    [SerializeField] private Sprite _activeButtonSprite;
+    [SerializeField] private Sprite _dectiveButtonSprite;
     
     private Define.TaskType _taskType;
-    
     private UIPlayerTaskPopup _tabController;
+    private Image _buttonImage;
 
     public Define.TaskType TaskType
     {
@@ -37,22 +40,27 @@ public class UITaskTabButton : UISubItem
     
     public void Init(UIPlayerTaskPopup tabController, Define.TaskType type)
     {
+        Init();
+        
         _tabController = tabController;
         _taskType = type;
+        _buttonImage = GetComponent<Image>();
+        
+        Deselect();
     }
     
     private void OnSelectTab()
     {
-        _tabController.SelectButton(this);
+        _tabController.SelectTabButton(this);
     }
     
     public void Select()
     {
-        GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
+        _buttonImage.sprite = _activeButtonSprite;
     }
 
     public void Deselect()
     {        
-        GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        _buttonImage.sprite = _dectiveButtonSprite;
     }
 }
