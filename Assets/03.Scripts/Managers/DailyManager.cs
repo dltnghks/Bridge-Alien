@@ -22,11 +22,11 @@ public class DailyManager
     }
 
 
-    public void Init()
+    public void Init(int lastDate = 1, DailyData dailyData = null)
     {
-        int initData = 1; //Managers.Data.SaveData.GetDate(); save 데이터로 시작하기
+        int initData = lastDate;
         SetCurrentData(initData);
-        SetDailyData();
+        SetDailyData(dailyData);
     }
 
     private void SetCurrentData(int value)
@@ -60,14 +60,23 @@ public class DailyManager
         StartEvent();
     }
 
-    public void SetDailyData()
+    public void SetDailyData(DailyData dailyData = null)
     {
-        Logger.Log($"SetDailyData Day{_curDate}");
         // DataManager에서 curDate 세팅 값 가져오기
         _currentDailyDataDict = Managers.Data.DailyData.GetData("Day" + _curDate);
+        if (_currentDailyDataDict == null)
+        {
+            Logger.LogError("currentDailyDataDict is null");
+        }
+        
+        
+        if (dailyData == null && _currentDailyDataDict.ContainsKey("Start"))
+        {
+            dailyData = _currentDailyDataDict["Start"];
+        }
         
         // 시작 이벤트 구분하기
-        _currentDailyData = _currentDailyDataDict["Start"];
+        _currentDailyData = dailyData;
     }
     
     public void NextEvent()
@@ -76,13 +85,13 @@ public class DailyManager
         {
             _currentDailyData = _currentDailyDataDict[_currentDailyData.NextEventID];
         }
-
-        if (_currentDailyData == null)
+        else
         {
-            Logger.LogError("current daily data is null");
+            // 다음 이벤트가 없으면(= 하루가 끝났다면)
+            _currentDailyData = null;
             return;
         }
-
+        
         switch (_currentDailyData.Time)
         {
             case 0:

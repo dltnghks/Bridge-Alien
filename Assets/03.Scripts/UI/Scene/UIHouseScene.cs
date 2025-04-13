@@ -13,6 +13,8 @@ public class UIHouseScene : UIScene
     {
         PlayerStatusButton,
         TaskButton,
+        SaveButton,
+        LoadButton,
     }
 
     enum Images
@@ -37,6 +39,8 @@ public class UIHouseScene : UIScene
         
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
+        GetButton((int)Buttons.SaveButton).gameObject.BindEvent(OnClickSaveButton);
+        GetButton((int)Buttons.LoadButton).gameObject.BindEvent(OnClickLoadButton);
         
         return true;
     }
@@ -62,6 +66,16 @@ public class UIHouseScene : UIScene
         }
         
         _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
+    }
+
+    private void OnClickSaveButton()
+    {
+        Managers.Save.Save();
+    }
+
+    private void OnClickLoadButton()
+    {
+        Managers.Save.Load();
     }
 
     private void SetDayText()

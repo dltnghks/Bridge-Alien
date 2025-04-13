@@ -10,10 +10,15 @@ public class PlayerManager
     
     public PlayerData PlayerData { get; private set; }
 
-    public void Init()
+    public void Init(PlayerData playerData = null)
     {
         // 세이브 데이터 없으면 초기화
-        PlayerData = Managers.Save.Load();
+        if (playerData == null)
+        {
+            playerData = new PlayerData();
+        }
+        
+        PlayerData = playerData;
     }
 
     public int GetStat(Define.PlayerStatType type)
@@ -122,5 +127,10 @@ public class PlayerManager
         AddStat(Define.PlayerStatType.Fatigue, 50);
         AddStat(Define.PlayerStatType.Experience, 2);
         AddStat(Define.PlayerStatType.GravityAdaptation, 5);
+    }
+
+    public int GetGold()
+    {
+        throw new System.NotImplementedException();
     }
 }

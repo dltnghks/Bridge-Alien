@@ -23,6 +23,7 @@ public class Managers : MonoBehaviour
     private static PoolManager _poolManager = new PoolManager();
     private static DailyManager _dailyManager = new DailyManager();
     private static PlayerManager _playerManager = new PlayerManager();
+    private static SaveManager _saveManager = new SaveManager();
     
     public static DataManager Data {get { Init(); return _dataManager;}}
     public static ResourceManager Resource { get { Init(); return _resourceManager; } }
@@ -35,6 +36,7 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool { get{ Init(); return _poolManager; } }
     public static DailyManager Daily { get{ Init(); return _dailyManager; } }
     public static PlayerManager Player { get{ Init(); return _playerManager; } }
+    public static SaveManager Save { get{ Init(); return _saveManager; } }
     
     private static void Init()
     {
@@ -62,7 +64,8 @@ public class Managers : MonoBehaviour
 
             _soundManager = Utils.GetOrAddComponent<SoundManager>(go);
             _soundManager.Init();
-
+            
+            _saveManager.Init();
             _resourceManager.Init();
             _poolManager.Init();
             _dailyManager.Init();
