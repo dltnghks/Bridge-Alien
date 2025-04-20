@@ -112,7 +112,7 @@ MonoBehaviour:
           \uC628 \uBAA9\uC801\uC740 \uB2E8\uC21C\uD788 \uB3C8 \uBFD0\uC785\uB2C8\uB2E4.\n
           \uC800\uB294 \uADF8\uC800 \uB3C8\uB9CC\uAC00\uC9C0\uACE0 \uBB34\uC0AC\uD788
           \uC9D1\uC73C\uB85C \uB3CC\uC544\uAC00\uB294 \uAC83\uC744 \uC6D0\uD569\uB2C8\uB2E4."
-        NextDialogID: END
+        NextDialogID: End
         Type: 2
       - DialogID: D11_03_03B_01
         CharacterName: "\uC18C\uC7A5"
@@ -161,7 +161,7 @@ MonoBehaviour:
         CharacterName: "\uC18C\uC7A5"
         Script: "\uD558\uD558\uD558 \uC7AC\uBC0C\uB124 .. \uC5ED\uC2DC \uC7AC\uBC0C\uC5B4
           \n \uB0B4\uAC00 \uC0AC\uB78C \uBCF4\uB294 \uB208\uC740 \uC815\uD655\uD558\uAD6C\uB9CC"
-        NextDialogID: END
+        NextDialogID: End
         Type: 2
       - DialogID: D11_03_03C_01
         CharacterName: "\uAE40\uC774\uBBFC"
@@ -185,10 +185,10 @@ MonoBehaviour:
         CharacterName: "\uC18C\uC7A5"
         Script: "\uCF54\uC2A4\uBAA8 \uBB3C\uB958 \uC18C\uC7A5\uC785\uB2C8\uB2E4.
           \uCC98\uB9AC\uD560 \uC77C\uC774 \uD558\uB098 \uC0DD\uACBC\uC2B5\uB2C8\uB2E4"
-        NextDialogID: END
+        NextDialogID: End
         Type: 2
-      - DialogID: END
-        CharacterName: END
-        Script: END
-        NextDialogID: END
+      - DialogID: End
+        CharacterName: End
+        Script: End
+        NextDialogID: End
         Type: 4

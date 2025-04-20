@@ -226,7 +226,7 @@ public class UIDialogPopup : UIPopup
             
             var choiceButton = _choiceButtons[index];
             choiceButton.gameObject.SetActive(true);
-            choiceButton.SetChoiceButton(choiceData, OnClickChoiceButton);
+            choiceButton.SetChoiceButton(choiceData, OnClickChoiceButton, index);
             index++;
         }
     }
@@ -289,6 +289,6 @@ public class UIDialogPopup : UIPopup
     {
         Logger.Log("EndDialog");
         _callback?.Invoke();
-        ClosePopupUI();
+        Managers.UI.ClosePopupUI(this);
     }
 }

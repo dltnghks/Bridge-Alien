@@ -18,10 +18,37 @@ MonoBehaviour:
       Value:
       - TaskType: 0
         TaskName: "\uC6B4\uB3D9"
-        RequirementGold: 0
+        RequirementGold: 100000
         FatigueValue: 0
         ExperienceValue: 0
         GravityAdaptationValue: 5
+        IntelligenceValue: 0
+        LuckMaxValue: 0
+        LuckMinValue: 0
+      - TaskType: 0
+        TaskName: Test1
+        RequirementGold: 200000
+        FatigueValue: 0
+        ExperienceValue: 5
+        GravityAdaptationValue: 0
+        IntelligenceValue: 0
+        LuckMaxValue: 0
+        LuckMinValue: 0
+      - TaskType: 0
+        TaskName: Test1
+        RequirementGold: 200000
+        FatigueValue: 0
+        ExperienceValue: 5
+        GravityAdaptationValue: 0
+        IntelligenceValue: 0
+        LuckMaxValue: 0
+        LuckMinValue: 0
+      - TaskType: 0
+        TaskName: Test1
+        RequirementGold: 200000
+        FatigueValue: 0
+        ExperienceValue: 5
+        GravityAdaptationValue: 0
         IntelligenceValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0

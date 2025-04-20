@@ -19,6 +19,7 @@ public class UIChoiceButton : UISubItem
     
     private Action<string> _callback;
     private DialogData _data;
+    private int _choiceNumber;
     
     public override bool Init()
     {
@@ -37,16 +38,18 @@ public class UIChoiceButton : UISubItem
 
     private void OnClickButton()
     {
+        Managers.Player.PlayerData.ChoiceNumber = _choiceNumber;
         _callback?.Invoke(_data.NextDialogID);
     }
     
-    public void SetChoiceButton(DialogData data, Action<string> callback)
+    public void SetChoiceButton(DialogData data, Action<string> callback, int choice)
     {
         Init();
 
         _data = data;
         GetText((int)Texts.ChoiceButtonText).text = _data.Script;
         _callback = callback;
+        _choiceNumber = choice;
     }
     
 }

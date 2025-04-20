@@ -15,7 +15,7 @@ public class SaveManager
         SaveData saveData = new SaveData();
         saveData.PlayerData = Managers.Player.PlayerData;
         saveData.LastDate = Managers.Daily.CurrentDate;
-        saveData.LastDailyData = Managers.Daily.CurrentDailyData;
+        saveData.LastDailyData = Managers.Daily.PreDailyData;
         
         string json = JsonUtility.ToJson(saveData);
         File.WriteAllText(path, json);
@@ -28,7 +28,6 @@ public class SaveManager
             SaveData loadData = JsonUtility.FromJson<SaveData>(json);
             Managers.Player.Init(loadData.PlayerData);
             Managers.Daily.Init(loadData.LastDate, loadData.LastDailyData);
-            Managers.Scene.ChangeScene(Define.Scene.Title);
         }
         Debug.LogWarning("No save file found.");
         return new PlayerData();

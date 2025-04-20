@@ -8,6 +8,7 @@ public class PlayerData
 {
     public float PlayerGold = 0;
     public SerializedDictionary<Define.PlayerStatType, int> Stats = new SerializedDictionary<Define.PlayerStatType, int>();
+    public int ChoiceNumber = -1;
     
     public PlayerData()
     {

@@ -13,8 +13,11 @@ public class UIHouseScene : UIScene
     {
         PlayerStatusButton,
         TaskButton,
+        
+        // Test Code
         SaveButton,
         LoadButton,
+        NextButton,
     }
 
     enum Images
@@ -39,10 +42,20 @@ public class UIHouseScene : UIScene
         
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
+        
+        // Test Code
         GetButton((int)Buttons.SaveButton).gameObject.BindEvent(OnClickSaveButton);
         GetButton((int)Buttons.LoadButton).gameObject.BindEvent(OnClickLoadButton);
+        GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
         
         return true;
+    }
+
+    public override void UIUpdate()
+    {
+        base.UIUpdate();
+        SetDayText();
+        SetTimeText();
     }
 
     private void OnClickPlayerStatusButton()
@@ -68,14 +81,22 @@ public class UIHouseScene : UIScene
         _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
     }
 
+    // Test Code
     private void OnClickSaveButton()
     {
         Managers.Save.Save();
     }
 
+    // Test Code
     private void OnClickLoadButton()
     {
         Managers.Save.Load();
+    }
+
+    // Test Code
+    private void OnClickNextButton()
+    {
+        Managers.Daily.StartEvent();
     }
 
     private void SetDayText()

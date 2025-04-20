@@ -18,8 +18,8 @@ MonoBehaviour:
       Value:
       - EventID: Start
         Time: 0
-        EventType: 0
-        Parameter: Unknown
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
         NextEventID: D11_Test
       - EventID: D11_E1
         Time: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
       - EventID: D11_E8
         Time: 2
         EventType: 4
-        Parameter: Day2
+        Parameter: 
         NextEventID: End
     - Key: Day2
       Value:
@@ -111,7 +111,7 @@ MonoBehaviour:
       - EventID: D11_E8
         Time: 2
         EventType: 4
-        Parameter: Day2
+        Parameter: 
         NextEventID: End
       - EventID: Start2
         Time: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
       - EventID: D11_E8
         Time: 2
         EventType: 4
-        Parameter: Day2
+        Parameter: 
         NextEventID: End
       - EventID: Start3
         Time: 0
@@ -201,5 +201,5 @@ MonoBehaviour:
       - EventID: D11_E8
         Time: 2
         EventType: 4
-        Parameter: Day2
+        Parameter: 
         NextEventID: End

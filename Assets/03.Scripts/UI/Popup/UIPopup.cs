@@ -12,8 +12,9 @@ public class UIPopup : UIBase
         return true;
     }
 
-    public virtual void ClosePopupUI()
+    public void ClosePopupUI()
     {
+        Logger.Log("ClosePopupUI");
         Managers.UI.ClosePopupUI(this);
     }
 }

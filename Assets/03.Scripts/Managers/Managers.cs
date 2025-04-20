@@ -68,8 +68,8 @@ public class Managers : MonoBehaviour
             _saveManager.Init();
             _resourceManager.Init();
             _poolManager.Init();
-            _dailyManager.Init();
             _playerManager.Init();
+            _dailyManager.Init();
             
             DontDestroyOnLoad(go);
         }
