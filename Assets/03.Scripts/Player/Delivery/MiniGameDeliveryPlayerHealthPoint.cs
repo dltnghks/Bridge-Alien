@@ -3,35 +3,34 @@ using UnityEngine.Events;
 
 public class MiniGameDeliveryPlayerHealthPoint : MonoBehaviour, IHealthPoint
 {
-    [SerializeField]
+    [SerializeField, Range(0f, 100f)]
     private float maxHealth = 100f;
-
-    private float currentHealth;
+    private float _currentHealth;
 
     public float MaxHealth => maxHealth;
-    public float CurrentHealth => currentHealth;
+    public float CurrentHealth => _currentHealth;
 
     public event UnityAction<float, float> OnHealthChanged;
 
     private void Awake()
     {
-        currentHealth = maxHealth; // 초기 체력을 최대 체력으로 설정
+        _currentHealth = maxHealth; // 초기 체력을 최대 체력으로 설정
     }
 
     public void Heal(float amount)
     {
         if (amount <= 0) return;
 
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        _currentHealth = Mathf.Clamp(_currentHealth + amount, 0, maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, maxHealth);
     }
 
     public void TakeDamage(float damage)
     {
         if (damage <= 0) return;
 
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, maxHealth);
 
         if (IsDead())
         {
@@ -43,12 +42,12 @@ public class MiniGameDeliveryPlayerHealthPoint : MonoBehaviour, IHealthPoint
 
     public void SetHealth(float health)
     {
-        currentHealth = Mathf.Clamp(health, 0, maxHealth);
-        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        _currentHealth = Mathf.Clamp(health, 0, maxHealth);
+        OnHealthChanged?.Invoke(_currentHealth, maxHealth);
     }
 
     public bool IsDead()
     {
-        return currentHealth <= 0;
+        return _currentHealth <= 0;
     }
 }

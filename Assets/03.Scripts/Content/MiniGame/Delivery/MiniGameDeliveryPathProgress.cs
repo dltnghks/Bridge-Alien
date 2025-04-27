@@ -21,7 +21,7 @@ public class MiniGameDeliveryPathProgress
 
 
             UIPathProgressBar.Init();
-            UIPathProgressBar.SetProgressBar(endTime);
+            // UIPathProgressBar.SetProgressBar(endTime);
             
             IsActive = true;
         }
@@ -42,7 +42,7 @@ public class MiniGameDeliveryPathProgress
         if (IsActive)
         {
             CurValue += time;
-            UIPathProgressBar.AddProgress(time);
+            UIPathProgressBar.UpdateProgress(time);
         }
     }
 

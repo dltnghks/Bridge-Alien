@@ -1,8 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class MiniGameDeliveryPlayer : Player
 {
@@ -16,9 +13,7 @@ public class MiniGameDeliveryPlayer : Player
         _healthPoint = GetComponent<IHealthPoint>();
 
         if (_healthPoint != null)
-        {
             _healthPoint.OnHealthChanged += healthGauge.SetHP;
-        }
     }
     private void OnTriggerEnter(Collider other)
     {
