@@ -101,7 +101,8 @@ public class Define
     {
         Unknown,
         SelfDevelopment,    // 자기개발
+        Fortune,         // 투자
         Entertainment,      // 유흥
-        Investment,         // 투자
+        
     }
 }

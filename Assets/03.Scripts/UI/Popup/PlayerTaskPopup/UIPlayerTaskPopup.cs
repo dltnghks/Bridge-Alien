@@ -30,6 +30,7 @@ public class UIPlayerTaskPopup : UIPopup
     enum Objects
     {
         UITaskGroup,
+        UITaskAnimPortrait,
     }
 
     private Define.TaskType _currentTaskType = Define.TaskType.Unknown;
@@ -38,6 +39,11 @@ public class UIPlayerTaskPopup : UIPopup
     private UITaskGroup _uiTaskGroup = null;
     private ScrollRect _scrollRect = null;
     
+    public TaskAnimator TaskAnimator
+    {
+        get;
+        private set;
+    }
     public override bool Init()
     {
         if (base.Init() == false)
@@ -48,6 +54,7 @@ public class UIPlayerTaskPopup : UIPopup
         BindButton(typeof(Buttons));
         BindImage(typeof(Images));
         BindObject(typeof(Objects));
+        TaskAnimator = GetObject((int)Objects.UITaskAnimPortrait).GetComponent<TaskAnimator>();
         
         GetImage((int)Images.BlurBackground).gameObject.BindEvent(OnClickBlurBackground);
 

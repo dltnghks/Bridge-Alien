@@ -53,6 +53,7 @@ public class UITaskButton : UISubItem
     
     public void Select()
     {
+        _tabController.TaskAnimator.TriggerTask(PlayerTaskData.TaskID);
         _outline.enabled = true;
     }
 

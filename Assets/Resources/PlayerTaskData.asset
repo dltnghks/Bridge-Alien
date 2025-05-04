@@ -16,61 +16,97 @@ MonoBehaviour:
     _serializedList:
     - Key: 1
       Value:
-      - TaskType: 0
-        TaskName: "\uC6B4\uB3D9"
+      - TaskID: C01_T01
+        TaskName: "\uD5EC\uC2A4"
         RequirementGold: 100000
         FatigueValue: 0
         ExperienceValue: 0
-        GravityAdaptationValue: 5
+        GravityAdaptationValue: 1
         IntelligenceValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0
-      - TaskType: 0
-        TaskName: Test1
+      - TaskID: C01_T02
+        TaskName: "\uC2E4\uB0B4 \uD074\uB77C\uC774\uBC0D"
         RequirementGold: 200000
         FatigueValue: 0
         ExperienceValue: 5
-        GravityAdaptationValue: 0
+        GravityAdaptationValue: 2
         IntelligenceValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0
-      - TaskType: 0
-        TaskName: Test1
-        RequirementGold: 200000
+      - TaskID: C01_T03
+        TaskName: "\uC9C0\uAD6C\uC77C\uBCF4 \uAD6C\uB3C5"
+        RequirementGold: 50000
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 0
-        IntelligenceValue: 0
+        IntelligenceValue: 2
         LuckMaxValue: 0
         LuckMinValue: 0
-      - TaskType: 0
-        TaskName: Test1
-        RequirementGold: 200000
+      - TaskID: C01_T04
+        TaskName: "\uC9C0\uAD6C\uC0AC \uC5F0\uAD6C"
+        RequirementGold: 100000
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 0
-        IntelligenceValue: 0
+        IntelligenceValue: 3
         LuckMaxValue: 0
         LuckMinValue: 0
     - Key: 2
       Value:
-      - TaskType: 0
-        TaskName: "\uB178\uB798"
-        RequirementGold: 100000
+      - TaskID: C02_T01
+        TaskName: "\uAE30\uB3C4"
+        RequirementGold: 0
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 0
         IntelligenceValue: 0
-        LuckMaxValue: 0
+        LuckMaxValue: 10
+        LuckMinValue: -10
+      - TaskID: C02_T02
+        TaskName: "\uC4F0\uB808\uAE30 \uC90D\uAE30"
+        RequirementGold: 0
+        FatigueValue: 0
+        ExperienceValue: 5
+        GravityAdaptationValue: 0
+        IntelligenceValue: 0
+        LuckMaxValue: 5
         LuckMinValue: 0
     - Key: 3
       Value:
-      - TaskType: 0
-        TaskName: "\uD22C\uC790"
-        RequirementGold: 100000
+      - TaskID: C03_T01
+        TaskName: "\uAC00\uB9CC\uD788 \uC788\uAE30"
+        RequirementGold: 0
+        FatigueValue: 20
+        ExperienceValue: 0
+        GravityAdaptationValue: 0
+        IntelligenceValue: -2
+        LuckMaxValue: 0
+        LuckMinValue: 0
+      - TaskID: C03_T02
+        TaskName: "\uB178\uB798\uBC29"
+        RequirementGold: 150000
         FatigueValue: 0
         ExperienceValue: 0
         GravityAdaptationValue: 0
-        IntelligenceValue: 5
+        IntelligenceValue: 0
+        LuckMaxValue: 0
+        LuckMinValue: 0
+      - TaskID: C03_T03
+        TaskName: "\uD5CC\uD305 \uD3EC\uCC28"
+        RequirementGold: 300000
+        FatigueValue: 0
+        ExperienceValue: 0
+        GravityAdaptationValue: 0
+        IntelligenceValue: 0
+        LuckMaxValue: 0
+        LuckMinValue: 0
+      - TaskID: C03_T04
+        TaskName: "\uBCD1\uC6D0 \uC785\uC6D0"
+        RequirementGold: 500000
+        FatigueValue: 100
+        ExperienceValue: 0
+        GravityAdaptationValue: 0
+        IntelligenceValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0
