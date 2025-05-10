@@ -13,7 +13,19 @@ public class UITaskResultPopup : UIPopup
         TaskCompletedText,
     }
     
-    private PlayerTaskData _playerTaskData;
+    enum Images
+    {
+        ExperienceValueTextIncreaseImage,
+        GravityAdaptationValueTextIncreaseImage,
+        IntelligenceValueTextIncreaseImage,
+        LuckValueTextIncreaseImage,
+        ExperienceValueTextDecreaseImage,
+        GravityAdaptationValueTextDecreaseImage,
+        IntelligenceValueTextDecreaseImage,
+        LuckValueTextDecreaseImage,
+    }
+    
+    private PlayerTaskData _selectedTaskData;
     
     public override bool Init()
     {
@@ -22,6 +34,7 @@ public class UITaskResultPopup : UIPopup
             return false;
         }
         BindText(typeof(Texts));
+        BindImage(typeof(Images));
         
         gameObject.BindEvent(OnClickUI);
         
@@ -33,10 +46,11 @@ public class UITaskResultPopup : UIPopup
         base.Init(data);
         if (data is PlayerTaskData taskData)
         {
-            _playerTaskData = taskData;
+            _selectedTaskData = taskData;
             
             // 텍스트 세팅
             SetText();
+            SetTaskStatTextImage();
         }
         else
         {
@@ -57,10 +71,65 @@ public class UITaskResultPopup : UIPopup
         GetText((int)Texts.IntelligenceValueText).text = $"{playerData.Stats[Define.PlayerStatType.Intelligence]} / 100";
         GetText((int)Texts.LuckValueText).text = $"{playerData.Stats[Define.PlayerStatType.Luck]} / 100";
 
-        if (_playerTaskData != null)
+        if (_selectedTaskData != null)
         {
-            GetText((int)Texts.TaskCompletedText).text = _playerTaskData.TaskCompletedText;
+            GetText((int)Texts.TaskCompletedText).text = _selectedTaskData.TaskCompletedText;
         }
+    }
+    
+    private void SetTaskStatTextImage()
+    {   
+        SetTaskStatImages(false);
+            
+        // 능력치 상승치 표기
+        if (_selectedTaskData.ExperienceValue > 0)
+        {
+            GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        else if (_selectedTaskData.ExperienceValue < 0)
+        {
+            GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        
+        
+        if (_selectedTaskData.IntelligenceValue > 0)
+        {
+            GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);   
+        }
+        else if (_selectedTaskData.IntelligenceValue < 0)
+        {
+            GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        
+        
+        if (_selectedTaskData.GravityAdaptationValue > 0)
+        {
+            GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        else if (_selectedTaskData.GravityAdaptationValue < 0)
+        {
+            GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        
+        if (_selectedTaskData.LuckMinValue != 0)
+        {
+            // 운 랜덤 상승
+            GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+    }
+    
+    private void SetTaskStatImages(bool active)
+    {
+        float value = active == true ? 1.0f : 0.0f;
+        GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        
+        GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.LuckValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
     }
     
 }
