@@ -18,7 +18,9 @@ public class UITaskGroup : UISubItem
     }
 
     private List<UITaskButton> _taskButtons = new List<UITaskButton>();
-    
+
+    public List<UITaskButton> TaskButtons => _taskButtons;
+
     private UIPlayerTaskPopup _controller;
     
     public override bool Init()

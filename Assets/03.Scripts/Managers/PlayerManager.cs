@@ -64,7 +64,7 @@ public class PlayerManager
     }
     
 
-    public float AddGold(float gold)
+    public float AddGold(int gold)
     {
         float totalGold = gold;
 
@@ -117,7 +117,7 @@ public class PlayerManager
             totalGold *= GoldGainRates[3];
         }
         
-        PlayerData.PlayerGold += totalGold;
+        PlayerData.PlayerGold += (int)totalGold;
         
         return totalGold;
     }
@@ -131,6 +131,6 @@ public class PlayerManager
 
     public int GetGold()
     {
-        throw new System.NotImplementedException();
+        return PlayerData.PlayerGold;
     }
 }

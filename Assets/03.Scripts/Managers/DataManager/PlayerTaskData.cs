@@ -7,6 +7,9 @@ public class PlayerTaskData
 {
     public string TaskID;
     public string TaskName;
+    public string ThumbnailText;
+    public string TaskProgressText;
+    public string TaskCompletedText;
     public int RequirementGold;
     public int FatigueValue;
     public int ExperienceValue;
