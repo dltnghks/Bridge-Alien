@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UITaskButton : UISubItem
+public class UITaskButton : UIActiveButton
 {
     enum Texts
     {
@@ -12,7 +12,6 @@ public class UITaskButton : UISubItem
     }
     
     private UIPlayerTaskPopup _tabController;
-    private Outline _outline;
     public PlayerTaskData PlayerTaskData { get; private set; }
 
     public override bool Init()
@@ -26,6 +25,8 @@ public class UITaskButton : UISubItem
         
         gameObject.BindEvent(OnSelectTab);
         
+        Deselect();
+        
         return true;
     }
     
@@ -33,10 +34,7 @@ public class UITaskButton : UISubItem
     {
         Init();
         
-        _outline = GetComponent<Outline>();
         _tabController = tabController;
-        
-        Deselect();
     }
     
     private void OnSelectTab()
@@ -53,11 +51,11 @@ public class UITaskButton : UISubItem
     
     public void Select()
     {
-        _outline.enabled = true;
+        Activate();
     }
 
     public void Deselect()
     {
-        _outline.enabled = false;
+        Deactivate();
     }
 }

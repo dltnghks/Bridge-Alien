@@ -50,7 +50,10 @@ public class UIPlayerTaskPopup : UIPopup
     private UITaskTabButton _currentTaskTab = null;
     private UITaskButton _currentTaskButton = null;
     private UITaskGroup _uiTaskGroup = null;
+    private UIActiveButton _uiConfirmButton = null;
     private ScrollRect _scrollRect = null;
+    
+    private PlayerTaskData _selectedTaskData = null;
     
     public TaskAnimator TaskAnimator
     {
@@ -73,11 +76,13 @@ public class UIPlayerTaskPopup : UIPopup
         TaskAnimator = GetObject((int)Objects.UITaskAnimPortrait).GetComponent<TaskAnimator>();
         
         GetImage((int)Images.BlurBackground).gameObject.BindEvent(OnClickBlurBackground);
-
+        
+        _uiConfirmButton = GetButton((int)Buttons.ConfirmButton).gameObject.GetOrAddComponent<UIActiveButton>();
+        _uiConfirmButton.Init();
+        _uiConfirmButton.gameObject.BindEvent(OnClickConfirmButton);
+        
         InitTabGroup();
         InitTaskGroup();
-        
-        GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
         
         SetTaskStatText();
         
@@ -128,25 +133,22 @@ public class UIPlayerTaskPopup : UIPopup
             Logger.LogWarning("Nothing to click");
             return;
         }
-        
-        // 일과 수행
-        PlayerTaskData taskData = _currentTaskButton.PlayerTaskData;
 
         // 피로도, 골드 조건 체크
-        if(Managers.Player.GetStat(Define.PlayerStatType.Fatigue) < taskData.RequirementGold)
+        if(Managers.Player.GetStat(Define.PlayerStatType.Fatigue) < _selectedTaskData.RequirementGold)
         {
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;
         }
         
         // 일과 수행창 예약
-        Managers.UI.RequestPopup<UITaskProgressPopup>(taskData);
+        Managers.UI.RequestPopup<UITaskProgressPopup>(_selectedTaskData);
 
-        Managers.Player.AddStat(Define.PlayerStatType.Fatigue, taskData.FatigueValue);
-        Managers.Player.AddStat(Define.PlayerStatType.Experience, taskData.ExperienceValue);
-        Managers.Player.AddStat(Define.PlayerStatType.Intelligence, taskData.IntelligenceValue);
-        Managers.Player.AddStat(Define.PlayerStatType.GravityAdaptation, taskData.GravityAdaptationValue);
-        Managers.Player.AddStat(Define.PlayerStatType.Luck, Random.Range(taskData.LuckMinValue, taskData.LuckMaxValue));
+        Managers.Player.AddStat(Define.PlayerStatType.Fatigue, _selectedTaskData.FatigueValue);
+        Managers.Player.AddStat(Define.PlayerStatType.Experience, _selectedTaskData.ExperienceValue);
+        Managers.Player.AddStat(Define.PlayerStatType.Intelligence, _selectedTaskData.IntelligenceValue);
+        Managers.Player.AddStat(Define.PlayerStatType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue);
+        Managers.Player.AddStat(Define.PlayerStatType.Luck, Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue));
         
         ClosePopupUI();
     }
@@ -182,11 +184,19 @@ public class UIPlayerTaskPopup : UIPopup
             {
                 SelectTaskButton(_uiTaskGroup.TaskButtons[0]);
             }
+            else
+            {
+                _currentTaskButton?.Deselect();
+            }
         }
 
-        if (_currentTaskButton != null)
+        foreach (var taskButton in _uiTaskGroup.TaskButtons)
         {
-            _currentTaskButton.Deselect();
+            if (taskButton.PlayerTaskData == _selectedTaskData)
+            {
+                SelectTaskButton(taskButton);
+                break;
+            }
         }
     }
 
@@ -199,6 +209,7 @@ public class UIPlayerTaskPopup : UIPopup
         }
 
         _currentTaskButton = taskButton;
+        _selectedTaskData = _currentTaskButton.PlayerTaskData;
         
         _currentTaskButton.Select();
         SetTaskStatTextImage();
@@ -212,12 +223,14 @@ public class UIPlayerTaskPopup : UIPopup
             return;
         }
 
-        if (_currentTaskButton.PlayerTaskData.RequirementGold > Managers.Player.GetGold())
+        if (_selectedTaskData.RequirementGold > Managers.Player.GetGold())
         {
+            _uiConfirmButton?.Deactivate();
             GetText((int)Texts.ConfirmButtonText).text = "소지금 부족";
         }
         else
         {
+            _uiConfirmButton?.Activate();
             GetText((int)Texts.ConfirmButtonText).text = "수행하기";
         }
     }
@@ -233,52 +246,50 @@ public class UIPlayerTaskPopup : UIPopup
     }
 
     private void SetTaskStatTextImage()
-    {
-        PlayerTaskData playerData = _currentTaskButton.PlayerTaskData;
-        
-        TaskAnimator.TriggerTask(playerData.TaskID);
+    {   
+        TaskAnimator.TriggerTask(_selectedTaskData.TaskID);
 
 
         SetTaskStatImages(false);
             
         // 능력치 상승치 표기
-        if (playerData.ExperienceValue > 0)
+        if (_selectedTaskData.ExperienceValue > 0)
         {
             GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
-        else if (playerData.ExperienceValue < 0)
+        else if (_selectedTaskData.ExperienceValue < 0)
         {
             GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
         
         
-        if (playerData.IntelligenceValue > 0)
+        if (_selectedTaskData.IntelligenceValue > 0)
         {
             GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);   
         }
-        else if (playerData.IntelligenceValue < 0)
+        else if (_selectedTaskData.IntelligenceValue < 0)
         {
             GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
         
         
-        if (playerData.GravityAdaptationValue > 0)
+        if (_selectedTaskData.GravityAdaptationValue > 0)
         {
             GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
-        else if (playerData.GravityAdaptationValue < 0)
+        else if (_selectedTaskData.GravityAdaptationValue < 0)
         {
             GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
         
-        if (playerData.LuckMinValue != 0)
+        if (_selectedTaskData.LuckMinValue != 0)
         {
             // 운 랜덤 상승
             GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
         
         // 썸네일 텍스트 설정
-        GetText((int)Texts.ThumbnailText).text = _currentTaskButton.PlayerTaskData.ThumbnailText;
+        GetText((int)Texts.ThumbnailText).text = _selectedTaskData.ThumbnailText;
     }
 
     private void SetTaskStatImages(bool active)

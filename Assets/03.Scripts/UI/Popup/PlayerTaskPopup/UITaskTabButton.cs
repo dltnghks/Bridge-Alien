@@ -5,19 +5,20 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class UITaskTabButton : UISubItem
+public class UITaskTabButton : UIActiveButton
 {
     enum Texts
     {
         ButtonText,
     }
 
-    [SerializeField] private Sprite _activeButtonSprite;
-    [SerializeField] private Sprite _dectiveButtonSprite;
-    
+    enum Objects
+    {
+        Flag,
+    }
+
     private Define.TaskType _taskType;
     private UIPlayerTaskPopup _tabController;
-    private Image _buttonImage;
 
     public Define.TaskType TaskType
     {
@@ -32,6 +33,7 @@ public class UITaskTabButton : UISubItem
         }
 
         BindText(typeof(Texts));
+        BindObject(typeof(Objects));
         
         gameObject.BindEvent(OnSelectTab);
         
@@ -56,11 +58,13 @@ public class UITaskTabButton : UISubItem
     
     public void Select()
     {
-        _buttonImage.sprite = _activeButtonSprite;
+        Activate();
+        GetObject((int)Objects.Flag).SetActive(true);
     }
 
     public void Deselect()
     {        
-        _buttonImage.sprite = _dectiveButtonSprite;
+        Deactivate();
+        GetObject((int)Objects.Flag).SetActive(false);
     }
 }
