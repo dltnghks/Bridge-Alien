@@ -11,12 +11,23 @@ public class UIPlayerTaskPopup : UIPopup
 {
     enum Texts
     {
-        
+        ExperienceValueText,
+        GravityAdaptationValueText,
+        IntelligenceValueText,
+        LuckValueText,
     }
 
     enum Images
     {
         BlurBackground,
+        ExperienceValueTextIncreaseImage,
+        GravityAdaptationValueTextIncreaseImage,
+        IntelligenceValueTextIncreaseImage,
+        LuckValueTextIncreaseImage,
+        ExperienceValueTextDecreaseImage,
+        GravityAdaptationValueTextDecreaseImage,
+        IntelligenceValueTextDecreaseImage,
+        LuckValueTextDecreaseImage,
     }
 
     enum Buttons
@@ -44,6 +55,7 @@ public class UIPlayerTaskPopup : UIPopup
         get;
         private set;
     }
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -54,6 +66,8 @@ public class UIPlayerTaskPopup : UIPopup
         BindButton(typeof(Buttons));
         BindImage(typeof(Images));
         BindObject(typeof(Objects));
+        BindText(typeof(Texts));
+        
         TaskAnimator = GetObject((int)Objects.UITaskAnimPortrait).GetComponent<TaskAnimator>();
         
         GetImage((int)Images.BlurBackground).gameObject.BindEvent(OnClickBlurBackground);
@@ -62,6 +76,8 @@ public class UIPlayerTaskPopup : UIPopup
         InitTaskGroup();
         
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+        
+        SetTaskStatText();
         
         // 초기화가 끝난 후, 첫 번째 탭 선택
         SelectTabButton(GetButton((int)Buttons.SelfDevelopmentButton).GetComponent<UITaskTabButton>());
@@ -74,7 +90,7 @@ public class UIPlayerTaskPopup : UIPopup
         // 버튼 3개 세팅
         GetButton((int)Buttons.SelfDevelopmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.SelfDevelopment);
         GetButton((int)Buttons.EntertainmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.Entertainment);
-        GetButton((int)Buttons.InvestmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.Investment);
+        GetButton((int)Buttons.InvestmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.Fortune);
     }
         
 
@@ -159,6 +175,79 @@ public class UIPlayerTaskPopup : UIPopup
         }
 
         _currentTaskButton = taskButton;
+        
         _currentTaskButton.Select();
+        SetTaskStatTextImage();
+    }
+
+    public void SetTaskStatText()
+    {
+        PlayerData playerData = Managers.Player.PlayerData;
+        GetText((int)Texts.ExperienceValueText).text = $"{playerData.Stats[Define.PlayerStatType.Experience]} / 100";
+        GetText((int)Texts.GravityAdaptationValueText).text = $"{playerData.Stats[Define.PlayerStatType.GravityAdaptation]} / 100";
+        GetText((int)Texts.IntelligenceValueText).text = $"{playerData.Stats[Define.PlayerStatType.Intelligence]} / 100";
+        GetText((int)Texts.LuckValueText).text = $"{playerData.Stats[Define.PlayerStatType.Luck]} / 100";
+        SetTaskStatImages(false);
+    }
+
+    private void SetTaskStatTextImage()
+    {
+        PlayerTaskData playerData = _currentTaskButton.PlayerTaskData;
+        
+        TaskAnimator.TriggerTask(playerData.TaskID);
+
+
+        SetTaskStatImages(false);
+            
+        // 능력치 상승치 표기
+        if (playerData.ExperienceValue > 0)
+        {
+            GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        else if (playerData.ExperienceValue < 0)
+        {
+            GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        
+        
+        if (playerData.IntelligenceValue > 0)
+        {
+            GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);   
+        }
+        else if (playerData.IntelligenceValue < 0)
+        {
+            GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        
+        
+        if (playerData.GravityAdaptationValue > 0)
+        {
+            GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        else if (playerData.GravityAdaptationValue < 0)
+        {
+            GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+        
+        if (playerData.LuckMinValue != 0)
+        {
+            // 운 랜덤 상승
+            GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+        }
+    }
+
+    private void SetTaskStatImages(bool active)
+    {
+        float value = active == true ? 1.0f : 0.0f;
+        GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        
+        GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.LuckValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+        
     }
 }

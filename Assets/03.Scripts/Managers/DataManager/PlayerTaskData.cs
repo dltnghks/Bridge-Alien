@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerTaskData
 {
-    public Define.TaskType TaskType;
+    public string TaskID;
     public string TaskName;
     public int RequirementGold;
     public int FatigueValue;
