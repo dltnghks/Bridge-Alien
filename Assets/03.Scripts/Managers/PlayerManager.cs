@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerManager
 {
@@ -10,6 +11,8 @@ public class PlayerManager
     
     public PlayerData PlayerData { get; private set; }
 
+    public UnityAction OnPlayerDataChanged { get; set; }
+    
     public void Init(PlayerData playerData = null)
     {
         // 세이브 데이터 없으면 초기화
@@ -20,7 +23,7 @@ public class PlayerManager
         
         PlayerData = playerData;
     }
-
+    
     public int GetStat(Define.PlayerStatType type)
     {
         return PlayerData.Stats[type];
@@ -61,6 +64,8 @@ public class PlayerManager
         {
             PlayerData.Stats[type] = 0;
         }
+        
+        OnPlayerDataChanged?.Invoke();
     }
     
 
@@ -118,6 +123,8 @@ public class PlayerManager
         }
         
         PlayerData.PlayerGold += (int)totalGold;
+        
+        OnPlayerDataChanged?.Invoke();
         
         return totalGold;
     }
