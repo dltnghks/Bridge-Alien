@@ -85,30 +85,36 @@ public class UITaskResultPopup : UIPopup
         if (_selectedTaskData.ExperienceValue > 0)
         {
             GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.ExperienceValueText).color = Color.green;
         }
         else if (_selectedTaskData.ExperienceValue < 0)
         {
             GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.ExperienceValueText).color = Color.red;
         }
         
         
         if (_selectedTaskData.IntelligenceValue > 0)
         {
-            GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);   
+            GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.IntelligenceValueText).color = Color.green;
         }
         else if (_selectedTaskData.IntelligenceValue < 0)
         {
             GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.IntelligenceValueText).color = Color.red;
         }
         
         
         if (_selectedTaskData.GravityAdaptationValue > 0)
         {
             GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.GravityAdaptationValueText).color = Color.green;
         }
         else if (_selectedTaskData.GravityAdaptationValue < 0)
         {
             GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.GravityAdaptationValueText).color = Color.red;
         }
         
         if (_selectedTaskData.LuckMinValue != 0)
