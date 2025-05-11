@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uC77C\uACFC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5cef455e77d8954babab04c108446f6, type: 2}
   m_sharedMaterial: {fileID: -3118823961064641592, guid: b5cef455e77d8954babab04c108446f6, type: 2}
@@ -302,7 +302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28666776, y: 0}
   m_AnchorMax: {x: 0.9474487, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &9008314419575763716
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uBE44\uC790\uC815\uBCF4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5cef455e77d8954babab04c108446f6, type: 2}
   m_sharedMaterial: {fileID: -3118823961064641592, guid: b5cef455e77d8954babab04c108446f6, type: 2}
@@ -914,7 +914,7 @@ GameObject:
   - component: {fileID: 4330735615490787286}
   - component: {fileID: 3446711701369770882}
   m_Layer: 5
-  m_Name: PlayerStatButton
+  m_Name: PlayerStatusButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1326,7 +1326,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1346,7 +1346,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 2362586078429388375}
   m_HandleRect: {fileID: 0}
@@ -1369,7 +1369,7 @@ GameObject:
   - component: {fileID: 7255144815274109552}
   - component: {fileID: 7573180791723854533}
   m_Layer: 0
-  m_Name: UIButtonGroup
+  m_Name: ButtonGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1556,7 +1556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1585,7 +1585,7 @@ GameObject:
   - component: {fileID: 5920130461731662605}
   - component: {fileID: 7690072672661636175}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: TaskButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

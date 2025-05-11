@@ -40,6 +40,8 @@ public class UITaskProgressPopup : UIPopup
                 ClosePopupUI();
             });
         
+        Managers.UI.SetInputBackground(false);
+        
         return true;
     }
 
@@ -62,5 +64,11 @@ public class UITaskProgressPopup : UIPopup
         {
             Logger.LogWarning("data is not PlayerTaskData");
         }
+    }
+
+    public override void ClosePopupUI()
+    {
+        Managers.UI.SetInputBackground(true);
+        base.ClosePopupUI();
     }
 }

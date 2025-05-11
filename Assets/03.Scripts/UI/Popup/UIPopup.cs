@@ -21,7 +21,7 @@ public class UIPopup : UIBase
     }
 
     
-    public void ClosePopupUI()
+    public virtual void ClosePopupUI()
     {
         Logger.Log("ClosePopupUI");
         Managers.UI.ClosePopupUI(this);

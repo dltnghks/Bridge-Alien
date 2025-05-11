@@ -21,7 +21,6 @@ public class UIPlayerTaskPopup : UIPopup
 
     enum Images
     {
-        BlurBackground,
         ExperienceValueTextIncreaseImage,
         GravityAdaptationValueTextIncreaseImage,
         IntelligenceValueTextIncreaseImage,
@@ -74,8 +73,6 @@ public class UIPlayerTaskPopup : UIPopup
         BindText(typeof(Texts));
         
         TaskAnimator = GetObject((int)Objects.UITaskAnimPortrait).GetComponent<TaskAnimator>();
-        
-        GetImage((int)Images.BlurBackground).gameObject.BindEvent(OnClickBlurBackground);
         
         _uiConfirmButton = GetButton((int)Buttons.ConfirmButton).gameObject.GetOrAddComponent<UIActiveButton>();
         _uiConfirmButton.Init();

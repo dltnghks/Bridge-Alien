@@ -13,6 +13,8 @@ public class UIManager
 
     private readonly string _subItemPath = "Prefab/UI/SubItem/";
 
+    private UIBlurBackground _blurBackground = null;
+    
     public UIScene SceneUI
     {
         get;
@@ -33,6 +35,10 @@ public class UIManager
         }
     }
 
+    public void Init()
+    {
+    }
+    
     public void SetCanvas(GameObject go, bool sort = true)
     {
         Canvas canvas = Utils.GetOrAddComponent<Canvas>(go);
@@ -85,6 +91,19 @@ public class UIManager
         
         go.transform.SetParent(Root.transform);
 
+        
+        // 백그라운드 블러 생성
+        // TODO : 씬이 변경될 때마다 만들고 있음. Manager에 붙여놓고 사용가능하도록?
+        _blurBackground = null;
+        if (_blurBackground == null)
+        {
+            _blurBackground = ShowPopUI<UIBlurBackground>();
+            _blurBackground.IsInputEnabled = true;
+            _popupStack.Pop();
+            
+        }
+        _blurBackground.gameObject.SetActive(false);
+        
         return sceneUI;
     }
     
@@ -106,41 +125,7 @@ public class UIManager
             ShowNextReservedPopup();
         }
     }
-
-    // 미리 생성해두기
-    private T PreRequestPopup<T>(string name = null, Transform parent = null) where T : UIPopup
-    {
-        if (string.IsNullOrEmpty(name))
-        {
-            name = typeof(T).Name;
-        }
-
-        GameObject prefab = Managers.Resource.Load<GameObject>($"Prefab/UI/Popup/{name}");
-        GameObject go = Managers.Resource.Instantiate($"UI/Popup/{name}");
-
-        T popup = Utils.GetOrAddComponent<T>(go);
-
-        if (parent != null)
-        {
-            go.transform.SetParent(parent);
-        }
-        else if (SceneUI != null)
-        {
-            go.transform.SetParent(SceneUI.transform);
-        }
-        else
-        {
-            go.transform.SetParent(Root.transform);
-        }
-
-        go.transform.localScale = Vector3.one;
-        go.transform.localPosition = prefab.transform.position;
-        
-        go.SetActive(false);
-        
-        return popup;
-    }
-
+    
     public T ShowPopUI<T>(string name = null, Transform parent = null) where T : UIPopup
     {
         if (string.IsNullOrEmpty(name))
@@ -169,7 +154,9 @@ public class UIManager
 
         go.transform.localScale = Vector3.one;
         go.transform.localPosition = prefab.transform.position;
-
+        
+        _blurBackground?.gameObject.SetActive(true);
+        
         return popup;
     }
     
@@ -270,8 +257,20 @@ public class UIManager
         {
             ShowNextReservedPopup();
         }
+
+        if (_popupStack.Count == 0)
+        {
+            _blurBackground?.gameObject.SetActive(false);
+        }
     }
 
+    // 자동으로 꺼지거나 배경 클릭으로 종료하고 싶지않은 팝업의 경우, false
+    // 해당 팝업이 종료되면 true로 다시 변경해줘야 됨.
+    public void SetInputBackground(bool isEnabled)
+    {
+        _blurBackground.IsInputEnabled = isEnabled;
+    }
+    
     public void CloseSceneUI()
     {
         SceneUI.gameObject.SetActive(false);

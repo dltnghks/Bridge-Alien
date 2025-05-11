@@ -12,11 +12,6 @@ public class UIPlayerStatusPopup : UIPopup
         IntelligenceText,          // 지능
         LuckText,                  // 운
     }
-
-    enum Images
-    {
-        BlurBackground,
-    }
     
     public override bool Init()
     {
@@ -26,19 +21,10 @@ public class UIPlayerStatusPopup : UIPopup
         }
         
         BindText(typeof(Texts));
-        BindImage(typeof(Images));
         
         SetPlayerStat();
-        
-        GetImage((int)Images.BlurBackground).gameObject.BindEvent(OnClickBlurBackground);
-            
-        return base.Init();
-        
-    }
 
-    private void OnClickBlurBackground()
-    {
-        ClosePopupUI();
+        return true;
     }
 
     private void SetPlayerStat()

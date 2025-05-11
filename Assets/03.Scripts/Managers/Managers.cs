@@ -70,6 +70,7 @@ public class Managers : MonoBehaviour
             _poolManager.Init();
             _playerManager.Init();
             _dailyManager.Init();
+            _uiManager.Init();
             
             DontDestroyOnLoad(go);
         }

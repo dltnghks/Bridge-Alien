@@ -21,8 +21,8 @@ MonoBehaviour:
         ThumbnailText: test
         TaskProgressText: test progress
         TaskCompletedText: test complete
-        RequirementGold: 0
-        FatigueValue: 0
+        RequirementGold: -100
+        FatigueValue: 10
         ExperienceValue: 0
         GravityAdaptationValue: 1
         IntelligenceValue: 0

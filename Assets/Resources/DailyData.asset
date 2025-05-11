@@ -68,6 +68,51 @@ MonoBehaviour:
         NextEventID: End
     - Key: Day2
       Value:
+      - EventID: Start0
+        Time: 0
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D11_E1
+      - EventID: D11_E1
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+      - EventID: D11_E2
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E3
+      - EventID: D11_E3
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+      - EventID: D11_E4
+        Time: 1
+        EventType: 2
+        Parameter: Unload
+        NextEventID: D11_E8
+      - EventID: D11_E5
+        Time: 1
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E6
+      - EventID: D11_E6
+        Time: 1
+        EventType: 2
+        Parameter: Delivery
+        NextEventID: D11_E7
+      - EventID: D11_E7
+        Time: 2
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E8
+      - EventID: D11_E8
+        Time: 2
+        EventType: 4
+        Parameter: 
+        NextEventID: End
       - EventID: Start1
         Time: 0
         EventType: 0
@@ -114,51 +159,6 @@ MonoBehaviour:
         Parameter: 
         NextEventID: End
       - EventID: Start2
-        Time: 0
-        EventType: 0
-        Parameter: Unknown
-        NextEventID: D11_E1
-      - EventID: D11_E1
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E2
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E3
-      - EventID: D11_E3
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E4
-        Time: 1
-        EventType: 2
-        Parameter: Unload
-        NextEventID: D11_E8
-      - EventID: D11_E5
-        Time: 1
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E6
-      - EventID: D11_E6
-        Time: 1
-        EventType: 2
-        Parameter: Delivery
-        NextEventID: D11_E7
-      - EventID: D11_E7
-        Time: 2
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E8
-      - EventID: D11_E8
-        Time: 2
-        EventType: 4
-        Parameter: 
-        NextEventID: End
-      - EventID: Start3
         Time: 0
         EventType: 0
         Parameter: Unknown
