@@ -70,23 +70,23 @@ public class UIPlayerStatusPopup : UIPopup
 
     private void SetExperienceText(string text)
     {
-        string newText = "Experience\n" + text;
+        string newText = text;
         GetText((int)Texts.ExperienceText).SetText(newText);
     }
     
     private void SetGravityAdaptationText(string text)
     {
-        string newText = "GravityAdaptation\n" + text;
+        string newText = text;
         GetText((int)Texts.GravityAdaptationText).SetText(newText);
     }
     private void SetIntelligenceText(string text)
     {
-        string newText = "Intelligence\n" + text;
+        string newText = text;
         GetText((int)Texts.IntelligenceText).SetText(newText);
     }
     private void SetLuckText(string text)
     {
-        string newText = "Luck\n" + text;
+        string newText = text;
         GetText((int)Texts.LuckText).SetText(newText);
     }
 

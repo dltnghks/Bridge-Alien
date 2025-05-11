@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -111,7 +112,7 @@ public class UIHouseScene : UIScene
     {
         int curFatigue = Managers.Player.GetStat(Define.PlayerStatType.Fatigue);
         GetText((int)Texts.FatigueText).text = $"{curFatigue}/100";
-        _fatigueSlider.value = (float)curFatigue / 100f;
+        _fatigueSlider.DOValue((float)curFatigue / 100f, 0.5f);
     }
 
     private void OnEnable()
