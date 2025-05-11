@@ -8,6 +8,8 @@ public class PlayerData
 {
     public int PlayerGold = 0;
     public SerializedDictionary<Define.PlayerStatType, int> Stats = new SerializedDictionary<Define.PlayerStatType, int>();
+    // 플레이어가 고른 선택지
+    // -1인 경우 아직 선택지를 고르지 않은 상태
     public int ChoiceNumber = -1;
     
     public PlayerData()

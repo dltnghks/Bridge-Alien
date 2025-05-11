@@ -74,6 +74,7 @@ public class DailyManager
         if (dailyData == null)
         {
             string startStr = "Start";
+            // 선택지를 고른 경우, 시작 데이터를 start+선택지 번호로
             if (Managers.Player.PlayerData.ChoiceNumber >= 0)
             {
                 startStr += Managers.Player.PlayerData.ChoiceNumber.ToString();
@@ -85,7 +86,7 @@ public class DailyManager
             }
             else
             {
-                Logger.LogError("Daily data is empty");
+                Logger.LogError($"{startStr} Daily data is empty");
             }
         }
         
