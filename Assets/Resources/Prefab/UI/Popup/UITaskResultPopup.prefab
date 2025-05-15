@@ -253,8 +253,8 @@ MonoBehaviour:
   m_text: "\uC9C0\uAD6C \uC911\uB825\uC5D0 \uC880 \uB354 \uC775\uC219\uD574\uC9C4
     \uAC83 \uAC19\uB2E4.."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b5cef455e77d8954babab04c108446f6, type: 2}
-  m_sharedMaterial: {fileID: -3118823961064641592, guid: b5cef455e77d8954babab04c108446f6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 59f90884f45c00542942263b59b1648f, type: 2}
+  m_sharedMaterial: {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
+  m_fontSize: 30.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -597,6 +597,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1072036825647719779, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
+      propertyPath: m_fontSize
+      value: 23.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1662589633969285008, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -620,6 +624,14 @@ PrefabInstance:
     - target: {fileID: 1662589633969285008, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683964203829518488, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
+      propertyPath: m_fontSize
+      value: 23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734137833730336315, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
+      propertyPath: m_fontSize
+      value: 23.5
       objectReference: {fileID: 0}
     - target: {fileID: 2789613190989064202, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
       propertyPath: m_Pivot.x
@@ -705,6 +717,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3368088b77292d14087d649f8d17740b, type: 3}
+    - target: {fileID: 4345864286234878912, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
+      propertyPath: m_fontSize
+      value: 23.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4815458856771667690, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
       propertyPath: m_Name
       value: UIStatTextGroup
@@ -713,6 +729,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1e97c98e90693304b8b730298cb06954, type: 3}
+    - target: {fileID: 5653212526150509232, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
+      propertyPath: m_fontSize
+      value: 23.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5693264032418518263, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -737,6 +757,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6264681764735849988, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
+      propertyPath: m_fontSize
+      value: 23.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6306773896001462339, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -760,6 +784,14 @@ PrefabInstance:
     - target: {fileID: 6306773896001462339, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306253498017915368, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
+      propertyPath: m_fontSize
+      value: 23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070714537210008924, guid: 900cebb0f796a9f4e88d9524402059a6, type: 3}
+      propertyPath: m_fontSize
+      value: 23.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
