@@ -37,6 +37,7 @@ public class UIManager
 
     public void Init()
     {
+        _blurBackground = null;
     }
     
     public void SetCanvas(GameObject go, bool sort = true)
@@ -98,7 +99,7 @@ public class UIManager
         if (_blurBackground == null)
         {
             _blurBackground = ShowPopUI<UIBlurBackground>();
-            _blurBackground.IsInputEnabled = true;
+            _blurBackground.Init();
             _popupStack.Pop();
             
         }
