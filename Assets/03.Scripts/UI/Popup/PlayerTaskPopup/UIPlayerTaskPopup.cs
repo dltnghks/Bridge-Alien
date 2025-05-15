@@ -125,6 +125,7 @@ public class UIPlayerTaskPopup : UIPopup
     // 수행하기
     private void OnClickConfirmButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         if (_currentTaskButton == null)
         {
             Logger.LogWarning("Nothing to click");

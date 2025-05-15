@@ -39,6 +39,7 @@ public class UITaskButton : UIActiveButton
     
     private void OnSelectTab()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _tabController.SelectTaskButton(this);
     }
     

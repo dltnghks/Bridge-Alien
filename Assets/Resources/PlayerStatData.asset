@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerStatData
   m_EditorClassIdentifier: 
   playerData:
-    PlayerGold: -1
+    PlayerGold: 50000000
     Stats:
       _serializedList:
       - Key: 0
@@ -26,3 +26,4 @@ MonoBehaviour:
         Value: 0
       - Key: 4
         Value: 0
+    ChoiceNumber: -1

@@ -2562,7 +2562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8048455155556834374, guid: cc7f3ef532735ba4aa2d92aa16b9c874, type: 3}
       propertyPath: m_Name
-      value: InvestmentButton
+      value: EntertainmentButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2914,7 +2914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8048455155556834374, guid: cc7f3ef532735ba4aa2d92aa16b9c874, type: 3}
       propertyPath: m_Name
-      value: EntertainmentButton
+      value: InvestmentButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

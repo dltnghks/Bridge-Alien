@@ -83,12 +83,14 @@ public class UIHouseScene : UIScene
             return;
         }
         
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
     }
     
     // Test Code
     private void OnClickNextButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Managers.Daily.StartEvent();
     }
 
