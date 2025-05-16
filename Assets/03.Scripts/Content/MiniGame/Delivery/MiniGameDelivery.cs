@@ -5,11 +5,15 @@ using UnityEngine;
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
     [Header("게임 종료 시간")]
-    [SerializeField] private float gameTime = 60.0f;
+    [SerializeField] private float gameTime = 1500f;
 
     [Header("카메라 값 세팅")]
     [SerializeField] private CameraManager.CameraType cameraType;
     [SerializeField] private CameraSettings cameraSettings;
+
+    [Header("플레이어 최대 이동 거리")]
+    [SerializeField] private float maxDistance = .0f;
+    [SerializeField] private float totalDistance = .0f;
     
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
@@ -31,6 +35,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     private UIGameDeliveryScene _uiGameDeliveryScene;
     private MiniGameDeliveryPathProgress _pathProgressBar;
     
+    private InfiniteMap _infiniteMap;
+    
     private void Update()
     {
         if (!IsActive || IsPause)
@@ -38,7 +44,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
 
-        _pathProgressBar?.ProgressUpdate();
+        _pathProgressBar?.ProgressUpdate(totalDistance);
     }
     
     public void StartGame()
@@ -46,16 +52,24 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         // ProgressBar 값 초기화
         // MiniGameDeliveryPathProgress : 실질적인 Progress의 상태를 관리하고 있음
         _pathProgressBar = new MiniGameDeliveryPathProgress();
-        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, gameTime, EndGame);
-    
+        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
+        
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
+        {
+            Debug.Log("Player 캐릭터가 존재하지 않는데요.");
             return;
-        
+        }
+
         PlayerController = new MiniGameDeliveryPlayerController(PlayerCharacter);
         if (PlayerController == null)
             return;
         
+        _infiniteMap = Utils.FindChild<InfiniteMap>(gameObject, "Map", true);
+        if (_infiniteMap == null)
+            return;
+        
+        _infiniteMap.InitializeMap(maxDistance, UpdateDistanceFromMap);
         IsActive = true;
     }
 
@@ -94,5 +108,20 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _uiGameDeliveryScene = Managers.UI.ShowSceneUI<UIGameDeliveryScene>();
         GameUI = _uiGameDeliveryScene;
         GameUI.Init();
+    }
+
+    public void UpdateTotalDistance(float distance)
+    {
+        totalDistance = distance;
+    }
+
+    public float GetDistance()
+    {
+        return totalDistance;
+    }
+
+    private void UpdateDistanceFromMap(float distance)
+    {
+        UpdateTotalDistance(distance);
     }
 }

@@ -26,10 +26,11 @@ public class Utils
         {
             return null;
         }
-
+        
         if (recursive == false)
         {
             Transform transform = go.transform.Find(name);
+            
             if (transform != null)
             {
                 return transform.GetComponent<T>();

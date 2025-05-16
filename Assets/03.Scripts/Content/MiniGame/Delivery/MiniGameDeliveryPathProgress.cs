@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class MiniGameDeliveryPathProgress
     public UnityAction EndAction { get; private set; }
     public float EndValue { get; private set; }
     public float CurValue { get; private set; }
+    
 
     public void SetProgressBar(UIPathProgressBar uIPathProgressBar, float endTime, UnityAction endAction = null){
         if (!IsActive)
@@ -19,7 +21,6 @@ public class MiniGameDeliveryPathProgress
             CurValue = 0;
             EndAction = endAction;
 
-
             UIPathProgressBar.Init();
             // UIPathProgressBar.SetProgressBar(endTime);
             
@@ -27,22 +28,19 @@ public class MiniGameDeliveryPathProgress
         }
     }
 
-    public void ProgressUpdate(){
-        float deltaTime = Time.deltaTime;
-        AddProgress(deltaTime);
-            
-        if (CurValue >= EndValue && IsActive)
+    public void ProgressUpdate(float dist){
+        UpdateProgress(dist);
+        if (dist >= EndValue && IsActive)
         {
             EndProgress();
         }
     }
     
-    public void AddProgress(float time)
+    public void UpdateProgress(float dist)
     {
         if (IsActive)
         {
-            CurValue += time;
-            UIPathProgressBar.UpdateProgress(time);
+            UIPathProgressBar.UpdateProgress(dist / EndValue);
         }
     }
 

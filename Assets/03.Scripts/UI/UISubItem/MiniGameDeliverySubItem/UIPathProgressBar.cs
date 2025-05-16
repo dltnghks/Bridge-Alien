@@ -42,6 +42,6 @@ public class UIPathProgressBar : UISubItem
 
     public void UpdateProgress(float value)
     {
-        _progressBar.value += value;
+        _progressBar.value = value;
     }
 }
