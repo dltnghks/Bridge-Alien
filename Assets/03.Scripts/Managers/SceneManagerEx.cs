@@ -10,7 +10,7 @@ public class SceneManagerEx : MonoBehaviour
     private Define.Scene _curSceneType = Define.Scene.Unknown;
     private Define.Scene _selectedSceneType = Define.Scene.MiniGameUnload;
     public event UnityAction<string> SelectedSceneAction;
-    private float _minimumLoadTime = 0.5f;
+    private float _minimumLoadTime = 2.0f;
     public Define.Scene CurrentSceneType
     {
         get

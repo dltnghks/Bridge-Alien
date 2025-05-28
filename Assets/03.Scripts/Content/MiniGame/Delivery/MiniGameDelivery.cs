@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
-    [Header("Game Setting")]
-    [SerializeField] private MiniGameDeliverySetting _gameSetting;
+    [Header("게임 종료 시간")]
+    [SerializeField] private float gameTime = 1500f;
 
-    [Header("Game Camera Settings")]
-    [SerializeField] private CameraManager.CameraType _cameraType;
-    [SerializeField] private CameraSettings _cameraSettings;
+    [Header("카메라 값 세팅")]
+    [SerializeField] private CameraManager.CameraType cameraType;
+    [SerializeField] private CameraSettings cameraSettings;
+
+    [Header("플레이어 최대 이동 거리")]
+    [SerializeField] private float maxDistance = .0f;
+    [SerializeField] private float totalDistance = .0f;
     
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
@@ -19,20 +22,20 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public IPlayerController PlayerController { get; set; }
     public CameraManager.CameraType CameraType
     {
-        get { return _cameraType;}
-        set { _cameraType = value; }
+        get { return cameraType;}
+        set { cameraType = value; }
     }
-
     public CameraSettings CameraSettings
     {
-        get { return _cameraSettings; }
-        set { _cameraSettings = value; }
+        get { return cameraSettings; }
+        set { cameraSettings = value; }
     }
     
     public UIScene GameUI { get; set; }
     private UIGameDeliveryScene _uiGameDeliveryScene;
- 
-    private MiniGameDeliveryPathProgress _pathPrgressBar;
+    private MiniGameDeliveryPathProgress _pathProgressBar;
+    
+    private InfiniteMap _infiniteMap;
     
     private void Update()
     {
@@ -41,57 +44,42 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
 
-        _pathPrgressBar?.ProgressUpdate();
+        _pathProgressBar?.ProgressUpdate(totalDistance);
     }
-    
     
     public void StartGame()
     {
-        SetGameInfo();
+        // ProgressBar 값 초기화
+        // MiniGameDeliveryPathProgress : 실질적인 Progress의 상태를 관리하고 있음
+        _pathProgressBar = new MiniGameDeliveryPathProgress();
+        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
         
-        // 게임에 사용되는 요소들 초기화
-        _pathPrgressBar = new MiniGameDeliveryPathProgress();
-        _pathPrgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, _gameSetting.GamePlayTime, EndGame);
-        
-        // PlayerCharacter 초기화
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
         {
-            Logger.LogError("PlayerCharacter not found or does not have a Player component!");
+            Debug.Log("Player 캐릭터가 존재하지 않는데요.");
             return;
         }
-        
+
         PlayerController = new MiniGameDeliveryPlayerController(PlayerCharacter);
         if (PlayerController == null)
-        {
-            Logger.LogError("Failed to initialize PlayerController!");
             return;
-        }
-        PlayerController.Init(PlayerCharacter);
         
-        // 게임 활성화
+        _infiniteMap = Utils.FindChild<InfiniteMap>(gameObject, "Map", true);
+        if (_infiniteMap == null)
+            return;
+        
+        _infiniteMap.InitializeMap(maxDistance, UpdateDistanceFromMap);
         IsActive = true;
-    }
-    
-    private void SetGameInfo()
-    {
-        _gameSetting = Managers.Data.MiniGameSettingDataManager.GetMiniGameSettings<MiniGameDeliverySetting>(Define.MiniGameType.Delivery);
-        
-        if (_gameSetting == null)
-        {
-            Logger.LogError("Not Found Game Information");
-        }
     }
 
     public bool PauseGame()
     {
         if (!IsActive || IsPause)
         {
-            Logger.LogError("Not Active MiniGame");
             return false;
         }
         IsPause = true;
-        Logger.Log("UnloadGame Pausing game");
         return true;
     }
 
@@ -99,31 +87,41 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     {
         if (!IsActive || !IsPause)
         {
-            Logger.LogError("Not Active MiniGame");
             return;
         }
         IsPause = false;
-        Logger.Log("UnloadGame Resuming game");
     }
 
     public void EndGame()
     {
         if (!IsActive)
         {
-            Logger.LogError("Not Active MiniGame");
             return;
         }
         
         IsActive = false;
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathPrgressBar.CurValue * 100);
-        Logger.Log("UnloadGame Ending game");
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathProgressBar.CurValue * 100);
     }
     
     public void InitializeUI()
     {
-        Logger.Log("InitializeUI Starting game");
         _uiGameDeliveryScene = Managers.UI.ShowSceneUI<UIGameDeliveryScene>();
         GameUI = _uiGameDeliveryScene;
         GameUI.Init();
+    }
+
+    public void UpdateTotalDistance(float distance)
+    {
+        totalDistance = distance;
+    }
+
+    public float GetDistance()
+    {
+        return totalDistance;
+    }
+
+    private void UpdateDistanceFromMap(float distance)
+    {
+        UpdateTotalDistance(distance);
     }
 }

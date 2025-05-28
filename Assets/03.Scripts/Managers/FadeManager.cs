@@ -7,7 +7,7 @@ public class FadeManager : MonoBehaviour
 {
     private GameObject _fadeObj;
     private CanvasGroup _canvasGroup;
-    private float _fadeDuration = 0.5f;
+    private float _fadeDuration = 1.0f;
     private UnityAction _onEndEvent;
     
     public void Init()
