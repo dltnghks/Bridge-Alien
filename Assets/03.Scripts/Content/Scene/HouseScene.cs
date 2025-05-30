@@ -12,6 +12,10 @@ public class HouseScene : BaseScene
         SceneType = Define.Scene.Dev;
 
         Managers.UI.ShowSceneUI<UIHouseScene>();
+        
+        // 집으로 들어오는 경우, 바로 이벤트 진행 
+        Managers.Daily.StartEvent();
+        
         return true;
     }
 }

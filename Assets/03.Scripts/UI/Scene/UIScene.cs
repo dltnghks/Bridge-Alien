@@ -14,4 +14,8 @@ public class UIScene : UIBase
         return true;
     }
 
+    public virtual void UIUpdate()
+    {
+        
+    }
 }

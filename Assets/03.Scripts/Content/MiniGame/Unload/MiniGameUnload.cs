@@ -8,6 +8,9 @@ using UnityEngine.Serialization;
 
 public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
+	[Header("Game Setting")]
+    [SerializeField] private MiniGameUnloadSetting _gameSetting;
+    
     [Header("Game Information")]
     // 게임을 플레이할 수 있는 시간
     [SerializeField] private float _gameTime = 6.0f;
@@ -67,6 +70,36 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         Logger.Log("UnloadGame Starting game");
 
+        SetGameInfo();
+
+        SetDeliveryPointList();
+
+        SetSpawnBoxList();
+        
+        SetPlayerCharacter();
+
+        // 다른 설정이 끝난 후 UI 설정
+        SetGameUI();
+        
+        // 게임 활성화
+        IsActive = true;
+
+        
+        Logger.Log("Game successfully started.");
+    }
+
+    private void SetGameInfo()
+    {
+        _gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameUnloadSetting>(Define.MiniGameType.Unload);
+        
+        if (_gameSetting == null)
+        {
+            Logger.LogError("Not Found Game Information");
+        }
+    }
+
+    private void SetDeliveryPointList()
+    {
         // DeliveryPointList 확인
         GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
         if (deliveryPoinListObj == null)

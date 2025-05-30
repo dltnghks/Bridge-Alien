@@ -20,6 +20,24 @@ public class Utils
         return component;
     }
 
+    // System.Type을 받는 버전
+    public static Component GetOrAddComponent(GameObject go, System.Type componentType)
+    {
+        if (go == null || componentType == null) return null;
+        if (!typeof(Component).IsAssignableFrom(componentType)) // Component를 상속하는 타입인지 확인
+        {
+            Debug.LogError($"{componentType.Name} is not a Component type.");
+            return null;
+        }
+        Component component = go.GetComponent(componentType);
+        if (component == null)
+        {
+            component = go.AddComponent(componentType);
+        }
+        return component;
+    }
+
+    
     public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
     {
         if (go == null)

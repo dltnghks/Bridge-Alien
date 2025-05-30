@@ -8,6 +8,7 @@ public class UITitleScene : UIScene
     enum Buttons
     {
         GameStartButton,
+        LoadButton,
     }
 
     enum Images
@@ -38,6 +39,7 @@ public class UITitleScene : UIScene
         
         
         GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnClickStartButton);
+        GetButton((int)Buttons.LoadButton).gameObject.BindEvent(OnClickLoadButton);
 
         return true;
     }
@@ -47,5 +49,11 @@ public class UITitleScene : UIScene
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Managers.Scene.ChangeScene(Define.Scene.House);
 
+    }
+
+    private void OnClickLoadButton()
+    {
+        Managers.Save.Load();
+        Managers.Scene.ChangeScene(Define.Scene.House);
     }
 }
