@@ -9,9 +9,9 @@ public class DataLoadingScene : BaseScene
         if (base.Init() == false)
             return false;
 
-        SceneType = Define.Scene.DataLoading;
+        //SceneType = Define.Scene.DataLoading;
 
-        Managers.UI.ShowSceneUI<UIDataLoadingScene>();
+        //Managers.UI.ShowSceneUI<UIDataLoadingScene>();
         
         return true;
     }

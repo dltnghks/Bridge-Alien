@@ -8,24 +8,14 @@ using UnityEngine.Serialization;
 
 public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
-	[Header("Game Setting")]
+    [Header("Game Setting")]
     [SerializeField] private MiniGameUnloadSetting _gameSetting;
-    
-    [Header("Game Information")]
-    // 게임을 플레이할 수 있는 시간
-    [SerializeField] private float _gameTime = 6.0f;
 
     [Header("Delivery Point")]
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
 
     [Header("Box Spawn Point")]
-    [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;    
-    [SerializeField] private int _maxSpawnBoxIndex = 3;
-    [SerializeField] private float _boxSpawnInterval = 3.0f;                    // 박스 생성 주기
-
-    [Header("Player Information")]
-    [SerializeField] private float _detectionBoxRadius = 2f;
-    [SerializeField] private float _moveSpeedReductionRatio = 2.0f;
+    [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;                   // 박스 생성 주기
 
     [Header("Game Camera Settings")]
     [SerializeField] private CameraManager.CameraType _cameraType;
@@ -120,8 +110,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
             _deliveryPointList.Add(deliveryPoint);
         }
-
-        // BoxSpawnPoint 확인
+    }
+    
+    private void SetSpawnBoxList()
+    {
         GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
         if (boxSpawnPointObj == null)
         {
@@ -134,18 +126,12 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
             return;
         }
-        _boxSpawnPoint.SetBoxSpawnPoint(_maxSpawnBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+        _boxSpawnPoint.SetBoxSpawnPoint(_gameSetting.MaxSpawnBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
 
-        // Timer, Score, BoxPreview 초기화
-        _timer = new TimerBase();
-        _score = new ScoreBase();
-        _boxPreview = Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
+    }
 
-        _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameTime, EndGame);
-        _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
-        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _boxSpawnInterval, _boxSpawnPoint);
-
-        // PlayerCharacter 초기화
+    private void SetPlayerCharacter()
+    {
         PlayerCharacter = GameObject.Find("Player")?.GetComponent<Player>();
         if (PlayerCharacter == null)
         {
@@ -153,19 +139,27 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
 
-        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _detectionBoxRadius, _moveSpeedReductionRatio, _boxSpawnPoint);
+        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _boxSpawnPoint);
         if (PlayerController == null)
         {
             Logger.LogError("Failed to initialize PlayerController!");
             return;
         }
         PlayerController.Init(PlayerCharacter);
-
-        // 게임 활성화
-        IsActive = true;
-        Logger.Log("Game successfully started.");
     }
 
+    // 게임 설정과 박스 스폰 리스트가 설정이 되어있을 때, UI 세팅
+    private void SetGameUI()
+    {
+        // UI 초기화
+        _timer = new TimerBase();
+        _score = new ScoreBase();
+        _boxPreview = Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
+
+        _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
+        _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
+        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _gameSetting.BoxSpawnInterval, _boxSpawnPoint);
+    }
     
     public bool PauseGame()
     {
@@ -206,6 +200,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     public void InitializeUI()
     {
         Logger.Log("InitializeUI Starting game");
+        
         _uiGameUnloadScene = Managers.UI.ShowSceneUI<UIGameUnloadScene>();
         GameUI = _uiGameUnloadScene;
         GameUI.Init();
