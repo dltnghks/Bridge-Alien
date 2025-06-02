@@ -39,7 +39,6 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Managers.Daily.EndMiniGameEvent();
-        //Managers.Scene.ChangeScene(Define.Scene.GameMap);
     } 
     
     float ScaleDuration = 0.5f;

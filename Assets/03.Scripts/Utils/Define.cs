@@ -11,7 +11,6 @@ public class Define
         Dev,
         Title,
         House,
-        GameMap,
         MiniGameUnload,
         MiniGameDelivery,
         Ending,

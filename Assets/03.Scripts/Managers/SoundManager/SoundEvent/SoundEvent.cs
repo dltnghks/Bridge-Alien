@@ -9,25 +9,18 @@ public enum SoundType
 {
     SceneBGM,
     CommonSoundSFX,
-    GameMapSFX,
     MiniGameUnloadSFX,
 
 }
 
 public enum SceneBGM{
     MiniGameUnload,
-    GameMap,
 }
 public enum CommonSoundSFX{
     CommonButtonClick,
     FootStepPlayerCharacter,
 }
 
-public enum GameMapSFX
-{
-    MoveCharacter,
-    ClickGamePoint,
-}
 public enum MiniGameUnloadSoundSFX{
     
     //sfx
@@ -72,7 +65,6 @@ public class SoundEvent : ScriptableObject
         Type enumType = type switch
         {
             SoundType.SceneBGM => typeof(SceneBGM),
-            SoundType.GameMapSFX => typeof(GameMapSFX),
             SoundType.CommonSoundSFX => typeof(CommonSoundSFX),
             SoundType.MiniGameUnloadSFX => typeof(MiniGameUnloadSoundSFX),
             _ => null,

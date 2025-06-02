@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	1914102211	Play_BGM_Gamemaploop			\BGM\Play_BGM_Gamemaploop	
-
-Game Parameter	ID	Name			Wwise Object Path	Notes
-	3043206523	BGMVolume			\Default Work Unit\BGMVolume	
-
