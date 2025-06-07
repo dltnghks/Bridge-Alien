@@ -50,20 +50,20 @@ public class UIBoxPreview : UISubItem
 
     public void SetPreviewBoxInfo(MiniGameUnloadBox box)
     {
-        Image boxImage = GetImage((int)Images.BoxImage);
-        Sprite sprite = box.SpriteRenderer.sprite;
-        if (sprite != null)
-        {
-            boxImage.sprite = box.SpriteRenderer.sprite;
+        // Image boxImage = GetImage((int)Images.BoxImage);
+        // Sprite sprite = box.SpriteRenderer.sprite;
+        // if (sprite != null)
+        // {
+        //     boxImage.sprite = box.SpriteRenderer.sprite;
 
-            // UI Image 크기 조정
-            RectTransform rectTransform = boxImage.GetComponent<RectTransform>();
-            rectTransform.sizeDelta =
-                new Vector2(sprite.rect.width/1.5f, sprite.rect.height/1.5f);
-        }
+        //     // UI Image 크기 조정
+        //     RectTransform rectTransform = boxImage.GetComponent<RectTransform>();
+        //     rectTransform.sizeDelta =
+        //         new Vector2(sprite.rect.width/1.5f, sprite.rect.height/1.5f);
+        // }
 
-        GetText((int)Texts.BoxNumberText).SetText(box.Info.BoxNumber);
-        GetText((int)Texts.BoxTypeText).SetText(box.Info.GetBoxType());
-        GetText((int)Texts.RegionText).SetText(box.Info.GetBoxRegion());
+        // GetText((int)Texts.BoxNumberText).SetText(box.Info.BoxNumber);
+        // //GetText((int)Texts.BoxTypeText).SetText(box.Info.GetBoxType());
+        // GetText((int)Texts.RegionText).SetText(box.Info.GetBoxRegion());
     }
 }

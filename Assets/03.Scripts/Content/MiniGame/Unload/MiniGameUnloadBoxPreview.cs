@@ -7,29 +7,31 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
     [Header("Game Information")]
     private float _boxSpawnInterval = 0;
 
-
+    private GameObject[] _boxPrefabList; 
     private UIBoxPreview _uiBoxPreview;
     private TimerBase _timer;
    
     private Queue<MiniGameUnloadBox> _previewQueue = new Queue<MiniGameUnloadBox>();
     private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
 
-    public void SetBoxPreview(UIBoxPreview uiBoxPreview, float boxSpawnInterval, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint)
+    public void SetBoxPreview(UIBoxPreview uiBoxPreview, float boxSpawnInterval, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint, GameObject[] boxPrefabList)
     {
-        if(_timer == null)
+        if (_timer == null)
             _timer = new TimerBase();
-        
+
         _uiBoxPreview = uiBoxPreview;
         _uiBoxPreview.Init();
-        
+
         _boxSpawnInterval = boxSpawnInterval;
         _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
 
         _timer.OffTimer();
         _timer.SetTimer(_uiBoxPreview.UITimer, _boxSpawnInterval, CreatInGameBox);
-        
+
         _previewQueue.Clear();
         _previewQueue.Enqueue(null);
+
+        _boxPrefabList = boxPrefabList;
         // 박스 만들기
         CreatePreviewBox();
 
@@ -53,10 +55,12 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         // 박스 생성 및 설정, 오브젝트 풀에서 5개씩 가져와서 queue에다 넣기
         for (int i = 0; i < 5; i++)
         {
-            GameObject newBoxObj = Managers.Resource.Instantiate("Box", Managers.MiniGame.Root.transform);
-            MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
-            newBox.SetRandomInfo();
+            int randomIndex = Random.Range(0, _boxPrefabList.Length);  
+            GameObject newBoxObj = Managers.Resource.Instantiate(_boxPrefabList[randomIndex], Managers.MiniGame.Root.transform);
 
+            MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+
+            newBox.SetRandomInfo();
             newBox.SetInGameActive(false);
 
             EnqueueBox(newBox);

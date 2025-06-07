@@ -36,15 +36,7 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
         _endPointTransform = Utils.FindChild<Transform>(gameObject, "EndPoint", true);
         _ViewDeliveryRegionText = Utils.FindChild<TextMeshPro>(gameObject,"ViewDeliveryRegionText", true);
         
-        string regionName = "None";
-        switch(_info.Region){
-            case Define.BoxRegion.CapitalArea: regionName = "수도권"; break;
-            case Define.BoxRegion.HonamArea: regionName = "호남권"; break;
-            case Define.BoxRegion.ChungcheongArea: regionName = "충남권"; break;
-            case Define.BoxRegion.YeongnamArea: regionName = "영남권"; break;
-            case Define.BoxRegion.GangwonArea: regionName = "강원권"; break;
-            default: regionName = "None"; break;
-        }
+        string regionName = _info.Region.ToString();
         _ViewDeliveryRegionText.SetText(regionName);
     }
 
@@ -93,12 +85,12 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
             else if (CheckBoxInfo(box.Info))
             {
                 Logger.Log("True Region");
-                score = box.Info.Weight * 10;
+                score = 10;
             }
             else
             {
                 Logger.Log("False Region");
-                score = -box.Info.Weight * 10;
+                score = -10;
             }
         }
 

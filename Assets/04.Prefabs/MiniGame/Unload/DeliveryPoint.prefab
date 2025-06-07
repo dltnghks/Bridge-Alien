@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 5962461495579769482}
   - component: {fileID: 7572077301896826057}
   - component: {fileID: 512796770541026499}
-  - component: {fileID: 6481586448281587524}
   m_Layer: 0
   m_Name: UnloadPoint
   m_TagString: Untagged
@@ -133,21 +132,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   billboardAxis: 0
   freezeXZAxis: 0
---- !u!114 &6481586448281587524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509351890727434347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a499c43eb95b4924c9d39cd4d712cb8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionShakeAmount: 0.005
-  rotationShakeAmount: 0
-  shakeSpeed: 30
 --- !u!1 &3177320871983788071
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8842339944670045977}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.608999, y: 1.005497, z: 4.873169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -596,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info:
-    Region: 0
+    Region: 2
   _ViewDeliveryRegionText: {fileID: 6687284845323425742}
 --- !u!1001 &2148008266522767004
 PrefabInstance:

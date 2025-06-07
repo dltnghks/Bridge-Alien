@@ -16,6 +16,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     [Header("Box Spawn Point")]
     [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;                   // 박스 생성 주기
+    [SerializeField] private GameObject[] _boxPrefabList;
 
     [Header("Game Camera Settings")]
     [SerializeField] private CameraManager.CameraType _cameraType;
@@ -158,7 +159,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
-        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _gameSetting.BoxSpawnInterval, _boxSpawnPoint);
+        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
     }
     
     public bool PauseGame()

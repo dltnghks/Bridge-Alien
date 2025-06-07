@@ -33,22 +33,21 @@ public class Define
         Unload,
         Delivery,
     }
-    
+
     public enum BoxType
     {
-        Post,           // 우편
-        SmallBox,    // 소형 택배
-        StandardBox, // 일반 택배
-        LargeBox     // 대형 택배
+        CommonBox,
+        FragileBox,
+        ColdBox,
     }
 
     public enum BoxRegion
     {
-        CapitalArea,
-        ChungcheongArea,
-        YeongnamArea,
-        HonamArea,
-        GangwonArea, 
+        A,
+        B,
+        C,
+        D,
+        E,
     }
 
     public enum DailyEventType

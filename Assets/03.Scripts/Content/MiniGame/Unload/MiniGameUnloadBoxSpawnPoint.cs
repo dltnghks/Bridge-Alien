@@ -7,8 +7,9 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
 {
     private SphereCollider _boxCollider;
     private Vector3 _boxSpawnPosition;
-    public MiniGameUnloadBoxList BoxList {get; set;}
+    public MiniGameUnloadBoxList BoxList { get; set; }
     public float _boxHeight = 0;
+    private float _boxHeightOffset = 0.5f;
 
     private UnityAction _triggerAction;
 
@@ -18,8 +19,6 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
 
         _boxCollider = Utils.GetOrAddComponent<SphereCollider>(gameObject);
         _boxSpawnPosition = transform.position;
-        // 초기 스폰 위치 살짝 올려두기
-        _boxSpawnPosition.y = 0.5f;
         BoxList = new MiniGameUnloadBoxList();
         BoxList.SetBoxList(maxSpawnBoxIndex);
         _triggerAction = triggerAction;
@@ -28,12 +27,13 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
     public bool TrySpawnBox(MiniGameUnloadBox box){
         if(!box.gameObject.activeSelf && BoxList.TryAddInGameUnloadBoxList(box))
         {
-            Vector3 spawnPos = _boxSpawnPosition + Vector3.up * (_boxHeight + box.Info.Size/2);
-            
+            Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
+            spawnPos.y += _boxHeightOffset;
+
             // z-ordering, 겹치면 렌더링 충돌나서 z를 살짝 조절, 위로 올라갈수록 앞으로
-            //spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
+            spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
             
-            _boxHeight += box.Info.Size;
+            //_boxHeight += box.Info.Size;
             box.SetInGameActive(true, spawnPos);
             return true;
         }
@@ -47,7 +47,6 @@ public class MiniGameUnloadBoxSpawnPoint : MonoBehaviour
         MiniGameUnloadBox box = BoxList.RemoveAndGetTopInGameUnloadBoxList();
         if(box != null)
         {
-            _boxHeight -= box.Info.Size;
             return box;
         }
         else
