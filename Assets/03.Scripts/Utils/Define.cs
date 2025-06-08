@@ -36,9 +36,9 @@ public class Define
 
     public enum BoxType
     {
-        CommonBox,
-        FragileBox,
-        ColdBox,
+        Normal,     // 일반 배송 가능 상태
+        Disposal,   // 폐기 상태
+        Cold,       // 냉동이 요구되는 상태, 냉동이 완료되면 Normal로 변경
     }
 
     public enum BoxRegion

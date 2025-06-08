@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class FragileBox : MiniGameUnloadBox
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void SetRandomInfo()
     {
-        
+        base.SetRandomInfo();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void CheckBrokenBox(int height)
     {
-        
+        if(height > 0)
+        {
+            _info.IsBroken = true;
+        }
+        else
+        {
+            _info.IsBroken = false;
+        }
     }
 }

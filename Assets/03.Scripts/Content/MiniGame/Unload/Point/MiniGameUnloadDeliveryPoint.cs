@@ -19,11 +19,12 @@ public struct MiniGameUnloadDeliveryPointInfo
     }
 }
 
-public class MiniGameUnloadDeliveryPoint : MonoBehaviour
+public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint
 {
     [SerializeField] private MiniGameUnloadDeliveryPointInfo _info;
     [SerializeField] private TextMeshPro _ViewDeliveryRegionText;
     
+    private Transform _unloadPointTransform;
     private Transform _endPointTransform;
     
     private UnityAction<int> _action;
@@ -32,7 +33,10 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
 
     public void Start()
     {
+        AllowedTypes = new Define.BoxType[] { Define.BoxType.Cold, Define.BoxType.Normal, Define.BoxType.Disposal};
+        
         _boxCollider = Utils.GetOrAddComponent<BoxCollider>(gameObject);
+        _unloadPointTransform = Utils.FindChild<Transform>(gameObject, "UnloadPoint", true);
         _endPointTransform = Utils.FindChild<Transform>(gameObject, "EndPoint", true);
         _ViewDeliveryRegionText = Utils.FindChild<TextMeshPro>(gameObject,"ViewDeliveryRegionText", true);
         
@@ -56,18 +60,17 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
                 _triggerAction?.Invoke();
             }
         }
-
-        if (coll.gameObject.CompareTag("Box"))
-        {
-            MiniGameUnloadBox box = coll.gameObject.GetComponent<MiniGameUnloadBox>();
-            if (!box.IsUnloaded)
-            {
-                box.IsUnloaded = true;
-                MoveBoxToEndPoint(box);
-            }
-        }
     }
 
+    private void MoveToUnloadPoint(MiniGameUnloadBox box)
+    {
+        box.transform.DOMove(_unloadPointTransform.position, 1).OnComplete(() =>
+            {
+                MoveBoxToEndPoint(box);
+            }
+        );
+    }
+    
     private void MoveBoxToEndPoint(MiniGameUnloadBox box)
     {
         int score = 0;
@@ -130,4 +133,21 @@ public class MiniGameUnloadDeliveryPoint : MonoBehaviour
     {
         return boxInfo.Region == _info.Region;
     }
+
+    public override bool ProcessBox(GameObject box)
+    {
+        MiniGameUnloadBox boxComponent = box.GetComponent<MiniGameUnloadBox>();
+        if (boxComponent != null)
+        {
+            MoveToUnloadPoint(boxComponent);
+            return true;
+        }
+        else
+        {
+            Logger.Log("Box component not found");
+        }
+
+        return false;
+    }
 }
+

@@ -11,6 +11,7 @@ using Unity.VisualScripting.Dependencies.NCalc;
 public struct MiniGameUnloadBoxInfo
 {   
     public string BoxNumber;
+    public Define.BoxType BoxType;
     public Define.BoxRegion Region;
     public bool IsGrab;
     public bool IsBroken;
@@ -20,6 +21,7 @@ public struct MiniGameUnloadBoxInfo
     {
         BoxNumber = boxNumber;
         Region = region;
+        BoxType = Define.BoxType.Normal;
         IsBroken = false;
         IsGrab = false;
         IsUnloaded = false;
@@ -69,8 +71,6 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     [SerializeField] protected MiniGameUnloadBoxInfo _info;
     
-    [SerializeField] protected TextMeshPro regionText;
-
     protected Rigidbody boxRigidbody;
     protected BoxCollider boxCollider;
 
@@ -86,6 +86,11 @@ public class MiniGameUnloadBox : MonoBehaviour
         set { _info.IsUnloaded = value; }
     }
 
+    public Define.BoxType BoxType
+    {
+        get { return _info.BoxType; } 
+        set { _info.BoxType = value; }
+    }
 
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
     {
@@ -123,18 +128,6 @@ public class MiniGameUnloadBox : MonoBehaviour
             
         }
     }
-    
-    public void CheckBrokenBox(int height)
-    {
-        // if(_info.IsFragileBox && height > 0)
-        // {
-        //     _info.IsBroken = true;
-        // }
-        // else
-        // {
-        //     _info.IsBroken = false;
-        // }
-    }
 
     public void SetIsGrab(bool value)
     {
@@ -153,9 +146,7 @@ public class MiniGameUnloadBox : MonoBehaviour
             gameObject.layer = _defaultBoxLayer;
 
             // 상자의 Rigidbody 활성화
-            boxRigidbody.constraints = RigidbodyConstraints.FreezePositionX |
-                                        RigidbodyConstraints.FreezePositionZ |
-                                        RigidbodyConstraints.FreezeRotation;
+            boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
             PlayBoxPutSound();
         }
@@ -171,11 +162,9 @@ public class MiniGameUnloadBox : MonoBehaviour
         Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.StandardBoxPut.ToString(),gameObject); 
     }
 
-    public void SetRandomInfo()
+    public virtual void SetRandomInfo()
     {
         _info.SetRandomInfo();
-        
-        int regionType = (int)_info.Region;
 
         boxRigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();

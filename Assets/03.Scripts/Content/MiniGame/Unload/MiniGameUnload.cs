@@ -13,7 +13,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     [Header("Delivery Point")]
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
-
+    [SerializeField] private MiniGameUnloadColdPoint _coldPoint;
+    
     [Header("Box Spawn Point")]
     [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;                   // 박스 생성 주기
     [SerializeField] private GameObject[] _boxPrefabList;
@@ -66,6 +67,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         SetDeliveryPointList();
 
         SetSpawnBoxList();
+
+        SetColdArea();
         
         SetPlayerCharacter();
 
@@ -89,6 +92,24 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
     }
 
+    private void SetColdArea()
+    {
+        GameObject coldPointObj = Utils.FindChild(gameObject, "ColdPoint", true);
+        if (coldPointObj == null)
+        {
+            Logger.LogError("ColdPoint object not found!");
+            return;
+        }
+        
+        _coldPoint = coldPointObj.GetOrAddComponent<MiniGameUnloadColdPoint>();
+        if (_coldPoint == null)
+        {
+            Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
+            return;
+        }
+        _coldPoint.SetColdArea(_gameSetting.MaxColdAreaBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+    }
+    
     private void SetDeliveryPointList()
     {
         // DeliveryPointList 확인
@@ -140,7 +161,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
 
-        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _boxSpawnPoint);
+        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _boxSpawnPoint, _coldPoint);
         if (PlayerController == null)
         {
             Logger.LogError("Failed to initialize PlayerController!");

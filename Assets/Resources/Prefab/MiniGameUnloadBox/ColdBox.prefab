@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2285401145254709108}
-  - component: {fileID: 1670917522722946225}
   - component: {fileID: 4678780358310689977}
   - component: {fileID: 3666450618659498224}
   - component: {fileID: 7164355035393003663}
   - component: {fileID: 426819201144418885}
+  - component: {fileID: 2804532362741545489}
   m_Layer: 7
   m_Name: ColdBox
   m_TagString: Box
@@ -36,25 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1670917522722946225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442358387930060806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58d2dfbe9d495c34e994a4cef4e9e95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _info:
-    BoxNumber: 
-    Region: 0
-    IsGrab: 0
-    IsBroken: 0
-    IsUnloaded: 0
-  regionText: {fileID: 0}
 --- !u!65 &4678780358310689977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -168,3 +149,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2804532362741545489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442358387930060806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fa5fb2a9f9a4645b9ebcf74e39a6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _info:
+    BoxNumber: 
+    BoxType: 0
+    Region: 0
+    IsGrab: 0
+    IsBroken: 0
+    IsUnloaded: 0
+  coolingTime: 5
+  coldboxMaterial: {fileID: 0}
+  maxSaturation: 1.5
