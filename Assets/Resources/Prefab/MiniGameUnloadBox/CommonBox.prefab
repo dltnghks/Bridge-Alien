@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2285401145254709108}
-  - component: {fileID: 1670917522722946225}
   - component: {fileID: 4678780358310689977}
   - component: {fileID: 3666450618659498224}
   - component: {fileID: 7164355035393003663}
   - component: {fileID: 8065624120623810120}
+  - component: {fileID: 5339569413865378379}
   m_Layer: 7
   m_Name: CommonBox
   m_TagString: Box
@@ -36,26 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1670917522722946225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442358387930060806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58d2dfbe9d495c34e994a4cef4e9e95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _info:
-    BoxNumber: 
-    Region: 0
-    IsGrab: 0
-    IsBroken: 0
-    IsUnloaded: 0
-  spriteRenderer: {fileID: 0}
-  regionText: {fileID: 0}
 --- !u!65 &4678780358310689977
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -169,3 +149,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5339569413865378379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442358387930060806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7288c92970e22864f9c1d55f72af0c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _info:
+    BoxNumber: 
+    BoxType: 0
+    Region: 0
+    IsGrab: 0
+    IsBroken: 0
+    IsUnloaded: 0
