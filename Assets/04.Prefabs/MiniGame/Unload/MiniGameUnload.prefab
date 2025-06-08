@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 9098301642955844798}
   - component: {fileID: 8037896571570933764}
   - component: {fileID: 160273253647790793}
-  - component: {fileID: 6833478014770810930}
   m_Layer: 0
-  m_Name: ColdPoint
+  m_Name: ColdArea
   m_TagString: BoxUnloadPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 87596580266277921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.38, y: 0.1, z: -11.22}
-  m_LocalScale: {x: 3, y: 0.1, z: 3}
+  m_LocalPosition: {x: 8.38, y: -0.99, z: -11.22}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1947315248513555530}
@@ -106,19 +105,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6833478014770810930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87596580266277921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38ee9a466adc92459bd4a9a2f6c399a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AllowedTypes: 02000000
 --- !u!1 &872154510468959510
 GameObject:
   m_ObjectHideFlags: 0
