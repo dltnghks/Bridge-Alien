@@ -32,7 +32,7 @@ public struct MiniGameUnloadBoxInfo
     {
         BoxNumber = GenerateRandomString();  // AAA-0000형태
 
-        Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.A + 1); // 지역 선택
+        Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.E + 1); // 지역 선택
     }
     
     private string GenerateRandomString()

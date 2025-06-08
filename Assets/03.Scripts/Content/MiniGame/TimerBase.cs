@@ -26,8 +26,12 @@ public class TimerBase
             CurTime = time;
             EndTimerAction = endTimerAction;
 
-            UITimer.SetTimer(StartTime, CurTime);
-            UITimer.Init();
+
+            if (UITimer != null)
+            {
+                UITimer.SetTimer(StartTime, CurTime);
+                UITimer.Init();
+            }
             IsActive = true;
         }
     }
@@ -35,7 +39,9 @@ public class TimerBase
     public void RestartTimer()
     {
         CurTime = StartTime;
-        UITimer.SetTimer(StartTime);
+        
+        if(UITimer != null)
+            UITimer.SetTimer(StartTime);
         IsActive = true;
     }
     
@@ -56,7 +62,8 @@ public class TimerBase
         if (IsActive)
         {
             CurTime += time;
-            UITimer.AddTime(time);
+            if(UITimer != null)
+                UITimer.AddTime(time);
         }
     }
 

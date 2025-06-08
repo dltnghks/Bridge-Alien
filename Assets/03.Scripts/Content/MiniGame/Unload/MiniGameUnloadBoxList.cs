@@ -10,9 +10,14 @@ public class MiniGameUnloadBoxList
         get{ return _inGameUnloadBoxList.Count;} 
     }
 
+    public List<MiniGameUnloadBox> BoxList
+    {
+        get{ return _inGameUnloadBoxList; }
+    }
+
     public bool IsFull
     {
-        get{ return MaxUnloadBoxIndex <= CurrentUnloadBoxIndex;}
+        get { return MaxUnloadBoxIndex <= CurrentUnloadBoxIndex; }
     }
 
     public bool IsEmpty

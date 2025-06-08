@@ -161,7 +161,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
 
-        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _boxSpawnPoint, _coldPoint);
+        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _boxSpawnPoint, _coldPoint, _uiGameUnloadScene.UIBoxPreview.UpdateUI);
         if (PlayerController == null)
         {
             Logger.LogError("Failed to initialize PlayerController!");
@@ -180,7 +180,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
-        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
+        _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
     }
     
     public bool PauseGame()

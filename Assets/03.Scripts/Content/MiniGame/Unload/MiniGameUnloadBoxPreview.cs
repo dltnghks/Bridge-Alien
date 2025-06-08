@@ -7,26 +7,22 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
     [Header("Game Information")]
     private float _boxSpawnInterval = 0;
 
-    private GameObject[] _boxPrefabList; 
-    private UIBoxPreview _uiBoxPreview;
+    private GameObject[] _boxPrefabList;
     private TimerBase _timer;
    
     private Queue<MiniGameUnloadBox> _previewQueue = new Queue<MiniGameUnloadBox>();
     private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
 
-    public void SetBoxPreview(UIBoxPreview uiBoxPreview, float boxSpawnInterval, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint, GameObject[] boxPrefabList)
+    public void SetBoxPreview(float boxSpawnInterval, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint, GameObject[] boxPrefabList)
     {
         if (_timer == null)
             _timer = new TimerBase();
-
-        _uiBoxPreview = uiBoxPreview;
-        _uiBoxPreview.Init();
 
         _boxSpawnInterval = boxSpawnInterval;
         _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
 
         _timer.OffTimer();
-        _timer.SetTimer(_uiBoxPreview.UITimer, _boxSpawnInterval, CreatInGameBox);
+        _timer.SetTimer(null, _boxSpawnInterval, CreatInGameBox);
 
         _previewQueue.Clear();
         _previewQueue.Enqueue(null);
@@ -104,7 +100,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
             MiniGameUnloadBox box = _previewQueue.Dequeue();
             if (_previewQueue.Count > 0)
             {
-                _uiBoxPreview.SetPreviewBoxInfo(_previewQueue.Peek());
+
             }
             else
             {

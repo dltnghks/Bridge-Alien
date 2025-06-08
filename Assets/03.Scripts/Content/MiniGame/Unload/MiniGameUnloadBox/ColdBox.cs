@@ -42,7 +42,6 @@ public class ColdBox : MiniGameUnloadBox
         
         while (timer < coolingTime)
         {
-            Logger.Log(timer);
             timer += Time.deltaTime;
             float lerpRatio = timer / coolingTime;
             // r값을 1(원래값)에서 0(혹은 0.1 등)으로 낮춤
@@ -52,7 +51,6 @@ public class ColdBox : MiniGameUnloadBox
             yield return null;
         }
 
-        Logger.Log("Time");
         isColdbox = true;
         isCooling = false;
         BoxType = Define.BoxType.Normal;

@@ -24,6 +24,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
     private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
     private MiniGameUnloadColdPoint _miniGameUnloadColdPoint;
     private List<MiniGameUnloadBasePoint> _cachedPoints = new List<MiniGameUnloadBasePoint>();
+    private UnityAction<List<MiniGameUnloadBox>> OnBoxListChanged;
     private bool _isPointsCached;
     
     public Player Player { get; set; }
@@ -31,11 +32,14 @@ public class MiniGameUnloadPlayerController : IPlayerController
     public bool IsDropBox { get; set; }
 
     public MiniGameUnloadPlayerController(){}
-    public MiniGameUnloadPlayerController(Player player, float radius, float moveSpeedReductionRatio, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint, MiniGameUnloadColdPoint miniGameUnloadColdPoint){
+    public MiniGameUnloadPlayerController(Player player, float radius, float moveSpeedReductionRatio, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint, MiniGameUnloadColdPoint miniGameUnloadColdPoint, UnityAction<List<MiniGameUnloadBox>> OnBoxListChangedAction)
+    {
         Init(player);
         _moveSpeedReductionRatio = moveSpeedReductionRatio;
         _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
         _miniGameUnloadColdPoint = miniGameUnloadColdPoint;
+        
+        OnBoxListChanged = OnBoxListChangedAction;
     }
 
     public void Init(Player player)
@@ -68,11 +72,12 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     public void Interaction()
     {
-        if(Managers.MiniGame.CurrentGame.IsPause){
-           return; 
+        if (Managers.MiniGame.CurrentGame.IsPause)
+        {
+            return;
         }
 
-        switch((MiniGameUnloadInteractionAction)InteractionActionNumber)
+        switch ((MiniGameUnloadInteractionAction)InteractionActionNumber)
         {
             case MiniGameUnloadInteractionAction.None:
                 break;
@@ -86,6 +91,8 @@ public class MiniGameUnloadPlayerController : IPlayerController
                 Logger.LogWarning($"{InteractionActionNumber} : Undefined Interaction");
                 break;
         }
+
+        OnBoxListChanged?.Invoke(_boxList.BoxList);
     }
 
     public bool ChangeInteraction(int actionNum)
