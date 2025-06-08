@@ -725,7 +725,7 @@ MonoBehaviour:
     MoveSpeedReductionRatio: 2
     MaxColdAreaBoxIndex: 1
   _deliveryPointList: []
-  _coldArea: {fileID: 0}
+  _coldPoint: {fileID: 0}
   _boxSpawnPoint: {fileID: 0}
   _boxPrefabList:
   - {fileID: 442358387930060806, guid: 18fc05979be929a4695e1433ddf0eba9, type: 3}
@@ -885,6 +885,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 734190950}
     m_Modifications:
+    - target: {fileID: 87596580266277921, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+      propertyPath: m_Name
+      value: ColdPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 444109683345804963, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+      propertyPath: _info.Region
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 950641231796229410, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -941,6 +949,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4848230961320366422, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+      propertyPath: _info.Region
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5266582753765579316, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Name
       value: MiniGameUnload
@@ -980,6 +992,10 @@ PrefabInstance:
     - target: {fileID: 6294970515480288828, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953301830135498671, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+      propertyPath: _info.Region
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7134192550954805632, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1024,6 +1040,10 @@ PrefabInstance:
     - target: {fileID: 8819222036811196985, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8871513506731762412, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+      propertyPath: _info.Region
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

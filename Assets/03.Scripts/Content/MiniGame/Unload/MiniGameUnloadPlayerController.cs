@@ -102,36 +102,41 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     private void PickupBox()
     {
-        if (_boxList.IsFull) return;
-
+        if (_boxList.IsFull)
+        {
+            Logger.Log("Player Box is full");
+            return;
+        }
         // 1. 전체 포인트(스폰포인트, 냉동포인트 등)에서 가장 가까운 박스 찾기
         MiniGameUnloadBox nearestBox = FindNearestPickupBox();
         if (nearestBox == null) return;
             
-        // TODO. 스폰 공간이랑 냉동 공간 픽업 기능 수행 가능하도록 수정해야 됨.
         // 3. 포인트별 처리 (스폰포인트/냉동포인트 등)
         if (nearestBox.transform.parent != null)
         {
             MiniGameUnloadColdPoint coldPoint = nearestBox.GetComponentInParent<MiniGameUnloadColdPoint>();
             if (coldPoint != null)
             {
-                coldPoint.GetPickUpBox();
+                nearestBox = coldPoint.GetPickUpBox();
             }
             else
             {
                 // 스폰포인트 또는 다른 포인트에서 박스 제거
-                _miniGameUnloadBoxSpawnPoint.GetPickUpBox();
+                nearestBox = _miniGameUnloadBoxSpawnPoint.GetPickUpBox();
             }
         }
         else
         {
             // 아무 포인트에도 속하지 않은 박스(예: 컨베이어 등)일 경우 별도 처리 없음
         }
-        
+
+        if (nearestBox == null)
+        {
+            return;
+        }
+
         nearestBox.SetIsGrab(true);
-
-        _miniGameUnloadBoxSpawnPoint.GetPickUpBox();
-
+        
         // 상자를 스택에 추가하고 위치 설정
         _boxList.TryAddInGameUnloadBoxList(nearestBox);
 
