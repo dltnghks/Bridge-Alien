@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint
+public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint
 {
-    // 폐기하는 구역 
+    // 반송되는 구역
     
     public override bool ProcessBox(GameObject box)
     {
