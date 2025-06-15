@@ -31,15 +31,23 @@ public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint
         if (coll.gameObject.CompareTag("Player"))
         {
             var box = CurrentBox;
-            if (box != null && box.Info.BoxType == Define.BoxType.Normal)
+            
+            if (box != null)
             {
-                if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.PickUpBox))
+                if(box.Info.BoxType == Define.BoxType.Normal && 
+                   Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.PickUpBox))
                 {
                     _triggerAction?.Invoke();    
                 } 
+                else if (box.Info.BoxType == Define.BoxType.Cold &&
+                         Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction(
+                             (int)MiniGameUnloadInteractionAction.None))
+                {
+                    _triggerAction?.Invoke();
+                }
+                        
             }
             else if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
-
             {
                 _triggerAction?.Invoke();
             }

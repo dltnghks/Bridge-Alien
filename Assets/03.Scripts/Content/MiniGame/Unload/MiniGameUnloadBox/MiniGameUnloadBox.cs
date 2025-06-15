@@ -106,7 +106,7 @@ public class MiniGameUnloadBox : MonoBehaviour
             Vector3 currentScale = boxCollider.size; 
             currentScale.x = 1f;
             currentScale.z = 1f;
-            currentScale.y = 1f;
+            currentScale.y = 0.8f;
             // 콜라이더 크기 설정 
             
             boxCollider.size = currentScale;

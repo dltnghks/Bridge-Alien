@@ -20,6 +20,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
 {
     private MiniGameUnloadBoxList _boxList = new MiniGameUnloadBoxList();
     private float _boxHeight = 0f;
+    private float _boxOffset = 0.8f;
     private float _moveSpeedReductionRatio = 2.0f;
     private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
     private MiniGameUnloadColdPoint _miniGameUnloadColdPoint;
@@ -150,7 +151,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
         nearestBox.transform.SetParent(Player.CharacterTransform);
         nearestBox.transform.localPosition = Vector3.right + Vector3.up * (_boxHeight);
         nearestBox.transform.localRotation = Quaternion.identity;
-        _boxHeight += 1f;
+        _boxHeight += _boxOffset;
 
     }
 
@@ -177,7 +178,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
             Debug.Log($"이 포인트에는 {carriedBox.Info.BoxType} 상자를 놓을 수 없음");
             return;
         }
-
+        
         // 4. 포인트별 처리 로직 실행
         bool processSuccess = nearestPoint.ProcessBox(carriedBox.gameObject);
         if (!processSuccess)
@@ -185,10 +186,16 @@ public class MiniGameUnloadPlayerController : IPlayerController
             Debug.Log("처리 실패: 포인트가 가득 찼거나 조건 불일치");
             return;
         }
+        
+        FragileBox fragileBox = carriedBox.GetComponent<FragileBox>();
+        if (fragileBox != null)
+        {
+            fragileBox.CheckBrokenBox(_boxList.CurrentUnloadBoxIndex);
+        }
 
         // 5. 플레이어 박스 리스트에서 제거
         _boxList.RemoveAndGetTopInGameUnloadBoxList();
-        _boxHeight -= 1f;
+        _boxHeight -= _boxOffset;
 
         // 6. 박스 상태 업데이트
         carriedBox.transform.SetParent(nearestPoint.transform);

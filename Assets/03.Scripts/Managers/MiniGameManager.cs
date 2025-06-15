@@ -56,7 +56,7 @@ public class MiniGameManager : MonoBehaviour
         Logger.Log($"{_currentGame.GetType().Name} | Game Start");
         
         // 설정된 카메라 값으로 변경한다.
-        // Managers.Camera.Init(CurrentGame.CameraType, CurrentGame.CameraSettings);
+        Managers.Camera.Init(CurrentGame.CameraType, CurrentGame.CameraSettings);
 
         UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
         uIGameStart.PlayGameStartEffect(_currentGame.StartGame);

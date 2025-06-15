@@ -6,9 +6,14 @@ using UnityEngine.InputSystem.Android;
 
 public class UIMiniGameUnloadPlayerInput : UIPlayerInput
 {
+    enum Images
+    {
+        InteractionButtonImage,
+    }
+    
     [Header("Interaction Sprites")]
     [SerializeField] private List<Sprite> _spriteList = new List<Sprite>();
-
+    
     public override bool Init()
     {
         if (base.Init() == false)
@@ -16,6 +21,8 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
             return false;
         }
         _init = true;
+        
+        BindImage(typeof(Images));
         
         return _init;
     }
@@ -25,7 +32,7 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
         if(_init)
         {
             int num = Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber;
-            _interactionButton.image.sprite = _spriteList[num];
+            GetImage((int)Images.InteractionButtonImage).sprite = _spriteList[num];
         }
     }
 }
