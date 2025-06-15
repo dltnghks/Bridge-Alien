@@ -19,7 +19,7 @@ public struct MiniGameUnloadDeliveryPointInfo
     }
 }
 
-public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint
+public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlaceable
 {
     [SerializeField] private MiniGameUnloadDeliveryPointInfo _info;
     [SerializeField] private TextMeshPro _ViewDeliveryRegionText;
@@ -27,8 +27,9 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint
     private Transform _unloadPointTransform;
     private Transform _endPointTransform;
     
-    private UnityAction<int> _action;
-    private UnityAction _triggerAction;
+    private Action<int> _action;
+    private Action _triggerAction;
+    private Action<MiniGameUnloadBox> _returnAction;
     private BoxCollider _boxCollider;
 
     public void Start()
@@ -44,10 +45,11 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint
         _ViewDeliveryRegionText.SetText(regionName);
     }
 
-    public void SetAction(UnityAction<int> action, UnityAction triggerAction = null)
+    public void SetAction(Action<int> action, Action triggerAction = null, Action<MiniGameUnloadBox> returnAction = null)
     {
         _action = action;
         _triggerAction = triggerAction;
+        _returnAction = returnAction;
         Managers.Sound.PlayAMB(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Conveyor.ToString(), gameObject);
     }
 
@@ -74,43 +76,59 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint
     private void MoveBoxToEndPoint(MiniGameUnloadBox box)
     {
         int score = 0;
-        if(!box.Info.IsGrab){
-            if(box.Info.IsBroken)
-            { 
+        
+        if (!box.Info.IsGrab)
+        {
+            if (box.BoxType != Define.BoxType.Normal)
+            {
+                score = -50;
+            }
+            else if (box.Info.IsBroken)
+            {
                 Logger.Log("broken box");
                 score = -50;
-                
-                Managers.Resource.Destroy(box.gameObject);
+
                 Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BrokenBox.ToString(), gameObject);
-                GenerateScoreTextObj(score, Color.red);
-                return;
             }
             else if (CheckBoxInfo(box.Info))
             {
                 Logger.Log("True Region");
-                score = 10;
+                score = 100;
             }
             else
             {
                 Logger.Log("False Region");
-                score = -10;
+                score = -50;
             }
         }
 
+        _action?.Invoke(score);
+                
+        // 획득 점수 표시
+        if(score < 0)
+            GenerateScoreTextObj(score, Color.red);
+        else
+            GenerateScoreTextObj(score, Color.green);
+
+
         box.transform.DOMove(_endPointTransform.position, 1).OnComplete(() =>
             {
-                _action?.Invoke(score);
-                
-                // 획득 점수 표시
-                if(score < 0)
-                    GenerateScoreTextObj(score, Color.red);
+                if (score < 0)
+                {
+                    ReturnBox(box);
+                }
                 else
-                    GenerateScoreTextObj(score, Color.green);
-                
-                Managers.Resource.Destroy(box.gameObject);
+                {
+                    Managers.Resource.Destroy(box.gameObject);
+                }
             }
         );
     }
+
+    private void ReturnBox(MiniGameUnloadBox box)
+    {
+        _returnAction.Invoke(box);
+    } 
 
     private void GenerateScoreTextObj(int amount, Color color)
     {
@@ -134,20 +152,18 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint
         return boxInfo.Region == _info.Region;
     }
 
-    public override bool ProcessBox(GameObject box)
+    public bool CanPlaceBox(MiniGameUnloadBox box)
+    {
+        return CanProcess(box.BoxType);
+    }
+
+    public void PlaceBox(MiniGameUnloadBox box)
     {
         MiniGameUnloadBox boxComponent = box.GetComponent<MiniGameUnloadBox>();
         if (boxComponent != null)
         {
             MoveToUnloadPoint(boxComponent);
-            return true;
         }
-        else
-        {
-            Logger.Log("Box component not found");
-        }
-
-        return false;
     }
 }
 

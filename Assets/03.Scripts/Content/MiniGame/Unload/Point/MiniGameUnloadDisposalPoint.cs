@@ -5,9 +5,5 @@ using UnityEngine;
 public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint
 {
     // 폐기하는 구역 
-    
-    public override bool ProcessBox(GameObject box)
-    {
-        throw new System.NotImplementedException();
-    }
+
 }

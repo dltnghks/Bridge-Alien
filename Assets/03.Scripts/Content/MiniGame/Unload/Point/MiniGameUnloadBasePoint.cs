@@ -15,7 +15,4 @@ public abstract class MiniGameUnloadBasePoint : MonoBehaviour
         }
         return false;
     }
-
-    // 포인트에서 수행하는 일
-    public abstract bool  ProcessBox(GameObject box);
 }
