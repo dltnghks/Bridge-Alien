@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint
+public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 {
     [Header("Setting")]
     private int _maxIndex = 1;
@@ -86,8 +86,13 @@ public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint
         }
         
     }
-    
-    public override bool ProcessBox(GameObject box)
+
+    public bool CanPlaceBox(MiniGameUnloadBox box)
+    {
+        return CanProcess(box.BoxType) && !_boxList.IsFull;
+    }
+
+    public void PlaceBox(MiniGameUnloadBox box)
     {
         ColdBox coldBox = box.GetComponent<ColdBox>();
         if (coldBox != null && _boxList.TryAddInGameUnloadBoxList(coldBox))
@@ -95,11 +100,6 @@ public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint
             _boxList.TryAddInGameUnloadBoxList(coldBox);
             coldBox.EnterCoolingArea();
             coldBox.transform.DOMove(transform.position, 1f);
-            
-            return true;
         }
-
-        return false;
     }
-
 }

@@ -57,6 +57,11 @@ public class MiniGameUnloadPlayerController : IPlayerController
         if (_isPointsCached) return;
         _cachedPoints.Clear();
         _cachedPoints.AddRange(Object.FindObjectsOfType<MiniGameUnloadBasePoint>());
+
+        foreach (var item in Object.FindObjectsOfType<MiniGameUnloadBasePoint>())
+        {
+            Logger.Log(item);
+        }
         _isPointsCached = true;
     }
     
@@ -115,22 +120,20 @@ public class MiniGameUnloadPlayerController : IPlayerController
             Logger.Log("Player Box is full");
             return;
         }
-        // 1. 전체 포인트(스폰포인트, 냉동포인트 등)에서 가장 가까운 박스 찾기
-        MiniGameUnloadBox nearestBox = FindNearestPickupBox();
-        if (nearestBox == null) return;
-            
+        
+        MiniGameUnloadBasePoint nearestPoint = FindNearestValidPoint();
+        MiniGameUnloadBox pickupBox = null;
         // 3. 포인트별 처리 (스폰포인트/냉동포인트 등)
-        if (nearestBox.transform.parent != null)
+        if (nearestPoint != null)
         {
-            MiniGameUnloadColdPoint coldPoint = nearestBox.GetComponentInParent<MiniGameUnloadColdPoint>();
-            if (coldPoint != null)
+            Logger.Log(nearestPoint);
+            // 인터페이스 체크 최적화
+            if (nearestPoint is IBoxPickupPoint pickupPoint)
             {
-                nearestBox = coldPoint.GetPickUpBox();
-            }
-            else
-            {
-                // 스폰포인트 또는 다른 포인트에서 박스 제거
-                nearestBox = _miniGameUnloadBoxSpawnPoint.GetPickUpBox();
+                if (pickupPoint.CanPickupBox())
+                {
+                    pickupBox = pickupPoint.PickupBox();
+                }
             }
         }
         else
@@ -138,19 +141,19 @@ public class MiniGameUnloadPlayerController : IPlayerController
             // 아무 포인트에도 속하지 않은 박스(예: 컨베이어 등)일 경우 별도 처리 없음
         }
 
-        if (nearestBox == null)
+        if (pickupBox == null)
         {
             return;
         }
 
-        nearestBox.SetIsGrab(true);
+        pickupBox.SetIsGrab(true);
         
         // 상자를 스택에 추가하고 위치 설정
-        _boxList.TryAddInGameUnloadBoxList(nearestBox);
+        _boxList.TryAddInGameUnloadBoxList(pickupBox);
 
-        nearestBox.transform.SetParent(Player.CharacterTransform);
-        nearestBox.transform.localPosition = Vector3.right + Vector3.up * (_boxHeight);
-        nearestBox.transform.localRotation = Quaternion.identity;
+        pickupBox.transform.SetParent(Player.CharacterTransform);
+        pickupBox.transform.localPosition = Vector3.right + Vector3.up * (_boxHeight);
+        pickupBox.transform.localRotation = Quaternion.identity;
         _boxHeight += _boxOffset;
 
     }
@@ -178,10 +181,20 @@ public class MiniGameUnloadPlayerController : IPlayerController
             Debug.Log($"이 포인트에는 {carriedBox.Info.BoxType} 상자를 놓을 수 없음");
             return;
         }
-        
-        // 4. 포인트별 처리 로직 실행
-        bool processSuccess = nearestPoint.ProcessBox(carriedBox.gameObject);
-        if (!processSuccess)
+
+        if (nearestPoint is IBoxPlacePoint boxPlaceable)
+        {
+            if (boxPlaceable.CanPlaceBox(carriedBox))
+            {
+                boxPlaceable.PlaceBox(carriedBox);
+            }
+            else
+            {
+                Debug.Log("처리 실패: 포인트가 가득 찼거나 조건 불일치");
+                return;
+            }
+        }
+        else
         {
             Debug.Log("처리 실패: 포인트가 가득 찼거나 조건 불일치");
             return;
@@ -216,7 +229,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
                 nearest = point;
             }
         }
-        return nearest; // 일정 거리 내에 있을 때만
+        return nearest;
     }
     
     private MiniGameUnloadBox FindNearestPickupBox()

@@ -19,6 +19,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;                   // 박스 생성 주기
     [SerializeField] private GameObject[] _boxPrefabList;
 
+    [Header("Return Point")]
+    [SerializeField] private MiniGameUnloadReturnPoint _returnPoint;
+
     [Header("Game Camera Settings")]
     [SerializeField] private CameraManager.CameraType _cameraType;
     [SerializeField] private CameraSettings _cameraSettings;
@@ -63,6 +66,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         Logger.Log("UnloadGame Starting game");
 
         SetGameInfo();
+
+        SetReturnPoint();
 
         SetDeliveryPointList();
 
@@ -129,11 +134,11 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
                 Logger.LogError("Null deliveryPoint encountered!");
                 continue;
             }
-            deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+            deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite, _returnPoint.PlaceBox);
             _deliveryPointList.Add(deliveryPoint);
         }
     }
-    
+
     private void SetSpawnBoxList()
     {
         GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
@@ -150,6 +155,25 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
         _boxSpawnPoint.SetBoxSpawnPoint(_gameSetting.MaxSpawnBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
 
+    }
+
+    private void SetReturnPoint()
+    {
+        GameObject returnPointObj = Utils.FindChild(gameObject, "ReturnPoint", true);
+        if (returnPointObj == null)
+        {
+            Logger.LogError("ColdPoint object not found!");
+            return;
+        }
+
+        _returnPoint = returnPointObj.GetOrAddComponent<MiniGameUnloadReturnPoint>();
+        if (_returnPoint == null)
+        {
+            Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
+            return;
+        }
+
+        _returnPoint.SetReturnPoint(_uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
     }
 
     private void SetPlayerCharacter()

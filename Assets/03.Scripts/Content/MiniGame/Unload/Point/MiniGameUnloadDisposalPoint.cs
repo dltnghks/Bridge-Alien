@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint
+public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 {
     // 폐기하는 구역 
-    
-    public override bool ProcessBox(GameObject box)
-    {
-        throw new System.NotImplementedException();
-    }
+
 }

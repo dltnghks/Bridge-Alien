@@ -11,7 +11,7 @@ public class FragileBox : MiniGameUnloadBox
     
     public void CheckBrokenBox(int height)
     {
-        if(height > 0)
+        if(height > 1)
         {
             _info.IsBroken = true;
         }

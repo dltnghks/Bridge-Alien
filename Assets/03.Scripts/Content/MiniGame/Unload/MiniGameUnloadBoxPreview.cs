@@ -73,8 +73,9 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         
         if(_previewQueue.Count > 0){
             MiniGameUnloadBox box = _previewQueue.Peek();
-            if (box != null && _miniGameUnloadBoxSpawnPoint.TrySpawnBox(box))
+            if (box != null && _miniGameUnloadBoxSpawnPoint.CanSpawnBox())
             {
+                _miniGameUnloadBoxSpawnPoint.SpawnBox(box);
                 DequeueBox();
             }
             else
