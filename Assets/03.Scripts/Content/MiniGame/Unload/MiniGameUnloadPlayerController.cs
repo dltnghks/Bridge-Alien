@@ -105,11 +105,12 @@ public class MiniGameUnloadPlayerController : IPlayerController
     {
         if(actionNum == (int)MiniGameUnloadInteractionAction.DropBox && 
             _boxList.IsEmpty){
+            Logger.Log("Drop box list is empty");
             return false;
         }
-
+        
         InteractionActionNumber = actionNum;
-
+        Logger.Log($"Drop box list changed : {InteractionActionNumber}");
         return true;
     }
 

@@ -18,11 +18,9 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
     private BoxCollider _boxCollider;
     private Vector3 _boxSpawnPosition;
     public float _boxHeight = 0;
-    private float _boxHeightOffset = 1.0f;
+    private float _boxHeightOffset = 0.8f;
 
     private Action _triggerAction;
-
-    private Coroutine _autoSpawnCoroutine;
 
     // 초기화
     public void SetReturnPoint(Action triggerAction = null)
@@ -33,19 +31,15 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
         _boxList = new MiniGameUnloadBoxList();
         _boxList.SetBoxList(100);
         _triggerAction = triggerAction;
-        _autoSpawnCoroutine = StartCoroutine(AutoSpawnBox());
     }
     // 5초마다 큐에서 박스를 드롭 지점으로 이동
     private IEnumerator AutoSpawnBox()
     {
-        while (true)
+        yield return new WaitForSeconds(_spawnInterval);
+        if (_returnBoxQueue.Count > 0)
         {
-            yield return new WaitForSeconds(_spawnInterval);
-            if (_returnBoxQueue.Count > 0)
-            {
-                MiniGameUnloadBox box = _returnBoxQueue.Dequeue();
-                MoveBoxToDropPoint(box);
-            }
+            MiniGameUnloadBox box = _returnBoxQueue.Dequeue();
+            MoveBoxToDropPoint(box);
         }
     }
 
@@ -75,7 +69,10 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 
     public void PlaceBox(MiniGameUnloadBox box)
     {
+        box.BoxType = Define.BoxType.Disposal;
         _returnBoxQueue.Enqueue(box);
+        
+        StartCoroutine(AutoSpawnBox());
     }
 
     // 트리거 영역 진입/탈출 시 플레이어 상호작용 변경

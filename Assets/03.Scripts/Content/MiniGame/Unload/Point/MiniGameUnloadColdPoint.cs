@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
+public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint, IBoxPlacePoint, IBoxPickupPoint
 {
     [Header("Setting")]
     private int _maxIndex = 1;
@@ -52,15 +52,6 @@ public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
                 _triggerAction?.Invoke();
             }
         }
-
-        if (coll.gameObject.CompareTag("Box"))
-        {
-            ColdBox box = coll.gameObject.GetComponent<ColdBox>();
-            if (!box.IsUnloaded)
-            {
-                box.IsUnloaded = true;
-            }
-        }
     }
     
     private void OnTriggerExit(Collider coll)
@@ -97,9 +88,23 @@ public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
         ColdBox coldBox = box.GetComponent<ColdBox>();
         if (coldBox != null && _boxList.TryAddInGameUnloadBoxList(coldBox))
         {
-            _boxList.TryAddInGameUnloadBoxList(coldBox);
             coldBox.EnterCoolingArea();
             coldBox.transform.DOMove(transform.position, 1f);
         }
+    }
+
+    public bool CanPickupBox()
+    {
+        return !_boxList.IsEmpty;
+    }
+
+    public MiniGameUnloadBox PickupBox()
+    {
+        MiniGameUnloadBox box = _boxList.RemoveAndGetTopInGameUnloadBoxList();
+        if (box != null)
+        {
+            return box;
+        }
+        return null;
     }
 }

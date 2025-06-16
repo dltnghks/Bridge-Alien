@@ -22,6 +22,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [Header("Return Point")]
     [SerializeField] private MiniGameUnloadReturnPoint _returnPoint;
 
+    [Header("Disposal Point")]
+    [SerializeField] private MiniGameUnloadDisposalPoint _disposePoint;
+    
     [Header("Game Camera Settings")]
     [SerializeField] private CameraManager.CameraType _cameraType;
     [SerializeField] private CameraSettings _cameraSettings;
@@ -74,6 +77,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         SetSpawnBoxList();
 
         SetColdArea();
+        SetDisposalPoint();
         
         SetPlayerCharacter();
 
@@ -137,6 +141,19 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite, _returnPoint.PlaceBox);
             _deliveryPointList.Add(deliveryPoint);
         }
+    }
+
+    private void SetDisposalPoint()
+    {
+        GameObject disposePointObj = Utils.FindChild(gameObject, "DisposalPoint", true);
+        if (disposePointObj == null)
+        {
+            Logger.LogError("DisposalPoint object not found!");
+            return;
+        }
+        
+        MiniGameUnloadDisposalPoint disposePoint = disposePointObj.GetOrAddComponent<MiniGameUnloadDisposalPoint>();
+        disposePoint.SetDisposalPoint(_uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
     }
 
     private void SetSpawnBoxList()
