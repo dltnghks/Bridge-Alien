@@ -53,6 +53,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     
     public void StartGame()
     {
+        Debug.Log("Delivery Start Game - In");
+
         // ProgressBar 값 초기화
         // MiniGameDeliveryPathProgress : 실질적인 Progress의 상태를 관리하고 있음
         _pathProgressBar = new MiniGameDeliveryPathProgress();
@@ -64,6 +66,10 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             Debug.Log("Player 캐릭터가 존재하지 않아요.");
             return;
         }
+        else
+        {
+            Debug.Log("PlayerCharacter Pass");
+        }
 
         PlayerController = new MiniGameDeliveryPlayerController(PlayerCharacter);
         if (PlayerController == null)
@@ -71,12 +77,20 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             Debug.Log("플레이어 컨트롤러가 존재하지 않아요.");
             return;
         }
+        else
+        {
+            Debug.Log("PlayerController Pass");
+        }
 
         _infiniteMap = Utils.FindChild<InfiniteMap>(gameObject, "Map", true);
         if (_infiniteMap == null)
         {
             Debug.Log("맵 생성 스크립트가 존재하지 않아요.");
             return;
+        }
+        else
+        {
+            Debug.Log("InfMap Pass");
         }
 
         // UpdateDistanceFromMap은 Delivery에서 값을 가지고 있기 위해서
