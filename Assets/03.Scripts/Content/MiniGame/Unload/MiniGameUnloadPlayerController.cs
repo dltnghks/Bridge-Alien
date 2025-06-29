@@ -231,6 +231,27 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
             return;
         }
 
+        // ColdBox를 올바른 지역에 놓았을 때 CoolingSkill Regain 호출
+        if (carriedBox.Info.BoxType == Define.BoxType.Normal &&
+            carriedBox is ColdBox && nearestPoint is MiniGameUnloadDeliveryPoint)
+        {
+            CoolingSkill coolingSkill = SkillList?.OfType<CoolingSkill>().FirstOrDefault();
+            if (coolingSkill != null)
+            {
+                coolingSkill.RegainResource(2f); // 필요에 따라 amount 조정
+            }
+        }
+        // 일반 박스를 올바른 지역에 놓았을 때 SpeedUpSkill Regain 호출
+        else if (carriedBox.Info.BoxType == Define.BoxType.Normal &&
+                carriedBox is CommonBox && nearestPoint is MiniGameUnloadDeliveryPoint)
+        {
+            SpeedUpSkill speedUpSkill = SkillList?.OfType<SpeedUpSkill>().FirstOrDefault();
+            if (speedUpSkill != null)
+            {
+                speedUpSkill.RegainResource(2f); // 필요에 따라 amount 조정
+            }
+        }
+
         HandleFragileBox(carriedBox);
 
         RemoveBoxFromPlayer();
@@ -267,6 +288,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     {
         _boxList.RemoveAndGetTopInGameUnloadBoxList();
         _boxHeight -= _boxOffset;
+        OnBoxListChanged?.Invoke(_boxList.BoxList);
     }
 
     

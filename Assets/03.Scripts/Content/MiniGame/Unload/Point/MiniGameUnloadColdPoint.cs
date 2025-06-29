@@ -90,6 +90,10 @@ public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint, IBoxPlacePoint, 
         {
             coldBox.EnterCoolingArea();
             coldBox.transform.DOMove(transform.position, 1f);
+
+            // 박스 상태 업데이트
+            box.transform.SetParent(transform);
+            box.SetIsGrab(false);
         }
     }
 

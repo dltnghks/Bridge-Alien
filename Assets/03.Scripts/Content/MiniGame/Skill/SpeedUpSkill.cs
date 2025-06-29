@@ -18,7 +18,8 @@ public class SpeedUpSkill : DurationSkill, IRegainable
         if (isActive) return; // 활성화 중에는 리게인 불가
 
         currentDuration = Mathf.Min(currentDuration + amount, 2);
-
+        OnCooldownChanged?.Invoke(currentDuration, skillData.maxDuration);
+        
         if (currentDuration >= skillData.maxDuration)
         {
             isReady = true; // 스킬 재사용 가능
