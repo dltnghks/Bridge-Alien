@@ -16,7 +16,7 @@ public enum MiniGameUnloadInteractionAction
     DropBox,   
 }
 
-public class MiniGameUnloadPlayerController : IPlayerController
+public class MiniGameUnloadPlayerController : IPlayerController, ISkillController
 {
     private MiniGameUnloadBoxList _boxList = new MiniGameUnloadBoxList();
     private float _boxHeight = 0f;
@@ -31,6 +31,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
     public Player Player { get; set; }
     public int InteractionActionNumber { get; set; }
     public bool IsDropBox { get; set; }
+    public SkillBase[] SkillList { get; set; }
 
     public MiniGameUnloadPlayerController(){}
     public MiniGameUnloadPlayerController(Player player, float radius, float moveSpeedReductionRatio, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint, MiniGameUnloadColdPoint miniGameUnloadColdPoint, UnityAction<List<MiniGameUnloadBox>> OnBoxListChangedAction)
@@ -39,8 +40,9 @@ public class MiniGameUnloadPlayerController : IPlayerController
         _moveSpeedReductionRatio = moveSpeedReductionRatio;
         _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
         _miniGameUnloadColdPoint = miniGameUnloadColdPoint;
-        
+
         OnBoxListChanged = OnBoxListChangedAction;
+        
     }
 
     public void Init(Player player)
@@ -51,7 +53,43 @@ public class MiniGameUnloadPlayerController : IPlayerController
         InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
         CacheAllPoints();
     }
+
+    public void SetSkillList(SkillBase[] skillList)
+    {
+        SkillList = skillList;
+
+        foreach (var skill in SkillList)
+        {
+            if (skill is BoxWarpSkill BoxWarpSkill)
+            {
+                BoxWarpSkill.SetDropBoxAction(RemoveBoxFromPlayer);
+                BoxWarpSkill.SetPlayerBoxList(_boxList);
+                BoxWarpSkill.SetDeliveryPointList(_cachedPoints.OfType<MiniGameUnloadDeliveryPoint>().ToArray());
+            }
+            
+            if(skill is SpeedUpSkill speedUpSkill)
+            {
+                speedUpSkill.SetPlayerCharacter(Player);
+            }
+        }
+    }
     
+    public void OnSkill(int skillIndex)
+    {
+        if (Managers.MiniGame.CurrentGame.IsPause)
+        {
+            return;
+        }
+
+        if (skillIndex < 0 || skillIndex >= SkillList.Length)
+        {
+            Logger.LogError($"Invalid skill index: {skillIndex}");
+            return;
+        }
+
+        SkillList[skillIndex].TryActivate();
+    }
+
     private void CacheAllPoints()
     {
         if (_isPointsCached) return;
@@ -103,12 +141,13 @@ public class MiniGameUnloadPlayerController : IPlayerController
 
     public bool ChangeInteraction(int actionNum)
     {
-        if(actionNum == (int)MiniGameUnloadInteractionAction.DropBox && 
-            _boxList.IsEmpty){
+        if (actionNum == (int)MiniGameUnloadInteractionAction.DropBox &&
+            _boxList.IsEmpty)
+        {
             Logger.Log("Drop box list is empty");
             return false;
         }
-        
+
         InteractionActionNumber = actionNum;
         Logger.Log($"Drop box list changed : {InteractionActionNumber}");
         return true;
@@ -121,7 +160,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
             Logger.Log("Player Box is full");
             return;
         }
-        
+
         MiniGameUnloadBasePoint nearestPoint = FindNearestValidPoint();
         MiniGameUnloadBox pickupBox = null;
         // 3. 포인트별 처리 (스폰포인트/냉동포인트 등)
@@ -148,7 +187,7 @@ public class MiniGameUnloadPlayerController : IPlayerController
         }
 
         pickupBox.SetIsGrab(true);
-        
+
         // 상자를 스택에 추가하고 위치 설정
         _boxList.TryAddInGameUnloadBoxList(pickupBox);
 
@@ -156,6 +195,12 @@ public class MiniGameUnloadPlayerController : IPlayerController
         pickupBox.transform.localPosition = Vector3.right + Vector3.up * (_boxHeight);
         pickupBox.transform.localRotation = Quaternion.identity;
         _boxHeight += _boxOffset;
+        
+        CoolingSkill coolingSkill = SkillList.OfType<CoolingSkill>().FirstOrDefault();
+        if (coolingSkill != null && pickupBox.BoxType == Define.BoxType.Cold)
+        {
+            coolingSkill.OnPickUpBox(pickupBox);
+        }
 
     }
 
@@ -164,7 +209,6 @@ public class MiniGameUnloadPlayerController : IPlayerController
     {
         if (_boxList.IsEmpty) return;
 
-        // 1. 가장 가까운 포인트 찾기
         MiniGameUnloadBasePoint nearestPoint = FindNearestValidPoint();
         if (nearestPoint == null)
         {
@@ -172,48 +216,57 @@ public class MiniGameUnloadPlayerController : IPlayerController
             return;
         }
 
-        // 2. 현재 들고 있는 박스 확인
         MiniGameUnloadBox carriedBox = _boxList.PeekBoxList();
         if (carriedBox == null) return;
 
-        // 3. 포인트-박스 타입 호환성 검사
-        if (!nearestPoint.CanProcess(carriedBox.Info.BoxType))
+        if (!CanDropBoxAtPoint(nearestPoint, carriedBox))
         {
             Debug.Log($"이 포인트에는 {carriedBox.Info.BoxType} 상자를 놓을 수 없음");
             return;
         }
 
-        if (nearestPoint is IBoxPlacePoint boxPlaceable)
-        {
-            if (boxPlaceable.CanPlaceBox(carriedBox))
-            {
-                boxPlaceable.PlaceBox(carriedBox);
-            }
-            else
-            {
-                Debug.Log("처리 실패: 포인트가 가득 찼거나 조건 불일치");
-                return;
-            }
-        }
-        else
+        if (!TryPlaceBoxAtPoint(nearestPoint, carriedBox))
         {
             Debug.Log("처리 실패: 포인트가 가득 찼거나 조건 불일치");
             return;
         }
-        
-        FragileBox fragileBox = carriedBox.GetComponent<FragileBox>();
+
+        HandleFragileBox(carriedBox);
+
+        RemoveBoxFromPlayer();
+    }
+
+    private bool CanDropBoxAtPoint(MiniGameUnloadBasePoint point, MiniGameUnloadBox box)
+    {
+        return point.CanProcess(box.Info.BoxType);
+    }
+
+    private bool TryPlaceBoxAtPoint(MiniGameUnloadBasePoint point, MiniGameUnloadBox box)
+    {
+        if (point is IBoxPlacePoint boxPlaceable)
+        {
+            if (boxPlaceable.CanPlaceBox(box))
+            {
+                boxPlaceable.PlaceBox(box);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void HandleFragileBox(MiniGameUnloadBox box)
+    {
+        FragileBox fragileBox = box.GetComponent<FragileBox>();
         if (fragileBox != null)
         {
             fragileBox.CheckBrokenBox(_boxList.CurrentUnloadBoxIndex);
         }
+    }
 
-        // 5. 플레이어 박스 리스트에서 제거
+    public void RemoveBoxFromPlayer()
+    {
         _boxList.RemoveAndGetTopInGameUnloadBoxList();
         _boxHeight -= _boxOffset;
-
-        // 6. 박스 상태 업데이트
-        carriedBox.transform.SetParent(nearestPoint.transform);
-        carriedBox.SetIsGrab(false);
     }
 
     
@@ -231,37 +284,5 @@ public class MiniGameUnloadPlayerController : IPlayerController
             }
         }
         return nearest;
-    }
-    
-    private MiniGameUnloadBox FindNearestPickupBox()
-    {
-        Vector3 playerPos = Player.transform.position;
-        MiniGameUnloadBox nearestBox = null;
-        float minDist = float.MaxValue;
-
-        // 1. 스폰포인트의 박스 체크
-        MiniGameUnloadBox spawnBox = _miniGameUnloadBoxSpawnPoint.BoxList.PeekBoxList();
-        if (spawnBox != null)
-        {
-            float dist = Vector3.Distance(playerPos, spawnBox.transform.position);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                nearestBox = spawnBox;
-            }
-        }
-
-        // 2. 냉동포인트 등 다른 포인트의 박스 체크
-        MiniGameUnloadBox coldBox = _miniGameUnloadColdPoint.CurrentBox;
-        if(coldBox != null){
-            float dist = Vector3.Distance(playerPos, coldBox.transform.position);
-            if (dist < minDist)
-            {
-                minDist = dist;
-                nearestBox = coldBox;
-            }
-        }
-
-        return nearestBox;
     }
 }

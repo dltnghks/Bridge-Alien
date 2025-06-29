@@ -10,6 +10,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
     [Header("Game Setting")]
     [SerializeField] private MiniGameUnloadSetting _gameSetting;
+    [SerializeField] private SkillBase[] _skillList; // 스킬 리스트
 
     [Header("Delivery Point")]
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
@@ -28,15 +29,16 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [Header("Game Camera Settings")]
     [SerializeField] private CameraManager.CameraType _cameraType;
     [SerializeField] private CameraSettings _cameraSettings;
-    
+
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
     public Player PlayerCharacter { get; set; }
     public IPlayerController PlayerController { get; set; }
+
     public CameraManager.CameraType CameraType
     {
-        get { return _cameraType;}
+        get { return _cameraType; }
         set { _cameraType = value; }
     }
 
@@ -209,6 +211,15 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
         PlayerController.Init(PlayerCharacter);
+
+        if (PlayerController is ISkillController skillController)
+        {
+            skillController.SetSkillList(_skillList);
+        }
+        else
+        {
+            Logger.LogError("PlayerController does not implement ISkillController!");
+        }
     }
 
     // 게임 설정과 박스 스폰 리스트가 설정이 되어있을 때, UI 세팅
@@ -222,6 +233,11 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
         _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
+        if (PlayerController is ISkillController skillController)
+        {
+            _uiGameUnloadScene.UIPlayerInput.SetSkillInfo(_skillList);
+            _uiGameUnloadScene.UIPlayerInput.SetSkillAction(skillController.OnSkill);
+        }
     }
     
     public bool PauseGame()

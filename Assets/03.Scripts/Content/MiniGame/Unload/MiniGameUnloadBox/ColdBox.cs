@@ -55,6 +55,18 @@ public class ColdBox : MiniGameUnloadBox
         isCooling = false;
         BoxType = Define.BoxType.Normal;
     }
+
+    // 바로 냉장상태로 전환
+    public void DirectCooling()
+    {
+        if (!isColdbox && !isCooling)
+        {
+            isColdbox = true;
+            isCooling = true;
+            runtimeMaterial.color = new Color(0.1f, originalColor.g, originalColor.b, originalColor.a); // r값을 0.1로 설정
+            BoxType = Define.BoxType.Normal;
+        }
+    }
     
     public override void SetRandomInfo()
     {

@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     public Transform CharacterTransform => playerBody.transform;
 
+    public float MoveSpeed => moveSpeed;
+
     public void Start()
     {
         // 리지드바디 설정
@@ -191,5 +193,10 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, transform.right * rayDistance);
         Gizmos.DrawRay(transform.position, -transform.right * rayDistance);
+    }
+
+    public void SpeedUp(float speedBoost)
+    {
+        moveSpeed += speedBoost;
     }
 }
