@@ -28,6 +28,7 @@ public class UIGameStartPopup : UIPopup
 
         _gameStartImage = GetImage((int)Images.GameStartImage);
 
+        Managers.UI.SetInputBackground(false);
         return true;
     }
 
@@ -54,10 +55,16 @@ public class UIGameStartPopup : UIPopup
         // 4. 애니메이션 종료 후 이미지 비활성화
         sequence.OnComplete(() => 
         {
-            _gameStartImage.gameObject.SetActive(false);
             gameStartAction?.Invoke();
+            ClosePopupUI();
         }
         );
+    }
+
+    public override void ClosePopupUI()
+    {
+        Managers.UI.SetInputBackground(true);
+        base.ClosePopupUI();
     }
 
 }

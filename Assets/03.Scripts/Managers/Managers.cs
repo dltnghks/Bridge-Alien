@@ -11,7 +11,8 @@ public class Managers : MonoBehaviour
     {
         get { Init();  return _instance; }
     }
-
+    
+    private static DataManager _dataManager;
     private static ResourceManager _resourceManager = new ResourceManager();
     private static UIManager _uiManager = new UIManager();
     private static MiniGameManager  _miniGameManager;
@@ -19,8 +20,12 @@ public class Managers : MonoBehaviour
     private static FadeManager _fadeManager;
     private static CameraManager _cameraManager;
     private static SoundManager _soundManager;
-    private static PoolManager _poolManager = new PoolManager();    
+    private static PoolManager _poolManager = new PoolManager();
+    private static DailyManager _dailyManager = new DailyManager();
+    private static PlayerManager _playerManager = new PlayerManager();
+    private static SaveManager _saveManager = new SaveManager();
     
+    public static DataManager Data {get { Init(); return _dataManager;}}
     public static ResourceManager Resource { get { Init(); return _resourceManager; } }
     public static UIManager UI { get{ Init(); return _uiManager; } }
     public static SceneManagerEx Scene { get{ Init(); return _sceneManager; } }
@@ -28,8 +33,10 @@ public class Managers : MonoBehaviour
     public static MiniGameManager MiniGame { get{ Init(); return _miniGameManager; } }
     public static CameraManager Camera{get{Init(); return _cameraManager; }}
     public static SoundManager Sound{get{Init(); return _soundManager; }}
-    
     public static PoolManager Pool { get{ Init(); return _poolManager; } }
+    public static DailyManager Daily { get{ Init(); return _dailyManager; } }
+    public static PlayerManager Player { get{ Init(); return _playerManager; } }
+    public static SaveManager Save { get{ Init(); return _saveManager; } }
     
     private static void Init()
     {
@@ -40,10 +47,10 @@ public class Managers : MonoBehaviour
                 go = new GameObject { name = "@Managers" };
 
             _instance = Utils.GetOrAddComponent<Managers>(go);
-            
-            _resourceManager.Init();
-            _poolManager.Init();
 
+            _dataManager = Utils.GetOrAddComponent<DataManager>(go);
+            _dataManager.Init();
+            
             _sceneManager = Utils.GetOrAddComponent<SceneManagerEx>(go);
             _sceneManager.Init();
             
@@ -57,7 +64,13 @@ public class Managers : MonoBehaviour
 
             _soundManager = Utils.GetOrAddComponent<SoundManager>(go);
             _soundManager.Init();
-
+            
+            _saveManager.Init();
+            _resourceManager.Init();
+            _poolManager.Init();
+            _playerManager.Init();
+            _dailyManager.Init();
+            _uiManager.Init();
             
             DontDestroyOnLoad(go);
         }

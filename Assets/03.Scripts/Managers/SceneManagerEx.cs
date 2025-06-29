@@ -58,6 +58,8 @@ public class SceneManagerEx : MonoBehaviour
         // 현재 씬 클리어
         CurrentScene.Clear();
         _curSceneType = type;
+        Managers.UI.Init();
+
         StartLoading();
     }
 

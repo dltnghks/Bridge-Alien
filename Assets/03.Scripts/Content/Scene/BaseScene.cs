@@ -13,8 +13,7 @@ public class BaseScene : MonoBehaviour
         
         string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), SceneType);
        
-            Managers.Sound.PlayBGM(sceneTypeStr);
-       
+        Managers.Sound.PlayBGM(sceneTypeStr);
     }
 
     protected virtual bool Init()

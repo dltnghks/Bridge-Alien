@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
+	// 데이터 매니저에서 가져올 게임 데이터
+	[Header("Game Setting")]
+    [SerializeField] private MiniGameDeliverySetting _gameSetting;
+    
     [Header("게임 종료 시간")]
     [SerializeField] private float gameTime = 1500f;
 
@@ -71,6 +75,16 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         
         _infiniteMap.InitializeMap(maxDistance, UpdateDistanceFromMap);
         IsActive = true;
+    }
+    
+    private void SetGameInfo()
+    {
+        _gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameDeliverySetting>(Define.MiniGameType.Delivery);
+        
+        if (_gameSetting == null)
+        {
+            Logger.LogError("Not Found Game Information");
+        }
     }
 
     public bool PauseGame()

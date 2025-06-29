@@ -19,6 +19,8 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         
         BindText(typeof(Texts));
         
+        Managers.UI.SetInputBackground(false);
+        
         return true;
     }
 
@@ -36,7 +38,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     protected override void OnClickConfirmButton()
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        Managers.Scene.ChangeScene(Define.Scene.GameMap);
+        Managers.Daily.EndMiniGameEvent();
     } 
     
     float ScaleDuration = 0.5f;
@@ -62,5 +64,10 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         sequence.Append(transform.DOScale(Vector3.one, ScaleDuration).SetEase(Ease.InQuad));
 
     }       
-
+    
+    public override void ClosePopupUI()
+    {
+        Managers.UI.SetInputBackground(true);
+        base.ClosePopupUI();       
+    }
 }

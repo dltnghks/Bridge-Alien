@@ -26,6 +26,5 @@ public class UIMenu : UISubItem
     private void OnClickMapButton()
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        Managers.Scene.ChangeScene(Define.Scene.GameMap);
     }
 }

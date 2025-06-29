@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UIPopup : UIBase
 {
+    
     public override bool Init()
     {
         if (base.Init() == false)
@@ -12,8 +14,17 @@ public class UIPopup : UIBase
         return true;
     }
 
+    // 팝업에서만 사용하는 초기화 함수
+    public virtual void Init(object data)
+    {
+        Init();
+    }
+
+    
     public virtual void ClosePopupUI()
     {
+        Logger.Log("ClosePopupUI");
         Managers.UI.ClosePopupUI(this);
     }
+    
 }

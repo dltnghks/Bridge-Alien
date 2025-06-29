@@ -43,6 +43,5 @@ public class UIGameMenuPopup : UIPopup
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickExit");
-        Managers.Scene.ChangeScene(Define.Scene.GameMap);
     }
 }
