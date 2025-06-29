@@ -7,6 +7,7 @@ public abstract class ChargeSkill : SkillBase
 {
     [SerializeField] protected ChargeSkillData skillData;
     [SerializeField] protected int remainingCharges;
+    protected bool isActive;
 
     public ChargeSkillData SkillData => skillData;
 
@@ -22,5 +23,5 @@ public abstract class ChargeSkill : SkillBase
         OnCountChanged += action;
     }
     
-    public override bool CanUseSkill() => remainingCharges > 0;
+    public override bool CanUseSkill() => remainingCharges > 0 && !isActive;
 }
