@@ -61,24 +61,33 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
         {
-            Debug.Log("Player 캐릭터가 존재하지 않는데요.");
+            Debug.Log("Player 캐릭터가 존재하지 않아요.");
             return;
         }
 
         PlayerController = new MiniGameDeliveryPlayerController(PlayerCharacter);
         if (PlayerController == null)
+        {
+            Debug.Log("플레이어 컨트롤러가 존재하지 않아요.");
             return;
-        
+        }
+
         _infiniteMap = Utils.FindChild<InfiniteMap>(gameObject, "Map", true);
         if (_infiniteMap == null)
+        {
+            Debug.Log("맵 생성 스크립트가 존재하지 않아요.");
             return;
-        
+        }
+
+        // UpdateDistanceFromMap은 Delivery에서 값을 가지고 있기 위해서
+        // 증가 값을 넘겨준다.
         _infiniteMap.InitializeMap(maxDistance, UpdateDistanceFromMap);
         IsActive = true;
     }
     
     private void SetGameInfo()
     {
+        // 카메라 세팅 값을 가져와서 게임 세팅하는 듯.
         _gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameDeliverySetting>(Define.MiniGameType.Delivery);
         
         if (_gameSetting == null)

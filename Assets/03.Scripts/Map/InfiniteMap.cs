@@ -19,7 +19,6 @@ public class InfiniteMap : MonoBehaviour
     private bool _isInitialized = false;                                     // 초기화 완료 여부
     private float _threshold;                                                // 블록 재배치 임계값 (블록 크기의 1.5배가 넘어가면 재배치됩니다 넉넉해야 깜빡이는 현상이 없습니다)
 
-    [SerializeField] private ObstacleSpawner obstacleSpawner;
     private Action<float> onUpdateDistance;
 
     //~ InitializeBlocks() 메서드는 맵 블록들을 초기화합니다.
@@ -70,11 +69,7 @@ public class InfiniteMap : MonoBehaviour
             float currentPos = Vector3.Dot(_blocks[i].localPosition, moveDirection);
 
             if (currentPos >= _threshold)
-            {
-                obstacleSpawner.RemoveObstacle(i);
                 _blocks[i].localPosition -= moveDirection * (blockSize * 3);
-                obstacleSpawner.SpawnObstacle(i);
-            }
             else if (currentPos <= -_threshold)
                 _blocks[i].localPosition += moveDirection * (blockSize * 3);
         }
