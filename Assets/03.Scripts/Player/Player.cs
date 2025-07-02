@@ -62,6 +62,12 @@ public class Player : MonoBehaviour
         Managers.Camera.Initialize(transform);
 
         // 캐릭터 애니메이터 설정
+        SetAnimator();
+    }
+
+    protected virtual void SetAnimator()
+    {
+        // 캐릭터 애니메이터 설정
         characterAnimator = GetComponent<CharacterAnimator>();
         if (characterAnimator == null)
         {
@@ -167,16 +173,6 @@ public class Player : MonoBehaviour
     public void PlayLosePose()
     {
         characterAnimator.PlayLosePose();
-    }
-
-    public void TriggerHoldUp()
-    {
-        characterAnimator.TriggerHoldUp();
-    }
-
-    public void TriggerHoldDown()
-    {
-        characterAnimator.TriggerHoldDown();
     }
 
     public void EventFootStepSound()
