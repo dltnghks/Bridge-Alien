@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,13 @@ public class SpeedUpSkill : DurationSkill, IRegainable
 {
     private Player _playerCharacter; // 플레이어 캐릭터 참조
     private float speedBoost;
+
+    private Action<bool> _onActiveAction;
+
+    public void SetActiveAction(Action<bool> action)
+    {
+        _onActiveAction = action;
+    }
 
     public void SetPlayerCharacter(Player player)
     {
@@ -43,14 +51,15 @@ public class SpeedUpSkill : DurationSkill, IRegainable
     {
         isActive = true;
         currentDuration = skillData.maxDuration;
-        // TODO. 10% 상승하는 걸로 바꿔야 됨.
         _playerCharacter.SpeedUp(speedBoost); // 플레이어 속도 증가
+        _onActiveAction?.Invoke(true); // 스킬 활성화 액션 호출
     }
 
     protected override void EndSkill()
     {
         base.EndSkill();
         _playerCharacter.SpeedUp(-speedBoost); // 플레이어 속도 초기화
+        _onActiveAction?.Invoke(false); // 스킬 비활성화 액션 호출
     }
 
 }

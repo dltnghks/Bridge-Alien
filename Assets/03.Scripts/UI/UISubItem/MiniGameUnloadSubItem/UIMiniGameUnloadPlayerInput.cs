@@ -81,6 +81,7 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
             else if (skill is SpeedUpSkill speedUpSkill)
             {
                 speedUpSkill.SetSkillCooldownAction(SetSpeedUpSkillButtonDuration);
+                speedUpSkill.SetActiveAction(SetSpeedUpSkillActiveIcon);
                 GetImage((int)Images.SpeedUpSkillIconImage).sprite = speedUpSkill.SkillData.SkillIcon;
             }
         }
@@ -129,21 +130,17 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
         if (_init)
         {
             GetImage((int)Images.SpeedUpSkillButtonDurationImage).fillAmount = 1 - currentDuration / maxDuration;
-            // Speed Up Skill이 활성화되면 아이콘을 보이도록 설정
-            // 지속시간이 얼마남지 않으면 깜빡이도록 설정
-            // TODO. 지금 Regain할 때도 활성화가 되버림. 안되도록 변경
-            if (currentDuration > 0)
-            {
-                GetImage((int)Images.UISpeedUpSkillActiveIcon).gameObject.SetActive(true);
-                GetImage((int)Images.UISpeedUpSkillActiveIcon).DOFade(1f, 0.5f).SetLoops(-1, LoopType.Yoyo);
-            }
-            else
-            {
-                GetImage((int)Images.UISpeedUpSkillActiveIcon).gameObject.SetActive(false);
-                GetImage((int)Images.UISpeedUpSkillActiveIcon).DOKill();
-            }
         }
     }
+
+    public void SetSpeedUpSkillActiveIcon(bool isActive)
+    {
+        if (_init)
+        {
+            GetImage((int)Images.UISpeedUpSkillActiveIcon).gameObject.SetActive(isActive);
+        }
+    }
+
     public void SetInteractionButtonSprite()
     {
         if (_init)
