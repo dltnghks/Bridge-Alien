@@ -27,8 +27,8 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     private List<MiniGameUnloadBasePoint> _cachedPoints = new List<MiniGameUnloadBasePoint>();
     private UnityAction<List<MiniGameUnloadBox>> OnBoxListChanged;
     private bool _isPointsCached;
-    
-    public Player Player { get; set; }
+    private MiniGameUnloadPlayer _unloadPlayer;
+    public Player Player { get; set ; }
     public int InteractionActionNumber { get; set; }
     public bool IsDropBox { get; set; }
     public SkillBase[] SkillList { get; set; }
@@ -42,12 +42,13 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         _miniGameUnloadColdPoint = miniGameUnloadColdPoint;
 
         OnBoxListChanged = OnBoxListChangedAction;
-        
+
     }
 
     public void Init(Player player)
     {
         Player = player;
+        _unloadPlayer = Player as MiniGameUnloadPlayer;
 
         _boxList.SetBoxList(3);
         InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
@@ -66,14 +67,19 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
                 BoxWarpSkill.SetPlayerBoxList(_boxList);
                 BoxWarpSkill.SetDeliveryPointList(_cachedPoints.OfType<MiniGameUnloadDeliveryPoint>().ToArray());
             }
-            
-            if(skill is SpeedUpSkill speedUpSkill)
+
+            if (skill is SpeedUpSkill speedUpSkill)
             {
                 speedUpSkill.SetPlayerCharacter(Player);
             }
+
+            if(skill is CoolingSkill coolingSkill)
+            {
+                coolingSkill.SetOnSkillAction(_unloadPlayer.SetCoolingSkill);
+            }
         }
     }
-    
+
     public void OnSkill(int skillIndex)
     {
         if (Managers.MiniGame.CurrentGame.IsPause)
@@ -102,14 +108,15 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         }
         _isPointsCached = true;
     }
-    
+
     public void InputJoyStick(Vector2 input)
     {
-        if(Managers.MiniGame.CurrentGame.IsPause){
-           return; 
+        if (Managers.MiniGame.CurrentGame.IsPause)
+        {
+            return;
         }
 
-        input = input - (input * (_boxList.CurrentUnloadBoxIndex * (_moveSpeedReductionRatio/100.0f)));
+        input = input - (input * (_boxList.CurrentUnloadBoxIndex * (_moveSpeedReductionRatio / 100.0f)));
         // 플레이어 이동
         Player.PlayerMovement(input);
     }
@@ -176,10 +183,6 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
                 }
             }
         }
-        else
-        {
-            // 아무 포인트에도 속하지 않은 박스(예: 컨베이어 등)일 경우 별도 처리 없음
-        }
 
         if (pickupBox == null)
         {
@@ -195,12 +198,15 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         pickupBox.transform.localPosition = Vector3.right + Vector3.up * (_boxHeight);
         pickupBox.transform.localRotation = Quaternion.identity;
         _boxHeight += _boxOffset;
-        
+
         CoolingSkill coolingSkill = SkillList.OfType<CoolingSkill>().FirstOrDefault();
         if (coolingSkill != null && pickupBox.BoxType == Define.BoxType.Cold)
         {
             coolingSkill.OnPickUpBox(pickupBox);
         }
+
+        // 플레이어 애니메이션 상태 설정
+        _unloadPlayer.SetHoldUp(true);
 
     }
 
@@ -241,6 +247,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
                 coolingSkill.RegainResource(2f); // 필요에 따라 amount 조정
             }
         }
+        
         // 일반 박스를 올바른 지역에 놓았을 때 SpeedUpSkill Regain 호출
         else if (carriedBox.Info.BoxType == Define.BoxType.Normal &&
                 carriedBox is CommonBox && nearestPoint is MiniGameUnloadDeliveryPoint)
@@ -289,9 +296,15 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         _boxList.RemoveAndGetTopInGameUnloadBoxList();
         _boxHeight -= _boxOffset;
         OnBoxListChanged?.Invoke(_boxList.BoxList);
+
+        if (_boxList.IsEmpty)
+        {        
+            // 플레이어 애니메이션 상태 설정
+            _unloadPlayer.SetHoldUp(false);
+        }
     }
 
-    
+
     private MiniGameUnloadBasePoint FindNearestValidPoint()
     {
         MiniGameUnloadBasePoint nearest = null;
@@ -306,5 +319,9 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
             }
         }
         return nearest;
+    }
+    
+    public void SetPlayerAnimState()
+    {
     }
 }

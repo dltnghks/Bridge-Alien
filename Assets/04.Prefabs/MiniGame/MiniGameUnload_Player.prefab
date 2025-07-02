@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2263148129475462844}
   - component: {fileID: 5488191188019622525}
   - component: {fileID: 1182972692698098610}
-  - component: {fileID: 8407519136343659438}
   - component: {fileID: 5343389713107772975}
   - component: {fileID: 3091227573643367560}
   - component: {fileID: 5248423100341047041}
+  - component: {fileID: 9087717325584492446}
   m_Layer: 0
   m_Name: MiniGameUnload_Player
   m_TagString: Player
@@ -85,21 +85,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 4, z: 0.2}
   m_Center: {x: 0, y: -0.5, z: 0}
---- !u!114 &8407519136343659438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7571066374363211147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e52fd218b0b424585c6760bf54687a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 8
-  rayDistance: 1
-  enableFlip: 1
 --- !u!212 &5343389713107772975
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 7571066374363211147}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb78afbd8b4765a4caf57a68ebcdf623, type: 2}
+  m_Controller: {fileID: 9100000, guid: ccc5af4af4f025241b8a79f26545169e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -185,3 +170,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd673cede480d684d8ce4c6f51c83f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9087717325584492446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571066374363211147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeefc123c2955ae4499682e2fd720262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  rayDistance: 1
+  enableFlip: 1

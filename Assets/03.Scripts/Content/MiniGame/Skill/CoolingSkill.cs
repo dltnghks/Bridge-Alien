@@ -1,14 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CoolingSkill : DurationSkill, IRegainable
 {
+    private Action<bool> _onSkillAction;
+
+    public void SetOnSkillAction(Action<bool> action)
+    {
+        _onSkillAction = action;
+    }
+
     protected override void OnActivate()
     {
         isActive = true;
+        _onSkillAction?.Invoke(true);
         currentDuration = skillData.maxDuration;
         // 캐릭터 외형 변경, 이펙트 활성화 로직
+    }
+
+    protected override void EndSkill()
+    {
+        base.EndSkill();
+        _onSkillAction?.Invoke(false);
     }
 
     // 냉각 완료 상자를 배달했을 때 호출될 메서드
@@ -34,8 +49,8 @@ public class CoolingSkill : DurationSkill, IRegainable
         {
             coldBox.DirectCooling();
         }
-        
-        // 이펙트 추가
+
+
     }
 
     public override void TryActivate()
