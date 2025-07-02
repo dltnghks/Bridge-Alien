@@ -10,28 +10,24 @@ public enum CharacterState
     // 게임 상태
     WinPose,
     LosePose,
-    
-    // 캐릭터 행동
-    HoldUp,
-    HoldDown
 }
 
 [RequireComponent(typeof(Animator))]                                            // 애니메이터 컴포넌트 필요
 public class CharacterAnimator : MonoBehaviour
 {
-    private Animator animator;                                                  // 애니메이터 컴포넌트
-    private CharacterState currentState;                                        // 현재 상태 (enum)
+    protected Animator animator;                                                  // 애니메이터 컴포넌트
+    protected CharacterState currentState;                                        // 현재 상태 (enum)
     
     //~ 애니메이터 파라미터 이름 상수화
-    private static readonly string PARAM_IS_MOVING = "IsMoving";
-    private static readonly string PARAM_MOVE_SPEED = "MoveSpeed";
-    private static readonly string TRIGGER_WIN = "TriggerWin";
-    private static readonly string TRIGGER_LOSE = "TriggerLose";
-    private static readonly string TRIGGER_HOLD_UP = "TriggerHoldUp";
-    private static readonly string TRIGGER_HOLD_DOWN = "TriggerHoldDown";
+    protected static readonly string PARAM_IS_MOVING = "IsMoving";
+    protected static readonly string PARAM_MOVE_SPEED = "MoveSpeed";
+    protected static readonly string TRIGGER_WIN = "TriggerWin";
+    protected static readonly string TRIGGER_LOSE = "TriggerLose";
+    protected static readonly string TRIGGER_HOLD_UP = "TriggerHoldUp";
+    protected static readonly string TRIGGER_HOLD_DOWN = "TriggerHoldDown";
 
     //~ 초기화
-    private void Awake()
+    protected void Awake()
     {
         if (animator == null) { animator = GetComponent<Animator>(); }          // 애니메이터 컴포넌트 참조
         currentState = CharacterState.Idle;                                     // 초기 상태 설정
@@ -64,23 +60,8 @@ public class CharacterAnimator : MonoBehaviour
         ChangeState(CharacterState.LosePose);
     }
 
-    //~ Hold 액션
-    public void TriggerHoldUp()
-    {
-        Logger.Log("TriggerHoldUp");
-        animator.SetTrigger(TRIGGER_HOLD_UP);
-        ChangeState(CharacterState.HoldUp);
-    }
-
-    //~ HoldDown 액션
-    public void TriggerHoldDown()
-    {
-        animator.SetTrigger(TRIGGER_HOLD_DOWN);
-        ChangeState(CharacterState.HoldDown);
-    }
-
     //~ 애니메이션 상태 변경 처리
-    private void ChangeState(CharacterState newState)
+    protected void ChangeState(CharacterState newState)
     {
         if (currentState == newState) return;
         
@@ -93,14 +74,10 @@ public class CharacterAnimator : MonoBehaviour
     }
 
     //~ 애니메이션 상태 진입 처리
-    private void OnStateEnter(CharacterState state)
+    protected void OnStateEnter(CharacterState state)
     {
         switch (state)
         {
-            case CharacterState.HoldUp:
-            case CharacterState.HoldDown:
-                // Hold 상태 진입 시 이동 제한 등의 처리
-                break;
             case CharacterState.WinPose:
             case CharacterState.LosePose:
                 // 결과 포즈 시 입력 차단 등의 처리
@@ -109,28 +86,19 @@ public class CharacterAnimator : MonoBehaviour
     }
 
     //~ 애니메이션 상태 종료 처리
-    private void OnStateExit(CharacterState state)
+    protected void OnStateExit(CharacterState state)
     {
         switch (state)
         {
-            case CharacterState.HoldUp:
-            case CharacterState.HoldDown:
-                // Hold 상태 종료 시 처리
-                break;
             case CharacterState.WinPose:
             case CharacterState.LosePose:
                 // 결과 포즈 종료 시 처리
                 break;
         }
     }
-
-    //~ 현재 상태 확인용 메서드들
-    public bool IsHolding() => 
-        currentState == CharacterState.HoldUp || 
-        currentState == CharacterState.HoldDown;
-
+    
     public bool IsInResultPose() =>
-        currentState == CharacterState.WinPose || 
+        currentState == CharacterState.WinPose ||
         currentState == CharacterState.LosePose;
 
     public bool IsMoving() =>
