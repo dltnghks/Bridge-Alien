@@ -4,7 +4,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MiniGameUnloadColdPoint : MiniGameUnloadBasePoint, IBoxPlacePoint, IBoxPickupPoint
+public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoint, IBoxPickupPoint
 {
     [Header("Setting")]
     private int _maxIndex = 1;
