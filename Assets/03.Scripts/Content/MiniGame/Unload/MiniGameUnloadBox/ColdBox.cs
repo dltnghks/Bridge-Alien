@@ -7,7 +7,9 @@ public class ColdBox : MiniGameUnloadBox
 {
     [Header("설정")]
     public float coolingTime = 10f; // 냉장상태 전환 시간
-    private Material runtimeMaterial;
+
+    [SerializeField]
+    private Sprite[] _coolingSprites; // 냉장상태로 전환 시 사용할 스프라이트들
 
     private SpriteRenderer objectRenderer;
     private Material originalMaterial;
@@ -21,10 +23,6 @@ public class ColdBox : MiniGameUnloadBox
         objectRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = objectRenderer.material;
         originalColor = originalMaterial.color;
-        
-        // 인스턴스 머티리얼 생성 (원본 머티리얼 보존)
-        runtimeMaterial = new Material(originalMaterial);
-        objectRenderer.material = runtimeMaterial;
     }
 
     // 미니게임 구역에 배치 시 호출될 메서드
@@ -45,13 +43,19 @@ public class ColdBox : MiniGameUnloadBox
 
         while (timer < coolingTime)
         {
+            if (Managers.MiniGame.CurrentGame.IsPause)
+            {
+                yield return null; // 일시정지 상태에서는 대기
+                continue;
+            }
+
+
             timer += Time.deltaTime;
             float lerpRatio = timer / coolingTime;
-            // r값을 1(원래값)에서 0(혹은 0.1 등)으로 낮춤
-            float newR = Mathf.Lerp(originalColor.r, 0.1f, lerpRatio); // 0f 대신 0.1f 등 원하는 값 사용 가능
-            Color newColor = new Color(newR, originalColor.g, originalColor.b, originalColor.a);
-            runtimeMaterial.color = newColor;
             _onCoolingProgress?.Invoke(timer); // 냉각 진행률 알림
+
+            SetCoolingSprite(lerpRatio); // 냉각 상태에 따라 스프라이트 변경
+
             yield return null;
         }
 
@@ -59,7 +63,7 @@ public class ColdBox : MiniGameUnloadBox
         isColdbox = true;
         isCooling = false;
         BoxType = Define.BoxType.Normal;
-
+        SetCoolingSprite(1); // 냉각 상태에 따라 스프라이트 변경
     }
 
     // 바로 냉장상태로 전환
@@ -69,8 +73,17 @@ public class ColdBox : MiniGameUnloadBox
         {
             isColdbox = true;
             isCooling = true;
-            runtimeMaterial.color = new Color(0.1f, originalColor.g, originalColor.b, originalColor.a); // r값을 0.1로 설정
             BoxType = Define.BoxType.Normal;
+            SetCoolingSprite(1); // 냉각 상태에 따라 스프라이트 변경
+        }
+    }
+
+    private void SetCoolingSprite(float ratio)
+    {
+        if (_coolingSprites.Length > 0)
+        {
+            int index = Mathf.Clamp(Mathf.FloorToInt(ratio * _coolingSprites.Length), 0, _coolingSprites.Length - 1);
+            objectRenderer.sprite = _coolingSprites[index];
         }
     }
     

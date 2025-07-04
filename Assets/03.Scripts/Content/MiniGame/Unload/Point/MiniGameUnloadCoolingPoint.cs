@@ -18,6 +18,8 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     private CoolingGauge _coolingGauge;
     [SerializeField]
     private CoolingTimer _coolingTimer;
+    [SerializeField]
+    private ParticleSystem _coolingEffect;
 
     private void Awake()
     {
@@ -103,7 +105,8 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     {
         ColdBox coldBox = box.GetComponent<ColdBox>();
         if (coldBox != null && _boxList.TryAddInGameUnloadBoxList(coldBox))
-        {
+        {        
+            _coolingEffect.Play();
             coldBox.EnterCoolingArea(ViewCoolingProcess);
             coldBox.transform.DOMove(transform.position, 1f);
 
@@ -123,6 +126,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         MiniGameUnloadBox box = _boxList.RemoveAndGetTopInGameUnloadBoxList();
         if (box != null)
         {
+            _coolingEffect.Stop();
             return box;
         }
         return null;
@@ -133,6 +137,5 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         // 쿨링 타이머와 게이지 업데이트
         _coolingTimer.SetTimerText(coolingTime);
         _coolingGauge.SetValue(coolingTime);
-
     }
 }

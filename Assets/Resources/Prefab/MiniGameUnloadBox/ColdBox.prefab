@@ -169,3 +169,8 @@ MonoBehaviour:
     IsBroken: 0
     IsUnloaded: 0
   coolingTime: 10
+  _coolingSprites:
+  - {fileID: 21300000, guid: 09b6f9b059bc65348b445eb488de9539, type: 3}
+  - {fileID: 21300000, guid: 74a9f2a2096d4ae4eba65d2b01fb826e, type: 3}
+  - {fileID: 21300000, guid: 47dc1c3917ff59d4e9d4b9365e60e75f, type: 3}
+  - {fileID: 21300000, guid: ab588eda93fae9f43bc65a4ed0b47131, type: 3}
