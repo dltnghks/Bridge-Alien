@@ -168,4 +168,4 @@ MonoBehaviour:
     IsGrab: 0
     IsBroken: 0
     IsUnloaded: 0
-  coolingTime: 5
+  coolingTime: 10

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class ColdBox : MiniGameUnloadBox
 {
     [Header("설정")]
-    public float coolingTime = 1f; // 냉장상태 전환 시간
+    public float coolingTime = 10f; // 냉장상태 전환 시간
     private Material runtimeMaterial;
 
     private SpriteRenderer objectRenderer;
@@ -13,6 +14,7 @@ public class ColdBox : MiniGameUnloadBox
     private Color originalColor;
     private bool isCooling = false;
     private bool isColdbox = false;
+    private Action<float> _onCoolingProgress;
 
     void Start()
     {
@@ -26,8 +28,9 @@ public class ColdBox : MiniGameUnloadBox
     }
 
     // 미니게임 구역에 배치 시 호출될 메서드
-    public void EnterCoolingArea()
+    public void EnterCoolingArea(Action<float> onCoolingProgress = null)
     {
+        _onCoolingProgress = onCoolingProgress;
         if (!isColdbox && !isCooling)
         {
             StartCoroutine(CoolingProcess());
@@ -39,7 +42,7 @@ public class ColdBox : MiniGameUnloadBox
         isCooling = true;
         float timer = 0f;
 
-        
+
         while (timer < coolingTime)
         {
             timer += Time.deltaTime;
@@ -48,12 +51,15 @@ public class ColdBox : MiniGameUnloadBox
             float newR = Mathf.Lerp(originalColor.r, 0.1f, lerpRatio); // 0f 대신 0.1f 등 원하는 값 사용 가능
             Color newColor = new Color(newR, originalColor.g, originalColor.b, originalColor.a);
             runtimeMaterial.color = newColor;
+            _onCoolingProgress?.Invoke(timer); // 냉각 진행률 알림
             yield return null;
         }
 
+        _onCoolingProgress?.Invoke(0); // 냉각 진행률 알림
         isColdbox = true;
         isCooling = false;
         BoxType = Define.BoxType.Normal;
+
     }
 
     // 바로 냉장상태로 전환

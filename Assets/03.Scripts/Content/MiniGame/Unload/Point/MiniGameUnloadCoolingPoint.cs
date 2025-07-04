@@ -8,16 +8,31 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
 {
     [Header("Setting")]
     private int _maxIndex = 1;
-    
+
     private MiniGameUnloadBoxList _boxList = new MiniGameUnloadBoxList();
     private UnityAction _triggerAction;
-    
+
     public MiniGameUnloadBox CurrentBox { get { return _boxList.PeekBoxList(); } }
+
+    [SerializeField]
+    private CoolingGauge _coolingGauge;
+    [SerializeField]
+    private CoolingTimer _coolingTimer;
 
     private void Awake()
     {
-        AllowedTypes = new Define.BoxType[] { Define.BoxType.Cold};
+        AllowedTypes = new Define.BoxType[] { Define.BoxType.Cold };
         _boxList.SetBoxList(_maxIndex);
+
+        if (_coolingGauge == null)
+        {
+            Logger.LogError("CoolingGauge component not found on this object!");
+        }
+
+        if (_coolingTimer == null)
+        {
+            Logger.LogError("CoolingTimer component not found in children of this object!");
+        }
     }
 
     public void SetColdArea(int maxIndex, UnityAction triggerAction)
@@ -25,49 +40,50 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         _maxIndex = maxIndex;
         _triggerAction = triggerAction;
     }
-    
+
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
             var box = CurrentBox;
-            
+
             if (box != null)
             {
-                if(box.Info.BoxType == Define.BoxType.Normal && 
+                if (box.Info.BoxType == Define.BoxType.Normal &&
                    Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.PickUpBox))
                 {
-                    _triggerAction?.Invoke();    
-                } 
+                    _triggerAction?.Invoke();
+                }
                 else if (box.Info.BoxType == Define.BoxType.Cold &&
                          Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction(
                              (int)MiniGameUnloadInteractionAction.None))
                 {
                     _triggerAction?.Invoke();
                 }
-                        
+
             }
-            else if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
-            {
-                _triggerAction?.Invoke();
-            }
-        }
-    }
-    
-    private void OnTriggerExit(Collider coll)
-    {
-        if (coll.gameObject.CompareTag("Player"))
-        {
-            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.None))
+            else if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
             {
                 _triggerAction?.Invoke();
             }
         }
     }
 
-    public MiniGameUnloadBox GetPickUpBox(){
+    private void OnTriggerExit(Collider coll)
+    {
+        if (coll.gameObject.CompareTag("Player"))
+        {
+            if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.None))
+            {
+                _triggerAction?.Invoke();
+            }
+        }
+    }
+
+    public MiniGameUnloadBox GetPickUpBox()
+    {
         MiniGameUnloadBox box = _boxList.RemoveAndGetTopInGameUnloadBoxList();
-        if(box != null)
+        if (box != null)
         {
             return box;
         }
@@ -75,7 +91,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         {
             return null;
         }
-        
+
     }
 
     public bool CanPlaceBox(MiniGameUnloadBox box)
@@ -88,7 +104,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         ColdBox coldBox = box.GetComponent<ColdBox>();
         if (coldBox != null && _boxList.TryAddInGameUnloadBoxList(coldBox))
         {
-            coldBox.EnterCoolingArea();
+            coldBox.EnterCoolingArea(ViewCoolingProcess);
             coldBox.transform.DOMove(transform.position, 1f);
 
             // 박스 상태 업데이트
@@ -110,5 +126,13 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
             return box;
         }
         return null;
+    }
+
+    public void ViewCoolingProcess(float coolingTime)
+    {
+        // 쿨링 타이머와 게이지 업데이트
+        _coolingTimer.SetTimerText(coolingTime);
+        _coolingGauge.SetValue(coolingTime);
+
     }
 }
