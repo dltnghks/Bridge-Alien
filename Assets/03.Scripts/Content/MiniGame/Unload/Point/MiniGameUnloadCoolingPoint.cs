@@ -126,7 +126,9 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         MiniGameUnloadBox box = _boxList.RemoveAndGetTopInGameUnloadBoxList();
         if (box != null)
         {
-            _coolingEffect.Stop();
+            // 이펙트 중지 및 초기화
+            _coolingEffect.Pause();
+            _coolingEffect.Clear();
             return box;
         }
         return null;
