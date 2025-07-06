@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f00de6b2162f1647ad28af8fdad333d, type: 3}
   m_Name: BoxWarpSkillData
   m_EditorClassIdentifier: 
-  SkillName: 
-  SkillIcon: {fileID: 21300000, guid: 926d8918a9cbc5f4fae1542614a39537, type: 3}
+  SkillName: "\uBC15\uC2A4\uC6CC\uD504"
+  SkillIcon: {fileID: 21300000, guid: 77df3f2680c31774a8abc00a7af25c9d, type: 3}
   Description: 
   maxCharges: 3
