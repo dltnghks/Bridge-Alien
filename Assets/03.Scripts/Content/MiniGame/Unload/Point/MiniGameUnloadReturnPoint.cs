@@ -115,4 +115,19 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
         }
         return null;
     }
+    
+    
+
+    // 게임 종료될 때 남은 박스 수만큼 점수 감소
+    public void ReturnBoxScore()
+    {
+        foreach (var box in _boxList.BoxList)
+        {
+            if (box != null)
+            {
+                // 박스가 폐기되었을 때 점수 감소
+                _scoreAction?.Invoke(-50);
+            }
+        }
+    }
 }

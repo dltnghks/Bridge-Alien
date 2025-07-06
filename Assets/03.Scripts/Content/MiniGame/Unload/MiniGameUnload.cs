@@ -192,7 +192,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
 
-        _returnPoint.SetReturnPoint(_uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+        _returnPoint.SetReturnPoint(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
     }
 
     private void SetPlayerCharacter()
@@ -270,6 +270,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             Logger.LogWarning("Not Active MiniGame");
             return;
         }
+
+        // 남은 폐기 박스 점수 감소
+        _returnPoint.ReturnBoxScore();
         
         IsActive = false;
         Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);
