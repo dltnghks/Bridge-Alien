@@ -192,7 +192,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         pickupBox.SetIsGrab(true);
 
         // 상자를 스택에 추가하고 위치 설정
-        _boxList.TryAddInGameUnloadBoxList(pickupBox);
+        _boxList.TryPush(pickupBox);
 
         pickupBox.transform.SetParent(Player.CharacterTransform);
         pickupBox.transform.localPosition = Vector3.right + Vector3.up * (_boxHeight);
@@ -222,7 +222,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
             return;
         }
 
-        MiniGameUnloadBox carriedBox = _boxList.PeekBoxList();
+        MiniGameUnloadBox carriedBox = _boxList.Peek();
         if (carriedBox == null) return;
 
         if (!CanDropBoxAtPoint(nearestPoint, carriedBox))
@@ -291,9 +291,9 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         }
     }
 
-    public void RemoveBoxFromPlayer()
+    private void RemoveBoxFromPlayer()
     {
-        _boxList.RemoveAndGetTopInGameUnloadBoxList();
+        _boxList.TryPop();
         _boxHeight -= _boxOffset;
         OnBoxListChanged?.Invoke(_boxList.BoxList);
 

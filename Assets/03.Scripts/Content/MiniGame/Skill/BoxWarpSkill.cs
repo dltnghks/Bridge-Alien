@@ -47,7 +47,7 @@ public class BoxWarpSkill : ChargeSkill
 
     private IEnumerator BoxWarpProcess()
     {
-        MiniGameUnloadBox topBox = _playerBoxList.PeekBoxList();
+        MiniGameUnloadBox topBox = _playerBoxList.Peek();
         var effect = CreateBoxWarpEffect(topBox.transform); // 이펙트 재생
 
         // 이펙트 표시 1초
@@ -60,7 +60,7 @@ public class BoxWarpSkill : ChargeSkill
         }
 
         // 상자 이동
-        MiniGameUnloadBox box = _playerBoxList.PeekBoxList();
+        MiniGameUnloadBox box = _playerBoxList.Peek();
 
         foreach (var deliveryPoint in _deliveryPoints)
         {

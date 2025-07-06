@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillData: {fileID: 11400000, guid: bc8bfd0565dfecc4cafa9989ffb47d17, type: 2}
   remainingCharges: 0
-  warpEffectPrefab: {fileID: 0}
+  warpEffectPrefab: {fileID: 1580451435692852119, guid: 5e0b2c6afe3cc63489a607fced332936, type: 3}

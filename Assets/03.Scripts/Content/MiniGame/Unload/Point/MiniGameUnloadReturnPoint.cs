@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint, IBoxPickupPoint
 {
-    
+
     // 반송 큐 및 박스 풀
     private Queue<MiniGameUnloadBox> _returnBoxQueue = new Queue<MiniGameUnloadBox>();
     private MiniGameUnloadBoxList _boxList;
@@ -17,19 +17,22 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 
     private BoxCollider _boxCollider;
     private Vector3 _boxSpawnPosition;
-    public float _boxHeight = 0;
+    private float _boxHeight = 0;
     private float _boxHeightOffset = 0.8f;
 
     private Action _triggerAction;
+    private Action<int> _scoreAction;
 
     // 초기화
-    public void SetReturnPoint(Action triggerAction = null)
+    public void SetReturnPoint(Action<int> scoreAction, Action triggerAction = null)
     {
         _boxCollider = Utils.GetOrAddComponent<BoxCollider>(gameObject);
         _boxCollider.isTrigger = true;
         _boxSpawnPosition = transform.position;
         _boxList = new MiniGameUnloadBoxList();
         _boxList.SetBoxList(100);
+
+        _scoreAction = scoreAction;
         _triggerAction = triggerAction;
     }
     // 5초마다 큐에서 박스를 드롭 지점으로 이동
@@ -51,7 +54,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
         box.transform.DOMove(_dropTransform.position, 1f)
             .OnComplete(() =>
             {
-                _boxList.TryAddInGameUnloadBoxList(box); // boxList에 반환
+                _boxList.TryPush(box); // boxList에 반환
                 _boxHeight += _boxHeightOffset;
                 Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
 
@@ -71,7 +74,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
     {
         box.BoxType = Define.BoxType.Disposal;
         _returnBoxQueue.Enqueue(box);
-        
+
         StartCoroutine(AutoSpawnBox());
     }
 
@@ -107,7 +110,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 
     public MiniGameUnloadBox PickupBox()
     {
-        MiniGameUnloadBox box = _boxList.RemoveAndGetTopInGameUnloadBoxList();
+        MiniGameUnloadBox box = _boxList.TryPop();
         if (box != null)
         {
             _boxHeight -= _boxHeightOffset;

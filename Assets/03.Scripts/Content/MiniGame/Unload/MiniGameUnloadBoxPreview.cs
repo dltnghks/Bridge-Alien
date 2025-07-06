@@ -22,7 +22,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
 
         _timer.OffTimer();
-        _timer.SetTimer(null, _boxSpawnInterval, CreatInGameBox);
+        _timer.SetTimer(null, _boxSpawnInterval, CreateInGameBox);
 
         _previewQueue.Clear();
         _previewQueue.Enqueue(null);
@@ -63,7 +63,7 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         }
     }
 
-    public void CreatInGameBox()
+    public void CreateInGameBox()
     {
         // 여유 박스가 없으면 생성해서 넣기
         if (_previewQueue.Count <= 1)

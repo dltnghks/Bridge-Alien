@@ -12,7 +12,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     private MiniGameUnloadBoxList _boxList = new MiniGameUnloadBoxList();
     private UnityAction _triggerAction;
 
-    public MiniGameUnloadBox CurrentBox { get { return _boxList.PeekBoxList(); } }
+    public MiniGameUnloadBox CurrentBox { get { return _boxList.Peek(); } }
 
     [SerializeField]
     private CoolingGauge _coolingGauge;
@@ -82,20 +82,6 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         }
     }
 
-    public MiniGameUnloadBox GetPickUpBox()
-    {
-        MiniGameUnloadBox box = _boxList.RemoveAndGetTopInGameUnloadBoxList();
-        if (box != null)
-        {
-            return box;
-        }
-        else
-        {
-            return null;
-        }
-
-    }
-
     public bool CanPlaceBox(MiniGameUnloadBox box)
     {
         return CanProcess(box.BoxType) && !_boxList.IsFull;
@@ -104,7 +90,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     public void PlaceBox(MiniGameUnloadBox box)
     {
         ColdBox coldBox = box.GetComponent<ColdBox>();
-        if (coldBox != null && _boxList.TryAddInGameUnloadBoxList(coldBox))
+        if (coldBox != null && _boxList.TryPush(coldBox))
         {        
             _coolingEffect.Play();
             coldBox.EnterCoolingArea(ViewCoolingProcess);
@@ -123,7 +109,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
 
     public MiniGameUnloadBox PickupBox()
     {
-        MiniGameUnloadBox box = _boxList.RemoveAndGetTopInGameUnloadBoxList();
+        MiniGameUnloadBox box = _boxList.TryPop();
         if (box != null)
         {
             // 이펙트 중지 및 초기화

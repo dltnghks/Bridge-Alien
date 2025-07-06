@@ -8,8 +8,8 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     private SphereCollider _boxCollider;
     private Vector3 _boxSpawnPosition;
     public MiniGameUnloadBoxList BoxList { get; set; }
-    public float _boxHeight = 1.0f;
-    private float _boxHeightOffset = 1.0f;
+    private float _boxHeight = 1.0f;
+    private float _boxHeightOffset = 0.8f;
 
     private UnityAction _triggerAction;
 
@@ -25,7 +25,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     }
 
     public bool TrySpawnBox(MiniGameUnloadBox box){
-        if(!box.gameObject.activeSelf && BoxList.TryAddInGameUnloadBoxList(box))
+        if(!box.gameObject.activeSelf && BoxList.TryPush(box))
         {
             _boxHeight += _boxHeightOffset;
             Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
@@ -70,7 +70,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
 
     public void SpawnBox(MiniGameUnloadBox box)
     {
-        if(!box.gameObject.activeSelf && BoxList.TryAddInGameUnloadBoxList(box))
+        if(!box.gameObject.activeSelf && BoxList.TryPush(box))
         {
             _boxHeight += _boxHeightOffset;
             Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
@@ -89,7 +89,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
 
     public MiniGameUnloadBox PickupBox()
     {
-        MiniGameUnloadBox box = BoxList.RemoveAndGetTopInGameUnloadBoxList();
+        MiniGameUnloadBox box = BoxList.TryPop();
         Logger.Log(box);
         if (box != null)
         {

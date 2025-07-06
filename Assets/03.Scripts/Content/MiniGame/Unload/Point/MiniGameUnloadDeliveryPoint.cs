@@ -27,7 +27,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
     private Transform _unloadPointTransform;
     private Transform _endPointTransform;
     
-    private Action<int> _action;
+    private Action<int> _scoreAction;
     private Action _triggerAction;
     private Action<MiniGameUnloadBox> _returnAction;
     private BoxCollider _boxCollider;
@@ -45,9 +45,9 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         _ViewDeliveryRegionText.SetText(regionName);
     }
 
-    public void SetAction(Action<int> action, Action triggerAction = null, Action<MiniGameUnloadBox> returnAction = null)
+    public void SetAction(Action<int> scoreAction, Action triggerAction = null, Action<MiniGameUnloadBox> returnAction = null)
     {
-        _action = action;
+        _scoreAction = scoreAction;
         _triggerAction = triggerAction;
         _returnAction = returnAction;
         Managers.Sound.PlayAMB(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Conveyor.ToString(), gameObject);
@@ -105,7 +105,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
             }
         }
 
-        _action?.Invoke(score);
+        _scoreAction?.Invoke(score);
                 
         // 획득 점수 표시
         if(score < 0)
