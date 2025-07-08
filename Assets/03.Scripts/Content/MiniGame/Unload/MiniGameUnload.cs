@@ -25,28 +25,12 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     [Header("Disposal Point")]
     [SerializeField] private MiniGameUnloadDisposalPoint _disposePoint;
-    
-    [Header("Game Camera Settings")]
-    [SerializeField] private CameraManager.CameraType _cameraType;
-    [SerializeField] private CameraSettings _cameraSettings;
 
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
     public Player PlayerCharacter { get; set; }
     public IPlayerController PlayerController { get; set; }
-
-    public CameraManager.CameraType CameraType
-    {
-        get { return _cameraType; }
-        set { _cameraType = value; }
-    }
-
-    public CameraSettings CameraSettings
-    {
-        get { return _cameraSettings; }
-        set { _cameraSettings = value; }
-    }
 
     public UIScene GameUI { get; set; }
     private UIGameUnloadScene _uiGameUnloadScene;
@@ -86,6 +70,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         // 다른 설정이 끝난 후 UI 설정
         SetGameUI();
         
+        // 카메라 타겟으로 플레이어 캐릭터 설정
+        Managers.Camera.Initialize(PlayerCharacter.transform);
+
         // 게임 활성화
         IsActive = true;
 
