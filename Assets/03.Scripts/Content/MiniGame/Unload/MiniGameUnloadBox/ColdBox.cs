@@ -6,7 +6,8 @@ using UnityEngine;
 public class ColdBox : MiniGameUnloadBox
 {
     [Header("설정")]
-    public float coolingTime = 10f; // 냉장상태 전환 시간
+    [SerializeField]
+    private float _coolingTime = 10f; // 냉장상태 전환 시간
 
     [SerializeField]
     private Sprite[] _coolingSprites; // 냉장상태로 전환 시 사용할 스프라이트들
@@ -31,11 +32,11 @@ public class ColdBox : MiniGameUnloadBox
         _onCoolingProgress = onCoolingProgress;
         if (!isColdbox && !isCooling)
         {
-            StartCoroutine(CoolingProcess());
+            StartCoroutine(CoolingProcess(_coolingTime));
         }
     }
 
-    IEnumerator CoolingProcess()
+    IEnumerator CoolingProcess(float coolingTime = 10f)
     {
         isCooling = true;
         float timer = 0f;
@@ -71,10 +72,7 @@ public class ColdBox : MiniGameUnloadBox
     {
         if (!isColdbox && !isCooling)
         {
-            isColdbox = true;
-            isCooling = true;
-            BoxType = Define.BoxType.Normal;
-            SetCoolingSprite(1); // 냉각 상태에 따라 스프라이트 변경
+            StartCoroutine(CoolingProcess(1f));
         }
     }
 

@@ -449,7 +449,7 @@ MonoBehaviour:
     rotationSpeed: {x: 1, y: 0.5}
     pitchMinMax: {x: -30, y: 60}
     distance: 20
-    defaultPitch: 25
+    defaultPitch: 30
     returnSpeed: 10
     minWallDistance: 0.5
     sphereCastRadius: 0.2
