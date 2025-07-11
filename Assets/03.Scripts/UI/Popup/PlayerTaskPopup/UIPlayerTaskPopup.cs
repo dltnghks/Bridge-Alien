@@ -116,11 +116,6 @@ public class UIPlayerTaskPopup : UIPopup
         // 처음 킬 때 스크롤 제일 위로 올려두기
         _scrollRect = _uiTaskGroup.GetOrAddComponent<ScrollRect>();
     }
-    
-    private void OnClickBlurBackground()
-    {
-        ClosePopupUI();
-    }
 
     // 수행하기
     private void OnClickConfirmButton()
