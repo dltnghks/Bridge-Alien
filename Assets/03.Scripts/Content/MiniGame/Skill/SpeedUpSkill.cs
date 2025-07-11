@@ -25,7 +25,7 @@ public class SpeedUpSkill : DurationSkill, IRegainable
     {
         if (isReady) return; // 활성화 중에는 리게인 불가
 
-        currentDuration += Mathf.Min(currentDuration + amount, skillData.maxDuration);
+        currentDuration = Mathf.Min(currentDuration + amount, skillData.maxDuration);
         OnCooldownChanged?.Invoke(currentDuration, skillData.maxDuration);
         
         if (currentDuration >= skillData.maxDuration)
