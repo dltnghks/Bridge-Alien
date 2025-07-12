@@ -3,18 +3,15 @@ using UnityEngine;
 
 public class MiniGameDeliveryPlayer : Player
 {
-    private IHealthPoint _healthPoint;
+    private DamageHandler _damageHandler;
     
     public void Start()
     {
         base.Start();
-        _healthPoint = GetComponent<IHealthPoint>();
+        _damageHandler = GetComponent<DamageHandler>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            _healthPoint.TakeDamage(10f);
-        }
+        
     }
 }
