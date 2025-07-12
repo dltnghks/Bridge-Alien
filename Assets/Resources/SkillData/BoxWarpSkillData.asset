@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: "\uBC15\uC2A4\uC6CC\uD504"
   SkillIcon: {fileID: 21300000, guid: 77df3f2680c31774a8abc00a7af25c9d, type: 3}
-  Description: 
+  Description: "\uBC15\uC2A4\uB97C \uB3C4\uCC29\uC9C0\uC810\uC73C\uB85C \uC21C\uAC04\uC774\uB3D9
+    \uC2DC\uD0A8\uB2E4."
   maxCharges: 3

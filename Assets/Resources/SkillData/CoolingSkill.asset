@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: 32F
   SkillIcon: {fileID: 21300000, guid: 16aebbc5213527b448d891a7a16f1452, type: 3}
-  Description: 
+  Description: "\uB0C9\uB3D9 \uC0C1\uC790\uB97C \uC21C\uC2DD\uAC04\uC5D0 \uB0C9\uB3D9
+    \uC0C1\uD0DC\uB85C \uBC14\uAFBC\uB2E4."
   maxDuration: 10

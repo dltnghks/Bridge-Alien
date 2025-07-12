@@ -72,8 +72,13 @@ public class Define
     public enum Dialog
     {
         Unknown,
+        STORY_D1_01,
+        STORY_D1_02,
+        STORY_D1_03,
+        STORY_D1_04,
+        STORY_D1_05,
+        STORY_D1_06,
         TUTORIAL_STORY_01,
-        TUTORIAL_SOTRY_02,
     }
 
     public enum DialogType
