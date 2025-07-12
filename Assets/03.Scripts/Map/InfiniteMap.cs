@@ -14,8 +14,8 @@ public class InfiniteMap : MonoBehaviour
     private float _maxDistance = .0f;
     // 누적 이동 거리의 합
     [SerializeField] private float totalDistance = .0f;
-        
-    private List<Transform> _blocks;                                             // 맵 블록들을 저장할 배열
+
+    private Transform[] _blocks;                                             // 맵 블록들을 저장할 배열
     private bool _isInitialized = false;                                     // 초기화 완료 여부
     private float _threshold;                                                // 블록 재배치 임계값 (블록 크기의 1.5배가 넘어가면 재배치됩니다 넉넉해야 깜빡이는 현상이 없습니다)
 
@@ -24,7 +24,7 @@ public class InfiniteMap : MonoBehaviour
     //~ InitializeBlocks() 메서드는 맵 블록들을 초기화합니다.
     public void InitializeMap(float maxDist, Action<float> updateAction)
     {
-        _blocks = new List<Transform>();
+        _blocks = new Transform[5];
         
         int count = transform.childCount;
         
@@ -65,7 +65,7 @@ public class InfiniteMap : MonoBehaviour
         if (totalDistance >= _maxDistance)
             return;
 
-        for (int i = 0; i < _blocks.Count; i++)                                         
+        for (int i = 0; i < _blocks.Length; i++)                                         
         {
             _blocks[i].localPosition += moveDirection * (moveSpeed * Time.deltaTime);    
             
