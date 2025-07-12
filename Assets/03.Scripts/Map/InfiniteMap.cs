@@ -1,7 +1,7 @@
  using System;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.Serialization;
+ using System.Collections.Generic;
+ using UnityEngine;
+ using UnityEngine.Serialization;
 
 public class InfiniteMap : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class InfiniteMap : MonoBehaviour
     // 누적 이동 거리의 합
     [SerializeField] private float totalDistance = .0f;
         
-    private Transform[] _blocks;                                             // 맵 블록들을 저장할 배열
+    private List<Transform> _blocks;                                             // 맵 블록들을 저장할 배열
     private bool _isInitialized = false;                                     // 초기화 완료 여부
     private float _threshold;                                                // 블록 재배치 임계값 (블록 크기의 1.5배가 넘어가면 재배치됩니다 넉넉해야 깜빡이는 현상이 없습니다)
 
@@ -24,8 +24,11 @@ public class InfiniteMap : MonoBehaviour
     //~ InitializeBlocks() 메서드는 맵 블록들을 초기화합니다.
     public void InitializeMap(float maxDist, Action<float> updateAction)
     {
-        _blocks = new Transform[3];
-        for (int i = 0; i < 3; i++)
+        _blocks = new List<Transform>();
+        
+        int count = transform.childCount;
+        
+        for (int i = 0; i < count; i++)
         {
             _blocks[i] = transform.GetChild(i);
             if (_blocks[i] == null)
@@ -41,7 +44,7 @@ public class InfiniteMap : MonoBehaviour
 
         _threshold = blockSize * 1.5f;
 
-        for (int i = 0; i < _blocks.Length; i++)
+        for (int i = 0; i < count; i++)
             _blocks[i].localPosition = moveDirection * ((i - 1) * blockSize);
 
         _maxDistance = maxDist;
@@ -62,7 +65,7 @@ public class InfiniteMap : MonoBehaviour
         if (totalDistance >= _maxDistance)
             return;
 
-        for (int i = 0; i < _blocks.Length; i++)                                         
+        for (int i = 0; i < _blocks.Count; i++)                                         
         {
             _blocks[i].localPosition += moveDirection * (moveSpeed * Time.deltaTime);    
             

@@ -62,8 +62,7 @@ public class UIGameStartPopup : UIPopup
             gameStartAction?.Invoke();
             ClosePopupUI();
             Debug.Log("Sequence Ended");
-        }
-        );
+        });
         
         Debug.Log("StartPopup - All - Pass");
     }

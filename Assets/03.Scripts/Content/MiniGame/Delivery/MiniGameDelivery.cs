@@ -97,6 +97,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         // 증가 값을 넘겨준다.
         _infiniteMap.InitializeMap(maxDistance, UpdateDistanceFromMap);
         IsActive = true;
+        
+        Debug.Log("Delivery All Pass");
     }
     
     private void SetGameInfo()
