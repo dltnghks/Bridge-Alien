@@ -42,7 +42,7 @@ public class InfiniteMap : MonoBehaviour
         if (blockSize <= 0)
             blockSize = _blocks[0].localScale.x;
 
-        _threshold = blockSize * 1.5f;
+        _threshold = blockSize * 3f;
 
         for (int i = 0; i < count; i++)
             _blocks[i].localPosition = moveDirection * ((i - 1) * blockSize);
@@ -72,9 +72,9 @@ public class InfiniteMap : MonoBehaviour
             float currentPos = Vector3.Dot(_blocks[i].localPosition, moveDirection);
 
             if (currentPos >= _threshold)
-                _blocks[i].localPosition -= moveDirection * (blockSize * 3);
+                _blocks[i].localPosition -= moveDirection * (blockSize * _blocks.Length);
             else if (currentPos <= -_threshold)
-                _blocks[i].localPosition += moveDirection * (blockSize * 3);
+                _blocks[i].localPosition += moveDirection * (blockSize * _blocks.Length);
         }
     }
 }
