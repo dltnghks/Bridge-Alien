@@ -84,7 +84,7 @@ public class UIPlayerTaskPopup : UIPopup
         SetTaskStatText();
         
         // 초기화가 끝난 후, 첫 번째 탭 선택
-        if (Managers.Player.GetStat(Define.PlayerStatType.Fatigue) == 0)
+        if (Managers.Player.GetStat(Define.PlayerStatsType.Fatigue) == 0)
         {
             // 피로도가 없으면 휴식&유흥 탭
             SelectTabButton(GetButton((int)Buttons.EntertainmentButton).GetComponent<UITaskTabButton>());    
@@ -128,7 +128,7 @@ public class UIPlayerTaskPopup : UIPopup
         }
 
         // 피로도, 골드 조건 체크
-        if(Managers.Player.GetStat(Define.PlayerStatType.Fatigue) < _selectedTaskData.RequirementGold)
+        if(Managers.Player.GetStat(Define.PlayerStatsType.Fatigue) < _selectedTaskData.RequirementGold)
         {
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;
@@ -137,11 +137,11 @@ public class UIPlayerTaskPopup : UIPopup
         // 일과 수행창 예약
         Managers.UI.RequestPopup<UITaskProgressPopup>(_selectedTaskData);
 
-        Managers.Player.AddStat(Define.PlayerStatType.Fatigue, _selectedTaskData.FatigueValue);
-        Managers.Player.AddStat(Define.PlayerStatType.Experience, _selectedTaskData.ExperienceValue);
-        Managers.Player.AddStat(Define.PlayerStatType.Intelligence, _selectedTaskData.IntelligenceValue);
-        Managers.Player.AddStat(Define.PlayerStatType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue);
-        Managers.Player.AddStat(Define.PlayerStatType.Luck, Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue));
+        Managers.Player.AddStat(Define.PlayerStatsType.Fatigue, _selectedTaskData.FatigueValue);
+        Managers.Player.AddStat(Define.PlayerStatsType.Experience, _selectedTaskData.ExperienceValue);
+        Managers.Player.AddStat(Define.PlayerStatsType.Intelligence, _selectedTaskData.IntelligenceValue);
+        Managers.Player.AddStat(Define.PlayerStatsType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue);
+        Managers.Player.AddStat(Define.PlayerStatsType.Luck, Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue));
         
         ClosePopupUI();
     }
@@ -231,10 +231,10 @@ public class UIPlayerTaskPopup : UIPopup
     private void SetTaskStatText()
     {
         PlayerData playerData = Managers.Player.PlayerData;
-        GetText((int)Texts.ExperienceValueText).text = $"{playerData.Stats[Define.PlayerStatType.Experience]} / 100";
-        GetText((int)Texts.GravityAdaptationValueText).text = $"{playerData.Stats[Define.PlayerStatType.GravityAdaptation]} / 100";
-        GetText((int)Texts.IntelligenceValueText).text = $"{playerData.Stats[Define.PlayerStatType.Intelligence]} / 100";
-        GetText((int)Texts.LuckValueText).text = $"{playerData.Stats[Define.PlayerStatType.Luck]} / 100";
+        GetText((int)Texts.ExperienceValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Experience]} / 100";
+        GetText((int)Texts.GravityAdaptationValueText).text = $"{playerData.Stats[Define.PlayerStatsType.GravityAdaptation]} / 100";
+        GetText((int)Texts.IntelligenceValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Intelligence]} / 100";
+        GetText((int)Texts.LuckValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Luck]} / 100";
         SetTaskStatImages(false);
     }
 

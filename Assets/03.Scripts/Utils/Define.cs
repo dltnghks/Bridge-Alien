@@ -90,7 +90,7 @@ public class Define
         End,
     }
 
-    public enum PlayerStatType
+    public enum PlayerStatsType
     {
         Fatigue,               // 피로도
         Experience,            // 작업 숙련

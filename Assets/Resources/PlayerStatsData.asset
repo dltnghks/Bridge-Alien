@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a9c6063c4ef2f945b7676e9635daf0e, type: 3}
-  m_Name: PlayerStatData
+  m_Name: PlayerStatsData
   m_EditorClassIdentifier: 
   playerData:
     PlayerGold: 50000000
@@ -27,3 +27,11 @@ MonoBehaviour:
       - Key: 4
         Value: 0
     ChoiceNumber: -1
+    MiniGameUnloadSkillData:
+      _serializedList:
+      - Key: 0
+        Value: {fileID: 11400000, guid: 615cdab6c6a503a44ad5963592cc1726, type: 2}
+      - Key: 1
+        Value: {fileID: 11400000, guid: bc8bfd0565dfecc4cafa9989ffb47d17, type: 2}
+      - Key: 2
+        Value: {fileID: 11400000, guid: 12bc6ea9db70f994292ed69b8af45dd3, type: 2}
