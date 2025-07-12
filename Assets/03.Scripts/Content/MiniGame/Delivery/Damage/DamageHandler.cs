@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class DamageHandler : MonoBehaviour
 {
-    public float DamageRate { get; private set; } = .0f;
+    [field: SerializeField, Header("현재 손상률")] 
+    public float DamageRate { get; private set; }
+    
     public Action onFullDamageRate;
 
     private bool _onStartDamage = false;
 
+    [SerializeField, Header("초 당 손상률")]
     private float _damageRatePerSecond = 0.02f;
     private Coroutine _dotCoroutine;
     
