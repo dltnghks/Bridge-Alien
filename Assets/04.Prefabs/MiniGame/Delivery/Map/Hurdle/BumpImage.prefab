@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1583840733403524807}
   m_Layer: 0
-  m_Name: Hurdle-1
+  m_Name: BumpImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
