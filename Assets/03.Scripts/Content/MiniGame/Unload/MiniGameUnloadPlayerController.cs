@@ -59,24 +59,18 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     {
         SkillList = skillList;
 
+        var context = new MGUSkillContext(
+            Player,
+            _unloadPlayer,
+            _boxList,
+            _cachedPoints,
+            RemoveBoxFromPlayer,
+            _unloadPlayer.SetCoolingSkill
+        );
+
         foreach (var skill in SkillList)
         {
-            if (skill is BoxWarpSkill BoxWarpSkill)
-            {
-                BoxWarpSkill.SetDropBoxAction(RemoveBoxFromPlayer);
-                BoxWarpSkill.SetPlayerBoxList(_boxList);
-                BoxWarpSkill.SetDeliveryPointList(_cachedPoints.OfType<MiniGameUnloadDeliveryPoint>().ToArray());
-            }
-
-            if (skill is SpeedUpSkill speedUpSkill)
-            {
-                speedUpSkill.SetPlayerCharacter(Player);
-            }
-
-            if(skill is CoolingSkill coolingSkill)
-            {
-                coolingSkill.SetOnSkillAction(_unloadPlayer.SetCoolingSkill);
-            }
+            skill.Initialize(context);
         }
     }
 

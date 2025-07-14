@@ -13,13 +13,21 @@ public abstract class DurationSkill : SkillBase
 
     // 쿨타임이 시작될 때와 진행 중일 때를 알리기 위한 이벤트
     public Action<float, float> OnCooldownChanged;
+    public Action<bool> OnActiveStateChanged;
+
+    public override void Initialize(MGUSkillContext context)
+    {
+        int skillLevel = Managers.Player.PlayerData.MiniGameUnloadSkillLevel[skillData.Type];
+        skillData.SetLevel(skillLevel);
+        OnCooldownChanged?.Invoke(currentDuration, skillData.MaxDuration);
+    }
 
     protected virtual void Update()
     {
         if (isActive && !Managers.MiniGame.CurrentGame.IsPause)
         {
             currentDuration -= Time.deltaTime;
-            OnCooldownChanged?.Invoke(currentDuration, skillData.maxDuration);
+            OnCooldownChanged?.Invoke(currentDuration, skillData.MaxDuration);
 
             if (currentDuration <= 0)
             {
@@ -28,9 +36,9 @@ public abstract class DurationSkill : SkillBase
         }
     }
 
-    public void SetSkillCooldownAction(Action<float, float> action)
+    protected override void OnActivate()
     {
-        OnCooldownChanged += action;
+        isActive = true;
     }
 
     protected virtual void EndSkill()
@@ -38,7 +46,8 @@ public abstract class DurationSkill : SkillBase
         isActive = false;
         isReady = false;
         currentDuration = 0;
-        OnCooldownChanged?.Invoke(0, skillData.maxDuration);
+        OnCooldownChanged?.Invoke(0, skillData.MaxDuration);
+        OnActiveStateChanged?.Invoke(false);
         // 스킬 종료 후 필요한 로직
     }
 

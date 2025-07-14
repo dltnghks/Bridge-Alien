@@ -7,23 +7,24 @@ public class CoolingSkill : DurationSkill, IRegainable
 {
     private Action<bool> _onSkillAction;
 
-    public void SetOnSkillAction(Action<bool> action)
+    public override void Initialize(MGUSkillContext context)
     {
-        _onSkillAction = action;
+        _onSkillAction = context.SetCoolingSkillAction;
+        
+        base.Initialize(context); // 부모 클래스의 초기화 호출
     }
 
     protected override void OnActivate()
     {
-        isActive = true;
-        _onSkillAction?.Invoke(true);
-        currentDuration = skillData.maxDuration;
+        base.OnActivate();
+        OnActiveStateChanged?.Invoke(true);
+        currentDuration = skillData.MaxDuration;
         // 캐릭터 외형 변경, 이펙트 활성화 로직
     }
 
     protected override void EndSkill()
     {
         base.EndSkill();
-        _onSkillAction?.Invoke(false);
     }
 
     // 냉각 완료 상자를 배달했을 때 호출될 메서드
@@ -31,10 +32,10 @@ public class CoolingSkill : DurationSkill, IRegainable
     {
         if (isReady) return; // 활성화 중에는 리게인 불가
 
-        currentDuration = Mathf.Min(currentDuration + amount, skillData.maxDuration);
-        OnCooldownChanged?.Invoke(currentDuration, skillData.maxDuration);
+        currentDuration = Mathf.Min(currentDuration + amount, skillData.MaxDuration);
+        OnCooldownChanged?.Invoke(currentDuration, skillData.MaxDuration);
 
-        if (currentDuration >= skillData.maxDuration)
+        if (currentDuration >= skillData.MaxDuration)
         {
             isReady = true; // 스킬 재사용 가능
         }
@@ -66,4 +67,5 @@ public class CoolingSkill : DurationSkill, IRegainable
             Logger.Log("CoolingSkill cannot be activated");
         }
     }
+
 }

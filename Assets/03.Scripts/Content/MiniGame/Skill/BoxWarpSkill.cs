@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,26 +14,18 @@ public class BoxWarpSkill : ChargeSkill
 
     private Action OnDropBox; // 상자 배달 완료 후 호출될 액션
 
-    public void SetDropBoxAction(Action action)
+    public override void Initialize(MGUSkillContext context)
     {
-        OnDropBox = action;
-    }
+        _playerBoxList = context.BoxList;
+        _deliveryPoints = context.DeliveryPoints.ToArray();
+        OnDropBox = context.RemoveBoxFromPlayerAction;
 
-    public void SetPlayerBoxList(MiniGameUnloadBoxList playerBoxList)
-    {
-        Logger.Log("Setting player box list for BoxWarpSkill");
-        _playerBoxList = playerBoxList;
-    }
-
-    public void SetDeliveryPointList(MiniGameUnloadDeliveryPoint[] deliveryPoints)
-    {
-        Logger.Log("Setting delivery points for BoxWarpSkill");
-        _deliveryPoints = deliveryPoints;
+        base.Initialize(context); // 부모 클래스의 초기화 호출
     }
 
     protected override void OnActivate()
     {
-        isActive = true; // 스킬 활성화 상태로 변경
+        base.OnActivate();
         remainingCharges--; // 성공적으로 사용했으므로 횟수 감소
         OnCountChanged?.Invoke(remainingCharges); // 사용 횟수 감소 알림
         // 사용 횟수 감소는 성공적으로 사용했을 때만 처리

@@ -13,15 +13,19 @@ public abstract class ChargeSkill : SkillBase
 
     public Action<int> OnCountChanged;
 
-    protected virtual void Awake()
+    public override void Initialize(MGUSkillContext context)
     {
+        int skillLevel = Managers.Player.PlayerData.MiniGameUnloadSkillLevel[skillData.Type];
+        skillData.SetLevel(skillLevel);
         remainingCharges = skillData.maxCharges;
+        OnCountChanged?.Invoke(remainingCharges);
     }
 
-    public void SetCountChangedAction(Action<int> action)
+    protected override void OnActivate()
     {
-        OnCountChanged += action;
+        isActive = true;
     }
+
     
     public override bool CanUseSkill() => remainingCharges > 0 && !isActive;
 }
