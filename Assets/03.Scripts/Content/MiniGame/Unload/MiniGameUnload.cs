@@ -64,12 +64,12 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         SetColdArea();
         SetDisposalPoint();
-        
+
         SetPlayerCharacter();
 
         // 다른 설정이 끝난 후 UI 설정
         SetGameUI();
-        
+
         // 카메라 타겟으로 플레이어 캐릭터 설정
         Managers.Camera.Initialize(PlayerCharacter.transform);
 
@@ -199,6 +199,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
         PlayerController.Init(PlayerCharacter);
 
+        // 스킬 세팅
         if (PlayerController is ISkillController skillController)
         {
             skillController.SetSkillList(_skillList);
@@ -220,6 +221,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
         _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
+
+        // 스킬 UI
         if (PlayerController is ISkillController skillController)
         {
             _uiGameUnloadScene.UIPlayerInput.SetSkillInfo(_skillList);

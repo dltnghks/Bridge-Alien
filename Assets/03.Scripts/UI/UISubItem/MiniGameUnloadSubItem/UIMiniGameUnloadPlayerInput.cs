@@ -7,6 +7,7 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
 {
 
     private Action<int> _skillAction;
+    private SkillBase[] _skillList;
 
     enum Images
     {
@@ -51,6 +52,28 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
         return _init;
     }
 
+    private void OnDestroy()
+    {
+        if (_skillList == null) return;
+        
+        foreach (var skill in _skillList)
+        {
+            if (skill is CoolingSkill coolingSkill)
+            {
+                coolingSkill.OnCooldownChanged -= SetCoolingSkillButtonDuration;
+            }
+            else if (skill is BoxWarpSkill boxWarpSkill)
+            {
+                boxWarpSkill.OnCountChanged -= SetBoxWarpSkillCountText;
+            }
+            else if (skill is SpeedUpSkill speedUpSkill)
+            {
+                speedUpSkill.OnCooldownChanged -= SetSpeedUpSkillButtonDuration;
+                speedUpSkill.OnActiveStateChanged -= SetSpeedUpSkillActiveIcon;
+            }
+        }
+    }
+
     public void SetSkillInfo(SkillBase[] skillList)
     {
         if (_init == false)
@@ -65,24 +88,25 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
             return;
         }
 
-        foreach (var skill in skillList)
+        _skillList = skillList;
+        
+        foreach (var skill in _skillList)
         {
-
             if (skill is CoolingSkill coolingSkill)
             {
-                coolingSkill.SetSkillCooldownAction(SetCoolingSkillButtonDuration);
-                GetImage((int)Images.CoolingSkillIconImage).sprite = coolingSkill.SkillData.SkillIcon;
+                coolingSkill.OnCooldownChanged += SetCoolingSkillButtonDuration;
+                GetImage((int)Images.CoolingSkillIconImage).sprite = coolingSkill.SkillData.Icon;
             }
             else if (skill is BoxWarpSkill boxWarpSkill)
             {
-                boxWarpSkill.SetCountChangedAction(SetBoxWarpSkillCountText);
-                GetImage((int)Images.BoxWarpSkillIconImage).sprite = boxWarpSkill.SkillData.SkillIcon;
+                boxWarpSkill.OnCountChanged += SetBoxWarpSkillCountText;
+                GetImage((int)Images.BoxWarpSkillIconImage).sprite = boxWarpSkill.SkillData.Icon;
             }
             else if (skill is SpeedUpSkill speedUpSkill)
             {
-                speedUpSkill.SetSkillCooldownAction(SetSpeedUpSkillButtonDuration);
-                speedUpSkill.SetActiveAction(SetSpeedUpSkillActiveIcon);
-                GetImage((int)Images.SpeedUpSkillIconImage).sprite = speedUpSkill.SkillData.SkillIcon;
+                speedUpSkill.OnCooldownChanged += SetSpeedUpSkillButtonDuration;
+                speedUpSkill.OnActiveStateChanged += SetSpeedUpSkillActiveIcon;
+                GetImage((int)Images.SpeedUpSkillIconImage).sprite = speedUpSkill.SkillData.Icon;
             }
         }
     }
