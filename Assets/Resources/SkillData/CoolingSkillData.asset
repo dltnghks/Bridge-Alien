@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e52f1227f0f2ad64ebf2cbe6026a05a7, type: 3}
-  m_Name: CoolingSkill
+  m_Name: CoolingSkillData
   m_EditorClassIdentifier: 
-  SkillName: 32F
-  SkillIcon: {fileID: 21300000, guid: 16aebbc5213527b448d891a7a16f1452, type: 3}
-  Description: "\uB0C9\uB3D9 \uC0C1\uC790\uB97C \uC21C\uC2DD\uAC04\uC5D0 \uB0C9\uB3D9
-    \uC0C1\uD0DC\uB85C \uBC14\uAFBC\uB2E4."
-  maxDuration: 10
+  Type: 0
+  Name: "\uB0C9\uAC01\uC2A4\uD0AC"
+  Icon: {fileID: 21300000, guid: 16aebbc5213527b448d891a7a16f1452, type: 3}
+  Description: 
+  UpgradeCostByLevel: 000000001027000030750000409c0000b0ad0100
+  MaxDuration: 10
+  SkillDurationByLevel: 000000000a0000000b0000000c0000000d0000000f000000

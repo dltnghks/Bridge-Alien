@@ -66,6 +66,7 @@ public class Define
         Daily,
         PlayerStat,
         PlayerTask,
+        MiniGameSkill,
         End,
     }
 
@@ -106,5 +107,12 @@ public class Define
         Fortune,         // 투자
         Entertainment,      // 유흥
         
+    }
+
+    public enum MiniGameSkillType
+    {
+        CoolingSkill,
+        BoxWarpSkill,
+        SpeedUpSkill,
     }
 }

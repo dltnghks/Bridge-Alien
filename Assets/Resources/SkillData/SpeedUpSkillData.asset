@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e52f1227f0f2ad64ebf2cbe6026a05a7, type: 3}
-  m_Name: SpeedUpSkill
+  m_Name: SpeedUpSkillData
   m_EditorClassIdentifier: 
-  SkillName: "\uBE64\uC2A4\uB7F0"
-  SkillIcon: {fileID: 21300000, guid: bc25ffe42df4fd243aaf1169ec9ef62a, type: 3}
-  Description: "\uC774\uB3D9\uC18D\uB3C4\uAC00 \uC99D\uAC00\uD55C\uB2E4."
-  maxDuration: 10
+  Type: 2
+  Name: "\uBE64\uC2A4\uB7F0"
+  Icon: {fileID: 21300000, guid: bc25ffe42df4fd243aaf1169ec9ef62a, type: 3}
+  Description: 
+  UpgradeCostByLevel: 000000008813000010270000983a000030750000
+  MaxDuration: 10
+  SkillDurationByLevel: 000000000a0000000c0000000c0000000d0000000f000000

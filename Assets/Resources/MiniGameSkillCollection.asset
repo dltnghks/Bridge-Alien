@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b8048e46c6c4a47bd7b4651d03486a, type: 3}
+  m_Name: MiniGameSkillCollection
+  m_EditorClassIdentifier: 
+  MiniGameSkillData:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 11400000, guid: 932eb6f1b82d9ce49b43bc215c24d58a, type: 2}
+    - Key: 1
+      Value: {fileID: 11400000, guid: 2e9848d0f99479445ac170e6cc50572a, type: 2}
+    - Key: 2
+      Value: {fileID: 11400000, guid: bbbfede57e2a6fd4da5ec7d03fd0eb5f, type: 2}
