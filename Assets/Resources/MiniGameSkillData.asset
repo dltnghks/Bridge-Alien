@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69b8048e46c6c4a47bd7b4651d03486a, type: 3}
-  m_Name: MiniGameSkillCollection
+  m_Name: MiniGameSkillData
   m_EditorClassIdentifier: 
   MiniGameSkillData:
     _serializedList:
