@@ -21,7 +21,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     [SerializeField]
     private ParticleSystem _coolingEffect;
 
-    private void Awake()
+    private void Start()
     {
         AllowedTypes = new Define.BoxType[] { Define.BoxType.Cold };
         _boxList.SetBoxList(_maxIndex);
@@ -41,6 +41,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     {
         _maxIndex = maxIndex;
         _triggerAction = triggerAction;
+        Managers.Sound.PlayAMB(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.CoolingMachine.ToString(), gameObject);
     }
 
     private void OnTriggerEnter(Collider coll)

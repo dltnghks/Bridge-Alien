@@ -60,11 +60,14 @@ public class ColdBox : MiniGameUnloadBox
             yield return null;
         }
 
+        // 냉각 완료
         _onCoolingProgress?.Invoke(0); // 냉각 진행률 알림
         isColdbox = true;
         isCooling = false;
         BoxType = Define.BoxType.Normal;
         SetCoolingSprite(1); // 냉각 상태에 따라 스프라이트 변경
+        
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.CoolingComplete.ToString(), gameObject);
     }
 
     // 바로 냉장상태로 전환

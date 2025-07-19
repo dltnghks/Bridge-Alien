@@ -28,7 +28,7 @@ public class BoxWarpSkill : ChargeSkill
         base.OnActivate();
         remainingCharges--; // 성공적으로 사용했으므로 횟수 감소
         OnCountChanged?.Invoke(remainingCharges); // 사용 횟수 감소 알림
-        // 사용 횟수 감소는 성공적으로 사용했을 때만 처리
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Glitch.ToString(), gameObject);
         StartCoroutine(BoxWarpProcess());
     }
 

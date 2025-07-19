@@ -20,6 +20,7 @@ public class CoolingSkill : DurationSkill, IRegainable
         OnActiveStateChanged?.Invoke(true);
         currentDuration = skillData.MaxDuration;
         // 캐릭터 외형 변경, 이펙트 활성화 로직
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.CoolingSkill.ToString(), gameObject);
     }
 
     protected override void EndSkill()

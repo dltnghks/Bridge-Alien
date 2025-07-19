@@ -154,12 +154,12 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     private void PlayBoxHoldSound()
     {
-        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.StandardBoxHold.ToString()); 
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BoxHold.ToString()); 
     }
     
     private void PlayBoxPutSound()
     {
-        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.StandardBoxPut.ToString(),gameObject); 
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BoxPut.ToString(),gameObject); 
     }
 
     public virtual void SetRandomInfo()

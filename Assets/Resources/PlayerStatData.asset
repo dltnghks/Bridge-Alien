@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a9c6063c4ef2f945b7676e9635daf0e, type: 3}
-  m_Name: PlayerData
+  m_Name: PlayerStatData
   m_EditorClassIdentifier: 
   playerData:
     PlayerGold: 50000000

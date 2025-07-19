@@ -22,11 +22,16 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: d37369134653a3d4d82749b8783c9883, type: 2}
-        - Key: GameMap
+        - Key: House
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: dc6ecb04ef5e13946baec89eed72ed15, type: 2}
+            WwiseObjectReference: {fileID: 0}
+        - Key: MiniGameDelivery
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 0}
     - Key: 1
       Value:
         _serializedList:
@@ -43,59 +48,6 @@ MonoBehaviour:
     - Key: 2
       Value:
         _serializedList:
-        - Key: MoveCharacter
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 5b81b095f8dc32e409104c9a48ea2251, type: 2}
-        - Key: ClickGamePoint
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 72031912343cdfe4ab150933869e7567, type: 2}
-    - Key: 3
-      Value:
-        _serializedList:
-        - Key: PostPut
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 3d93908766c9c884f82dca3f57603393, type: 2}
-        - Key: SmallBoxPut
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: facc76ff2123f0a4194547fcd02bf772, type: 2}
-        - Key: StandardBoxPut
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
-        - Key: LargeBoxPut
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: b12bd8155ee415541844bc3b532b5df9, type: 2}
-        - Key: PostHold
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 9a573629793a9f54a9078a7255849916, type: 2}
-        - Key: SmallBoxHold
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 5e1a6f3adac62f24ead008e1df5f4060, type: 2}
-        - Key: StandardBoxHold
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 41b834f982b80fe49b91ca09557b6b8e, type: 2}
-        - Key: LargeBoxPHold
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 02ac5ab39b3efcf42822a462b6d94d8a, type: 2}
         - Key: BrokenBox
           Value:
             idInternal: 0
@@ -121,3 +73,38 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 92fac1c09aaed2e48bf72db194c414d0, type: 2}
+        - Key: BoxPut
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: c4ac44ed48f98ca45910233dbcddf4c4, type: 2}
+        - Key: BoxHold
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 41b834f982b80fe49b91ca09557b6b8e, type: 2}
+        - Key: CoolingComplete
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 0}
+        - Key: CoolingSkill
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 0}
+        - Key: Glitch
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 0}
+        - Key: Discard
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 0}
+        - Key: CoolingMachine
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 0}

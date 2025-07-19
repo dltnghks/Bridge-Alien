@@ -98,5 +98,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         }
         _boxList.ClearBoxList();
         _boxHeight = 0; // 높이 초기화
+
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Discard.ToString(), gameObject);
     }
 }
