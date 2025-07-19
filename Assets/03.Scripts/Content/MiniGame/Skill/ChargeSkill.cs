@@ -17,7 +17,7 @@ public abstract class ChargeSkill : SkillBase
     {
         int skillLevel = Managers.Player.PlayerData.MiniGameUnloadSkillLevel[skillData.Type];
         skillData.SetLevel(skillLevel);
-        remainingCharges = skillData.maxCharges;
+        remainingCharges = skillData.MaxCharges;
         OnCountChanged?.Invoke(remainingCharges);
     }
 

@@ -12,6 +12,11 @@ public class UIPlayerStatusPopup : UIPopup
         IntelligenceText,          // 지능
         LuckText,                  // 운
     }
+
+    enum Buttons
+    {
+        WorkModuleButton,
+    }
     
     public override bool Init()
     {
@@ -21,12 +26,21 @@ public class UIPlayerStatusPopup : UIPopup
         }
         
         BindText(typeof(Texts));
+        BindButton(typeof(Buttons));
+        
+        GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickWorkModuleButton);
         
         SetPlayerStat();
 
         return true;
     }
 
+    private void OnClickWorkModuleButton()
+    {
+        // 워크 모듈 UI 띄우기
+        Managers.UI.ShowPopUI<UIWorkModulePopup>();
+    }
+    
     private void SetPlayerStat()
     {
         foreach (Define.PlayerStatsType type in Enum.GetValues(typeof(Define.PlayerStatsType)))

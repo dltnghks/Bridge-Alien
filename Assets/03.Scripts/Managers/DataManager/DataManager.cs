@@ -73,6 +73,7 @@ public class DataManager : MonoBehaviour
             if (MiniGameData == null) Debug.LogError("❌ MiniGameSettingDataScriptableObject not found!");
             if (DailyData == null) Debug.LogError("❌ DailyDataScriptableObject not found!");
             if (PlayerData == null) Debug.LogError("❌ PlayerStatDataScriptableObject not found!");
+            if (MiniGameSkillData == null) Debug.LogError("❌ MiniGameSkillDataScriptableObject not found!");
 
             IsLoading = true;
         }

@@ -15,7 +15,7 @@ public class Define
         MiniGameDelivery,
         Ending,
     }
-    
+
     public enum UIEvent
     {
         Click,
@@ -106,13 +106,19 @@ public class Define
         SelfDevelopment,    // 자기개발
         Fortune,         // 투자
         Entertainment,      // 유흥
-        
+
     }
 
+    // 전체 스킬
     public enum MiniGameSkillType
     {
+        // 하차게임 스킬
         CoolingSkill,
         BoxWarpSkill,
         SpeedUpSkill,
+
+        // 배송게임 스킬
+        //TestSkill,
     }
+
 }
