@@ -41,7 +41,6 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     {
         _maxIndex = maxIndex;
         _triggerAction = triggerAction;
-        Managers.Sound.PlayAMB(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.CoolingMachine.ToString(), gameObject);
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -92,7 +91,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     {
         ColdBox coldBox = box.GetComponent<ColdBox>();
         if (coldBox != null && _boxList.TryPush(coldBox))
-        {        
+        {
             _coolingEffect.Play();
             coldBox.EnterCoolingArea(ViewCoolingProcess);
             coldBox.transform.DOMove(transform.position, 1f);
@@ -100,6 +99,9 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
             // 박스 상태 업데이트
             box.transform.SetParent(transform);
             box.SetIsGrab(false);
+
+            // 사운드 재생
+            Managers.Sound.PlayAMB(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.CoolingMachine.ToString(), gameObject);
         }
     }
 
