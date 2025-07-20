@@ -38,8 +38,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public UIScene GameUI { get; set; }
     private UIGameDeliveryScene _uiGameDeliveryScene;
     private MiniGameDeliveryPathProgress _pathProgressBar;
-    
-    private InfiniteMap _infiniteMap;
+    private DeliveryMap _deliveryMap;
     
     private void Update()
     {
@@ -72,16 +71,19 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
 
-        _infiniteMap = Utils.FindChild<InfiniteMap>(gameObject, "Map", true);
-        if (_infiniteMap == null)
+        _deliveryMap = Utils.FindChild<DeliveryMap>(gameObject, "Map", true);
+        if (_deliveryMap == null)
         {
-            Debug.Log("맵 생성 스크립트가 존재하지 않아요.");
+            Debug.Log("DeliveryMap가 존재하지 않습니다.");
             return;
         }
 
-        // UpdateDistanceFromMap은 Delivery에서 값을 가지고 있기 위해서
-        // 증가 값을 넘겨준다.
-        _infiniteMap.InitializeMap(maxDistance, UpdateDistanceFromMap);
+        _deliveryMap.Initialize(new MapPacket()
+        {
+            maxDist = maxDistance,
+            onUpdateDistance = UpdateDistanceFromMap
+        });
+        
         IsActive = true;
         
         Debug.Log("Delivery All Pass");

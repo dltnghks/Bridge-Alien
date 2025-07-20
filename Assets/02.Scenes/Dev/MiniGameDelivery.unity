@@ -1508,6 +1508,7 @@ GameObject:
   - component: {fileID: 5250824066746151963}
   - component: {fileID: 7936382472336994082}
   - component: {fileID: 7936382472336994083}
+  - component: {fileID: 7936382472336994084}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -1725,10 +1726,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f952ea6e2bb924b89942cb763b6445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurdleParent: {fileID: 1779642640}
-  BumpObject: {fileID: 11400000, guid: 5cb2d6eac1dda174caa47f1ca5050a4f, type: 2}
-  CarCrushObject: {fileID: 0}
-  WorkObject: {fileID: 0}
+  uiParent: {fileID: 1120674765}
+  objParent: {fileID: 1779642640}
+  bumpObject: {fileID: 11400000, guid: 5cb2d6eac1dda174caa47f1ca5050a4f, type: 2}
+  carCrushObject: {fileID: 0}
+  workObject: {fileID: 0}
+--- !u!114 &7936382472336994084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6067250156558462702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0165c2a41f1dd1340a81bc6a8ff5fabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurdleSpawner: {fileID: 0}
+  infiniteMap: {fileID: 0}
 --- !u!114 &8252929438679239038
 MonoBehaviour:
   m_ObjectHideFlags: 0
