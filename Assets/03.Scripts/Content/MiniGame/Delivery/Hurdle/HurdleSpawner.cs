@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum HurdleType
 {
@@ -18,19 +19,22 @@ public class HurdleSpawner : MonoBehaviour
     [SerializeField] private Transform objParent;
     
     [Header("장애물 S.O 데이터")]
-    [SerializeField] private BumpBuilder BumpObject;
-    [SerializeField] private GameObject CarCrushObject;
-    [SerializeField] private GameObject WorkObject;
+    [SerializeField] private BumpBuilder bumpObject;
+    [SerializeField] private GameObject carCrushObject;
+    [SerializeField] private GameObject workObject;
 
     public void Initialize()
     {
-        _builders.Add(HurdleType.Bump, BumpObject);
+        _builders = new Dictionary<HurdleType, HurdleBuilder>();
+        
+        _builders.Add(HurdleType.Bump, bumpObject);
         // _builders.Add(HurdleType.CarCrush, CarCrushObject.GetComponent<CarCrushBuilder>());
         // _builders.Add(HurdleType.Work, WorkObject.GetComponent<WorkBuilder>());
 
         // 등록된 Builder로 Parent 데이터를 넘겨준다.
         foreach (var build in _builders.Values)
             build.Initialize(uiParent, objParent);
+        Debug.Log("Check");
     }
 
     public void SpawnHurdle(HurdleType type, params Vector3[] origins)
