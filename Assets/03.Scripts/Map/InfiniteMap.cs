@@ -35,8 +35,8 @@ public class InfiniteMap : MonoBehaviour
             }
         }
 
-        // blockSize = 50
-        // bS * 2.5 = 125f
+        // BlockSize = 50
+        // BS * 2.5 = 125f
         _threshold = blockSize * 2.5f;
 
         // 연속 배치 : -100, -50, 0, 50, 100
@@ -48,6 +48,7 @@ public class InfiniteMap : MonoBehaviour
 
         _maxDistance = maxDist;
         onUpdateDistance = updateAction;
+        
         _isInitialized = true;
     }
 

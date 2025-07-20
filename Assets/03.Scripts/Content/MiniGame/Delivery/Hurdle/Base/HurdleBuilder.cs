@@ -10,8 +10,8 @@ public abstract class HurdleBuilder : ScriptableObject
     protected Transform objParent;
 
     public abstract GameObject CreateEntry(Vector3 position);
-    public abstract GameObject CreateMain(Vector3 position);
-   public abstract GameObject CreateEnd(Vector3 position);
+    public abstract GameObject CreateMain(Vector3 position); 
+    public abstract GameObject CreateEnd(Vector3 position);
 
    public void Initialize(Transform uiParent, Transform objParent)
    {
@@ -22,7 +22,7 @@ public abstract class HurdleBuilder : ScriptableObject
     public void Build(params Vector3[] origins)
     {
         CreateEntry(origins[0]);
-
+        
         foreach (var origin in origins)
             CreateMain(origin);
         

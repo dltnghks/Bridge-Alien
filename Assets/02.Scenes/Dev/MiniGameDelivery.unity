@@ -1743,8 +1743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0165c2a41f1dd1340a81bc6a8ff5fabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurdleSpawner: {fileID: 0}
-  infiniteMap: {fileID: 0}
+  hurdleSpawner: {fileID: 7936382472336994083}
+  infiniteMap: {fileID: 7936382472336994082}
 --- !u!114 &8252929438679239038
 MonoBehaviour:
   m_ObjectHideFlags: 0
