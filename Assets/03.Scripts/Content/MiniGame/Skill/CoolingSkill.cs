@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class CoolingSkill : DurationSkill, IRegainable
 {
-    private Action<bool> _onSkillAction;
-
-    public override void Initialize(MGUSkillContext context)
+    public override void Initialize(ISkillContext context)
     {
-        _onSkillAction = context.SetCoolingSkillAction;
-        
+        MGUSkillContext mguSkillContext = context as MGUSkillContext;
+
+        OnActiveStateChanged += mguSkillContext.SetCoolingSkillAction;
+
         base.Initialize(context); // 부모 클래스의 초기화 호출
     }
 
@@ -68,5 +68,4 @@ public class CoolingSkill : DurationSkill, IRegainable
             Logger.Log("CoolingSkill cannot be activated");
         }
     }
-
 }

@@ -89,7 +89,8 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
         }
 
         _skillList = skillList;
-        
+
+        // 스킬 아이콘, 쿨타임, 지속시간 UI 설정
         foreach (var skill in _skillList)
         {
             if (skill is CoolingSkill coolingSkill)

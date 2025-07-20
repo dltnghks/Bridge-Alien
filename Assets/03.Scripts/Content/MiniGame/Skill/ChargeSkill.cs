@@ -13,7 +13,7 @@ public abstract class ChargeSkill : SkillBase
 
     public Action<int> OnCountChanged;
 
-    public override void Initialize(MGUSkillContext context)
+    public override void Initialize(ISkillContext context)
     {
         int skillLevel = Managers.Player.PlayerData.MiniGameUnloadSkillLevel[skillData.Type];
         skillData.SetLevel(skillLevel);

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public class MGUSkillContext
+public class MGUSkillContext : ISkillContext
 {
     public readonly Player Player;
     public readonly MiniGameUnloadPlayer UnloadPlayer;

@@ -15,10 +15,11 @@ public abstract class DurationSkill : SkillBase
     public Action<float, float> OnCooldownChanged;
     public Action<bool> OnActiveStateChanged;
 
-    public override void Initialize(MGUSkillContext context)
+    public override void Initialize(ISkillContext context)
     {
         int skillLevel = Managers.Player.PlayerData.MiniGameUnloadSkillLevel[skillData.Type];
         skillData.SetLevel(skillLevel);
+        currentDuration = skillData.MaxDuration;
         OnCooldownChanged?.Invoke(currentDuration, skillData.MaxDuration);
     }
 
@@ -39,6 +40,7 @@ public abstract class DurationSkill : SkillBase
     protected override void OnActivate()
     {
         isActive = true;
+        OnActiveStateChanged?.Invoke(true);
     }
 
     protected virtual void EndSkill()

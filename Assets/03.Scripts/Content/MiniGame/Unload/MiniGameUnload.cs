@@ -202,6 +202,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         // 스킬 세팅
         if (PlayerController is ISkillController skillController)
         {
+            // 스킬 UI
+            _uiGameUnloadScene.UIPlayerInput.SetSkillInfo(_skillList);
+            _uiGameUnloadScene.UIPlayerInput.SetSkillAction(skillController.OnSkill);
+            
             skillController.SetSkillList(_skillList);
         }
         else
@@ -221,13 +225,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
         _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
-
-        // 스킬 UI
-        if (PlayerController is ISkillController skillController)
-        {
-            _uiGameUnloadScene.UIPlayerInput.SetSkillInfo(_skillList);
-            _uiGameUnloadScene.UIPlayerInput.SetSkillAction(skillController.OnSkill);
-        }
     }
     
     public bool PauseGame()

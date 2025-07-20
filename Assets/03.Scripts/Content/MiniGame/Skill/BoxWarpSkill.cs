@@ -14,11 +14,13 @@ public class BoxWarpSkill : ChargeSkill
 
     private Action OnDropBox; // 상자 배달 완료 후 호출될 액션
 
-    public override void Initialize(MGUSkillContext context)
+    public override void Initialize(ISkillContext context)
     {
-        _playerBoxList = context.BoxList;
-        _deliveryPoints = context.DeliveryPoints.ToArray();
-        OnDropBox = context.RemoveBoxFromPlayerAction;
+        MGUSkillContext mguSkillContext = context as MGUSkillContext;
+
+        _playerBoxList = mguSkillContext.BoxList;
+        _deliveryPoints = mguSkillContext.DeliveryPoints.ToArray();
+        OnDropBox = mguSkillContext.RemoveBoxFromPlayerAction;
 
         base.Initialize(context); // 부모 클래스의 초기화 호출
     }
