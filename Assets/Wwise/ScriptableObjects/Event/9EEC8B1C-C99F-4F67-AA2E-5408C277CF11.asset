@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc32ec4493e5094458058d6dfe8a05d2, type: 3}
   m_Name: 9EEC8B1C-C99F-4F67-AA2E-5408C277CF11
   m_EditorClassIdentifier: 
-  objectName: Play_SFX_truck
-  id: 1117495919
+  objectName: Play_AMB_Truck
+  id: 626113458
   guid: 9EEC8B1C-C99F-4F67-AA2E-5408C277CF11
   IsInUserDefinedSoundBank: 0
   IsAutoBankLoaded: 1

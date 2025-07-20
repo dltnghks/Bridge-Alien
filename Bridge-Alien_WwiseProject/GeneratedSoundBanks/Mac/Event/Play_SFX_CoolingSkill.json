@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "483605646",
+    "Type": "Event",
+    "GUID": "{3C38AA42-611E-4F23-A974-AF2C8B034671}",
+    "Language": "SFX",
+    "Hash": "{F3B81C31-5D06-8B87-B9EE-71CB7682F0C8}",
+    "ObjectPath": "Play_SFX_CoolingSkill",
+    "ShortName": "Play_SFX_CoolingSkill",
+    "Path": "Event/Play_SFX_CoolingSkill.bnk",
+    "Media": [
+     {
+      "Id": "1051677939",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "04_0628_ice_skill.wav",
+      "Path": "Media/1051677939.wem",
+      "CachePath": "A6/{A6E19BBC-4A00-81B8-3966-E26F1EA976C6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "483605646",
+      "Name": "Play_SFX_CoolingSkill",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_CoolingSkill",
+      "GUID": "{3C38AA42-611E-4F23-A974-AF2C8B034671}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0250833",
+      "DurationMax": "1.0250833",
+      "MediaRefs": [
+       {
+        "Id": "1051677939"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{877F7098-201D-E702-4DB9-4923EE15DA21}"
+ }
+}

@@ -87,24 +87,24 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: bd23cdb897ddf8a4e80bc04648778eb6, type: 2}
         - Key: CoolingSkill
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: 33286676c80237346bc96f4e155f3d3c, type: 2}
         - Key: Glitch
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: c827d24a9850be745826a91cb14b540c, type: 2}
         - Key: Discard
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: 37ba05e6f8fbded45acda72b400bca33, type: 2}
         - Key: CoolingMachine
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: f168ce274317973459a60eb1399ae96f, type: 2}
