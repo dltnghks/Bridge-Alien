@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -6,6 +7,8 @@ using UnityEngine.Rendering;
 public class MiniGameUnloadPlayer : Player
 {
     private MiniGameUnloadCharacterAnimator _unloadAnimator;
+    [SerializeField]
+    private ParticleSystem _speedUpSkillParticle;
 
     protected override void SetAnimator()
     {
@@ -23,6 +26,14 @@ public class MiniGameUnloadPlayer : Player
         {
             _unloadAnimator.SetCoolingSkill(isActive);
         }
+    }
+
+    public void SetSpeedUpSkill(bool isActive)
+    {
+        if (isActive)
+            _speedUpSkillParticle.Play();
+        else
+            _speedUpSkillParticle.Stop();
     }
     
     public void SetHoldUp(bool isHoldUp)

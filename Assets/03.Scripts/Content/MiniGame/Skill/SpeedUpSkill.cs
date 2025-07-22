@@ -10,11 +10,12 @@ public class SpeedUpSkill : DurationSkill, IRegainable
 
     public override void Initialize(ISkillContext context)
     {
-         MGUSkillContext mguSkillContext = context as MGUSkillContext;
+        MGUSkillContext mguSkillContext = context as MGUSkillContext;
 
         _playerCharacter = mguSkillContext.Player;
         speedBoost = _playerCharacter.MoveSpeed * 0.1f; // 속도 증가량 설정
-        
+        OnActiveStateChanged += mguSkillContext.SetSpeedUpSkillAction;
+
         base.Initialize(context); // 부모 클래스의 초기화 호출
     }
 

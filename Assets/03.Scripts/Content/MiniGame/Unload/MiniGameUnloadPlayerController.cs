@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using DG.Tweening.Plugins.Options;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -65,7 +66,8 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
             _boxList,
             _cachedPoints,
             RemoveBoxFromPlayer,
-            _unloadPlayer.SetCoolingSkill
+            _unloadPlayer.SetCoolingSkill,
+            _unloadPlayer.SetSpeedUpSkill
         );
 
         foreach (var skill in SkillList)
@@ -189,7 +191,8 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         _boxList.TryPush(pickupBox);
 
         pickupBox.transform.SetParent(Player.CharacterTransform);
-        pickupBox.transform.localPosition = Vector3.right + Vector3.up * (_boxHeight);
+        Vector3 targePos = Vector3.right + Vector3.up * (_boxHeight);
+        pickupBox.transform.DOLocalJump(targePos, 1f, 1, 0.2f);
         pickupBox.transform.localRotation = Quaternion.identity;
         _boxHeight += _boxOffset;
 

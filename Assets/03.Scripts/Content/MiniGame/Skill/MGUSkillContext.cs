@@ -10,6 +10,7 @@ public class MGUSkillContext : ISkillContext
     public readonly IReadOnlyList<MiniGameUnloadDeliveryPoint> DeliveryPoints;
     public readonly Action RemoveBoxFromPlayerAction;
     public readonly Action<bool> SetCoolingSkillAction;
+    public readonly Action<bool> SetSpeedUpSkillAction;
 
     public MGUSkillContext(
         Player player,
@@ -17,7 +18,8 @@ public class MGUSkillContext : ISkillContext
         MiniGameUnloadBoxList boxList,
         IReadOnlyList<MiniGameUnloadBasePoint> allPoints,
         Action removeBoxFromPlayerAction,
-        Action<bool> setCoolingSkillAction)
+        Action<bool> setCoolingSkillAction,
+        Action<bool> setSpeedUpSkillAction)
     {
         Player = player;
         UnloadPlayer = unloadPlayer;
@@ -25,5 +27,6 @@ public class MGUSkillContext : ISkillContext
         DeliveryPoints = allPoints.OfType<MiniGameUnloadDeliveryPoint>().ToList().AsReadOnly();
         RemoveBoxFromPlayerAction = removeBoxFromPlayerAction;
         SetCoolingSkillAction = setCoolingSkillAction;
+        SetSpeedUpSkillAction = setSpeedUpSkillAction;
     }
 }
