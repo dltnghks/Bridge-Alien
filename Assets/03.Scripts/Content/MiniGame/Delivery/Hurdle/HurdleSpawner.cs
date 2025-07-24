@@ -25,19 +25,17 @@ public class HurdleSpawner : MonoBehaviour
 
     public void Initialize()
     {
-        _builders = new Dictionary<HurdleType, HurdleBuilder>();
-        
-        _builders.Add(HurdleType.Bump, bumpObject);
-        // _builders.Add(HurdleType.CarCrush, CarCrushObject.GetComponent<CarCrushBuilder>());
-        // _builders.Add(HurdleType.Work, WorkObject.GetComponent<WorkBuilder>());
+        _builders = new Dictionary<HurdleType, HurdleBuilder>
+        {
+            { HurdleType.Bump, bumpObject },
+        };
 
         // 등록된 Builder로 Parent 데이터를 넘겨준다.
         foreach (var build in _builders.Values)
             build.Initialize(uiParent, objParent);
-        Debug.Log("Check");
     }
 
-    public void SpawnHurdle(HurdleType type, params Vector3[] origins)
+    public void SpawnHurdle(HurdleType type, params Transform[] origins)
     {
         if (_builders.TryGetValue(type, out var builder))
         {

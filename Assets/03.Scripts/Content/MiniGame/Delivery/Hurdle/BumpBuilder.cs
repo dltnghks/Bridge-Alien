@@ -8,15 +8,15 @@ public class BumpBuilder : HurdleBuilder
     [SerializeField] private GameObject entryPrefab;
     [SerializeField] private GameObject mainPrefab;
     
-    public override GameObject CreateEntry(Vector3 position)
+    public override GameObject CreateEntry(Transform position)
     {
         return Instantiate(entryPrefab, Vector3.zero, Quaternion.identity, uiParent);
     }
-    public override GameObject CreateMain(Vector3 position)
+    public override GameObject CreateMain(Transform position)
     {
-        return Instantiate(mainPrefab, position, Quaternion.identity, objParent);
+        return Instantiate(mainPrefab, position.position, Quaternion.identity, objParent);
     }
-    public override GameObject CreateEnd(Vector3 position)
+    public override GameObject CreateEnd(Transform position)
     {
         return null;
     }

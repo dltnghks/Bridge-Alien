@@ -11,7 +11,7 @@ public class InfiniteMap : MonoBehaviour
     private float _maxDistance = 0f;
     [SerializeField] private float totalDistance = 0f;
 
-    private Transform[] _blocks;
+    private Ground[] _grounds;
     private bool _isInitialized = false;
     private float _threshold;
     
@@ -19,20 +19,24 @@ public class InfiniteMap : MonoBehaviour
 
     private Action<float> onUpdateDistance;
 
+    private int saveIndex = 0;
+
     public void Initialize(float maxDist, Action<float> updateAction)
     {
-        _blocks = new Transform[BLOCK_COUNT];
+        _grounds = new Ground[BLOCK_COUNT];
         
         // 블록 초기화
         for (int i = 0; i < BLOCK_COUNT; i++)
         {
-            _blocks[i] = transform.GetChild(i);
-            if (_blocks[i] == null)
+            _grounds[i] = transform.GetChild(i).GetComponent<Ground>();
+            if (_grounds[i] == null)
             {
                 Logger.LogError($"블록 {i}를 찾을 수 없습니다!");
                 this.enabled = false;
                 return;
             }
+            
+            _grounds[i].Initialize();
         }
 
         // BlockSize = 50
@@ -43,7 +47,7 @@ public class InfiniteMap : MonoBehaviour
         for (int i = 0; i < BLOCK_COUNT; i++)
         {
             float xPosition = (i - 2) * blockSize; // -2, -1, 0, 1, 2
-            _blocks[i].localPosition = moveDirection * xPosition;
+            _grounds[i].transform.localPosition = moveDirection * xPosition;
         }
 
         _maxDistance = maxDist;
@@ -76,17 +80,23 @@ public class InfiniteMap : MonoBehaviour
     {
         Vector3 movement = moveDirection * deltaMove;
         
-        for (int i = 0; i < _blocks.Length; i++)
+        for (int i = 0; i < _grounds.Length; i++)
         {
             // 블록 이동
-            _blocks[i].localPosition += movement;
+            _grounds[i].transform.localPosition += movement;
             
-            float currentPos = Vector3.Dot(_blocks[i].localPosition, moveDirection);
-            
+            float currentPos = Vector3.Dot(_grounds[i].transform.localPosition, moveDirection);
+
             if (currentPos > _threshold)
-                _blocks[i].localPosition -= moveDirection * (blockSize * BLOCK_COUNT);
+            {
+                _grounds[i].transform.localPosition -= moveDirection * (blockSize * BLOCK_COUNT);
+            }
             else if (currentPos < -_threshold)
-                _blocks[i].localPosition += moveDirection * (blockSize * BLOCK_COUNT);
+            {
+                saveIndex = i;
+                _grounds[i].transform.localPosition += moveDirection * (blockSize * BLOCK_COUNT);
+                _grounds[i].ClearGround();
+            }
         }
     }
 
@@ -110,10 +120,15 @@ public class InfiniteMap : MonoBehaviour
         for (int i = 0; i < BLOCK_COUNT; i++)
         {
             float xPosition = (i - 2) * blockSize;
-            _blocks[i].localPosition = moveDirection * xPosition;
+            _grounds[i].transform.localPosition = moveDirection * xPosition;
         }
         
         this.enabled = true;
         Debug.Log("맵 리셋 완료");
+    }
+
+    public Ground GetGround()
+    {
+        return _grounds[saveIndex];
     }
 }
