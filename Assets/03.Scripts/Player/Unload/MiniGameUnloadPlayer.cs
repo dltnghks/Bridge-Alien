@@ -31,9 +31,14 @@ public class MiniGameUnloadPlayer : Player
     public void SetSpeedUpSkill(bool isActive)
     {
         if (isActive)
-            _speedUpSkillParticle.Play();
+        {
+            _speedUpSkillParticle.Play();            
+        }
         else
-            _speedUpSkillParticle.Stop();
+        {
+            _speedUpSkillParticle.Pause();
+            _speedUpSkillParticle.Clear();
+        }
     }
     
     public void SetHoldUp(bool isHoldUp)
