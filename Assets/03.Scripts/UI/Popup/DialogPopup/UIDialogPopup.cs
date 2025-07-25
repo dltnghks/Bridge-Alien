@@ -6,6 +6,7 @@ using TMPro;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using AYellowpaper.SerializedCollections;
 
 public class UIDialogPopup : UIPopup
 {
@@ -24,6 +25,7 @@ public class UIDialogPopup : UIPopup
 
     enum Images
     {
+        Background,
         LeftCharacterImage,
         RightCharacterImage,
     }
@@ -40,7 +42,10 @@ public class UIDialogPopup : UIPopup
     }
     
     public float TypingSpeed = 0.01f; // 글자 타이핑 속도
-    
+
+    [Header("Dialog Background")]
+    [SerializeField] private SerializedDictionary<Define.DialogSceneType, Sprite> _backgroundImage = new SerializedDictionary<Define.DialogSceneType, Sprite>();
+
     private List<Image> _speakerCharacterImages = new List<Image>();
     private TextMeshProUGUI _dialogText;  
     private Button _nextButton;
@@ -131,13 +136,24 @@ public class UIDialogPopup : UIPopup
         }
     }
     
-    public void SetDialogs(Define.Dialog dialogue, Action callback = null)
+    public void InitDialog(Define.Dialog dialogue, Define.DialogSceneType sceneType, Action callback = null)
     {
         Init();
         
         Logger.Log($"SetDialogs : {dialogue}");   
         
-        _callback = callback; 
+        _callback = callback;
+        // 대화 데이터 초기화
+        SetDialogData(dialogue);
+
+        // 배경 이미지 설정
+        SetBackground(sceneType);
+
+        UpdateDialog();
+    }
+
+    private void SetDialogData(Define.Dialog dialogue)
+    {
         List<DialogData> currentDialogs = Managers.Data.DialogData.GetData(dialogue);
         
         foreach (var dialog in currentDialogs)
@@ -165,12 +181,26 @@ public class UIDialogPopup : UIPopup
         }
         
         _currentDialog = currentDialogs[0];
-        
-        UpdateDialog();
     }
     
+    private void SetBackground(Define.DialogSceneType sceneType)
+    {
+        if (sceneType == Define.DialogSceneType.House && sceneType == Define.DialogSceneType.Unknown)
+        {
+            GetImage((int)Images.Background).sprite = null;
+            GetImage((int)Images.Background).color = Color.clear; // 배경 이미지가 없을 경우 투명하게 설정
+        }
+        else if (_backgroundImage.ContainsKey(sceneType))
+        {
+            GetImage((int)Images.Background).sprite = _backgroundImage[sceneType];
+        }
+        else
+        {
+            Logger.LogError($"Background image for {sceneType} not found");
+        }
+    }
     private void UpdateDialog()
-    {   
+    {
         if (_currentDialog.Type == Define.DialogType.End)
         {
             // 대화 종료
@@ -180,10 +210,10 @@ public class UIDialogPopup : UIPopup
 
         switch (_currentDialog.Type)
         {
-            case Define.DialogType.Dialog :
+            case Define.DialogType.Dialog:
                 string characterName = _currentDialog.CharacterName;
                 string dialogText = _currentDialog.Script;
-        
+
                 // 이름 변경
                 SetNameText(characterName);
                 // 대화 변경
@@ -293,5 +323,6 @@ public class UIDialogPopup : UIPopup
     {
         Logger.Log("EndDialog");
         Managers.UI.ClosePopupUI(this);
+        _callback?.Invoke();
     }
 }

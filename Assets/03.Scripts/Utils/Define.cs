@@ -91,6 +91,17 @@ public class Define
         End,
     }
 
+    public enum DialogSceneType
+    {
+        Unknown,
+        House,             // 집
+        Station,           // 정거장
+        Office,            // 사무실
+        UnloadWorkplace,   // 하차 작업장
+        DeliveryGarage,    // 배송 차고지
+        ManagerRoom,       // 소장실
+    }
+    
     public enum PlayerStatsType
     {
         Fatigue,               // 피로도
@@ -120,5 +131,4 @@ public class Define
         // 배송게임 스킬
         //TestSkill,
     }
-
 }
