@@ -16,6 +16,7 @@ public class MiniGameUnloadSetting :MiniGameSettingBase
     public float BoxSpawnInterval = 3.0f;
     public float DetectionBoxRadius = 2.0f;
     public float MoveSpeedReductionRatio = 2.0f;
+    public int MaxColdAreaBoxIndex = 1;
 }
 
 [System.Serializable]

@@ -10,9 +10,14 @@ public class MiniGameUnloadBoxList
         get{ return _inGameUnloadBoxList.Count;} 
     }
 
+    public List<MiniGameUnloadBox> BoxList
+    {
+        get{ return _inGameUnloadBoxList; }
+    }
+
     public bool IsFull
     {
-        get{ return MaxUnloadBoxIndex <= CurrentUnloadBoxIndex;}
+        get { return MaxUnloadBoxIndex <= CurrentUnloadBoxIndex; }
     }
 
     public bool IsEmpty
@@ -27,7 +32,7 @@ public class MiniGameUnloadBoxList
         MaxUnloadBoxIndex = maxIndex;
     }
 
-    public MiniGameUnloadBox PeekBoxList(){
+    public MiniGameUnloadBox Peek(){
         if(CurrentUnloadBoxIndex > 0)
         {
             return _inGameUnloadBoxList[CurrentUnloadBoxIndex-1];
@@ -37,10 +42,15 @@ public class MiniGameUnloadBoxList
             return null;
         }
     }
-
-    public bool TryAddInGameUnloadBoxList(MiniGameUnloadBox newInGameUnloadBox)
+    
+    public void ClearBoxList()
     {
-        if(MaxUnloadBoxIndex > CurrentUnloadBoxIndex)
+        _inGameUnloadBoxList.Clear();
+    }
+
+    public bool TryPush(MiniGameUnloadBox newInGameUnloadBox)
+    {
+        if (MaxUnloadBoxIndex > CurrentUnloadBoxIndex)
         {
             _inGameUnloadBoxList.Add(newInGameUnloadBox);
             return true;
@@ -51,7 +61,7 @@ public class MiniGameUnloadBoxList
         }
     }
 
-    public MiniGameUnloadBox RemoveAndGetTopInGameUnloadBoxList()
+    public MiniGameUnloadBox TryPop()
     {
         MiniGameUnloadBox returnBox = null;
         if(_inGameUnloadBoxList.Count > 0)

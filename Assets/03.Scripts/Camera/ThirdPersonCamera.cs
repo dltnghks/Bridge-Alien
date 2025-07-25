@@ -105,7 +105,7 @@ public class ThirdPersonCamera : CameraController
         }
 
         // 최종 카메라 위치 계산
-        Vector3 targetCameraPosition = targetPosition - direction * currentBlockDistance;
+        Vector3 targetCameraPosition = targetPosition;// - direction * currentBlockDistance;
         
         
         // 추가 레이캐스트로 얇은 벽 통과 방지
@@ -116,7 +116,7 @@ public class ThirdPersonCamera : CameraController
         else
         {
             // 카메라가 항상 타겟을 바라보도록 함
-            transform.LookAt(targetPosition);
+            //transform.LookAt(targetPosition);
         }
         
         // 최종 위치 적용 (부드러운 이동)

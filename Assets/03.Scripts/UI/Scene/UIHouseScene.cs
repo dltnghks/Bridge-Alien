@@ -112,7 +112,7 @@ public class UIHouseScene : UIScene
     
     private void SetFatigue()
     {
-        int curFatigue = Managers.Player.GetStat(Define.PlayerStatType.Fatigue);
+        int curFatigue = Managers.Player.GetStat(Define.PlayerStatsType.Fatigue);
         GetText((int)Texts.FatigueText).text = $"{curFatigue}/100";
         _fatigueSlider.DOValue((float)curFatigue / 100f, 0.5f);
     }

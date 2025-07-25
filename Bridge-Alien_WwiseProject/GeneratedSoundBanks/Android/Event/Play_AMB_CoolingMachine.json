@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3070083385",
+    "Type": "Event",
+    "GUID": "{AAE86EBC-2F57-4070-9AD9-6514AE496F68}",
+    "Language": "SFX",
+    "Hash": "{2AE58A76-82E7-5C8A-94BE-A1EB925AB04F}",
+    "ObjectPath": "Play_AMB_CoolingMachine",
+    "ShortName": "Play_AMB_CoolingMachine",
+    "Path": "Event/Play_AMB_CoolingMachine.bnk",
+    "Media": [
+     {
+      "Id": "74607510",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "01_0628_ice_machine.wav",
+      "Path": "Media/74607510.wem",
+      "CachePath": "9F/{9FD6805C-5D42-27B3-A42B-BB89A4C39B67}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3070083385",
+      "Name": "Play_AMB_CoolingMachine",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_AMB_CoolingMachine",
+      "GUID": "{AAE86EBC-2F57-4070-9AD9-6514AE496F68}",
+      "DurationType": "OneShot",
+      "DurationMin": "10.008041",
+      "DurationMax": "10.008041",
+      "MediaRefs": [
+       {
+        "Id": "74607510"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{4B9C0CAC-2FF0-8562-1A45-A8647A12B0A8}"
+ }
+}

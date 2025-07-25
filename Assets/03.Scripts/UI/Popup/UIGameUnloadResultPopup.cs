@@ -18,8 +18,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         }
         
         BindText(typeof(Texts));
-        
-        Managers.UI.SetInputBackground(false);
+
         
         return true;
     }
@@ -67,7 +66,6 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     
     public override void ClosePopupUI()
     {
-        Managers.UI.SetInputBackground(true);
         base.ClosePopupUI();       
     }
 }

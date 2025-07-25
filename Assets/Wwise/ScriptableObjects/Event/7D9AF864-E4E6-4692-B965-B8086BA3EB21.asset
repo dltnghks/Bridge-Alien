@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc32ec4493e5094458058d6dfe8a05d2, type: 3}
   m_Name: 7D9AF864-E4E6-4692-B965-B8086BA3EB21
   m_EditorClassIdentifier: 
-  objectName: Play_StandardBoxPut
-  id: 2557702835
+  objectName: Play_SFX_StandardBoxPut
+  id: 1744893023
   guid: 7D9AF864-E4E6-4692-B965-B8086BA3EB21
   IsInUserDefinedSoundBank: 0
   IsAutoBankLoaded: 1

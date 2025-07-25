@@ -103,7 +103,7 @@ public class UIManager
             _popupStack.Pop();
             
         }
-        _blurBackground.gameObject.SetActive(false);
+        _blurBackground.SetActive(false);
         
         return sceneUI;
     }
@@ -127,7 +127,7 @@ public class UIManager
         }
     }
     
-    public T ShowPopUI<T>(string name = null, Transform parent = null) where T : UIPopup
+    public T ShowPopUI<T>(string name = null, Transform parent = null, bool IsblurBG = true) where T : UIPopup
     {
         if (string.IsNullOrEmpty(name))
         {
@@ -155,9 +155,15 @@ public class UIManager
 
         go.transform.localScale = Vector3.one;
         go.transform.localPosition = prefab.transform.position;
-        
-        _blurBackground?.gameObject.SetActive(true);
-        
+
+        // blurbackground가 꺼져있는 경우에만 켜기
+        // blurbackground가 켜져있는데 끄고 싶은 경우에는 끄기
+        if ((IsblurBG == true && _blurBackground?.IsBlurActive == false) ||
+        (IsblurBG == false && _blurBackground.IsBlurActive == true))
+        {
+            _blurBackground?.SetActive(IsblurBG);
+        }
+    
         return popup;
     }
     
@@ -261,7 +267,7 @@ public class UIManager
 
         if (_popupStack.Count == 0)
         {
-            _blurBackground?.gameObject.SetActive(false);
+            _blurBackground?.SetActive(false);
         }
     }
 

@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	4163194645	Play_SFX_Glitch			\Default Work Unit\MiniGameUnload\Play_SFX_Glitch	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

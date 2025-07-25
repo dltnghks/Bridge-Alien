@@ -27,8 +27,6 @@ public class UIGameStartPopup : UIPopup
         BindImage(typeof(Images));
 
         _gameStartImage = GetImage((int)Images.GameStartImage);
-
-        Managers.UI.SetInputBackground(false);
         return true;
     }
 
@@ -63,7 +61,6 @@ public class UIGameStartPopup : UIPopup
 
     public override void ClosePopupUI()
     {
-        Managers.UI.SetInputBackground(true);
         base.ClosePopupUI();
     }
 

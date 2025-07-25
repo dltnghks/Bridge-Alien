@@ -15,7 +15,7 @@ public class Define
         MiniGameDelivery,
         Ending,
     }
-    
+
     public enum UIEvent
     {
         Click,
@@ -33,22 +33,21 @@ public class Define
         Unload,
         Delivery,
     }
-    
+
     public enum BoxType
     {
-        Post,           // 우편
-        SmallBox,    // 소형 택배
-        StandardBox, // 일반 택배
-        LargeBox     // 대형 택배
+        Normal,     // 일반 배송 가능 상태
+        Disposal,   // 폐기 상태
+        Cold,       // 냉동이 요구되는 상태, 냉동이 완료되면 Normal로 변경
     }
 
     public enum BoxRegion
     {
-        CapitalArea,
-        ChungcheongArea,
-        YeongnamArea,
-        HonamArea,
-        GangwonArea, 
+        A,
+        B,
+        C,
+        D,
+        E,
     }
 
     public enum DailyEventType
@@ -67,14 +66,20 @@ public class Define
         Daily,
         PlayerStat,
         PlayerTask,
+        MiniGameSkill,
         End,
     }
 
     public enum Dialog
     {
         Unknown,
+        STORY_D1_01,
+        STORY_D1_02,
+        STORY_D1_03,
+        STORY_D1_04,
+        STORY_D1_05,
+        STORY_D1_06,
         TUTORIAL_STORY_01,
-        TUTORIAL_SOTRY_02,
     }
 
     public enum DialogType
@@ -86,7 +91,7 @@ public class Define
         End,
     }
 
-    public enum PlayerStatType
+    public enum PlayerStatsType
     {
         Fatigue,               // 피로도
         Experience,            // 작업 숙련
@@ -101,6 +106,19 @@ public class Define
         SelfDevelopment,    // 자기개발
         Fortune,         // 투자
         Entertainment,      // 유흥
-        
+
     }
+
+    // 전체 스킬
+    public enum MiniGameSkillType
+    {
+        // 하차게임 스킬
+        CoolingSkill,
+        BoxWarpSkill,
+        SpeedUpSkill,
+
+        // 배송게임 스킬
+        //TestSkill,
+    }
+
 }

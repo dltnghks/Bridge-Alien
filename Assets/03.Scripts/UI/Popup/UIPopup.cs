@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class UIPopup : UIBase
 {
+    // 팝업 창 뒤에 있는 투명한 배경에 상호작용이 가능 여부
+    [SerializeField] private bool IsBlurBGInputEnable = false;
     
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
+
+        Managers.UI.SetInputBackground(IsBlurBGInputEnable);
 
         return true;
     }

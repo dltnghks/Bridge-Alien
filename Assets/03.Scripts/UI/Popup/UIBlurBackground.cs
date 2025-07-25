@@ -5,7 +5,8 @@ using UnityEngine;
 public class UIBlurBackground : UIPopup
 {
     public bool IsInputEnabled { get; set; }
-    
+    public bool IsBlurActive { get; private set; }
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -13,10 +14,10 @@ public class UIBlurBackground : UIPopup
             return false;
         }
 
-        IsInputEnabled = true;
-        
+        IsInputEnabled = false;
+
         gameObject.BindEvent(OnClickBackground);
-        
+
         return true;
     }
 
@@ -27,4 +28,10 @@ public class UIBlurBackground : UIPopup
             Managers.UI.ClosePopupUI();
         }
     } 
+    
+    public void SetActive(bool isActive)
+    {
+        IsBlurActive = isActive;
+        gameObject.SetActive(isActive);
+    }
 }

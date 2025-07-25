@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1470981393",
+    "Type": "Event",
+    "GUID": "{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}",
+    "Language": "SFX",
+    "Hash": "{FA46A762-36F6-1791-9C5E-1A24D66113BC}",
+    "ObjectPath": "Play_SFX_PickUpBox",
+    "ShortName": "Play_SFX_PickUpBox",
+    "Path": "Event/Play_SFX_PickUpBox.bnk",
+    "Events": [
+     {
+      "Id": "1470981393",
+      "Name": "Play_SFX_PickUpBox",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_PickUpBox",
+      "GUID": "{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{973F57ED-A0F3-4534-703C-B3C559597AB4}"
+ }
+}

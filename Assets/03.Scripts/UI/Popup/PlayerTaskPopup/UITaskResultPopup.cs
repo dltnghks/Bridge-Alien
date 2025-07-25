@@ -66,10 +66,10 @@ public class UITaskResultPopup : UIPopup
     public void SetText()
     {
         PlayerData playerData = Managers.Player.PlayerData;
-        GetText((int)Texts.ExperienceValueText).text = $"{playerData.Stats[Define.PlayerStatType.Experience]} / 100";
-        GetText((int)Texts.GravityAdaptationValueText).text = $"{playerData.Stats[Define.PlayerStatType.GravityAdaptation]} / 100";
-        GetText((int)Texts.IntelligenceValueText).text = $"{playerData.Stats[Define.PlayerStatType.Intelligence]} / 100";
-        GetText((int)Texts.LuckValueText).text = $"{playerData.Stats[Define.PlayerStatType.Luck]} / 100";
+        GetText((int)Texts.ExperienceValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Experience]} / 100";
+        GetText((int)Texts.GravityAdaptationValueText).text = $"{playerData.Stats[Define.PlayerStatsType.GravityAdaptation]} / 100";
+        GetText((int)Texts.IntelligenceValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Intelligence]} / 100";
+        GetText((int)Texts.LuckValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Luck]} / 100";
 
         if (_selectedTaskData != null)
         {

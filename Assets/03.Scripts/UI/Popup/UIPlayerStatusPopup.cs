@@ -12,6 +12,11 @@ public class UIPlayerStatusPopup : UIPopup
         IntelligenceText,          // 지능
         LuckText,                  // 운
     }
+
+    enum Buttons
+    {
+        WorkModuleButton,
+    }
     
     public override bool Init()
     {
@@ -21,33 +26,42 @@ public class UIPlayerStatusPopup : UIPopup
         }
         
         BindText(typeof(Texts));
+        BindButton(typeof(Buttons));
+        
+        GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickWorkModuleButton);
         
         SetPlayerStat();
 
         return true;
     }
 
+    private void OnClickWorkModuleButton()
+    {
+        // 워크 모듈 UI 띄우기
+        Managers.UI.ShowPopUI<UIWorkModulePopup>();
+    }
+    
     private void SetPlayerStat()
     {
-        foreach (Define.PlayerStatType type in Enum.GetValues(typeof(Define.PlayerStatType)))
+        foreach (Define.PlayerStatsType type in Enum.GetValues(typeof(Define.PlayerStatsType)))
         {
             string value = Managers.Player.GetStat(type).ToString();
             switch (type)
             {
-                case Define.PlayerStatType.Experience:
+                case Define.PlayerStatsType.Experience:
                     SetExperienceText(value);
                     break;
-                case Define.PlayerStatType.GravityAdaptation:
+                case Define.PlayerStatsType.GravityAdaptation:
                     SetGravityAdaptationText(value);
                     break;
-                case Define.PlayerStatType.Intelligence:
+                case Define.PlayerStatsType.Intelligence:
                     SetIntelligenceText(value);
                     break;
-                case Define.PlayerStatType.Luck:
+                case Define.PlayerStatsType.Luck:
                     SetLuckText(value);
                     break;
                 default:
-                    Logger.LogWarning("Player Stat Type Error");
+                    Logger.LogWarning("Player Stats Type Error");
                     break;
             }
         }

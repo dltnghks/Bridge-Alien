@@ -40,8 +40,6 @@ public class UITaskProgressPopup : UIPopup
                 ClosePopupUI();
             });
         
-        Managers.UI.SetInputBackground(false);
-        
         return true;
     }
 
@@ -68,7 +66,6 @@ public class UITaskProgressPopup : UIPopup
 
     public override void ClosePopupUI()
     {
-        Managers.UI.SetInputBackground(true);
         base.ClosePopupUI();
     }
 }

@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	1869835011	Play_PostPut			\Default Work Unit\MiniGameUnload\Play_PostPut	
-
-Game Parameter	ID	Name			Wwise Object Path	Notes
-	988953028	SFXVolume			\Default Work Unit\SFXVolume	
-

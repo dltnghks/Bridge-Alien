@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1284383132",
+    "Type": "Event",
+    "GUID": "{F0E3AF40-1FC9-4597-A5A0-910C4F9C50F6}",
+    "Language": "SFX",
+    "Hash": "{234B2FB4-0614-F49B-7B02-3F81EBC1E59D}",
+    "ObjectPath": "Play_SFX_Discard",
+    "ShortName": "Play_SFX_Discard",
+    "Path": "Event/Play_SFX_Discard.bnk",
+    "Media": [
+     {
+      "Id": "151985766",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "03_0628_discard.wav",
+      "Path": "Media/151985766.wem",
+      "CachePath": "5A/{5A8C6BD8-A75B-50BF-C943-22A9B7F6F8DB}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1284383132",
+      "Name": "Play_SFX_Discard",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_Discard",
+      "GUID": "{F0E3AF40-1FC9-4597-A5A0-910C4F9C50F6}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0082917",
+      "DurationMax": "1.0082917",
+      "MediaRefs": [
+       {
+        "Id": "151985766"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{542A8B2E-BCED-1F35-10A9-6F999076DA6F}"
+ }
+}

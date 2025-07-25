@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52f1227f0f2ad64ebf2cbe6026a05a7, type: 3}
+  m_Name: CoolingSkillData
+  m_EditorClassIdentifier: 
+  Type: 0
+  Name: "\uB0C9\uAC01\uC2A4\uD0AC"
+  Icon: {fileID: 21300000, guid: 16aebbc5213527b448d891a7a16f1452, type: 3}
+  Description: "\uC2A4\uD0AC \uC0AC\uC6A9 \uC2DC {0}\uCD08 \uB3D9\uC548 \uC2E0\uCCB4\uB97C
+    \uB0C9\uAC01\uD654 \uD55C\uB2E4."
+  UpgradeCostByLevel: 000000001027000030750000409c0000b0ad0100
+  MaxDuration: 10
+  SkillDurationByLevel: 000000000a0000000b0000000c0000000d0000000f000000

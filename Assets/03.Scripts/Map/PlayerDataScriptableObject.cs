@@ -21,7 +21,7 @@ public class PlayerDataScriptableObject : ScriptableObject
             }
             else
             {
-                Debug.LogWarning("Not able to parse player stat data");
+                Debug.LogWarning("Not able to parse player stats data");
             }
         }
         catch (System.Exception e)
