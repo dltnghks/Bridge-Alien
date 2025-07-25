@@ -893,6 +893,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 734190950}
     m_Modifications:
+    - target: {fileID: 41832730275574289, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+      propertyPath: _moveDistance
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1947315248513555530, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -933,29 +937,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2840700437271529122, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4294852165489532136, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: skillData
-      value: 
-      objectReference: {fileID: 11400000, guid: 932eb6f1b82d9ce49b43bc215c24d58a, type: 2}
-    - target: {fileID: 5111091495888871717, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: skillData
-      value: 
-      objectReference: {fileID: 11400000, guid: 2e9848d0f99479445ac170e6cc50572a, type: 2}
-    - target: {fileID: 5179347081859355491, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: skillData
-      value: 
-      objectReference: {fileID: 11400000, guid: bbbfede57e2a6fd4da5ec7d03fd0eb5f, type: 2}
     - target: {fileID: 5737174199348785999, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Name
       value: MiniGameUnload
-      objectReference: {fileID: 0}
-    - target: {fileID: 7833427205184122418, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
