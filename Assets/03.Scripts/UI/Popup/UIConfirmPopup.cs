@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIConfirmPopup : UIPopup
 {
-    enum Buttons
+    protected enum Buttons
     {
         ConfirmButton,
     }
@@ -24,7 +24,7 @@ public class UIConfirmPopup : UIPopup
         BindButton(typeof(Buttons));
         
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
-        
+
         return true;
     }
 

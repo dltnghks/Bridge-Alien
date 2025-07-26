@@ -24,12 +24,12 @@ public class PlayerManager
         PlayerData = playerData;
     }
     
-    public int GetStat(Define.PlayerStatsType type)
+    public int GetStats(Define.PlayerStatsType type)
     {
         return PlayerData.Stats[type];
     }
     
-    public void AddStat(Define.PlayerStatsType type, int value)
+    public void AddStats(Define.PlayerStatsType type, int value)
     {
         // 피로도 감소의 경우
         if (type == Define.PlayerStatsType.Fatigue && value < 0)
@@ -67,73 +67,61 @@ public class PlayerManager
         
         OnPlayerDataChanged?.Invoke();
     }
-    
 
-    public float AddGold(int gold)
+    public float GetExperienceStatsBonus()
     {
-        float totalGold = gold;
 
-        
-        // 피로도로 인한 획득 골드 감소
-        int playerFatigue = PlayerData.Stats[Define.PlayerStatsType.Fatigue];
-        if (playerFatigue <= 0)
-        {
-            totalGold *= 0.9f;
-        }else if (playerFatigue <= 30)
-        {
-            totalGold *= 0.5f;
-        }
-        
         // 작업 숙련으로 인한 획득 골드 증가
         int playerExperience = PlayerData.Stats[Define.PlayerStatsType.Experience];
         if (playerExperience <= 24)
         {
-            totalGold *= GoldGainRates[0];
+            return GoldGainRates[0];
         }
         else if (playerExperience <= 49)
         {
-            totalGold *= GoldGainRates[1];
+            return GoldGainRates[1];
         }
         else if (playerExperience <= 74)
         {
-            totalGold *= GoldGainRates[2];
+            return GoldGainRates[2];
         }
-        else if (playerExperience <= 100)
+        else if( playerExperience <= 100)
         {
-            totalGold *= GoldGainRates[3];
+            return GoldGainRates[3];
         }
-        
-        // 지능으로 인한 획득 골드 증가
-        int playerIntelligence = PlayerData.Stats[Define.PlayerStatsType.Intelligence];
-        if (playerIntelligence <= 24)
+
+        return 1f;
+    }
+
+    public float GetFatigueStatsPenalty()
+    {
+        int playerFatigue = PlayerData.Stats[Define.PlayerStatsType.Fatigue];
+        if (playerFatigue <= 0)
         {
-            totalGold *= GoldGainRates[0];
+            return 0.9f;
         }
-        else if (playerIntelligence <= 49)
+        else if (playerFatigue < 30)
         {
-            totalGold *= GoldGainRates[1];
+            return 0.5f;
         }
-        else if (playerIntelligence <= 74)
-        {
-            totalGold *= GoldGainRates[2];
-        }
-        else if (playerIntelligence <= 100)
-        {
-            totalGold *= GoldGainRates[3];
-        }
-        
-        PlayerData.PlayerGold += (int)totalGold;
-        
+
+        return 0f;
+    }
+
+    public float AddGold(int gold)
+    {
+        PlayerData.PlayerGold += gold;
+
         OnPlayerDataChanged?.Invoke();
-        
-        return totalGold;
+
+        return gold;
     }
 
     public void AddDate()
     {
-        AddStat(Define.PlayerStatsType.Fatigue, 50);
-        AddStat(Define.PlayerStatsType.Experience, 2);
-        AddStat(Define.PlayerStatsType.GravityAdaptation, 5);
+        AddStats(Define.PlayerStatsType.Fatigue, 50);
+        AddStats(Define.PlayerStatsType.Experience, 2);
+        AddStats(Define.PlayerStatsType.GravityAdaptation, 5);
     }
 
     public int GetGold()
