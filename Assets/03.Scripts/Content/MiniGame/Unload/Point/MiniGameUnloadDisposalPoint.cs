@@ -31,6 +31,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     public void Start()
     {
+        // TODO. 상자 타입 Define.BoxType.Disposal만 설정해야 됨.
         AllowedTypes = new Define.BoxType[] { Define.BoxType.Disposal, Define.BoxType.Normal, Define.BoxType.Cold };
         _boxList.SetBoxList(_maxIndex);
 
@@ -110,6 +111,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         _isDisposing = true;
         // DisposalBody 에 있는 사이렌 점등 -> DisposalArea 바닥이 열리는 애니메이션
         _lampParticle.Play();
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.DisposalUnitOpenDoor.ToString(), gameObject);
 
         Sequence disposeSequence = DOTween.Sequence();
 
@@ -159,6 +161,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
                 _rightFloorMaterial.SetVector("_Scroll", rightScroll);
             }, 0f, 1f)
         );
+
         disposeSequence.OnComplete(() =>
         {
             // 이펙트 중지 및 초기화

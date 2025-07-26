@@ -88,7 +88,12 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         foreach (var idx in textIndices)
         {
             sequence.AppendInterval(_textDelayDuration);
-            sequence.Append(GetText(idx).DOFade(1f, 0f).SetEase(Ease.InQuad));
+            sequence.Append(
+            GetText(idx).DOFade(1f, 0f).SetEase(Ease.InQuad).OnComplete(() =>
+                {
+                    Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject);
+                })
+            );
         }
 
         //총합 점수 출력은 1부터 올라가는 애니메이션
@@ -102,6 +107,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         {
             _isFinished = true;
             Managers.UI.SetInputBackground(true);
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.LastScore.ToString(), gameObject);
         });
     }
 

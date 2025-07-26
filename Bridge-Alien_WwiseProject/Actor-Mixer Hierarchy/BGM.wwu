@@ -72,6 +72,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="BGM_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" ShortID="1072400016">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>

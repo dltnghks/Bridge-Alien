@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "495847804",
+    "Type": "Event",
+    "GUID": "{C1F3063C-F913-45FB-90D7-A1452E05B48B}",
+    "Language": "SFX",
+    "Hash": "{8E8A35BB-FB65-17AB-9237-8A04C7F74E67}",
+    "ObjectPath": "Play_SFX_LastScore",
+    "ShortName": "Play_SFX_LastScore",
+    "Path": "Event/Play_SFX_LastScore.bnk",
+    "Media": [
+     {
+      "Id": "48509398",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "coin_End.wav",
+      "Path": "Media/48509398.wem",
+      "CachePath": "35/{35F86CD6-FA6B-6A7C-EAA3-A844528660AF}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "495847804",
+      "Name": "Play_SFX_LastScore",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_LastScore",
+      "GUID": "{C1F3063C-F913-45FB-90D7-A1452E05B48B}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.4584924",
+      "DurationMax": "1.4584924",
+      "MediaRefs": [
+       {
+        "Id": "48509398"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{9D3EAFE3-D37B-AA19-A282-2E15634DBDC5}"
+ }
+}

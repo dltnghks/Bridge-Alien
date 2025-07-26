@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{3C38AA42-611E-4F23-A974-AF2C8B034671}",
     "Language": "SFX",
-    "Hash": "{F3B81C31-5D06-8B87-B9EE-71CB7682F0C8}",
+    "Hash": "{7BB0E837-E95D-9E46-E0F3-52DD49A43CBC}",
     "ObjectPath": "Play_SFX_CoolingSkill",
     "ShortName": "Play_SFX_CoolingSkill",
     "Path": "Event/Play_SFX_CoolingSkill.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "04_0628_ice_skill.wav",
       "Path": "Media/1051677939.wem",
-      "CachePath": "A6/{A6E19BBC-4A00-81B8-3966-E26F1EA976C6}.wem"
+      "CachePath": "AE/{AEEA2981-83CB-648E-A6A4-379DE78C3CDF}.wem"
      }
     ],
     "Events": [
@@ -32,8 +32,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_CoolingSkill",
       "GUID": "{3C38AA42-611E-4F23-A974-AF2C8B034671}",
       "DurationType": "OneShot",
-      "DurationMin": "1.0250833",
-      "DurationMax": "1.0250833",
+      "DurationMin": "0.65778965",
+      "DurationMax": "0.65778965",
       "MediaRefs": [
        {
         "Id": "1051677939"
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{196059EC-D6F2-F6A8-8BFA-97B091CEF930}"
+  "FileHash": "{17EE84C2-E765-49EB-21F4-A8015E97F94B}"
  }
 }

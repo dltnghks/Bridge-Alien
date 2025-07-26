@@ -32,6 +32,11 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 0}
+        - Key: Title
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: dc6ecb04ef5e13946baec89eed72ed15, type: 2}
     - Key: 1
       Value:
         _serializedList:
@@ -45,6 +50,11 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 44c8736196fe52148aaa3e009ca06601, type: 2}
+        - Key: GameStart
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 10774f69cc0b08b49b14463dce56b8f2, type: 2}
     - Key: 2
       Value:
         _serializedList:
@@ -108,3 +118,18 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: f168ce274317973459a60eb1399ae96f, type: 2}
+        - Key: SpeedUpSkill
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 17d2d864c0af3684da491031d6c3bed5, type: 2}
+        - Key: LastScore
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 301115b16b0d6864bbc4451dd3720dea, type: 2}
+        - Key: DisposalUnitOpenDoor
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 2c601778e59f0214384e5b7496b0d11a, type: 2}

@@ -54,7 +54,6 @@ public class MiniGameManager : MonoBehaviour
     public void StartGame()
     {
         Logger.Log($"{_currentGame.GetType().Name} | Game Start");
-        
 
         UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
         uIGameStart.PlayGameStartEffect(_currentGame.StartGame);

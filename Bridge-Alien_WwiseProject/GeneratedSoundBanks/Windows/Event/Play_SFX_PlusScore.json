@@ -6,14 +6,14 @@
   "SoundBankVersion": "154",
   "SoundBanks": [
    {
-    "Id": "2810680534",
+    "Id": "228028252",
     "Type": "Event",
     "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
     "Language": "SFX",
-    "Hash": "{DF093A79-FCF0-0FD8-9DC9-905293079F9E}",
-    "ObjectPath": "Play_SFX_Dropall",
-    "ShortName": "Play_SFX_Dropall",
-    "Path": "Event/Play_SFX_Dropall.bnk",
+    "Hash": "{7F3CDFC8-3D89-67D4-5F35-AD72E76A2116}",
+    "ObjectPath": "Play_SFX_PlusScore",
+    "ShortName": "Play_SFX_PlusScore",
+    "Path": "Event/Play_SFX_PlusScore.bnk",
     "Media": [
      {
       "Id": "100706031",
@@ -27,9 +27,9 @@
     ],
     "Events": [
      {
-      "Id": "2810680534",
-      "Name": "Play_SFX_Dropall",
-      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_Dropall",
+      "Id": "228028252",
+      "Name": "Play_SFX_PlusScore",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_PlusScore",
       "GUID": "{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}",
       "DurationType": "OneShot",
       "DurationMin": "0.43486446",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{F86F73BB-1F32-1825-7411-15EC3F4BB59C}"
+  "FileHash": "{105282CD-BA7A-3D14-A949-5B1FD037E564}"
  }
 }

@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2095578396",
+    "Type": "Event",
+    "GUID": "{59057A92-E4DF-45FD-B39B-4C0F150D375F}",
+    "Language": "SFX",
+    "Hash": "{5A51C996-77ED-BB9F-2C69-32FFC22A7843}",
+    "ObjectPath": "Play_SFX_DisposalUnit_OpenDoor",
+    "ShortName": "Play_SFX_DisposalUnit_OpenDoor",
+    "Path": "Event/Play_SFX_DisposalUnit_OpenDoor.bnk",
+    "Media": [
+     {
+      "Id": "782255447",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "door_trash.wav",
+      "Path": "Media/782255447.wem",
+      "CachePath": "9A/{9A38E1CC-40F5-C6FD-FE3A-49B910466FAA}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2095578396",
+      "Name": "Play_SFX_DisposalUnit_OpenDoor",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_DisposalUnit_OpenDoor",
+      "GUID": "{59057A92-E4DF-45FD-B39B-4C0F150D375F}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.5197335",
+      "DurationMax": "1.5197335",
+      "MediaRefs": [
+       {
+        "Id": "782255447"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{345F6696-E2CB-52EA-C43E-224838635638}"
+ }
+}
