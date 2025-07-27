@@ -58,10 +58,8 @@ public class UIGameStartPopup : UIPopup
         // 4. 애니메이션 종료 후 이미지 비활성화
         sequence.OnComplete(() => 
         {
-            Debug.Log("Sequence Before");
             gameStartAction?.Invoke();
             ClosePopupUI();
-            Debug.Log("Sequence Ended");
         });
         
         Debug.Log("StartPopup - All - Pass");

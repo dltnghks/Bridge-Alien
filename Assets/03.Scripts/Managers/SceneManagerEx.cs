@@ -89,7 +89,7 @@ public class SceneManagerEx : MonoBehaviour
                 Managers.Fade.FadeIn();
                 Managers.Pool.Clear();
                 Managers.Sound.StopBGM();
-                Managers.Camera.Init(CameraManager.CameraType.ThirdPerson, CameraSettings.Default);
+                // Managers.Camera.Init(CameraManager.CameraType.ThirdPerson, CameraSettings.Default);
             });
         });
     }

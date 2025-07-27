@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (rb == null){ rb = gameObject.AddComponent<Rigidbody>(); }
 
-        rb.useGravity = true;
+        // rb.useGravity = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
@@ -56,8 +56,8 @@ public class Player : MonoBehaviour
         // 스프라이트 오브젝트 설정
         spriteRenderer = GetComponent<SpriteRenderer>();
         
-        // 카메라 설정 (03.Scripts/Camera/CameraManager 싱글톤 인스턴스 사용)
-        Managers.Camera.Initialize(transform);
+        // // 카메라 설정 (03.Scripts/Camera/CameraManager 싱글톤 인스턴스 사용)
+        // Managers.Camera.Initialize(transform);
 
         // 캐릭터 애니메이터 설정
         characterAnimator = GetComponent<CharacterAnimator>();
@@ -156,6 +156,8 @@ public class Player : MonoBehaviour
         // 캐릭터 애니메이터 업데이트
         characterAnimator.UpdateMovement(movement.magnitude * moveSpeed);
     }
+    
+    public float GetMoveSpeed => moveSpeed;
 
     public void PlayWinPose()
     {

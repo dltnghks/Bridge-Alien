@@ -22,7 +22,6 @@ public class MiniGameDeliveryPathProgress
             EndAction = endAction;
 
             UIPathProgressBar.Init();
-            // UIPathProgressBar.SetProgressBar(endTime);
             
             IsActive = true;
         }

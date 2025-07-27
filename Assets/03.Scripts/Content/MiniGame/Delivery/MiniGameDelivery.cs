@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
@@ -39,6 +40,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     private UIGameDeliveryScene _uiGameDeliveryScene;
     private MiniGameDeliveryPathProgress _pathProgressBar;
     private DeliveryMap _deliveryMap;
+
+    private UnityEvent<bool> _onChangeActive; 
     
     private void Update()
     {
@@ -52,10 +55,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     
     public void StartGame()
     {
-        // ProgressBar 값 초기화
         // MiniGameDeliveryPathProgress : 실질적인 Progress의 상태를 관리하고 있음
         _pathProgressBar = new MiniGameDeliveryPathProgress();
-        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
         
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
@@ -70,25 +71,29 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             Debug.Log("플레이어 컨트롤러가 존재하지 않아요.");
             return;
         }
-
+        
         _deliveryMap = Utils.FindChild<DeliveryMap>(gameObject, "Map", true);
         if (_deliveryMap == null)
         {
-            Debug.Log("DeliveryMap가 존재하지 않습니다.");
+            Debug.Log("D.M이 존재하지 않습니다.");
             return;
         }
-
-        _deliveryMap.Initialize(new MapPacket()
-        {
-            maxDist = maxDistance,
-            onUpdateDistance = UpdateDistanceFromMap
-        });
         
-        IsActive = true;
+        // Event Chain
+        _onChangeActive = new UnityEvent<bool>();
+        _onChangeActive?.AddListener(_deliveryMap.UpdateIsActive);
         
-        Debug.Log("Delivery All Pass");
+        // Initialize
+        _deliveryMap.Initialize();
+        // 다운 캐스팅..... 인터페이스 구조 변경 안하면서 최선이었다.
+        (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
+        
+        ChangeActive(true);
+        
+        //_pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
     }
     
+    // 호출되는 곳 없음.
     private void SetGameInfo()
     {
         // 카메라 세팅 값을 가져와서 게임 세팅하는 듯.
@@ -135,6 +140,12 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _uiGameDeliveryScene = Managers.UI.ShowSceneUI<UIGameDeliveryScene>();
         GameUI = _uiGameDeliveryScene;
         GameUI.Init();
+    }
+
+    public void ChangeActive(bool flag)
+    {
+        IsActive = flag;
+        _onChangeActive?.Invoke(IsActive);
     }
 
     public void UpdateTotalDistance(float distance)
