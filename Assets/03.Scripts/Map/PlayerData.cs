@@ -34,8 +34,7 @@ public class PlayerData
         // 하차 게임 스킬 데이터 초기화
         foreach (Define.MiniGameSkillType skillType in Enum.GetValues(typeof(Define.MiniGameSkillType)))
         {
-            // TODO. 스킬 데이터 0으로 초기화 해야 됨.
-            MiniGameUnloadSkillLevel[skillType] = 5;
+            MiniGameUnloadSkillLevel[skillType] = 0;
         }
     }
     

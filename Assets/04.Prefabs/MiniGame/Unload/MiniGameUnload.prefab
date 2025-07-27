@@ -3625,6 +3625,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4734534420284345721, guid: 21f21dedadc4aac43b5cb2b7d05a19ab, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734534420284345721, guid: 21f21dedadc4aac43b5cb2b7d05a19ab, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4736
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734534420284345721, guid: 21f21dedadc4aac43b5cb2b7d05a19ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734534420284345721, guid: 21f21dedadc4aac43b5cb2b7d05a19ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734534420284345721, guid: 21f21dedadc4aac43b5cb2b7d05a19ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.97
+      objectReference: {fileID: 0}
     - target: {fileID: 8762694894578319268, guid: 21f21dedadc4aac43b5cb2b7d05a19ab, type: 3}
       propertyPath: m_Name
       value: DisposalUnit

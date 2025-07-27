@@ -31,8 +31,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     public void Start()
     {
-        // TODO. 상자 타입 Define.BoxType.Disposal만 설정해야 됨.
-        AllowedTypes = new Define.BoxType[] { Define.BoxType.Disposal, Define.BoxType.Normal, Define.BoxType.Cold };
+        AllowedTypes = new Define.BoxType[] { Define.BoxType.Disposal };
         _boxList.SetBoxList(_maxIndex);
 
         // 드롭 위치 설정
