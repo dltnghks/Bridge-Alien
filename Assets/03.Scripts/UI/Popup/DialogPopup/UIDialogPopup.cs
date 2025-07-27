@@ -46,7 +46,8 @@ public class UIDialogPopup : UIPopup
     [Header("Dialog Background")]
     [SerializeField] private SerializedDictionary<Define.DialogSceneType, Sprite> _backgroundImage = new SerializedDictionary<Define.DialogSceneType, Sprite>();
 
-    private List<Image> _speakerCharacterImages = new List<Image>();
+    [Header("Speaker Character Images")]
+    [SerializeField] private SerializedDictionary<Define.DialogSpeakerType, Sprite> _speakerCharacterImages = new SerializedDictionary<Define.DialogSpeakerType, Sprite>();
     private TextMeshProUGUI _dialogText;  
     private Button _nextButton;
     private VerticalLayoutGroup _choiceGroup;
@@ -74,9 +75,6 @@ public class UIDialogPopup : UIPopup
 
         _dialogText = GetText((int)Texts.DialogText);
         
-        _speakerCharacterImages.Add(GetImage((int)Images.LeftCharacterImage));
-        _speakerCharacterImages.Add(GetImage((int)Images.RightCharacterImage));
-        
         GetButton((int)Buttons.SkipButton).gameObject.BindEvent(OnClickScreenButton);
         GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
         
@@ -85,7 +83,11 @@ public class UIDialogPopup : UIPopup
 
         _choiceGroup = GetObject((int)Objects.UIChoiceGroup).GetOrAddComponent<VerticalLayoutGroup>();
         _choiceButtons = _choiceGroup.GetComponentsInChildren<UIChoiceButton>().ToList();
-        
+
+        // 이미지 비활성화
+        GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
+        GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
+
         foreach (var choiceButton in _choiceButtons)
         {
             choiceButton.gameObject.SetActive(false);
@@ -149,6 +151,10 @@ public class UIDialogPopup : UIPopup
         // 배경 이미지 설정
         SetBackground(sceneType);
 
+        // 캐릭터 이미지 초기화
+        GetImage((int)Images.LeftCharacterImage).sprite = _speakerCharacterImages[Define.DialogSpeakerType.UNKNOWN];
+        GetImage((int)Images.RightCharacterImage).sprite = _speakerCharacterImages[Define.DialogSpeakerType.UNKNOWN];
+
         UpdateDialog();
     }
 
@@ -208,19 +214,22 @@ public class UIDialogPopup : UIPopup
             return;
         }
 
+        
+        string characterName = _currentDialog.CharacterName;
+        string dialogText = _currentDialog.Script;
         switch (_currentDialog.Type)
         {
             case Define.DialogType.Dialog:
-                string characterName = _currentDialog.CharacterName;
-                string dialogText = _currentDialog.Script;
-
+                // 이미지 설정
+                SetSpeakerImage(_currentDialog.SpeakerType, _currentDialog.SpeakerPosType);
                 // 이름 변경
                 SetNameText(characterName);
                 // 대화 변경
                 StartTyping(dialogText);
                 break;
             case Define.DialogType.Monolog:
-                dialogText = _currentDialog.Script;
+                // 이름 변경
+                SetNameText(characterName);
                 // 대화 변경
                 StartTyping(dialogText);
                 break;
@@ -233,15 +242,10 @@ public class UIDialogPopup : UIPopup
         }
     }
     
-    private void UpdateDialog(string dialogID)
-    {
-        
-    }
-    
     private void ShowChoices()
     {
         _nextButton.gameObject.SetActive(false);    // 화살표 끄기
-        
+
         if (_currentChoices.Count == 0)
         {
             Logger.LogError("No choices found");
@@ -256,8 +260,8 @@ public class UIDialogPopup : UIPopup
                 var newChoiceButton = Managers.Resource.Instantiate(_choiceButtons[0].gameObject, _choiceGroup.transform);
                 _choiceButtons.Add(newChoiceButton.GetOrAddComponent<UIChoiceButton>());
             }
-            
-            
+
+
             var choiceButton = _choiceButtons[index];
             choiceButton.gameObject.SetActive(true);
             choiceButton.SetChoiceButton(choiceData, OnClickChoiceButton, index);
@@ -272,7 +276,33 @@ public class UIDialogPopup : UIPopup
             choiceButton.gameObject.SetActive(false);
         }
     }
-    
+
+    private void SetSpeakerImage(Define.DialogSpeakerType speakerType, Define.DialogSpeakerPosType speakerPosType)
+    {
+        Image speakerImage = null;
+        if (speakerPosType == Define.DialogSpeakerPosType.Left)
+        {
+            speakerImage = GetImage((int)Images.LeftCharacterImage);
+            GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0.5f);
+        }
+        else if (speakerPosType == Define.DialogSpeakerPosType.Right)
+        {
+            speakerImage = GetImage((int)Images.RightCharacterImage);
+            GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0.5f);
+        }
+        else
+        {
+            GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
+            GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
+        }
+
+        if (speakerImage is not null)
+        {
+            speakerImage.color = new Color(1, 1, 1, 1); // 이미지 보이게 설정
+            speakerImage.sprite = _speakerCharacterImages[speakerType];
+        }
+    }
+
     private void SetNameText(string characterName)
     {
         GetText((int)Texts.NameText).SetText(characterName);

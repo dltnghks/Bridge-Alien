@@ -1388,6 +1388,30 @@ MonoBehaviour:
       Value: {fileID: 21300000, guid: 098a4f7d6665b9448bf08cce73f1ddbc, type: 3}
     - Key: 5
       Value: {fileID: 21300000, guid: 405a020e5db41104e9ff50fa004407b4, type: 3}
+  _speakerCharacterImages:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 21300000, guid: fa820c6a1df6ffd4da5130e9fda5ca42, type: 3}
+    - Key: 1
+      Value: {fileID: 21300000, guid: cf0bdf51151fd9d439ddb819bde002ba, type: 3}
+    - Key: 2
+      Value: {fileID: 21300000, guid: 88c4c42a98d767e478f44e333696aaf4, type: 3}
+    - Key: 3
+      Value: {fileID: 21300000, guid: b5573197b58252b4a923a06287b251ec, type: 3}
+    - Key: 4
+      Value: {fileID: 21300000, guid: c57abe78c146c184b9ca76cfe5ee38b5, type: 3}
+    - Key: 5
+      Value: {fileID: 21300000, guid: ee567755f793b0642bf63d1492fa25e3, type: 3}
+    - Key: 6
+      Value: {fileID: 21300000, guid: ddf1d5c73d550ca48890c5d9f9373a35, type: 3}
+    - Key: 7
+      Value: {fileID: 21300000, guid: b30c126701718a74184d2c07843f6c31, type: 3}
+    - Key: 8
+      Value: {fileID: 21300000, guid: 2466521f3c0f0b541b83179d84ac7955, type: 3}
+    - Key: 9
+      Value: {fileID: 21300000, guid: c3daa5b6e4ffd894fb2d2e103be8b975, type: 3}
+    - Key: 10
+      Value: {fileID: 21300000, guid: f64b91f56507a1a4fbe40ebc8abc2cf5, type: 3}
 --- !u!223 &4993533865859865713
 Canvas:
   m_ObjectHideFlags: 0
