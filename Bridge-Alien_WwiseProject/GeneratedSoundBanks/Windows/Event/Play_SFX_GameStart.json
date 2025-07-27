@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{3EB0C4C4-D32C-4BDC-8A9F-D3E51D34837E}",
     "Language": "SFX",
-    "Hash": "{6D12739F-1CA7-9B07-A892-7E4A5E7B7996}",
+    "Hash": "{361DAFE1-0D52-65C8-FFC9-7F9105A44336}",
     "ObjectPath": "Play_SFX_GameStart",
     "ShortName": "Play_SFX_GameStart",
     "Path": "Event/Play_SFX_GameStart.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "game_start.wav",
       "Path": "Media/298873101.wem",
-      "CachePath": "82/{8224D5D5-CA98-6548-8034-6D7B37E55689}.wem"
+      "CachePath": "E2/{E2DF5297-B329-DA67-1FE6-8A61761F17DB}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{AC86F31A-6E16-F114-1258-A8E9EA735D96}"
+  "FileHash": "{A6AFFA7B-344E-BE99-4AB8-0EBABEF8A96D}"
  }
 }

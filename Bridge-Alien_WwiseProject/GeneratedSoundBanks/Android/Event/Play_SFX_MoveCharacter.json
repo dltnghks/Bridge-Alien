@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{0CD9DACC-EA35-4CAB-ACCC-3D875BF6BD52}",
     "Language": "SFX",
-    "Hash": "{3B8D831E-D89F-8B25-BE9F-9E91917DC417}",
+    "Hash": "{432B697B-9C3E-298B-4D1F-A8611F27C897}",
     "ObjectPath": "Play_SFX_MoveCharacter",
     "ShortName": "Play_SFX_MoveCharacter",
     "Path": "Event/Play_SFX_MoveCharacter.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_MoveCharacter.wav",
       "Path": "Media/456878743.wem",
-      "CachePath": "0C/{0CC84F49-3DFE-6FF4-4299-9634ACA627E3}.wem"
+      "CachePath": "8F/{8FCBE0FB-1BB5-5BB4-D066-5EE0F11A6F3A}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{5AFE8237-9667-71E9-9D7C-A51139A5E27B}"
+  "FileHash": "{5D01A636-FE33-FE26-6CCD-247A279D3C84}"
  }
 }

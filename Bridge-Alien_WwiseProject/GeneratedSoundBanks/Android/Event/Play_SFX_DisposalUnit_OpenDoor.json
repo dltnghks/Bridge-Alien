@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{59057A92-E4DF-45FD-B39B-4C0F150D375F}",
     "Language": "SFX",
-    "Hash": "{5A51C996-77ED-BB9F-2C69-32FFC22A7843}",
+    "Hash": "{CBF269E6-F85F-5DDB-2EAD-64C7314BFD3A}",
     "ObjectPath": "Play_SFX_DisposalUnit_OpenDoor",
     "ShortName": "Play_SFX_DisposalUnit_OpenDoor",
     "Path": "Event/Play_SFX_DisposalUnit_OpenDoor.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "door_trash.wav",
       "Path": "Media/782255447.wem",
-      "CachePath": "9A/{9A38E1CC-40F5-C6FD-FE3A-49B910466FAA}.wem"
+      "CachePath": "72/{72A79C4B-78BB-D1E4-5750-CC4D73E844CA}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{9A5C3E20-C0DD-8ED3-715E-347FFE0344EC}"
+  "FileHash": "{4E893349-3334-A8DE-EC7F-029F505839B8}"
  }
 }

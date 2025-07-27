@@ -45,7 +45,8 @@ public enum MiniGameUnloadSoundSFX{
     Discard,
     LastScore,
     DisposalUnitOpenDoor,
-    
+    Siren,
+
     // Ambient
     Conveyor,
     Truck,

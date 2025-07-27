@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{C7B99248-8B64-4E16-9122-F0065BF6F468}",
     "Language": "SFX",
-    "Hash": "{20016F77-AE84-ECB3-00E3-01B487212EC8}",
+    "Hash": "{D0CC4243-A01F-6981-FEFF-C362E9952807}",
     "ObjectPath": "Play_SFX_FootStep_PlayerCharacter",
     "ShortName": "Play_SFX_FootStep_PlayerCharacter",
     "Path": "Event/Play_SFX_FootStep_PlayerCharacter.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_FootStep_PlayerCharacter.wav",
       "Path": "Media/815274733.wem",
-      "CachePath": "91/{91AC4DF6-A6AB-15E0-374A-DB30DB1E852D}.wem"
+      "CachePath": "1C/{1CCE2D85-8348-B61E-C6D6-A4E5AB55D0EF}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{BD634EDD-6192-E3A3-2122-64A0555BD67C}"
+  "FileHash": "{47CE8769-CBA5-672C-492B-144F5EB24652}"
  }
 }

@@ -488,6 +488,100 @@
 						<ActiveSource Name="skill_Fast" ID="{2E96BFBD-5322-4877-96A8-D81529C5192C}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="SFX_SIREN1" ID="{F2601323-24A3-4BCE-BD88-DE985DF0F109}" ShortID="181725614">
+					<PropertyList>
+						<Property Name="MidiVelocityOffset" Type="int32" Value="-44"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="trash_siren1" ID="{B1E61DFE-59F2-4145-921B-B45ECEFD9D3E}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.57697209186263"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>trash_siren1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="262316033"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="trash_siren1" ID="{B1E61DFE-59F2-4145-921B-B45ECEFD9D3E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_SIREN2" ID="{E83AABD6-488D-4E61-BFE3-078B02212B3B}" ShortID="623108177">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="trash_siren2" ID="{6E9DB5CF-43CC-472C-A708-48A989962B6E}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.53944968460291"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>trash_siren2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="569364024"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="trash_siren2" ID="{6E9DB5CF-43CC-472C-A708-48A989962B6E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_SIREN3" ID="{F7E5F49C-4BF9-4222-8008-1BA2E422939F}" ShortID="786865278">
+					<PropertyList>
+						<Property Name="InitialDelay" Type="Real64">
+							<ValueList>
+								<Value>1.5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SFX_SIREN3" ID="{AFF68A93-3476-4349-B8EF-EF9E8E790950}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.563551415906889"/>
+								<Property Name="TrimEnd" Type="Real64" Value="3.79675770476165"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>SFX_SIREN3.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="323114216"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SFX_SIREN3" ID="{AFF68A93-3476-4349-B8EF-EF9E8E790950}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

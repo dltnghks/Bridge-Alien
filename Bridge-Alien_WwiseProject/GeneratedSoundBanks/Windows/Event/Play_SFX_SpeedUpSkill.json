@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{899265C0-764E-4E60-91A6-C88D14F669D1}",
     "Language": "SFX",
-    "Hash": "{8E914F0A-6256-C195-7D23-F9C53E53BB4F}",
+    "Hash": "{DAC84922-757B-7A41-8873-8FF3174EB356}",
     "ObjectPath": "Play_SFX_SpeedUpSkill",
     "ShortName": "Play_SFX_SpeedUpSkill",
     "Path": "Event/Play_SFX_SpeedUpSkill.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "skill_Fast.wav",
       "Path": "Media/955180851.wem",
-      "CachePath": "33/{339EF6FB-F3CF-F7F2-EEB1-5E767AF87184}.wem"
+      "CachePath": "67/{67D575F2-CE15-32A3-F1E5-3D8F0EA711A6}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{601357E6-C804-2CD0-1BAB-731200D4D1B3}"
+  "FileHash": "{4EBD00B3-F698-CBAF-B1B3-466B834F9726}"
  }
 }

@@ -179,6 +179,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SFX_SIREN3" ID="{6F3CFD09-7269-44CD-8CA7-383B9955B057}">
+					<ChildrenList>
+						<Action Name="" ID="{09D2A176-5AFC-49C4-A932-D4FD90A230BD}" ShortID="766045717">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_SIREN3" ID="{F7E5F49C-4BF9-4222-8008-1BA2E422939F}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

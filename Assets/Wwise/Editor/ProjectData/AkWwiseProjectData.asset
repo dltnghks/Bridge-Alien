@@ -257,7 +257,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\Common
     guid: 407965b083924744a196c0a1d52f073d
     GuidInternal: 
-    m_lastTime: -8584480769184604142
+    m_lastTime: -8584480136457815589
     List:
     - name: Play_SFX_CommonButtonClick
       guid: de4caac45e99c8489d909e9bf5c3914e
@@ -330,7 +330,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584480769184494490
+    m_lastTime: -8584480093978811044
     List: []
   - PhysicalPath: Events\GameMap.wwu
     PathAndIcons:
@@ -538,7 +538,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\MiniGameUnload
     guid: 0173d73202b00a4091b7dd334cf670bc
     GuidInternal: 
-    m_lastTime: -8584480769184703809
+    m_lastTime: -8584480093978731311
     List:
     - name: Play_AMB_Conveyor
       guid: a692660cb8d42e44a78a04c86ec7ff24
@@ -800,6 +800,26 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.43486446
       minDuration: 0.43486446
+    - name: Play_SFX_SIREN3
+      guid: 09fd3c6f6972cd448ca7383b9955b057
+      id: 950967108
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: MiniGameUnload
+        ObjectType: 12
+        guid: 0173d73202b00a4091b7dd334cf670bc
+      - ElementName: Play_SFX_SIREN3
+        ObjectType: 3
+        guid: 09fd3c6f6972cd448ca7383b9955b057
+      Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_SIREN3
+      maxAttenuation: 0
+      maxDuration: 4.533206
+      minDuration: 4.533206
     - name: Play_SFX_SpeedUpSkill
       guid: c06592894e76604e91a6c88d14f669d1
       id: 3323914767
@@ -958,7 +978,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8584531703521922472
     List: []
-  ExpandedFileSystemItemIds: 010000000200000003000000040000000b0000000e000000150000002b0000002c0000003300000034000000
+  ExpandedFileSystemItemIds: 010000000200000003000000040000000b0000000e00000015000000160000002b0000002c0000003300000034000000
   ExpandedWaapiItemIds: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e000000110000001500000018000000190000001a0000001b0000001d00000024000000250000003b0000003e000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1

@@ -111,6 +111,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         // DisposalBody 에 있는 사이렌 점등 -> DisposalArea 바닥이 열리는 애니메이션
         _lampParticle.Play();
         Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.DisposalUnitOpenDoor.ToString(), gameObject);
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Siren.ToString(), gameObject);
 
         Sequence disposeSequence = DOTween.Sequence();
 

@@ -40,6 +40,7 @@ namespace AK
         static const AkUniqueID PLAY_SFX_RUSH_2 = 1896826979U;
         static const AkUniqueID PLAY_SFX_RUSH_PRE = 2883951734U;
         static const AkUniqueID PLAY_SFX_RUSH_PRE_2 = 2242457109U;
+        static const AkUniqueID PLAY_SFX_SIREN3 = 950967108U;
         static const AkUniqueID PLAY_SFX_SPEEDUPSKILL = 3323914767U;
         static const AkUniqueID PLAY_SFX_STANDARDBOXHOLD = 3045790947U;
         static const AkUniqueID PLAY_SFX_STANDARDBOXPUT = 1744893023U;

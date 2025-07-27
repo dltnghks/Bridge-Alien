@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{C1F3063C-F913-45FB-90D7-A1452E05B48B}",
     "Language": "SFX",
-    "Hash": "{8E8A35BB-FB65-17AB-9237-8A04C7F74E67}",
+    "Hash": "{43ECBA12-E004-AAF3-F04A-21A46F549DD9}",
     "ObjectPath": "Play_SFX_LastScore",
     "ShortName": "Play_SFX_LastScore",
     "Path": "Event/Play_SFX_LastScore.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "coin_End.wav",
       "Path": "Media/48509398.wem",
-      "CachePath": "35/{35F86CD6-FA6B-6A7C-EAA3-A844528660AF}.wem"
+      "CachePath": "E4/{E48054FB-F655-7070-FC71-8386FEAB6A97}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{741CC62A-9F10-8ECB-9360-290A596E7DB1}"
+  "FileHash": "{FBAFC2AA-1D4D-A624-4977-86BF1ABA5B62}"
  }
 }

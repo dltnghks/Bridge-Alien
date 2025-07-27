@@ -133,3 +133,8 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 2c601778e59f0214384e5b7496b0d11a, type: 2}
+        - Key: Siren
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: adb8dcf306fd3ad4db2e12f1f29b4a47, type: 2}
