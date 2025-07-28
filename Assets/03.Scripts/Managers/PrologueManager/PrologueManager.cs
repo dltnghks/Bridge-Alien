@@ -46,4 +46,14 @@ public class PrologueManager : MonoBehaviour
             director.Play();
         }
     }
+
+    public void EndTimeline()
+    {
+        if (director != null)
+        {
+            director.Pause();
+        }
+
+        Managers.Scene.ChangeScene(Define.Scene.House);
+    }
 }
