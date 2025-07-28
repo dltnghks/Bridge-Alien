@@ -21,24 +21,16 @@ public abstract class HurdleBuilder : ScriptableObject
         this.objParent = objParent;
     }
 
-    public void Build(params float[] origins)
+    public IEnumerator BuildRoutine(float[] origins)
     {
         CreateEntry(origins[0]);
 
-        if (objParent.TryGetComponent<MonoBehaviour>(out var runner))
-        {
-            runner.StartCoroutine(SpawnRoutine(origins));
-        }
-
-        CreateEnd(origins[0]);
-    }
-
-    private IEnumerator SpawnRoutine(float[] origins)
-    {
         foreach (var origin in origins)
         {
             CreateMain(origin);
             yield return new WaitForSeconds(spawnDelay);
         }
+
+        CreateEnd(origins[0]);
     }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee95020825765647870eab63bf3e710, type: 3}
   m_Name: CarCrush
   m_EditorClassIdentifier: 
+  spawnDelay: 5
   entryPrefab: {fileID: 0}
   mainPrefab: {fileID: 2014351605165461506, guid: d2c85f750f0e2a74bb265cc20f20692a, type: 3}
   endPrefab: {fileID: 0}

@@ -2656,7 +2656,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builders:
-    _serializedList: []
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 11400000, guid: 6b9c6e7b467171e49b078d2bf1f13a20, type: 2}
+    - Key: 1
+      Value: {fileID: 11400000, guid: ac39efd72f829144b9c5e7b43eab8a8b, type: 2}
+    - Key: 2
+      Value: {fileID: 11400000, guid: 0e09fc21aa21cd445812c3a3c3fb8f91, type: 2}
   textObj: {fileID: 1565489569}
   hurdleObjectManager: {fileID: 435789770}
   spawnInterval: 15

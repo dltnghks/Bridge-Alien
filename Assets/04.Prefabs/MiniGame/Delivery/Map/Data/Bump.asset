@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c914f13ddc3bbc341b5fb036fa7a1718, type: 3}
   m_Name: Bump
   m_EditorClassIdentifier: 
-  spawnDelay: 2
+  spawnDelay: 5
   entryPrefab: {fileID: 0}
   mainPrefab: {fileID: 6008523854110365000, guid: 393e6e345d23a6342a301aaa18bf6dde, type: 3}

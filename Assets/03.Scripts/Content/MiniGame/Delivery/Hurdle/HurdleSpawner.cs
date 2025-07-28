@@ -45,40 +45,37 @@ public class HurdleSpawner : MonoBehaviour
         foreach (var build in builders.Values)
             build.Initialize(_uiParent, _objParent);
 
-        // 임시 매직 넘버
         hurdleObjectManager.Initialize(groundSpeed);
+        
         _isRunning = true;
+        
+        StartCoroutine(HurdleSpawnLoop());
     }
 
     public void ChangeGroundSpeed(float speed)
     {
         hurdleObjectManager.ChangeSpeed(speed);
     }
-
-    private void Update()
+    
+    private IEnumerator HurdleSpawnLoop()
     {
-        if (_isRunning == false) return;
-
-        _timer += Time.deltaTime;
-        if (_timer >= spawnInterval)
+        while (_isRunning)
         {
-            _timer = 0f;
             var type = GetHurdleType();
-            SpawnHurdle(type, GetOrigins(type));
+            var origins = GetOrigins(type);
+
+            if (builders.TryGetValue(type, out var builder))
+            {
+                yield return StartCoroutine(builder.BuildRoutine(origins));
+            }
+
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 
     public HurdleType GetHurdleType()
     {
         return (HurdleType)Random.Range(0, 3);
-    }
-
-    private void SpawnHurdle(HurdleType type, params float[] origins)
-    {
-        if (builders.TryGetValue(type, out var builder))
-        {
-            builder.Build(origins);
-        }
     }
 
     private float[] GetOrigins(HurdleType type)
