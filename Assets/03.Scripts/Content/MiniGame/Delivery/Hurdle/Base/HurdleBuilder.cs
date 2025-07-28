@@ -9,26 +9,36 @@ public abstract class HurdleBuilder : ScriptableObject
     protected Transform uiParent;
     protected Transform objParent;
 
-    public abstract GameObject CreateEntry(Transform position);
-    public abstract GameObject CreateMain(Transform position); 
-    public abstract GameObject CreateEnd(Transform position);
+    [SerializeField] protected float spawnDelay = 2f;
 
-   public void Initialize(Transform uiParent, Transform objParent)
-   {
-       this.uiParent = uiParent;
-       this.objParent = objParent;
-   }
+    public abstract GameObject CreateEntry(float yPos);
+    public abstract GameObject CreateMain(float yPos);
+    public abstract GameObject CreateEnd(float yPos);
 
-    public void Build(params Transform[] origins)
+    public void Initialize(Transform uiParent, Transform objParent)
+    {
+        this.uiParent = uiParent;
+        this.objParent = objParent;
+    }
+
+    public void Build(params float[] origins)
     {
         CreateEntry(origins[0]);
 
-        foreach (var origin in origins)
+        if (objParent.TryGetComponent<MonoBehaviour>(out var runner))
         {
-            if (origin == null) break;
-            CreateMain(origin);
+            runner.StartCoroutine(SpawnRoutine(origins));
         }
 
         CreateEnd(origins[0]);
+    }
+
+    private IEnumerator SpawnRoutine(float[] origins)
+    {
+        foreach (var origin in origins)
+        {
+            CreateMain(origin);
+            yield return new WaitForSeconds(spawnDelay);
+        }
     }
 }

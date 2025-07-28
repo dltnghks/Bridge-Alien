@@ -33,6 +33,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController
         Vector3 targetPos = Player.transform.position + delta;
 
         Vector2 center = _groundRect.center;
+        // 80% 제한, Magic Number.
         Vector2 size = _groundRect.size * 0.8f;
 
         float minX = center.x - size.x / 2f;

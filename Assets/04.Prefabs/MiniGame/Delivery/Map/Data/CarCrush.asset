@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee95020825765647870eab63bf3e710, type: 3}
+  m_Name: CarCrush
+  m_EditorClassIdentifier: 
+  entryPrefab: {fileID: 0}
+  mainPrefab: {fileID: 2014351605165461506, guid: d2c85f750f0e2a74bb265cc20f20692a, type: 3}
+  endPrefab: {fileID: 0}

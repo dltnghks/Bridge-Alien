@@ -1,31 +1,31 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-//
-// public class CarCrushBuilder : HurdleBuilder
-// {
-//     public GameObject entryPrefab;
-//     public GameObject mainPrefab;
-//     public GameObject endPrefab;
-//
-//     public override GameObject CreateEntry(Vector3 pos)
-//     {
-//         if (entryPrefab == null) return null;
-//         
-//         return Instantiate(entryPrefab, pos, Quaternion.identity);
-//     }
-//
-//     public override GameObject CreateMain(Vector3 pos)
-//     {
-//         if(mainPrefab == null) return null;
-//         
-//         return Instantiate(mainPrefab, pos, Quaternion.identity);
-//     }
-//
-//     public override GameObject CreateEnd(Vector3 pos)
-//     {
-//         if(endPrefab == null) return null;
-//         
-//         return Instantiate(endPrefab, pos, Quaternion.identity);
-//     }
-// }
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "CarCrush", menuName = "Hurdle/CarCrush")]
+public class CarCrushBuilder : HurdleBuilder
+{
+    [SerializeField] private GameObject entryPrefab;
+    [SerializeField] private GameObject mainPrefab;
+    [SerializeField] private GameObject endPrefab;
+
+    public override GameObject CreateEntry(float yPos)
+    {
+        return null;
+        // return Instantiate(entryPrefab, Vector3.zero, Quaternion.identity, uiParent);
+    }
+    
+    public override GameObject CreateMain(float yPos)
+    {
+        var resultPosition = mainPrefab.transform.position;
+        resultPosition.y = yPos;
+        resultPosition.z = -2f;
+        
+        return Instantiate(mainPrefab, resultPosition, Quaternion.identity, objParent);
+    }
+    
+    public override GameObject CreateEnd(float yPos)
+    {
+        return null;
+    }
+}

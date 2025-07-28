@@ -1,19 +1,31 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-//
-// public class WorkBuilder : HurdleBuilder
-// {
-//     public GameObject entryPrefab;
-//     public GameObject mainPrefab;
-//     public GameObject endPrefab;
-//     
-//     public override GameObject CreateEntry(Vector3 pos)
-//         => GameObject.Instantiate(entryPrefab, pos, Quaternion.identity);
-//
-//     public override GameObject CreateMain(Vector3 pos)
-//         => GameObject.Instantiate(mainPrefab, pos, Quaternion.identity);
-//
-//     public override GameObject CreateEnd(Vector3 pos)
-//         => GameObject.Instantiate(endPrefab, pos, Quaternion.identity);
-// }
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "Work", menuName = "Hurdle/Work")]
+public class WorkBuilder : HurdleBuilder
+{
+    [SerializeField] private GameObject entryPrefab;
+    [SerializeField] private GameObject mainPrefab;
+    [SerializeField] private GameObject endPrefab;
+
+    public override GameObject CreateEntry(float yPos)
+    {
+        return null;
+        // return Instantiate(entryPrefab, Vector3.zero, Quaternion.identity, uiParent);
+    }
+    
+    public override GameObject CreateMain(float yPos)
+    {
+        var resultPosition = mainPrefab.transform.position;
+        resultPosition.y = yPos;
+        resultPosition.z = -2f;
+
+        return Instantiate(mainPrefab, resultPosition, Quaternion.identity, objParent);
+    }
+    
+    public override GameObject CreateEnd(float yPos)
+    {
+        return null;
+    }
+}
