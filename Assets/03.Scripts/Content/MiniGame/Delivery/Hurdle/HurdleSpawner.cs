@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using AYellowpaper.SerializedCollections;
 
 public enum HurdleType
 {
@@ -13,17 +14,15 @@ public enum HurdleType
 
 public class HurdleSpawner : MonoBehaviour
 {
-    private Dictionary<HurdleType, HurdleBuilder> _builders;
+    [SerializeField] private SerializedDictionary<HurdleType, HurdleBuilder> builders;
 
-    [Header("장애물 생성 필요 값")]
+    [Header("장애물 생성 부모")]
     [SerializeField] private TMP_Text textObj;
     [SerializeField] private HurdleObjectManager hurdleObjectManager;
 
-    [Header("장애물 생성 관련 수치")]
+    [Header("장애물 생성 수치")]
     [SerializeField] private float spawnInterval;
 
-    private Transform _objParent;
-    private Transform _uiParent;
 
     [Header("장애물 S.O 데이터")]
     [SerializeField] private BumpBuilder bumpObject;
@@ -33,45 +32,40 @@ public class HurdleSpawner : MonoBehaviour
     private float _timer = 0f;
     private bool _isRunning = false;
     
-    // Debug
-    private HurdleType _spawnType = HurdleType.Bump;
-
+    private Transform _objParent;
+    private Transform _uiParent;
+    
     private readonly float[] yPositions = new float[3] { -9.5f, -4.2f, -7.7f };
 
-    public void Initialize()
+    public void Initialize(float groundSpeed)
     {
-        _builders = new Dictionary<HurdleType, HurdleBuilder>
-        {
-            { HurdleType.Bump, bumpObject },
-            { HurdleType.CarCrush, carCrushObject},
-            { HurdleType.Work, workObject }
-        };
-
         _objParent = hurdleObjectManager.transform;
         _uiParent = textObj.transform;
 
-        foreach (var build in _builders.Values)
+        foreach (var build in builders.Values)
             build.Initialize(_uiParent, _objParent);
 
-        hurdleObjectManager.Initialize(5f);
+        // 임시 매직 넘버
+        hurdleObjectManager.Initialize(groundSpeed);
         _isRunning = true;
+    }
+
+    public void ChangeGroundSpeed(float speed)
+    {
+        hurdleObjectManager.ChangeSpeed(speed);
     }
 
     private void Update()
     {
-        if (!_isRunning) return;
+        if (_isRunning == false) return;
 
         _timer += Time.deltaTime;
         if (_timer >= spawnInterval)
         {
             _timer = 0f;
-            SpawnHurdle(_spawnType); // 자동 생성
+            var type = GetHurdleType();
+            SpawnHurdle(type, GetOrigins(type));
         }
-    }
-
-    public void ChangeTime(float seconds)
-    {
-        spawnInterval = Mathf.Max(0.1f, seconds); // 최소 0.1초 이상
     }
 
     public HurdleType GetHurdleType()
@@ -79,35 +73,19 @@ public class HurdleSpawner : MonoBehaviour
         return (HurdleType)Random.Range(0, 3);
     }
 
-    public void StopSpawning()
-    {
-        _isRunning = false;
-    }
-
-    public void ResumeSpawning()
-    {
-        _isRunning = true;
-    }
-
-    public void SpawnHurdle(HurdleType type)
-    {
-        _spawnType = GetHurdleType();
-        SpawnHurdle(_spawnType, GetOrigins());
-    }
-
     private void SpawnHurdle(HurdleType type, params float[] origins)
     {
-        if (_builders.TryGetValue(type, out var builder))
+        if (builders.TryGetValue(type, out var builder))
         {
             builder.Build(origins);
         }
     }
 
-    private float[] GetOrigins()
+    private float[] GetOrigins(HurdleType type)
     {
         List<float> origins = new List<float>();
 
-        switch (_spawnType)
+        switch (type)
         {
             case HurdleType.Bump:
                 origins.Add(yPositions[2]); 
@@ -122,12 +100,8 @@ public class HurdleSpawner : MonoBehaviour
                     float y = yPositions[i % 2];
                     origins.Add(y);
                 }
-                
-                Debug.Log(origins);
-                
                 break;
         }
-
         return origins.ToArray();
     }
 }

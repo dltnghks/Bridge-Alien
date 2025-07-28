@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameDeliveryPlayerController : IPlayerController
+public class MiniGameDeliveryPlayerController : IPlayerController, ISkillController
 {
+    // IPlayerController
     public Player Player { get; set; }
     public int InteractionActionNumber { get; set; }
-
+    
+    // ISkillController
+    public SkillBase[] SkillList { get; set; }
+    
+    // ETC
     private Rect _groundRect;
-    public MiniGameDeliveryPlayerController(){}
-    public MiniGameDeliveryPlayerController(Player player){
-        Init(player);
-    }
+    
+    public MiniGameDeliveryPlayerController(Player player){ Init(player); }
 
     public void Init(Player player)
     {
@@ -25,10 +28,9 @@ public class MiniGameDeliveryPlayerController : IPlayerController
     
     public void InputJoyStick(Vector2 input)
     {
-        if (Managers.MiniGame.CurrentGame.IsPause)
-            return;
+        if (Managers.MiniGame.CurrentGame.IsPause) return;
 
-        float moveSpeed = Player.GetMoveSpeed;
+        float moveSpeed = Player.MoveSpeed;
         Vector3 delta = new Vector3(input.x, input.y, 0f) * (moveSpeed * Time.deltaTime);
         Vector3 targetPos = Player.transform.position + delta;
 
@@ -58,6 +60,15 @@ public class MiniGameDeliveryPlayerController : IPlayerController
     }
 
     public bool ChangeInteraction(int actionnNum)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void SetSkillList(SkillBase[] skillList)
+    {
+        throw new System.NotImplementedException();
+    }
+    public void OnSkill(int skillIndex)
     {
         throw new System.NotImplementedException();
     }

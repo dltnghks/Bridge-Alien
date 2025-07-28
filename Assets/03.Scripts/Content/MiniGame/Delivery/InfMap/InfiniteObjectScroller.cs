@@ -46,4 +46,9 @@ public class InfiniteObjectScroller
             }
         }
     }
+    
+    public void SetSpeed(float speed)
+    {
+        _speed = speed;
+    }
 }

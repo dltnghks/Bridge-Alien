@@ -18,4 +18,9 @@ public class GroundInfinite
         _offset.x += _scrollSpeed * Time.deltaTime * speedRatio;
         _groundMaterial.mainTextureOffset = _offset;
     }
+    
+    public void SetSpeed(float speed)
+    {
+        _scrollSpeed = speed;
+    }
 }

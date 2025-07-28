@@ -58,4 +58,12 @@ public class InfiniteMapManager : MonoBehaviour
     {
         _isActive = flag;
     }
+    
+    public void SetSpeeds(float cloudSpeed, float buildSpeed, float fenceSpeed, float groundSpeed)
+    {
+        cloud?.SetSpeed(cloudSpeed);
+        build?.SetSpeed(buildSpeed);
+        fence?.SetSpeed(fenceSpeed);
+        ground?.SetSpeed(groundSpeed);
+    }
 }

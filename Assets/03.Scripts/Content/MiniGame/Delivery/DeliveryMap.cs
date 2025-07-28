@@ -6,27 +6,22 @@ public class DeliveryMap : MonoBehaviour
 {
     private HurdleSpawner _hurdleSpawner;
     private InfiniteMapManager _infMapManager;
-    private SpriteRenderer _ground;
 
-    private Vector2 _groundSize;
-    private Rect _groundRect;
-    public Rect GroundRect { get { return _groundRect; } }
-    
-    private float _spawnTimer = .0f;
-    private HurdleType _spawnType;
+    [Header("무한 스크롤 속도")]
+    [SerializeField] private float cloudSpeed = .0f;
+    [SerializeField] private float buildSpeed = .0f;
+    [SerializeField] private float fenceSpeed = .0f;
+    [SerializeField] private float groundSpeed = .0f;
 
-    private bool isActive = false;
+    [SerializeField, Space(10)] private float speedMultiplier = 1.0f;
 
-    public void UpdateIsActive(bool flag)
-    {
-        isActive = flag;
-        
-        _infMapManager?.ChangeActive(isActive);
-    }
+    public Rect GroundRect { get; private set; }
+
+    private bool _isActive = false;
 
     public void Initialize()
     {
-        if (isActive) return;
+        if (_isActive) return;
 
         _infMapManager = Utils.FindChild<InfiniteMapManager>(gameObject, "Map", true);
         if (_infMapManager == null)
@@ -35,8 +30,8 @@ public class DeliveryMap : MonoBehaviour
             return;
         }
         
-        _ground = Utils.FindChild<SpriteRenderer>(gameObject, "GroundSprite", true);
-        if (_ground == null)
+        var ground = Utils.FindChild<SpriteRenderer>(gameObject, "GroundSprite", true);
+        if (ground == null)
         {
             Debug.Log("Ground가 없습니다.");
             return;
@@ -49,14 +44,33 @@ public class DeliveryMap : MonoBehaviour
             return;
         }
         
-        _groundSize = _ground.bounds.size;
-        _groundRect = new Rect(_ground.bounds.min, _groundSize);
+        var groundSize = ground.bounds.size;
+        GroundRect = new Rect(ground.bounds.min, groundSize);
         
         _infMapManager.Initialize();
-        _hurdleSpawner.Initialize();
+        UpdateSpeedMultiplier();
+        
+        // 허들도 동일한 수치를 위해서 속도 전달
+        _hurdleSpawner.Initialize(groundSpeed);
     }
     
-    private void Update()
+    public void UpdateIsActive(bool flag)
     {
+        _isActive = flag;
+        
+        _infMapManager?.ChangeActive(_isActive);
+    }
+    
+    // 가속을 위한 메서드
+    public void UpdateSpeedMultiplier(float multiplier = 1f)
+    {
+        speedMultiplier = multiplier;
+        _infMapManager.SetSpeeds(
+            cloudSpeed * speedMultiplier,
+            buildSpeed * speedMultiplier,
+            fenceSpeed * speedMultiplier,
+            groundSpeed * speedMultiplier
+        );
+        _hurdleSpawner.ChangeGroundSpeed(groundSpeed * speedMultiplier);
     }
 }

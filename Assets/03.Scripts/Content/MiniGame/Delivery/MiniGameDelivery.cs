@@ -5,16 +5,12 @@ using UnityEngine.Events;
 
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
-	// 데이터 매니저에서 가져올 게임 데이터
 	[Header("Game Setting")]
     [SerializeField] private MiniGameDeliverySetting _gameSetting;
+    [SerializeField] private SkillBase[] _skillList;
     
     [Header("게임 종료 시간")]
     [SerializeField] private float gameTime = 1500f;
-
-    [Header("카메라 값 세팅")]
-    [SerializeField] private CameraManager.CameraType cameraType;
-    [SerializeField] private CameraSettings cameraSettings;
 
     [Header("플레이어 최대 이동 거리")]
     [SerializeField] private float maxDistance = .0f;
@@ -25,16 +21,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
 
     public Player PlayerCharacter { get; set; }
     public IPlayerController PlayerController { get; set; }
-    public CameraManager.CameraType CameraType
-    {
-        get { return cameraType;}
-        set { cameraType = value; }
-    }
-    public CameraSettings CameraSettings
-    {
-        get { return cameraSettings; }
-        set { cameraSettings = value; }
-    }
     
     public UIScene GameUI { get; set; }
     private UIGameDeliveryScene _uiGameDeliveryScene;
@@ -55,7 +41,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     
     public void StartGame()
     {
-        // MiniGameDeliveryPathProgress : 실질적인 Progress의 상태를 관리하고 있음
         _pathProgressBar = new MiniGameDeliveryPathProgress();
         
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
@@ -90,18 +75,14 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         
         ChangeActive(true);
         
-        //_pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
+        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
     }
     
-    // 호출되는 곳 없음.
-    private void SetGameInfo()
+    private void SetPlayerCharacter()
     {
-        // 카메라 세팅 값을 가져와서 게임 세팅하는 듯.
-        _gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameDeliverySetting>(Define.MiniGameType.Delivery);
-        
-        if (_gameSetting == null)
+        if (PlayerController is ISkillController skillController)
         {
-            Logger.LogError("Not Found Game Information");
+            
         }
     }
 

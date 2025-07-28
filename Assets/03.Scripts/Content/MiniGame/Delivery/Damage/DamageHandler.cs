@@ -46,7 +46,7 @@ public class DamageHandler : MonoBehaviour
 
             _onStartDamage = false;
             
-            OnDamageRateFull();
+            onFullDamageRate?.Invoke();
         }
         else if (DamageRate is < 1.0f and > 0.75f && _onStartDamage == false)
         {
@@ -68,10 +68,5 @@ public class DamageHandler : MonoBehaviour
         _onStartDamage = false;
         _dotCoroutine = null;
         Debug.Log("코루틴이 조건에 만족하여 종료되었습니다. -> OnGiveDotDamage");
-    }
-
-    private void OnDamageRateFull()
-    {
-        onFullDamageRate?.Invoke();
     }
 }
