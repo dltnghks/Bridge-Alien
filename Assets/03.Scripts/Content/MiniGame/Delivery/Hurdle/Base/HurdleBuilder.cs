@@ -24,6 +24,7 @@ public abstract class HurdleBuilder : ScriptableObject
     public IEnumerator BuildRoutine(float[] origins)
     {
         CreateEntry(origins[0]);
+        // yield로 시간의 흐름을 조정하기.
 
         foreach (var origin in origins)
         {

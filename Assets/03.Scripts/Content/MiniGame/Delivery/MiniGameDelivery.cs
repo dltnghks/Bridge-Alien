@@ -36,6 +36,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
 
+        totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed;
         _pathProgressBar?.ProgressUpdate(totalDistance);
     }
     

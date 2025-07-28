@@ -13,6 +13,8 @@ public class DeliveryMap : MonoBehaviour
     [SerializeField] private float fenceSpeed = .0f;
     [SerializeField] private float groundSpeed = .0f;
 
+    public float GroundSpeed { get { return groundSpeed; } }
+
     [SerializeField, Space(10)] private float speedMultiplier = 1.0f;
 
     public Rect GroundRect { get; private set; }
