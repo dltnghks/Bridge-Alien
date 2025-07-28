@@ -86,7 +86,6 @@ public class UIDialogPopup : UIPopup
             choiceButton.gameObject.SetActive(false);
         }
         
-        
         return true;
     }
 
@@ -139,7 +138,7 @@ public class UIDialogPopup : UIPopup
         Logger.Log($"SetDialogs : {dialogue}");   
         
         _callback = callback; 
-        List<DialogData> currentDialogs = Managers.Data.DialogData.GetData(Define.Dialog.TUTORIAL_STORY_01);
+        List<DialogData> currentDialogs = Managers.Data.DialogData.GetData(dialogue);
         
         foreach (var dialog in currentDialogs)
         {
@@ -187,6 +186,11 @@ public class UIDialogPopup : UIPopup
         
                 // 이름 변경
                 SetNameText(characterName);
+                // 대화 변경
+                StartTyping(dialogText);
+                break;
+            case Define.DialogType.Monolog:
+                dialogText = _currentDialog.Script;
                 // 대화 변경
                 StartTyping(dialogText);
                 break;
@@ -288,7 +292,6 @@ public class UIDialogPopup : UIPopup
     private void EndDialog()
     {
         Logger.Log("EndDialog");
-        _callback?.Invoke();
         Managers.UI.ClosePopupUI(this);
     }
 }

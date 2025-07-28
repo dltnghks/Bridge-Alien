@@ -13,8 +13,12 @@ public enum SoundType
 
 }
 
-public enum SceneBGM{
+public enum SceneBGM
+{
+    House,
     MiniGameUnload,
+    MiniGameDelivery,
+
 }
 public enum CommonSoundSFX{
     CommonButtonClick,
@@ -24,28 +28,26 @@ public enum CommonSoundSFX{
 public enum MiniGameUnloadSoundSFX{
     
     //sfx
-    PostPut,
-    SmallBoxPut,
-    StandardBoxPut,
-    LargeBoxPut,
-
-    PostHold,
-    SmallBoxHold,
-    StandardBoxHold,
-    LargeBoxPHold,
-    
+    BoxPut,
+    BoxHold,
     BrokenBox,
     
     PlusScore,
     MinusScore,
     
+    CoolingComplete,
+    CoolingSkill,
+    Glitch,
+    Discard,
+    
     // Ambient
     Conveyor,
     Truck,
+    CoolingMachine,
     
 }
 
-[CreateAssetMenu(menuName = "Sound/SoundEvent")]
+[CreateAssetMenu(fileName = "SoundEvent", menuName = "Sound/SoundEvent")]
 public class SoundEvent : ScriptableObject
 {
     public SerializedDictionary<SoundType, SerializedDictionary<string, AK.Wwise.Event>> EventDict = new SerializedDictionary<SoundType, SerializedDictionary<string, AK.Wwise.Event>>();

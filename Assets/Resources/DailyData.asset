@@ -18,57 +18,57 @@ MonoBehaviour:
       Value:
       - EventID: Start
         Time: 0
-        EventType: 3
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_Test
-      - EventID: D11_E1
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D1_E1
+      - EventID: D1_E1
         Time: 0
         EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E2
+        Parameter: STORY_D1_01
+        NextEventID: D1_E2
+      - EventID: D1_E2
         Time: 0
         EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E3
-      - EventID: D11_E3
+        Parameter: STORY_D1_02
+        NextEventID: D1_E3
+      - EventID: D1_E3
         Time: 0
         EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E4
-        Time: 1
+        Parameter: STORY_D1_03
+        NextEventID: D1_E4
+      - EventID: D1_E4
+        Time: 0
         EventType: 2
         Parameter: Unload
-        NextEventID: D11_E8
-      - EventID: D11_E5
+        NextEventID: D1_E5
+      - EventID: D1_E5
         Time: 1
         EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E6
-      - EventID: D11_Test
-        Time: 1
-        EventType: 3
-        Parameter: 
-        NextEventID: D11_E6
-      - EventID: D11_E6
-        Time: 1
-        EventType: 2
-        Parameter: Delivery
-        NextEventID: D11_E7
-      - EventID: D11_E7
+        Parameter: STORY_D1_04
+        NextEventID: D1_E6
+      - EventID: D1_E6
         Time: 2
         EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E8
-      - EventID: D11_E8
+        Parameter: STORY_D1_05
+        NextEventID: D1_E7
+      - EventID: D1_E7
+        Time: 2
+        EventType: 3
+        Parameter: 
+        NextEventID: D1_E8
+      - EventID: D1_E8
+        Time: 2
+        EventType: 1
+        Parameter: STORY_D1_06
+        NextEventID: D1_E9
+      - EventID: D1_E9
         Time: 2
         EventType: 4
         Parameter: 
-        NextEventID: End
+        NextEventID: Day2
     - Key: Day2
       Value:
-      - EventID: Start0
+      - EventID: Start
         Time: 0
         EventType: 0
         Parameter: Unknown
@@ -187,6 +187,58 @@ MonoBehaviour:
         Time: 1
         EventType: 1
         Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E6
+      - EventID: D11_E6
+        Time: 1
+        EventType: 2
+        Parameter: Delivery
+        NextEventID: D11_E7
+      - EventID: D11_E7
+        Time: 2
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E8
+      - EventID: D11_E8
+        Time: 2
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+    - Key: Day3
+      Value:
+      - EventID: Start
+        Time: 0
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D11_Test
+      - EventID: D11_E1
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+      - EventID: D11_E2
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E3
+      - EventID: D11_E3
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+      - EventID: D11_E4
+        Time: 1
+        EventType: 2
+        Parameter: Unload
+        NextEventID: D11_E8
+      - EventID: D11_E5
+        Time: 1
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E6
+      - EventID: D11_Test
+        Time: 1
+        EventType: 3
+        Parameter: 
         NextEventID: D11_E6
       - EventID: D11_E6
         Time: 1

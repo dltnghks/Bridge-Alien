@@ -10,33 +10,27 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
     [Header("Game Setting")]
     [SerializeField] private MiniGameUnloadSetting _gameSetting;
+    [SerializeField] private SkillBase[] _skillList; // 스킬 리스트
 
     [Header("Delivery Point")]
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
-
+    [SerializeField] private MiniGameUnloadCoolingPoint _coolingPoint;
+    
     [Header("Box Spawn Point")]
     [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;                   // 박스 생성 주기
+    [SerializeField] private GameObject[] _boxPrefabList;
 
-    [Header("Game Camera Settings")]
-    [SerializeField] private CameraManager.CameraType _cameraType;
-    [SerializeField] private CameraSettings _cameraSettings;
-    
+    [Header("Return Point")]
+    [SerializeField] private MiniGameUnloadReturnPoint _returnPoint;
+
+    [Header("Disposal Point")]
+    [SerializeField] private MiniGameUnloadDisposalPoint _disposePoint;
+
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
     public Player PlayerCharacter { get; set; }
     public IPlayerController PlayerController { get; set; }
-    public CameraManager.CameraType CameraType
-    {
-        get { return _cameraType;}
-        set { _cameraType = value; }
-    }
-
-    public CameraSettings CameraSettings
-    {
-        get { return _cameraSettings; }
-        set { _cameraSettings = value; }
-    }
 
     public UIScene GameUI { get; set; }
     private UIGameUnloadScene _uiGameUnloadScene;
@@ -62,15 +56,23 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         SetGameInfo();
 
+        SetReturnPoint();
+
         SetDeliveryPointList();
 
         SetSpawnBoxList();
-        
+
+        SetColdArea();
+        SetDisposalPoint();
+
         SetPlayerCharacter();
 
         // 다른 설정이 끝난 후 UI 설정
         SetGameUI();
-        
+
+        // 카메라 타겟으로 플레이어 캐릭터 설정
+        Managers.Camera.Initialize(PlayerCharacter.transform);
+
         // 게임 활성화
         IsActive = true;
 
@@ -88,6 +90,24 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
     }
 
+    private void SetColdArea()
+    {
+        GameObject coolingPointObj = Utils.FindChild(gameObject, "CoolingPoint", true);
+        if (coolingPointObj == null)
+        {
+            Logger.LogError("CoolingPoint object not found!");
+            return;
+        }
+        
+        _coolingPoint = coolingPointObj.GetOrAddComponent<MiniGameUnloadCoolingPoint>();
+        if (_coolingPoint == null)
+        {
+            Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
+            return;
+        }
+        _coolingPoint.SetColdArea(_gameSetting.MaxColdAreaBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+    }
+    
     private void SetDeliveryPointList()
     {
         // DeliveryPointList 확인
@@ -107,11 +127,24 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
                 Logger.LogError("Null deliveryPoint encountered!");
                 continue;
             }
-            deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+            deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite, _returnPoint.PlaceBox);
             _deliveryPointList.Add(deliveryPoint);
         }
     }
-    
+
+    private void SetDisposalPoint()
+    {
+        GameObject disposePointObj = Utils.FindChild(gameObject, "DisposalPoint", true);
+        if (disposePointObj == null)
+        {
+            Logger.LogError("DisposalPoint object not found!");
+            return;
+        }
+        
+        MiniGameUnloadDisposalPoint disposePoint = disposePointObj.GetOrAddComponent<MiniGameUnloadDisposalPoint>();
+        disposePoint.SetDisposalPoint(_uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+    }
+
     private void SetSpawnBoxList()
     {
         GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
@@ -130,6 +163,25 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     }
 
+    private void SetReturnPoint()
+    {
+        GameObject returnPointObj = Utils.FindChild(gameObject, "ReturnPoint", true);
+        if (returnPointObj == null)
+        {
+            Logger.LogError("CoolingPoint object not found!");
+            return;
+        }
+
+        _returnPoint = returnPointObj.GetOrAddComponent<MiniGameUnloadReturnPoint>();
+        if (_returnPoint == null)
+        {
+            Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
+            return;
+        }
+
+        _returnPoint.SetReturnPoint(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+    }
+
     private void SetPlayerCharacter()
     {
         PlayerCharacter = GameObject.Find("Player")?.GetComponent<Player>();
@@ -139,13 +191,27 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
 
-        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _boxSpawnPoint);
+        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _boxSpawnPoint, _coolingPoint, _uiGameUnloadScene.UIBoxPreview.UpdateUI);
         if (PlayerController == null)
         {
             Logger.LogError("Failed to initialize PlayerController!");
             return;
         }
         PlayerController.Init(PlayerCharacter);
+
+        // 스킬 세팅
+        if (PlayerController is ISkillController skillController)
+        {
+            // 스킬 UI
+            _uiGameUnloadScene.UIPlayerInput.SetSkillInfo(_skillList);
+            _uiGameUnloadScene.UIPlayerInput.SetSkillAction(skillController.OnSkill);
+            
+            skillController.SetSkillList(_skillList);
+        }
+        else
+        {
+            Logger.LogError("PlayerController does not implement ISkillController!");
+        }
     }
 
     // 게임 설정과 박스 스폰 리스트가 설정이 되어있을 때, UI 세팅
@@ -158,7 +224,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
-        _boxPreview.SetBoxPreview(_uiGameUnloadScene.UIBoxPreview, _gameSetting.BoxSpawnInterval, _boxSpawnPoint);
+        _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
     }
     
     public bool PauseGame()
@@ -191,6 +257,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             Logger.LogWarning("Not Active MiniGame");
             return;
         }
+
+        // 남은 폐기 박스 점수 감소
+        _returnPoint.ReturnBoxScore();
         
         IsActive = false;
         Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);

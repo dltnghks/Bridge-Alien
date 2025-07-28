@@ -18,28 +18,11 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float shakeDecay = 0.002f;                                     // 흔들림 감쇠율
     private float currentShakeIntensity = 0f;                                               // 현재 흔들림 강도
     private Vector3 shakeOffset;                                                            // 흔들림 오프셋
-
-    [Header("Top Down Camera Settings")]
-    [SerializeField] private CameraSettings topDownSettings = CameraSettings.Default;       // 탑 다운 카메라 설정은 CameraController의 Setting 에서 가져옴
-
-    [Header("Third Person Camera Settings")]
-    [SerializeField] private CameraSettings thirdPersonSettings = CameraSettings.Default;   // 세 번째 인치 카메라 설정은 CameraController의 Setting 에서 가져옴
-
     private CameraController currentController;                                             // 현재 카메라 컨트롤러
     private Camera mainCamera;
 
-    public void Init(CameraType cameraType, CameraSettings cameraSettings)
+    public void Init()
     {
-        currentCameraType = cameraType;
-        if (cameraType == CameraType.ThirdPerson)
-        {
-            thirdPersonSettings = cameraSettings;
-        }
-        else if (cameraType == CameraType.TopDown)
-        {
-            topDownSettings = cameraSettings;
-        }
-        
         SetupCamera();
     }
 
@@ -94,33 +77,16 @@ public class CameraManager : MonoBehaviour
 
         switch (currentCameraType)                                                              // 카메라 타입에 따라 카메라 컨트롤러 생성
         {
-            case CameraType.TopDown:                                                            // 탑 다운 카메라 타입                         
-                currentController = mainCamera.gameObject.AddComponent<TopDownCamera>();        // 탑 다운 카메라 컨트롤러 생성
-                currentController.UpdateSettings(topDownSettings);                              // 탑 다운 카메라 설정 적용   
+            // 메인 카메라에서 카메라 컨트롤러 컴포넌트를 가져와서 설정
+            case CameraType.TopDown:                                                                                     
+                currentController = mainCamera.gameObject.GetComponent<TopDownCamera>();          
                 break;
-            case CameraType.ThirdPerson:                                                        // 세 번째 인치 카메라 타입
-                currentController = mainCamera.gameObject.AddComponent<ThirdPersonCamera>();    // 세 번째 인치 카메라 컨트롤러 생성
-                currentController.UpdateSettings(thirdPersonSettings);                          // 세 번째 인치 카메라 설정 적용   
+            case CameraType.ThirdPerson:                                                        
+                currentController = mainCamera.gameObject.GetComponent<ThirdPersonCamera>();       
                 break;
         }
 
         currentController.Initialize(target);                                                   // 카메라 컨트롤러 초기화  
-    }
-
-    //~ 현재 카메라 설정 업데이트
-    public void UpdateCurrentCameraSettings()
-    {
-        if (currentController == null) return;                                                  // 현재 카메라 컨트롤러가 없으면 리턴  
-
-        switch (currentCameraType)                                                              // 카메라 타입에 따라 카메라 설정 업데이트
-        {
-            case CameraType.TopDown:                                                            // 탑 다운 카메라 타입                         
-                currentController.UpdateSettings(topDownSettings);                              // 탑 다운 카메라 설정 적용   
-                break;
-            case CameraType.ThirdPerson:                                                        // 세 번째 인치 카메라 타입
-                currentController.UpdateSettings(thirdPersonSettings);                          // 세 번째 인치 카메라 설정 적용   
-                break;
-        }
     }
 
     //***************** Shake Camera *****************

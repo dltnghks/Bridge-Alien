@@ -27,3 +27,11 @@ MonoBehaviour:
       - Key: 4
         Value: 0
     ChoiceNumber: -1
+    MiniGameUnloadSkillData:
+      _serializedList:
+      - Key: 0
+        Value: {fileID: 11400000, guid: 615cdab6c6a503a44ad5963592cc1726, type: 2}
+      - Key: 1
+        Value: {fileID: 11400000, guid: bc8bfd0565dfecc4cafa9989ffb47d17, type: 2}
+      - Key: 2
+        Value: {fileID: 11400000, guid: 12bc6ea9db70f994292ed69b8af45dd3, type: 2}

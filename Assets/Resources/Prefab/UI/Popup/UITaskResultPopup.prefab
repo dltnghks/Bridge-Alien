@@ -526,6 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d321b422a1fe6345bd457963f2b65dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBlurBGInputEnable: 1
 --- !u!1 &6517534057391003764
 GameObject:
   m_ObjectHideFlags: 0

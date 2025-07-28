@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     
     [Header("Movement Settings")]
     [SerializeField] protected float moveSpeed = 8f;      // 이동 속도
-    [SerializeField] protected float moveMultiplier = 1f; // 이동 속도 증가 계수
     [SerializeField] protected float rayDistance = 1f;    // 레이캐스트 거리
     [SerializeField] protected bool enableFlip = true;    // 플레이어 플립 활성화 여부
 
@@ -33,13 +32,15 @@ public class Player : MonoBehaviour
 
     public Transform CharacterTransform => playerBody.transform;
 
+    public float MoveSpeed => moveSpeed;
+
     public void Start()
     {
         // 리지드바디 설정
         rb = GetComponent<Rigidbody>();
         if (rb == null){ rb = gameObject.AddComponent<Rigidbody>(); }
 
-        // rb.useGravity = true;
+        rb.useGravity = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
@@ -57,9 +58,12 @@ public class Player : MonoBehaviour
         // 스프라이트 오브젝트 설정
         spriteRenderer = GetComponent<SpriteRenderer>();
         
-        // // 카메라 설정 (03.Scripts/Camera/CameraManager 싱글톤 인스턴스 사용)
-        // Managers.Camera.Initialize(transform);
+        // 캐릭터 애니메이터 설정
+        SetAnimator();
+    }
 
+    protected virtual void SetAnimator()
+    {
         // 캐릭터 애니메이터 설정
         characterAnimator = GetComponent<CharacterAnimator>();
         if (characterAnimator == null)
@@ -157,13 +161,6 @@ public class Player : MonoBehaviour
         // 캐릭터 애니메이터 업데이트
         characterAnimator.UpdateMovement(movement.magnitude * moveSpeed);
     }
-    
-    public float GetMoveSpeed => moveSpeed * moveMultiplier;
-
-    public void SetMultiplier(float multiplier)
-    {
-        moveMultiplier = multiplier;
-    }
 
     public void PlayWinPose()
     {
@@ -173,16 +170,6 @@ public class Player : MonoBehaviour
     public void PlayLosePose()
     {
         characterAnimator.PlayLosePose();
-    }
-
-    public void TriggerHoldUp()
-    {
-        characterAnimator.TriggerHoldUp();
-    }
-
-    public void TriggerHoldDown()
-    {
-        characterAnimator.TriggerHoldDown();
     }
 
     public void EventFootStepSound()
@@ -199,5 +186,10 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, transform.right * rayDistance);
         Gizmos.DrawRay(transform.position, -transform.right * rayDistance);
+    }
+
+    public void SpeedUp(float speedBoost)
+    {
+        moveSpeed += speedBoost;
     }
 }
