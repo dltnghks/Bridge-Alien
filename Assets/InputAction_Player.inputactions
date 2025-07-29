@@ -277,6 +277,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "MiniGameDelivery",
+            "id": "1f339e4a-0899-41e8-b6d9-1ae23dab408b",
+            "actions": [
+                {
+                    "name": "RepairSkill",
+                    "type": "Button",
+                    "id": "6772d3cc-8226-4a33-b00b-9f9d7a13fbf8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RocketSkill",
+                    "type": "Button",
+                    "id": "07808034-ebbd-4fa6-b842-14db7b2e408e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3742f705-88e6-4c7d-8e3e-0a7a8e1f91a2",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RepairSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b39c603-5465-459c-8155-12cf63449ab8",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RocketSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

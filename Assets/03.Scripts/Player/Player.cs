@@ -45,7 +45,6 @@ public class Player : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         rb.freezeRotation = true;            
-    
 
         // 자식 스프라이트 오브젝트 생성
         playerBody = new GameObject("PlayerBody");
@@ -104,7 +103,6 @@ public class Player : MonoBehaviour
         {
             Logger.Log($"{i} : {canMove[i]}");
         }*/
-        
     }
     
     public void PlayerMovement(Vector2 joystickInput)

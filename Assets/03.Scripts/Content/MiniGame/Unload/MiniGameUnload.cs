@@ -161,7 +161,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
         _boxSpawnPoint.SetBoxSpawnPoint(_gameSetting.MaxSpawnBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
-
     }
 
     private void SetReturnPoint()

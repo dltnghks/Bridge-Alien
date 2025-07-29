@@ -6,7 +6,6 @@ public class UIGameDeliveryScene : UIScene
 {
     enum Objects
     {
-        UIHPGauge,
         UIPathProgressBar,
         UIGameMenu,
         UIMiniGameDeliveryPlayerInput,
