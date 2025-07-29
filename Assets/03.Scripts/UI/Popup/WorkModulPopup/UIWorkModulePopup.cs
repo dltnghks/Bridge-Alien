@@ -7,6 +7,7 @@ public class UIWorkModulePopup : UIPopup
     {
         UnloadButton,
         DeliveryButton,
+        UpgradeButton,
     }
 
     enum Objects
@@ -18,7 +19,9 @@ public class UIWorkModulePopup : UIPopup
     private List<UIWorkModuleSkillButton> _workModuleSkillList = new List<UIWorkModuleSkillButton>();
     private Transform _skillGroupTransform;
     private GameObject _workModuleSkillTemplate;
-
+    private UIWorkModuleSkillButton _currentSelectedSkillButton = null;
+    private Define.MiniGameSkillType _selectedSkillType;
+    private Define.MiniGameType _selectedGameType = Define.MiniGameType.Unload;
     public override bool Init()
     {
         if (base.Init() == false)
@@ -28,13 +31,14 @@ public class UIWorkModulePopup : UIPopup
 
         BindButton(typeof(Buttons));
         BindObject(typeof(Objects));
-        
+
         _skillGroupTransform = GetObject((int)Objects.SkillGroup).transform;
         _workModuleSkillTemplate = GetObject((int)Objects.UIWorkModuleSkill);
         _workModuleSkillTemplate.SetActive(false); // Disable the template
 
         GetButton((int)Buttons.UnloadButton).gameObject.BindEvent(OnClickUnloadButton);
         GetButton((int)Buttons.DeliveryButton).gameObject.BindEvent(OnClickDeliveryButton);
+        GetButton((int)Buttons.UpgradeButton).gameObject.BindEvent(OnClickUpgradeButton);
 
         // 팝업이 열렸을 때, 하차게임으로 세팅
         OnClickUnloadButton();
@@ -44,17 +48,48 @@ public class UIWorkModulePopup : UIPopup
 
     private void OnClickUnloadButton()
     {
-        SetSkillList(Managers.Data.MiniGameSkillData.GetMiniGameSkillList(Define.MiniGameType.Unload));
+        _selectedGameType = Define.MiniGameType.Unload;
+        InitSkillList();
     }
 
     private void OnClickDeliveryButton()
     {
-        SetSkillList(Managers.Data.MiniGameSkillData.GetMiniGameSkillList(Define.MiniGameType.Delivery));
+        _selectedGameType = Define.MiniGameType.Delivery;
+        InitSkillList();
     }
 
+    private void OnClickUpgradeButton()
+    {
+        if (_currentSelectedSkillButton is null)
+            return; 
+            
+        _currentSelectedSkillButton.Deselect();
+        _currentSelectedSkillButton = null;
+
+        UIWorkModuleUpgradePopup workModuleUpgradePopup = Managers.UI.ShowPopUI<UIWorkModuleUpgradePopup>();
+        workModuleUpgradePopup.SetInfo(_selectedSkillType, InitSkillList);
+    }
+
+    private void InitSkillList(){
+
+        Managers.UI.SetInputBackground(true);
+
+        switch (_selectedGameType)
+        {
+            case Define.MiniGameType.Unload:
+                SetSkillList(Managers.Data.MiniGameSkillData.GetMiniGameSkillList(Define.MiniGameType.Unload));
+                break;
+            case Define.MiniGameType.Delivery:
+                SetSkillList(Managers.Data.MiniGameSkillData.GetMiniGameSkillList(Define.MiniGameType.Delivery));
+                break;
+            default:
+                return;
+        }
+    }
 
     private void SetSkillList(List<SkillData> skillTypeList)
     {
+        _currentSelectedSkillButton = null;
         // Adjust the number of skill UI elements to match the skill list
         while (_workModuleSkillList.Count < skillTypeList.Count)
         {
@@ -65,21 +100,36 @@ public class UIWorkModulePopup : UIPopup
         for (int i = 0; i < skillTypeList.Count; i++)
         {
             _workModuleSkillList[i].SetWorkModuleSkillInfo(skillTypeList[i]);
+            _workModuleSkillList[i].Init(this);
             _workModuleSkillList[i].gameObject.SetActive(true);
         }
-        
+
         // Disable unused skill UI elements
         for (int i = skillTypeList.Count; i < _workModuleSkillList.Count; i++)
         {
             _workModuleSkillList[i].gameObject.SetActive(false);
         }
-    } 
-    
+    }
+
     private void AddWorkModuleSkillButton()
     {
         GameObject newWorkModuleSkillObj = Managers.Resource.Instantiate(_workModuleSkillTemplate, _skillGroupTransform);
         UIWorkModuleSkillButton newWorkModuleSkill = newWorkModuleSkillObj.GetComponent<UIWorkModuleSkillButton>();
-        newWorkModuleSkill.Init();
+        newWorkModuleSkill.Init(this);
         _workModuleSkillList.Add(newWorkModuleSkill);
+    }
+    
+    public void SelectSkillButton(UIWorkModuleSkillButton taskButton)
+    {
+        // 현재 고른 Task 변경
+        if (_currentSelectedSkillButton != null)
+        {
+            _currentSelectedSkillButton.Deselect();
+        }
+
+        _currentSelectedSkillButton = taskButton;
+        _selectedSkillType = _currentSelectedSkillButton.SkillType;
+        
+        _currentSelectedSkillButton.Select();
     }
 }

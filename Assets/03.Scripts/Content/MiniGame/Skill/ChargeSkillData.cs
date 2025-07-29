@@ -9,6 +9,6 @@ public class ChargeSkillData : SkillData
 
     public void SetLevel(int level)
     {
-        MaxCharges = SkillChargesByLevel[level];    
+        MaxCharges = SkillChargesByLevel[level];
     }
 }

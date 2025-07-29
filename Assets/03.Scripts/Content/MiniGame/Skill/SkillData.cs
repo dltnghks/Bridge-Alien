@@ -9,4 +9,9 @@ public abstract class SkillData : ScriptableObject
     public Sprite Icon;
     public string Description;
     public int[] UpgradeCostByLevel;
+
+    public int GetSkillValue(int level)
+    {
+        return UpgradeCostByLevel[level];
+    }
 }
