@@ -12,6 +12,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     public SkillBase[] SkillList { get; set; }
     
     // ETC
+    private MiniGameDeliveryPlayer _mgPlayer;
     private Rect _groundRect;
     
     public MiniGameDeliveryPlayerController(Player player){ Init(player); }
@@ -19,6 +20,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     public void Init(Player player)
     {
         Player = player;
+        _mgPlayer = Player as MiniGameDeliveryPlayer;
     }
 
     public void SetGroundSize(Rect size)

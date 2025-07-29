@@ -26,6 +26,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     private UIGameDeliveryScene _uiGameDeliveryScene;
     private MiniGameDeliveryPathProgress _pathProgressBar;
     private DeliveryMap _deliveryMap;
+    private DamageHandler _damageHandler;
 
     private UnityEvent<bool> _onChangeActive; 
     
@@ -65,13 +66,22 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
         
+        _damageHandler = Utils.FindChild<DamageHandler>(gameObject, "Player", true);
+        if (_damageHandler == null)
+        {
+            Debug.Log("Damage Handler를 찾을 수 없음.");
+            return;
+        }
+        
         // Event Chain
         _onChangeActive = new UnityEvent<bool>();
         _onChangeActive?.AddListener(_deliveryMap.UpdateIsActive);
         
         // Initialize
         _deliveryMap.Initialize();
-        // 다운 캐스팅..... 인터페이스 구조 변경 안하면서 최선이었다.
+        _damageHandler.Initialize(() => Debug.Log("Damage Full"));
+        
+        ((MiniGameDeliveryPlayer)PlayerCharacter).damageHandler = _damageHandler;
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
         
         ChangeActive(true);

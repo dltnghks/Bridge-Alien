@@ -804,11 +804,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1483318601}
   - component: {fileID: 1483318602}
-  - component: {fileID: 1483318603}
   - component: {fileID: 1483318604}
   - component: {fileID: 1483318606}
-  - component: {fileID: 1483318605}
   - component: {fileID: 1483318607}
+  - component: {fileID: 1483318603}
+  - component: {fileID: 1483318605}
+  - component: {fileID: 1483318608}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -898,6 +899,9 @@ MonoBehaviour:
   moveSpeed: 8
   rayDistance: 1
   enableFlip: 1
+  invincibleTime: 3
+  blinkInterval: 0.1
+  damageHandler: {fileID: 0}
 --- !u!54 &1483318604
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -973,12 +977,26 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.6, y: 4.6, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1483318608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483318600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e70ee4110ec82846825230baeb41ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DamageRate>k__BackingField: 0
+  _damageRatePerSecond: 0.01
 --- !u!224 &1565489567
 RectTransform:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DamageHandler : MonoBehaviour
 {
@@ -23,9 +24,16 @@ public class DamageHandler : MonoBehaviour
         onFullDamageRate = onFullAction;
         _onStartDamage = false;
         _dotCoroutine = null;
+
+        _dotCoroutine = StartCoroutine(OnGiveDotDamage());
+    }
+
+    public void OnDamage()
+    {
+        AddDamageRate(0.25f);
     }
     
-    public void AddDamageRate(float rate)
+    private void AddDamageRate(float rate)
     {
         if (rate <= 0f || DamageRate >= 1.0f)
             return;
@@ -48,10 +56,10 @@ public class DamageHandler : MonoBehaviour
             
             onFullDamageRate?.Invoke();
         }
-        else if (DamageRate is < 1.0f and > 0.75f && _onStartDamage == false)
+        else if (DamageRate is < 1.0f and > 0.75f)
         {
-            _onStartDamage = true;
-            _dotCoroutine = StartCoroutine(OnGiveDotDamage());
+            // 2%와 3% 중에서 랜덤으로 데미지 선택
+            _damageRatePerSecond = Random.Range(0.02f, 0.04f);
         }
     }
 
