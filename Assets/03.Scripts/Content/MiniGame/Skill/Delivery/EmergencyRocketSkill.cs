@@ -7,7 +7,7 @@ public class EmergencyRocketSkill : DurationSkill, IRegainable
     public override void Initialize(ISkillContext context)
     {
         var skillContext = context as MGDSkillContext;
-        // OnActiveStateChanged
+        OnActiveStateChanged += skillContext.OnRocketSkillAction;
         
         base.Initialize(context);
     }
@@ -29,7 +29,11 @@ public class EmergencyRocketSkill : DurationSkill, IRegainable
     
     public override void TryActivate()
     {
-        throw new System.NotImplementedException();
+        if (CanUseSkill())
+        {
+            OnActivate();
+            isReady = false;
+        }
     }
     public void RegainResource(float amount)
     {

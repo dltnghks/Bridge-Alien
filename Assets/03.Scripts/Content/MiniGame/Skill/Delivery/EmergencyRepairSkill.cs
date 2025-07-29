@@ -7,6 +7,7 @@ public class EmergencyRepairSkill : DurationSkill, IRegainable
     public override void Initialize(ISkillContext context)
     {
         var skillContext = context as MGDSkillContext;
+        OnActiveStateChanged += skillContext.OnRepairSkillAction;
         
         base.Initialize(context);
     }
@@ -25,8 +26,13 @@ public class EmergencyRepairSkill : DurationSkill, IRegainable
     
     public override void TryActivate()
     {
-        throw new System.NotImplementedException();
+        if (CanUseSkill())
+        {
+            OnActivate();
+            isReady = false;
+        }
     }
+    
     public void RegainResource(float amount)
     {
         throw new System.NotImplementedException();

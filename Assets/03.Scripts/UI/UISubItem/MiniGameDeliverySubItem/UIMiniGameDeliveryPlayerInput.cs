@@ -75,4 +75,14 @@ public class UIMiniGameDeliveryPlayerInput : UIPlayerInput
             GetImage((int)Images.RepairDurationImage).fillAmount = 1 - currentDuration / maxDuration;
         }
     }
+
+    public void OnRepairSkill()
+    {
+        _skillAction?.Invoke((int)Buttons.RepairSkillButton);
+    }
+
+    public void OnRocketSkill()
+    {
+        _skillAction?.Invoke((int)Buttons.RocketSkillButton);
+    }
 }

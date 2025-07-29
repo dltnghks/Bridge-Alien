@@ -9,11 +9,11 @@ public class MGDSkillContext : ISkillContext
     public readonly Player Player;
     public readonly MiniGameDeliveryPlayer DeliveryPlayer;
 
-    public readonly Action OnRocketSkillAction;
-    public readonly Action OnRepairSkillAction;
+    public readonly Action<bool> OnRocketSkillAction;
+    public readonly Action<bool> OnRepairSkillAction;
 
     public MGDSkillContext(Player player, MiniGameDeliveryPlayer deliveryPlayer
-    , Action onRocketSkillAction, Action onRepairSkillAction )
+    , Action<bool> onRocketSkillAction, Action<bool> onRepairSkillAction )
     {
         Player = player;
         DeliveryPlayer = deliveryPlayer;

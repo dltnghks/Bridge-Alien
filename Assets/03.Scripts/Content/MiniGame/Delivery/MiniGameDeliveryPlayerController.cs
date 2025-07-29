@@ -37,7 +37,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
             Player,
             _mgPlayer,
             _damageHandler.OnResetDamage,
-            _damageHandler.OnDamage
+            _damageHandler.OnResetDamage
             );
 
         // Context 내부에는 SKill 사용 시 발동할 메서드가 포함이 되어야 한다.
