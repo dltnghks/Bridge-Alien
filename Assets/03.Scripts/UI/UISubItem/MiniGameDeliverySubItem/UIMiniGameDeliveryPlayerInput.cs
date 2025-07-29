@@ -28,6 +28,8 @@ public class UIMiniGameDeliveryPlayerInput : UIPlayerInput
         }
         _init = true;
         
+        BindImage(typeof(Images));
+        
         return _init;
     }
 
@@ -40,7 +42,37 @@ public class UIMiniGameDeliveryPlayerInput : UIPlayerInput
 
         foreach (var skill in _skillList)
         {
-            
+            if (skill is EmergencyRocketSkill rocketSkill)
+            {
+                rocketSkill.OnCooldownChanged += SetRocketSkillButtonDuration;
+                GetImage((int)Images.RocketDurationImage).sprite = rocketSkill.SkillData.Icon;
+            }
+            else if (skill is EmergencyRepairSkill repairSkill)
+            {
+                repairSkill.OnCooldownChanged += SetRepairSkillButtonDuration;
+                GetImage((int)Images.RepairDurationImage).sprite = repairSkill.SkillData.Icon;
+            }
+        }
+    }
+
+    public void SetSkillAction(Action<int> skillAction)
+    {
+        _skillAction = skillAction;
+    }
+    
+    public void SetRocketSkillButtonDuration(float currentDuration, float maxDuration)
+    {
+        if (_init)
+        {
+            GetImage((int)Images.RocketDurationImage).fillAmount = 1 - currentDuration / maxDuration;
+        }
+    }
+    
+    public void SetRepairSkillButtonDuration(float currentDuration, float maxDuration)
+    {
+        if (_init)
+        {
+            GetImage((int)Images.RepairDurationImage).fillAmount = 1 - currentDuration / maxDuration;
         }
     }
 }

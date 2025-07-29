@@ -28,6 +28,11 @@ public class DamageHandler : MonoBehaviour
         _dotCoroutine = StartCoroutine(OnGiveDotDamage());
     }
 
+    public void OnResetDamage()
+    {
+        DamageRate = .0f;
+    }
+
     public void OnDamage()
     {
         AddDamageRate(0.25f);

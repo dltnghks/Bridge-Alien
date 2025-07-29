@@ -14,13 +14,37 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     // ETC
     private MiniGameDeliveryPlayer _mgPlayer;
     private Rect _groundRect;
-    
-    public MiniGameDeliveryPlayerController(Player player){ Init(player); }
+    private DamageHandler _damageHandler;
+
+    public MiniGameDeliveryPlayerController(Player player, DamageHandler damageHandler)
+    {
+        Init(player);
+        
+        _damageHandler = damageHandler;
+    }
 
     public void Init(Player player)
     {
         Player = player;
         _mgPlayer = Player as MiniGameDeliveryPlayer;
+    }
+
+    public void SetSkillList(SkillBase[] skillList)
+    {
+        SkillList = skillList;
+
+        MGDSkillContext context = new MGDSkillContext(
+            Player,
+            _mgPlayer,
+            _damageHandler.OnResetDamage,
+            _damageHandler.OnDamage
+            );
+
+        // Context 내부에는 SKill 사용 시 발동할 메서드가 포함이 되어야 한다.
+        foreach (var skill in skillList)
+        {
+            skill.Initialize(context);
+        }
     }
 
     public void SetGroundSize(Rect size)
@@ -66,12 +90,13 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
         throw new System.NotImplementedException();
     }
 
-    public void SetSkillList(SkillBase[] skillList)
-    {
-        throw new System.NotImplementedException();
-    }
     public void OnSkill(int skillIndex)
     {
-        throw new System.NotImplementedException();
+        if (Managers.MiniGame.CurrentGame.IsPause)
+            return;
+        if (skillIndex < 0 || skillIndex >= SkillList.Length)
+            return;
+        
+        SkillList[skillIndex].TryActivate();
     }
 }

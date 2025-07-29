@@ -51,8 +51,15 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             Debug.Log("Player 캐릭터가 존재하지 않아요.");
             return;
         }
+        
+        _damageHandler = Utils.FindChild<DamageHandler>(gameObject, "Player", true);
+        if (_damageHandler == null)
+        {
+            Debug.Log("Damage Handler를 찾을 수 없음.");
+            return;
+        }
 
-        PlayerController = new MiniGameDeliveryPlayerController(PlayerCharacter);
+        PlayerController = new MiniGameDeliveryPlayerController(PlayerCharacter, _damageHandler);
         if (PlayerController == null)
         {
             Debug.Log("플레이어 컨트롤러가 존재하지 않아요.");
@@ -66,11 +73,18 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
         
-        _damageHandler = Utils.FindChild<DamageHandler>(gameObject, "Player", true);
-        if (_damageHandler == null)
+       
+
+        if (PlayerController is ISkillController skillController)
         {
-            Debug.Log("Damage Handler를 찾을 수 없음.");
-            return;
+            Debug.Log("In");
+            _uiGameDeliveryScene.UIPlayerInput.SetSkillInfo(_skillList);
+            _uiGameDeliveryScene.UIPlayerInput.SetSkillAction(skillController.OnSkill);
+            
+            Debug.Log("In 2");
+            skillController.SetSkillList(_skillList);
+            
+            Debug.Log("Out");
         }
         
         // Event Chain
@@ -89,14 +103,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
     }
     
-    private void SetPlayerCharacter()
-    {
-        if (PlayerController is ISkillController skillController)
-        {
-            
-        }
-    }
-
     public bool PauseGame()
     {
         if (!IsActive || IsPause)
