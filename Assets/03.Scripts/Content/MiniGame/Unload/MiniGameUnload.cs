@@ -38,6 +38,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     private TimerBase _timer;
     private ScoreBase _score;
     private MiniGameUnloadBoxPreview _boxPreview;
+    private readonly int _minimumWage = 10000;
     
     private void Update()
     {
@@ -45,7 +46,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         {
             return;
         }
-        
+
         _timer.TimerUpdate();
         _boxPreview.TimerUpdate();
     }
@@ -266,7 +267,15 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         // 게임 종료 시 플레이어 캐릭터 애니메이션 설정
         PlayerCharacter.PlayWinPose();
 
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);
+
+        float experienceBonus = Managers.Player.GetExperienceStatsBonus() * 100f;
+        float fatiguePenalty = Managers.Player.GetFatigueStatsPenalty() * 100f;
+        float scoreBonus = _score.CurrentScore * 0.1f;
+        float totalScore = _minimumWage * (scoreBonus + experienceBonus + fatiguePenalty) / 100f;
+
+        Managers.Player.AddGold((int)totalScore);
+
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore, _minimumWage, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
         Logger.Log("UnloadGame Ending game");
     }
 

@@ -23,7 +23,6 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     [Header("Settings")]
     [SerializeField]
     private float _textDelayDuration = 1.5f;
-    private readonly int _minimumWage = 10000;
     private bool _isFinished = false;
 
     public override bool Init()
@@ -46,24 +45,20 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     }
 
 
-    public void SetResultScore(int score)
+    public void SetResultScore(int score, int minimumWage, float experienceBonus, float fatiguePenalty, float scoreBonus, float totalScore)
     {
         //gameObject.transform.DOScale(Vector3.one, 2);
         if (Init())
         {
             // 고정 텍스트 설정
-            SetFixedTexts();
+            SetFixedTexts(minimumWage);
 
-            float experienceBonus = Managers.Player.GetExperienceStatsBonus() * 100f;
-            float fatiguePenalty = Managers.Player.GetFatigueStatsPenalty() * 100f;
-            float scoreBonus = score * 0.1f;
-
-            SetReceiptText(score, experienceBonus, fatiguePenalty, scoreBonus);
+            SetReceiptText(score, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
             ShowResultPopupEffect();
         }
     }
 
-    private void SetReceiptText(int score, float experienceBonus, float fatiguePenalty, float scoreBonus)
+    private void SetReceiptText(int score, float experienceBonus, float fatiguePenalty, float scoreBonus, float totalScore)
     {
         // 텍스트 값 설정
         GetText((int)Texts.ScoreText).SetText(score.ToString());
@@ -96,8 +91,6 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
             );
         }
 
-        //총합 점수 출력은 1부터 올라가는 애니메이션
-        float totalScore = _minimumWage * (scoreBonus + experienceBonus + fatiguePenalty) / 100f;
         sequence.Append(DOVirtual.Int(0, (int)totalScore, 2f, value =>
         {
             GetText((int)Texts.TotalText).SetText(value.ToString());
@@ -111,7 +104,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         });
     }
 
-    private void SetFixedTexts()
+    private void SetFixedTexts(int minimumWage)
     {
         if (Managers.MiniGame.CurrentGame is MiniGameDelivery)
         {
@@ -127,7 +120,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         }
 
         GetText((int)Texts.WorkerNameText).SetText("김이민");
-        GetText((int)Texts.MinimumWageText).SetText(_minimumWage.ToString());
+        GetText((int)Texts.MinimumWageText).SetText(minimumWage.ToString());
     }
 
     public void ShowResultPopupEffect()
