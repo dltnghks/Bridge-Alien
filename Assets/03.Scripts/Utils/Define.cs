@@ -178,5 +178,7 @@ public class Define
 
         // 배송게임 스킬
         //TestSkill,
+        EmergencyRepairSkill,
+        EmergencyRocketSkill
     }
 }
