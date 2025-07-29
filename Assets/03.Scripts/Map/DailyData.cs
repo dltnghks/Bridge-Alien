@@ -14,6 +14,7 @@ public class DailyData
     public Define.DailyEventType EventType;
     public string Parameter;
     public string NextEventID;
+    public Define.DialogSceneType DialogScene;
 
     public T GetParameter<T>()
     {
