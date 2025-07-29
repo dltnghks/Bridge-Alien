@@ -78,11 +78,13 @@ public class UIMiniGameDeliveryPlayerInput : UIPlayerInput
 
     public void OnRepairSkill()
     {
+        Debug.Log("Repair");
         _skillAction?.Invoke((int)Buttons.RepairSkillButton);
     }
 
     public void OnRocketSkill()
     {
+        Debug.Log("Rocket");
         _skillAction?.Invoke((int)Buttons.RocketSkillButton);
     }
 }

@@ -16,6 +16,7 @@ public class EmergencyRepairSkill : DurationSkill, IRegainable
     {
         base.OnActivate();
         
+        OnActiveStateChanged?.Invoke(true);
         currentDuration = skillData.MaxDuration;
     }
 
