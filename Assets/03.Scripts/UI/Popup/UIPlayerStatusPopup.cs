@@ -45,7 +45,7 @@ public class UIPlayerStatusPopup : UIPopup
     {
         foreach (Define.PlayerStatsType type in Enum.GetValues(typeof(Define.PlayerStatsType)))
         {
-            string value = Managers.Player.GetStat(type).ToString();
+            string value = Managers.Player.GetStats(type).ToString();
             switch (type)
             {
                 case Define.PlayerStatsType.Experience:

@@ -42,7 +42,12 @@ public class UIGameStartPopup : UIPopup
         Sequence sequence = DOTween.Sequence();
 
         // 1. 이미지를 키우기
-        sequence.Append(_gameStartImage.transform.DOScale(Vector3.one, ScaleDuration).SetEase(Ease.OutBack));
+        sequence.Append(
+            _gameStartImage.transform.DOScale(Vector3.one, ScaleDuration).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.GameStart.ToString(), gameObject);
+            })
+        );
 
         // 2. 잠시 유지
         sequence.AppendInterval(HoldDuration);
@@ -51,12 +56,14 @@ public class UIGameStartPopup : UIPopup
         sequence.Append(_gameStartImage.DOFade(0, FadeDuration).SetEase(Ease.InQuad));
 
         // 4. 애니메이션 종료 후 이미지 비활성화
-        sequence.OnComplete(() => 
+        sequence.OnComplete(() =>
         {
             gameStartAction?.Invoke();
             ClosePopupUI();
         }
         );
+
+        sequence.Play();
     }
 
     public override void ClosePopupUI()

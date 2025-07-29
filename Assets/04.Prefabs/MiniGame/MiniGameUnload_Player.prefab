@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5248423100341047041}
   - component: {fileID: 9087717325584492446}
   - component: {fileID: 6191596531425010123}
+  - component: {fileID: 3683486317348207231}
   m_Layer: 0
   m_Name: MiniGameUnload_Player
   m_TagString: Player
@@ -202,6 +203,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footstepParticle: {fileID: 4272585903784185864}
+--- !u!114 &3683486317348207231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571066374363211147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0
 --- !u!1001 &2282541352395915286
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -262,6 +262,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _returnPoint.ReturnBoxScore();
         
         IsActive = false;
+
+        // 게임 종료 시 플레이어 캐릭터 애니메이션 설정
+        PlayerCharacter.PlayWinPose();
+
         Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore);
         Logger.Log("UnloadGame Ending game");
     }

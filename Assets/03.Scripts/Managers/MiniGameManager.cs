@@ -54,7 +54,6 @@ public class MiniGameManager : MonoBehaviour
     public void StartGame()
     {
         Logger.Log($"{_currentGame.GetType().Name} | Game Start");
-        
 
         UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
         uIGameStart.PlayGameStartEffect(_currentGame.StartGame);
@@ -75,8 +74,8 @@ public class MiniGameManager : MonoBehaviour
     public void EndGame()
     {
         Logger.Log("End Game");
-        Managers.Player.AddStat(Define.PlayerStatsType.Fatigue, -30);
         _currentGame?.EndGame();
+        Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, -30);
     }
     
     private void InitializeUI()

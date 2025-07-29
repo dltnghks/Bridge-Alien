@@ -31,7 +31,7 @@ public class CoolingSkill : DurationSkill, IRegainable
     // 냉각 완료 상자를 배달했을 때 호출될 메서드
     public void RegainResource(float amount)
     {
-        if (isReady) return; // 활성화 중에는 리게인 불가
+        if (isReady || isActive) return; // 활성화 중에는 리게인 불가
 
         currentDuration = Mathf.Min(currentDuration + amount, skillData.MaxDuration);
         OnCooldownChanged?.Invoke(currentDuration, skillData.MaxDuration);

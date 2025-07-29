@@ -29,14 +29,7 @@
 						<ActiveSource Name="SFX_BrokenBox" ID="{B78825A4-3AC4-43D0-89C7-09BFBD9AC3DC}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="SFX_Dropall" ID="{EE2238E0-F4A2-42EF-987D-A4C02B4FE6A4}" ShortID="907872218">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-5</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
+				<Sound Name="SFX_PlusScore" ID="{EE2238E0-F4A2-42EF-987D-A4C02B4FE6A4}" ShortID="907872218">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
@@ -263,6 +256,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="SFX_Discard" ID="{CCC77545-8335-427D-A4AB-1462177BCE3F}" ShortID="640513864">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-18</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
@@ -273,6 +273,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="03_0628_discard" ID="{3700FEB0-3B15-4E64-BCD8-9E0CB170CBE3}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>03_0628_discard.wav</AudioFile>
 							<MediaIDList>
@@ -285,6 +289,13 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="SFX_CoolingSkill" ID="{C9FBDE8C-BEC1-4D8A-8704-1D3FA9D49CAD}" ShortID="1069062282">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
@@ -295,6 +306,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="04_0628_ice_skill" ID="{560554E8-CC7C-40ED-A6D4-0B9F1D25B8BE}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.130222308907524"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.788011950450403"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>04_0628_ice_skill.wav</AudioFile>
 							<MediaIDList>
@@ -370,6 +386,200 @@
 					</ChildrenList>
 					<ActiveSourceList>
 						<ActiveSource Name="02_0629_ice_complete_solo" ID="{F2F1F058-DDFB-4FFC-9F92-C1D777EC571B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_LastScore" ID="{CD4E82AA-A16A-4071-8824-C082C5B93266}" ShortID="85381575">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="coin_End" ID="{89BCAFB7-A7EB-4631-AFB5-3C00ED3684AD}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.45849235725707"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>coin_End.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="48509398"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="coin_End" ID="{89BCAFB7-A7EB-4631-AFB5-3C00ED3684AD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_DisposalUnit_OpenDoor" ID="{415E6F7A-BC2E-4128-9D00-921D73DF31BD}" ShortID="1031034350">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="door_trash" ID="{5F0D7FAB-25CA-4707-9A5E-32D8CE52323B}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.51973355146277"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>door_trash.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="782255447"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="door_trash" ID="{5F0D7FAB-25CA-4707-9A5E-32D8CE52323B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_SpeedUpSkill" ID="{4297397A-96CB-4267-82D0-1C2106C03262}" ShortID="751623128">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="skill_Fast" ID="{2E96BFBD-5322-4877-96A8-D81529C5192C}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="0"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.01806475845817"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>skill_Fast.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="955180851"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="skill_Fast" ID="{2E96BFBD-5322-4877-96A8-D81529C5192C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_SIREN1" ID="{F2601323-24A3-4BCE-BD88-DE985DF0F109}" ShortID="181725614">
+					<PropertyList>
+						<Property Name="MidiVelocityOffset" Type="int32" Value="-44"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="trash_siren1" ID="{B1E61DFE-59F2-4145-921B-B45ECEFD9D3E}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.57697209186263"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>trash_siren1.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="262316033"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="trash_siren1" ID="{B1E61DFE-59F2-4145-921B-B45ECEFD9D3E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_SIREN2" ID="{E83AABD6-488D-4E61-BFE3-078B02212B3B}" ShortID="623108177">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="trash_siren2" ID="{6E9DB5CF-43CC-472C-A708-48A989962B6E}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.53944968460291"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>trash_siren2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="569364024"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="trash_siren2" ID="{6E9DB5CF-43CC-472C-A708-48A989962B6E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="SFX_SIREN3" ID="{F7E5F49C-4BF9-4222-8008-1BA2E422939F}" ShortID="786865278">
+					<PropertyList>
+						<Property Name="InitialDelay" Type="Real64">
+							<ValueList>
+								<Value>1.5</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="SFX_SIREN3" ID="{AFF68A93-3476-4349-B8EF-EF9E8E790950}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.563551415906889"/>
+								<Property Name="TrimEnd" Type="Real64" Value="3.79675770476165"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>SFX_SIREN3.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="323114216"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="SFX_SIREN3" ID="{AFF68A93-3476-4349-B8EF-EF9E8E790950}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

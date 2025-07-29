@@ -8,7 +8,7 @@
 						<Action Name="" ID="{9BA8CA2F-0CED-4DE7-AC92-2F54045E7B21}" ShortID="321473994">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="PickUpBox" ID="{5B0581FA-F520-4ACF-BED0-8A512622E756}" WorkUnitID="{5E6D0460-AAE8-4BF7-9711-BBA4D2DDD873}"/>
+									<ObjectRef Name="SFX_box_hold" ID="{65335A95-EB5B-45B4-945C-8869CB4311A8}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -36,12 +36,12 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_SFX_Dropall" ID="{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}">
+				<Event Name="Play_SFX_PlusScore" ID="{8B73B063-47F9-4FE8-BD5F-B452F7A7057D}">
 					<ChildrenList>
 						<Action Name="" ID="{D6CC46CC-954A-4A69-AEC3-8D22E35EADAD}" ShortID="710033523">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="SFX_Dropall" ID="{EE2238E0-F4A2-42EF-987D-A4C02B4FE6A4}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+									<ObjectRef Name="SFX_PlusScore" ID="{EE2238E0-F4A2-42EF-987D-A4C02B4FE6A4}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -141,6 +141,50 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="SFX_Glitch" ID="{2D9F7104-3F7C-40C8-9663-9415D685E347}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_DisposalUnit_OpenDoor" ID="{59057A92-E4DF-45FD-B39B-4C0F150D375F}">
+					<ChildrenList>
+						<Action Name="" ID="{8DACF199-EA08-4259-8408-8310F271858D}" ShortID="580768400">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_DisposalUnit_OpenDoor" ID="{415E6F7A-BC2E-4128-9D00-921D73DF31BD}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_LastScore" ID="{C1F3063C-F913-45FB-90D7-A1452E05B48B}">
+					<ChildrenList>
+						<Action Name="" ID="{7F6C7E26-9C5C-4375-8369-2E22E158DB4E}" ShortID="856423657">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_LastScore" ID="{CD4E82AA-A16A-4071-8824-C082C5B93266}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_SpeedUpSkill" ID="{899265C0-764E-4E60-91A6-C88D14F669D1}">
+					<ChildrenList>
+						<Action Name="" ID="{4DFB7493-04F2-4ADE-99F5-816E86B415EF}" ShortID="657825281">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_SpeedUpSkill" ID="{4297397A-96CB-4267-82D0-1C2106C03262}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_SIREN3" ID="{6F3CFD09-7269-44CD-8CA7-383B9955B057}">
+					<ChildrenList>
+						<Action Name="" ID="{09D2A176-5AFC-49C4-A932-D4FD90A230BD}" ShortID="766045717">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_SIREN3" ID="{F7E5F49C-4BF9-4222-8008-1BA2E422939F}" WorkUnitID="{922C8016-7EC9-49D1-A7D7-263589613A6C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

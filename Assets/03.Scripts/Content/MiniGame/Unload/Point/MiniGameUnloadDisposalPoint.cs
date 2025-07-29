@@ -12,6 +12,8 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
     [Header("Box Drop Area")]
     [SerializeField] private Transform _dropAreaLeftFloor;
     [SerializeField] private Transform _dropAreaRightFloor;
+    [SerializeField] private Material _leftFloorMaterial;
+    [SerializeField] private Material _rightFloorMaterial;
     [SerializeField] private float _moveDistance = 0.3f; // 좌우 이동 거리
 
     // 폐기하는 구역
@@ -35,6 +37,9 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         // 드롭 위치 설정
         _boxDropPosition = _dropTransform != null ? _dropTransform.position : transform.position;
         _boxDropPosition.y += 0.5f; // 드롭 위치 높이 설정
+
+        _rightFloorMaterial.SetVector("_Scroll", Vector4.zero);
+        _leftFloorMaterial.SetVector("_Scroll", Vector4.zero);
     }
 
     public void SetDisposalPoint(Action triggerAction)
@@ -105,32 +110,56 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         _isDisposing = true;
         // DisposalBody 에 있는 사이렌 점등 -> DisposalArea 바닥이 열리는 애니메이션
         _lampParticle.Play();
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.DisposalUnitOpenDoor.ToString(), gameObject);
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Siren.ToString(), gameObject);
 
         Sequence disposeSequence = DOTween.Sequence();
 
-        // DropArea가 좌우로 이동
+        // 초기 offset 읽어오기
+        Vector4 leftScroll = _leftFloorMaterial.GetVector("_Scroll");
+        Vector4 rightScroll = _rightFloorMaterial.GetVector("_Scroll");
+
+        // 바닥 열기 (Scroll.x 증가)
         disposeSequence.Append(
-            _dropAreaLeftFloor.DOLocalMoveX(_dropAreaLeftFloor.localPosition.x - _moveDistance, 3f)
-        );
-        disposeSequence.Join(
-            _dropAreaRightFloor.DOLocalMoveX(_dropAreaRightFloor.localPosition.x + _moveDistance, 3f)
+            DOTween.To(() => 0f, x => {
+                leftScroll.x = x;
+                _leftFloorMaterial.SetVector("_Scroll", leftScroll);
+            }, 1f, 3f)
         );
 
+        _leftFloorMaterial.SetVector("_Scroll", Vector4.one);
+        disposeSequence.Join(
+            DOTween.To(() => 0f, x => {
+                rightScroll.x = -x; // 반대 방향으로 이동
+                _rightFloorMaterial.SetVector("_Scroll", rightScroll);
+            }, 1f, 3f)
+        );
+
+        // 박스 폐기 애니메이션
         disposeSequence.AppendInterval(0.1f);
         foreach (var box in _boxList.BoxList)
         {
             if (box != null)
             {
-                disposeSequence.Join(box.transform.DOLocalMoveY(-5, 1f).OnComplete(() => box.SetInGameActive(false))); // 박스가 폐기되는 위치로 이동
+                disposeSequence.Join(
+                    box.transform.DOLocalMoveZ(5, 1f)
+                        .OnComplete(() => box.SetInGameActive(false))
+                );
             }
         }
 
-        // DropArea가 원래 위치로 돌아옴
+        // 바닥 닫기 (Scroll.x 다시 원래대로 복귀)
         disposeSequence.Append(
-            _dropAreaLeftFloor.DOLocalMoveX(_dropAreaLeftFloor.localPosition.x, 1f)
+            DOTween.To(() => leftScroll.x, x => {
+                leftScroll.x = x;
+                _leftFloorMaterial.SetVector("_Scroll", leftScroll);
+            }, 0f, 1f)
         );
         disposeSequence.Join(
-            _dropAreaRightFloor.DOLocalMoveX(_dropAreaRightFloor.localPosition.x, 1f)
+            DOTween.To(() => rightScroll.x, x => {
+                rightScroll.x = x;
+                _rightFloorMaterial.SetVector("_Scroll", rightScroll);
+            }, 0f, 1f)
         );
 
         disposeSequence.OnComplete(() =>
