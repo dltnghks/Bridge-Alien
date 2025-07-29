@@ -79,7 +79,33 @@ public class Define
         STORY_D1_04,
         STORY_D1_05,
         STORY_D1_06,
-        TUTORIAL_STORY_01,
+        STORY_D1_07,
+
+        STORY_D2_01,
+        STORY_D2_02,
+        STORY_D2_03,
+        STORY_D2_04,
+        STORY_D2_05,
+        STORY_D2_06,
+        STORY_D2_07,
+
+        STORY_D3_01,
+        STORY_D3_02,
+        STORY_D3_03,
+        STORY_D3_04,
+        STORY_D3_05,
+        
+        STORY_D4_01,
+        STORY_D4_02,
+        STORY_D4_03,
+        STORY_D4_04,
+        STORY_D4_05,
+
+        STORY_D11_01,
+        STORY_D11_02,
+        STORY_D11_03,
+        STORY_D11_04,
+        STORY_D11_05,
     }
 
     public enum DialogType
@@ -89,6 +115,39 @@ public class Define
         Dialog,
         Choice,
         End,
+    }
+
+    public enum DialogSceneType
+    {
+        Unknown,
+        House,             // 집
+        Station,           // 정거장
+        Office,            // 사무실
+        UnloadWorkplace,   // 하차 작업장
+        DeliveryGarage,    // 배송 차고지
+        ManagerRoom,       // 소장실
+    }
+
+    public enum DialogSpeakerType
+    {
+        UNKNOWN,
+        KIM_DEFAULT,            // 김이민 기본 
+        KIM_CALL,               // 김이민 전화
+        KIM_HARD,               // 김이민 힘든 상태
+        SHIN_DEFAULT,           // 신팀장 기본
+        HWANG_DEFAULT,          // 황반장 기본
+        HWANG_CALL,             // 황반장 전화
+        MANAGER_DEFAULT,        // 소장 기본
+        MANAGER_ANGRY,          // 소장 화남
+        PIMPI_DEFAULT,          // 핌피 기본
+        PIMPI_CALL,             // 핌피 전화
+    }
+
+    public enum DialogSpeakerPosType
+    {
+        Unknown,
+        Left,   // 왼쪽
+        Right,  // 오른쪽
     }
 
     public enum PlayerStatsType
@@ -120,5 +179,4 @@ public class Define
         // 배송게임 스킬
         //TestSkill,
     }
-
 }

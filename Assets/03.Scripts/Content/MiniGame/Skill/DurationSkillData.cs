@@ -9,6 +9,6 @@ public class DurationSkillData : SkillData
 
     public void SetLevel(int level)
     {
-        MaxDuration = SkillDurationByLevel[level];    
+        MaxDuration = SkillDurationByLevel[level];
     }
 }

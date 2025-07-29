@@ -21,237 +21,470 @@ MonoBehaviour:
         EventType: 0
         Parameter: Unknown
         NextEventID: D1_E1
+        DialogScene: 0
       - EventID: D1_E1
-        Time: 0
+        Time: 1
         EventType: 1
         Parameter: STORY_D1_01
         NextEventID: D1_E2
+        DialogScene: 2
       - EventID: D1_E2
-        Time: 0
+        Time: 1
         EventType: 1
         Parameter: STORY_D1_02
         NextEventID: D1_E3
+        DialogScene: 3
       - EventID: D1_E3
-        Time: 0
+        Time: 1
         EventType: 1
         Parameter: STORY_D1_03
         NextEventID: D1_E4
+        DialogScene: 4
       - EventID: D1_E4
-        Time: 0
-        EventType: 2
-        Parameter: Unload
-        NextEventID: D1_E5
-      - EventID: D1_E5
         Time: 1
         EventType: 1
         Parameter: STORY_D1_04
+        NextEventID: D1_E5
+        DialogScene: 4
+      - EventID: D1_E5
+        Time: 1
+        EventType: 2
+        Parameter: Unload
         NextEventID: D1_E6
+        DialogScene: 0
       - EventID: D1_E6
         Time: 2
         EventType: 1
         Parameter: STORY_D1_05
         NextEventID: D1_E7
+        DialogScene: 3
       - EventID: D1_E7
-        Time: 2
-        EventType: 3
-        Parameter: 
-        NextEventID: D1_E8
-      - EventID: D1_E8
-        Time: 2
+        Time: 3
         EventType: 1
         Parameter: STORY_D1_06
+        NextEventID: D1_E8
+        DialogScene: 1
+      - EventID: D1_E8
+        Time: 3
+        EventType: 3
+        Parameter: 
         NextEventID: D1_E9
+        DialogScene: 1
       - EventID: D1_E9
-        Time: 2
+        Time: 3
+        EventType: 1
+        Parameter: STORY_D1_07
+        NextEventID: 
+        DialogScene: 1
+      - EventID: D1_E10
+        Time: 3
         EventType: 4
         Parameter: 
-        NextEventID: Day2
+        NextEventID: End
+        DialogScene: 0
     - Key: Day2
       Value:
       - EventID: Start
         Time: 0
         EventType: 0
         Parameter: Unknown
-        NextEventID: D11_E1
-      - EventID: D11_E1
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E2
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E3
-      - EventID: D11_E3
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E4
-        Time: 1
-        EventType: 2
-        Parameter: Unload
-        NextEventID: D11_E8
-      - EventID: D11_E5
+        NextEventID: D2_E1
+        DialogScene: 0
+      - EventID: D2_E1
         Time: 1
         EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E6
-      - EventID: D11_E6
+        Parameter: STORY_D2_01
+        NextEventID: D2_E2
+        DialogScene: 1
+      - EventID: D2_E2
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D2_02
+        NextEventID: D2_E3
+        DialogScene: 3
+      - EventID: D2_E3
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D2_03
+        NextEventID: D2_E4
+        DialogScene: 5
+      - EventID: D2_E4
         Time: 1
         EventType: 2
         Parameter: Delivery
-        NextEventID: D11_E7
-      - EventID: D11_E7
+        NextEventID: D2_E5
+        DialogScene: 0
+      - EventID: D2_E5
         Time: 2
         EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E8
-      - EventID: D11_E8
-        Time: 2
+        Parameter: STORY_D2_04
+        NextEventID: D2_E6
+        DialogScene: 5
+      - EventID: D2_E6
+        Time: 3
+        EventType: 1
+        Parameter: STORY_D2_05
+        NextEventID: D2_E7
+        DialogScene: 1
+      - EventID: D2_E7
+        Time: 3
+        EventType: 3
+        Parameter: 
+        NextEventID: D2_E8
+        DialogScene: 1
+      - EventID: D2_E8
+        Time: 3
+        EventType: 1
+        Parameter: STORY_D2_06
+        NextEventID: D2_E9
+        DialogScene: 1
+      - EventID: D2_E9
+        Time: 3
+        EventType: 1
+        Parameter: STORY_D2_07
+        NextEventID: D2_E10
+        DialogScene: 1
+      - EventID: D2_E10
+        Time: 3
         EventType: 4
         Parameter: 
         NextEventID: End
-      - EventID: Start1
-        Time: 0
-        EventType: 0
-        Parameter: Unknown
-        NextEventID: D11_E1
-      - EventID: D11_E1
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E2
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E3
-      - EventID: D11_E3
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E4
-        Time: 1
-        EventType: 2
-        Parameter: Unload
-        NextEventID: D11_E8
-      - EventID: D11_E5
-        Time: 1
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E6
-      - EventID: D11_E6
-        Time: 1
-        EventType: 2
-        Parameter: Delivery
-        NextEventID: D11_E7
-      - EventID: D11_E7
-        Time: 2
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E8
-      - EventID: D11_E8
-        Time: 2
-        EventType: 4
-        Parameter: 
-        NextEventID: End
-      - EventID: Start2
-        Time: 0
-        EventType: 0
-        Parameter: Unknown
-        NextEventID: D11_E1
-      - EventID: D11_E1
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E2
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E3
-      - EventID: D11_E3
-        Time: 0
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E4
-      - EventID: D11_E4
-        Time: 1
-        EventType: 2
-        Parameter: Unload
-        NextEventID: D11_E8
-      - EventID: D11_E5
-        Time: 1
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E6
-      - EventID: D11_E6
-        Time: 1
-        EventType: 2
-        Parameter: Delivery
-        NextEventID: D11_E7
-      - EventID: D11_E7
-        Time: 2
-        EventType: 1
-        Parameter: TUTORIAL_STORY_01
-        NextEventID: D11_E8
-      - EventID: D11_E8
-        Time: 2
-        EventType: 4
-        Parameter: 
-        NextEventID: End
+        DialogScene: 0
     - Key: Day3
       Value:
       - EventID: Start
         Time: 0
         EventType: 0
         Parameter: Unknown
-        NextEventID: D11_Test
+        NextEventID: D3_E1
+        DialogScene: 0
+      - EventID: D3_E1
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D3_01
+        NextEventID: D3_E2
+        DialogScene: 1
+      - EventID: D3_E2
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D3_02
+        NextEventID: D3_E3
+        DialogScene: 3
+      - EventID: D3_E3
+        Time: 1
+        EventType: 2
+        Parameter: Unload
+        NextEventID: D3_E4
+        DialogScene: 0
+      - EventID: D3_E4
+        Time: 2
+        EventType: 1
+        Parameter: STORY_D3_03
+        NextEventID: D3_E5
+        DialogScene: 3
+      - EventID: D3_E5
+        Time: 2
+        EventType: 1
+        Parameter: STORY_D3_04
+        NextEventID: D3_E6
+        DialogScene: 6
+      - EventID: D3_E6
+        Time: 3
+        EventType: 1
+        Parameter: STORY_D3_05
+        NextEventID: D3_E7
+        DialogScene: 1
+      - EventID: D3_E7
+        Time: 3
+        EventType: 3
+        Parameter: 
+        NextEventID: D3_E8
+        DialogScene: 1
+      - EventID: D3_E8
+        Time: 3
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
+    - Key: Day4
+      Value:
+      - EventID: Start
+        Time: 0
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D4_E1
+        DialogScene: 0
+      - EventID: D4_E1
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D4_01
+        NextEventID: D4_E2
+        DialogScene: 1
+      - EventID: D4_E2
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D4_02
+        NextEventID: D4_E3
+        DialogScene: 3
+      - EventID: D4_E3
+        Time: 1
+        EventType: 2
+        Parameter: Delivery
+        NextEventID: D4_E4
+        DialogScene: 0
+      - EventID: D4_E4
+        Time: 2
+        EventType: 1
+        Parameter: STORY_D4_03
+        NextEventID: D4_E5
+        DialogScene: 5
+      - EventID: D4_E5
+        Time: 3
+        EventType: 3
+        Parameter: 
+        NextEventID: D4_E6
+        DialogScene: 0
+      - EventID: D4_E6
+        Time: 3
+        EventType: 1
+        Parameter: STORY_D4_04
+        NextEventID: D4_E7
+        DialogScene: 1
+      - EventID: D4_E7
+        Time: 3
+        EventType: 1
+        Parameter: STORY_D4_05
+        NextEventID: D4_E8
+        DialogScene: 1
+      - EventID: D4_E8
+        Time: 3
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
+    - Key: TestD11
+      Value:
+      - EventID: Start
+        Time: 0
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D11_E1
+        DialogScene: 0
       - EventID: D11_E1
         Time: 0
         EventType: 1
         Parameter: TUTORIAL_STORY_01
         NextEventID: D11_E4
+        DialogScene: 2
       - EventID: D11_E2
         Time: 0
         EventType: 1
         Parameter: TUTORIAL_STORY_01
         NextEventID: D11_E3
+        DialogScene: 3
       - EventID: D11_E3
         Time: 0
         EventType: 1
         Parameter: TUTORIAL_STORY_01
         NextEventID: D11_E4
+        DialogScene: 4
       - EventID: D11_E4
         Time: 1
         EventType: 2
         Parameter: Unload
         NextEventID: D11_E8
+        DialogScene: 4
       - EventID: D11_E5
         Time: 1
         EventType: 1
         Parameter: TUTORIAL_STORY_01
         NextEventID: D11_E6
-      - EventID: D11_Test
-        Time: 1
-        EventType: 3
-        Parameter: 
-        NextEventID: D11_E6
+        DialogScene: 0
       - EventID: D11_E6
         Time: 1
         EventType: 2
         Parameter: Delivery
         NextEventID: D11_E7
+        DialogScene: 3
       - EventID: D11_E7
         Time: 2
         EventType: 1
         Parameter: TUTORIAL_STORY_01
         NextEventID: D11_E8
+        DialogScene: 1
       - EventID: D11_E8
         Time: 2
         EventType: 4
         Parameter: 
         NextEventID: End
+        DialogScene: 1
+      - EventID: Start1
+        Time: 0
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D11_E1
+        DialogScene: 1
+      - EventID: D11_E1
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+        DialogScene: 0
+      - EventID: D11_E2
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E3
+        DialogScene: 2
+      - EventID: D11_E3
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+        DialogScene: 3
+      - EventID: D11_E4
+        Time: 1
+        EventType: 2
+        Parameter: Unload
+        NextEventID: D11_E8
+        DialogScene: 4
+      - EventID: D11_E5
+        Time: 1
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E6
+        DialogScene: 4
+      - EventID: D11_E6
+        Time: 1
+        EventType: 2
+        Parameter: Delivery
+        NextEventID: D11_E7
+        DialogScene: 0
+      - EventID: D11_E7
+        Time: 2
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E8
+        DialogScene: 3
+      - EventID: D11_E8
+        Time: 2
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 1
+      - EventID: Start2
+        Time: 0
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D11_E1
+        DialogScene: 1
+      - EventID: D11_E1
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+        DialogScene: 1
+      - EventID: D11_E2
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E3
+        DialogScene: 0
+      - EventID: D11_E3
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+        DialogScene: 2
+      - EventID: D11_E4
+        Time: 1
+        EventType: 2
+        Parameter: Unload
+        NextEventID: D11_E8
+        DialogScene: 3
+      - EventID: D11_E5
+        Time: 1
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E6
+        DialogScene: 4
+      - EventID: D11_E6
+        Time: 1
+        EventType: 2
+        Parameter: Delivery
+        NextEventID: D11_E7
+        DialogScene: 4
+      - EventID: D11_E7
+        Time: 2
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E8
+        DialogScene: 0
+      - EventID: D11_E8
+        Time: 2
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
+    - Key: Test_D11
+      Value:
+      - EventID: Start
+        Time: 0
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D11_Test
+        DialogScene: 0
+      - EventID: D11_E1
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+        DialogScene: 2
+      - EventID: D11_E2
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E3
+        DialogScene: 3
+      - EventID: D11_E3
+        Time: 0
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E4
+        DialogScene: 4
+      - EventID: D11_E4
+        Time: 1
+        EventType: 2
+        Parameter: Unload
+        NextEventID: D11_E8
+        DialogScene: 4
+      - EventID: D11_E5
+        Time: 1
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E6
+        DialogScene: 0
+      - EventID: D11_Test
+        Time: 1
+        EventType: 3
+        Parameter: 
+        NextEventID: D11_E6
+        DialogScene: 3
+      - EventID: D11_E6
+        Time: 1
+        EventType: 2
+        Parameter: Delivery
+        NextEventID: D11_E7
+        DialogScene: 1
+      - EventID: D11_E7
+        Time: 2
+        EventType: 1
+        Parameter: TUTORIAL_STORY_01
+        NextEventID: D11_E8
+        DialogScene: 1
+      - EventID: D11_E8
+        Time: 2
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
