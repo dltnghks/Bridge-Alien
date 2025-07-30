@@ -138,4 +138,10 @@ public class UITaskResultPopup : UIPopup
         GetImage((int)Images.LuckValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
     }
     
+    public override void ClosePopupUI()
+    {
+        base.ClosePopupUI();
+        // 일과를 수행하면 다음 이벤트로 넘어가기
+        Managers.Daily.StartEvent();
+    }
 }
