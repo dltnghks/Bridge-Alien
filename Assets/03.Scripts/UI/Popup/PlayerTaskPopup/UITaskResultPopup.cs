@@ -12,7 +12,7 @@ public class UITaskResultPopup : UIPopup
         LuckValueText,
         TaskCompletedText,
     }
-    
+
     enum Images
     {
         ExperienceValueTextIncreaseImage,
@@ -24,9 +24,9 @@ public class UITaskResultPopup : UIPopup
         IntelligenceValueTextDecreaseImage,
         LuckValueTextDecreaseImage,
     }
-    
+
     private PlayerTaskData _selectedTaskData;
-    
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -35,9 +35,9 @@ public class UITaskResultPopup : UIPopup
         }
         BindText(typeof(Texts));
         BindImage(typeof(Images));
-        
+
         gameObject.BindEvent(OnClickUI);
-        
+
         return true;
     }
 
@@ -47,7 +47,7 @@ public class UITaskResultPopup : UIPopup
         if (data is PlayerTaskData taskData)
         {
             _selectedTaskData = taskData;
-            
+
             // 텍스트 세팅
             SetText();
             SetTaskStatTextImage();
@@ -57,12 +57,12 @@ public class UITaskResultPopup : UIPopup
             Logger.LogError("data is not PlayerTaskData");
         }
     }
-    
+
     private void OnClickUI()
     {
         ClosePopupUI();
     }
-    
+
     public void SetText()
     {
         PlayerData playerData = Managers.Player.PlayerData;
@@ -76,11 +76,11 @@ public class UITaskResultPopup : UIPopup
             GetText((int)Texts.TaskCompletedText).text = _selectedTaskData.TaskCompletedText;
         }
     }
-    
+
     private void SetTaskStatTextImage()
-    {   
+    {
         SetTaskStatImages(false);
-            
+
         // 능력치 상승치 표기
         if (_selectedTaskData.ExperienceValue > 0)
         {
@@ -92,8 +92,8 @@ public class UITaskResultPopup : UIPopup
             GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
             GetText((int)Texts.ExperienceValueText).color = Color.red;
         }
-        
-        
+
+
         if (_selectedTaskData.IntelligenceValue > 0)
         {
             GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
@@ -104,8 +104,8 @@ public class UITaskResultPopup : UIPopup
             GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
             GetText((int)Texts.IntelligenceValueText).color = Color.red;
         }
-        
-        
+
+
         if (_selectedTaskData.GravityAdaptationValue > 0)
         {
             GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
@@ -116,14 +116,14 @@ public class UITaskResultPopup : UIPopup
             GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
             GetText((int)Texts.GravityAdaptationValueText).color = Color.red;
         }
-        
+
         if (_selectedTaskData.LuckMinValue != 0)
         {
             // 운 랜덤 상승
             GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
     }
-    
+
     private void SetTaskStatImages(bool active)
     {
         float value = active == true ? 1.0f : 0.0f;
@@ -131,13 +131,14 @@ public class UITaskResultPopup : UIPopup
         GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
-        
+
         GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.LuckValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
     }
-    
+
+
     public override void ClosePopupUI()
     {
         base.ClosePopupUI();

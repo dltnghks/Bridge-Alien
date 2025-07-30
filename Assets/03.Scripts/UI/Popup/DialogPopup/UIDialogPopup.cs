@@ -106,6 +106,8 @@ public class UIDialogPopup : UIPopup
     {
         Logger.Log("OnClickNextButton");
         
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+
         NextDialog();
     }
     

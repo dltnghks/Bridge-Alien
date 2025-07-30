@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -54,6 +55,7 @@ public class PrologueManager : MonoBehaviour
             director.Pause();
         }
 
+        Managers.Sound.SetBGMVolume(100f);
         Managers.Scene.ChangeScene(Define.Scene.House);
     }
 
@@ -65,6 +67,11 @@ public class PrologueManager : MonoBehaviour
 
     public void PlayPrologueVoice()
     {
+        DOTween.To(() => 100f, x =>
+        {
+            Managers.Sound.SetBGMVolume(x);
+        }, 50f, 3f);
+        
         Managers.Sound.PlaySFX(SoundType.PrologueSFX, PrologueSFX.Voice.ToString());
     }
 }

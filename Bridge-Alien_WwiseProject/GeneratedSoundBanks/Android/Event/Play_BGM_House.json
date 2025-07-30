@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}",
     "Language": "SFX",
-    "Hash": "{C5345880-E9D9-3B56-8AEB-FF410B047FCA}",
+    "Hash": "{2879CEDB-CB19-8921-8953-F7BC9E65C237}",
     "ObjectPath": "Play_BGM_House",
     "ShortName": "Play_BGM_House",
     "Path": "Event/Play_BGM_House.bnk",
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{FE81564D-28D2-6A19-4090-0990C79D277F}"
+  "FileHash": "{6FB843E9-1409-14DF-49BE-3B454C6A3C12}"
  }
 }

@@ -502,9 +502,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 632176744225790548, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598408092725633821, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544324872389147990, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c70934cc24aa554a9d3da9d674292bd, type: 3}
+    - target: {fileID: 2544324872389147990, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544324872389147990, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544324872389147990, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025607688282199190, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418630660465762966, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142376607957123456, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168517087455071976, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5517162166092416495, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
       propertyPath: m_Name
       value: UITitleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7195763710290020630, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975388286681554002, guid: e65c4b81cd25fd7429a3e02da9878413, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

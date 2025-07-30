@@ -75,6 +75,7 @@ public class UITitleScene : UIScene
 
     public void OnClickStartButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         // 시연 때는 바로 미니게임으로 이동
         // Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         // Managers.Scene.ChangeScene(Define.Scene.House);

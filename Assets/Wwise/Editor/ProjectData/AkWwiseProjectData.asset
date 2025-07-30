@@ -241,8 +241,8 @@ MonoBehaviour:
         guid: 41c902cd6d7d4d4eba5e36345bfb78fd
       Path: Events\Default Work Unit\BGM\Play_BGM_House
       maxAttenuation: 0
-      maxDuration: 93.86504
-      minDuration: 93.86504
+      maxDuration: 0
+      minDuration: 0
     - name: Play_BGM_Prologue
       guid: 6cefd6e65d8ed64781fc518daf5b2078
       id: 3434853244
@@ -261,8 +261,8 @@ MonoBehaviour:
         guid: 6cefd6e65d8ed64781fc518daf5b2078
       Path: Events\Default Work Unit\BGM\Play_BGM_Prologue
       maxAttenuation: 0
-      maxDuration: 29.538479
-      minDuration: 29.538479
+      maxDuration: 0
+      minDuration: 0
     - name: Play_BGM_Unload
       guid: 1e99df792ee5fc4aa538e019b7a29f1a
       id: 1390403282
