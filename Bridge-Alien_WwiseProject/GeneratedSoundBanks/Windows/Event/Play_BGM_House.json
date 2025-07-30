@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3600540829",
+    "Type": "Event",
+    "GUID": "{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}",
+    "Language": "SFX",
+    "Hash": "{4EFE607B-B1C9-B1C6-1E23-6E80CDD9BA2B}",
+    "ObjectPath": "Play_BGM_House",
+    "ShortName": "Play_BGM_House",
+    "Path": "Event/Play_BGM_House.bnk",
+    "Media": [
+     {
+      "Id": "402761026",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "BGM_House.wav",
+      "Path": "Media/402761026.wem",
+      "CachePath": "CA/{CA2B4E62-2613-791A-560D-F62C5DF2362C}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3600540829",
+      "Name": "Play_BGM_House",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_House",
+      "GUID": "{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}",
+      "DurationType": "OneShot",
+      "DurationMin": "93.86504",
+      "DurationMax": "93.86504",
+      "MediaRefs": [
+       {
+        "Id": "402761026"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{FFB18CEF-A431-4ED3-CD1B-291249A89484}"
+ }
+}

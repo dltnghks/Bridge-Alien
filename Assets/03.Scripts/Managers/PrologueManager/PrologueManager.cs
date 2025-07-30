@@ -56,4 +56,15 @@ public class PrologueManager : MonoBehaviour
 
         Managers.Scene.ChangeScene(Define.Scene.House);
     }
+
+    public void PlayPrologueBGM()
+    {
+        Managers.Sound.StopBGM();
+        //Managers.Sound.PlayBGM(SceneBGM.Prologue.ToString());
+    }
+
+    public void PlayPrologueVoice()
+    {
+        Managers.Sound.PlaySFX(SoundType.PrologueSFX, PrologueSFX.Voice.ToString());
+    }
 }

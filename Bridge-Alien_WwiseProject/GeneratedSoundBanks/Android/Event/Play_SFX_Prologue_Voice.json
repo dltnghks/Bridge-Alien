@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "179707198",
+    "Type": "Event",
+    "GUID": "{0E0F3373-147B-4E1C-9328-A37414469578}",
+    "Language": "SFX",
+    "Hash": "{D740A7DE-81A8-EF51-FD24-971B32ECBBA0}",
+    "ObjectPath": "Play_SFX_Prologue_Voice",
+    "ShortName": "Play_SFX_Prologue_Voice",
+    "Path": "Event/Play_SFX_Prologue_Voice.bnk",
+    "Media": [
+     {
+      "Id": "562065785",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Prologue_Voice.wav",
+      "Path": "Media/562065785.wem",
+      "CachePath": "42/{42285423-D10B-3FF9-1712-9BB7C6073753}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "179707198",
+      "Name": "Play_SFX_Prologue_Voice",
+      "ObjectPath": "\\Events\\Default Work Unit\\Prologue\\Play_SFX_Prologue_Voice",
+      "GUID": "{0E0F3373-147B-4E1C-9328-A37414469578}",
+      "DurationType": "OneShot",
+      "DurationMin": "29.047312",
+      "DurationMax": "29.047312",
+      "MediaRefs": [
+       {
+        "Id": "562065785"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{60A6CAF8-DAAC-EE4E-3E52-F4FAB5150A4D}"
+ }
+}

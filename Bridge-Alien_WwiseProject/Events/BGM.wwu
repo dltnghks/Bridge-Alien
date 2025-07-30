@@ -36,6 +36,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_BGM_Prologue" ID="{E6D6EF6C-8E5D-47D6-81FC-518DAF5B2078}">
+					<ChildrenList>
+						<Action Name="" ID="{9F34F653-1A2C-4A7F-BEDE-5D7D376E65B9}" ShortID="1009672436">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM_Prologue" ID="{698F77CC-D9AC-46CB-B3C5-17DC616069B2}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BGM_House" ID="{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}">
+					<ChildrenList>
+						<Action Name="" ID="{DFC59882-2135-46FB-9836-F3C2FD8B9F90}" ShortID="653151412">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM_House" ID="{A2470E92-1800-4815-B1B1-122E3EB23FF4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

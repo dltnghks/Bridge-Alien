@@ -104,6 +104,50 @@
 						<ActiveSource Name="unloadbgm" ID="{9E207081-FD1B-4B4F-B1C1-1790C0D5D9A0}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="BGM_Prologue" ID="{698F77CC-D9AC-46CB-B3C5-17DC616069B2}" ShortID="903560532">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="BGM_Prologue" ID="{E7FE7EFC-20AC-40A6-B1D7-44F41D213CE3}">
+							<Language>SFX</Language>
+							<AudioFile>BGM_Prologue.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="831121916"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="BGM_Prologue" ID="{E7FE7EFC-20AC-40A6-B1D7-44F41D213CE3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="BGM_House" ID="{A2470E92-1800-4815-B1B1-122E3EB23FF4}" ShortID="340341540">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="BGM_House" ID="{BD005DE1-CDA1-47D0-906F-8000027543C5}">
+							<Language>SFX</Language>
+							<AudioFile>BGM_House.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="402761026"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="BGM_House" ID="{BD005DE1-CDA1-47D0-906F-8000027543C5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
