@@ -91,7 +91,7 @@ public class UIHouseScene : UIScene
     private void OnClickNextButton()
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        Managers.Daily.StartEvent();
+        //Managers.Daily.StartEvent();
     }
 
 
