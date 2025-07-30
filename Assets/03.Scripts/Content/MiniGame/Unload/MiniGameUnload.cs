@@ -270,7 +270,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         float experienceBonus = Managers.Player.GetExperienceStatsBonus() * 100f;
         float fatiguePenalty = Managers.Player.GetFatigueStatsPenalty() * 100f;
         float scoreBonus = _score.CurrentScore * 0.1f;
-        float totalScore = _minimumWage * (scoreBonus + experienceBonus + fatiguePenalty) / 100f;
+        float totalScore = _minimumWage * (scoreBonus + experienceBonus - fatiguePenalty) / 100f;
 
         Managers.Player.AddGold((int)totalScore);
 
