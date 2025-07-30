@@ -60,7 +60,7 @@ public class PrologueManager : MonoBehaviour
     public void PlayPrologueBGM()
     {
         Managers.Sound.StopBGM();
-        //Managers.Sound.PlayBGM(SceneBGM.Prologue.ToString());
+        Managers.Sound.PlayBGM(SceneBGM.Prologue.ToString());
     }
 
     public void PlayPrologueVoice()

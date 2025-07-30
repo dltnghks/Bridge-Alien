@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}",
     "Language": "SFX",
-    "Hash": "{4EFE607B-B1C9-B1C6-1E23-6E80CDD9BA2B}",
+    "Hash": "{C5345880-E9D9-3B56-8AEB-FF410B047FCA}",
     "ObjectPath": "Play_BGM_House",
     "ShortName": "Play_BGM_House",
     "Path": "Event/Play_BGM_House.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "BGM_House.wav",
       "Path": "Media/402761026.wem",
-      "CachePath": "CA/{CA2B4E62-2613-791A-560D-F62C5DF2362C}.wem"
+      "CachePath": "18/{1889A070-6A73-7F92-9B25-2B65A33FD165}.wem"
      }
     ],
     "Events": [
@@ -31,9 +31,7 @@
       "Name": "Play_BGM_House",
       "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_House",
       "GUID": "{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}",
-      "DurationType": "OneShot",
-      "DurationMin": "93.86504",
-      "DurationMax": "93.86504",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "402761026"
@@ -51,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{F31846FB-BE79-2966-B52B-96ABE2B8DE20}"
+  "FileHash": "{FE81564D-28D2-6A19-4090-0990C79D277F}"
  }
 }

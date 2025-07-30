@@ -9,7 +9,7 @@ public class HouseScene : BaseScene
         if (base.Init() == false)
             return false;
 
-        SceneType = Define.Scene.Dev;
+        SceneType = Define.Scene.House;
 
         Managers.UI.ShowSceneUI<UIHouseScene>();
         

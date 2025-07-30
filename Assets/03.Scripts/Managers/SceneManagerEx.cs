@@ -77,6 +77,8 @@ public class SceneManagerEx : MonoBehaviour
     
     private void StartLoading()
     {
+        Managers.Sound.StopBGM();
+     
         // 페이드 아웃 시작
         Managers.Fade.FadeOut(() =>
         {
@@ -88,7 +90,6 @@ public class SceneManagerEx : MonoBehaviour
                 // 페이드 인 시작
                 Managers.Fade.FadeIn();
                 Managers.Pool.Clear();
-                Managers.Sound.StopBGM();
                 //Managers.Camera.Init(CameraManager.CameraType.ThirdPerson, CameraSettings.Default);
             });
         });

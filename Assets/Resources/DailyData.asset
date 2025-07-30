@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DailyData:
     _serializedList:
-    - Key: Day1
+    - Key: Event_D1
       Value:
       - EventID: Start
         Time: 0
@@ -23,55 +23,55 @@ MonoBehaviour:
         NextEventID: D1_E1
         DialogScene: 0
       - EventID: D1_E1
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D1_01
         NextEventID: D1_E2
         DialogScene: 2
       - EventID: D1_E2
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D1_02
         NextEventID: D1_E3
         DialogScene: 3
       - EventID: D1_E3
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D1_03
         NextEventID: D1_E4
         DialogScene: 4
       - EventID: D1_E4
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D1_04
         NextEventID: D1_E5
         DialogScene: 4
       - EventID: D1_E5
-        Time: 1
+        Time: 0
         EventType: 2
         Parameter: Unload
         NextEventID: D1_E6
         DialogScene: 0
       - EventID: D1_E6
-        Time: 2
+        Time: 1
         EventType: 1
         Parameter: STORY_D1_05
         NextEventID: D1_E7
         DialogScene: 3
       - EventID: D1_E7
-        Time: 3
+        Time: 2
         EventType: 1
         Parameter: STORY_D1_06
         NextEventID: D1_E8
         DialogScene: 1
       - EventID: D1_E8
-        Time: 3
+        Time: 2
         EventType: 3
         Parameter: 
         NextEventID: D1_E9
         DialogScene: 1
       - EventID: D1_E9
-        Time: 3
+        Time: 2
         EventType: 1
         Parameter: STORY_D1_07
         NextEventID: 
@@ -82,7 +82,7 @@ MonoBehaviour:
         Parameter: 
         NextEventID: End
         DialogScene: 0
-    - Key: Day2
+    - Key: Event_D2
       Value:
       - EventID: Start
         Time: 0
@@ -91,55 +91,55 @@ MonoBehaviour:
         NextEventID: D2_E1
         DialogScene: 0
       - EventID: D2_E1
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D2_01
         NextEventID: D2_E2
         DialogScene: 1
       - EventID: D2_E2
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D2_02
         NextEventID: D2_E3
         DialogScene: 3
       - EventID: D2_E3
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D2_03
         NextEventID: D2_E4
         DialogScene: 5
       - EventID: D2_E4
-        Time: 1
+        Time: 0
         EventType: 2
         Parameter: Delivery
         NextEventID: D2_E5
         DialogScene: 0
       - EventID: D2_E5
-        Time: 2
+        Time: 1
         EventType: 1
         Parameter: STORY_D2_04
         NextEventID: D2_E6
         DialogScene: 5
       - EventID: D2_E6
-        Time: 3
+        Time: 2
         EventType: 1
         Parameter: STORY_D2_05
         NextEventID: D2_E7
         DialogScene: 1
       - EventID: D2_E7
-        Time: 3
+        Time: 2
         EventType: 3
         Parameter: 
         NextEventID: D2_E8
         DialogScene: 1
       - EventID: D2_E8
-        Time: 3
+        Time: 2
         EventType: 1
         Parameter: STORY_D2_06
         NextEventID: D2_E9
         DialogScene: 1
       - EventID: D2_E9
-        Time: 3
+        Time: 2
         EventType: 1
         Parameter: STORY_D2_07
         NextEventID: D2_E10
@@ -150,7 +150,7 @@ MonoBehaviour:
         Parameter: 
         NextEventID: End
         DialogScene: 0
-    - Key: Day3
+    - Key: Event_D3
       Value:
       - EventID: Start
         Time: 0
@@ -159,43 +159,43 @@ MonoBehaviour:
         NextEventID: D3_E1
         DialogScene: 0
       - EventID: D3_E1
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D3_01
         NextEventID: D3_E2
         DialogScene: 1
       - EventID: D3_E2
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D3_02
         NextEventID: D3_E3
         DialogScene: 3
       - EventID: D3_E3
-        Time: 1
+        Time: 0
         EventType: 2
         Parameter: Unload
         NextEventID: D3_E4
         DialogScene: 0
       - EventID: D3_E4
-        Time: 2
+        Time: 1
         EventType: 1
         Parameter: STORY_D3_03
         NextEventID: D3_E5
         DialogScene: 3
       - EventID: D3_E5
-        Time: 2
+        Time: 1
         EventType: 1
         Parameter: STORY_D3_04
         NextEventID: D3_E6
         DialogScene: 6
       - EventID: D3_E6
-        Time: 3
+        Time: 2
         EventType: 1
         Parameter: STORY_D3_05
         NextEventID: D3_E7
         DialogScene: 1
       - EventID: D3_E7
-        Time: 3
+        Time: 2
         EventType: 3
         Parameter: 
         NextEventID: D3_E8
@@ -206,7 +206,7 @@ MonoBehaviour:
         Parameter: 
         NextEventID: End
         DialogScene: 0
-    - Key: Day4
+    - Key: Event_D4
       Value:
       - EventID: Start
         Time: 0
@@ -215,48 +215,110 @@ MonoBehaviour:
         NextEventID: D4_E1
         DialogScene: 0
       - EventID: D4_E1
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D4_01
         NextEventID: D4_E2
         DialogScene: 1
       - EventID: D4_E2
-        Time: 1
+        Time: 0
         EventType: 1
         Parameter: STORY_D4_02
         NextEventID: D4_E3
         DialogScene: 3
       - EventID: D4_E3
-        Time: 1
+        Time: 0
         EventType: 2
         Parameter: Delivery
         NextEventID: D4_E4
         DialogScene: 0
       - EventID: D4_E4
-        Time: 2
+        Time: 1
         EventType: 1
         Parameter: STORY_D4_03
         NextEventID: D4_E5
         DialogScene: 5
       - EventID: D4_E5
-        Time: 3
+        Time: 2
         EventType: 3
         Parameter: 
         NextEventID: D4_E6
         DialogScene: 0
       - EventID: D4_E6
-        Time: 3
+        Time: 2
         EventType: 1
         Parameter: STORY_D4_04
         NextEventID: D4_E7
         DialogScene: 1
       - EventID: D4_E7
-        Time: 3
+        Time: 2
         EventType: 1
         Parameter: STORY_D4_05
         NextEventID: D4_E8
         DialogScene: 1
       - EventID: D4_E8
+        Time: 3
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
+    - Key: Event_D11
+      Value:
+      - EventID: Start
+        Time: 0
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: D11_E1
+        DialogScene: 0
+      - EventID: D11_E1
+        Time: 0
+        EventType: 1
+        Parameter: STORY_D11_01
+        NextEventID: D11_E2
+        DialogScene: 1
+      - EventID: D11_E2
+        Time: 0
+        EventType: 1
+        Parameter: STORY_D11_02
+        NextEventID: D11_E3
+        DialogScene: 3
+      - EventID: D11_E3
+        Time: 1
+        EventType: 2
+        Parameter: Unload
+        NextEventID: D11_E4
+        DialogScene: 0
+      - EventID: D11_E4
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D11_03
+        NextEventID: D11_E5
+        DialogScene: 3
+      - EventID: D11_E5
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D11_04
+        NextEventID: D11_E6
+        DialogScene: 6
+      - EventID: D11_E6
+        Time: 1
+        EventType: 1
+        Parameter: STORY_D11_05
+        NextEventID: 
+        DialogScene: 6
+      - EventID: D11_E7
+        Time: 2
+        EventType: 3
+        Parameter: 
+        NextEventID: 
+        DialogScene: 1
+      - EventID: D11_E8
+        Time: 2
+        EventType: 1
+        Parameter: STROY_D11_06
+        NextEventID: 
+        DialogScene: 1
+      - EventID: D11_E8
         Time: 3
         EventType: 4
         Parameter: 
