@@ -11,4 +11,9 @@ public class DurationSkillData : SkillData
     {
         MaxDuration = SkillDurationByLevel[level];
     }
+
+    public override int GetSkillValue(int level)
+    {
+        return SkillDurationByLevel[level];
+    }
 }

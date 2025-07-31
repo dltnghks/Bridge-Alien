@@ -109,7 +109,7 @@ public class PlayerManager
         }
 
         PlayerData.PlayerGold -= gold;
-        int maxLevel = Managers.Data.MiniGameSkillData.MiniGameSkillData[skillType].UpgradeCostByLevel.Length - 1;
+        int maxLevel = Managers.Data.MiniGameSkillData.MiniGameSkillData[skillType].GetMaxLevel();
         if (PlayerData.MiniGameUnloadSkillLevel[skillType] < maxLevel)
         {
             PlayerData.MiniGameUnloadSkillLevel[skillType]++;

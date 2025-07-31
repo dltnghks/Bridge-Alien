@@ -145,7 +145,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4325295049577072376}
-  - component: {fileID: 2431295030519656709}
   - component: {fileID: 6197608236556448804}
   - component: {fileID: 1766956314875360420}
   m_Layer: 5
@@ -176,20 +175,6 @@ RectTransform:
   m_AnchoredPosition: {x: 384.00006, y: 516}
   m_SizeDelta: {x: 583.67993, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2431295030519656709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394303949947090205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed8d4b2bb556454bae544dad139a0c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _activateSprite: {fileID: 21300000, guid: 7558b0ca67cb9ef4d982ba8216381f02, type: 3}
-  _deactivateSprite: {fileID: 21300000, guid: 478476d2af29853429c1b3d80fac401e, type: 3}
 --- !u!222 &6197608236556448804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -502,7 +487,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fedf46112831e564385c4bf013bc6dc6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1618,7 +1603,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4847951520899834859}
-  - component: {fileID: 1149530379681556564}
   - component: {fileID: 5466968255126823874}
   - component: {fileID: 4455810516481525032}
   m_Layer: 5
@@ -1649,20 +1633,6 @@ RectTransform:
   m_AnchoredPosition: {x: 384.00006, y: 289}
   m_SizeDelta: {x: 583.67993, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1149530379681556564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5307698265948753221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed8d4b2bb556454bae544dad139a0c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _activateSprite: {fileID: 21300000, guid: 7558b0ca67cb9ef4d982ba8216381f02, type: 3}
-  _deactivateSprite: {fileID: 21300000, guid: 478476d2af29853429c1b3d80fac401e, type: 3}
 --- !u!222 &5466968255126823874
 CanvasRenderer:
   m_ObjectHideFlags: 0
