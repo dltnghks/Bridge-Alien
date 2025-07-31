@@ -64,7 +64,7 @@ public class UIMiniGameDeliveryPlayerInput : UIPlayerInput
     {
         if (_init)
         {
-            GetImage((int)Images.RocketDurationImage).fillAmount = 1 - currentDuration / maxDuration;
+            GetImage((int)Images.RocketDurationImage).fillAmount = currentDuration / maxDuration;
         }
     }
     
@@ -72,7 +72,7 @@ public class UIMiniGameDeliveryPlayerInput : UIPlayerInput
     {
         if (_init)
         {
-            GetImage((int)Images.RepairDurationImage).fillAmount = 1 - currentDuration / maxDuration;
+            GetImage((int)Images.RepairDurationImage).fillAmount = currentDuration / maxDuration;
         }
     }
 

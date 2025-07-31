@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     
     [Header("Movement Settings")]
     [SerializeField] protected float moveSpeed = 8f;      // 이동 속도
+    [SerializeField] protected float moveMultiplier = 1f;
     [SerializeField] protected float rayDistance = 1f;    // 레이캐스트 거리
     [SerializeField] protected bool enableFlip = true;    // 플레이어 플립 활성화 여부
 
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
 
     public Transform CharacterTransform => playerBody.transform;
 
-    public float MoveSpeed => moveSpeed;
+    public float MoveSpeed => moveSpeed * moveMultiplier;
 
     public void Start()
     {

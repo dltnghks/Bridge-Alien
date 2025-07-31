@@ -73,18 +73,13 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
         
-       
-
         if (PlayerController is ISkillController skillController)
         {
-            Debug.Log("In");
             _uiGameDeliveryScene.UIPlayerInput.SetSkillInfo(_skillList);
             _uiGameDeliveryScene.UIPlayerInput.SetSkillAction(skillController.OnSkill);
-            
-            Debug.Log("In 2");
+
+            ((MiniGameDeliveryPlayerController)PlayerController).onRocketAction = OnRocketSkill;
             skillController.SetSkillList(_skillList);
-            
-            Debug.Log("Out");
         }
         
         // Event Chain
@@ -101,6 +96,12 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         ChangeActive(true);
         
         _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
+    }
+
+    public void OnRocketSkill(bool isActive)
+    {
+        (PlayerCharacter as MiniGameDeliveryPlayer)?.OnRocketEffect(isActive);
+        _deliveryMap.UpdateSpeedMultiplier(isActive ? 5f : 1f);
     }
     
     public bool PauseGame()
