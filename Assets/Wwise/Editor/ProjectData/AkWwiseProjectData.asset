@@ -181,7 +181,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\BGM
     guid: 87a70d1a2511654d9554b502e9cf44e9
     GuidInternal: 
-    m_lastTime: -8584531703572743693
+    m_lastTime: -8584476405594721153
     List:
     - name: Play_BGM_Delivery
       guid: b34ca4702ad0a14d93d4967262509001
@@ -223,6 +223,46 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Play_BGM_House
+      guid: 41c902cd6d7d4d4eba5e36345bfb78fd
+      id: 3600540829
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play_BGM_House
+        ObjectType: 3
+        guid: 41c902cd6d7d4d4eba5e36345bfb78fd
+      Path: Events\Default Work Unit\BGM\Play_BGM_House
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_BGM_Prologue
+      guid: 6cefd6e65d8ed64781fc518daf5b2078
+      id: 3434853244
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play_BGM_Prologue
+        ObjectType: 3
+        guid: 6cefd6e65d8ed64781fc518daf5b2078
+      Path: Events\Default Work Unit\BGM\Play_BGM_Prologue
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Play_BGM_Unload
       guid: 1e99df792ee5fc4aa538e019b7a29f1a
       id: 1390403282
@@ -257,7 +297,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\Common
     guid: 407965b083924744a196c0a1d52f073d
     GuidInternal: 
-    m_lastTime: -8584480136457815589
+    m_lastTime: -8584476612308800659
     List:
     - name: Play_SFX_CommonButtonClick
       guid: de4caac45e99c8489d909e9bf5c3914e
@@ -330,7 +370,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584480093978811044
+    m_lastTime: -8584476405594711137
     List: []
   - PhysicalPath: Events\GameMap.wwu
     PathAndIcons:
@@ -538,7 +578,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\MiniGameUnload
     guid: 0173d73202b00a4091b7dd334cf670bc
     GuidInternal: 
-    m_lastTime: -8584480093978731311
+    m_lastTime: -8584476612308785622
     List:
     - name: Play_AMB_Conveyor
       guid: a692660cb8d42e44a78a04c86ec7ff24
@@ -818,8 +858,8 @@ MonoBehaviour:
         guid: 09fd3c6f6972cd448ca7383b9955b057
       Path: Events\Default Work Unit\MiniGameUnload\Play_SFX_SIREN3
       maxAttenuation: 0
-      maxDuration: 4.533206
-      minDuration: 4.533206
+      maxDuration: 4.7332063
+      minDuration: 4.7332063
     - name: Play_SFX_SpeedUpSkill
       guid: c06592894e76604e91a6c88d14f669d1
       id: 3323914767
@@ -880,6 +920,42 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0.21679166
       minDuration: 0.21679166
+  - PhysicalPath: Events\Prologue.wwu
+    PathAndIcons:
+    - ElementName: Events
+      ObjectType: 5
+      guid: 00000000000000000000000000000000
+    - ElementName: Default Work Unit
+      ObjectType: 12
+      guid: 3332395072f10149a81da91bd1e15694
+    - ElementName: Prologue
+      ObjectType: 12
+      guid: 2493f580933b01419591bbd2de1bc7ed
+    ParentPath: Events\Default Work Unit\Prologue
+    guid: 2493f580933b01419591bbd2de1bc7ed
+    GuidInternal: 
+    m_lastTime: -8584476405594711137
+    List:
+    - name: Play_SFX_Prologue_Voice
+      guid: 73330f0e7b141c4e9328a37414469578
+      id: 179707198
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: Prologue
+        ObjectType: 12
+        guid: 2493f580933b01419591bbd2de1bc7ed
+      - ElementName: Play_SFX_Prologue_Voice
+        ObjectType: 3
+        guid: 73330f0e7b141c4e9328a37414469578
+      Path: Events\Default Work Unit\Prologue\Play_SFX_Prologue_Voice
+      maxAttenuation: 0
+      maxDuration: 29.047312
+      minDuration: 29.047312
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -978,7 +1054,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8584531703521922472
     List: []
-  ExpandedFileSystemItemIds: 010000000200000003000000040000000b0000000e00000015000000160000002b0000002c0000003300000034000000
+  ExpandedFileSystemItemIds: 010000000200000003000000040000000a0000000b0000000e000000110000001500000016000000180000002a0000002b0000002c0000003300000034000000
   ExpandedWaapiItemIds: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e000000110000001500000018000000190000001a0000001b0000001d00000024000000250000003b0000003e000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1

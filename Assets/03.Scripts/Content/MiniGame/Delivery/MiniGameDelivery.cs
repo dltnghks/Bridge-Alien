@@ -82,6 +82,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             skillController.SetSkillList(_skillList);
         }
         
+        _uiGameDeliveryScene.UIDamageView.Initialize(_damageHandler, null);
+        
         // Event Chain
         _onChangeActive = new UnityEvent<bool>();
         _onChangeActive?.AddListener(_deliveryMap.UpdateIsActive);
@@ -96,6 +98,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         ChangeActive(true);
         
         _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
+        
     }
 
     public void OnRocketSkill(bool isActive)
@@ -131,7 +134,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         }
         
         IsActive = false;
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathProgressBar.CurValue * 100);
+        //Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathProgressBar.CurValue * 100);
     }
     
     public void InitializeUI()
@@ -150,15 +153,5 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public void UpdateTotalDistance(float distance)
     {
         totalDistance = distance;
-    }
-
-    public float GetDistance()
-    {
-        return totalDistance;
-    }
-
-    private void UpdateDistanceFromMap(float distance)
-    {
-        UpdateTotalDistance(distance);
     }
 }

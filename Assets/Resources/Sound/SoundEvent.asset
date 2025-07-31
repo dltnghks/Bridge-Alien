@@ -26,17 +26,30 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: 5d1b4dd247f94914b9e1ffbe514f0fe8, type: 2}
         - Key: MiniGameDelivery
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 0}
+            WwiseObjectReference: {fileID: 11400000, guid: bf30e07ef16898e45b14f21f0b9e323d, type: 2}
         - Key: Title
           Value:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: dc6ecb04ef5e13946baec89eed72ed15, type: 2}
+        - Key: Prologue
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 1c99c3731f482414b9caf581998c5a7e, type: 2}
+    - Key: 3
+      Value:
+        _serializedList:
+        - Key: Voice
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 13936826dd9cf204b8062aaad9814180, type: 2}
     - Key: 1
       Value:
         _serializedList:

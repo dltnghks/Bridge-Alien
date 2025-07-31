@@ -53,5 +53,5 @@ public abstract class DurationSkill : SkillBase
         // 스킬 종료 후 필요한 로직
     }
 
-    public override bool CanUseSkill() => isReady && !isActive;
+    public override bool CanUseSkill() => isReady && !isActive && currentDuration != 0;
 }

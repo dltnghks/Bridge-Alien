@@ -106,6 +106,8 @@ public class UIDialogPopup : UIPopup
     {
         Logger.Log("OnClickNextButton");
         
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+
         NextDialog();
     }
     
@@ -191,14 +193,16 @@ public class UIDialogPopup : UIPopup
     
     private void SetBackground(Define.DialogSceneType sceneType)
     {
+        Image backgroundImage = GetImage((int)Images.Background);
         if (sceneType == Define.DialogSceneType.House && sceneType == Define.DialogSceneType.Unknown)
         {
-            GetImage((int)Images.Background).sprite = null;
-            GetImage((int)Images.Background).color = Color.clear; // 배경 이미지가 없을 경우 투명하게 설정
+            backgroundImage.sprite = null;
+            backgroundImage.color = Color.clear; // 배경 이미지가 없을 경우 투명하게 설정
         }
         else if (_backgroundImage.ContainsKey(sceneType))
         {
-            GetImage((int)Images.Background).sprite = _backgroundImage[sceneType];
+            backgroundImage.sprite = _backgroundImage[sceneType];
+            backgroundImage.preserveAspect = true;
         }
         else
         {

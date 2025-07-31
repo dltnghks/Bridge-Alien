@@ -21,8 +21,8 @@ MonoBehaviour:
         Script: "(\uC6B0\uC6E8\uC5D0\uC5D1\u2026!)"
         NextDialogID: D1_01_002
         Type: 1
-        SpeakerType: 1
-        SpeakerPosType: 1
+        SpeakerType: 0
+        SpeakerPosType: 0
       - DialogID: D1_01_002
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC740\uD558 \uD3EC\uD138\uC774\uB77C \uADF8\uB7F0\uAC00\u2026\n\uD3C9\uC18C
@@ -2520,6 +2520,43 @@ MonoBehaviour:
         CharacterName: "\uC18C\uC7A5"
         Script: "\uC7AC\uBC0C\uB124.. \uC5ED\uC2DC \uC7AC\uBC0C\uC5B4 \n \uAF2D 10\uB144\uC804
           \uB098\uB97C \uBCF4\uB294\uAC83 \uAC19\uAD6C\uB9CC"
+        NextDialogID: End
+        Type: 2
+        SpeakerType: 0
+        SpeakerPosType: 0
+      - DialogID: D11_05C_020
+        CharacterName: "\uC18C\uC7A5"
+        Script: "\uD558\uD558\uD558 \uC7AC\uBC0C\uB124 \uC7AC\uBC0C\uC5B4,\n \uADF8\uB7F0\uAC74
+          \uD3EC\uBD80\uAC00 \uC544\uB2C8\uB77C \uAC1D\uAE30\uB77C \uD558\uB294\uAC70\uC57C."
+        NextDialogID: D11_05C_021
+        Type: 2
+        SpeakerType: 0
+        SpeakerPosType: 0
+      - DialogID: D11_05C_021
+        CharacterName: "\uC18C\uC7A5"
+        Script: "\uC5B4\uB514 \uD55C\uBC88 \uC5F4\uC2EC\uD788 \uD574\uBCF4\uB77C\uACE0\n
+          \uD560 \uC218 \uC788\uB2E4\uBA74 \uB9D0\uC774\uC57C."
+        NextDialogID: D11_05C_022
+        Type: 2
+        SpeakerType: 0
+        SpeakerPosType: 0
+      - DialogID: D11_05C_022
+        CharacterName: "\uAE40\uC774\uBBFC"
+        Script: "\uC9C0\uCF1C\uBCF4\uC2DC\uC8E0"
+        NextDialogID: D11_05C_023
+        Type: 2
+        SpeakerType: 0
+        SpeakerPosType: 0
+      - DialogID: D11_05C_023
+        CharacterName: "\uC18C\uC7A5"
+        Script: "\uCF54\uC2A4\uBAA8 \uBB3C\uB958 \uC18C\uC7A5\uC785\uB2C8\uB2E4."
+        NextDialogID: D11_05C_024
+        Type: 2
+        SpeakerType: 0
+        SpeakerPosType: 0
+      - DialogID: D11_05C_024
+        CharacterName: "\uC18C\uC7A5"
+        Script: "\uCC98\uB9AC\uD560\uC77C\uC774 \uD558\uB098 \uC0DD\uACBC\uC2B5\uB2C8\uB2E4."
         NextDialogID: End
         Type: 2
         SpeakerType: 0

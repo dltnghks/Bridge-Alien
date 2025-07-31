@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{80F59324-3B93-4101-9591-BBD2DE1BC7ED}" SchemaVersion="123" RootDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}" ParentDocumentID="{50393233-F172-4901-A81D-A91BD1E15694}">
+	<Events>
+		<WorkUnit Name="Prologue" ID="{80F59324-3B93-4101-9591-BBD2DE1BC7ED}" OwnerID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_SFX_Prologue_Voice" ID="{0E0F3373-147B-4E1C-9328-A37414469578}">
+					<ChildrenList>
+						<Action Name="" ID="{AEECA51F-1342-4C7B-8C7A-BFEF1945A25E}" ShortID="67763105">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Prologue_Voice" ID="{1B88CC0B-1DE5-4346-B360-6CAB5B84F5E5}" WorkUnitID="{221D36FF-5204-421F-8168-86FCABDEFF36}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
 public class InfiniteScrollDebugger : MonoBehaviour
 {
     [Header("Gizmo Settings")]
@@ -65,3 +66,5 @@ public class InfiniteScrollDebugger : MonoBehaviour
         }
     }
 }
+
+#endif

@@ -10,6 +10,7 @@ public class DamageHandler : MonoBehaviour
     public float DamageRate { get; private set; }
     
     public Action onFullDamageRate;
+    public Action<float> onDamageUpdateAction;
 
     private bool _onStartDamage = false;
 
@@ -44,6 +45,8 @@ public class DamageHandler : MonoBehaviour
             return;
 
         DamageRate = Mathf.Min(DamageRate + rate, 1.0f);
+        onDamageUpdateAction?.Invoke(DamageRate);
+
         UpdateDamageRate();
     }
     

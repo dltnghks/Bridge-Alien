@@ -18,6 +18,8 @@ namespace AK
         static const AkUniqueID PLAY_AMB_TRUCK = 626113458U;
         static const AkUniqueID PLAY_BGM_DELIVERY = 3454433139U;
         static const AkUniqueID PLAY_BGM_GAMEMAPLOOP = 1914102211U;
+        static const AkUniqueID PLAY_BGM_HOUSE = 3600540829U;
+        static const AkUniqueID PLAY_BGM_PROLOGUE = 3434853244U;
         static const AkUniqueID PLAY_BGM_UNLOAD = 1390403282U;
         static const AkUniqueID PLAY_SFX_BOMB_ACTIVE_2 = 2174444108U;
         static const AkUniqueID PLAY_SFX_BOMB_PRE_2 = 287468067U;
@@ -37,6 +39,7 @@ namespace AK
         static const AkUniqueID PLAY_SFX_MOVECHARACTER = 3538692530U;
         static const AkUniqueID PLAY_SFX_PICKUPBOX = 1470981393U;
         static const AkUniqueID PLAY_SFX_PLUSSCORE = 228028252U;
+        static const AkUniqueID PLAY_SFX_PROLOGUE_VOICE = 179707198U;
         static const AkUniqueID PLAY_SFX_RUSH_2 = 1896826979U;
         static const AkUniqueID PLAY_SFX_RUSH_PRE = 2883951734U;
         static const AkUniqueID PLAY_SFX_RUSH_PRE_2 = 2242457109U;

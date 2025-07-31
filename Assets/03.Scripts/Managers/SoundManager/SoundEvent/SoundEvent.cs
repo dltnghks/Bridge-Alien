@@ -10,16 +10,16 @@ public enum SoundType
     SceneBGM,
     CommonSoundSFX,
     MiniGameUnloadSFX,
-
+    PrologueSFX,
 }
 
 public enum SceneBGM
 {
     Title,
     House,
+    Prologue,
     MiniGameUnload,
     MiniGameDelivery,
-
 }
 public enum CommonSoundSFX
 {
@@ -28,16 +28,22 @@ public enum CommonSoundSFX
     GameStart,
 }
 
-public enum MiniGameUnloadSoundSFX{
-    
+public enum PrologueSFX
+{
+    Voice,
+}
+
+public enum MiniGameUnloadSoundSFX
+{
+
     //sfx
     BoxPut,
     BoxHold,
     BrokenBox,
-    
+
     PlusScore,
     MinusScore,
-    
+
     CoolingComplete,
     CoolingSkill,
     Glitch,
@@ -51,7 +57,7 @@ public enum MiniGameUnloadSoundSFX{
     Conveyor,
     Truck,
     CoolingMachine,
-    
+
 }
 
 [CreateAssetMenu(fileName = "SoundEvent", menuName = "Sound/SoundEvent")]

@@ -473,10 +473,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 319702510931846426, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
-      propertyPath: m_ControlPath
-      value: <Gamepad>/buttonSouth
-      objectReference: {fileID: 0}
     - target: {fileID: 334235066099728081, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -629,14 +625,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIGameUnloadScene
       objectReference: {fileID: 0}
-    - target: {fileID: 6967011973124330151, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
-      propertyPath: m_ControlPath
-      value: <Gamepad>/buttonWest
-      objectReference: {fileID: 0}
-    - target: {fileID: 7699877171244841524, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
-      propertyPath: m_ControlPath
-      value: <Gamepad>/buttonNorth
-      objectReference: {fileID: 0}
     - target: {fileID: 8077857572238809020, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -656,14 +644,6 @@ PrefabInstance:
     - target: {fileID: 8077857572238809020, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8438246540920089833, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
-      propertyPath: m_Name
-      value: SpeedUpSkillButtonDurationImage
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182300341356315770, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
-      propertyPath: m_Name
-      value: CoolingSkillButtonDurationImage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

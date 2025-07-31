@@ -63,7 +63,7 @@ public class DailyManager
     {
         Logger.Log("SetDailyData");
         // DataManager에서 curDate 세팅 값 가져오기
-        _currentDailyDataDict = Managers.Data.DailyData.GetData("Day" + _curDate);
+        _currentDailyDataDict = Managers.Data.DailyData.GetData("Event_D" + _curDate);
         if (_currentDailyDataDict == null)
         {
             Logger.LogError("currentDailyDataDict is null");
@@ -137,7 +137,8 @@ public class DailyManager
         {
             // 처음인 경우 바로 다음으로 넘어가기
             SetNextEvent();
-            Managers.Scene.ChangeScene(Define.Scene.House);
+            StartEvent();
+            //Managers.Scene.ChangeScene(Define.Scene.House);
             return;
         }
         

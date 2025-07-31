@@ -8,6 +8,7 @@
 				<WorkUnit Name="GameMap" ID="{0D82AD48-41F5-4584-A0F9-C48FCF129823}" PersistMode="Reference"/>
 				<WorkUnit Name="BGM" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" PersistMode="Reference"/>
 				<WorkUnit Name="MiniGameDelivery" ID="{D6CD38E2-973E-4AF3-A2B8-29BE2A9B2413}" PersistMode="Reference"/>
+				<WorkUnit Name="Prologue" ID="{80F59324-3B93-4101-9591-BBD2DE1BC7ED}" PersistMode="Reference"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
