@@ -4,8 +4,11 @@ using UnityEngine;
 public class MiniGameDeliveryPlayer : Player
 {
     [Header("무적 설정")]
-    [SerializeField] private float invincibleTime = 1.5f; // 무적 지속 시간
+    [SerializeField] private float bumpInvincibleTime = 1.5f; // 부딪혔을 때 무적 지속 시간
+    [SerializeField] private float skillInvincibleTime = 1.5f;  // 스킬 무적 지속 시간
     [SerializeField] private float blinkInterval = 0.1f;  // 깜빡임 주기
+    
+    private float _invincibleTime = .0f;
 
     private bool isInvincible = false;
 
@@ -41,8 +44,33 @@ public class MiniGameDeliveryPlayer : Player
         }
     }
 
+    public void OnRocketEffect(bool isOn)
+    {
+        if (isOn)
+        {
+            moveMultiplier = 2f;
+            
+            _invincibleTime = skillInvincibleTime;
+            StartCoroutine(OnInvincible());
+        }
+        else
+        {
+            moveMultiplier = 1.0f;
+            StopCoroutine(OnInvincible());
+        }
+        
+        // Rocket 스킬이 발동된다면.
+        // 1. 무적 상태가 되어야 한다.
+        // 2. 맵과 플레이어 속도가 상승해야 한다.
+        
+        // 생각할 수 있는 지점. 피격 상태에서 Rocket 스킬을 사용한다면?
+        // ㄴ 스킬 사용이 우선시 되어야 하지.
+        
+    }
+
     private void OnDamageEffect()
     {
+        _invincibleTime = bumpInvincibleTime;
         if (!isInvincible)
             StartCoroutine(OnInvincible());
     }
@@ -55,7 +83,7 @@ public class MiniGameDeliveryPlayer : Player
         bool isOpaque = true;
         Color originalColor = spriteRenderer.color;
 
-        while (elapsed < invincibleTime)
+        while (elapsed < _invincibleTime)
         {
             float alpha = isOpaque ? 0.3f : 1f;
             spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);

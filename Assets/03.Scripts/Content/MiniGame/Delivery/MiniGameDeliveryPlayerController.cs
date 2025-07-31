@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     private MiniGameDeliveryPlayer _mgPlayer;
     private Rect _groundRect;
     private DamageHandler _damageHandler;
+    [NonSerialized] public Action<bool> onRocketAction; 
 
     public MiniGameDeliveryPlayerController(Player player, DamageHandler damageHandler)
     {
@@ -37,7 +39,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
             Player,
             _mgPlayer,
             _damageHandler.OnResetDamage,
-            _damageHandler.OnResetDamage
+            onRocketAction
             );
 
         // Context 내부에는 SKill 사용 시 발동할 메서드가 포함이 되어야 한다.
@@ -46,7 +48,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
             skill.Initialize(context);
         }
     }
-
+    
     public void SetGroundSize(Rect size)
     {
         _groundRect = size;

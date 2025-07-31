@@ -16,7 +16,7 @@ public class EmergencyRocketSkill : DurationSkill, IRegainable
     {
         base.OnActivate();
         
-        // Setup - Skill Duration
+        OnActiveStateChanged?.Invoke(true);
         currentDuration = skillData.MaxDuration;
         
         // Skill SFX
