@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1284383132	Play_SFX_Discard			\Default Work Unit\MiniGameUnload\Play_SFX_Discard	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

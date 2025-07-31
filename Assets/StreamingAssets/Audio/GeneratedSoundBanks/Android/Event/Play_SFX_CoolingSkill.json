@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "483605646",
+    "Type": "Event",
+    "GUID": "{3C38AA42-611E-4F23-A974-AF2C8B034671}",
+    "Language": "SFX",
+    "Hash": "{5114F7FB-971E-AACB-85A1-B307A38F2919}",
+    "ObjectPath": "Play_SFX_CoolingSkill",
+    "ShortName": "Play_SFX_CoolingSkill",
+    "Path": "Event/Play_SFX_CoolingSkill.bnk",
+    "Media": [
+     {
+      "Id": "1051677939",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "04_0628_ice_skill.wav",
+      "Path": "Media/1051677939.wem",
+      "CachePath": "D6/{D656C2CF-0919-9253-7B97-765CAAB816D6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "483605646",
+      "Name": "Play_SFX_CoolingSkill",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_CoolingSkill",
+      "GUID": "{3C38AA42-611E-4F23-A974-AF2C8B034671}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.65778965",
+      "DurationMax": "0.65778965",
+      "MediaRefs": [
+       {
+        "Id": "1051677939"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{42A1DF7B-67B1-70B0-828C-16F0D9E69F75}"
+ }
+}

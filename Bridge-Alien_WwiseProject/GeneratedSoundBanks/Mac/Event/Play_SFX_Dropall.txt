@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	2810680534	Play_SFX_Dropall			\Default Work Unit\MiniGameUnload\Play_SFX_Dropall	
-
-Game Parameter	ID	Name			Wwise Object Path	Notes
-	988953028	SFXVolume			\Default Work Unit\SFXVolume	
-

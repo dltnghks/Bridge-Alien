@@ -1,0 +1,54 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3434853244",
+    "Type": "Event",
+    "GUID": "{E6D6EF6C-8E5D-47D6-81FC-518DAF5B2078}",
+    "Language": "SFX",
+    "Hash": "{CD26570C-0D1F-3C9D-E1C3-32E511DCCDEF}",
+    "ObjectPath": "Play_BGM_Prologue",
+    "ShortName": "Play_BGM_Prologue",
+    "Path": "Event/Play_BGM_Prologue.bnk",
+    "Media": [
+     {
+      "Id": "831121916",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "BGM_Prologue.wav",
+      "Path": "Media/831121916.wem",
+      "CachePath": "4C/{4CCC3427-1730-FFCD-8299-AB6956CA0110}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3434853244",
+      "Name": "Play_BGM_Prologue",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Prologue",
+      "GUID": "{E6D6EF6C-8E5D-47D6-81FC-518DAF5B2078}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "831121916"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{185CE65F-0EE2-B19D-9A80-03341C595ADF}"
+ }
+}

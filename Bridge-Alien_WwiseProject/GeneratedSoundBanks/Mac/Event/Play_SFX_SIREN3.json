@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "950967108",
+    "Type": "Event",
+    "GUID": "{6F3CFD09-7269-44CD-8CA7-383B9955B057}",
+    "Language": "SFX",
+    "Hash": "{0A0A6BF4-28EB-1600-8783-A0FE7342E3C0}",
+    "ObjectPath": "Play_SFX_SIREN3",
+    "ShortName": "Play_SFX_SIREN3",
+    "Path": "Event/Play_SFX_SIREN3.bnk",
+    "Media": [
+     {
+      "Id": "323114216",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_SIREN3.wav",
+      "Path": "Media/323114216.wem",
+      "CachePath": "4F/{4FB0B5B4-E03D-2013-EE90-42D74DF54D1F}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "950967108",
+      "Name": "Play_SFX_SIREN3",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_SIREN3",
+      "GUID": "{6F3CFD09-7269-44CD-8CA7-383B9955B057}",
+      "DurationType": "OneShot",
+      "DurationMin": "4.7332063",
+      "DurationMax": "4.7332063",
+      "MediaRefs": [
+       {
+        "Id": "323114216"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{1797684D-BC8E-5B26-2B28-0781A967DD5A}"
+ }
+}

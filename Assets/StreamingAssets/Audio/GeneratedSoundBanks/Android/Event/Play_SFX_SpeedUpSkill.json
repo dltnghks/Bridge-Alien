@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3323914767",
+    "Type": "Event",
+    "GUID": "{899265C0-764E-4E60-91A6-C88D14F669D1}",
+    "Language": "SFX",
+    "Hash": "{DAC84922-757B-7A41-8873-8FF3174EB356}",
+    "ObjectPath": "Play_SFX_SpeedUpSkill",
+    "ShortName": "Play_SFX_SpeedUpSkill",
+    "Path": "Event/Play_SFX_SpeedUpSkill.bnk",
+    "Media": [
+     {
+      "Id": "955180851",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "skill_Fast.wav",
+      "Path": "Media/955180851.wem",
+      "CachePath": "67/{67D575F2-CE15-32A3-F1E5-3D8F0EA711A6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3323914767",
+      "Name": "Play_SFX_SpeedUpSkill",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_SpeedUpSkill",
+      "GUID": "{899265C0-764E-4E60-91A6-C88D14F669D1}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.0180647",
+      "DurationMax": "1.0180647",
+      "MediaRefs": [
+       {
+        "Id": "955180851"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{9DF80097-29C7-4B71-9A4D-94372CE8F803}"
+ }
+}
