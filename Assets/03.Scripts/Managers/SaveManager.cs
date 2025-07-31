@@ -10,13 +10,23 @@ public class SaveManager
         path = Application.persistentDataPath + "/player.json";
     }
 
-    public void Save() {
+    public void Reset()
+    {
+        SaveData saveData = new SaveData();
+        string json = JsonUtility.ToJson(saveData);
+        File.WriteAllText(path, json);
+
+        Load();
+    }
+
+    public void Save()
+    {
 
         SaveData saveData = new SaveData();
         saveData.PlayerData = Managers.Player.PlayerData;
         saveData.LastDate = Managers.Daily.CurrentDate;
         saveData.LastDailyData = Managers.Daily.PreDailyData;
-        
+
         string json = JsonUtility.ToJson(saveData);
         File.WriteAllText(path, json);
         Debug.Log("Saved to: " + path);

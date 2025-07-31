@@ -11,6 +11,7 @@ public class UITitleScene : UIScene
     {
         GameStartButton,
         SkipButton,
+        ResetButton,
         //LoadButton,
     }
 
@@ -50,6 +51,7 @@ public class UITitleScene : UIScene
         GetButton((int)Buttons.GameStartButton).gameObject.BindEvent(OnClickStartButton);
         //GetButton((int)Buttons.LoadButton).gameObject.BindEvent(OnClickLoadButton);
         GetButton((int)Buttons.SkipButton).gameObject.BindEvent(OnClickSkipButton);
+        GetButton((int)Buttons.ResetButton).gameObject.BindEvent(OnClickResetButton);
 
         GetButton((int)Buttons.SkipButton).gameObject.SetActive(false);
 
@@ -93,6 +95,7 @@ public class UITitleScene : UIScene
             GetImage((int)Images.GameLogoImage).gameObject.SetActive(false);
             GetImage((int)Images.TitleBG).gameObject.SetActive(false);
 
+            GetButton((int)Buttons.ResetButton).gameObject.SetActive(false);
             GetButton((int)Buttons.SkipButton).gameObject.SetActive(true);
 
             _prologueManager.gameObject.SetActive(true);
@@ -109,5 +112,10 @@ public class UITitleScene : UIScene
     {
         Managers.Save.Load();
         Managers.Scene.ChangeScene(Define.Scene.House);
+    }
+
+    private void OnClickResetButton()
+    {
+        Managers.Save.Reset();
     }
 }
