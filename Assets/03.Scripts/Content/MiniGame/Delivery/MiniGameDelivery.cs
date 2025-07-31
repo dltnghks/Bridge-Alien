@@ -131,7 +131,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         }
         
         IsActive = false;
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathProgressBar.CurValue * 100);
+        //Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathProgressBar.CurValue * 100);
     }
     
     public void InitializeUI()

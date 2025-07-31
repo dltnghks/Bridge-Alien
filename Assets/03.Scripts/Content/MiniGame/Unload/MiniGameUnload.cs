@@ -260,17 +260,16 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         // 남은 폐기 박스 점수 감소
         _returnPoint.ReturnBoxScore();
-        
+
         IsActive = false;
 
         // 게임 종료 시 플레이어 캐릭터 애니메이션 설정
         PlayerCharacter.PlayWinPose();
 
-
         float experienceBonus = Managers.Player.GetExperienceStatsBonus() * 100f;
         float fatiguePenalty = Managers.Player.GetFatigueStatsPenalty() * 100f;
         float scoreBonus = _score.CurrentScore * 0.1f;
-        float totalScore = _minimumWage * (scoreBonus + experienceBonus + fatiguePenalty) / 100f;
+        float totalScore = _minimumWage * (scoreBonus + experienceBonus - fatiguePenalty) / 100f;
 
         Managers.Player.AddGold((int)totalScore);
 

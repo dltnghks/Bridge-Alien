@@ -14,7 +14,7 @@ public enum SpawnOrder
 }
 
 
-
+#if UNITY_EDITOR
 public class GridManager : MonoBehaviour
 {
     [Header("Grid Settings")]
@@ -59,7 +59,7 @@ public class GridManager : MonoBehaviour
         InitializePrefabDictionary();                        // 프리팹 딕셔너리 초기화
         gridOrigin = transform.position;                     // 그리드 원점 설정
         LoadAllCSVFiles();                                   // 모든 CSV 파일 로드
-        
+
         // 초기 CSV 파일 로드
         if (csvFiles.Count > 0)
         {
@@ -233,7 +233,7 @@ public class GridManager : MonoBehaviour
     private void CreateLeftToRight(int rows, int cols)
     {
         if (gridArray == null || currentGridContainer == null) return;  // 그리드 배열이나 컨테이너가 없으면 종료
-        
+
         List<CellSpawnData> spawnDataList = new List<CellSpawnData>();
 
         // 각 열을 하나의 라인으로 처리 (왼쪽에서 오른쪽으로)
@@ -484,7 +484,7 @@ public class GridManager : MonoBehaviour
     }
 
     //~ 지정된 폴더에서 모든 CSV 파일 로드
-    private void LoadAllCSVFiles()                         
+    private void LoadAllCSVFiles()
     {
         if (csvFolder == null)
         {
@@ -499,10 +499,10 @@ public class GridManager : MonoBehaviour
             return;
         }
 
-        string[] csvPaths = Directory.GetFiles(folderPath, "*.csv");    
+        string[] csvPaths = Directory.GetFiles(folderPath, "*.csv");
         csvFiles.Clear();
 
-        foreach (string csvPath in csvPaths)               
+        foreach (string csvPath in csvPaths)
         {
             TextAsset textAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(csvPath);
             if (textAsset != null)
@@ -633,7 +633,7 @@ public class GridManager : MonoBehaviour
     public void ExecuteRandomPattern()
     {
         ClearCurrentGrid();
-        
+
         // CSV 파일 로드 체크
         if (csvFiles.Count == 0)
         {
@@ -644,32 +644,32 @@ public class GridManager : MonoBehaviour
                 return;
             }
         }
-        
+
         // 그리드 컨테이너 생성
         currentGridContainer = new GameObject("GridContainer");
         currentGridContainer.transform.parent = transform;
-        
+
         // CSV 데이터 로드 및 초기화
         gridData = csvFiles[Random.Range(0, csvFiles.Count)];
         InitializeGridFromCSV();
-        
+
         // 스폰 순서를 Random으로 설정
         spawnOrder = SpawnOrder.Random;
-        
+
         // 그리드 배열이 제대로 초기화되었는지 확인
         if (gridArray == null)
         {
             Debug.LogError("그리드 배열이 초기화되지 않았습니다!");
             return;
         }
-        
+
         CreateGrid(); // CreateRandomOrder가 호출됨
     }
 
     public void ExecuteLeftToRightPattern()
     {
         ClearCurrentGrid();
-        
+
         // CSV 파일 로드 체크
         if (csvFiles.Count == 0)
         {
@@ -680,32 +680,32 @@ public class GridManager : MonoBehaviour
                 return;
             }
         }
-        
+
         // 그리드 컨테이너 생성
         currentGridContainer = new GameObject("GridContainer");
         currentGridContainer.transform.parent = transform;
-        
+
         // CSV 데이터 로드 및 초기화
         gridData = csvFiles[Random.Range(0, csvFiles.Count)];
         InitializeGridFromCSV();
-        
+
         // 스폰 순서를 LeftToRight로 설정
         spawnOrder = SpawnOrder.LeftToRight;
-        
+
         // 그리드 배열이 제대로 초기화되었는지 확인
         if (gridArray == null)
         {
             Debug.LogError("그리드 배열이 초기화되지 않았습니다!");
             return;
         }
-        
+
         CreateGrid(); // CreateLeftToRight가 호출됨
     }
 
     public void ExecuteRightToLeftPattern()
     {
         ClearCurrentGrid();
-        
+
         // CSV 파일 로드 체크
         if (csvFiles.Count == 0)
         {
@@ -716,25 +716,25 @@ public class GridManager : MonoBehaviour
                 return;
             }
         }
-        
+
         // 그리드 컨테이너 생성
         currentGridContainer = new GameObject("GridContainer");
         currentGridContainer.transform.parent = transform;
-        
+
         // CSV 데이터 로드 및 초기화
         gridData = csvFiles[Random.Range(0, csvFiles.Count)];
         InitializeGridFromCSV();
-        
+
         // 스폰 순서를 RightToLeft로 설정
         spawnOrder = SpawnOrder.RightToLeft;
-        
+
         // 그리드 배열이 제대로 초기화되었는지 확인
         if (gridArray == null)
         {
             Debug.LogError("그리드 배열이 초기화되지 않았습니다!");
             return;
         }
-        
+
         CreateGrid(); // CreateRightToLeft가 호출됨
     }
 
@@ -745,20 +745,20 @@ public class GridManager : MonoBehaviour
         {
             LoadAllCSVFiles();
         }
-        
+
         gridData = csvFiles[Random.Range(0, csvFiles.Count)];
         InitializeGridFromCSV();
-        
+
         // 스폰 순서를 TopToBottom으로 설정
         spawnOrder = SpawnOrder.TopToBottom;
-        
+
         CreateGrid(); // CreateTopToBottom이 호출됨
     }
 
     public void ExecuteBottomToTopPattern()
     {
         ClearCurrentGrid();
-        
+
         // CSV 파일 로드 체크
         if (csvFiles.Count == 0)
         {
@@ -769,32 +769,32 @@ public class GridManager : MonoBehaviour
                 return;
             }
         }
-        
+
         // 그리드 컨테이너 생성
         currentGridContainer = new GameObject("GridContainer");
         currentGridContainer.transform.parent = transform;
-        
+
         // CSV 데이터 로드 및 초기화
         gridData = csvFiles[Random.Range(0, csvFiles.Count)];
         InitializeGridFromCSV();
-        
+
         // 스폰 순서를 BottomToTop으로 설정
         spawnOrder = SpawnOrder.BottomToTop;
-        
+
         // 그리드 배열이 제대로 초기화되었는지 확인
         if (gridArray == null)
         {
             Debug.LogError("그리드 배열이 초기화되지 않았습니다!");
             return;
         }
-        
+
         CreateGrid(); // CreateBottomToTop이 호출됨
     }
 
     public void ExecuteInstantPattern()
     {
         ClearCurrentGrid();
-        
+
         // CSV 파일 로드 체크
         if (csvFiles.Count == 0)
         {
@@ -805,25 +805,27 @@ public class GridManager : MonoBehaviour
                 return;
             }
         }
-        
+
         // 그리드 컨테이너 생성
         currentGridContainer = new GameObject("GridContainer");
         currentGridContainer.transform.parent = transform;
-        
+
         // CSV 데이터 로드 및 초기화
         gridData = csvFiles[Random.Range(0, csvFiles.Count)];
         InitializeGridFromCSV();
-        
+
         // 스폰 순서를 Instant로 설정
         spawnOrder = SpawnOrder.Instant;
-        
+
         // 그리드 배열이 제대로 초기화되었는지 확인
         if (gridArray == null)
         {
             Debug.LogError("그리드 배열이 초기화되지 않았습니다!");
             return;
         }
-        
+
         CreateGrid(); // CreateInstantOrder가 호출됨
     }
 }
+
+#endif
