@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{F0E3AF40-1FC9-4597-A5A0-910C4F9C50F6}",
     "Language": "SFX",
-    "Hash": "{234B2FB4-0614-F49B-7B02-3F81EBC1E59D}",
+    "Hash": "{08E374D3-AD68-4053-E2B4-CDBD2698CD10}",
     "ObjectPath": "Play_SFX_Discard",
     "ShortName": "Play_SFX_Discard",
     "Path": "Event/Play_SFX_Discard.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{542A8B2E-BCED-1F35-10A9-6F999076DA6F}"
+  "FileHash": "{7DE0FFE4-A94E-E8CD-75AC-6751412ECA49}"
  }
 }

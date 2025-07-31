@@ -36,6 +36,11 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="SFX_MoveCharacter" ID="{219AD005-5BA7-4600-BCAE-2C4397734035}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.0319116449511401"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.177473534201954"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>SFX_MoveCharacter.wav</AudioFile>
 							<MediaIDList>

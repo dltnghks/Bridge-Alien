@@ -84,7 +84,7 @@ public class UIPlayerTaskPopup : UIPopup
         SetTaskStatText();
         
         // 초기화가 끝난 후, 첫 번째 탭 선택
-        if (Managers.Player.GetStat(Define.PlayerStatsType.Fatigue) == 0)
+        if (Managers.Player.GetStats(Define.PlayerStatsType.Fatigue) == 0)
         {
             // 피로도가 없으면 휴식&유흥 탭
             SelectTabButton(GetButton((int)Buttons.EntertainmentButton).GetComponent<UITaskTabButton>());    
@@ -128,7 +128,7 @@ public class UIPlayerTaskPopup : UIPopup
         }
 
         // 피로도, 골드 조건 체크
-        if(Managers.Player.GetStat(Define.PlayerStatsType.Fatigue) < _selectedTaskData.RequirementGold)
+        if(Managers.Player.GetStats(Define.PlayerStatsType.Fatigue) < _selectedTaskData.RequirementGold)
         {
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;
@@ -137,11 +137,11 @@ public class UIPlayerTaskPopup : UIPopup
         // 일과 수행창 예약
         Managers.UI.RequestPopup<UITaskProgressPopup>(_selectedTaskData);
 
-        Managers.Player.AddStat(Define.PlayerStatsType.Fatigue, _selectedTaskData.FatigueValue);
-        Managers.Player.AddStat(Define.PlayerStatsType.Experience, _selectedTaskData.ExperienceValue);
-        Managers.Player.AddStat(Define.PlayerStatsType.Intelligence, _selectedTaskData.IntelligenceValue);
-        Managers.Player.AddStat(Define.PlayerStatsType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue);
-        Managers.Player.AddStat(Define.PlayerStatsType.Luck, Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue));
+        Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, _selectedTaskData.FatigueValue);
+        Managers.Player.AddStats(Define.PlayerStatsType.Experience, _selectedTaskData.ExperienceValue);
+        Managers.Player.AddStats(Define.PlayerStatsType.Intelligence, _selectedTaskData.IntelligenceValue);
+        Managers.Player.AddStats(Define.PlayerStatsType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue);
+        Managers.Player.AddStats(Define.PlayerStatsType.Luck, Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue));
         
         ClosePopupUI();
     }

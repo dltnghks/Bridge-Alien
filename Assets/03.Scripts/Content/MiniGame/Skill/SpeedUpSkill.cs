@@ -51,6 +51,8 @@ public class SpeedUpSkill : DurationSkill, IRegainable
         OnActiveStateChanged?.Invoke(true);
         currentDuration = skillData.MaxDuration;
         _playerCharacter.SpeedUp(speedBoost); // 플레이어 속도 증가
+
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.SpeedUpSkill.ToString(), gameObject);
     }
 
     protected override void EndSkill()

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{79DF991E-E52E-4AFC-A538-E019B7A29F1A}",
     "Language": "SFX",
-    "Hash": "{6B588BB1-3AD9-C62D-35AC-CC32DD0C2199}",
+    "Hash": "{81985EAC-5692-7A83-F1E6-253A4B317E9E}",
     "ObjectPath": "Play_BGM_Unload",
     "ShortName": "Play_BGM_Unload",
     "Path": "Event/Play_BGM_Unload.bnk",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{7331BD95-1A46-91D7-DE1F-3906DF65C22B}"
+  "FileHash": "{D51DB274-9AAA-DEA0-B2F5-D731F08C5ED5}"
  }
 }

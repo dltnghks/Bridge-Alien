@@ -146,7 +146,7 @@ public class DailyManager
             Logger.Log($"Daily Event is Dialog : {_currentDailyData.GetParameter<Define.Dialog>()}");
 
             _dialogPopup = Managers.UI.ShowPopUI<UIDialogPopup>(); 
-            _dialogPopup.SetDialogs(_currentDailyData.GetParameter<Define.Dialog>(), StartEvent);    
+            _dialogPopup.InitDialog(_currentDailyData.GetParameter<Define.Dialog>(), _currentDailyData.DialogScene, StartEvent);    
         }
         else if(_currentDailyData.EventType == Define.DailyEventType.MiniGame)
         {

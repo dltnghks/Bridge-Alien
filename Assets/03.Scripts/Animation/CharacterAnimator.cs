@@ -48,6 +48,8 @@ public class CharacterAnimator : MonoBehaviour
     //~ 게임 결과 포즈
     public void PlayWinPose()
     {
+        animator.SetBool(PARAM_IS_MOVING, false);  
+
         Logger.Log("PlayWinPose");
         animator.SetTrigger(TRIGGER_WIN);
         ChangeState(CharacterState.WinPose);

@@ -28,4 +28,17 @@ public class MiniGameSkillScriptableObject : ScriptableObject
 
         return skillList;
     }
+
+    public SkillData GetSkillData(Define.MiniGameSkillType skillType)
+    {
+        SkillData skillData = null;
+        MiniGameSkillData.TryGetValue(skillType, out skillData);
+
+        if (skillData == null)
+        {
+            Logger.LogError("잘못된 스킬 타입 접근");
+        }
+
+        return skillData;
+    }
 }

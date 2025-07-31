@@ -10,6 +10,7 @@ public class UIGameStartPopup : UIPopup
 {
     enum Images{
         GameStartImage,
+
     }
 
     private Image _gameStartImage;
@@ -32,7 +33,6 @@ public class UIGameStartPopup : UIPopup
     public void PlayGameStartEffect(Action gameStartAction = null)
     {
         Init();
-        Debug.Log("Init Pass");
 
         // 초기 상태 설정
         _gameStartImage.transform.localScale = Vector3.zero; // 이미지 크기를 0으로 설정
@@ -42,25 +42,28 @@ public class UIGameStartPopup : UIPopup
         Sequence sequence = DOTween.Sequence();
 
         // 1. 이미지를 키우기
-        sequence.Append(_gameStartImage.transform.DOScale(Vector3.one, ScaleDuration).SetEase(Ease.OutBack));
-        Debug.Log("StartPopup - 1 - Pass");
+        sequence.Append(
+            _gameStartImage.transform.DOScale(Vector3.one, ScaleDuration).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.GameStart.ToString(), gameObject);
+            })
+        );
 
         // 2. 잠시 유지
         sequence.AppendInterval(HoldDuration);
-        Debug.Log("StartPopup - 2 - Pass");
 
         // 3. 투명해지기 (페이드 아웃)
         sequence.Append(_gameStartImage.DOFade(0, FadeDuration).SetEase(Ease.InQuad));
-        Debug.Log("StartPopup - 3 - Pass");
 
         // 4. 애니메이션 종료 후 이미지 비활성화
-        sequence.OnComplete(() => 
+        sequence.OnComplete(() =>
         {
             gameStartAction?.Invoke();
             ClosePopupUI();
-        });
-        
-        Debug.Log("StartPopup - All - Pass");
+        }
+        );
+
+        sequence.Play();
     }
 
     public override void ClosePopupUI()

@@ -15,14 +15,17 @@ public enum SoundType
 
 public enum SceneBGM
 {
+    Title,
     House,
     MiniGameUnload,
     MiniGameDelivery,
 
 }
-public enum CommonSoundSFX{
+public enum CommonSoundSFX
+{
     CommonButtonClick,
     FootStepPlayerCharacter,
+    GameStart,
 }
 
 public enum MiniGameUnloadSoundSFX{
@@ -38,8 +41,12 @@ public enum MiniGameUnloadSoundSFX{
     CoolingComplete,
     CoolingSkill,
     Glitch,
+    SpeedUpSkill,
     Discard,
-    
+    LastScore,
+    DisposalUnitOpenDoor,
+    Siren,
+
     // Ambient
     Conveyor,
     Truck,

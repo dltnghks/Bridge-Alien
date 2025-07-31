@@ -25,6 +25,17 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SFX_GameStart" ID="{3EB0C4C4-D32C-4BDC-8A9F-D3E51D34837E}">
+					<ChildrenList>
+						<Action Name="" ID="{54E6D4A9-0B56-46BB-AADA-F11566C5B6C1}" ShortID="197821680">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_GameStart" ID="{D22CF0B3-FDB6-4E64-B050-380CDA5C48EA}" WorkUnitID="{E4905E00-02FA-454D-8397-6843E05F30B4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
