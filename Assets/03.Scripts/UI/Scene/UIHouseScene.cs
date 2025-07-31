@@ -9,7 +9,6 @@ public class UIHouseScene : UIScene
 {
     enum Texts{
         DayText,
-        TimeText,
         GoldText,
         FatigueText,
     }
@@ -18,41 +17,46 @@ public class UIHouseScene : UIScene
     {
         PlayerStatusButton,
         TaskButton,
-        NextButton,
     }
 
     enum Objects
     {
         UIFatigue,
     }
-    
+
+    enum Images
+    {
+        TimeImage,    
+    }
+
     private UIPopup _currentPopup = null;
     private Slider _fatigueSlider;
-    
+
+    [SerializeField] private Sprite[] _timeImages;
+
     public override bool Init()
     {
         if (base.Init() == false)
         {
             return false;
         }
-        
+
         BindText(typeof(Texts));
         BindButton(typeof(Buttons));
         BindObject(typeof(Objects));
-        
+        BindImage(typeof(Images));
+
         _fatigueSlider = GetObject((int)Objects.UIFatigue).GetOrAddComponent<Slider>();
-        
+
         SetDayText();
-        SetTimeText();
-        
+        SetTimeImage();
+
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
 
         SetGoldText();
         SetFatigue();
-        
-        GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
-        
+
         return true;
     }
 
@@ -60,7 +64,7 @@ public class UIHouseScene : UIScene
     {
         base.UIUpdate();
         SetDayText();
-        SetTimeText();
+        SetTimeImage();
     }
 
     private void OnClickPlayerStatusButton()
@@ -71,6 +75,7 @@ public class UIHouseScene : UIScene
             return;
         }
         
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _currentPopup = Managers.UI.ShowPopUI<UIPlayerStatusPopup>();
     }
 
@@ -86,23 +91,19 @@ public class UIHouseScene : UIScene
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
     }
-    
-    // Test Code
-    private void OnClickNextButton()
-    {
-        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        //Managers.Daily.StartEvent();
-    }
-
 
     private void SetDayText()
     {
         GetText((int)Texts.DayText).SetText($"Day {Managers.Daily.CurrentDate}");
     }
-    
-    private void SetTimeText()
+
+    private void SetTimeImage()
     {
-        GetText((int)Texts.TimeText).SetText($"{Managers.Daily.CurrentDailyData.Time}");
+        if (_timeImages.Length < Managers.Daily.CurrentDailyData.Time)
+        {
+            return;
+        }
+        GetImage((int)Images.TimeImage).sprite = _timeImages[Managers.Daily.CurrentDailyData.Time]; 
     }
     
     private void SetGoldText()

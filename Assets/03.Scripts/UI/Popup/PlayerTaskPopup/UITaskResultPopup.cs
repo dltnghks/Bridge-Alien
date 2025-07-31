@@ -142,7 +142,11 @@ public class UITaskResultPopup : UIPopup
     public override void ClosePopupUI()
     {
         base.ClosePopupUI();
+    }
+
+    public void OnDestroy()
+    {
         // 일과를 수행하면 다음 이벤트로 넘어가기
         Managers.Daily.StartEvent();
-    }
+    } 
 }
