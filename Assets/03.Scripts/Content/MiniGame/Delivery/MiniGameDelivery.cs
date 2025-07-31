@@ -101,7 +101,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public void OnRocketSkill(bool isActive)
     {
         (PlayerCharacter as MiniGameDeliveryPlayer)?.OnRocketEffect(isActive);
-        _deliveryMap.UpdateSpeedMultiplier(isActive ? 2f : 1f);
+        _deliveryMap.UpdateSpeedMultiplier(isActive ? 5f : 1f);
     }
     
     public bool PauseGame()

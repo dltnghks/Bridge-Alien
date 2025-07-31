@@ -38,8 +38,8 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
         MGDSkillContext context = new MGDSkillContext(
             Player,
             _mgPlayer,
-            _damageHandler.OnResetDamage,
-            onRocketAction
+            onRocketSkillAction : onRocketAction,
+            _damageHandler.OnResetDamage
             );
 
         // Context 내부에는 SKill 사용 시 발동할 메서드가 포함이 되어야 한다.

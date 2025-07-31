@@ -74,5 +74,6 @@ public class DeliveryMap : MonoBehaviour
             groundSpeed * speedMultiplier
         );
         _hurdleSpawner.ChangeGroundSpeed(groundSpeed * speedMultiplier);
+        groundSpeed *= speedMultiplier;
     }
 }

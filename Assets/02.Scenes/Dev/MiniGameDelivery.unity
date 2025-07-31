@@ -834,9 +834,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+  moveMultiplier: 1
   rayDistance: 1
   enableFlip: 1
-  invincibleTime: 3
+  bumpInvincibleTime: 3
+  skillInvincibleTime: 5
   blinkInterval: 0.1
   damageHandler: {fileID: 0}
 --- !u!54 &1483318604

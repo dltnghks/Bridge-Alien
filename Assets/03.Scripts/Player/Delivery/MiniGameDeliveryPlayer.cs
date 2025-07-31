@@ -46,17 +46,21 @@ public class MiniGameDeliveryPlayer : Player
 
     public void OnRocketEffect(bool isOn)
     {
+        Debug.Log("Call Method - RocketEffect   : " + isOn);
         if (isOn)
         {
-            moveMultiplier = 2f;
+            moveMultiplier = 5f;
             
             _invincibleTime = skillInvincibleTime;
+            
+            blinkInterval = 100f;
             StartCoroutine(OnInvincible());
         }
         else
         {
             moveMultiplier = 1.0f;
             StopCoroutine(OnInvincible());
+            blinkInterval = 0.1f;
         }
         
         // Rocket 스킬이 발동된다면.
@@ -85,13 +89,12 @@ public class MiniGameDeliveryPlayer : Player
 
         while (elapsed < _invincibleTime)
         {
-            float alpha = isOpaque ? 0.3f : 1f;
+            float alpha = isOpaque ? 1f : 0.3f;
             spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-
-            isOpaque = !isOpaque;
             
             yield return new WaitForSeconds(blinkInterval);
             
+            isOpaque = !isOpaque;
             elapsed += blinkInterval;
         }
 
