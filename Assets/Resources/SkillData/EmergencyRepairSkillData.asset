@@ -15,7 +15,7 @@ MonoBehaviour:
   Type: 3
   Name: "\uAE34\uAE09 \uC218\uB9AC \uC2A4\uD0AC"
   Icon: {fileID: 21300000, guid: ac0fdf9760204b546b37344f5818f8b7, type: 3}
-  Description: 
-  UpgradeCostByLevel: 0000000000000000000000000000000000000000
-  MaxDuration: 1
-  SkillDurationByLevel: 01000000
+  Description: "\uCC28\uB7C9 \uC190\uC0C1\uB3C4\uB97C {0}% \uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  UpgradeCostByLevel: 00000000640000006400000064000000
+  MaxDuration: 0
+  SkillDurationByLevel: 0000000014000000280000003c00000050000000
