@@ -66,7 +66,6 @@ public class UIMiniMiniGame : UISubItem
         BindEvent(_leverRect.gameObject, OnDrag, Define.UIEvent.Drag);
         BindEvent(_leverRect.gameObject, OnPointerUp, Define.UIEvent.PointerUp);
         
-        Debug.Log("초기화 성공");
         _board.SetActive(false);
         _infoText.gameObject.SetActive(false);
 
@@ -85,7 +84,6 @@ public class UIMiniMiniGame : UISubItem
 
     public void StartMiniGame()
     {
-        Debug.Log("Mini Game 시작");
         if (_startCoroutine != null)
         {
             StopCoroutine(_startCoroutine);
@@ -207,5 +205,6 @@ public class UIMiniMiniGame : UISubItem
         
         // 게임 재시작
         Managers.MiniGame.CurrentGame.ResumeGame();
+        (Managers.MiniGame.CurrentGame.PlayerCharacter as MiniGameDeliveryPlayer)?.OnMove(1f);
     }
 }

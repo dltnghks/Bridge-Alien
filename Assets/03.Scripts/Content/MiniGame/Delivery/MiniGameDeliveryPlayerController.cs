@@ -56,7 +56,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
 
     public void InputJoyStick(Vector2 input)
     {
-        if (Managers.MiniGame.CurrentGame.IsPause)
+        if (Managers.MiniGame.CurrentGame.IsPause || Player.IsHit)
         {
             return;
         }
@@ -84,6 +84,8 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
         targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
 
         Player.transform.position = targetPos;
+        
+        _mgPlayer.OnMove(inputData.x * inputData.x + inputData.y * inputData.y);
     }
 
     public void Interaction()
