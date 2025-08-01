@@ -61,9 +61,18 @@ public class UIWorkModulePopup : UIPopup
     private void OnClickUpgradeButton()
     {
         if (_currentSelectedSkillButton is null)
-            return; 
-            
-        _currentSelectedSkillButton.Deselect();
+            return;
+
+        // 해당 스킬이 더 이상 업그레이드가 불가능하면 return
+        int currentSkillLevel = Managers.Player.GetSkillLevel(_selectedSkillType);
+        int maxLevel = Managers.Data.MiniGameSkillData.GetSkillData(_selectedSkillType).GetMaxLevel();
+        Logger.Log(currentSkillLevel + ", " + maxLevel);
+        if (currentSkillLevel >= maxLevel)
+        {
+            return;
+        }
+
+            _currentSelectedSkillButton.Deselect();
         _currentSelectedSkillButton = null;
 
         UIWorkModuleUpgradePopup workModuleUpgradePopup = Managers.UI.ShowPopUI<UIWorkModuleUpgradePopup>();
@@ -89,7 +98,15 @@ public class UIWorkModulePopup : UIPopup
 
     private void SetSkillList(List<SkillData> skillTypeList)
     {
+        _currentSelectedSkillButton?.Deselect();
         _currentSelectedSkillButton = null;
+
+        // Disable unused skill UI elements
+        foreach(var workModuleSkill in _workModuleSkillList)
+        {
+            workModuleSkill.gameObject.SetActive(false);
+        }
+
         // Adjust the number of skill UI elements to match the skill list
         while (_workModuleSkillList.Count < skillTypeList.Count)
         {
@@ -102,12 +119,6 @@ public class UIWorkModulePopup : UIPopup
             _workModuleSkillList[i].SetWorkModuleSkillInfo(skillTypeList[i]);
             _workModuleSkillList[i].Init(this);
             _workModuleSkillList[i].gameObject.SetActive(true);
-        }
-
-        // Disable unused skill UI elements
-        for (int i = skillTypeList.Count; i < _workModuleSkillList.Count; i++)
-        {
-            _workModuleSkillList[i].gameObject.SetActive(false);
         }
     }
 

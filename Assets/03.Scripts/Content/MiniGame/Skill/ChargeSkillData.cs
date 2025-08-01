@@ -11,4 +11,9 @@ public class ChargeSkillData : SkillData
     {
         MaxCharges = SkillChargesByLevel[level];
     }
+
+    public override int GetSkillValue(int level)
+    {
+        return SkillChargesByLevel[level];
+    }
 }

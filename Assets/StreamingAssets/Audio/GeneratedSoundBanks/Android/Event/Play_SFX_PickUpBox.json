@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1470981393",
+    "Type": "Event",
+    "GUID": "{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}",
+    "Language": "SFX",
+    "Hash": "{4C6B7F10-1100-F956-B6D2-57928BED63C3}",
+    "ObjectPath": "Play_SFX_PickUpBox",
+    "ShortName": "Play_SFX_PickUpBox",
+    "Path": "Event/Play_SFX_PickUpBox.bnk",
+    "Media": [
+     {
+      "Id": "315293091",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "box1_hold.wav",
+      "Path": "Media/315293091.wem",
+      "CachePath": "76/{76FE44A6-3F81-B1AF-02A2-A579C1BAB928}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1470981393",
+      "Name": "Play_SFX_PickUpBox",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_PickUpBox",
+      "GUID": "{DB51CA9E-9FA6-4172-9452-79C29AE1E21A}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.25241667",
+      "DurationMax": "0.25241667",
+      "MediaRefs": [
+       {
+        "Id": "315293091"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{ABBEEBAB-7475-2755-90C2-CCDE969267CD}"
+ }
+}

@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	179707198	Play_SFX_Prologue_Voice			\Default Work Unit\Prologue\Play_SFX_Prologue_Voice	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

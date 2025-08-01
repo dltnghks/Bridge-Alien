@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3070083385	Play_AMB_CoolingMachine			\Default Work Unit\MiniGameUnload\Play_AMB_CoolingMachine	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

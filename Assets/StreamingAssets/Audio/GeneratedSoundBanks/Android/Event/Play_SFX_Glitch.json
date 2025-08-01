@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "4163194645",
+    "Type": "Event",
+    "GUID": "{4E3C25A6-4695-4A62-9744-3CF74E419572}",
+    "Language": "SFX",
+    "Hash": "{DEA25967-0765-FB6D-CB2D-C09CB0F39D7B}",
+    "ObjectPath": "Play_SFX_Glitch",
+    "ShortName": "Play_SFX_Glitch",
+    "Path": "Event/Play_SFX_Glitch.bnk",
+    "Media": [
+     {
+      "Id": "80434395",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "05_0628_glitch.wav",
+      "Path": "Media/80434395.wem",
+      "CachePath": "5C/{5CC76FEB-064E-BE69-39F3-B3DF35872163}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "4163194645",
+      "Name": "Play_SFX_Glitch",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_Glitch",
+      "GUID": "{4E3C25A6-4695-4A62-9744-3CF74E419572}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.768625",
+      "DurationMax": "0.768625",
+      "MediaRefs": [
+       {
+        "Id": "80434395"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{27450540-20EE-D86C-550F-30E2DAEB65B9}"
+ }
+}

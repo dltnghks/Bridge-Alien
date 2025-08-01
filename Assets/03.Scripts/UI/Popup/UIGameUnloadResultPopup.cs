@@ -152,6 +152,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
 
     public void OnDestroy()
     {
+        // 1차 시연때는 다음 이벤트로 넘어가기 X
         OnClickConfirmButton();
     }
 }

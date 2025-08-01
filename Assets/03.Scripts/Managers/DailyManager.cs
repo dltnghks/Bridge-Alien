@@ -119,20 +119,20 @@ public class DailyManager
         }
         
     }
-    
+
     // 이벤트 처리
     public void StartEvent()
     {
         Managers.UI.SceneUI.UIUpdate();
-        
+
         if (_currentDailyData == null)
         {
             Logger.LogError("currentDailyData is null");
             return;
         }
-        
+
         Logger.Log($"StartEvent | Time : {_currentDailyData.Time}, ID : {_currentDailyData.EventID}");
-        
+
         if (_currentDailyData.EventType == Define.DailyEventType.Unknown)
         {
             // 처음인 경우 바로 다음으로 넘어가기
@@ -141,15 +141,15 @@ public class DailyManager
             //Managers.Scene.ChangeScene(Define.Scene.House);
             return;
         }
-        
+
         if (_currentDailyData.EventType == Define.DailyEventType.Dialog)
         {
             Logger.Log($"Daily Event is Dialog : {_currentDailyData.GetParameter<Define.Dialog>()}");
 
-            _dialogPopup = Managers.UI.ShowPopUI<UIDialogPopup>(); 
-            _dialogPopup.InitDialog(_currentDailyData.GetParameter<Define.Dialog>(), _currentDailyData.DialogScene, StartEvent);    
+            _dialogPopup = Managers.UI.ShowPopUI<UIDialogPopup>();
+            _dialogPopup.InitDialog(_currentDailyData.GetParameter<Define.Dialog>(), _currentDailyData.DialogScene, StartEvent);
         }
-        else if(_currentDailyData.EventType == Define.DailyEventType.MiniGame)
+        else if (_currentDailyData.EventType == Define.DailyEventType.MiniGame)
         {
             StartMiniGameEvent();
         }
@@ -159,7 +159,8 @@ public class DailyManager
             return;
         }
 
-        SetNextEvent();
+        // 1차 시연때는 다음 이벤트로 넘어가기 X
+        // SetNextEvent();
     }
 
     private void StartMiniGameEvent()

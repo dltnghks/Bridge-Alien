@@ -18,7 +18,7 @@ MonoBehaviour:
       Value:
       - EventID: Start
         Time: 0
-        EventType: 0
+        EventType: 3
         Parameter: Unknown
         NextEventID: D1_E1
         DialogScene: 0

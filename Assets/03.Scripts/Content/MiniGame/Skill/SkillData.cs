@@ -10,8 +10,15 @@ public abstract class SkillData : ScriptableObject
     public string Description;
     public int[] UpgradeCostByLevel;
 
-    public int GetSkillValue(int level)
+    public int GetSkillUpgradeCost(int level)
     {
         return UpgradeCostByLevel[level];
+    }
+
+    public abstract int GetSkillValue(int level);
+
+    public int GetMaxLevel()
+    {
+        return UpgradeCostByLevel.Length;
     }
 }

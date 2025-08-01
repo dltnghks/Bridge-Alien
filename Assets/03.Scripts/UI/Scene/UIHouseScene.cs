@@ -17,6 +17,8 @@ public class UIHouseScene : UIScene
     {
         PlayerStatusButton,
         TaskButton,
+        // 1차 시연용 버튼
+        MiniGameButton,
     }
 
     enum Objects
@@ -53,6 +55,8 @@ public class UIHouseScene : UIScene
 
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
+        // 1차 시연용 버튼
+        GetButton((int)Buttons.MiniGameButton).gameObject.BindEvent(OnClickMiniGameButton);
 
         SetGoldText();
         SetFatigue();
@@ -90,6 +94,14 @@ public class UIHouseScene : UIScene
         
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
+    }
+
+    // 1차 시연용 버튼
+    private void OnClickMiniGameButton()
+    {
+
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+        _currentPopup = Managers.UI.ShowPopUI<UIMiniGameChoicePopup>();
     }
 
     private void SetDayText()
