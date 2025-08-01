@@ -29,7 +29,14 @@ public class UIMiniGameHelpButton : UISubItem
         
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickOption");
-        
-        Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
+
+        if (Managers.MiniGame.CurrentGame is MiniGameUnload)
+        {
+            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
+        }
+        else if (Managers.MiniGame.CurrentGame is MiniGameDelivery)
+        {
+            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGDTutorialPopup");
+        }
     }
 }

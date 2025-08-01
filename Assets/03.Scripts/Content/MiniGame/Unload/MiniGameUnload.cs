@@ -50,7 +50,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _timer.TimerUpdate();
         _boxPreview.TimerUpdate();
     }
-    
+
     public void StartGame()
     {
         Logger.Log("UnloadGame Starting game");
@@ -73,17 +73,30 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         // 카메라 타겟으로 플레이어 캐릭터 설정
         Managers.Camera.Initialize(PlayerCharacter.transform);
- 
+
         // 게임 활성화
         IsActive = true;
-        
+
         Logger.Log("Game successfully started.");
+
+        StartTutorial();
+    }
+
+    public void StartTutorial()
+    {
+        // 도움말을 처음보는 경우 띄워주기
+        if (Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] == false)
+        {
+            Managers.UI.ClosePopupUI();
+            Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] = true;
+            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
+        }
     }
 
     private void SetGameInfo()
     {
         _gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameUnloadSetting>(Define.MiniGameType.Unload);
-        
+
         if (_gameSetting == null)
         {
             Logger.LogError("Not Found Game Information");
@@ -224,15 +237,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
         _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
         _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
-
-        Logger.Log($"MiniGame Tutorial : {Managers.MiniGame.MiniGameTutorial.Length}");
-        // 설정이 끝나면 설명창 띄워주기
-        if (Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] == false)
-        {
-            Managers.UI.ClosePopupUI();
-            Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] = true;
-            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
-        }
     }
     
     public bool PauseGame()
