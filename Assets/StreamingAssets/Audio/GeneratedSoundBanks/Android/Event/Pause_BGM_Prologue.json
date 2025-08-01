@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3738416110",
+    "Type": "Event",
+    "GUID": "{2A1826E2-A0E0-4D9D-B87F-AE751A28344B}",
+    "Language": "SFX",
+    "Hash": "{C45EB8A3-E849-831F-9C43-6C8B08191054}",
+    "ObjectPath": "Pause_BGM_Prologue",
+    "ShortName": "Pause_BGM_Prologue",
+    "Path": "Event/Pause_BGM_Prologue.bnk",
+    "Events": [
+     {
+      "Id": "3738416110",
+      "Name": "Pause_BGM_Prologue",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Pause\\Pause_BGM_Prologue",
+      "GUID": "{2A1826E2-A0E0-4D9D-B87F-AE751A28344B}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C157FDD0-DF82-326D-4F96-27A57C11931C}"
+ }
+}

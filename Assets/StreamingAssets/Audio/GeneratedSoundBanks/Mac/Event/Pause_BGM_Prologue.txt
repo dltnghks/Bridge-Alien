@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3738416110	Pause_BGM_Prologue			\Default Work Unit\BGM\Pause\Pause_BGM_Prologue	
+

@@ -29,7 +29,7 @@
      {
       "Id": "3600540829",
       "Name": "Play_BGM_House",
-      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_House",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play\\Play_BGM_House",
       "GUID": "{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{051D110C-8F19-D698-C130-33CCC4C43EC6}"
+  "FileHash": "{A0210BCA-9F17-1CE6-454D-13949049CBFD}"
  }
 }

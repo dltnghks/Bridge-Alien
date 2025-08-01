@@ -29,7 +29,7 @@
      {
       "Id": "1390403282",
       "Name": "Play_BGM_Unload",
-      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Unload",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play\\Play_BGM_Unload",
       "GUID": "{79DF991E-E52E-4AFC-A538-E019B7A29F1A}",
       "DurationType": "OneShot",
       "DurationMin": "100.26236",
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{D51DB274-9AAA-DEA0-B2F5-D731F08C5ED5}"
+  "FileHash": "{D07FF10A-2386-3088-6539-2D062B132CCC}"
  }
 }

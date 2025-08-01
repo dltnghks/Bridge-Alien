@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "993449880",
+    "Type": "Event",
+    "GUID": "{35D65506-0183-4C07-B984-29B28D6D579B}",
+    "Language": "SFX",
+    "Hash": "{2BC130A8-EAC8-EF42-26FE-6A5C48613856}",
+    "ObjectPath": "Resume_BGM_Gamemaploop",
+    "ShortName": "Resume_BGM_Gamemaploop",
+    "Path": "Event/Resume_BGM_Gamemaploop.bnk",
+    "Events": [
+     {
+      "Id": "993449880",
+      "Name": "Resume_BGM_Gamemaploop",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Resume\\Resume_BGM_Gamemaploop",
+      "GUID": "{35D65506-0183-4C07-B984-29B28D6D579B}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{BAEF4A3A-E89D-1C70-3302-F58DB60BFEB6}"
+ }
+}

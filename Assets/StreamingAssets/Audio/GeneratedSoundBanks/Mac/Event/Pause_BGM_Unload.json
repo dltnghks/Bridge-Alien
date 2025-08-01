@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "242931204",
+    "Type": "Event",
+    "GUID": "{7A58AC07-E00D-46F9-A666-EE9892ECC881}",
+    "Language": "SFX",
+    "Hash": "{D658CCAC-94BB-3878-43A9-5C971474BC92}",
+    "ObjectPath": "Pause_BGM_Unload",
+    "ShortName": "Pause_BGM_Unload",
+    "Path": "Event/Pause_BGM_Unload.bnk",
+    "Events": [
+     {
+      "Id": "242931204",
+      "Name": "Pause_BGM_Unload",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Pause\\Pause_BGM_Unload",
+      "GUID": "{7A58AC07-E00D-46F9-A666-EE9892ECC881}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{4BE22708-FC86-4736-2033-9AD84F81A17B}"
+ }
+}

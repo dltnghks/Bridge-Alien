@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2437488212",
+    "Type": "Event",
+    "GUID": "{BB820399-FC17-414F-8B47-841C2735DDFF}",
+    "Language": "SFX",
+    "Hash": "{EF749283-886B-C03C-09AF-BF966251485C}",
+    "ObjectPath": "Play_SFX_Player_BeAttacked",
+    "ShortName": "Play_SFX_Player_BeAttacked",
+    "Path": "Event/Play_SFX_Player_BeAttacked.bnk",
+    "Media": [
+     {
+      "Id": "134918044",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Player_BeAttacked.wav",
+      "Path": "Media/134918044.wem",
+      "CachePath": "5B/{5B2A30CA-03A5-1BB7-E553-4F609DA9CE8C}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2437488212",
+      "Name": "Play_SFX_Player_BeAttacked",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_Player_BeAttacked",
+      "GUID": "{BB820399-FC17-414F-8B47-841C2735DDFF}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.1583333",
+      "DurationMax": "1.1583333",
+      "MediaRefs": [
+       {
+        "Id": "134918044"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{113779FF-9F26-FA3F-8AC0-6E7F19DF97E6}"
+ }
+}

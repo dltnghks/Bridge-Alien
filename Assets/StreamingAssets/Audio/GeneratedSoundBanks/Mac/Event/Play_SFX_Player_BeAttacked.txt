@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2437488212	Play_SFX_Player_BeAttacked			\Default Work Unit\MiniGameDelivery\Play_SFX_Player_BeAttacked	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+
