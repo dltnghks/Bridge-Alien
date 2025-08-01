@@ -49,33 +49,47 @@ public class UIDamageView : UISubItem
 
     private IEnumerator FillRoutine(float percentage)
     {
-        const float fillSpeed = 1.2f;
+        const float fillSpeed = 1f;
 
         if (percentage < 0.01f)
         {
             OnResetFill();
+            yield break;
         }
-        else
+
+        int direction = percentage >= GetCurrentFillPercentage() ? 1 : -1;
+
+        int startIndex = direction == 1 ? 0 : 3;
+        int endIndex = direction == 1 ? 4 : -1;
+
+        for (int i = startIndex; i != endIndex; i += direction)
         {
-            for (int i = 0; i < 4; ++i)
+            float segmentStart = i * 0.25f;
+            float segmentEnd = (i + 1) * 0.25f;
+            float targetFill = Mathf.InverseLerp(segmentStart, segmentEnd, percentage);
+            targetFill = Mathf.Clamp01(targetFill);
+
+            float current = _images[i].fillAmount;
+            while (Mathf.Abs(current - targetFill) > 0.01f)
             {
-                float segmentStart = i * 0.25f;
-                float segmentEnd = (i + 1) * 0.25f;
-                float targetFill = Mathf.InverseLerp(segmentStart, segmentEnd, percentage);
-                targetFill = Mathf.Clamp01(targetFill);
-
-                float current = _images[i].fillAmount;
-                while (Mathf.Abs(current - targetFill) > 0.01f)
-                {
-                    current = Mathf.MoveTowards(current, targetFill, Time.deltaTime * fillSpeed);
-                    _images[i].fillAmount = current;
-                    yield return null;
-                }
-
-                _images[i].fillAmount = targetFill;
+                current = Mathf.MoveTowards(current, targetFill, Time.deltaTime * fillSpeed);
+                _images[i].fillAmount = current;
+                yield return null;
             }
+
+            _images[i].fillAmount = targetFill;
         }
     }
+
+    private float GetCurrentFillPercentage()
+    {
+        float total = 0f;
+        for (int i = 0; i < 4; i++)
+            total += _images[i].fillAmount;
+
+        return total / 4f;
+    }
+
 
     public void OnResetFill()
     {
