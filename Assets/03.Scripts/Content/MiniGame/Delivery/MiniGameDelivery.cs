@@ -48,7 +48,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
 
-        totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed;
+        totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed * PlayerCharacter.MoveSpeed;
         _pathProgressBar?.ProgressUpdate(totalDistance);
     }
     
@@ -166,7 +166,14 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     
     private void OnPlayerExitScreen()
     {
-        Debug.Log("플레이어 화면 밖 이탈 완료");
+        float experienceBonus = 1f;
+        float fatiguePenalty = 1f;
+        float scoreBonus = 1f;
+        float totalScore = totalDistance;
+
+        Managers.Player.AddGold((int)totalScore);
+
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(1500, 1500, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
         
     }
     
