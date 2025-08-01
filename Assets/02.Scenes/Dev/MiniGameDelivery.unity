@@ -3937,7 +3937,7 @@ MonoBehaviour:
   cloudSpeed: 0.5
   buildSpeed: 1
   fenceSpeed: 1.5
-  groundSpeed: 1
+  groundSpeed: 0.7
   speedMultiplier: 1
 --- !u!114 &6067250156558462706
 MonoBehaviour:

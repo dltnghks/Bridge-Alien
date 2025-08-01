@@ -53,7 +53,7 @@ public class DeliveryMap : MonoBehaviour
         UpdateSpeedMultiplier();
         
         // 허들도 동일한 수치를 위해서 속도 전달
-        _hurdleSpawner.Initialize(GroundSpeed * 4f);
+        _hurdleSpawner.Initialize(GroundSpeed * 47.5f);
     }
 
     public void OnMiniMiniGame()
@@ -83,6 +83,6 @@ public class DeliveryMap : MonoBehaviour
             fenceSpeed * speedMultiplier,
             GroundSpeed
         );
-        _hurdleSpawner.ChangeGroundSpeed(GroundSpeed * 4f);
+        _hurdleSpawner.ChangeGroundSpeed(GroundSpeed * 47.5f);
     }
 }
