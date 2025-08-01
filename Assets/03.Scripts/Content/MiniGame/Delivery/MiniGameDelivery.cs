@@ -25,7 +25,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     }
     
     public bool IsActive { get; set; }
-    public bool IsPause { get; set; }
+    public bool IsPause { get; set; } = false;
 
     public Player PlayerCharacter { get; set; }
     public IPlayerController PlayerController { get; set; }
@@ -48,7 +48,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
 
-        totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed * 1000f;
+        totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed;
         _pathProgressBar?.ProgressUpdate(totalDistance);
     }
     
@@ -102,11 +102,19 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         
         // Initialize
         _deliveryMap.Initialize();
-        _damageHandler.Initialize(() => Debug.Log("Damage Full"));
+        _damageHandler.Initialize(() =>
+        {
+            PauseGame();
+            _uiGameDeliveryScene.UIMiniMiniGame.StartMiniGame();
+        });
+        
+        // _damageHandler.Initialize(() => { });
         
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
         
         ChangeActive(true);
+        
+        _deliveryMap.StartDeliveryMap();
         
         _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
         
@@ -124,7 +132,10 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         {
             return false;
         }
+        
         IsPause = true;
+        _damageHandler.OnClearDamage();
+        
         return true;
     }
 
@@ -134,6 +145,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         {
             return;
         }
+        
         IsPause = false;
     }
 

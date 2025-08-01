@@ -55,6 +55,11 @@ public class DeliveryMap : MonoBehaviour
         // 허들도 동일한 수치를 위해서 속도 전달
         _hurdleSpawner.Initialize(groundSpeed);
     }
+
+    public void StartDeliveryMap()
+    {
+        _hurdleSpawner.StartHurdleSpawn();
+    }
     
     public void UpdateIsActive(bool flag)
     {

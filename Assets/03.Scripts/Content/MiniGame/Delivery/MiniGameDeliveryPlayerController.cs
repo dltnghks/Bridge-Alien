@@ -56,8 +56,13 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
 
     public void InputJoyStick(Vector2 input)
     {
-        if (Managers.MiniGame.CurrentGame.IsPause) return;
-        
+        if (Managers.MiniGame.CurrentGame.IsPause)
+        {
+            Debug.Log("Player Pause");
+            return;
+        }
+
+        Debug.Log("Player Speed: " + Player.MoveSpeed * _damageHandler.SpeedPenalty);
         PlayerMovement(input);
     }
 

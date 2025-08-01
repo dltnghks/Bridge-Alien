@@ -52,7 +52,10 @@ public class HurdleSpawner : MonoBehaviour
         hurdleObjectManager.Initialize(groundSpeed);
 
         _isRunning = true;
+    }
 
+    public void StartHurdleSpawn()
+    {
         StartCoroutine(HurdleSpawnLoop());
     }
 
@@ -61,11 +64,18 @@ public class HurdleSpawner : MonoBehaviour
         hurdleObjectManager.ChangeSpeed(speed);
     }
 
+
+    private bool isTrigger = false;
+    private bool isOn = false;
+    private void Update()
+    {
+    }
+
     private IEnumerator HurdleSpawnLoop()
     {
         while (_isRunning)
         {
-            if (_miniGame.IsHurdleSpawn && !_miniGame.IsActive)
+            if (_miniGame.IsHurdleSpawn || !_miniGame.IsActive || _miniGame.IsPause)
             {
                 Debug.Log("기준을 넘어서 스폰 실패.");
 
@@ -75,7 +85,7 @@ public class HurdleSpawner : MonoBehaviour
                     _currentBuildCoroutine = null;
                 }
 
-                yield break;
+                yield return null;
             }
 
             var type = GetHurdleType();

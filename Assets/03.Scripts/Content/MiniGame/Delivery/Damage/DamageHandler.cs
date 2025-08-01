@@ -5,7 +5,6 @@ using Random = UnityEngine.Random;
 
 public class DamageHandler : MonoBehaviour
 {
-    [field: Header("현재 손상률")]
     public float DamageRate
     {
         get
@@ -62,6 +61,12 @@ public class DamageHandler : MonoBehaviour
     public void OnResetDamage(bool isOn)
     {
         DamageRate -= Mathf.Clamp01(0.25f);
+        UpdateSpeedPenalty();
+    }
+
+    public void OnClearDamage()
+    {
+        DamageRate = 0f;
         UpdateSpeedPenalty();
     }
 
