@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1219789434	Resume_BGM_Delivery			\Default Work Unit\BGM\Resume\Resume_BGM_Delivery	
+

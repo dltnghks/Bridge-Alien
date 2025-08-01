@@ -12,6 +12,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553c3922789c22044ab2fde358806555, type: 3}
   m_Name: SoundEvent
   m_EditorClassIdentifier: 
+  BGMPauseEventDic:
+    _serializedList:
+    - Key: 0
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    - Key: 1
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 63c31901a691df84bab41d838f403edb, type: 2}
+    - Key: 2
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 6a3d138509658614d9fc3fdc3a600baa, type: 2}
+    - Key: 3
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 69456eab9a228c54f87a8a911a3039fb, type: 2}
+    - Key: 4
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 7981a65e26910b94e85be4b978bd3520, type: 2}
+    - Key: 5
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 8073e071800e1f340b92a406b1d7dbcf, type: 2}
+  BGMResumeEventDic:
+    _serializedList:
+    - Key: 0
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 0}
+    - Key: 1
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 69456eab9a228c54f87a8a911a3039fb, type: 2}
+    - Key: 2
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: e5c6a9668d12da84a8f877ee135c7a6b, type: 2}
+    - Key: 3
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 69456eab9a228c54f87a8a911a3039fb, type: 2}
+    - Key: 4
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 8445fbc9360896843be3cdb4170cd90b, type: 2}
+    - Key: 5
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: f985047c5ed14b04fa5adc4bcf6174d9, type: 2}
   EventDict:
     _serializedList:
     - Key: 0

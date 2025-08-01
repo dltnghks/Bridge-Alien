@@ -58,6 +58,22 @@ public class SoundManager : MonoBehaviour
         PlaySound(SoundType.SceneBGM, eventName);
     }
 
+    public void PauseBGM()
+    {
+        Define.Scene type = Managers.Scene.CurrentSceneType;
+        string eventName = $"Pause_BGM_{type}";
+        Logger.Log(eventName);
+        BGMPauseSound(type, eventName);
+    }
+
+    public void ResumeBGM()
+    {
+        Define.Scene type = Managers.Scene.CurrentSceneType;
+        string eventName = $"Resume_BGM_{type}";
+        Logger.Log(eventName);
+        BGMResumeSound(type, eventName);
+    }
+
     public void StopBGM()
     {
         AkUnitySoundEngine.StopAll();
@@ -76,7 +92,47 @@ public class SoundManager : MonoBehaviour
         }
         PlaySound(type, eventName, soundGameObject);
     }
-    
+
+    private void BGMPauseSound(Define.Scene type, string key, GameObject soundGameObject = null)
+    {
+        if (_soundEvent == null || !_soundEvent.BGMPauseEventDic.ContainsKey(type))
+        {
+            Debug.LogWarning($"SoundType {type} not found!");
+            return;
+        }
+
+        if (_soundEvent.BGMPauseEventDic.TryGetValue(type, out AK.Wwise.Event soundEvent))
+        {
+            //Debug.Log($"Playing sound: {soundEvent}");
+            // 이벤트 호출
+            PlayEvent(soundEvent, soundGameObject);
+        }
+        else
+        {
+            Debug.LogWarning($"Key {key} not found in SoundType {type}!");
+        }
+    }
+
+    private void BGMResumeSound(Define.Scene type, string key, GameObject soundGameObject = null)
+    {
+        if (_soundEvent == null || !_soundEvent.BGMResumeEventDic.ContainsKey(type))
+        {
+            Debug.LogWarning($"SoundType {type} not found!");
+            return;
+        }
+
+        if (_soundEvent.BGMResumeEventDic.TryGetValue(type, out AK.Wwise.Event soundEvent))
+        {
+            //Debug.Log($"Playing sound: {soundEvent}");
+            // 이벤트 호출
+            PlayEvent(soundEvent, soundGameObject);
+        }
+        else
+        {
+            Debug.LogWarning($"Key {key} not found in SoundType {type}!");
+        }
+    }
+
     private void PlaySound(SoundType type, string key, GameObject soundGameObject = null)
     {
         if (_soundEvent == null || !_soundEvent.EventDict.ContainsKey(type))
@@ -107,7 +163,8 @@ public class SoundManager : MonoBehaviour
         soundEvent.Post(soundGameObject);
     }
 
-    public void PauseSFX(){
+    public void PauseSFX()
+    {
 
     }
     

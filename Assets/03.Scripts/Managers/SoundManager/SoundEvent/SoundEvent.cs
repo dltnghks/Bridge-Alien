@@ -78,6 +78,8 @@ public enum MiniGameDeliverySoundSFX
 [CreateAssetMenu(fileName = "SoundEvent", menuName = "Sound/SoundEvent")]
 public class SoundEvent : ScriptableObject
 {
+    public SerializedDictionary<Define.Scene, AK.Wwise.Event> BGMPauseEventDic = new SerializedDictionary<Define.Scene, AK.Wwise.Event>();
+    public SerializedDictionary<Define.Scene, AK.Wwise.Event> BGMResumeEventDic = new SerializedDictionary<Define.Scene, AK.Wwise.Event>();
     public SerializedDictionary<SoundType, SerializedDictionary<string, AK.Wwise.Event>> EventDict = new SerializedDictionary<SoundType, SerializedDictionary<string, AK.Wwise.Event>>();
 
     public void InitEventDict()

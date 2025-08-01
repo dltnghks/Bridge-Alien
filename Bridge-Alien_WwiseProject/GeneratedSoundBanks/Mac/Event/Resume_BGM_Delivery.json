@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1219789434",
+    "Type": "Event",
+    "GUID": "{5B19C12A-3F97-47D2-B519-6ED0F8A3ABC7}",
+    "Language": "SFX",
+    "Hash": "{E08B942F-CE49-A0A6-216A-EF231BBC920C}",
+    "ObjectPath": "Resume_BGM_Delivery",
+    "ShortName": "Resume_BGM_Delivery",
+    "Path": "Event/Resume_BGM_Delivery.bnk",
+    "Events": [
+     {
+      "Id": "1219789434",
+      "Name": "Resume_BGM_Delivery",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Resume\\Resume_BGM_Delivery",
+      "GUID": "{5B19C12A-3F97-47D2-B519-6ED0F8A3ABC7}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{6CDC38F9-44C6-9335-BA0E-4EBE5A5D9399}"
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "1518925573",
+    "Type": "Event",
+    "GUID": "{EE5A0E64-75F9-4729-A732-3C8CFA1625B2}",
+    "Language": "SFX",
+    "Hash": "{5191E3E3-5DB1-6B84-0A7D-A98B76C3AF8B}",
+    "ObjectPath": "Pause_BGM_Delivery",
+    "ShortName": "Pause_BGM_Delivery",
+    "Path": "Event/Pause_BGM_Delivery.bnk",
+    "Events": [
+     {
+      "Id": "1518925573",
+      "Name": "Pause_BGM_Delivery",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Pause\\Pause_BGM_Delivery",
+      "GUID": "{EE5A0E64-75F9-4729-A732-3C8CFA1625B2}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{E48E216B-AB3E-954F-1465-79728DB1E7D8}"
+ }
+}

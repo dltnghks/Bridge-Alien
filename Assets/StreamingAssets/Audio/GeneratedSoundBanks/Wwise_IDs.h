@@ -13,6 +13,11 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PAUSE_BGM_DELIVERY = 1518925573U;
+        static const AkUniqueID PAUSE_BGM_GAMEMAPLOOP = 731417429U;
+        static const AkUniqueID PAUSE_BGM_HOUSE = 1408522931U;
+        static const AkUniqueID PAUSE_BGM_PROLOGUE = 3738416110U;
+        static const AkUniqueID PAUSE_BGM_UNLOAD = 242931204U;
         static const AkUniqueID PLAY_AMB_CONVEYOR = 3092289078U;
         static const AkUniqueID PLAY_AMB_COOLINGMACHINE = 3070083385U;
         static const AkUniqueID PLAY_AMB_TRUCK = 626113458U;
@@ -54,6 +59,11 @@ namespace AK
         static const AkUniqueID PLAY_SFX_SPEEDUPSKILL = 3323914767U;
         static const AkUniqueID PLAY_SFX_STANDARDBOXHOLD = 3045790947U;
         static const AkUniqueID PLAY_SFX_STANDARDBOXPUT = 1744893023U;
+        static const AkUniqueID RESUME_BGM_DELIVERY = 1219789434U;
+        static const AkUniqueID RESUME_BGM_GAMEMAPLOOP = 993449880U;
+        static const AkUniqueID RESUME_BGM_HOUSE = 3961413098U;
+        static const AkUniqueID RESUME_BGM_PROLOGUE = 3112024457U;
+        static const AkUniqueID RESUME_BGM_UNLOAD = 2461900779U;
     } // namespace EVENTS
 
     namespace GAME_PARAMETERS

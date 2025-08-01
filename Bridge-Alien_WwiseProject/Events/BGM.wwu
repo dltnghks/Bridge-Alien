@@ -3,61 +3,213 @@
 	<Events>
 		<WorkUnit Name="BGM" ID="{1A0DA787-1125-4D65-9554-B502E9CF44E9}" OwnerID="{50393233-F172-4901-A81D-A91BD1E15694}" PersistMode="Nested">
 			<ChildrenList>
-				<Event Name="Play_BGM_Unload" ID="{79DF991E-E52E-4AFC-A538-E019B7A29F1A}">
+				<Folder Name="Pause" ID="{BFC0041F-275A-43F9-B7F3-9DE81E1EA013}" ShortID="1059858415">
 					<ChildrenList>
-						<Action Name="" ID="{B93DBEED-3362-4719-A09B-44577E8AA3B3}" ShortID="524972685">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="BGM_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Pause_BGM_House" ID="{FA173F13-C830-4A82-A257-973521ABE170}">
+							<ChildrenList>
+								<Action Name="" ID="{04986F16-335D-4EBE-8D7E-A48AABB4E8C5}" ShortID="669411344">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_House" ID="{A2470E92-1800-4815-B1B1-122E3EB23FF4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pause_BGM_Unload" ID="{7A58AC07-E00D-46F9-A666-EE9892ECC881}">
+							<ChildrenList>
+								<Action Name="" ID="{1756A24E-7F02-488E-9165-F0D3718B5FF3}" ShortID="674756612">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pause_BGM_Prologue" ID="{2A1826E2-A0E0-4D9D-B87F-AE751A28344B}">
+							<ChildrenList>
+								<Action Name="" ID="{56E8BA25-F3F3-43FB-9A0C-32A155F9481D}" ShortID="228939048">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Prologue" ID="{698F77CC-D9AC-46CB-B3C5-17DC616069B2}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pause_BGM_Gamemaploop" ID="{A6E2B132-A6B5-4A8A-AD18-74FCC721FD15}">
+							<ChildrenList>
+								<Action Name="" ID="{BA6A57CA-D535-498A-93B3-134E99713C8D}" ShortID="948546378">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Gamemaploop" ID="{DDC4D1DF-3BB6-4DF7-89F8-79E2A7AC11C4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Pause_BGM_Delivery" ID="{EE5A0E64-75F9-4729-A732-3C8CFA1625B2}">
+							<ChildrenList>
+								<Action Name="" ID="{F2E2D53E-7C69-4F04-BA4C-865B1A3F0F30}" ShortID="317883683">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Delivery" ID="{8DF81BC4-BDE1-453A-8B75-5A47A34DF3B5}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
-				<Event Name="Play_BGM_Delivery" ID="{70A44CB3-D02A-4DA1-93D4-967262509001}">
+				</Folder>
+				<Folder Name="Play" ID="{11D11F75-3A10-429A-B997-088EADB788A0}" ShortID="766625818">
 					<ChildrenList>
-						<Action Name="" ID="{93891346-5FCA-4A31-BDFA-751EC030255B}" ShortID="960925833">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="BGM_Delivery" ID="{8DF81BC4-BDE1-453A-8B75-5A47A34DF3B5}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Play_BGM_Delivery" ID="{70A44CB3-D02A-4DA1-93D4-967262509001}">
+							<ChildrenList>
+								<Action Name="" ID="{93891346-5FCA-4A31-BDFA-751EC030255B}" ShortID="960925833">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Delivery" ID="{8DF81BC4-BDE1-453A-8B75-5A47A34DF3B5}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_BGM_Gamemaploop" ID="{16BEABF8-1C79-4E48-9A0B-ACF2CFE2CDAE}">
+							<ChildrenList>
+								<Action Name="" ID="{2569218B-AADF-41BA-95D1-5699D85AEDF6}" ShortID="59968411">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Gamemaploop" ID="{DDC4D1DF-3BB6-4DF7-89F8-79E2A7AC11C4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_BGM_Unload" ID="{79DF991E-E52E-4AFC-A538-E019B7A29F1A}">
+							<ChildrenList>
+								<Action Name="" ID="{B93DBEED-3362-4719-A09B-44577E8AA3B3}" ShortID="524972685">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_BGM_House" ID="{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}">
+							<ChildrenList>
+								<Action Name="" ID="{DFC59882-2135-46FB-9836-F3C2FD8B9F90}" ShortID="653151412">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_House" ID="{A2470E92-1800-4815-B1B1-122E3EB23FF4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_BGM_Prologue" ID="{E6D6EF6C-8E5D-47D6-81FC-518DAF5B2078}">
+							<ChildrenList>
+								<Action Name="" ID="{9F34F653-1A2C-4A7F-BEDE-5D7D376E65B9}" ShortID="1009672436">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Prologue" ID="{698F77CC-D9AC-46CB-B3C5-17DC616069B2}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
-				<Event Name="Play_BGM_Gamemaploop" ID="{16BEABF8-1C79-4E48-9A0B-ACF2CFE2CDAE}">
+				</Folder>
+				<Folder Name="Resume" ID="{9317E0CB-58DA-49A0-ACCC-6C88AAA301C5}" ShortID="282663958">
 					<ChildrenList>
-						<Action Name="" ID="{2569218B-AADF-41BA-95D1-5699D85AEDF6}" ShortID="59968411">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="BGM_Gamemaploop" ID="{DDC4D1DF-3BB6-4DF7-89F8-79E2A7AC11C4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Resume_BGM_Prologue" ID="{D43FC76A-662B-4A5D-BAC6-7D4CA6448246}">
+							<ChildrenList>
+								<Action Name="" ID="{0DD03100-E83B-4B88-8E2F-52E12DE4389C}" ShortID="655479975">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="9"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Prologue" ID="{698F77CC-D9AC-46CB-B3C5-17DC616069B2}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Resume_BGM_Unload" ID="{247FA199-A96D-4F81-90D1-A4F51B2C1EB9}">
+							<ChildrenList>
+								<Action Name="" ID="{B4D7A996-AE89-4392-983C-5CA3B38BDCF6}" ShortID="1067654445">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="9"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Unload" ID="{93801ABA-F65D-4D79-9DA1-310A8D7D267B}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Resume_BGM_Delivery" ID="{5B19C12A-3F97-47D2-B519-6ED0F8A3ABC7}">
+							<ChildrenList>
+								<Action Name="" ID="{EAECC293-D277-4554-AFE2-E6D4928DE816}" ShortID="534680367">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="9"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Delivery" ID="{8DF81BC4-BDE1-453A-8B75-5A47A34DF3B5}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Resume_BGM_Gamemaploop" ID="{35D65506-0183-4C07-B984-29B28D6D579B}">
+							<ChildrenList>
+								<Action Name="" ID="{96D9923E-CF55-4B4E-8953-5BB38BA9EF10}" ShortID="59770011">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="9"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Gamemaploop" ID="{DDC4D1DF-3BB6-4DF7-89F8-79E2A7AC11C4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Resume_BGM_House" ID="{8D8970BB-9E7B-4EA8-AC7E-B6726CB63285}">
+							<ChildrenList>
+								<Action Name="" ID="{ED009AA3-4D45-4FF6-9978-A835157230FA}" ShortID="1037547646">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="9"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_House" ID="{A2470E92-1800-4815-B1B1-122E3EB23FF4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
-				<Event Name="Play_BGM_Prologue" ID="{E6D6EF6C-8E5D-47D6-81FC-518DAF5B2078}">
-					<ChildrenList>
-						<Action Name="" ID="{9F34F653-1A2C-4A7F-BEDE-5D7D376E65B9}" ShortID="1009672436">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="BGM_Prologue" ID="{698F77CC-D9AC-46CB-B3C5-17DC616069B2}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
-				<Event Name="Play_BGM_House" ID="{CD02C941-7D6D-4E4D-BA5E-36345BFB78FD}">
-					<ChildrenList>
-						<Action Name="" ID="{DFC59882-2135-46FB-9836-F3C2FD8B9F90}" ShortID="653151412">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="BGM_House" ID="{A2470E92-1800-4815-B1B1-122E3EB23FF4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
-					</ChildrenList>
-				</Event>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

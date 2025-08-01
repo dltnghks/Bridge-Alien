@@ -29,7 +29,7 @@
      {
       "Id": "3434853244",
       "Name": "Play_BGM_Prologue",
-      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Prologue",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play\\Play_BGM_Prologue",
       "GUID": "{E6D6EF6C-8E5D-47D6-81FC-518DAF5B2078}",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{185CE65F-0EE2-B19D-9A80-03341C595ADF}"
+  "FileHash": "{4DEF682C-81E5-4B29-3D6C-0C3C69F4BDB0}"
  }
 }

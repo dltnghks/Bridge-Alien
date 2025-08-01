@@ -181,8 +181,163 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\BGM
     guid: 87a70d1a2511654d9554b502e9cf44e9
     GuidInternal: 
-    m_lastTime: -8584476405594721153
+    m_lastTime: -8584475345323083057
     List:
+    - name: Pause
+      guid: 1f04c0bf5a27f943b7f39de81e1ea013
+      id: 3092587493
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Pause
+        ObjectType: 4
+        guid: 1f04c0bf5a27f943b7f39de81e1ea013
+      Path: Events\Default Work Unit\BGM\Pause
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Pause_BGM_Delivery
+      guid: 640e5aeef9752947a7323c8cfa1625b2
+      id: 1518925573
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Pause
+        ObjectType: 4
+        guid: 1f04c0bf5a27f943b7f39de81e1ea013
+      - ElementName: Pause_BGM_Delivery
+        ObjectType: 3
+        guid: 640e5aeef9752947a7323c8cfa1625b2
+      Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_Delivery
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pause_BGM_Gamemaploop
+      guid: 32b1e2a6b5a68a4aad1874fcc721fd15
+      id: 731417429
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Pause
+        ObjectType: 4
+        guid: 1f04c0bf5a27f943b7f39de81e1ea013
+      - ElementName: Pause_BGM_Gamemaploop
+        ObjectType: 3
+        guid: 32b1e2a6b5a68a4aad1874fcc721fd15
+      Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_Gamemaploop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pause_BGM_House
+      guid: 133f17fa30c8824aa257973521abe170
+      id: 1408522931
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Pause
+        ObjectType: 4
+        guid: 1f04c0bf5a27f943b7f39de81e1ea013
+      - ElementName: Pause_BGM_House
+        ObjectType: 3
+        guid: 133f17fa30c8824aa257973521abe170
+      Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_House
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pause_BGM_Prologue
+      guid: e226182ae0a09d4db87fae751a28344b
+      id: 3738416110
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Pause
+        ObjectType: 4
+        guid: 1f04c0bf5a27f943b7f39de81e1ea013
+      - ElementName: Pause_BGM_Prologue
+        ObjectType: 3
+        guid: e226182ae0a09d4db87fae751a28344b
+      Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_Prologue
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Pause_BGM_Unload
+      guid: 07ac587a0de0f946a666ee9892ecc881
+      id: 242931204
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Pause
+        ObjectType: 4
+        guid: 1f04c0bf5a27f943b7f39de81e1ea013
+      - ElementName: Pause_BGM_Unload
+        ObjectType: 3
+        guid: 07ac587a0de0f946a666ee9892ecc881
+      Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_Unload
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play
+      guid: 751fd111103a9a42b997088eadb788a0
+      id: 1256202815
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
+      Path: Events\Default Work Unit\BGM\Play
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_BGM_Delivery
       guid: b34ca4702ad0a14d93d4967262509001
       id: 3454433139
@@ -196,10 +351,13 @@ MonoBehaviour:
       - ElementName: BGM
         ObjectType: 12
         guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
       - ElementName: Play_BGM_Delivery
         ObjectType: 3
         guid: b34ca4702ad0a14d93d4967262509001
-      Path: Events\Default Work Unit\BGM\Play_BGM_Delivery
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_Delivery
       maxAttenuation: 0
       maxDuration: 100.4636
       minDuration: 100.4636
@@ -216,10 +374,13 @@ MonoBehaviour:
       - ElementName: BGM
         ObjectType: 12
         guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
       - ElementName: Play_BGM_Gamemaploop
         ObjectType: 3
         guid: f8abbe16791c484e9a0bacf2cfe2cdae
-      Path: Events\Default Work Unit\BGM\Play_BGM_Gamemaploop
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_Gamemaploop
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -236,10 +397,13 @@ MonoBehaviour:
       - ElementName: BGM
         ObjectType: 12
         guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
       - ElementName: Play_BGM_House
         ObjectType: 3
         guid: 41c902cd6d7d4d4eba5e36345bfb78fd
-      Path: Events\Default Work Unit\BGM\Play_BGM_House
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_House
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -256,10 +420,13 @@ MonoBehaviour:
       - ElementName: BGM
         ObjectType: 12
         guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
       - ElementName: Play_BGM_Prologue
         ObjectType: 3
         guid: 6cefd6e65d8ed64781fc518daf5b2078
-      Path: Events\Default Work Unit\BGM\Play_BGM_Prologue
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_Prologue
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -276,13 +443,151 @@ MonoBehaviour:
       - ElementName: BGM
         ObjectType: 12
         guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
       - ElementName: Play_BGM_Unload
         ObjectType: 3
         guid: 1e99df792ee5fc4aa538e019b7a29f1a
-      Path: Events\Default Work Unit\BGM\Play_BGM_Unload
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_Unload
       maxAttenuation: 0
       maxDuration: 100.26236
       minDuration: 100.26236
+    - name: Resume
+      guid: cbe01793da58a049accc6c88aaa301c5
+      id: 953277036
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Resume
+        ObjectType: 4
+        guid: cbe01793da58a049accc6c88aaa301c5
+      Path: Events\Default Work Unit\BGM\Resume
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Resume_BGM_Delivery
+      guid: 2ac1195b973fd247b5196ed0f8a3abc7
+      id: 1219789434
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Resume
+        ObjectType: 4
+        guid: cbe01793da58a049accc6c88aaa301c5
+      - ElementName: Resume_BGM_Delivery
+        ObjectType: 3
+        guid: 2ac1195b973fd247b5196ed0f8a3abc7
+      Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_Delivery
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Resume_BGM_Gamemaploop
+      guid: 0655d6358301074cb98429b28d6d579b
+      id: 993449880
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Resume
+        ObjectType: 4
+        guid: cbe01793da58a049accc6c88aaa301c5
+      - ElementName: Resume_BGM_Gamemaploop
+        ObjectType: 3
+        guid: 0655d6358301074cb98429b28d6d579b
+      Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_Gamemaploop
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Resume_BGM_House
+      guid: bb70898d7b9ea84eac7eb6726cb63285
+      id: 3961413098
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Resume
+        ObjectType: 4
+        guid: cbe01793da58a049accc6c88aaa301c5
+      - ElementName: Resume_BGM_House
+        ObjectType: 3
+        guid: bb70898d7b9ea84eac7eb6726cb63285
+      Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_House
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Resume_BGM_Prologue
+      guid: 6ac73fd42b665d4abac67d4ca6448246
+      id: 3112024457
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Resume
+        ObjectType: 4
+        guid: cbe01793da58a049accc6c88aaa301c5
+      - ElementName: Resume_BGM_Prologue
+        ObjectType: 3
+        guid: 6ac73fd42b665d4abac67d4ca6448246
+      Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_Prologue
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Resume_BGM_Unload
+      guid: 99a17f246da9814f90d1a4f51b2c1eb9
+      id: 2461900779
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Resume
+        ObjectType: 4
+        guid: cbe01793da58a049accc6c88aaa301c5
+      - ElementName: Resume_BGM_Unload
+        ObjectType: 3
+        guid: 99a17f246da9814f90d1a4f51b2c1eb9
+      Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_Unload
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
   - PhysicalPath: Events\Common.wwu
     PathAndIcons:
     - ElementName: Events
@@ -370,7 +675,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584475348681256714
+    m_lastTime: -8584475345322954765
     List: []
   - PhysicalPath: Events\GameMap.wwu
     PathAndIcons:
@@ -1194,7 +1499,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8584531703521922472
     List: []
-  ExpandedFileSystemItemIds: 010000000200000003000000040000000a0000000b0000000e000000110000001500000016000000180000002a0000002b0000002c00000030000000310000003300000034000000350000003d000000
+  ExpandedFileSystemItemIds: 01000000020000000300000004000000050000000a0000000e000000110000001500000016000000180000002a0000002b0000002c00000030000000310000003300000034000000350000003d000000
   ExpandedWaapiItemIds: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e000000110000001500000018000000190000001a0000001b0000001d00000024000000250000003b0000003e000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1

@@ -29,7 +29,7 @@
      {
       "Id": "1914102211",
       "Name": "Play_BGM_Gamemaploop",
-      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play_BGM_Gamemaploop",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play\\Play_BGM_Gamemaploop",
       "GUID": "{16BEABF8-1C79-4E48-9A0B-ACF2CFE2CDAE}",
       "DurationType": "Infinite",
       "MediaRefs": [
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{B6A5A1C0-4EB2-8EFE-5F4E-BC5A0BAB5C5E}"
+  "FileHash": "{B5BB0DFD-BAB4-8D41-8B6D-B5836093053F}"
  }
 }
