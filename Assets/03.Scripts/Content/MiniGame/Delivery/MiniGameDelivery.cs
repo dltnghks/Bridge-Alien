@@ -51,18 +51,18 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed * PlayerCharacter.MoveSpeed;
         _pathProgressBar?.ProgressUpdate(totalDistance);
     }
-    
+
     public void StartGame()
     {
         _pathProgressBar = new MiniGameDeliveryPathProgress();
-        
+
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
         {
             Debug.Log("Player 캐릭터가 존재하지 않아요.");
             return;
         }
-        
+
         _damageHandler = Utils.FindChild<DamageHandler>(gameObject, "Player", true);
         if (_damageHandler == null)
         {
@@ -76,14 +76,14 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             Debug.Log("플레이어 컨트롤러가 존재하지 않아요.");
             return;
         }
-        
+
         _deliveryMap = Utils.FindChild<DeliveryMap>(gameObject, "Map", true);
         if (_deliveryMap == null)
         {
             Debug.Log("D.M이 존재하지 않습니다.");
             return;
         }
-        
+
         // 스킬 등록
         if (PlayerController is ISkillController skillController)
         {
@@ -93,13 +93,13 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             ((MiniGameDeliveryPlayerController)PlayerController).onRocketAction = OnRocketSkill;
             skillController.SetSkillList(_skillList);
         }
-        
+
         _uiGameDeliveryScene.UIDamageView.Initialize(_damageHandler, null);
-        
+
         // Event Chain
         _onChangeActive = new UnityEvent<bool>();
         _onChangeActive?.AddListener(_deliveryMap.UpdateIsActive);
-        
+
         // Initialize
         _deliveryMap.Initialize();
         _damageHandler.Initialize(() =>
@@ -108,15 +108,27 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             _deliveryMap.OnMiniMiniGame();
             _uiGameDeliveryScene.UIMiniMiniGame.StartMiniGame();
         });
-        
+
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
-        
+
         ChangeActive(true);
-        
+
         _deliveryMap.StartDeliveryMap();
-        
+
         _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
-        
+
+        StartTutorial();
+    }
+
+    public void StartTutorial()
+    {
+        // 도움말을 처음보는 경우 띄워주기
+        if (Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] == false)
+        {
+            Managers.UI.ClosePopupUI();
+            Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] = true;
+            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGDTutorialPopup");
+        }
     }
 
     public void OnRocketSkill(bool isActive)
