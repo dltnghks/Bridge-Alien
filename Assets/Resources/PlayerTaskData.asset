@@ -22,7 +22,7 @@ MonoBehaviour:
         TaskProgressText: "\uADFC\uC131\uC7A5 \uC911...."
         TaskCompletedText: "\uC9C0\uAD6C \uC911\uB825\uC5D0 \uB354 \uC775\uC219\uD574\uC9C4
           \uAC83 \uAC19\uB2E4.."
-        RequirementGold: 0
+        RequirementGold: 100
         FatigueValue: 0
         ExperienceValue: 0
         GravityAdaptationValue: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
         TaskProgressText: "\uADFC\uC131\uC7A5 \uC911...."
         TaskCompletedText: "\uC9C0\uAD6C \uC911\uB825\uC5D0 \uB354 \uC775\uC219\uD574\uC9C4
           \uAC83 \uAC19\uB2E4.."
-        RequirementGold: 200000
+        RequirementGold: 200
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 2
@@ -47,7 +47,7 @@ MonoBehaviour:
         ThumbnailText: 
         TaskProgressText: 
         TaskCompletedText: 
-        RequirementGold: 50000
+        RequirementGold: 50
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
         ThumbnailText: 
         TaskProgressText: 
         TaskCompletedText: 
-        RequirementGold: 100000
+        RequirementGold: 100
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 0
@@ -108,10 +108,10 @@ MonoBehaviour:
         LuckMinValue: 0
       - TaskID: C03_T02
         TaskName: "\uB178\uB798\uBC29"
-        ThumbnailText: "<\uC720\uD765 : \uB178\uB798\uBC29>"
+        ThumbnailText: 
         TaskProgressText: "\uC2E0\uB098\uAC8C \uB178\uB798 \uBD80\uB974\uB294 \uC911..."
         TaskCompletedText: "\uC2A4\uD2B8\uB808\uC2A4\uAC00 \uD480\uB9B0\uB2E4.."
-        RequirementGold: 150000
+        RequirementGold: 150
         FatigueValue: 0
         ExperienceValue: 0
         GravityAdaptationValue: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
         ThumbnailText: 
         TaskProgressText: 
         TaskCompletedText: 
-        RequirementGold: 300000
+        RequirementGold: 300
         FatigueValue: 0
         ExperienceValue: 0
         GravityAdaptationValue: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
         ThumbnailText: 
         TaskProgressText: 
         TaskCompletedText: 
-        RequirementGold: 500000
+        RequirementGold: 500
         FatigueValue: 100
         ExperienceValue: 0
         GravityAdaptationValue: 0

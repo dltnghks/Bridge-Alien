@@ -32,6 +32,21 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         CreatePreviewBox();
 
         DequeueBox();
+
+        // 게임 시작 => 박스 max까지 채워두기
+        while (_previewQueue.Count > 0) {
+            MiniGameUnloadBox box = _previewQueue.Peek();
+            if (box != null && _miniGameUnloadBoxSpawnPoint.CanSpawnBox())
+            {
+                _miniGameUnloadBoxSpawnPoint.SpawnBox(box);
+                DequeueBox();
+            }
+            else
+            {
+                break;
+            }
+        }
+
     }
 
     public void TimerUpdate()

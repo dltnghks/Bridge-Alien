@@ -83,13 +83,19 @@ public class UIBoxPreview : UISubItem
                 boxImage.sprite = sprite;
                 boxNumber = box.Info.BoxNumber;
                 boxRegion = box.Info.GetBoxRegion();
+                GetImage((int)Images.BoxImage).color = new Color(0, 0, 0, 0);
+
+                boxImage.sprite = sprite;
+                GetText((int)Texts.BoxNumberText).SetText(boxNumber);
+                GetText((int)Texts.RegionText).SetText($"{boxRegion} 레일");
             }
         }
-        
-        GetImage((int)Images.BoxImage).color = new Color(0, 0, 0, 0);
-        boxImage.sprite = sprite;
-        GetText((int)Texts.BoxNumberText).SetText(boxNumber);
-        GetText((int)Texts.RegionText).SetText(boxRegion);
+        else
+        {
+            GetImage((int)Images.BoxImage).color = new Color(0, 0, 0, 0);
+            GetText((int)Texts.BoxNumberText).SetText("");
+            GetText((int)Texts.RegionText).SetText("");
+        }
 
         if (sprite != null)
         {
