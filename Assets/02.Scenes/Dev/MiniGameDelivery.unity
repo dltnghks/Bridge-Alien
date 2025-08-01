@@ -2173,8 +2173,8 @@ MonoBehaviour:
   _skillList:
   - {fileID: 164637015}
   - {fileID: 659672050}
-  gameTime: 1500
-  maxDistance: 1500
+  gameTime: 500
+  maxDistance: 500
   totalDistance: 0
 --- !u!4 &1706876986
 Transform:

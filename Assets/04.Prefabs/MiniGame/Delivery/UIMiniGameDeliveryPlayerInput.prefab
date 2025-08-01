@@ -208,7 +208,7 @@ MonoBehaviour:
     m_ActionName: MiniGameUnload/Interaction[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: MiniGameUnload
+  m_DefaultActionMap: 1f339e4a-0899-41e8-b6d9-1ae23dab408b
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1688212624066777915

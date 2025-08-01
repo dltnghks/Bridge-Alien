@@ -77,14 +77,16 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
         float minX = center.x - size.x / 2f;
         float maxX = center.x + size.x / 2f;
         float minY = center.y - size.y / 2f;
-        float maxY = center.y + size.y / 2f;
+        float maxY = center.y + size.y / 4f;
 
         // 위치 제한
         targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
         targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
 
-        Player.transform.position = targetPos;
-        
+        //Player.transform.position = targetPos;
+        _mgPlayer.GetComponent<Rigidbody>().MovePosition(targetPos);
+
+
         _mgPlayer.OnMove(inputData.x * inputData.x + inputData.y * inputData.y);
     }
 

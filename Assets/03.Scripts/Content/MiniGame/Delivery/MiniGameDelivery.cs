@@ -166,11 +166,14 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     {
         if (!IsActive)
             return;
+        // 모르겠음.
+        OnPlayerExitScreen();
 
         ChangeActive(false);
         _deliveryMap.UpdateSpeedMultiplier(0f);
 
         var deliveryPlayer = PlayerCharacter as MiniGameDeliveryPlayer;
+    
         if (deliveryPlayer != null)
         {
             deliveryPlayer.OnExitComplete = OnPlayerExitScreen;
@@ -187,7 +190,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
 
         Managers.Player.AddGold((int)totalScore);
 
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(1500, 1500, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(500, 500, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
         
     }
     

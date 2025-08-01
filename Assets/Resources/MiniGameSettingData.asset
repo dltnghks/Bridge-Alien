@@ -15,6 +15,6 @@ MonoBehaviour:
   miniGameSettingData:
     _serializedList:
     - Key: 1
-      Value: '{"GamePlayTime":1,"MaxSpawnBoxIndex":3,"BoxSpawnInterval":5,"DetectionBoxRadius":2,"MoveSpeedReductionRatio":2}'
+      Value: '{"GamePlayTime":60,"MaxSpawnBoxIndex":3,"BoxSpawnInterval":5,"DetectionBoxRadius":2,"MoveSpeedReductionRatio":2}'
     - Key: 2
       Value: '{"GamePlayTime":5}'
