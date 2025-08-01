@@ -22,6 +22,11 @@ public class MiniGameDeliveryPlayer : Player
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
+    public void SetUp(DamageHandler handler)
+    {
+        _damageHandler = handler;
+    }
+
     private void OnTriggerEnter(Collider coll)
     {
         if (isInvincible) return;
@@ -36,6 +41,7 @@ public class MiniGameDeliveryPlayer : Player
         }
     }
 
+    // 데미지 Rate가 100%을 넘었을 때, 특수한 이벤트가 있다면.
     private void UpdateDamageEffect()
     {
         if (_damageHandler.DamageRate > 0.75f)

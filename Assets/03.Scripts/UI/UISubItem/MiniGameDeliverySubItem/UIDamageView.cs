@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -7,7 +6,7 @@ using UnityEngine.UI;
 public class UIDamageView : UISubItem
 {
     private DamageHandler _handler;
-    
+
     private enum Images
     {
         First,
@@ -15,39 +14,59 @@ public class UIDamageView : UISubItem
         Third,
         Fourth,
     }
-    
-    private Image[] _images; 
+
+    private Image[] _images;
+    private Coroutine _fillCoroutine;
 
     public override bool Init()
     {
         if (base.Init() == false)
             return false;
-        
+
         BindImage(typeof(Images));
         _images = new Image[4];
         for (int i = 0; i < 4; ++i)
             _images[i] = GetImage(i);
-        
+
         return true;
     }
 
     public void Initialize(DamageHandler damageHandler, UnityAction endAction = null)
     {
         _handler = damageHandler;
-        // _handler.onDamageUpdateAction += UpdateUI;
+        _handler.OnDamageRateChanged += UpdateUI;
     }
 
     private void UpdateUI(float percentage)
     {
-        for (int i = 1; i <= 4; ++i)
+        if (_fillCoroutine != null)
+            StopCoroutine(_fillCoroutine);
+        if (percentage > 1f)
+            return;
+        
+        _fillCoroutine = StartCoroutine(FillRoutine(percentage));
+    }
+
+    private IEnumerator FillRoutine(float percentage)
+    {
+        const float fillSpeed = 1.2f;
+
+        for (int i = 0; i < 4; ++i)
         {
-            if (i * 0.25f < percentage)
+            float segmentStart = i * 0.25f;
+            float segmentEnd = (i + 1) * 0.25f;
+            float targetFill = Mathf.InverseLerp(segmentStart, segmentEnd, percentage);
+            targetFill = Mathf.Clamp01(targetFill);
+
+            float current = _images[i].fillAmount;
+            while (Mathf.Abs(current - targetFill) > 0.01f)
             {
-                Debug.Log(percentage + " : " + i * 0.25f + " : " + i);
-                _images[4 - i].enabled = false;
+                current = Mathf.MoveTowards(current, targetFill, Time.deltaTime * fillSpeed);
+                _images[i].fillAmount = current;
+                yield return null;
             }
-            else
-                _images[4 - i].enabled = true;
+
+            _images[i].fillAmount = targetFill;
         }
     }
 }

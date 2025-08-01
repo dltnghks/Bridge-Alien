@@ -100,7 +100,7 @@ public class DamageHandler : MonoBehaviour
         while (DamageRate >= 0.75f && DamageRate < 1.0f)
         {
             yield return new WaitForSeconds(1f);
-            DamageRate -= Random.Range(damageMin, damageMax);
+            DamageRate += Random.Range(damageMin, damageMax);
         }
 
         _onStartDamage = false;

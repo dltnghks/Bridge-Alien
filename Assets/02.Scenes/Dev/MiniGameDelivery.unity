@@ -597,11 +597,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 243d6ac3a413b0b44b776a272f05fd2c, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -898,11 +898,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1b0325ce7e22089438c843502b12fd55, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1100,7 +1100,6 @@ MonoBehaviour:
   bumpInvincibleTime: 3
   skillInvincibleTime: 5
   blinkInterval: 0.1
-  damageHandler: {fileID: 0}
 --- !u!54 &1483318604
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1194,8 +1193,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e70ee4110ec82846825230baeb41ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <DamageRate>k__BackingField: 0
-  _damageRatePerSecond: 0.01
+  hurdleDamage: 0.25
+  damageMin: 0.02
+  damageMax: 0.03
+  speedPenalty10: 0.1
+  speedPenalty20: 0.2
 --- !u!114 &1622191753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,11 +1455,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: ce5c2041b31934149a56bbc345da8387, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2270,11 +2272,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 69a5eb99b3b8dbd4d9895bc304622150, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

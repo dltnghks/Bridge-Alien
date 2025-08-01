@@ -20,14 +20,15 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
 
     public MiniGameDeliveryPlayerController(Player player, DamageHandler damageHandler)
     {
-        Init(player);
         _damageHandler = damageHandler;
+        Init(player);
     }
 
     public void Init(Player player)
     {
         Player = player;
         _mgPlayer = Player as MiniGameDeliveryPlayer;
+        _mgPlayer.SetUp(_damageHandler);
     }
 
     public void SetSkillList(SkillBase[] skillList)
