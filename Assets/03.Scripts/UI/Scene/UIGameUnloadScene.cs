@@ -17,7 +17,7 @@ public class UIGameUnloadScene : UIScene
     private UITimer _uiTimer;
     private UIScoreBoard _uiScoreBoard;
     private UIBoxPreview _uiBoxPreview;
-    private UIGameMenu _uiGameMenu;
+    private UIMiniGameHelpButton _uiGameMenu;
     private UIMiniGameUnloadPlayerInput _uiPlayerInput;
     public UITimer UITimer { get { return _uiTimer; } }
     public UIScoreBoard UIScoreBoard { get { return _uiScoreBoard; } }
@@ -36,7 +36,7 @@ public class UIGameUnloadScene : UIScene
         _uiTimer = GetObject((int)Objects.UITimer).GetOrAddComponent<UITimer>();
         _uiScoreBoard = GetObject((int)Objects.UIScoreBoard).GetOrAddComponent<UIScoreBoard>();
         _uiBoxPreview = GetObject((int)Objects.UIBoxPreview).GetOrAddComponent<UIBoxPreview>();
-        _uiGameMenu = GetObject((int)Objects.UIGameMenu).GetOrAddComponent<UIGameMenu>();
+        _uiGameMenu = GetObject((int)Objects.UIGameMenu).GetOrAddComponent<UIMiniGameHelpButton>();
         _uiPlayerInput = GetObject((int)Objects.UIMiniGameUnloadPlayerInput).GetOrAddComponent<UIMiniGameUnloadPlayerInput>();
         
         return true;

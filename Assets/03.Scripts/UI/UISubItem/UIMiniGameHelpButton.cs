@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIGameMenu : UISubItem
+public class UIMiniGameHelpButton : UISubItem
 {
     enum Buttons{
         MenuButton,
