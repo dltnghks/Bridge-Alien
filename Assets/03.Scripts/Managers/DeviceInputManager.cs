@@ -28,12 +28,9 @@ public class DeviceInputManager : MonoBehaviour
 
     private void Update()
     {
-        
-        Logger.Log("Update");
         // 안드로이드의 뒤로가기 버튼 또는 PC의 ESC 키 입력을 감지합니다.
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Logger.Log("Input");
             // 스택에 등록된 액션이 있는지 확인합니다.
             if (_backButtonActions.Count > 0)
             {
