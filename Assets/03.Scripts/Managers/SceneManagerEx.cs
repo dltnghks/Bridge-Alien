@@ -11,6 +11,8 @@ public class SceneManagerEx : MonoBehaviour
     private Define.Scene _selectedSceneType = Define.Scene.MiniGameUnload;
     public event UnityAction<string> SelectedSceneAction;
     private float _minimumLoadTime = 2.0f;
+    
+    public bool IsLoding { get; private set; }
     public Define.Scene CurrentSceneType
     {
         get
@@ -19,7 +21,7 @@ public class SceneManagerEx : MonoBehaviour
                 return _curSceneType;
             return CurrentScene.SceneType;
         }
-        set {  _curSceneType = value; }
+        set { _curSceneType = value; }
     }
 
     public Define.Scene SelectedSceneType
@@ -37,6 +39,7 @@ public class SceneManagerEx : MonoBehaviour
 
     public void Init()
     {
+        IsLoding = false;
     }
 
     string GetSceneName(Define.Scene type)
@@ -55,6 +58,8 @@ public class SceneManagerEx : MonoBehaviour
             Logger.LogWarning("정의되지 않은 씬 타입입니다.");
             return;
         }
+        IsLoding = true;
+
         // 현재 씬 클리어
         CurrentScene.Clear();
         _curSceneType = type;
@@ -90,6 +95,7 @@ public class SceneManagerEx : MonoBehaviour
                 // 페이드 인 시작
                 Managers.Fade.FadeIn();
                 Managers.Pool.Clear();
+                IsLoding = false;
                 //Managers.Camera.Init(CameraManager.CameraType.ThirdPerson, CameraSettings.Default);
             });
         });

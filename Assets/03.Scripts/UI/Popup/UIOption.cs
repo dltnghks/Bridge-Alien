@@ -16,6 +16,13 @@ public class UIOption : UIPopup
     {
         ExitButton,
     }
+
+    enum Texts
+    {
+        SoundAllText,
+        SoundBGMText,
+        SoundSFXText,
+    }
     
     private Slider _allSlider;
     private Slider _bgmSlider;
@@ -30,6 +37,7 @@ public class UIOption : UIPopup
         
         BindObject(typeof(GameObjects));
         BindButton(typeof(Buttons));
+        BindText(typeof(Texts));
 
         _allSlider = GetObject((int)GameObjects.SoundAllOption).GetComponent<Slider>();
         _bgmSlider = GetObject((int)GameObjects.SoundBGMOption).GetComponent<Slider>();
