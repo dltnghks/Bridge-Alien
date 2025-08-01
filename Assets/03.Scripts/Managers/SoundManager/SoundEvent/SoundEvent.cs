@@ -10,6 +10,7 @@ public enum SoundType
     SceneBGM,
     CommonSoundSFX,
     MiniGameUnloadSFX,
+    MiniGameDeliverySFX,
     PrologueSFX,
 }
 
@@ -58,6 +59,20 @@ public enum MiniGameUnloadSoundSFX
     Truck,
     CoolingMachine,
 
+}
+
+public enum MiniGameDeliverySoundSFX
+{
+    Player_BeAttacked,
+    Idle_Flying,
+
+    Minigame_Start,
+    Minigame_Lever,
+    Minigame_Success,
+    Minigame_Fail,
+
+    BoosterSkill,
+    RepairSkill,
 }
 
 [CreateAssetMenu(fileName = "SoundEvent", menuName = "Sound/SoundEvent")]

@@ -17,6 +17,7 @@
 						<WorkUnit Name="common" ID="{E4905E00-02FA-454D-8397-6843E05F30B4}" PersistMode="Reference"/>
 						<WorkUnit Name="gamemap" ID="{3DE6F73A-367E-43BF-8F1F-C86EE257D798}" PersistMode="Reference"/>
 						<WorkUnit Name="MiniGameUnload" ID="{922C8016-7EC9-49D1-A7D7-263589613A6C}" PersistMode="Reference"/>
+						<WorkUnit Name="MiniGameDelivery" ID="{544BE05D-55BB-4E45-90E3-7E08199D402A}" PersistMode="Reference"/>
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="RTPC">

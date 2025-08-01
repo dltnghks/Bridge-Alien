@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "897382453",
+    "Type": "Event",
+    "GUID": "{56766CC4-D5AA-488D-B409-8C3AB053274A}",
+    "Language": "SFX",
+    "Hash": "{91DC5B75-1640-2D6A-92CC-CB7E7887C9F0}",
+    "ObjectPath": "Play_SFX_Repair",
+    "ShortName": "Play_SFX_Repair",
+    "Path": "Event/Play_SFX_Repair.bnk",
+    "Media": [
+     {
+      "Id": "1047791571",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Repair.wav",
+      "Path": "Media/1047791571.wem",
+      "CachePath": "61/{61AA3D94-EE9F-99BD-DB9C-7FE927319B15}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "897382453",
+      "Name": "Play_SFX_Repair",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_Repair",
+      "GUID": "{56766CC4-D5AA-488D-B409-8C3AB053274A}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.632",
+      "DurationMax": "1.632",
+      "MediaRefs": [
+       {
+        "Id": "1047791571"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{31A9B1CA-E188-E511-0A16-EE7908C80BB3}"
+ }
+}

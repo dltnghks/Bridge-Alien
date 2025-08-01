@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2852335006",
+    "Type": "Event",
+    "GUID": "{F1B32C61-948F-4237-AE8D-B80EB456F2B3}",
+    "Language": "SFX",
+    "Hash": "{B9DD2544-5599-C631-1C1B-25B6AEFFBE86}",
+    "ObjectPath": "Play_SFX_Idle_Flying",
+    "ShortName": "Play_SFX_Idle_Flying",
+    "Path": "Event/Play_SFX_Idle_Flying.bnk",
+    "Media": [
+     {
+      "Id": "539572877",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Idle_Flying.wav",
+      "Path": "Media/539572877.wem",
+      "CachePath": "26/{262E8DEA-DA38-D6DB-FAFB-163116764478}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2852335006",
+      "Name": "Play_SFX_Idle_Flying",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_Idle_Flying",
+      "GUID": "{F1B32C61-948F-4237-AE8D-B80EB456F2B3}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.0233107",
+      "DurationMax": "2.0233107",
+      "MediaRefs": [
+       {
+        "Id": "539572877"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{19E54421-2810-76BE-79B4-EFF67A7E8F01}"
+ }
+}

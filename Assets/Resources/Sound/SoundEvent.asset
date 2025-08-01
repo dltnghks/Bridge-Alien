@@ -42,14 +42,6 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 1c99c3731f482414b9caf581998c5a7e, type: 2}
-    - Key: 3
-      Value:
-        _serializedList:
-        - Key: Voice
-          Value:
-            idInternal: 0
-            valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: 13936826dd9cf204b8062aaad9814180, type: 2}
     - Key: 1
       Value:
         _serializedList:
@@ -151,3 +143,46 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: adb8dcf306fd3ad4db2e12f1f29b4a47, type: 2}
+    - Key: 3
+      Value:
+        _serializedList:
+        - Key: Player_BeAttacked
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: f3b05f6f011774740856235f52e79d31, type: 2}
+        - Key: Idle_Flying
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: df618cbc1ee96f64d9bdbbcfd602945f, type: 2}
+        - Key: Minigame_Start
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 46b00bd7302e24d4d97f45871e38b958, type: 2}
+        - Key: Minigame_Lever
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: d37369134653a3d4d82749b8783c9883, type: 2}
+        - Key: Minigame_Success
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: f710847e3ee030c4391b50edcd867fdb, type: 2}
+        - Key: Minigame_Fail
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: f225565b86e29494da4dbb85c22cea8c, type: 2}
+        - Key: BoosterSkill
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 4821fd25b6e00f944b7a7d88bbb88565, type: 2}
+        - Key: RepairSkill
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: f225565b86e29494da4dbb85c22cea8c, type: 2}

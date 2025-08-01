@@ -23,6 +23,7 @@ namespace AK
         static const AkUniqueID PLAY_BGM_UNLOAD = 1390403282U;
         static const AkUniqueID PLAY_SFX_BOMB_ACTIVE_2 = 2174444108U;
         static const AkUniqueID PLAY_SFX_BOMB_PRE_2 = 287468067U;
+        static const AkUniqueID PLAY_SFX_BOOSTER = 4218745022U;
         static const AkUniqueID PLAY_SFX_BROKENBOX = 776408140U;
         static const AkUniqueID PLAY_SFX_CLICKDECIDE = 3480358650U;
         static const AkUniqueID PLAY_SFX_COMMONBUTTONCLICK = 1147630695U;
@@ -35,11 +36,17 @@ namespace AK
         static const AkUniqueID PLAY_SFX_FOOTSTEP_PLAYERCHARACTER = 562923629U;
         static const AkUniqueID PLAY_SFX_GAMESTART = 1947453140U;
         static const AkUniqueID PLAY_SFX_GLITCH = 4163194645U;
+        static const AkUniqueID PLAY_SFX_IDLE_FLYING = 2852335006U;
         static const AkUniqueID PLAY_SFX_LASTSCORE = 495847804U;
+        static const AkUniqueID PLAY_SFX_MINIGAME_LEVER1 = 3681348309U;
+        static const AkUniqueID PLAY_SFX_MINIGAME_START = 3686774692U;
+        static const AkUniqueID PLAY_SFX_MINIGAME_SUCCESS = 4165352769U;
         static const AkUniqueID PLAY_SFX_MOVECHARACTER = 3538692530U;
         static const AkUniqueID PLAY_SFX_PICKUPBOX = 1470981393U;
+        static const AkUniqueID PLAY_SFX_PLAYER_BEATTACKED = 2437488212U;
         static const AkUniqueID PLAY_SFX_PLUSSCORE = 228028252U;
         static const AkUniqueID PLAY_SFX_PROLOGUE_VOICE = 179707198U;
+        static const AkUniqueID PLAY_SFX_REPAIR = 897382453U;
         static const AkUniqueID PLAY_SFX_RUSH_2 = 1896826979U;
         static const AkUniqueID PLAY_SFX_RUSH_PRE = 2883951734U;
         static const AkUniqueID PLAY_SFX_RUSH_PRE_2 = 2242457109U;

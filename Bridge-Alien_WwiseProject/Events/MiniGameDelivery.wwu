@@ -76,6 +76,83 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_SFX_Minigame_Lever1" ID="{AE08D071-7A9F-4FF4-BEEB-FBE105A89661}">
+					<ChildrenList>
+						<Action Name="" ID="{4E6ACBF9-3F78-40CC-881C-B186E01E5B8E}" ShortID="557274440">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Minigame_Lever1" ID="{70FBD75F-BB30-4B4D-B3DD-DB04AE0AE721}" WorkUnitID="{544BE05D-55BB-4E45-90E3-7E08199D402A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Minigame_Start" ID="{EC7DDD25-6822-45D4-96BC-75EC69BF5C7F}">
+					<ChildrenList>
+						<Action Name="" ID="{C8BEAEDE-BE42-4261-84A8-57C05F2A5466}" ShortID="55108233">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Minigame_Start" ID="{EF453A39-9EE2-4FF0-9E98-6B06D42F470F}" WorkUnitID="{544BE05D-55BB-4E45-90E3-7E08199D402A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Minigame_Success" ID="{92CE0D95-8F3C-4105-8DE2-ADF3160BF41B}">
+					<ChildrenList>
+						<Action Name="" ID="{6FA47FB2-C119-4C9B-B9E0-C3A3EC12A811}" ShortID="585613549">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Minigame_Success" ID="{4C56EC08-D34E-4683-AABD-C5990A7C17C3}" WorkUnitID="{544BE05D-55BB-4E45-90E3-7E08199D402A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Booster" ID="{73894803-A471-4D31-9A8A-392E135EF4B4}">
+					<ChildrenList>
+						<Action Name="" ID="{D30C5180-71B1-4874-8AF7-07E7548B71A9}" ShortID="792129209">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Booster" ID="{310B6003-4306-4E66-B2EB-48ED063FD612}" WorkUnitID="{544BE05D-55BB-4E45-90E3-7E08199D402A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Repair" ID="{56766CC4-D5AA-488D-B409-8C3AB053274A}">
+					<ChildrenList>
+						<Action Name="" ID="{54594A4E-F2F2-407D-9564-2F40538F0FFD}" ShortID="351505336">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Repair" ID="{C67054F0-3AEE-4E48-BC58-7F5EF5D39DF9}" WorkUnitID="{544BE05D-55BB-4E45-90E3-7E08199D402A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Idle_Flying" ID="{F1B32C61-948F-4237-AE8D-B80EB456F2B3}">
+					<ChildrenList>
+						<Action Name="" ID="{70386828-6077-4D99-8B5B-42C02A4291E5}" ShortID="190693723">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Idle_Flying" ID="{8D46A805-4BEC-4BDB-AF06-E5B06F839F5B}" WorkUnitID="{544BE05D-55BB-4E45-90E3-7E08199D402A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SFX_Player_BeAttacked" ID="{BB820399-FC17-414F-8B47-841C2735DDFF}">
+					<ChildrenList>
+						<Action Name="" ID="{E7126F23-22AF-4D48-8E2E-480F3506725C}" ShortID="583248048">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Player_BeAttacked" ID="{FE61D802-81BF-4A62-B5FA-EE3D56043BCE}" WorkUnitID="{544BE05D-55BB-4E45-90E3-7E08199D402A}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
