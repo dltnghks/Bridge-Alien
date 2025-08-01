@@ -63,7 +63,7 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
 
     private void PlayerMovement(Vector2 inputData)
     {
-        float moveSpeed = Player.MoveSpeed;
+        float moveSpeed = Player.MoveSpeed * _damageHandler.SpeedPenalty;
         Vector3 delta = new Vector3(inputData.x, inputData.y, 0f) * (moveSpeed * Time.deltaTime);
         Vector3 targetPos = Player.transform.position + delta;
 
