@@ -128,7 +128,7 @@ public class UIPlayerTaskPopup : UIPopup
         }
 
         // 피로도, 골드 조건 체크
-        if(Managers.Player.GetStats(Define.PlayerStatsType.Fatigue) < _selectedTaskData.RequirementGold)
+        if(Managers.Player.GetGold() < _selectedTaskData.RequirementGold)
         {
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;

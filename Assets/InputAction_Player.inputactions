@@ -283,6 +283,15 @@
             "id": "1f339e4a-0899-41e8-b6d9-1ae23dab408b",
             "actions": [
                 {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "6b883cbc-892e-4371-9c3a-741d88fb9e2f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "RepairSkill",
                     "type": "Button",
                     "id": "6772d3cc-8226-4a33-b00b-9f9d7a13fbf8",
@@ -321,6 +330,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RocketSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfc32ed1-efe8-4be5-9269-110b811bebdb",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
