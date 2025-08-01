@@ -37,6 +37,7 @@ public class UIPlayerStatusPopup : UIPopup
 
     private void OnClickWorkModuleButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         // 워크 모듈 UI 띄우기
         Managers.UI.ShowPopUI<UIWorkModulePopup>();
     }

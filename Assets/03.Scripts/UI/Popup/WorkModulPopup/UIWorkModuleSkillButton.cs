@@ -71,6 +71,7 @@ public class UIWorkModuleSkillButton : UIActiveButton
 
     public void Select()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Activate();
     }
 

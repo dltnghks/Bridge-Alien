@@ -48,12 +48,14 @@ public class UIWorkModulePopup : UIPopup
 
     private void OnClickUnloadButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _selectedGameType = Define.MiniGameType.Unload;
         InitSkillList();
     }
 
     private void OnClickDeliveryButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _selectedGameType = Define.MiniGameType.Delivery;
         InitSkillList();
     }
@@ -62,6 +64,8 @@ public class UIWorkModulePopup : UIPopup
     {
         if (_currentSelectedSkillButton is null)
             return;
+
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
 
         // 해당 스킬이 더 이상 업그레이드가 불가능하면 return
         int currentSkillLevel = Managers.Player.GetSkillLevel(_selectedSkillType);

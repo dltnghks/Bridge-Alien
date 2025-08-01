@@ -55,7 +55,7 @@ public class UIWorkModuleUpgradePopup : UIPopup
 
     private void OnClickUpgradeButton()
     {
-
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         int upgradeGold = _upgradeSkillData.UpgradeCostByLevel[_currentLevel];
 
         // 업그레이드 성공
@@ -72,6 +72,7 @@ public class UIWorkModuleUpgradePopup : UIPopup
 
     private void OnClickCancelButton()
     {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         ClosePopupUI();
     }
 
