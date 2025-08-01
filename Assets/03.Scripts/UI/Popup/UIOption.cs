@@ -56,18 +56,21 @@ public class UIOption : UIPopup
         {
             _allSlider.maxValue = 100f;
             _allSlider.value = Managers.Sound.AllVolume;
+            SetSoundAllText(Managers.Sound.AllVolume);
         }
 
         if (_bgmSlider != null)
         {
             _bgmSlider.maxValue = 100f;
             _bgmSlider.value = Managers.Sound.BGMVolume;
+            SetSoundBgmText(Managers.Sound.BGMVolume);
         }
 
         if (_sfxSlider != null)
         {
             _sfxSlider.maxValue = 100f;
             _sfxSlider.value = Managers.Sound.SFXVolume;
+            SetSoundSfxText(Managers.Sound.SFXVolume);
         }
 
         // 슬라이더 값 변경 이벤트 연결

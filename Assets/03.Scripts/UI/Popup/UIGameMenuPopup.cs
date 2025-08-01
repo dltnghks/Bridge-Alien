@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UIGameMenuPopup : UIPopup
 {
-    enum Buttons{
+    enum Buttons
+    {
         ResumeButton,
         OptionButton,
         ExitButton,
@@ -44,5 +45,10 @@ public class UIGameMenuPopup : UIPopup
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickExit");
         Application.Quit(); // 게임 종료
+    }
+
+    private void OnDestroy()
+    {
+        Managers.DeviceInput.IsMenuPopup = false;
     }
 }

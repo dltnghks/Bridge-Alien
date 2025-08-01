@@ -11,6 +11,7 @@ public class DeviceInputManager : MonoBehaviour
 {
     public void Init()
     {
+        IsMenuPopup = false;
 
     }
 
@@ -25,6 +26,8 @@ public class DeviceInputManager : MonoBehaviour
     /// bool 값은 일시정지 상태(true)인지, 활성화 상태(false)인지를 나타냅니다.
     /// </summary>
     public event Action<bool> OnApplicationPaused;
+
+    public bool IsMenuPopup;
 
     private void Update()
     {
@@ -41,12 +44,14 @@ public class DeviceInputManager : MonoBehaviour
             else
             {
                 // 로딩이 아닐 때만 상호작용
-                if (Managers.Scene.IsLoding == false)
+                if (Managers.Scene.IsLoding == false && IsMenuPopup == false)
                 {
+                    IsMenuPopup = true;
                     // 스택에 아무것도 없으면 기본 동작을 수행합니다.
                     // 여기서는 앱 종료 확인 팝업을 띄우거나, 바로 종료할 수 있습니다.
                     // UI 띄우기
                     Managers.UI.ShowPopUI<UIGameMenuPopup>();
+                    Managers.Save.Save();    
                 }
             }
         }

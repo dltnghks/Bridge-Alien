@@ -6,6 +6,7 @@ public class MiniGameManager : MonoBehaviour
 {
     private IMiniGame _currentGame;
     private GameObject _gameUI;
+    public bool[] MiniGameTutorial = new bool[(int)Define.MiniGameType.Delivery + 1];
     
     public IMiniGame CurrentGame
     {
@@ -25,10 +26,23 @@ public class MiniGameManager : MonoBehaviour
             return root;
         }
     }
-    
-    public void Init()
+
+    public void Init(bool[] miniGameTutorial = null)
     {
+        if (miniGameTutorial is null || miniGameTutorial.Length == 0)
+        {
+            MiniGameTutorial = new bool[(int)Define.MiniGameType.Delivery + 1];
+
+            Logger.Log($"1. Init MiniGame Tutorial : {Managers.MiniGame.MiniGameTutorial.Length}");
+
+        }
+        else
+        {
+            MiniGameTutorial = miniGameTutorial;
+            Logger.Log($"2. Init MiniGame Tutorial : {Managers.MiniGame.MiniGameTutorial.Length}");
+        }
     }
+
     
     // 미니게임을 선택 및 생성하는 팩토리 메서드
     public void SelectMiniGame(Define.MiniGameType gameType)
@@ -46,7 +60,7 @@ public class MiniGameManager : MonoBehaviour
                 Logger.LogError("Unknown game type!");
                 break;
         }
-        
+
         InitializeUI();
         StartGame();
     }
