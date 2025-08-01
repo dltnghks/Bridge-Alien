@@ -71,7 +71,7 @@ public class UIMiniMiniGame : UISubItem
 
         // For Debug
         // StartMiniGame();
-        
+
         return true;
     }
 
@@ -89,9 +89,11 @@ public class UIMiniMiniGame : UISubItem
             StopCoroutine(_startCoroutine);
         }
         
+        Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Minigame_Start.ToString());
+
         // 주변 Hurdle 날리기
-        
-        
+
+
         _startCoroutine = StartCoroutine(ShowStartSequence());
     }
 
@@ -132,6 +134,7 @@ public class UIMiniMiniGame : UISubItem
     {
         _isDragging = true;
         _lastAngle = GetCurrentAngle();
+        Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Minigame_Lever.ToString());
     }
 
     private void OnPointerUp()
@@ -192,6 +195,8 @@ public class UIMiniMiniGame : UISubItem
         _infoText.text = message;
         _infoText.color = textColor;
         _timeText.text = "";
+
+        Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Minigame_Success.ToString());
 
         StartCoroutine(FinishSequence(isSuccess));
     }

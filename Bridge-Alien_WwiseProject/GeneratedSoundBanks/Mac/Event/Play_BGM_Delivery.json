@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
     "Language": "SFX",
-    "Hash": "{4F671B0B-EBA6-2E34-848D-B09A536CF60C}",
+    "Hash": "{E25288CD-49D3-6B0F-2542-201C6906F4CB}",
     "ObjectPath": "Play_BGM_Delivery",
     "ShortName": "Play_BGM_Delivery",
     "Path": "Event/Play_BGM_Delivery.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "deliverybgm.wav",
       "Path": "Media/113552982.wem",
-      "CachePath": "67/{679B4ED4-DA04-8F78-5BB9-C1A5307C0751}.wem"
+      "CachePath": "09/{09DC4692-B593-08DA-418B-6EB2A94B7F01}.wem"
      }
     ],
     "Events": [
@@ -31,9 +31,7 @@
       "Name": "Play_BGM_Delivery",
       "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play\\Play_BGM_Delivery",
       "GUID": "{70A44CB3-D02A-4DA1-93D4-967262509001}",
-      "DurationType": "OneShot",
-      "DurationMin": "100.4636",
-      "DurationMax": "100.4636",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
         "Id": "113552982"
@@ -51,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{0343315C-ECC2-F956-B945-22FD6DE7BB32}"
+  "FileHash": "{E22839EE-4CCD-9CBA-679F-49BD4C080010}"
  }
 }

@@ -8,16 +8,16 @@ public class MiniGameDeliveryPlayer : Player
     [SerializeField] private float bumpInvincibleTime = 1.5f;   // 부딪혔을 때 무적 지속 시간
     [SerializeField] private float skillInvincibleTime = 1.5f;  // 스킬 무적 지속 시간
     [SerializeField] private float blinkInterval = 0.1f;        // 깜빡임 주기
-    
+
     private float _invincibleTime = .0f;
 
     private bool _isInvincible = false;
     private bool _isPassBump = false;
 
     private DamageHandler _damageHandler;
-    
+
     private MGDCharacterAnimator _characterAnimator;
-    
+
     private bool _isExiting = false;
     public UnityAction OnExitComplete;
 
@@ -28,7 +28,7 @@ public class MiniGameDeliveryPlayer : Player
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
-    
+
     protected override void SetAnimator()
     {
         _characterAnimator = GetComponentInChildren<MGDCharacterAnimator>();
@@ -74,7 +74,7 @@ public class MiniGameDeliveryPlayer : Player
             }
         }
     }
-    
+
     public void MoveToRight()
     {
         float speed = 30f;
@@ -89,11 +89,12 @@ public class MiniGameDeliveryPlayer : Player
         {
             _damageHandler.OnDamage();
             OnDamageEffect();
-            
+
             _characterAnimator.SetHit(true);
             isHit = true;
-            
+
             // TODO: SFX 추가
+            Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Player_BeAttacked.ToString());
         }
     }
 
@@ -104,7 +105,7 @@ public class MiniGameDeliveryPlayer : Player
             moveMultiplier = 2f;
             _invincibleTime = 3f;
             blinkInterval = 3f;
-            
+
             StartCoroutine(OnInvincible());
         }
         else
@@ -133,9 +134,9 @@ public class MiniGameDeliveryPlayer : Player
         {
             float alpha = isOpaque ? 1f : 0.3f;
             spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-            
+
             yield return new WaitForSeconds(blinkInterval);
-            
+
             isOpaque = !isOpaque;
             elapsed += blinkInterval;
         }
@@ -143,5 +144,10 @@ public class MiniGameDeliveryPlayer : Player
         spriteRenderer.color = originalColor;
         _isInvincible = false;
         isHit = false;
+    }
+
+    public void PlayIdleFlying()
+    {
+        Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Idle_Flying.ToString());
     }
 }

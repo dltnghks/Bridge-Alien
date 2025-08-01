@@ -15,6 +15,8 @@ public class EmergencyRepairSkill : DurationSkill, IRegainable
     protected override void OnActivate()
     {
         base.OnActivate();
+
+        Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.RepairSkill.ToString());
         
         currentDuration = skillData.MaxDuration;
     }

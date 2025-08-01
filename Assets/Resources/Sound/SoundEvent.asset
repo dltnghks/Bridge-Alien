@@ -229,7 +229,7 @@ MonoBehaviour:
           Value:
             idInternal: 0
             valueGuidInternal: 
-            WwiseObjectReference: {fileID: 11400000, guid: d37369134653a3d4d82749b8783c9883, type: 2}
+            WwiseObjectReference: {fileID: 11400000, guid: cd33f58e93724ca4bb197da06ca619ef, type: 2}
         - Key: Minigame_Success
           Value:
             idInternal: 0

@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{F1B32C61-948F-4237-AE8D-B80EB456F2B3}",
     "Language": "SFX",
-    "Hash": "{B9DD2544-5599-C631-1C1B-25B6AEFFBE86}",
+    "Hash": "{3707B15A-AA8A-185B-6EBA-3ACD207758D9}",
     "ObjectPath": "Play_SFX_Idle_Flying",
     "ShortName": "Play_SFX_Idle_Flying",
     "Path": "Event/Play_SFX_Idle_Flying.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_Idle_Flying.wav",
       "Path": "Media/539572877.wem",
-      "CachePath": "26/{262E8DEA-DA38-D6DB-FAFB-163116764478}.wem"
+      "CachePath": "1D/{1DD1344C-1B94-0F61-766F-E28A7A967099}.wem"
      }
     ],
     "Events": [
@@ -32,8 +32,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_Idle_Flying",
       "GUID": "{F1B32C61-948F-4237-AE8D-B80EB456F2B3}",
       "DurationType": "OneShot",
-      "DurationMin": "2.0233107",
-      "DurationMax": "2.0233107",
+      "DurationMin": "0.48770353",
+      "DurationMax": "0.48770353",
       "MediaRefs": [
        {
         "Id": "539572877"
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{19E54421-2810-76BE-79B4-EFF67A7E8F01}"
+  "FileHash": "{484BB0A1-074A-E959-A3FF-C3BD1E777689}"
  }
 }

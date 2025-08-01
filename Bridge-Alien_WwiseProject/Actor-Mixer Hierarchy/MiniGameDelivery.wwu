@@ -146,6 +146,12 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="SFX_Idle_Flying" ID="{B83B4906-7D83-46C9-9BBC-76BF423AE79B}">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="0.487703543307743"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.487703543307743"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="0.487703543307743"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>SFX_Idle_Flying.wav</AudioFile>
 							<MediaIDList>

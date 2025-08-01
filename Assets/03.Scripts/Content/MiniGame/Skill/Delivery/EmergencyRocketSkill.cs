@@ -16,6 +16,8 @@ public class EmergencyRocketSkill : DurationSkill, IRegainable
     {
         base.OnActivate();
         
+        Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.BoosterSkill.ToString());
+
         OnActiveStateChanged?.Invoke(true);
         currentDuration = skillData.MaxDuration;
         

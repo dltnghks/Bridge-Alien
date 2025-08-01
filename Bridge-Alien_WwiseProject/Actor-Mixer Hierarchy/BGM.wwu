@@ -40,6 +40,7 @@
 				</Sound>
 				<Sound Name="BGM_Delivery" ID="{8DF81BC4-BDE1-453A-8B75-5A47A34DF3B5}" ShortID="462463742">
 					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-9</Value>

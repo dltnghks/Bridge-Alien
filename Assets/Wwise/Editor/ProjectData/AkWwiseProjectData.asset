@@ -359,8 +359,8 @@ MonoBehaviour:
         guid: b34ca4702ad0a14d93d4967262509001
       Path: Events\Default Work Unit\BGM\Play\Play_BGM_Delivery
       maxAttenuation: 0
-      maxDuration: 100.4636
-      minDuration: 100.4636
+      maxDuration: 0
+      minDuration: 0
     - name: Play_BGM_Gamemaploop
       guid: f8abbe16791c484e9a0bacf2cfe2cdae
       id: 1914102211
@@ -847,8 +847,8 @@ MonoBehaviour:
         guid: 612cb3f18f943742ae8db80eb456f2b3
       Path: Events\Default Work Unit\MiniGameDelivery\Play_SFX_Idle_Flying
       maxAttenuation: 0
-      maxDuration: 2.0233107
-      minDuration: 2.0233107
+      maxDuration: 0.48770353
+      minDuration: 0.48770353
     - name: Play_SFX_Minigame_Lever1
       guid: 71d008ae9f7af44fbeebfbe105a89661
       id: 3681348309
