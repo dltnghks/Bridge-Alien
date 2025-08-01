@@ -102,11 +102,13 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         
         // Initialize
         _deliveryMap.Initialize();
-        _damageHandler.Initialize(() =>
+        
+        _damageHandler.Initialize( () =>
         {
             PauseGame();
             _deliveryMap.OnMiniMiniGame();
             _uiGameDeliveryScene.UIMiniMiniGame.StartMiniGame();
+            (PlayerCharacter as MiniGameDeliveryPlayer)?.OnCrash();
         });
         
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] protected float moveMultiplier = 1f;
     [SerializeField] protected float rayDistance = 1f;    // 레이캐스트 거리
     [SerializeField] protected bool enableFlip = true;    // 플레이어 플립 활성화 여부
+    [SerializeField] protected bool isHit = false;        // 플레이어가 맞았는지 여부
 
     protected GameObject spriteObject;                    // 스프라이트 오브젝트
     protected SpriteBillboard billboard;                  // 스프라이트 빌보드
@@ -30,6 +31,13 @@ public class Player : MonoBehaviour
     protected GameObject playerBody;
     
     public bool IsRight { get; protected set; }
+    public bool IsHit {
+        get
+        {
+            return isHit;
+        }
+        protected set {}
+    }
 
     public Transform CharacterTransform => playerBody.transform;
 

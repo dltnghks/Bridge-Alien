@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class DamageHandler : MonoBehaviour
@@ -60,10 +61,11 @@ public class DamageHandler : MonoBehaviour
 
     public void OnResetDamage(bool isOn)
     {
-        Debug.Log("On.");
-        
-        DamageRate -= Mathf.Clamp01(0.25f);
-        UpdateSpeedPenalty();
+        if (isOn)
+        {
+            DamageRate -= Mathf.Clamp01(0.25f);
+            UpdateSpeedPenalty();
+        }
     }
 
     public void OnClearDamage()
@@ -80,6 +82,7 @@ public class DamageHandler : MonoBehaviour
         // 데미지가 75% 이상 100% 미만이다.
         if (!_onStartDamage && DamageRate >= 0.75f && DamageRate < 1.0f)
         {
+            
             _dotCoroutine = StartCoroutine(OnGiveDotDamage());
             _onStartDamage = true;
         }
@@ -126,6 +129,9 @@ public class DamageHandler : MonoBehaviour
         }
 
         _onStartDamage = false;
+        
+        Managers.MiniGame.CurrentGame.PauseGame();
+        
         OnFullDamage?.Invoke();
     }
 }

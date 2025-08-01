@@ -181,7 +181,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\BGM
     guid: 87a70d1a2511654d9554b502e9cf44e9
     GuidInternal: 
-    m_lastTime: -8584476405594721153
+    m_lastTime: -8584475357870559806
     List:
     - name: Play_BGM_Delivery
       guid: b34ca4702ad0a14d93d4967262509001
@@ -370,7 +370,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584476405594711137
+    m_lastTime: -8584475357870549261
     List: []
   - PhysicalPath: Events\GameMap.wwu
     PathAndIcons:
@@ -934,7 +934,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\Prologue
     guid: 2493f580933b01419591bbd2de1bc7ed
     GuidInternal: 
-    m_lastTime: -8584476405594711137
+    m_lastTime: -8584475357870538560
     List:
     - name: Play_SFX_Prologue_Voice
       guid: 73330f0e7b141c4e9328a37414469578

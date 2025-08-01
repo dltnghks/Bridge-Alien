@@ -1814,8 +1814,8 @@ GameObject:
   - component: {fileID: 1483318606}
   - component: {fileID: 1483318607}
   - component: {fileID: 1483318603}
-  - component: {fileID: 1483318605}
   - component: {fileID: 1483318608}
+  - component: {fileID: 1483318609}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1906,7 +1906,8 @@ MonoBehaviour:
   moveMultiplier: 1
   rayDistance: 1
   enableFlip: 1
-  bumpInvincibleTime: 3
+  isHit: 0
+  bumpInvincibleTime: 1
   skillInvincibleTime: 5
   blinkInterval: 0.1
 --- !u!54 &1483318604
@@ -1936,18 +1937,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
---- !u!114 &1483318605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483318600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a338a5293bbef48c0978b01a0bed86e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1483318606
 Animator:
   serializedVersion: 5
@@ -2007,6 +1996,18 @@ MonoBehaviour:
   damageMax: 0.03
   speedPenalty10: 0.8
   speedPenalty20: 0.6
+--- !u!114 &1483318609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483318600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e9fc22d0fcabc4bac6974db1078442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1622191753
 MonoBehaviour:
   m_ObjectHideFlags: 0

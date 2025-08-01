@@ -16,6 +16,8 @@ public class MiniGameDeliveryPlayer : Player
 
     private DamageHandler _damageHandler;
     
+    private MGDCharacterAnimator _characterAnimator;
+    
     private bool _isExiting = false;
     public UnityAction OnExitComplete;
 
@@ -26,10 +28,30 @@ public class MiniGameDeliveryPlayer : Player
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
+    
+    protected override void SetAnimator()
+    {
+        _characterAnimator = GetComponentInChildren<MGDCharacterAnimator>();
+        if (characterAnimator == null)
+        {
+            _characterAnimator = gameObject.AddComponent<MGDCharacterAnimator>();
+        }
+        characterAnimator = _characterAnimator;
+    }
 
     public void SetUp(DamageHandler handler)
     {
         _damageHandler = handler;
+    }
+
+    public void OnCrash()
+    {
+        _characterAnimator.SetCrash(true);
+    }
+
+    public void OnMove(float speed)
+    {
+        characterAnimator.UpdateMovement(speed);
     }
 
     public void StartExitMove()
@@ -66,47 +88,30 @@ public class MiniGameDeliveryPlayer : Player
         if (coll.CompareTag("Enemy"))
         {
             _damageHandler.OnDamage();
-            UpdateDamageEffect();
             OnDamageEffect();
+            
+            _characterAnimator.SetHit(true);
+            isHit = true;
             
             // TODO: SFX 추가
         }
     }
 
-    // 데미지 Rate가 100%을 넘었을 때, 특수한 이벤트가 있다면.
-    private void UpdateDamageEffect()
-    {
-        if (_damageHandler.DamageRate > 0.75f)
-        {
-            
-        }
-    }
-
     public void OnRocketEffect(bool isOn)
     {
-        Debug.Log("Call Method - RocketEffect   : " + isOn);
         if (isOn)
         {
             moveMultiplier = 2f;
+            _invincibleTime = 3f;
+            blinkInterval = 3f;
             
-            _invincibleTime = skillInvincibleTime;
-            
-            blinkInterval = 100f;
             StartCoroutine(OnInvincible());
         }
         else
         {
             moveMultiplier = 1.0f;
-            StopCoroutine(OnInvincible());
             blinkInterval = 0.1f;
         }
-        
-        // Rocket 스킬이 발동된다면.
-        // 1. 무적 상태가 되어야 한다.
-        // 2. 맵과 플레이어 속도가 상승해야 한다.
-        
-        // 생각할 수 있는 지점. 피격 상태에서 Rocket 스킬을 사용한다면?
-        // ㄴ 스킬 사용이 우선시 되어야 하지.
     }
 
     private void OnDamageEffect()
@@ -137,5 +142,6 @@ public class MiniGameDeliveryPlayer : Player
 
         spriteRenderer.color = originalColor;
         _isInvincible = false;
+        isHit = false;
     }
 }
