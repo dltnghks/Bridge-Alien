@@ -1,88 +1,124 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class DamageHandler : MonoBehaviour
 {
-    [field: SerializeField, Header("현재 손상률")] 
-    public float DamageRate { get; private set; }
-    
-    public Action onFullDamageRate;
-    public Action<float> onDamageUpdateAction;
+    [field: Header("현재 손상률")]
+    public float DamageRate
+    {
+        get
+        {
+            return _damageRate;
+        }
+        private set
+        {
+            _damageRate = Mathf.Clamp01(value);
+            // 손상률 데이터 콜백
+            OnDamageRateChanged(_damageRate);
+            UpdateSpeedPenalty();
 
-    private bool _onStartDamage = false;
+            if (_damageRate >= 1.0f)
+                TriggerFullDamage();
+        }
+    }
 
-    [SerializeField, Header("초 당 손상률")]
-    private float _damageRatePerSecond = 0.02f;
+    private float _damageRate;
+    private bool _onStartDamage;
     private Coroutine _dotCoroutine;
-    
+
+    [Header("손상률 조절 수치")]
+    [SerializeField] private float hurdleDamage = 0.25f;
+    [SerializeField] private float damageMin = 0.02f;
+    [SerializeField] private float damageMax = 0.03f;
+
+    [Header("이동 속도 관련")]
+    [SerializeField] private float speedPenalty10 = 0.1f;
+    [SerializeField] private float speedPenalty20 = 0.2f;
+
+    public float SpeedPenalty { get; private set; } = 0f;
+
+    public Action OnFullDamage; // 손상률 100% 도달 시 콜백
+
+    public Action<float> OnDamageRateChanged;
+
     public void Initialize(Action onFullAction)
     {
-        DamageRate = .0f;
-        
-        onFullDamageRate = onFullAction;
-        _onStartDamage = false;
-        _dotCoroutine = null;
+        OnFullDamage = onFullAction;
 
-        _dotCoroutine = StartCoroutine(OnGiveDotDamage());
+        _damageRate = 0f;
+        DamageRate = 0f;
+        SpeedPenalty = 0f;
+        _onStartDamage = false;
+
+        // 만약에 dotCoroutine이 돌고 있다면.
+        if (_dotCoroutine != null)
+        {
+            StopCoroutine(_dotCoroutine);
+        }
     }
 
     public void OnResetDamage(bool isOn)
     {
-        DamageRate = .0f;
+        DamageRate /= 0.25f;
+        UpdateSpeedPenalty();
     }
 
     public void OnDamage()
     {
-        AddDamageRate(0.25f);
-    }
-    
-    private void AddDamageRate(float rate)
-    {
-        if (rate <= 0f || DamageRate >= 1.0f)
-            return;
+        DamageRate += hurdleDamage;
 
-        DamageRate = Mathf.Min(DamageRate + rate, 1.0f);
-        onDamageUpdateAction?.Invoke(DamageRate);
-
-        UpdateDamageRate();
-    }
-    
-    private void UpdateDamageRate()
-    {
-        if (DamageRate >= 1.0f)
+        // 초 당 손상률을 당하고 있지 않는다.
+        // 데미지가 75% 이상 100% 미만이다.
+        if (!_onStartDamage && DamageRate >= 0.75f && DamageRate < 1.0f)
         {
-            if (_dotCoroutine != null)
-            {
-                StopCoroutine(_dotCoroutine);
-                _dotCoroutine = null;
-            }
-
-            _onStartDamage = false;
-            
-            onFullDamageRate?.Invoke();
+            _dotCoroutine = StartCoroutine(OnGiveDotDamage());
+            _onStartDamage = true;
         }
-        else if (DamageRate is < 1.0f and > 0.75f)
+    }
+
+    private void UpdateSpeedPenalty()
+    {
+        if (DamageRate >= 0.86f && DamageRate < 1.0f)
         {
-            // 2%와 3% 중에서 랜덤으로 데미지 선택
-            _damageRatePerSecond = Random.Range(0.02f, 0.04f);
+            SpeedPenalty = speedPenalty20;
+        }
+        else if (DamageRate >= 0.75f && DamageRate <= 0.85f)
+        {
+            SpeedPenalty = speedPenalty10;
+        }
+        else
+        {
+            SpeedPenalty = 0f;
         }
     }
 
     private IEnumerator OnGiveDotDamage()
     {
-        while (DamageRate < 1.0f)
+        // 손상률이 75 ~ 100% 사이일 때.
+        while (DamageRate >= 0.75f && DamageRate < 1.0f)
         {
             yield return new WaitForSeconds(1f);
-            AddDamageRate(_damageRatePerSecond);
-            
-            UpdateDamageRate();
+            DamageRate -= Random.Range(damageMin, damageMax);
         }
-        
+
         _onStartDamage = false;
         _dotCoroutine = null;
-        Debug.Log("코루틴이 조건에 만족하여 종료되었습니다. -> OnGiveDotDamage");
+    }
+
+    // 손상률이 100%에 도달했을 때, 발동한다.
+    private void TriggerFullDamage()
+    {
+        DamageRate = 1.0f;
+
+        if (_dotCoroutine != null)
+        {
+            StopCoroutine(_dotCoroutine);
+            _dotCoroutine = null;
+        }
+
+        _onStartDamage = false;
+        OnFullDamage?.Invoke();
     }
 }

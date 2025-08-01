@@ -4,15 +4,15 @@ using UnityEngine;
 public class MiniGameDeliveryPlayer : Player
 {
     [Header("무적 설정")]
-    [SerializeField] private float bumpInvincibleTime = 1.5f; // 부딪혔을 때 무적 지속 시간
+    [SerializeField] private float bumpInvincibleTime = 1.5f;   // 부딪혔을 때 무적 지속 시간
     [SerializeField] private float skillInvincibleTime = 1.5f;  // 스킬 무적 지속 시간
-    [SerializeField] private float blinkInterval = 0.1f;  // 깜빡임 주기
+    [SerializeField] private float blinkInterval = 0.1f;        // 깜빡임 주기
     
     private float _invincibleTime = .0f;
 
     private bool isInvincible = false;
 
-    public DamageHandler damageHandler;
+    private DamageHandler _damageHandler;
 
     public void Start()
     {
@@ -28,7 +28,7 @@ public class MiniGameDeliveryPlayer : Player
 
         if (coll.CompareTag("Enemy"))
         {
-            damageHandler.OnDamage();
+            _damageHandler.OnDamage();
             UpdateDamageEffect();
             OnDamageEffect();
             
@@ -38,7 +38,7 @@ public class MiniGameDeliveryPlayer : Player
 
     private void UpdateDamageEffect()
     {
-        if (damageHandler.DamageRate > 0.75f)
+        if (_damageHandler.DamageRate > 0.75f)
         {
             
         }

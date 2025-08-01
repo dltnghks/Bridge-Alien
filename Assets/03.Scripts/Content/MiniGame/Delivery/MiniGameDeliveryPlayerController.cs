@@ -21,7 +21,6 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     public MiniGameDeliveryPlayerController(Player player, DamageHandler damageHandler)
     {
         Init(player);
-        
         _damageHandler = damageHandler;
     }
 
@@ -58,8 +57,13 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     {
         if (Managers.MiniGame.CurrentGame.IsPause) return;
 
+        PlayerMovement(input);
+    }
+
+    private void PlayerMovement(Vector2 inputData)
+    {
         float moveSpeed = Player.MoveSpeed;
-        Vector3 delta = new Vector3(input.x, input.y, 0f) * (moveSpeed * Time.deltaTime);
+        Vector3 delta = new Vector3(inputData.x, inputData.y, 0f) * (moveSpeed * Time.deltaTime);
         Vector3 targetPos = Player.transform.position + delta;
 
         Vector2 center = _groundRect.center;

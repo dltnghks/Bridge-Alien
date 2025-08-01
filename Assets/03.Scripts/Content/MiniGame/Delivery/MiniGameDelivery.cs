@@ -73,6 +73,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
         
+        // 스킬 등록
         if (PlayerController is ISkillController skillController)
         {
             _uiGameDeliveryScene.UIPlayerInput.SetSkillInfo(_skillList);
@@ -92,7 +93,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _deliveryMap.Initialize();
         _damageHandler.Initialize(() => Debug.Log("Damage Full"));
         
-        ((MiniGameDeliveryPlayer)PlayerCharacter).damageHandler = _damageHandler;
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
         
         ChangeActive(true);

@@ -34,7 +34,7 @@ public class UIDamageView : UISubItem
     public void Initialize(DamageHandler damageHandler, UnityAction endAction = null)
     {
         _handler = damageHandler;
-        _handler.onDamageUpdateAction += UpdateUI;
+        // _handler.onDamageUpdateAction += UpdateUI;
     }
 
     private void UpdateUI(float percentage)
