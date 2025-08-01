@@ -1,18 +1,23 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MiniGameDeliveryPlayer : Player
 {
     [Header("무적 설정")]
-    [SerializeField] private float bumpInvincibleTime = 1.5f; // 부딪혔을 때 무적 지속 시간
+    [SerializeField] private float bumpInvincibleTime = 1.5f;   // 부딪혔을 때 무적 지속 시간
     [SerializeField] private float skillInvincibleTime = 1.5f;  // 스킬 무적 지속 시간
-    [SerializeField] private float blinkInterval = 0.1f;  // 깜빡임 주기
+    [SerializeField] private float blinkInterval = 0.1f;        // 깜빡임 주기
     
     private float _invincibleTime = .0f;
 
-    private bool isInvincible = false;
+    private bool _isInvincible = false;
+    private bool _isPassBump = false;
 
-    public DamageHandler damageHandler;
+    private DamageHandler _damageHandler;
+    
+    private bool _isExiting = false;
+    public UnityAction OnExitComplete;
 
     public void Start()
     {
@@ -22,13 +27,45 @@ public class MiniGameDeliveryPlayer : Player
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
+    public void SetUp(DamageHandler handler)
+    {
+        _damageHandler = handler;
+    }
+
+    public void StartExitMove()
+    {
+        _isExiting = true;
+        _isInvincible = true;
+    }
+
+    private void Update()
+    {
+        if (_isExiting)
+        {
+            MoveToRight();
+
+            Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
+            if (viewPos.x > 1.1f)
+            {
+                _isExiting = false;
+                OnExitComplete?.Invoke();
+            }
+        }
+    }
+    
+    public void MoveToRight()
+    {
+        float speed = 30f;
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+    }
+
     private void OnTriggerEnter(Collider coll)
     {
-        if (isInvincible) return;
+        if (_isInvincible) return;
 
         if (coll.CompareTag("Enemy"))
         {
-            damageHandler.OnDamage();
+            _damageHandler.OnDamage();
             UpdateDamageEffect();
             OnDamageEffect();
             
@@ -36,9 +73,10 @@ public class MiniGameDeliveryPlayer : Player
         }
     }
 
+    // 데미지 Rate가 100%을 넘었을 때, 특수한 이벤트가 있다면.
     private void UpdateDamageEffect()
     {
-        if (damageHandler.DamageRate > 0.75f)
+        if (_damageHandler.DamageRate > 0.75f)
         {
             
         }
@@ -49,7 +87,7 @@ public class MiniGameDeliveryPlayer : Player
         Debug.Log("Call Method - RocketEffect   : " + isOn);
         if (isOn)
         {
-            moveMultiplier = 5f;
+            moveMultiplier = 2f;
             
             _invincibleTime = skillInvincibleTime;
             
@@ -69,19 +107,18 @@ public class MiniGameDeliveryPlayer : Player
         
         // 생각할 수 있는 지점. 피격 상태에서 Rocket 스킬을 사용한다면?
         // ㄴ 스킬 사용이 우선시 되어야 하지.
-        
     }
 
     private void OnDamageEffect()
     {
         _invincibleTime = bumpInvincibleTime;
-        if (!isInvincible)
+        if (!_isInvincible)
             StartCoroutine(OnInvincible());
     }
 
     private IEnumerator OnInvincible()
     {
-        isInvincible = true;
+        _isInvincible = true;
 
         float elapsed = 0f;
         bool isOpaque = true;
@@ -99,6 +136,6 @@ public class MiniGameDeliveryPlayer : Player
         }
 
         spriteRenderer.color = originalColor;
-        isInvincible = false;
+        _isInvincible = false;
     }
 }

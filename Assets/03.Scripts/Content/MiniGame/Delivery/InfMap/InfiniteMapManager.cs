@@ -46,7 +46,11 @@ public class InfiniteMapManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isActive == false) return;
+        if (_isActive == false || 
+            Managers.MiniGame.CurrentGame.IsPause ||
+            Managers.MiniGame.CurrentGame.IsActive == false
+            )
+            return;
         
         cloud?.Scroll(speedRatio);
         build?.Scroll(speedRatio);

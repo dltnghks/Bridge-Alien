@@ -28,7 +28,8 @@ public abstract class HurdleBuilder : ScriptableObject
 
         foreach (var origin in origins)
         {
-            CreateMain(origin);
+            if(Managers.MiniGame.CurrentGame.IsPause == false)
+                CreateMain(origin);
             yield return new WaitForSeconds(spawnDelay);
         }
 

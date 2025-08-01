@@ -50,5 +50,4 @@ public class UIPlayerInput : UISubItem
         if(Managers.MiniGame.CurrentGame.IsActive)
             Managers.MiniGame.CurrentGame.PlayerController.InputJoyStick(_movementInput);
     }
-
 }

@@ -20,15 +20,15 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
 
     public MiniGameDeliveryPlayerController(Player player, DamageHandler damageHandler)
     {
-        Init(player);
-        
         _damageHandler = damageHandler;
+        Init(player);
     }
 
     public void Init(Player player)
     {
         Player = player;
         _mgPlayer = Player as MiniGameDeliveryPlayer;
+        _mgPlayer.SetUp(_damageHandler);
     }
 
     public void SetSkillList(SkillBase[] skillList)
@@ -53,13 +53,21 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     {
         _groundRect = size;
     }
-    
+
     public void InputJoyStick(Vector2 input)
     {
-        if (Managers.MiniGame.CurrentGame.IsPause) return;
+        if (Managers.MiniGame.CurrentGame.IsPause)
+        {
+            return;
+        }
 
-        float moveSpeed = Player.MoveSpeed;
-        Vector3 delta = new Vector3(input.x, input.y, 0f) * (moveSpeed * Time.deltaTime);
+        PlayerMovement(input);
+    }
+
+    private void PlayerMovement(Vector2 inputData)
+    {
+        float moveSpeed = Player.MoveSpeed * _damageHandler.SpeedPenalty;
+        Vector3 delta = new Vector3(inputData.x, inputData.y, 0f) * (moveSpeed * Time.deltaTime);
         Vector3 targetPos = Player.transform.position + delta;
 
         Vector2 center = _groundRect.center;
@@ -80,11 +88,11 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
 
     public void Interaction()
     {
-        if(Managers.MiniGame.CurrentGame.IsPause){
+        if(Managers.MiniGame.CurrentGame.IsPause)
+        {
            return; 
         }
-
-        Logger.Log("Jump");
+        // 플레이어 속도가 일시적으로 감속되며, Bump 장애물을 피할 수 있다.
     }
 
     public bool ChangeInteraction(int actionnNum)
