@@ -12,8 +12,12 @@ public class BaseScene : MonoBehaviour
         Init();
         
         string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), SceneType);
-       
-        Managers.Sound.PlayBGM(sceneTypeStr);
+
+        // 미니게임은 게임 시작 시 배경음악 시작하기 위해 조건 처리
+        if (SceneType != Define.Scene.MiniGameDelivery && SceneType != Define.Scene.MiniGameUnload)
+        {
+            Managers.Sound.PlayBGM(sceneTypeStr);
+        }
     }
 
     protected virtual bool Init()

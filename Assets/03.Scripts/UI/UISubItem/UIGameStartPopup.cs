@@ -53,14 +53,12 @@ public class UIGameStartPopup : UIPopup
         sequence.AppendInterval(HoldDuration);
 
         // 3. 투명해지기 (페이드 아웃)
-        sequence.Append(_gameStartImage.DOFade(0, FadeDuration).SetEase(Ease.InQuad));
-
-        // 4. 애니메이션 종료 후 이미지 비활성화
-        sequence.OnComplete(() =>
+        sequence.Append(_gameStartImage.DOFade(0, FadeDuration).SetEase(Ease.InQuad).OnComplete(() =>
         {
             gameStartAction?.Invoke();
             ClosePopupUI();
         }
+        )
         );
 
         sequence.Play();

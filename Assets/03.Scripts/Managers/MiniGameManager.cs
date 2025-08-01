@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class MiniGameManager : MonoBehaviour
 {
     private IMiniGame _currentGame;
     private GameObject _gameUI;
+    private Define.MiniGameType _currnetMiniGameType = Define.MiniGameType.Unknown;
     public bool[] MiniGameTutorial = new bool[(int)Define.MiniGameType.Delivery + 1];
-    
+
     public IMiniGame CurrentGame
     {
         get { return _currentGame; }
@@ -61,27 +63,37 @@ public class MiniGameManager : MonoBehaviour
                 break;
         }
 
+        _currnetMiniGameType = gameType;
+
         InitializeUI();
-        StartGame();
-    }
-    
-    public void StartGame()
-    {
         Logger.Log($"{_currentGame.GetType().Name} | Game Start");
 
         UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
-        uIGameStart.PlayGameStartEffect(_currentGame.StartGame);
+        uIGameStart.PlayGameStartEffect(StartGame);
+    }
+
+    public void StartGame()
+    {
+        _currentGame.StartGame();
+        
+        // 배경음 재생
+        string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), Managers.Scene.CurrentSceneType);
+        Managers.Sound.PlayBGM(sceneTypeStr);
     }
 
     public bool PauseGame()
     {
         Logger.Log("Pause Game");
+        Managers.Sound.PauseBGM();
+
         return _currentGame.PauseGame();
     }
 
     public void ResumeGame()
     {
         Logger.Log("Resume Game");
+        Managers.Sound.ResumeBGM();
+
         _currentGame?.ResumeGame();
     }
 

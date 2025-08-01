@@ -22,6 +22,8 @@ public class UIGameMenuPopup : UIPopup
         GetButton((int)Buttons.OptionButton).gameObject.BindEvent(OnClickOptionButton);
         GetButton((int)Buttons.ExitButton).gameObject.BindEvent(OnClickExitButton);
 
+        Managers.MiniGame.PauseGame();
+
         return true;
     }
 
@@ -50,5 +52,6 @@ public class UIGameMenuPopup : UIPopup
     private void OnDestroy()
     {
         Managers.DeviceInput.IsMenuPopup = false;
+        Managers.MiniGame.ResumeGame();
     }
 }
