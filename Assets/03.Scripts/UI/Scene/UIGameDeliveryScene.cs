@@ -11,7 +11,7 @@ public class UIGameDeliveryScene : UIScene
         UIMiniGameDeliveryPlayerInput,
     }
     
-    private UIGameMenu _uiGameMenu;
+    private UIMiniGameHelpButton _uiGameMenu;
     private UIMiniGameDeliveryPlayerInput _uiPlayerInput;
     private UIPathProgressBar _uiPathProgressBar;
     
@@ -27,7 +27,7 @@ public class UIGameDeliveryScene : UIScene
 
         BindObject(typeof(Objects));
 
-        _uiGameMenu = GetObject((int)Objects.UIGameMenu).GetOrAddComponent<UIGameMenu>();
+        _uiGameMenu = GetObject((int)Objects.UIGameMenu).GetOrAddComponent<UIMiniGameHelpButton>();
         _uiPlayerInput = GetObject((int)Objects.UIMiniGameDeliveryPlayerInput).GetOrAddComponent<UIMiniGameDeliveryPlayerInput>();
         _uiPathProgressBar = GetObject((int)Objects.UIPathProgressBar).GetOrAddComponent<UIPathProgressBar>();
         

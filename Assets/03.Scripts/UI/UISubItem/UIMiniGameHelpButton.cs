@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIGameMenu : UISubItem
+public class UIMiniGameHelpButton : UISubItem
 {
     enum Buttons{
         MenuButton,
@@ -29,9 +29,14 @@ public class UIGameMenu : UISubItem
         
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickOption");
-        
-        if(Managers.MiniGame.PauseGame()){
-            Managers.UI.ShowPopUI<UIGameMenuPopup>();
-        };
+
+        if (Managers.MiniGame.CurrentGame is MiniGameUnload)
+        {
+            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
+        }
+        else if (Managers.MiniGame.CurrentGame is MiniGameDelivery)
+        {
+            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGDTutorialPopup");
+        }
     }
 }

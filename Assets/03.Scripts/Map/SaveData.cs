@@ -5,7 +5,7 @@ using UnityEngine;
 public class SaveData
 {
     public PlayerData PlayerData;
-
     public int LastDate;
     public DailyData LastDailyData;
+    public bool[] MiniGameTutorial;
 }

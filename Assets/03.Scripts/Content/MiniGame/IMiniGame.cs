@@ -14,6 +14,7 @@ public interface IMiniGame
     IPlayerController PlayerController { get; set; }
     
     void StartGame();    // 게임 시작
+    void StartTutorial(); // 튜토리얼 시작
     bool PauseGame();    // 게임 일시정지
     void ResumeGame();   // 게임 재개
     void EndGame();      // 게임 종료

@@ -1,3 +1,4 @@
+using System.Data;
 using System.IO;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ public class SaveManager
         saveData.PlayerData = Managers.Player.PlayerData;
         saveData.LastDate = Managers.Daily.CurrentDate;
         saveData.LastDailyData = Managers.Daily.PreDailyData;
+        saveData.MiniGameTutorial = Managers.MiniGame.MiniGameTutorial;
 
         string json = JsonUtility.ToJson(saveData);
         File.WriteAllText(path, json);
@@ -33,11 +35,14 @@ public class SaveManager
     }
 
     public PlayerData Load() {
-        if (File.Exists(path)) {
+        if (File.Exists(path))
+        {
             string json = File.ReadAllText(path);
             SaveData loadData = JsonUtility.FromJson<SaveData>(json);
             Managers.Player.Init(loadData.PlayerData);
             Managers.Daily.Init(loadData.LastDate, loadData.LastDailyData);
+            Managers.MiniGame.Init(loadData.MiniGameTutorial);
+            
         }
         Debug.LogWarning("No save file found.");
         return new PlayerData();

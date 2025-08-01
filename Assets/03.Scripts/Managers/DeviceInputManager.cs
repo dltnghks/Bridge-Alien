@@ -11,6 +11,7 @@ public class DeviceInputManager : MonoBehaviour
 {
     public void Init()
     {
+        IsMenuPopup = false;
 
     }
 
@@ -26,14 +27,13 @@ public class DeviceInputManager : MonoBehaviour
     /// </summary>
     public event Action<bool> OnApplicationPaused;
 
+    public bool IsMenuPopup;
+
     private void Update()
     {
-        
-        Logger.Log("Update");
         // 안드로이드의 뒤로가기 버튼 또는 PC의 ESC 키 입력을 감지합니다.
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Logger.Log("Input");
             // 스택에 등록된 액션이 있는지 확인합니다.
             if (_backButtonActions.Count > 0)
             {
@@ -44,12 +44,14 @@ public class DeviceInputManager : MonoBehaviour
             else
             {
                 // 로딩이 아닐 때만 상호작용
-                if (Managers.Scene.IsLoding == false)
+                if (Managers.Scene.IsLoding == false && IsMenuPopup == false)
                 {
+                    IsMenuPopup = true;
                     // 스택에 아무것도 없으면 기본 동작을 수행합니다.
                     // 여기서는 앱 종료 확인 팝업을 띄우거나, 바로 종료할 수 있습니다.
                     // UI 띄우기
                     Managers.UI.ShowPopUI<UIGameMenuPopup>();
+                    Managers.Save.Save();    
                 }
             }
         }
