@@ -58,11 +58,9 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     {
         if (Managers.MiniGame.CurrentGame.IsPause)
         {
-            Debug.Log("Player Pause");
             return;
         }
 
-        Debug.Log("Player Speed: " + Player.MoveSpeed * _damageHandler.SpeedPenalty);
         PlayerMovement(input);
     }
 

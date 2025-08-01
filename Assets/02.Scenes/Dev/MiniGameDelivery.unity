@@ -1902,7 +1902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e26c788c5f99004ca0a2a7ebe334a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
+  moveSpeed: 10
   moveMultiplier: 1
   rayDistance: 1
   enableFlip: 1

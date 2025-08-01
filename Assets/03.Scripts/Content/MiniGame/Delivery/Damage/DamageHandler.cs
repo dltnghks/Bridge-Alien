@@ -33,10 +33,10 @@ public class DamageHandler : MonoBehaviour
     [SerializeField] private float damageMax = 0.03f;
 
     [Header("이동 속도 관련")]
-    [SerializeField] private float speedPenalty10 = 0.1f;
-    [SerializeField] private float speedPenalty20 = 0.2f;
+    [SerializeField] private float speedPenalty10 = 0.6f;
+    [SerializeField] private float speedPenalty20 = 0.4f;
 
-    public float SpeedPenalty { get; private set; } = 0f;
+    public float SpeedPenalty { get; private set; } = 1f;
 
     public Action OnFullDamage; // 손상률 100% 도달 시 콜백
 
@@ -48,7 +48,7 @@ public class DamageHandler : MonoBehaviour
 
         _damageRate = 0f;
         DamageRate = 0f;
-        SpeedPenalty = 0f;
+        SpeedPenalty = 1f;
         _onStartDamage = false;
 
         // 만약에 dotCoroutine이 돌고 있다면.
@@ -95,7 +95,7 @@ public class DamageHandler : MonoBehaviour
         }
         else
         {
-            SpeedPenalty = 0f;
+            SpeedPenalty = 1f;
         }
     }
 
