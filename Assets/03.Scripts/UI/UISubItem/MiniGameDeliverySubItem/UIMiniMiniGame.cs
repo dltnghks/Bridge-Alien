@@ -205,5 +205,6 @@ public class UIMiniMiniGame : UISubItem
         
         // 게임 재시작
         Managers.MiniGame.CurrentGame.ResumeGame();
+        (Managers.MiniGame.CurrentGame.PlayerCharacter as MiniGameDeliveryPlayer)?.OnMove(1f);
     }
 }
