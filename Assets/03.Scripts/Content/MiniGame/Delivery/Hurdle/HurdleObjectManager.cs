@@ -18,7 +18,9 @@ public class HurdleObjectManager : MonoBehaviour
 
     private void Update()
     {
-        if (!_isInitialize) return;
+        if (!_isInitialize || Managers.MiniGame.CurrentGame.IsPause ||
+            Managers.MiniGame.CurrentGame.IsActive == false
+            ) return;
         
         transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
     }

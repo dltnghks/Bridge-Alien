@@ -51,22 +51,37 @@ public class UIDamageView : UISubItem
     {
         const float fillSpeed = 1.2f;
 
+        if (percentage < 0.01f)
+        {
+            OnResetFill();
+        }
+        else
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                float segmentStart = i * 0.25f;
+                float segmentEnd = (i + 1) * 0.25f;
+                float targetFill = Mathf.InverseLerp(segmentStart, segmentEnd, percentage);
+                targetFill = Mathf.Clamp01(targetFill);
+
+                float current = _images[i].fillAmount;
+                while (Mathf.Abs(current - targetFill) > 0.01f)
+                {
+                    current = Mathf.MoveTowards(current, targetFill, Time.deltaTime * fillSpeed);
+                    _images[i].fillAmount = current;
+                    yield return null;
+                }
+
+                _images[i].fillAmount = targetFill;
+            }
+        }
+    }
+
+    public void OnResetFill()
+    {
         for (int i = 0; i < 4; ++i)
         {
-            float segmentStart = i * 0.25f;
-            float segmentEnd = (i + 1) * 0.25f;
-            float targetFill = Mathf.InverseLerp(segmentStart, segmentEnd, percentage);
-            targetFill = Mathf.Clamp01(targetFill);
-
-            float current = _images[i].fillAmount;
-            while (Mathf.Abs(current - targetFill) > 0.01f)
-            {
-                current = Mathf.MoveTowards(current, targetFill, Time.deltaTime * fillSpeed);
-                _images[i].fillAmount = current;
-                yield return null;
-            }
-
-            _images[i].fillAmount = targetFill;
+            _images[i].fillAmount = 0f;
         }
     }
 }

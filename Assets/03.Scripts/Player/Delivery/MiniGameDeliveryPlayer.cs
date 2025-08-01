@@ -87,7 +87,7 @@ public class MiniGameDeliveryPlayer : Player
         Debug.Log("Call Method - RocketEffect   : " + isOn);
         if (isOn)
         {
-            moveMultiplier = 5f;
+            moveMultiplier = 2f;
             
             _invincibleTime = skillInvincibleTime;
             

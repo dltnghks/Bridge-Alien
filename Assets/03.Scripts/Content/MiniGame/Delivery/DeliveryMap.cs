@@ -13,7 +13,7 @@ public class DeliveryMap : MonoBehaviour
     [SerializeField] private float fenceSpeed = .0f;
     [SerializeField] private float groundSpeed = .0f;
 
-    public float GroundSpeed { get { return groundSpeed; } }
+    public float GroundSpeed { get { return groundSpeed * speedMultiplier; } }
 
     [SerializeField, Space(10)] private float speedMultiplier = 1.0f;
 
@@ -53,7 +53,12 @@ public class DeliveryMap : MonoBehaviour
         UpdateSpeedMultiplier();
         
         // 허들도 동일한 수치를 위해서 속도 전달
-        _hurdleSpawner.Initialize(groundSpeed);
+        _hurdleSpawner.Initialize(GroundSpeed * 4f);
+    }
+
+    public void OnMiniMiniGame()
+    {
+        _hurdleSpawner.ClearHurdles();
     }
 
     public void StartDeliveryMap()
@@ -76,9 +81,8 @@ public class DeliveryMap : MonoBehaviour
             cloudSpeed * speedMultiplier,
             buildSpeed * speedMultiplier,
             fenceSpeed * speedMultiplier,
-            groundSpeed * speedMultiplier
+            GroundSpeed
         );
-        _hurdleSpawner.ChangeGroundSpeed(groundSpeed * speedMultiplier);
-        groundSpeed *= speedMultiplier;
+        _hurdleSpawner.ChangeGroundSpeed(GroundSpeed * 4f);
     }
 }

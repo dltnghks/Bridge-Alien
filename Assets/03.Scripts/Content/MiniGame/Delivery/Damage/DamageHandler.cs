@@ -60,6 +60,8 @@ public class DamageHandler : MonoBehaviour
 
     public void OnResetDamage(bool isOn)
     {
+        Debug.Log("On.");
+        
         DamageRate -= Mathf.Clamp01(0.25f);
         UpdateSpeedPenalty();
     }
@@ -115,8 +117,8 @@ public class DamageHandler : MonoBehaviour
     // 손상률이 100%에 도달했을 때, 발동한다.
     private void TriggerFullDamage()
     {
-        DamageRate = 1.0f;
-
+        _damageRate = 1f;
+        
         if (_dotCoroutine != null)
         {
             StopCoroutine(_dotCoroutine);

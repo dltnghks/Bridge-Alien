@@ -105,10 +105,9 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _damageHandler.Initialize(() =>
         {
             PauseGame();
+            _deliveryMap.OnMiniMiniGame();
             _uiGameDeliveryScene.UIMiniMiniGame.StartMiniGame();
         });
-        
-        // _damageHandler.Initialize(() => { });
         
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
         
@@ -123,9 +122,9 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public void OnRocketSkill(bool isActive)
     {
         (PlayerCharacter as MiniGameDeliveryPlayer)?.OnRocketEffect(isActive);
-        _deliveryMap.UpdateSpeedMultiplier(isActive ? 5f : 1f);
+        _deliveryMap.UpdateSpeedMultiplier(isActive ? 2f : 1f);
     }
-    
+
     public bool PauseGame()
     {
         if (!IsActive || IsPause)

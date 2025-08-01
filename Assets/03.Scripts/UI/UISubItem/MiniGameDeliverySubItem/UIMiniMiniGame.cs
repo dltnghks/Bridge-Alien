@@ -68,6 +68,7 @@ public class UIMiniMiniGame : UISubItem
         
         Debug.Log("초기화 성공");
         _board.SetActive(false);
+        _infoText.gameObject.SetActive(false);
 
         // For Debug
         // StartMiniGame();
@@ -79,11 +80,21 @@ public class UIMiniMiniGame : UISubItem
     {
         _onGameEnd = onGameEnd;
     }
+    
+    private Coroutine _startCoroutine;
 
     public void StartMiniGame()
     {
         Debug.Log("Mini Game 시작");
-        StartCoroutine(ShowStartSequence());
+        if (_startCoroutine != null)
+        {
+            StopCoroutine(_startCoroutine);
+        }
+        
+        // 주변 Hurdle 날리기
+        
+        
+        _startCoroutine = StartCoroutine(ShowStartSequence());
     }
 
     private IEnumerator ShowStartSequence()
@@ -102,7 +113,6 @@ public class UIMiniMiniGame : UISubItem
         _accumulatedAngle = 0f;
         _isGameRunning = true;
         _board.SetActive(true);
-        gameObject.SetActive(true);
     }
 
     private void Update()
@@ -137,7 +147,6 @@ public class UIMiniMiniGame : UISubItem
             return;
 
         float currentAngle = GetCurrentAngle();
-        Debug.Log("CURRENT ANGLE : " + currentAngle);
 
         // 레버를 해당 각도로 바로 회전
         _leverRect.rotation = Quaternion.Euler(0f, 0f, currentAngle);
@@ -194,7 +203,6 @@ public class UIMiniMiniGame : UISubItem
         _board.SetActive(false);
         yield return new WaitForSeconds(2f);
         _infoText.gameObject.SetActive(false);
-        gameObject.SetActive(false);
         _onGameEnd?.Invoke(isSuccess);
         
         // 게임 재시작

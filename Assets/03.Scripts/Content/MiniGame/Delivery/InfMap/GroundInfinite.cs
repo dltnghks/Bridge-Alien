@@ -16,6 +16,7 @@ public class GroundInfinite
     public void Scroll(float speedRatio = 1f)
     {
         _offset.x += _scrollSpeed * Time.deltaTime * speedRatio;
+        Debug.Log(_scrollSpeed * Time.deltaTime * speedRatio);
         _groundMaterial.mainTextureOffset = _offset;
     }
     

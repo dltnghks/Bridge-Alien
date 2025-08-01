@@ -28,7 +28,6 @@ public class HurdleSpawner : MonoBehaviour
     [SerializeField] private CarCrushBuilder carCrushObject;
     [SerializeField] private WorkBuilder workObject;
 
-    private float _timer = 0f;
     private bool _isRunning = false;
 
     private Transform _objParent;
@@ -64,12 +63,40 @@ public class HurdleSpawner : MonoBehaviour
         hurdleObjectManager.ChangeSpeed(speed);
     }
 
-
-    private bool isTrigger = false;
-    private bool isOn = false;
+    private bool _wasPaused = false;
+    private bool _hasSpawnStarted = false;
+    
     private void Update()
     {
+        if (!_isRunning || _miniGame == null) return;
+
+        if (!_miniGame.IsPause && _wasPaused == true && !_hasSpawnStarted)
+        {
+            StartHurdleSpawn();
+            _hasSpawnStarted = true;
+        }
+
+        _wasPaused = _miniGame.IsPause;
+
+        if (_miniGame.IsPause)
+        {
+            _hasSpawnStarted = false;
+        }
     }
+
+    public void ClearHurdles()
+    {
+        if (hurdleObjectManager == null)
+            return;
+
+        Transform parent = hurdleObjectManager.transform;
+
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            Destroy(parent.GetChild(i).gameObject);
+        }
+    }
+
 
     private IEnumerator HurdleSpawnLoop()
     {
@@ -77,15 +104,13 @@ public class HurdleSpawner : MonoBehaviour
         {
             if (_miniGame.IsHurdleSpawn || !_miniGame.IsActive || _miniGame.IsPause)
             {
-                Debug.Log("기준을 넘어서 스폰 실패.");
-
                 if (_currentBuildCoroutine != null)
                 {
                     StopCoroutine(_currentBuildCoroutine);
                     _currentBuildCoroutine = null;
                 }
-
-                yield return null;
+                
+                yield break;
             }
 
             var type = GetHurdleType();

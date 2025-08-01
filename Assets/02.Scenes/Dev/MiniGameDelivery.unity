@@ -2005,8 +2005,8 @@ MonoBehaviour:
   hurdleDamage: 0.25
   damageMin: 0.02
   damageMax: 0.03
-  speedPenalty10: 0.1
-  speedPenalty20: 0.2
+  speedPenalty10: 0.8
+  speedPenalty20: 0.6
 --- !u!114 &1622191753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3919,7 +3919,7 @@ MonoBehaviour:
   - {fileID: 2103324700}
   fenceSpeed: 1.5
   groundMaterial: {fileID: 2100000, guid: 9190650be496a4e408a540bb2e8ec70f, type: 2}
-  groundSpeed: 1
+  groundSpeed: 0
   speedRatio: 1
   cloudOffset: 15
 --- !u!114 &6067250156558462705
@@ -3937,7 +3937,7 @@ MonoBehaviour:
   cloudSpeed: 0.5
   buildSpeed: 1
   fenceSpeed: 1.5
-  groundSpeed: 2
+  groundSpeed: 1
   speedMultiplier: 1
 --- !u!114 &6067250156558462706
 MonoBehaviour:
@@ -3953,15 +3953,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   builders:
     _serializedList:
-    - Key: 0
-      Value: {fileID: 11400000, guid: 6b9c6e7b467171e49b078d2bf1f13a20, type: 2}
     - Key: 1
       Value: {fileID: 11400000, guid: ac39efd72f829144b9c5e7b43eab8a8b, type: 2}
     - Key: 2
       Value: {fileID: 11400000, guid: 0e09fc21aa21cd445812c3a3c3fb8f91, type: 2}
   textObj: {fileID: 90043825720689083}
   hurdleObjectManager: {fileID: 435789770}
-  spawnInterval: 15
+  spawnInterval: 8
   bumpObject: {fileID: 11400000, guid: 6b9c6e7b467171e49b078d2bf1f13a20, type: 2}
   carCrushObject: {fileID: 11400000, guid: ac39efd72f829144b9c5e7b43eab8a8b, type: 2}
   workObject: {fileID: 11400000, guid: 0e09fc21aa21cd445812c3a3c3fb8f91, type: 2}

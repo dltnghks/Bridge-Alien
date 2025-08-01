@@ -23,6 +23,7 @@ public class EmergencyRepairSkill : DurationSkill, IRegainable
     protected override void EndSkill()
     {
         base.EndSkill();
+        OnActiveStateChanged?.Invoke(false);
     }
     
     public override void TryActivate()
