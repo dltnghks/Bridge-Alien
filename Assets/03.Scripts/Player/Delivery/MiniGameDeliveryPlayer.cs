@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MiniGameDeliveryPlayer : Player
 {
@@ -10,9 +11,13 @@ public class MiniGameDeliveryPlayer : Player
     
     private float _invincibleTime = .0f;
 
-    private bool isInvincible = false;
+    private bool _isInvincible = false;
+    private bool _isPassBump = false;
 
     private DamageHandler _damageHandler;
+    
+    private bool _isExiting = false;
+    public UnityAction OnExitComplete;
 
     public void Start()
     {
@@ -27,9 +32,36 @@ public class MiniGameDeliveryPlayer : Player
         _damageHandler = handler;
     }
 
+    public void StartExitMove()
+    {
+        _isExiting = true;
+        _isInvincible = true;
+    }
+
+    private void Update()
+    {
+        if (_isExiting)
+        {
+            MoveToRight();
+
+            Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
+            if (viewPos.x > 1.1f)
+            {
+                _isExiting = false;
+                OnExitComplete?.Invoke();
+            }
+        }
+    }
+    
+    public void MoveToRight()
+    {
+        float speed = 30f;
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+    }
+
     private void OnTriggerEnter(Collider coll)
     {
-        if (isInvincible) return;
+        if (_isInvincible) return;
 
         if (coll.CompareTag("Enemy"))
         {
@@ -75,19 +107,18 @@ public class MiniGameDeliveryPlayer : Player
         
         // 생각할 수 있는 지점. 피격 상태에서 Rocket 스킬을 사용한다면?
         // ㄴ 스킬 사용이 우선시 되어야 하지.
-        
     }
 
     private void OnDamageEffect()
     {
         _invincibleTime = bumpInvincibleTime;
-        if (!isInvincible)
+        if (!_isInvincible)
             StartCoroutine(OnInvincible());
     }
 
     private IEnumerator OnInvincible()
     {
-        isInvincible = true;
+        _isInvincible = true;
 
         float elapsed = 0f;
         bool isOpaque = true;
@@ -105,6 +136,6 @@ public class MiniGameDeliveryPlayer : Player
         }
 
         spriteRenderer.color = originalColor;
-        isInvincible = false;
+        _isInvincible = false;
     }
 }

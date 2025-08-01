@@ -5,16 +5,24 @@ using UnityEngine.Events;
 
 public class MiniGameDelivery : MonoBehaviour, IMiniGame
 {
-	[Header("Game Setting")]
+    [Header("Game Setting")]
     [SerializeField] private MiniGameDeliverySetting _gameSetting;
     [SerializeField] private SkillBase[] _skillList;
-    
-    [Header("게임 종료 시간")]
+
+    [Header("게임 종료 거리")]
     [SerializeField] private float gameTime = 1500f;
 
     [Header("플레이어 최대 이동 거리")]
     [SerializeField] private float maxDistance = .0f;
     [SerializeField] private float totalDistance = .0f;
+    
+    public bool IsHurdleSpawn
+    {
+        get
+        {
+            return totalDistance >= (maxDistance * 0.8f);
+        } 
+    }
     
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
@@ -30,6 +38,9 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
 
     private UnityEvent<bool> _onChangeActive; 
     
+    // 게임이 끝났을 때, 플레이어 이벤트를 처리하는 메서드.
+    private Coroutine _playerExitCoroutine;
+    
     private void Update()
     {
         if (!IsActive || IsPause)
@@ -37,7 +48,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
         }
 
-        totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed;
+        totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed * 1000f;
         _pathProgressBar?.ProgressUpdate(totalDistance);
     }
     
@@ -129,12 +140,23 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public void EndGame()
     {
         if (!IsActive)
-        {
             return;
+
+        ChangeActive(false);
+        _deliveryMap.UpdateSpeedMultiplier(0f);
+
+        var deliveryPlayer = PlayerCharacter as MiniGameDeliveryPlayer;
+        if (deliveryPlayer != null)
+        {
+            deliveryPlayer.OnExitComplete = OnPlayerExitScreen;
+            deliveryPlayer.StartExitMove();
         }
+    }
+    
+    private void OnPlayerExitScreen()
+    {
+        Debug.Log("플레이어 화면 밖 이탈 완료");
         
-        IsActive = false;
-        //Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore((int)_pathProgressBar.CurValue * 100);
     }
     
     public void InitializeUI()

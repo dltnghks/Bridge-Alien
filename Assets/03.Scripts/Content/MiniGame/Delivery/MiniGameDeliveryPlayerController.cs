@@ -53,11 +53,11 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
     {
         _groundRect = size;
     }
-    
+
     public void InputJoyStick(Vector2 input)
     {
         if (Managers.MiniGame.CurrentGame.IsPause) return;
-
+        
         PlayerMovement(input);
     }
 
@@ -85,11 +85,11 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
 
     public void Interaction()
     {
-        if(Managers.MiniGame.CurrentGame.IsPause){
+        if(Managers.MiniGame.CurrentGame.IsPause)
+        {
            return; 
         }
-
-        Logger.Log("Jump");
+        // 플레이어 속도가 일시적으로 감속되며, Bump 장애물을 피할 수 있다.
     }
 
     public bool ChangeInteraction(int actionnNum)

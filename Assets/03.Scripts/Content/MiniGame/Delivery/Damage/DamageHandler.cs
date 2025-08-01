@@ -61,7 +61,7 @@ public class DamageHandler : MonoBehaviour
 
     public void OnResetDamage(bool isOn)
     {
-        DamageRate /= 0.25f;
+        DamageRate -= Mathf.Clamp01(0.25f);
         UpdateSpeedPenalty();
     }
 
