@@ -125,10 +125,10 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public void StartTutorial()
     {
         // 도움말을 처음보는 경우 띄워주기
-        if (Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] == false)
+        if (Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Delivery] == false)
         {
             Managers.UI.ClosePopupUI();
-            Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] = true;
+            Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Delivery] = true;
             Managers.UI.ShowPopUI<UITutorialPopup>("UIMGDTutorialPopup");
         }
     }
