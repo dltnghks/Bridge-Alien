@@ -142,6 +142,8 @@ public class UIPlayerTaskPopup : UIPopup
         Managers.Player.AddStats(Define.PlayerStatsType.Intelligence, _selectedTaskData.IntelligenceValue);
         Managers.Player.AddStats(Define.PlayerStatsType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue);
         Managers.Player.AddStats(Define.PlayerStatsType.Luck, Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue));
+
+        Managers.Player.AddGold(-_selectedTaskData.RequirementGold);
         
         ClosePopupUI();
     }

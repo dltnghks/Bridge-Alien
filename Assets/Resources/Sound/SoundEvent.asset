@@ -250,3 +250,11 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: f225565b86e29494da4dbb85c22cea8c, type: 2}
+    - Key: 4
+      Value:
+        _serializedList:
+        - Key: Voice
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 13936826dd9cf204b8062aaad9814180, type: 2}

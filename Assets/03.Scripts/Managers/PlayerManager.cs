@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,6 +72,8 @@ public class PlayerManager
     {
         PlayerData.PlayerGold += gold;
 
+        PlayerData.PlayerGold = Math.Clamp(PlayerData.PlayerGold, 0, Int32.MaxValue);
+
         OnPlayerDataChanged?.Invoke();
 
         return gold;
@@ -108,7 +111,7 @@ public class PlayerManager
             return false; // Not enough gold
         }
 
-        PlayerData.PlayerGold -= gold;
+        AddGold(-gold);
         int maxLevel = Managers.Data.MiniGameSkillData.MiniGameSkillData[skillType].GetMaxLevel();
         if (PlayerData.MiniGameUnloadSkillLevel[skillType] < maxLevel)
         {
