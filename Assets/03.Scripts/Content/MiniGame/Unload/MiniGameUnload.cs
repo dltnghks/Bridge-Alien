@@ -137,14 +137,15 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
             deliveryPoint.OnScoreAction += AddScore;
             deliveryPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
-            deliveryPoint.OnReturnAction += _returnPoint.PlaceBox; 
-            deliveryPoint.SetAction( );
+            deliveryPoint.OnReturnAction += _returnPoint.PlaceBox;
+            deliveryPoint.SetAction();
         }
     }
 
     private void SetDisposalPoint()
     {
-        _disposePoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite; 
+        _disposePoint.OnScoreAction += AddScore;
+        _disposePoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
     }
 
     private void SetSpawnBoxList()
@@ -272,16 +273,15 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public void AddScore(int score)
     {
-        if (score > 0)
-        {
-            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
-        }
-        else if (score < 0)
-        {
-            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.MinusScore.ToString());
-        }
+        GenerateScoreTextObj(score);
 
         _score.AddScore(score);
+    }
+    
+    private void GenerateScoreTextObj(int amount)
+    {
+        InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
+        scoreTextObj.Init(PlayerCharacter.transform.position, amount);
     }
 
 }

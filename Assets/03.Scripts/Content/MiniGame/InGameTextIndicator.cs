@@ -15,16 +15,30 @@ public class InGameTextIndicator : MonoBehaviour
     [Header("프리팹의 자식 객체 (Look Camera)")]
     [SerializeField] Transform mChildTransform;
 
+    [Header("세팅")]
+    [SerializeField] private float _size = 0.5f;
+
     private void Update()
     {
         mChildTransform.LookAt(Camera.main.transform);
     }
 
-    public void Init(Vector3 pos, float amount, Color color, float size)
+    public void Init(Vector3 pos, float amount)
     {
+        Color color = Color.black;
+        if (amount < 0)
+        {
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.MinusScore.ToString());
+            color = Color.red;
+        }
+        else if (amount > 0)
+        {
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
+            color = Color.green;
+        }
         
         // 만약 호출된 값이 0이라면 리턴
-        if(Mathf.RoundToInt(amount) == 0)
+        if (Mathf.RoundToInt(amount) == 0)
         {
             gameObject.SetActive(false);
             return;
@@ -33,7 +47,7 @@ public class InGameTextIndicator : MonoBehaviour
         // 재사용시 기존의 상태를 초기화
         mRigidBody.angularVelocity = Vector3.zero;
         mRigidBody.velocity = Vector3.zero;
-        transform.localScale = Vector3.one * size;
+        transform.localScale = Vector3.one * _size;
 
         // 위치 설정
         transform.position = pos;
@@ -44,7 +58,7 @@ public class InGameTextIndicator : MonoBehaviour
         mDamageLabel.color = color;
 
         // 연출을 위한 힘 추가
-        mRigidBody.AddForce(new Vector3(Random.Range(-1f, 1f), 1f, Random.Range(-1f, 1f)), ForceMode.Impulse);
+        mRigidBody.AddForce(new Vector3(Random.Range(-2f, 2f), 3f, Random.Range(-1f, 1f)), ForceMode.Impulse);
 
         transform.DOScale(transform.localScale, 0);
         transform.DOLocalMoveY(3, 1).OnComplete(() =>

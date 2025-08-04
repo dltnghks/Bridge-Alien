@@ -36,12 +36,6 @@ public class UIScoreBoard : UISubItem
         SetScoreText(_curScore);
     }
 
-    public void AddScore(int score)
-    {
-        _curScore += score;
-        SetScoreText(_curScore);
-    }
-
     private void SetScoreText(int score)
     {
         string scoreFormat = GetScoreFormat(score);
@@ -56,6 +50,6 @@ public class UIScoreBoard : UISubItem
 
     private string GetScoreFormat(int score)
     {
-        return $"{score.ToString()}";
+        return $"{score}";
     }
 }

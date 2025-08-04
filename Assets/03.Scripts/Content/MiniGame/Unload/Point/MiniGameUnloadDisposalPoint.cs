@@ -143,7 +143,13 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
             {
                 disposeSequence.Join(
                     box.transform.DOLocalMoveZ(5, 1f)
-                        .OnComplete(() => box.SetInGameActive(false))
+                        .OnComplete(
+                            () =>
+                            {
+                                box.SetInGameActive(false);
+                                OnScoreAction(-10);
+                            }
+                        )
                 );
             }
         }

@@ -96,13 +96,6 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         }
 
         OnScoreAction?.Invoke(score);
-                
-        // 획득 점수 표시
-        if(score < 0)
-            GenerateScoreTextObj(score, Color.red);
-        else
-            GenerateScoreTextObj(score, Color.green);
-
 
         box.transform.DOMove(_endPointTransform.position, 1).OnComplete(() =>
             {
@@ -122,12 +115,6 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
     {
         OnReturnAction.Invoke(box);
     } 
-
-    private void GenerateScoreTextObj(int amount, Color color)
-    {
-        InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
-        scoreTextObj.Init(transform.position, amount, color, 0.5f);
-    }
     
     private void OnTriggerExit(Collider coll)
     {
