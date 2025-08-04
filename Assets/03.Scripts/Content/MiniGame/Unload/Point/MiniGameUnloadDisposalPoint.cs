@@ -31,7 +31,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     public void Start()
     {
-        AllowedTypes = new Define.BoxType[] { Define.BoxType.Disposal };
+        AllowedTypes = new Define.BoxType[] { Define.BoxType.Disposal, Define.BoxType.Cold, Define.BoxType.Normal };
         _boxList.SetBoxList(_maxIndex);
 
         // 드롭 위치 설정

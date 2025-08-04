@@ -32,7 +32,7 @@ public class MiniGameUnloadPlayer : Player
     {
         if (isActive)
         {
-            _speedUpSkillParticle.Play();            
+            _speedUpSkillParticle.Play();
         }
         else
         {
@@ -40,7 +40,7 @@ public class MiniGameUnloadPlayer : Player
             _speedUpSkillParticle.Clear();
         }
     }
-    
+
     public void SetHoldUp(bool isHoldUp)
     {
         if (characterAnimator != null)
@@ -48,4 +48,5 @@ public class MiniGameUnloadPlayer : Player
             _unloadAnimator.SetHoldUp(isHoldUp);
         }
     }
+
 }

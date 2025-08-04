@@ -43,9 +43,9 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         _triggerAction = triggerAction;
     }
 
-    private void OnTriggerEnter(Collider coll)
+    private void OnTriggerStay(Collider other)
     {
-        if (coll.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             var box = CurrentBox;
 

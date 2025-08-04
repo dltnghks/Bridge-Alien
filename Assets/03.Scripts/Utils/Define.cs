@@ -47,7 +47,6 @@ public class Define
         B,
         C,
         D,
-        E,
     }
 
     public enum DailyEventType
