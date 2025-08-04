@@ -20,20 +20,14 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
     private float _boxHeight = 0;
     private float _boxHeightOffset = 0.8f;
 
-    private Action _triggerAction;
-    private Action<int> _scoreAction;
-
     // 초기화
-    public void SetReturnPoint(Action<int> scoreAction, Action triggerAction = null)
+    public void Awake()
     {
         _boxCollider = Utils.GetOrAddComponent<BoxCollider>(gameObject);
         _boxCollider.isTrigger = true;
         _boxSpawnPosition = transform.position;
         _boxList = new MiniGameUnloadBoxList();
         _boxList.SetBoxList(100);
-
-        _scoreAction = scoreAction;
-        _triggerAction = triggerAction;
     }
     // 5초마다 큐에서 박스를 드롭 지점으로 이동
     private IEnumerator AutoSpawnBox()
@@ -79,15 +73,11 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
     }
 
     // 트리거 영역 진입/탈출 시 플레이어 상호작용 변경
-    private void OnTriggerEnter(Collider coll)
+    private void OnTriggerStay(Collider coll)
     {
-        if (coll.CompareTag("Player"))
+        if (coll.CompareTag("Player") && CanPickupBox())
         {
-            if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction(
-                (int)MiniGameUnloadInteractionAction.PickUpBox))
-            {
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.PickUpBox);
         }
     }
 
@@ -95,11 +85,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
     {
         if (coll.CompareTag("Player"))
         {
-            if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction(
-                (int)MiniGameUnloadInteractionAction.None))
-            {
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.None);
         }
     }
 
@@ -119,8 +105,6 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
         return null;
     }
     
-    
-
     // 게임 종료될 때 남은 박스 수만큼 점수 감소
     public void ReturnBoxScore()
     {
@@ -129,7 +113,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
             if (box != null)
             {
                 // 박스가 폐기되었을 때 점수 감소
-                _scoreAction?.Invoke(-50);
+                OnScoreAction?.Invoke(-50);
             }
         }
     }

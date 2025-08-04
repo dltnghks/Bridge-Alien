@@ -10,7 +10,6 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     private int _maxIndex = 1;
 
     private MiniGameUnloadBoxList _boxList = new MiniGameUnloadBoxList();
-    private UnityAction _triggerAction;
 
     public MiniGameUnloadBox CurrentBox { get { return _boxList.Peek(); } }
 
@@ -37,10 +36,9 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         }
     }
 
-    public void SetColdArea(int maxIndex, UnityAction triggerAction)
+    public void SetColdArea(int maxIndex)
     {
         _maxIndex = maxIndex;
-        _triggerAction = triggerAction;
     }
 
     private void OnTriggerStay(Collider other)
@@ -51,22 +49,19 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
 
             if (box != null)
             {
-                if (box.Info.BoxType == Define.BoxType.Normal &&
-                   Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.PickUpBox))
+                if (box.Info.BoxType == Define.BoxType.Normal)
                 {
-                    _triggerAction?.Invoke();
+                    OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.PickUpBox);
                 }
-                else if (box.Info.BoxType == Define.BoxType.Cold &&
-                         Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction(
-                             (int)MiniGameUnloadInteractionAction.None))
+                else if (box.Info.BoxType == Define.BoxType.Cold)
                 {
-                    _triggerAction?.Invoke();
+                    OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.None);
                 }
 
             }
-            else if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
+            else
             {
-                _triggerAction?.Invoke();
+                OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.DropBox);
             }
         }
     }
@@ -75,10 +70,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.None))
-            {
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.None);
         }
     }
 

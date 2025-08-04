@@ -27,16 +27,12 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
     private Transform _unloadPointTransform;
     private Transform _endPointTransform;
     
-    private Action<int> _scoreAction;
-    private Action _triggerAction;
-    private Action<MiniGameUnloadBox> _returnAction;
-    private BoxCollider _boxCollider;
+    public Action<MiniGameUnloadBox> OnReturnAction;
 
     public void Start()
     {
         AllowedTypes = new Define.BoxType[] { Define.BoxType.Cold, Define.BoxType.Normal};
         
-        _boxCollider = Utils.GetOrAddComponent<BoxCollider>(gameObject);
         _unloadPointTransform = Utils.FindChild<Transform>(gameObject, "UnloadPoint", true);
         _endPointTransform = Utils.FindChild<Transform>(gameObject, "EndPoint", true);
         _ViewDeliveryRegionText = Utils.FindChild<TextMeshPro>(gameObject,"ViewDeliveryRegionText", true);
@@ -45,22 +41,16 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         _ViewDeliveryRegionText.SetText(regionName);
     }
 
-    public void SetAction(Action<int> scoreAction, Action triggerAction = null, Action<MiniGameUnloadBox> returnAction = null)
+    public void SetAction()
     {
-        _scoreAction = scoreAction;
-        _triggerAction = triggerAction;
-        _returnAction = returnAction;
         Managers.Sound.PlayAMB(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Conveyor.ToString(), gameObject);
     }
 
-    private void OnTriggerEnter(Collider coll)
+    private void OnTriggerStay(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox)) 
-            {
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.DropBox);
         }
     }
 
@@ -105,7 +95,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
             }
         }
 
-        _scoreAction?.Invoke(score);
+        OnScoreAction?.Invoke(score);
                 
         // 획득 점수 표시
         if(score < 0)
@@ -130,7 +120,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     private void ReturnBox(MiniGameUnloadBox box)
     {
-        _returnAction.Invoke(box);
+        OnReturnAction.Invoke(box);
     } 
 
     private void GenerateScoreTextObj(int amount, Color color)
@@ -143,10 +133,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.None))
-            {
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.None);
         }
     }
 

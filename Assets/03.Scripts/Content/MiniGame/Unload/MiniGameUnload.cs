@@ -15,7 +15,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [Header("Delivery Point")]
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
     [SerializeField] private MiniGameUnloadCoolingPoint _coolingPoint;
-    
+
     [Header("Box Spawn Point")]
     [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;                   // 박스 생성 주기
     [SerializeField] private GameObject[] _boxPrefabList;
@@ -34,12 +34,21 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public UIScene GameUI { get; set; }
     private UIGameUnloadScene _uiGameUnloadScene;
- 
+
     private TimerBase _timer;
     private ScoreBase _score;
     private MiniGameUnloadBoxPreview _boxPreview;
     private readonly int _minimumWage = 10000;
-    
+
+    public void InitializeUI()
+    {
+        Logger.Log("InitializeUI Starting game");
+
+        _uiGameUnloadScene = Managers.UI.ShowSceneUI<UIGameUnloadScene>();
+        GameUI = _uiGameUnloadScene;
+        GameUI.Init();
+    }
+
     private void Update()
     {
         if (!IsActive || IsPause)
@@ -105,93 +114,61 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private void SetColdArea()
     {
-        GameObject coolingPointObj = Utils.FindChild(gameObject, "CoolingPoint", true);
-        if (coolingPointObj == null)
-        {
-            Logger.LogError("CoolingPoint object not found!");
-            return;
-        }
-        
-        _coolingPoint = coolingPointObj.GetOrAddComponent<MiniGameUnloadCoolingPoint>();
         if (_coolingPoint == null)
         {
             Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
             return;
         }
-        _coolingPoint.SetColdArea(_gameSetting.MaxColdAreaBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+
+        _coolingPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+        _coolingPoint.SetColdArea(_gameSetting.MaxColdAreaBoxIndex);
     }
-    
+
     private void SetDeliveryPointList()
     {
-        // DeliveryPointList 확인
-        GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
-        if (deliveryPoinListObj == null)
-        {
-            Logger.LogError("DeliveryPointList object not found!");
-            return;
-        }
-        Logger.Log($"Found DeliveryPointList: {deliveryPoinListObj.name}");
-
         // DeliveryPoint 초기화
-        foreach (var deliveryPoint in deliveryPoinListObj.GetComponentsInChildren<MiniGameUnloadDeliveryPoint>())
+        foreach (var deliveryPoint in _deliveryPointList)
         {
             if (deliveryPoint == null)
             {
                 Logger.LogError("Null deliveryPoint encountered!");
                 continue;
             }
-            deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite, _returnPoint.PlaceBox);
-            _deliveryPointList.Add(deliveryPoint);
+
+            deliveryPoint.OnScoreAction += AddScore;
+            deliveryPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+            deliveryPoint.OnReturnAction += _returnPoint.PlaceBox; 
+            deliveryPoint.SetAction( );
         }
     }
 
     private void SetDisposalPoint()
     {
-        GameObject disposePointObj = Utils.FindChild(gameObject, "DisposalPoint", true);
-        if (disposePointObj == null)
-        {
-            Logger.LogError("DisposalPoint object not found!");
-            return;
-        }
-        
-        MiniGameUnloadDisposalPoint disposePoint = disposePointObj.GetOrAddComponent<MiniGameUnloadDisposalPoint>();
-        disposePoint.SetDisposalPoint(_uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+        _disposePoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite; 
     }
 
     private void SetSpawnBoxList()
     {
-        GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
-        if (boxSpawnPointObj == null)
-        {
-            Logger.LogError("BoxSpawnPoint object not found!");
-            return;
-        }
-        _boxSpawnPoint = boxSpawnPointObj.GetOrAddComponent<MiniGameUnloadBoxSpawnPoint>();
         if (_boxSpawnPoint == null)
         {
             Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
             return;
         }
-        _boxSpawnPoint.SetBoxSpawnPoint(_gameSetting.MaxSpawnBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+
+        _boxSpawnPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+        _boxSpawnPoint.SetBoxSpawnPoint(_gameSetting.MaxSpawnBoxIndex);
     }
 
     private void SetReturnPoint()
     {
-        GameObject returnPointObj = Utils.FindChild(gameObject, "ReturnPoint", true);
-        if (returnPointObj == null)
-        {
-            Logger.LogError("CoolingPoint object not found!");
-            return;
-        }
-
-        _returnPoint = returnPointObj.GetOrAddComponent<MiniGameUnloadReturnPoint>();
         if (_returnPoint == null)
         {
             Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
             return;
         }
 
-        _returnPoint.SetReturnPoint(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+        _returnPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+        _returnPoint.OnScoreAction += AddScore;
     }
 
     private void SetPlayerCharacter()
@@ -217,7 +194,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             // 스킬 UI
             _uiGameUnloadScene.UIPlayerInput.SetSkillInfo(_skillList);
             _uiGameUnloadScene.UIPlayerInput.SetSkillAction(skillController.OnSkill);
-            
+
             skillController.SetSkillList(_skillList);
         }
         else
@@ -234,11 +211,15 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _score = new ScoreBase();
         _boxPreview = Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
 
-        _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
-        _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
+        _score.OnChangedScore += _uiGameUnloadScene.UIScoreBoard.SetScore;
+        _timer.OnChangedTime += _uiGameUnloadScene.UITimer.SetTimerText;
+        _timer.OnEndTime += EndGame;
+
+        _timer.SetTimer(_gameSetting.GamePlayTime);
+
         _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
     }
-    
+
     public bool PauseGame()
     {
         if (!IsActive || IsPause)
@@ -287,15 +268,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore, _minimumWage, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
         Logger.Log("UnloadGame Ending game");
-    }
-
-    public void InitializeUI()
-    {
-        Logger.Log("InitializeUI Starting game");
-        
-        _uiGameUnloadScene = Managers.UI.ShowSceneUI<UIGameUnloadScene>();
-        GameUI = _uiGameUnloadScene;
-        GameUI.Init();
     }
 
     public void AddScore(int score)

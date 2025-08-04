@@ -166,12 +166,12 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
         }
     }
 
-    public void SetInteractionButtonSprite()
+    public void SetInteractionButtonSprite(int num)
     {
         if (_init)
         {
-            int num = Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber;
             GetImage((int)Images.InteractionButtonImage).sprite = _spriteList[num];
+            Managers.MiniGame.CurrentGame.PlayerController.InteractionActionNumber = num;
         }
     }
 }
