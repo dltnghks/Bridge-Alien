@@ -123,10 +123,10 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
         return null;
     }
 
-    public void ViewCoolingProcess(float coolingTime)
+    public void ViewCoolingProcess(float coolingTime, float maxTime)
     {
         // 쿨링 타이머와 게이지 업데이트
         _coolingTimer.SetTimerText(coolingTime);
-        _coolingGauge.SetValue(coolingTime);
+        _coolingGauge.SetValue(coolingTime, maxTime);
     }
 }

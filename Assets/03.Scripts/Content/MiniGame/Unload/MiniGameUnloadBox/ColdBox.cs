@@ -17,7 +17,7 @@ public class ColdBox : MiniGameUnloadBox
     private Color originalColor;
     private bool isCooling = false;
     private bool isColdbox = false;
-    private Action<float> _onCoolingProgress;
+    private Action<float, float> _onCoolingProgress;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class ColdBox : MiniGameUnloadBox
     }
 
     // 미니게임 구역에 배치 시 호출될 메서드
-    public void EnterCoolingArea(Action<float> onCoolingProgress = null)
+    public void EnterCoolingArea(Action<float, float> onCoolingProgress = null)
     {
         _onCoolingProgress = onCoolingProgress;
         if (!isColdbox && !isCooling)
@@ -53,7 +53,7 @@ public class ColdBox : MiniGameUnloadBox
 
             timer += Time.deltaTime;
             float lerpRatio = timer / coolingTime;
-            _onCoolingProgress?.Invoke(timer); // 냉각 진행률 알림
+            _onCoolingProgress?.Invoke(timer, _coolingTime); // 냉각 진행률 알림
 
             SetCoolingSprite(lerpRatio); // 냉각 상태에 따라 스프라이트 변경
 
@@ -61,7 +61,7 @@ public class ColdBox : MiniGameUnloadBox
         }
 
         // 냉각 완료
-        _onCoolingProgress?.Invoke(0); // 냉각 진행률 알림
+        _onCoolingProgress?.Invoke(0, _coolingTime); // 냉각 진행률 알림
         isColdbox = true;
         isCooling = false;
         BoxType = Define.BoxType.Normal;

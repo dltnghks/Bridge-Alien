@@ -957,11 +957,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3926806548858865530, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.22
+      value: 7.3
       objectReference: {fileID: 0}
     - target: {fileID: 5737174199348785999, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Name
       value: MiniGameUnload
+      objectReference: {fileID: 0}
+    - target: {fileID: 6886303805314924748, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

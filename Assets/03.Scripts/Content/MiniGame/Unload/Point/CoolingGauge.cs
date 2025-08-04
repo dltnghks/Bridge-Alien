@@ -22,22 +22,11 @@ public class CoolingGauge : MonoBehaviour
         UpdateGaugeVisuals();
     }
 
-    public void SetValue(float value)
+    public void SetValue(float value, float maxTime)
     {
         // 값이 0과 maxValue 사이를 벗어나지 않도록 제한
-        currentValue = Mathf.Clamp(value, 0, maxValue);
-        UpdateGaugeVisuals();
-    }
-
-    public void SetRatio(float ratio)
-    {
-        // ratio가 0.0 ~ 1.0 사이인지 확인하고, maxValue에 곱하여 현재 값을 설정
-        if (ratio < 0f || ratio > 1f)
-        {
-            Logger.LogError("CoolingGauge: Ratio must be between 0.0 and 1.0");
-            return;
-        }
-        currentValue = ratio * maxValue;
+        currentValue = Mathf.Clamp(value, 0, maxTime);
+        currentValue /= maxTime;
         UpdateGaugeVisuals();
     }
 
@@ -46,10 +35,6 @@ public class CoolingGauge : MonoBehaviour
     {
         if (gaugeRenderer == null) return;
 
-        // 현재 값의 비율(0.0 ~ 1.0)을 계산
-        float fillRatio = currentValue / maxValue;
-
-        // 셰이더의 "_FillAmount" 속성에 계산된 비율을 전달
-        gaugeRenderer.material.SetFloat("_FillAmount", fillRatio);
+        gaugeRenderer.material.SetFloat("_FillAmount", currentValue);
     }
 }
