@@ -23,9 +23,4 @@ public class CarCrushBuilder : HurdleBuilder
         
         return Instantiate(mainPrefab, resultPosition, Quaternion.identity, objParent);
     }
-    
-    public override GameObject CreateEnd(float yPos)
-    {
-        return null;
-    }
 }

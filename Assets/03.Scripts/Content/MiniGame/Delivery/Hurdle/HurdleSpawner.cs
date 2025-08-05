@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using AYellowpaper.SerializedCollections;
+using Random = UnityEngine.Random;
 
 public enum HurdleType
 {
@@ -21,7 +23,8 @@ public class HurdleSpawner : MonoBehaviour
     [SerializeField] private HurdleObjectManager hurdleObjectManager;
 
     [Header("장애물 생성 수치")]
-    [SerializeField] private float spawnInterval;
+    [SerializeField] private float minTime;
+    [SerializeField] private float maxTime;
 
     [Header("장애물 S.O 데이터")]
     [SerializeField] private BumpBuilder bumpObject;
@@ -34,7 +37,8 @@ public class HurdleSpawner : MonoBehaviour
     private Transform _uiParent;
 
     private MiniGameDelivery _miniGame;
-    
+
+    private Coroutine _currentStartCoroutine;
     private Coroutine _currentBuildCoroutine;
 
     private readonly float[] yPositions = new float[3] { -9.5f, -4.2f, -7.7f };
@@ -55,7 +59,8 @@ public class HurdleSpawner : MonoBehaviour
 
     public void StartHurdleSpawn()
     {
-        StartCoroutine(HurdleSpawnLoop());
+        if(_currentStartCoroutine == null && _miniGame.IsActive && _miniGame.IsPause == false)
+            _currentStartCoroutine = StartCoroutine(HurdleSpawnLoop());
     }
 
     public void ChangeGroundSpeed(float speed)
@@ -68,9 +73,10 @@ public class HurdleSpawner : MonoBehaviour
     
     private void Update()
     {
+        // 장애물 스폰이 진행이 안되고 있거나, 미니게임이 없다면
         if (!_isRunning || _miniGame == null) return;
 
-        if (!_miniGame.IsPause && _wasPaused == true && !_hasSpawnStarted)
+        if (!_miniGame.IsPause && _wasPaused && !_hasSpawnStarted)
         {
             StartHurdleSpawn();
             _hasSpawnStarted = true;
@@ -78,8 +84,14 @@ public class HurdleSpawner : MonoBehaviour
 
         _wasPaused = _miniGame.IsPause;
 
-        if (_miniGame.IsPause)
+        if (_miniGame.IsPause || _miniGame.IsActive == false)
         {
+            if (_currentStartCoroutine != null)
+            {
+                StopCoroutine(_currentStartCoroutine);
+                _currentStartCoroutine = null;
+            }
+
             _hasSpawnStarted = false;
         }
     }
@@ -102,28 +114,22 @@ public class HurdleSpawner : MonoBehaviour
     {
         while (_isRunning)
         {
-            if (_miniGame.IsHurdleSpawn || !_miniGame.IsActive || _miniGame.IsPause)
-            {
-                if (_currentBuildCoroutine != null)
-                {
-                    StopCoroutine(_currentBuildCoroutine);
-                    _currentBuildCoroutine = null;
-                }
-                
-                yield break;
-            }
+            yield return new WaitForSeconds(GetRandTime());
 
             var type = GetHurdleType();
             var origins = GetOrigins(type);
 
-            if (builders.TryGetValue(type, out var builder))
+            if (builders.TryGetValue(type, out var builder) && _miniGame.IsPause == false && _miniGame.IsActive && _miniGame.IsHurdleSpawnFlag)
             {
                 _currentBuildCoroutine = StartCoroutine(builder.BuildRoutine(origins));
                 yield return _currentBuildCoroutine;
                 _currentBuildCoroutine = null;
             }
-
-            yield return new WaitForSeconds(spawnInterval);
+            else if(_currentBuildCoroutine != null)
+            {
+                StopCoroutine(_currentBuildCoroutine);
+                _currentBuildCoroutine = null;
+            }
         }
     }
 
@@ -145,6 +151,7 @@ public class HurdleSpawner : MonoBehaviour
             case HurdleType.Work:
             case HurdleType.CarCrush:
                 int count = Random.Range(3, 7);
+                Debug.Log("Count : " + count);
                 for (int i = 0; i < count; i++)
                 {
                     float y = yPositions[i % 2];
@@ -154,4 +161,12 @@ public class HurdleSpawner : MonoBehaviour
         }
         return origins.ToArray();
     }
+
+    private float GetRandTime()
+    {
+        var resultTime = Random.Range(minTime, maxTime);
+        Debug.Log("다음 스폰 시간 : " + resultTime);
+        return resultTime;
+    }
+    
 }
