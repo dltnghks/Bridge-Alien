@@ -45,6 +45,7 @@ public class UIWorkModuleSkillButton : UIActiveButton
 
     public void SetWorkModuleSkillInfo(SkillData skillData)
     {
+        Init();
         int skillLevel = Managers.Player.PlayerData.MiniGameUnloadSkillLevel[skillData.Type];
         GetImage((int)Images.SkillIconImage).sprite = skillData.Icon;
 

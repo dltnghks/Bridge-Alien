@@ -628,10 +628,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1475071320553538901, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_text
-      value: "\uC6CC\uD06C\uBAA8\uB4C8"
-      objectReference: {fileID: 0}
     - target: {fileID: 2114216856627369464, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_Name
       value: UIHouseScene
@@ -643,26 +639,6 @@ PrefabInstance:
     - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3184144731434062830, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_Name
-      value: WorkModuleButton
       objectReference: {fileID: 0}
     - target: {fileID: 4496187295962161958, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchorMax.y
@@ -679,10 +655,6 @@ PrefabInstance:
     - target: {fileID: 4496187295962161958, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5599207559380118193, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_Value
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5975088514112621530, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchorMax.y
@@ -944,7 +916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &2906335481454179121
 SpriteRenderer:
   m_ObjectHideFlags: 0

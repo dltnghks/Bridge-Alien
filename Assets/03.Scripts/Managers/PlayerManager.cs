@@ -53,7 +53,7 @@ public class PlayerManager
     {
         // 작업 숙련으로 인한 획득 골드 증가
         int playerExperience = PlayerData.Stats[Define.PlayerStatsType.Experience];
-         if (playerExperience <= StatThresholds[0]) return GoldGainRates[0];
+        if (playerExperience <= StatThresholds[0]) return GoldGainRates[0];
         if (playerExperience <= StatThresholds[1]) return GoldGainRates[1];
         if (playerExperience <= StatThresholds[2]) return GoldGainRates[2];
         return GoldGainRates[3];
@@ -89,7 +89,7 @@ public class PlayerManager
     {
         return PlayerData.PlayerGold;
     }
-    
+
     public int GetFatigueReductionRate()
     {
         int gravityAdaptation = PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation];
@@ -103,7 +103,7 @@ public class PlayerManager
     {
         return PlayerData.MiniGameUnloadSkillLevel[skillType];
     }
-    
+
     public bool UpgradeSkill(Define.MiniGameSkillType skillType, int gold)
     {
         if (PlayerData.PlayerGold < gold)
@@ -111,12 +111,12 @@ public class PlayerManager
             return false; // Not enough gold
         }
 
-        AddGold(-gold);
         int maxLevel = Managers.Data.MiniGameSkillData.MiniGameSkillData[skillType].GetMaxLevel();
         if (PlayerData.MiniGameUnloadSkillLevel[skillType] < maxLevel)
         {
             PlayerData.MiniGameUnloadSkillLevel[skillType]++;
             OnPlayerDataChanged?.Invoke();
+            AddGold(-gold);
             return true;
         }
         return false;

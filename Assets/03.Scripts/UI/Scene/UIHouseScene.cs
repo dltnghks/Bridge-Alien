@@ -54,7 +54,7 @@ public class UIHouseScene : UIScene
 
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
-        GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickMiniGameButton);
+        GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickWorkModuleButton);
 
         SetGoldText();
         SetFatigue();
@@ -95,11 +95,11 @@ public class UIHouseScene : UIScene
     }
 
     // 1차 시연용 버튼
-    private void OnClickMiniGameButton()
+    private void OnClickWorkModuleButton()
     {
 
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        _currentPopup = Managers.UI.ShowPopUI<UIMiniGameChoicePopup>();
+        _currentPopup = Managers.UI.ShowPopUI<UIWorkModulePopup>();
     }
 
     private void SetDayText()
