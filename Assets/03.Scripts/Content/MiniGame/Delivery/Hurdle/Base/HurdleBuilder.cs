@@ -25,7 +25,6 @@ public abstract class HurdleBuilder : ScriptableObject
         CreateEntry(origins[0]);
 
         GameObject mainObject = null;
-        Debug.Log("Spawn 시작 ");
         foreach (var origin in origins)
         {
             if (Managers.MiniGame.CurrentGame.IsPause == false)
@@ -36,6 +35,5 @@ public abstract class HurdleBuilder : ScriptableObject
             if(mainObject != null)
                 yield return new WaitForSeconds(spawnDelay);
         }
-        Debug.Log("Spawn 종료 ");
     }
 }
