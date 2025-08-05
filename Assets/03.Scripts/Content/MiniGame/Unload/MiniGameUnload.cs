@@ -26,6 +26,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [Header("Disposal Point")]
     [SerializeField] private MiniGameUnloadDisposalPoint _disposePoint;
 
+    private ComboSystem _comboSystem;
+
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
@@ -76,6 +78,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         SetDisposalPoint();
 
         SetPlayerCharacter();
+
+        SetComboSystem();
 
         // 다른 설정이 끝난 후 UI 설정
         SetGameUI();
@@ -219,6 +223,18 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _timer.SetTimer(_gameSetting.GamePlayTime);
 
         _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
+
+        _comboSystem = new ComboSystem();
+        if (_comboSystem != null && _uiGameUnloadScene.UIComboDisplay != null)
+        {
+            _comboSystem.OnComboChanged += _uiGameUnloadScene.UIComboDisplay.UpdateCombo;
+            _comboSystem.OnComboBroken += _uiGameUnloadScene.UIComboDisplay.BreakCombo;
+        }
+    }
+
+    private void SetComboSystem()
+    {
+        _comboSystem = new ComboSystem();
     }
 
     public bool PauseGame()
@@ -273,9 +289,28 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public void AddScore(int score)
     {
-        GenerateScoreTextObj(score);
+        if (score > 0)
+        {
+            // 1. 콤보 등록
+            _comboSystem.RegisterSuccess();
 
-        _score.AddScore(score);
+            // 2. 콤보 배율 적용
+            float multiplier = _comboSystem.GetScoreMultiplier();
+            int finalScore = Mathf.RoundToInt(score * multiplier);
+
+            // 3. 최종 점수 반영
+            GenerateScoreTextObj(finalScore);
+            _score.AddScore(finalScore);
+        }
+        else // 점수가 0 이하일 경우 (마이너스 점수)
+        {
+            // 1. 콤보 초기화
+            _comboSystem.BreakCombo();
+
+            // 2. 감점은 배율 없이 그대로 적용
+            GenerateScoreTextObj(score);
+            _score.AddScore(score);
+        }
     }
     
     private void GenerateScoreTextObj(int amount)

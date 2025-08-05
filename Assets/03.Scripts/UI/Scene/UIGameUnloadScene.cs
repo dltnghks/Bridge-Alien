@@ -12,6 +12,7 @@ public class UIGameUnloadScene : UIScene
         UIBoxPreview,
         UIGameMenu,
         UIMiniGameUnloadPlayerInput,
+        UICombo,
     }
     
     private UITimer _uiTimer;
@@ -19,10 +20,12 @@ public class UIGameUnloadScene : UIScene
     private UIBoxPreview _uiBoxPreview;
     private UIMiniGameHelpButton _uiGameHelpButton;
     private UIMiniGameUnloadPlayerInput _uiPlayerInput;
+    private UIComboDisplay _uiComboDisplay;
     public UITimer UITimer { get { return _uiTimer; } }
     public UIScoreBoard UIScoreBoard { get { return _uiScoreBoard; } }
     public UIBoxPreview UIBoxPreview { get { return _uiBoxPreview; } }
     public UIMiniGameUnloadPlayerInput UIPlayerInput { get { return _uiPlayerInput; } }
+    public UIComboDisplay UIComboDisplay { get { return _uiComboDisplay; } }
     
     public override bool Init()
     {
@@ -32,13 +35,14 @@ public class UIGameUnloadScene : UIScene
         }
 
         BindObject(typeof(Objects));
-        
+
         _uiTimer = GetObject((int)Objects.UITimer).GetOrAddComponent<UITimer>();
         _uiScoreBoard = GetObject((int)Objects.UIScoreBoard).GetOrAddComponent<UIScoreBoard>();
         _uiBoxPreview = GetObject((int)Objects.UIBoxPreview).GetOrAddComponent<UIBoxPreview>();
         _uiGameHelpButton = GetObject((int)Objects.UIGameMenu).GetOrAddComponent<UIMiniGameHelpButton>();
         _uiPlayerInput = GetObject((int)Objects.UIMiniGameUnloadPlayerInput).GetOrAddComponent<UIMiniGameUnloadPlayerInput>();
-        
+        _uiComboDisplay = GetObject((int)Objects.UICombo).GetOrAddComponent<UIComboDisplay>();
+
         return true;
     }
     
