@@ -37,8 +37,7 @@ public class PlayerManager
         // 피로도 감소의 경우
         if (type == Define.PlayerStatsType.Fatigue && value < 0)
         {
-            int playerGravityAdaptation = PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation];
-            value = -GetFatigueReductionRate(playerGravityAdaptation);
+            value = -GetFatigueReductionRate();
         }
 
         PlayerData.Stats[type] += value;
@@ -91,8 +90,9 @@ public class PlayerManager
         return PlayerData.PlayerGold;
     }
     
-    private int GetFatigueReductionRate(int gravityAdaptation)
+    public int GetFatigueReductionRate()
     {
+        int gravityAdaptation = PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation];
         if (gravityAdaptation <= StatThresholds[0]) return FatigueReductionRates[0];
         if (gravityAdaptation <= StatThresholds[1]) return FatigueReductionRates[1];
         if (gravityAdaptation <= StatThresholds[2]) return FatigueReductionRates[2];

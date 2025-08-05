@@ -17,8 +17,7 @@ public class UIHouseScene : UIScene
     {
         PlayerStatusButton,
         TaskButton,
-        // 1차 시연용 버튼
-        MiniGameButton,
+        WorkModuleButton,
     }
 
     enum Objects
@@ -55,8 +54,7 @@ public class UIHouseScene : UIScene
 
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
-        // 1차 시연용 버튼
-        GetButton((int)Buttons.MiniGameButton).gameObject.BindEvent(OnClickMiniGameButton);
+        GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickMiniGameButton);
 
         SetGoldText();
         SetFatigue();
