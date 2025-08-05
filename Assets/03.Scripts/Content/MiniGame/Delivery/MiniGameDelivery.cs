@@ -149,7 +149,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         }
         
         IsPause = true;
-        _damageHandler.OnClearDamage();
         
         return true;
     }

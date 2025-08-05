@@ -41,7 +41,7 @@ public class UIDamageView : UISubItem
     {
         if (_fillCoroutine != null)
             StopCoroutine(_fillCoroutine);
-        if (percentage > 1f)
+        if (percentage <= 0f)
             return;
         
         _fillCoroutine = StartCoroutine(FillRoutine(percentage));
@@ -51,16 +51,12 @@ public class UIDamageView : UISubItem
     {
         const float fillSpeed = 1f;
 
-        if (percentage < 0.01f)
-        {
-            OnResetFill();
-            yield break;
-        }
+        float currentPercentage = GetCurrentFillPercentage();
+        bool isHealing = percentage > currentPercentage;
 
-        int direction = percentage >= GetCurrentFillPercentage() ? 1 : -1;
-
-        int startIndex = direction == 1 ? 0 : 3;
-        int endIndex = direction == 1 ? 4 : -1;
+        int direction = isHealing ? 1 : -1;
+        int startIndex = isHealing ? 0 : 3;
+        int endIndex = isHealing ? 4 : -1;
 
         for (int i = startIndex; i != endIndex; i += direction)
         {
@@ -81,6 +77,7 @@ public class UIDamageView : UISubItem
         }
     }
 
+
     private float GetCurrentFillPercentage()
     {
         float total = 0f;
@@ -88,14 +85,5 @@ public class UIDamageView : UISubItem
             total += _images[i].fillAmount;
 
         return total / 4f;
-    }
-
-
-    public void OnResetFill()
-    {
-        for (int i = 0; i < 4; ++i)
-        {
-            _images[i].fillAmount = 0f;
-        }
     }
 }
