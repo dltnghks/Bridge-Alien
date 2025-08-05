@@ -16,11 +16,11 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     [SerializeField] private float maxDistance = .0f;
     [SerializeField] private float totalDistance = .0f;
     
-    public bool IsHurdleSpawn
+    public bool IsHurdleSpawnFlag
     {
         get
         {
-            return totalDistance >= (maxDistance * 0.8f);
+            return totalDistance <= (maxDistance * 0.8f);
         } 
     }
     
@@ -112,14 +112,16 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         });
 
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
-
+        
         ChangeActive(true);
-
-        _deliveryMap.StartDeliveryMap();
-
-        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
-
+        
         StartTutorial();
+        
+        PauseGame();
+        
+        _deliveryMap.StartDeliveryMap();
+        
+        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
     }
 
     public void StartTutorial()

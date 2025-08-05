@@ -2308,7 +2308,7 @@ Transform:
   m_GameObject: {fileID: 2026350205}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.2933, y: -9.7, z: -1}
+  m_LocalPosition: {x: 4.2933, y: -9.52, z: -1}
   m_LocalScale: {x: 2.94725, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3960,7 +3960,8 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 0e09fc21aa21cd445812c3a3c3fb8f91, type: 2}
   textObj: {fileID: 90043825720689083}
   hurdleObjectManager: {fileID: 435789770}
-  spawnInterval: 8
+  minTime: 3
+  maxTime: 10
   bumpObject: {fileID: 11400000, guid: 6b9c6e7b467171e49b078d2bf1f13a20, type: 2}
   carCrushObject: {fileID: 11400000, guid: ac39efd72f829144b9c5e7b43eab8a8b, type: 2}
   workObject: {fileID: 11400000, guid: 0e09fc21aa21cd445812c3a3c3fb8f91, type: 2}
