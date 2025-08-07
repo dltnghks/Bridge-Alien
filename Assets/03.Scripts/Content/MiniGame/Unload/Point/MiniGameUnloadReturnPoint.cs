@@ -113,7 +113,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
             if (box != null)
             {
                 // 박스가 폐기되었을 때 점수 감소
-                OnScoreAction?.Invoke(-50);
+                OnScoreAction?.Invoke(-50, null);
             }
         }
     }

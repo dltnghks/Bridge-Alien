@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 public class ComboSystem
 {
@@ -9,15 +10,19 @@ public class ComboSystem
     public event Action<int> OnComboChanged;
     // 이벤트: 콤보가 깨졌을 때 UI 효과용
     public event Action OnComboBroken;
+    public event Action<MiniGameUnloadBoxList> OnChangedComboBox;
+
+    public MiniGameUnloadBoxList _comboBoxList = new MiniGameUnloadBoxList();
 
     public ComboSystem()
     {
         Reset();
         MaxCombo = 0;
+        _comboBoxList.SetBoxList(3);
     }
 
     // 배달 성공 시 호출
-    public void RegisterSuccess()
+    public void RegisterSuccess(MiniGameUnloadBox box)
     {
         Logger.Log("Combo!!");
         CurrentCombo++;
@@ -26,6 +31,28 @@ public class ComboSystem
             MaxCombo = CurrentCombo;
         }
         OnComboChanged?.Invoke(CurrentCombo);
+        AddComboBox(box);
+    }
+
+    public void AddComboBox(MiniGameUnloadBox box, bool success = true)
+    {
+        Logger.Log(_comboBoxList.BoxList.Count);
+        if (success)
+        {
+            _comboBoxList.TryPush(box);
+        }
+        else
+        {
+            _comboBoxList.TryPush(null);
+        }
+
+
+        if (_comboBoxList.IsFull)
+        {
+            _comboBoxList.ClearBoxList();
+        }
+
+        OnChangedComboBox?.Invoke(_comboBoxList);
     }
 
     // 콤보 초기화 (마이너스 점수 받을 때 외부에서 호출)

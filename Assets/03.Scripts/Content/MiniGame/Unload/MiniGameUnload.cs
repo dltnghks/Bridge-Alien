@@ -229,6 +229,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         {
             _comboSystem.OnComboChanged += _uiGameUnloadScene.UIComboDisplay.UpdateCombo;
             _comboSystem.OnComboBroken += _uiGameUnloadScene.UIComboDisplay.BreakCombo;
+            _comboSystem.OnChangedComboBox += _uiGameUnloadScene.UIComboBoxView.UpdateUI;
         }
     }
 
@@ -287,12 +288,12 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         Logger.Log("UnloadGame Ending game");
     }
 
-    public void AddScore(int score)
+    public void AddScore(int score, MiniGameUnloadBox box)
     {
         if (score > 0)
         {
             // 1. 콤보 등록
-            _comboSystem.RegisterSuccess();
+            _comboSystem.RegisterSuccess(box);
 
             // 2. 콤보 배율 적용
             float multiplier = _comboSystem.GetScoreMultiplier();

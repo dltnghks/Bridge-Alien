@@ -62,12 +62,12 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
             }
         );
     }
-    
+
     private void MoveBoxToEndPoint(MiniGameUnloadBox box)
     {
         int score = 0;
         bool reutnrBox = false;
-        
+
         if (!box.Info.IsGrab)
         {
             if (box.BoxType != Define.BoxType.Normal)
@@ -95,10 +95,9 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
             }
         }
 
-        OnScoreAction?.Invoke(score);
-
         box.transform.DOMove(_endPointTransform.position, 1).OnComplete(() =>
             {
+                OnScoreAction?.Invoke(score, box);
                 if (reutnrBox)
                 {
                     ReturnBox(box);

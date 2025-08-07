@@ -147,7 +147,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
                             () =>
                             {
                                 box.SetInGameActive(false);
-                                OnScoreAction(-10);
+                                OnScoreAction(-10, null);
                             }
                         )
                 );
