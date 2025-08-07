@@ -11,6 +11,8 @@ public class ComboSystem
     // 이벤트: 콤보가 깨졌을 때 UI 효과용
     public event Action OnComboBroken;
     public event Action<MiniGameUnloadBoxList> OnChangedComboBox;
+    // 이벤트: 콤보 박스가 가득 찼을 때
+    public event Action OnComboBoxFull;
 
     public MiniGameUnloadBoxList _comboBoxList = new MiniGameUnloadBoxList();
 
@@ -36,7 +38,14 @@ public class ComboSystem
 
     public void AddComboBox(MiniGameUnloadBox box, bool success = true)
     {
-        Logger.Log(_comboBoxList.BoxList.Count);
+        if (_comboBoxList.IsFull)
+        {
+            // 이미 꽉 차있다면 더 이상 박스를 추가하지 않음
+            // 또는 여기서 바로 클리어하고 새로 시작하게 할 수도 있습니다.
+            // 지금은 추가 동작을 막는 것으로 구현
+            return;
+        }
+        
         if (success)
         {
             _comboBoxList.TryPush(box);
@@ -45,13 +54,19 @@ public class ComboSystem
         {
             _comboBoxList.TryPush(null);
         }
-
+        
+        OnChangedComboBox?.Invoke(_comboBoxList);
 
         if (_comboBoxList.IsFull)
         {
-            _comboBoxList.ClearBoxList();
+            OnComboBoxFull?.Invoke();
         }
-
+    }
+    
+    // 콤보 박스 리스트를 비우는 함수
+    public void ClearComboBoxList()
+    {
+        _comboBoxList.ClearBoxList();
         OnChangedComboBox?.Invoke(_comboBoxList);
     }
 

@@ -64,7 +64,7 @@ public class ColdBox : MiniGameUnloadBox
         _onCoolingProgress?.Invoke(0, _coolingTime); // 냉각 진행률 알림
         isColdbox = true;
         isCooling = false;
-        BoxType = Define.BoxType.Normal;
+        BoxState = Define.BoxState.Normal;
         SetCoolingSprite(1); // 냉각 상태에 따라 스프라이트 변경
         
         Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.CoolingComplete.ToString(), gameObject);
@@ -87,10 +87,11 @@ public class ColdBox : MiniGameUnloadBox
             objectRenderer.sprite = _coolingSprites[index];
         }
     }
-    
+
     public override void SetRandomInfo()
     {
         base.SetRandomInfo();
-        _info.BoxType = Define.BoxType.Cold;
+        _info.BoxState = Define.BoxState.Cold;
+        _info.BoxType = Define.BoxType.Fragile;
     }
 }

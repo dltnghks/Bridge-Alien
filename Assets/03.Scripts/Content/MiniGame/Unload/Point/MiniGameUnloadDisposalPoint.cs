@@ -31,7 +31,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     public void Start()
     {
-        AllowedTypes = new Define.BoxType[] { Define.BoxType.Disposal, Define.BoxType.Cold, Define.BoxType.Normal };
+        AllowedTypes = new Define.BoxState[] { Define.BoxState.Disposal, Define.BoxState.Cold, Define.BoxState.Normal };
         _boxList.SetBoxList(_maxIndex);
 
         // 드롭 위치 설정
@@ -47,7 +47,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         _triggerAction = triggerAction;
     }
 
-    public override bool CanProcess(Define.BoxType boxType)
+    public override bool CanProcess(Define.BoxState boxType)
     {
         return base.CanProcess(boxType);
     }
@@ -76,7 +76,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     public bool CanPlaceBox(MiniGameUnloadBox box)
     {
-        return CanProcess(box.BoxType) && !_boxList.IsFull;
+        return CanProcess(box.BoxState) && !_boxList.IsFull;
     }
 
     public void PlaceBox(MiniGameUnloadBox box)

@@ -22,7 +22,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
 
     private void Start()
     {
-        AllowedTypes = new Define.BoxType[] { Define.BoxType.Cold };
+        AllowedTypes = new Define.BoxState[] { Define.BoxState.Cold };
         _boxList.SetBoxList(_maxIndex);
 
         if (_coolingGauge == null)
@@ -49,11 +49,11 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
 
             if (box != null)
             {
-                if (box.Info.BoxType == Define.BoxType.Normal)
+                if (box.Info.BoxState == Define.BoxState.Normal)
                 {
                     OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.PickUpBox);
                 }
-                else if (box.Info.BoxType == Define.BoxType.Cold)
+                else if (box.Info.BoxState == Define.BoxState.Cold)
                 {
                     OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.None);
                 }
@@ -76,7 +76,7 @@ public class MiniGameUnloadCoolingPoint : MiniGameUnloadBasePoint, IBoxPlacePoin
 
     public bool CanPlaceBox(MiniGameUnloadBox box)
     {
-        return CanProcess(box.BoxType) && !_boxList.IsFull;
+        return CanProcess(box.BoxState) && !_boxList.IsFull;
     }
 
     public void PlaceBox(MiniGameUnloadBox box)

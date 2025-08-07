@@ -66,7 +66,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 
     public void PlaceBox(MiniGameUnloadBox box)
     {
-        box.BoxType = Define.BoxType.Disposal;
+        box.BoxState = Define.BoxState.Disposal;
         _returnBoxQueue.Enqueue(box);
 
         StartCoroutine(AutoSpawnBox());

@@ -230,12 +230,68 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             _comboSystem.OnComboChanged += _uiGameUnloadScene.UIComboDisplay.UpdateCombo;
             _comboSystem.OnComboBroken += _uiGameUnloadScene.UIComboDisplay.BreakCombo;
             _comboSystem.OnChangedComboBox += _uiGameUnloadScene.UIComboBoxView.UpdateUI;
+            _comboSystem.OnComboBoxFull += HandleComboBoxFull; // 이벤트 구독
         }
     }
 
     private void SetComboSystem()
     {
         _comboSystem = new ComboSystem();
+    }
+    
+    private void HandleComboBoxFull()
+    {
+        // 콤보 박스가 가득 찼을 때, 같은 종류인지 확인
+        bool isSpecialCombo = CheckForSpecialCombo();
+        StartCoroutine(ProcessFullComboBox(isSpecialCombo));
+    }
+
+    private bool CheckForSpecialCombo()
+    {
+        var boxList = _comboSystem._comboBoxList.BoxList;
+
+        // 리스트가 비어있거나, 3개가 아니거나, 중간에 null(실패)이 있으면 스페셜 콤보가 아님
+        if (boxList == null || boxList.Count < 3 || boxList.Contains(null))
+        {
+            return false;
+        }
+
+        // 첫 번째 박스의 타입을 기준으로 삼음
+        var firstBoxType = boxList[0].BoxType;
+
+        // 나머지 박스들이 첫 번째 박스와 타입이 같은지 확인
+        for (int i = 1; i < boxList.Count; i++)
+        {
+            if (boxList[i].BoxType != firstBoxType)
+            {
+                return false; // 다른 타입의 박스가 있으면 일반 콤보
+            }
+        }
+
+        // 모든 박스가 같은 타입이면 스페셜 콤보
+        return true;
+    }
+
+    private IEnumerator ProcessFullComboBox(bool isSpecialCombo)
+    {
+        // 1. 추가 점수 부여 (기본 300점)
+        int bonusScore = 300;
+        
+        // 스페셜 콤보(같은 종류 3개)일 경우 점수 2배
+        if (isSpecialCombo)
+        {
+            bonusScore *= 2;
+            // 여기에 추가적인 시각/사운드 효과를 넣으면 더 좋습니다!
+        }
+
+        _score.AddScore(bonusScore);
+        GenerateScoreTextObj(bonusScore);
+
+        // 2. 플레이어가 UI를 볼 수 있도록 1초 대기
+        yield return new WaitForSeconds(1.0f);
+
+        // 3. 콤보 박스 리스트 초기화
+        _comboSystem.ClearComboBoxList();
     }
 
     public bool PauseGame()

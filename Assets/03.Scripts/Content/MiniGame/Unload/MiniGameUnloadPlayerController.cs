@@ -197,7 +197,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         _boxHeight += _boxOffset;
 
         CoolingSkill coolingSkill = SkillList.OfType<CoolingSkill>().FirstOrDefault();
-        if (coolingSkill != null && pickupBox.BoxType == Define.BoxType.Cold)
+        if (coolingSkill != null && pickupBox.BoxState == Define.BoxState.Cold)
         {
             coolingSkill.OnPickUpBox(pickupBox);
         }
@@ -224,7 +224,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
 
         if (!CanDropBoxAtPoint(nearestPoint, carriedBox))
         {
-            Debug.Log($"이 포인트에는 {carriedBox.Info.BoxType} 상자를 놓을 수 없음");
+            Debug.Log($"이 포인트에는 {carriedBox.Info.BoxState} 상자를 놓을 수 없음");
             return;
         }
 
@@ -235,7 +235,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         }
 
         // ColdBox를 올바른 지역에 놓았을 때 CoolingSkill Regain 호출
-        if (carriedBox.Info.BoxType == Define.BoxType.Normal &&
+        if (carriedBox.Info.BoxState == Define.BoxState.Normal &&
             carriedBox is ColdBox && nearestPoint is MiniGameUnloadDeliveryPoint)
         {
             CoolingSkill coolingSkill = SkillList?.OfType<CoolingSkill>().FirstOrDefault();
@@ -246,7 +246,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         }
         
         // 일반 박스를 올바른 지역에 놓았을 때 SpeedUpSkill Regain 호출
-        else if (carriedBox.Info.BoxType == Define.BoxType.Normal &&
+        else if (carriedBox.Info.BoxState == Define.BoxState.Normal &&
                 carriedBox is CommonBox && nearestPoint is MiniGameUnloadDeliveryPoint)
         {
             SpeedUpSkill speedUpSkill = SkillList?.OfType<SpeedUpSkill>().FirstOrDefault();
@@ -263,7 +263,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
 
     private bool CanDropBoxAtPoint(MiniGameUnloadBasePoint point, MiniGameUnloadBox box)
     {
-        return point.CanProcess(box.Info.BoxType);
+        return point.CanProcess(box.Info.BoxState);
     }
 
     private bool TryPlaceBoxAtPoint(MiniGameUnloadBasePoint point, MiniGameUnloadBox box)

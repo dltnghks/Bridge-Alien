@@ -31,7 +31,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     public void Start()
     {
-        AllowedTypes = new Define.BoxType[] { Define.BoxType.Cold, Define.BoxType.Normal};
+        AllowedTypes = new Define.BoxState[] { Define.BoxState.Cold, Define.BoxState.Normal};
         
         _unloadPointTransform = Utils.FindChild<Transform>(gameObject, "UnloadPoint", true);
         _endPointTransform = Utils.FindChild<Transform>(gameObject, "EndPoint", true);
@@ -70,7 +70,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
         if (!box.Info.IsGrab)
         {
-            if (box.BoxType != Define.BoxType.Normal)
+            if (box.BoxState != Define.BoxState.Normal)
             {
                 score = -50;
                 reutnrBox = true;
@@ -130,7 +130,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     public bool CanPlaceBox(MiniGameUnloadBox box)
     {
-        return CanProcess(box.BoxType);
+        return CanProcess(box.BoxState);
     }
 
     public void PlaceBox(MiniGameUnloadBox box)

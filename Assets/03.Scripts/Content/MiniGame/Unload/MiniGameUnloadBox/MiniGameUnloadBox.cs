@@ -12,19 +12,21 @@ public struct MiniGameUnloadBoxInfo
 {   
     public string BoxNumber;
     public Define.BoxType BoxType;
+    public Define.BoxState BoxState;
     public Define.BoxRegion Region;
     public bool IsGrab;
     public bool IsBroken;
     public bool IsUnloaded;
-    
+
     public MiniGameUnloadBoxInfo(string boxNumber, Define.BoxRegion region)
     {
         BoxNumber = boxNumber;
         Region = region;
-        BoxType = Define.BoxType.Normal;
+        BoxState = Define.BoxState.Normal;
         IsBroken = false;
         IsGrab = false;
         IsUnloaded = false;
+        BoxType = Define.BoxType.Common;
     }
 
     // 랜덤 정보 생성
@@ -86,9 +88,15 @@ public class MiniGameUnloadBox : MonoBehaviour
         set { _info.IsUnloaded = value; }
     }
 
+    public Define.BoxState BoxState
+    {
+        get { return _info.BoxState; } 
+        set { _info.BoxState = value; }
+    }
+    
     public Define.BoxType BoxType
     {
-        get { return _info.BoxType; } 
+        get { return _info.BoxType; }
         set { _info.BoxType = value; }
     }
 
@@ -96,25 +104,25 @@ public class MiniGameUnloadBox : MonoBehaviour
     {
         _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
         _grabBoxLayer = LayerMask.NameToLayer("GrabBox");
-        
-        
+
+
         gameObject.SetActive(value);
-        if(value)
+        if (value)
         {
             transform.position = pos;
 
-            Vector3 currentScale = boxCollider.size; 
+            Vector3 currentScale = boxCollider.size;
             currentScale.x = 1f;
             currentScale.z = 1f;
             currentScale.y = 0.8f;
             // 콜라이더 크기 설정 
-            
+
             boxCollider.size = currentScale;
-            
+
             // offset 계산 및 적용
             float frontHeight = 100f;   // 앞면 높이
-            float totalHeight = 100f + 100f *0.4f; // 전체 높이
-            
+            float totalHeight = 100f + 100f * 0.4f; // 전체 높이
+
             boxCollider.size = currentScale;
 
             // 생성될 때는 false
@@ -125,7 +133,7 @@ public class MiniGameUnloadBox : MonoBehaviour
             boxRigidbody.velocity = Vector3.zero;
 
             PlayBoxPutSound();
-            
+
         }
     }
 
