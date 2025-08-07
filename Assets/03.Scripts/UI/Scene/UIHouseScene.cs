@@ -18,6 +18,7 @@ public class UIHouseScene : UIScene
         PlayerStatusButton,
         TaskButton,
         WorkModuleButton,
+        UINextButton,
     }
 
     enum Objects
@@ -55,6 +56,7 @@ public class UIHouseScene : UIScene
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
         GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickWorkModuleButton);
+        GetButton((int)Buttons.UINextButton).gameObject.BindEvent(OnClickNextButton);
 
         SetGoldText();
         SetFatigue();
@@ -94,12 +96,17 @@ public class UIHouseScene : UIScene
         _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
     }
 
-    // 1차 시연용 버튼
+
     private void OnClickWorkModuleButton()
     {
-
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _currentPopup = Managers.UI.ShowPopUI<UIWorkModulePopup>();
+    }
+
+    private void OnClickNextButton()
+    {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+        Managers.Daily.StartEvent();
     }
 
     private void SetDayText()
@@ -109,7 +116,7 @@ public class UIHouseScene : UIScene
 
     private void SetTimeImage()
     {
-        if (_timeImages.Length < Managers.Daily.CurrentDailyData.Time)
+        if (_timeImages.Length <= Managers.Daily.CurrentDailyData.Time)
         {
             return;
         }

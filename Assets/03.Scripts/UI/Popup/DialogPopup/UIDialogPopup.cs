@@ -302,8 +302,8 @@ public class UIDialogPopup : UIPopup
         Image leftImage = GetImage((int)Images.LeftCharacterImage);
         Image rightImage = GetImage((int)Images.RightCharacterImage);
 
-        leftImage.color = new Color(1, 1, 1, 0.5f);
-        rightImage.color = new Color(1, 1, 1, 0.5f);
+        leftImage.color = Color.HSVToRGB(0, 0, 0.3f);
+        rightImage.color = Color.HSVToRGB(0, 0, 0.3f);
 
         if (_leftSpeakerType == Define.DialogSpeakerType.UNKNOWN)
             leftImage.color = Color.clear;

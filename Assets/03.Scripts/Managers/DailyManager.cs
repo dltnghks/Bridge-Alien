@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DailyManager
 {
+    private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15 };
+    private int _currentIndex = 0;
     private int _curDate;
-    private readonly int _dueDate = 3;
+    private readonly int _dueDate = 16;
     
     private DailyData _preDailyData;
     private DailyData _currentDailyData;
@@ -32,10 +35,11 @@ public class DailyManager
         
         Logger.Log($"진행일 : {_curDate}");
     }
-    
+
     private void AddCurrentData(int value)
     {
-        _curDate += value;
+        _currentIndex += value;
+        _curDate = _dateList[_currentIndex];
     }
     
     // 일차 진행
@@ -63,7 +67,7 @@ public class DailyManager
     {
         Logger.Log("SetDailyData");
         // DataManager에서 curDate 세팅 값 가져오기
-        _currentDailyDataDict = Managers.Data.DailyData.GetData("Event_D" + _curDate);
+        _currentDailyDataDict = Managers.Data.DailyData.GetData("Event_D" + _curDate); 
         if (_currentDailyDataDict == null)
         {
             Logger.LogError("currentDailyDataDict is null");

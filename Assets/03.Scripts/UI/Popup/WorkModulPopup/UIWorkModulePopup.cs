@@ -56,7 +56,8 @@ public class UIWorkModulePopup : UIPopup
 
 
         // 팝업이 열렸을 때, 하차게임으로 세팅
-        OnClickGameTypeButton(_selectedGameType);
+        _selectedGameType = Define.MiniGameType.Unload;
+        InitSkillList();
 
         return true;
     }
