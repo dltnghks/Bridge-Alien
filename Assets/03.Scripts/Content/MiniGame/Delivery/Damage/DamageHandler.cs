@@ -113,7 +113,6 @@ public class DamageHandler : MonoBehaviour
         OnFullDamage?.Invoke();
         
         // 미니 게임 실행
-        // ((UIGameDeliveryScene)Managers.MiniGame.CurrentGame.GameUI).UIMiniMiniGame.StartMiniGame();
         var miniminiGame = Managers.UI.ShowPopUI<UIMiniMiniGame>();
         
         miniminiGame.onRepairEvent?.AddListener(OnFinishRepairGame);
@@ -123,11 +122,11 @@ public class DamageHandler : MonoBehaviour
     {
         if (isFlag)     // 수리 성공
         {
-            _damageRate = 1f;
+            DamageRate = 1f;
         }
         else            // 수리 실패
         {
-            _damageRate = 0.5f;
+            DamageRate = 0.5f;
         }
         
         UpdateSpeedPenalty();

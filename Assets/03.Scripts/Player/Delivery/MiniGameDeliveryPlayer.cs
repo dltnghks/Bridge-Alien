@@ -11,7 +11,7 @@ public class MiniGameDeliveryPlayer : Player
     [SerializeField] private float blinkInterval = 0.1f;        // 깜빡임 주기
 
     [Header("플레이어 속도")]
-    [SerializeField] private float maxSpeedMultipler = 1.2f;
+    [SerializeField] private float maxSpeedMultiplier = 1.2f;
 
     private float _invincibleTime = .0f;
 
@@ -24,6 +24,9 @@ public class MiniGameDeliveryPlayer : Player
 
     private bool _isExiting = false;
     public UnityAction OnExitComplete;
+
+    private float _timer = .0f;
+    [SerializeField] private float stdTime = .0f;
 
     public void Start()
     {
@@ -50,6 +53,7 @@ public class MiniGameDeliveryPlayer : Player
 
     public void OnCrash()
     {
+        Debug.Log("On Crash");
         _characterAnimator.SetCrash(true);
     }
 
@@ -60,7 +64,8 @@ public class MiniGameDeliveryPlayer : Player
 
     public void OnMove(float speed)
     {
-        characterAnimator.UpdateMovement(speed);
+        if(_damageHandler.DamageRate > 0.25f)
+            characterAnimator.UpdateMovement(speed);
     }
 
     public void StartExitMove()
@@ -82,6 +87,13 @@ public class MiniGameDeliveryPlayer : Player
                 OnExitComplete?.Invoke();
             }
         }
+        
+        _timer += Time.deltaTime;
+        if (_timer >= stdTime)
+        {
+            _timer = .0f;
+            moveAdditionalMultiplier = Mathf.Clamp((moveAdditionalMultiplier -= moveSpeed * 0.1f), 1f, moveAdditionalMultiplier);
+        }
     }
 
     public void MoveToRight()
@@ -96,10 +108,12 @@ public class MiniGameDeliveryPlayer : Player
 
         if (coll.CompareTag("Enemy"))
         {
+            moveAdditionalMultiplier = Mathf.Clamp((moveAdditionalMultiplier -= moveSpeed * 0.1f), 1f, moveAdditionalMultiplier);
             _damageHandler.OnDamage();
             StartInvincible();
 
-            _characterAnimator.SetHit(true);
+            if(_damageHandler.DamageRate < 1f)
+                _characterAnimator.SetHit(true);
             isHit = true;
 
             // TODO: SFX 추가

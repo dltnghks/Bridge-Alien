@@ -106,12 +106,15 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _damageHandler.Initialize( () =>
         {
             PauseGame();
-            
-            // 모든 장애물 삭제하기
-            _deliveryMap.OnDeleteAllHurdles();
-            // Crash 애니메이션 보이기
-            (PlayerCharacter as MiniGameDeliveryPlayer)?.OnCrash();
+            _deliveryMap.OnDeleteAllHurdles();  // 장애물 모두 제거
         });
+        _damageHandler.OnDamageRateChanged += (rate) =>
+        {
+            if (rate <= 0.25f)
+            {
+                (PlayerCharacter as MiniGameDeliveryPlayer).OnCrash();
+            }
+        };
 
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
         

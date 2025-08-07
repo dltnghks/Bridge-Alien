@@ -151,7 +151,6 @@ public class HurdleSpawner : MonoBehaviour
             case HurdleType.Work:
             case HurdleType.CarCrush:
                 int count = Random.Range(3, 7);
-                Debug.Log("Count : " + count);
                 for (int i = 0; i < count; i++)
                 {
                     float y = yPositions[i % 2];
@@ -165,7 +164,6 @@ public class HurdleSpawner : MonoBehaviour
     private float GetRandTime()
     {
         var resultTime = Random.Range(minTime, maxTime);
-        Debug.Log("다음 스폰 시간 : " + resultTime);
         return resultTime;
     }
     

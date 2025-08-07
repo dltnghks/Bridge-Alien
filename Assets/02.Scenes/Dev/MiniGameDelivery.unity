@@ -1202,14 +1202,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   moveMultiplier: 1
+  moveAdditionalMultiplier: 1
   rayDistance: 1
   enableFlip: 1
   isHit: 0
   bumpInvincibleTime: 1
   skillInvincibleTime: 5
   blinkInterval: 0.1
-  maxSpeedMultipler: 1.2
+  maxSpeedMultiplier: 1.2
   boosterEffect: {fileID: 902816761}
+  stdTime: 1
 --- !u!54 &1483318604
 Rigidbody:
   m_ObjectHideFlags: 0
