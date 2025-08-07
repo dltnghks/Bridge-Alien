@@ -348,30 +348,28 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         if (score > 0)
         {
-            // 1. 콤보 등록
+            // 1. 점수 반영
+            GenerateScoreTextObj(score);
+            _score.AddScore(score);
+
+            // 2. 콤보 등록
             _comboSystem.RegisterSuccess(box);
 
-            // 2. 콤보 배율 적용
-            float multiplier = _comboSystem.GetScoreMultiplier();
-            int finalScore = Mathf.RoundToInt(score * multiplier);
-
-            // 3. 최종 점수 반영
-            GenerateScoreTextObj(finalScore);
-            _score.AddScore(finalScore);
         }
         else // 점수가 0 이하일 경우 (마이너스 점수)
         {
-            // 1. 콤보 초기화
-            _comboSystem.BreakCombo();
-
-            // 2. 감점은 배율 없이 그대로 적용
+            // 1. 감점은 배율 없이 그대로 적용
             GenerateScoreTextObj(score);
             _score.AddScore(score);
+
+            // 2. 콤보 초기화   
+            _comboSystem.BreakCombo();
         }
     }
     
     private void GenerateScoreTextObj(int amount)
     {
+        Logger.Log("GenerateScoreTextObj");
         InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
         scoreTextObj.Init(PlayerCharacter.transform.position, amount);
     }

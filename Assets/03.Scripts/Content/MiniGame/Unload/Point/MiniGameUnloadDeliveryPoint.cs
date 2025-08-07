@@ -66,20 +66,20 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
     private void MoveBoxToEndPoint(MiniGameUnloadBox box)
     {
         int score = 0;
-        bool reutnrBox = false;
+        bool returnBox = false;
 
         if (!box.Info.IsGrab)
         {
             if (box.BoxState != Define.BoxState.Normal)
             {
                 score = -50;
-                reutnrBox = true;
+                returnBox = true;
             }
             else if (box.Info.IsBroken)
             {
                 Logger.Log("broken box");
                 score = -50;
-                reutnrBox = true;
+                returnBox = true;
 
                 Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BrokenBox.ToString(), gameObject);
             }
@@ -97,8 +97,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
         box.transform.DOMove(_endPointTransform.position, 1).OnComplete(() =>
             {
-                OnScoreAction?.Invoke(score, box);
-                if (reutnrBox)
+                if (returnBox)
                 {
                     ReturnBox(box);
                 }
@@ -108,6 +107,8 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
                 }
             }
         );
+
+        OnScoreAction?.Invoke(score, box);
     }
 
     private void ReturnBox(MiniGameUnloadBox box)

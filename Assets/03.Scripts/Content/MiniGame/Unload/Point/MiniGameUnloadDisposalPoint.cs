@@ -47,9 +47,9 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         _triggerAction = triggerAction;
     }
 
-    public override bool CanProcess(Define.BoxState boxType)
+    public override bool CanProcess(Define.BoxState boxState)
     {
-        return base.CanProcess(boxType);
+        return base.CanProcess(boxState);
     }
 
     private void OnTriggerEnter(Collider coll)

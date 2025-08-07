@@ -28,21 +28,23 @@ public class UIComboBoxView : UISubItem
 
         return true;
     }
-    
+
 
     public void UpdateUI(MiniGameUnloadBoxList updateBoxList)
     {
         List<MiniGameUnloadBox> boxList = updateBoxList.BoxList;
-        int index = boxList.Count-1;
-        for (int i = 0; i < _uiSmallBoxPreviewList.Count; i++)
-        {
-            MiniGameUnloadBox box = null;
-            if (0 <= index && index < boxList.Count)
-            {
-                box = boxList[i];
-            }
-            _uiSmallBoxPreviewList[i].SetBoxPreview(box);   
-        }   
 
+        int index = boxList.Count;
+
+        if (index > 0)
+        {
+            MiniGameUnloadBox box = boxList[index - 1];
+            _uiSmallBoxPreviewList[index - 1].SetBoxPreview(box);
+        }
+
+        for (int i = index; i < _uiSmallBoxPreviewList.Count; i++)
+            {
+                _uiSmallBoxPreviewList[i].SetBoxPreview(null);
+            }
     }
 }

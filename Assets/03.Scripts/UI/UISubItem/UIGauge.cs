@@ -41,10 +41,10 @@ public class UIGauge : UISubItem
     {
         for(int i = maxBlocks; i >= 0; i--){
             if((float)i/maxBlocks <= value){
-                blocks[i].DOFade(1f, 0.2f);
+                blocks[i].color = new Color(1,1,1,1);
             }
             else{
-                blocks[i].DOFade(0.1f, 0.2f);
+                blocks[i].color = new Color(1,1,1,0.2f);
             }
         }
     }

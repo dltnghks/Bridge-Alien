@@ -36,33 +36,21 @@ public class ComboSystem
         AddComboBox(box);
     }
 
-    public void AddComboBox(MiniGameUnloadBox box, bool success = true)
+    public void AddComboBox(MiniGameUnloadBox box)
     {
-        if (_comboBoxList.IsFull)
-        {
-            // 이미 꽉 차있다면 더 이상 박스를 추가하지 않음
-            // 또는 여기서 바로 클리어하고 새로 시작하게 할 수도 있습니다.
-            // 지금은 추가 동작을 막는 것으로 구현
-            return;
-        }
-        
-        if (success)
-        {
-            _comboBoxList.TryPush(box);
-        }
-        else
-        {
-            _comboBoxList.TryPush(null);
-        }
-        
-        OnChangedComboBox?.Invoke(_comboBoxList);
 
-        if (_comboBoxList.IsFull)
+        if (_comboBoxList.TryPush(box))
         {
-            OnComboBoxFull?.Invoke();
+            OnChangedComboBox?.Invoke(_comboBoxList);
+
+            if (_comboBoxList.IsFull)
+            {
+                OnComboBoxFull?.Invoke();
+            }   
         }
+
     }
-    
+
     // 콤보 박스 리스트를 비우는 함수
     public void ClearComboBoxList()
     {
@@ -79,19 +67,13 @@ public class ComboSystem
         }
         Reset();
     }
-    
+
     private void Reset()
     {
+        _comboBoxList.ClearBoxList();
         CurrentCombo = 0;
         OnComboChanged?.Invoke(CurrentCombo);
+        OnChangedComboBox?.Invoke(_comboBoxList);
     }
-
-    // 현재 콤보에 따른 점수 배율 반환
-    public float GetScoreMultiplier()
-    {
-        if (CurrentCombo < 5) return 1.0f;
-        if (CurrentCombo < 10) return 1.2f;
-        if (CurrentCombo < 20) return 1.5f;
-        return 2.0f; // 20콤보 이상은 2배
-    }
+    
 }

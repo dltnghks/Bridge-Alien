@@ -163,7 +163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info:
     BoxNumber: 
-    BoxType: 0
+    BoxType: 1
+    BoxState: 0
     Region: 0
     IsGrab: 0
     IsBroken: 0

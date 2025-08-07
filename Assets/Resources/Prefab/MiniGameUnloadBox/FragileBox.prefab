@@ -164,6 +164,7 @@ MonoBehaviour:
   _info:
     BoxNumber: 
     BoxType: 0
+    BoxState: 0
     Region: 0
     IsGrab: 0
     IsBroken: 0

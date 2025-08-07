@@ -92,6 +92,6 @@ public class ColdBox : MiniGameUnloadBox
     {
         base.SetRandomInfo();
         _info.BoxState = Define.BoxState.Cold;
-        _info.BoxType = Define.BoxType.Fragile;
+        _info.BoxType = Define.BoxType.Cold;
     }
 }
