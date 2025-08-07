@@ -152,7 +152,6 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         }
 
         InteractionActionNumber = actionNum;
-        Logger.Log($"Drop box list changed : {InteractionActionNumber}");
         return true;
     }
 

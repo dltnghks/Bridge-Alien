@@ -140,6 +140,7 @@ public class Define
         MANAGER_ANGRY,          // 소장 화남
         PIMPI_DEFAULT,          // 핌피 기본
         PIMPI_CALL,             // 핌피 전화
+        GUIDE,                  // 가이드  
     }
 
     public enum DialogSpeakerPosType

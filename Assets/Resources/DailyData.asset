@@ -18,7 +18,7 @@ MonoBehaviour:
       Value:
       - EventID: Start
         Time: 0
-        EventType: 3
+        EventType: 0
         Parameter: Unknown
         NextEventID: D1_E1
         DialogScene: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
         Time: 2
         EventType: 1
         Parameter: STORY_D1_07
-        NextEventID: 
+        NextEventID: D1_E10
         DialogScene: 1
       - EventID: D1_E10
         Time: 3

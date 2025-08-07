@@ -57,6 +57,8 @@ public class UIDialogPopup : UIPopup
     private Dictionary<string, List<DialogData>> _choiceDict = new Dictionary<string, List<DialogData>>();
     private DialogData _currentDialog;
     private List<DialogData> _currentChoices = new List<DialogData>();
+    private Define.DialogSpeakerType _leftSpeakerType;
+    private Define.DialogSpeakerType _rightSpeakerType;
     
     private Tween _typingTween; // 현재 실행 중인 트윈
     
@@ -283,28 +285,42 @@ public class UIDialogPopup : UIPopup
 
     private void SetSpeakerImage(Define.DialogSpeakerType speakerType, Define.DialogSpeakerPosType speakerPosType)
     {
-        Image speakerImage = null;
         if (speakerPosType == Define.DialogSpeakerPosType.Left)
         {
-            speakerImage = GetImage((int)Images.LeftCharacterImage);
-            GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0.5f);
+            _leftSpeakerType = speakerType;
         }
         else if (speakerPosType == Define.DialogSpeakerPosType.Right)
         {
-            speakerImage = GetImage((int)Images.RightCharacterImage);
-            GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0.5f);
+            _rightSpeakerType = speakerType;
         }
         else
         {
-            GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
-            GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
+            _leftSpeakerType = Define.DialogSpeakerType.UNKNOWN;
+            _rightSpeakerType = Define.DialogSpeakerType.UNKNOWN;
         }
 
-        if (speakerImage is not null)
+        Image leftImage = GetImage((int)Images.LeftCharacterImage);
+        Image rightImage = GetImage((int)Images.RightCharacterImage);
+
+        leftImage.color = new Color(1, 1, 1, 0.5f);
+        rightImage.color = new Color(1, 1, 1, 0.5f);
+
+        if (_leftSpeakerType == Define.DialogSpeakerType.UNKNOWN)
+            leftImage.color = Color.clear;
+        if (_rightSpeakerType == Define.DialogSpeakerType.UNKNOWN)
+            rightImage.color = Color.clear;
+
+        if (speakerPosType == Define.DialogSpeakerPosType.Left)
         {
-            speakerImage.color = new Color(1, 1, 1, 1); // 이미지 보이게 설정
-            speakerImage.sprite = _speakerCharacterImages[speakerType];
+            leftImage.sprite = _speakerCharacterImages[speakerType];
+            leftImage.color = Color.white;
         }
+        else if (speakerPosType == Define.DialogSpeakerPosType.Right)
+        {
+            rightImage.sprite = _speakerCharacterImages[speakerType];
+            rightImage.color = Color.white;
+        }
+
     }
 
     private void SetNameText(string characterName)
