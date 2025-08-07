@@ -28,20 +28,20 @@ public class UIComboDisplay : UISubItem
 
     public void UpdateCombo(int combo)
     {
-        Logger.Log("Combo!");
-        if (combo >= 1)
-        {
-            _comboText.gameObject.SetActive(true);
-            _comboText.text = $"COMBO x{combo}";
-        }
-        else
-        {
-            _comboText.gameObject.SetActive(false);
-        }
+        // Logger.Log("Combo!");
+        // if (combo >= 1)
+        // {
+        //     _comboText.gameObject.SetActive(true);
+        //     _comboText.text = $"COMBO x{combo}";
+        // }
+        // else
+        // {
+        //     _comboText.gameObject.SetActive(false);
+        // }
     }
 
     public void BreakCombo()
     {
-        _comboText.gameObject.SetActive(false);
+        //_comboText.gameObject.SetActive(false);
     }
 }

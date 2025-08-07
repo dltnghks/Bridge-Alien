@@ -238,7 +238,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         _comboSystem = new ComboSystem();
     }
-    
+
     private void HandleComboBoxFull()
     {
         // 콤보 박스가 가득 찼을 때, 같은 종류인지 확인
@@ -276,7 +276,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         // 1. 추가 점수 부여 (기본 300점)
         int bonusScore = 300;
-        
+
         // 스페셜 콤보(같은 종류 3개)일 경우 점수 2배
         if (isSpecialCombo)
         {
@@ -285,7 +285,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
 
         _score.AddScore(bonusScore);
-        GenerateScoreTextObj(bonusScore);
+        GenerateComboTextObj(bonusScore);
 
         // 2. 플레이어가 UI를 볼 수 있도록 1초 대기
         yield return new WaitForSeconds(1.0f);
@@ -348,6 +348,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         if (score > 0)
         {
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
+            
             // 1. 점수 반영
             GenerateScoreTextObj(score);
             _score.AddScore(score);
@@ -358,6 +360,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
         else // 점수가 0 이하일 경우 (마이너스 점수)
         {
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.MinusScore.ToString());
+
             // 1. 감점은 배율 없이 그대로 적용
             GenerateScoreTextObj(score);
             _score.AddScore(score);
@@ -366,12 +370,28 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             _comboSystem.BreakCombo();
         }
     }
-    
+
     private void GenerateScoreTextObj(int amount)
     {
-        Logger.Log("GenerateScoreTextObj");
         InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
-        scoreTextObj.Init(PlayerCharacter.transform.position, amount);
+        string text = "";
+        if (amount < 0)
+        {
+            text = $"<color=#BF0000>{amount}</color>";
+        }
+        else
+        {
+            text = $"<color=#006306>{amount}</color>";
+        }
+        
+        scoreTextObj.Init(PlayerCharacter.transform.position, text);
+    }
+
+    private void GenerateComboTextObj(int amount)
+    {
+        InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
+        string text = $"<color=#FF6F00>COMBO {amount}</color>";
+        scoreTextObj.Init(PlayerCharacter.transform.position, text);
     }
 
 }
