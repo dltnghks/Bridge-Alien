@@ -275,6 +275,10 @@ public class UIManager
     // 해당 팝업이 종료되면 true로 다시 변경해줘야 됨.
     public void SetInputBackground(bool isEnabled)
     {
+        if (_blurBackground == null)
+        {
+            return;
+        }
         _blurBackground.IsInputEnabled = isEnabled;
     }
     

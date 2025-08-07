@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class MiniGameDeliveryPlayer : Player
 {
@@ -9,13 +10,16 @@ public class MiniGameDeliveryPlayer : Player
     [SerializeField] private float skillInvincibleTime = 1.5f;  // 스킬 무적 지속 시간
     [SerializeField] private float blinkInterval = 0.1f;        // 깜빡임 주기
 
+    [Header("플레이어 속도")]
+    [SerializeField] private float maxSpeedMultipler = 1.2f;
+
     private float _invincibleTime = .0f;
 
     private bool _isInvincible = false;
     private bool _isPassBump = false;
 
     private DamageHandler _damageHandler;
-
+    [SerializeField] private GameObject boosterEffect;
     private MGDCharacterAnimator _characterAnimator;
 
     private bool _isExiting = false;
@@ -47,6 +51,11 @@ public class MiniGameDeliveryPlayer : Player
     public void OnCrash()
     {
         _characterAnimator.SetCrash(true);
+    }
+
+    public void OnBoosterEffect(bool isOn)
+    {
+        boosterEffect.SetActive(isOn);
     }
 
     public void OnMove(float speed)
@@ -88,7 +97,7 @@ public class MiniGameDeliveryPlayer : Player
         if (coll.CompareTag("Enemy"))
         {
             _damageHandler.OnDamage();
-            OnDamageEffect();
+            StartInvincible();
 
             _characterAnimator.SetHit(true);
             isHit = true;
@@ -105,6 +114,7 @@ public class MiniGameDeliveryPlayer : Player
             moveMultiplier = 2f;
             _invincibleTime = 3f;
             blinkInterval = 3f;
+            OnBoosterEffect(true);
 
             StartCoroutine(OnInvincible());
         }
@@ -112,12 +122,13 @@ public class MiniGameDeliveryPlayer : Player
         {
             moveMultiplier = 1.0f;
             blinkInterval = 0.1f;
+            OnBoosterEffect(false);
         }
     }
 
-    private void OnDamageEffect()
+    public void StartInvincible(float time = .0f)
     {
-        _invincibleTime = bumpInvincibleTime;
+        _invincibleTime = (time <= .0f) ? bumpInvincibleTime : time;
         if (!_isInvincible)
             StartCoroutine(OnInvincible());
     }

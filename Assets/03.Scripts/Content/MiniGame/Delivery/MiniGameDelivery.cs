@@ -106,8 +106,10 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _damageHandler.Initialize( () =>
         {
             PauseGame();
-            _deliveryMap.OnMiniMiniGame();
-            _uiGameDeliveryScene.UIMiniMiniGame.StartMiniGame();
+            
+            // 모든 장애물 삭제하기
+            _deliveryMap.OnDeleteAllHurdles();
+            // Crash 애니메이션 보이기
             (PlayerCharacter as MiniGameDeliveryPlayer)?.OnCrash();
         });
 
@@ -167,8 +169,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     {
         if (!IsActive)
             return;
-        // 모르겠음.
-        OnPlayerExitScreen();
 
         ChangeActive(false);
         _deliveryMap.UpdateSpeedMultiplier(0f);

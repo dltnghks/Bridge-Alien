@@ -30,8 +30,8 @@ public class DamageHandler : MonoBehaviour
     [SerializeField] private float damageMax = 0.03f;
 
     [Header("이동 속도 관련")]
-    [SerializeField] private float speedPenalty25 = 0.6f;
-    [SerializeField] private float speedPenalty50 = 0.4f;
+    [SerializeField] private float speedPenalty25 = 0.8f;
+    [SerializeField] private float speedPenalty50 = 0.6f;
 
     public float SpeedPenalty { get; private set; } = 1f;
 
@@ -54,15 +54,9 @@ public class DamageHandler : MonoBehaviour
     {
         if (isOn)
         {
-            DamageRate += Mathf.Clamp01(0.25f);
+            DamageRate -= Mathf.Clamp01(0.25f);
             UpdateSpeedPenalty();
         }
-    }
-
-    public void OnClearDamage()
-    {
-        DamageRate = 1f;
-        UpdateSpeedPenalty();
     }
 
     public void OnDamage()
@@ -113,11 +107,30 @@ public class DamageHandler : MonoBehaviour
             StopCoroutine(_dotCoroutine);
             _dotCoroutine = null;
         }
-
+        
         _onStartDamage = false;
-
-        Managers.MiniGame.CurrentGame.PauseGame();
-
+        
         OnFullDamage?.Invoke();
+        
+        // 미니 게임 실행
+        // ((UIGameDeliveryScene)Managers.MiniGame.CurrentGame.GameUI).UIMiniMiniGame.StartMiniGame();
+        var miniminiGame = Managers.UI.ShowPopUI<UIMiniMiniGame>();
+        
+        miniminiGame.onRepairEvent?.AddListener(OnFinishRepairGame);
+    }
+
+    private void OnFinishRepairGame(bool isFlag)
+    {
+        if (isFlag)     // 수리 성공
+        {
+            _damageRate = 1f;
+        }
+        else            // 수리 실패
+        {
+            _damageRate = 0.5f;
+        }
+        
+        UpdateSpeedPenalty();
+        ((MiniGameDeliveryPlayer)Managers.MiniGame.CurrentGame.PlayerCharacter).StartInvincible(2f);
     }
 }

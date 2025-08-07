@@ -56,7 +56,7 @@ public class DeliveryMap : MonoBehaviour
         _hurdleSpawner.Initialize(GroundSpeed * 47.5f);
     }
 
-    public void OnMiniMiniGame()
+    public void OnDeleteAllHurdles()
     {
         _hurdleSpawner.ClearHurdles();
     }

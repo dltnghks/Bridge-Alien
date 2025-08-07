@@ -3,8 +3,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-public class UIMiniMiniGame : UISubItem
+public class UIMiniMiniGame : UIPopup
 {
     private enum Texts
     {
@@ -42,7 +44,10 @@ public class UIMiniMiniGame : UISubItem
     private float _elapsedTime = 0f;
     private bool _isDragging = false;
     private bool _isGameRunning = false;
-    private Action<bool> _onGameEnd;
+
+
+    private Coroutine _startCoroutine;
+    public UnityEvent<bool> onRepairEvent;
 
     public override bool Init()
     {
@@ -69,18 +74,10 @@ public class UIMiniMiniGame : UISubItem
         _board.SetActive(false);
         _infoText.gameObject.SetActive(false);
 
-        // For Debug
-        // StartMiniGame();
-
+        StartMiniGame();
+        
         return true;
     }
-
-    public void Initialize(Action<bool> onGameEnd)
-    {
-        _onGameEnd = onGameEnd;
-    }
-    
-    private Coroutine _startCoroutine;
 
     public void StartMiniGame()
     {
@@ -90,9 +87,6 @@ public class UIMiniMiniGame : UISubItem
         }
         
         Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Minigame_Start.ToString());
-
-        // 주변 Hurdle 날리기
-
 
         _startCoroutine = StartCoroutine(ShowStartSequence());
     }
@@ -169,7 +163,6 @@ public class UIMiniMiniGame : UISubItem
         }
     }
 
-
     private float GetCurrentAngle()
     {
         Vector2 screenPos = Input.mousePosition;
@@ -205,11 +198,14 @@ public class UIMiniMiniGame : UISubItem
     {
         _board.SetActive(false);
         yield return new WaitForSeconds(2f);
-        _infoText.gameObject.SetActive(false);
-        _onGameEnd?.Invoke(isSuccess);
+        
+        onRepairEvent?.Invoke(isSuccess);
         
         // 게임 재시작
         Managers.MiniGame.CurrentGame.ResumeGame();
         (Managers.MiniGame.CurrentGame.PlayerCharacter as MiniGameDeliveryPlayer)?.OnMove(1f);
+        
+        onRepairEvent = null;
+        Managers.UI.ClosePopupUI();
     }
 }
