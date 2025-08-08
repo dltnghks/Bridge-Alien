@@ -52,14 +52,11 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         return base.CanProcess(boxState);
     }
 
-    private void OnTriggerEnter(Collider coll)
+    private void OnTriggerStay(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.DropBox))
-            {
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.DropBox);
         }
     }
 
@@ -67,10 +64,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if (Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.None))
-            {
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.None);
         }
     }
 
