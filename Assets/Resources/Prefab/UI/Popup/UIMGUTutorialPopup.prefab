@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -15.7}
+  m_AnchoredPosition: {x: 0, y: -15.700012}
   m_SizeDelta: {x: 200, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3478351039024319170
@@ -458,6 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08f83e6b1b98214da653ca6994c6334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBlurBG: 1
   IsBlurBGInputEnable: 1
   _tutorialImages:
   - {fileID: 21300000, guid: eb7ac32fb684b354abad2e9a8dc7afe2, type: 3}
@@ -465,6 +466,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7bc2c6dec0c16e1468e81ae86b9108c3, type: 3}
   - {fileID: 21300000, guid: 1bc410993f69fd94bb7a73292e595c0e, type: 3}
   - {fileID: 21300000, guid: 9da6be1f74f2bbd4eb65bf06aa10a481, type: 3}
+  - {fileID: 21300000, guid: 42089deb0b00811438af1e56ab1c46d6, type: 3}
 --- !u!223 &4962005393333547993
 Canvas:
   m_ObjectHideFlags: 0

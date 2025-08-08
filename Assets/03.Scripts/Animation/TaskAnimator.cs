@@ -26,23 +26,25 @@ public enum UITaskState
 }
 
 
-[RequireComponent(typeof(Animator))]  
+[RequireComponent(typeof(Animator))]
 public class TaskAnimator : MonoBehaviour
 {
-    private Animator animator;                                                  
-    private UITaskState currentState;   
-    
+    private Animator animator;
+    private UITaskState currentState;
+
     private void Awake()
     {
         if (animator == null) { animator = GetComponent<Animator>(); }          // 애니메이터 컴포넌트 참조
         currentState = UITaskState.Idle;                                     // 초기 상태 설정
+        TriggerTask(UITaskState.Idle.ToString());
     }
 
     // 추가적인 애니메이션은 TaskAnimPortrait_Controller에서 Trigger 설정해줘야 됨.
     public void TriggerTask(string taskId)
-    {   
-        animator.Rebind();                     // 상태 초기화
+    {
+        animator.Rebind();                // 상태 초기화
         animator.ResetTrigger(taskId);    // 혹시 설정되어 있던 Trigger 제거
         animator.SetTrigger(taskId);      // Trigger 실행
     }
+
 }

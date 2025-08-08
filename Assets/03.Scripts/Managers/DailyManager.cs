@@ -211,7 +211,7 @@ public class DailyManager : ISaveable
     private void EndGame()
     {
         Logger.Log("EndGame");
-        Managers.Scene.ChangeScene(Define.Scene.Ending);
+        Managers.Scene.ChangeScene(Define.Scene.Title);
     }
 
     public void Add(ISaveable saveable)

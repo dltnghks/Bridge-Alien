@@ -121,6 +121,7 @@ public class UITaskResultPopup : UIPopup
         {
             // 운 랜덤 상승
             GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.LuckValueText).color = Color.green;
         }
     }
 
