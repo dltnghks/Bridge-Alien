@@ -196,7 +196,7 @@ public class UIDialogPopup : UIPopup
     private void SetBackground(Define.DialogSceneType sceneType)
     {
         Image backgroundImage = GetImage((int)Images.Background);
-        if (sceneType == Define.DialogSceneType.House && sceneType == Define.DialogSceneType.Unknown)
+        if (sceneType == Define.DialogSceneType.Unknown)
         {
             backgroundImage.sprite = null;
             backgroundImage.color = Color.clear; // 배경 이미지가 없을 경우 투명하게 설정
@@ -205,6 +205,7 @@ public class UIDialogPopup : UIPopup
         {
             backgroundImage.sprite = _backgroundImage[sceneType];
             backgroundImage.preserveAspect = true;
+            backgroundImage.color = Color.white;
         }
         else
         {
