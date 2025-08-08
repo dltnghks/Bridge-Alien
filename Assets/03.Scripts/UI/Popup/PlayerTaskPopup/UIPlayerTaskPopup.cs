@@ -122,14 +122,22 @@ public class UIPlayerTaskPopup : UIPopup
     private void OnClickConfirmButton()
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+
         if (_currentTaskButton == null)
         {
             Logger.LogWarning("Nothing to click");
             return;
         }
 
+        // 일과 수행 확인
+        if (Managers.Daily.IsTask == false)
+        {
+            return;
+        }
+        Managers.Daily.IsTask = false;
+
         // 피로도, 골드 조건 체크
-        if(Managers.Player.GetGold() < _selectedTaskData.RequirementGold)
+        if (Managers.Player.GetGold() < _selectedTaskData.RequirementGold)
         {
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;

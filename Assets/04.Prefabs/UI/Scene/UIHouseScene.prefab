@@ -1490,7 +1490,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2E4\uC74C \uC77C\uCC28\uB85C"
+  m_text: "\uC77C\uACFC\uB97C \uC885\uB8CC\uD55C\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59f90884f45c00542942263b59b1648f, type: 2}
   m_sharedMaterial: {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
@@ -1517,8 +1517,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1977,8 +1977,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 512, y: 341.33334}
+  m_AnchoredPosition: {x: -62.4, y: 44.2}
+  m_SizeDelta: {x: 344.934, y: 105.0413}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &3002845974976350381
 CanvasRenderer:
@@ -2008,7 +2008,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e1c55bb3241d52547ba7acb6d5a1d3c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e3f1c48cb7101941b2674e38162fe1f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
