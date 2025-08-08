@@ -16,11 +16,11 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     [SerializeField] private float maxDistance = .0f;
     [SerializeField] private float totalDistance = .0f;
     
-    public bool IsHurdleSpawn
+    public bool IsHurdleSpawnFlag
     {
         get
         {
-            return totalDistance >= (maxDistance * 0.8f);
+            return totalDistance <= (maxDistance * 0.8f);
         } 
     }
     
@@ -55,7 +55,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public void StartGame()
     {
         _pathProgressBar = new MiniGameDeliveryPathProgress();
-
+        
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
         {
@@ -93,6 +93,10 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             ((MiniGameDeliveryPlayerController)PlayerController).onRocketAction = OnRocketSkill;
             skillController.SetSkillList(_skillList);
         }
+        
+        _uiGameDeliveryScene.UIInteraction.SetUp(
+            ((MiniGameDeliveryPlayer)PlayerCharacter).OnInteractionButtonClick,
+            ((MiniGameDeliveryPlayer)PlayerCharacter).OnInteractionButtonRelease);
 
         _uiGameDeliveryScene.UIDamageView.Initialize(_damageHandler, null);
 
@@ -106,20 +110,26 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         _damageHandler.Initialize( () =>
         {
             PauseGame();
-            _deliveryMap.OnMiniMiniGame();
-            _uiGameDeliveryScene.UIMiniMiniGame.StartMiniGame();
-            (PlayerCharacter as MiniGameDeliveryPlayer)?.OnCrash();
+            _deliveryMap.OnDeleteAllHurdles();  // 장애물 모두 제거
         });
+        _damageHandler.OnDamageRateChanged += (rate) =>
+        {
+            if (rate <= 0.25f)
+            {
+                (PlayerCharacter as MiniGameDeliveryPlayer).OnCrash();
+            }
+        };
 
         (PlayerController as MiniGameDeliveryPlayerController)?.SetGroundSize(_deliveryMap.GroundRect);
-
+        
         ChangeActive(true);
-
-        _deliveryMap.StartDeliveryMap();
-
-        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
-
+        
         StartTutorial();
+        
+        PauseGame();
+        
+        _deliveryMap.StartDeliveryMap();
+        _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
     }
 
     public void StartTutorial()
@@ -147,7 +157,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         }
         
         IsPause = true;
-        _damageHandler.OnClearDamage();
         
         return true;
     }
@@ -166,8 +175,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     {
         if (!IsActive)
             return;
-        // 모르겠음.
-        OnPlayerExitScreen();
 
         ChangeActive(false);
         _deliveryMap.UpdateSpeedMultiplier(0f);

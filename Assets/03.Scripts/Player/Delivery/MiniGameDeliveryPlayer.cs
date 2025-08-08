@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class MiniGameDeliveryPlayer : Player
 {
@@ -9,17 +10,23 @@ public class MiniGameDeliveryPlayer : Player
     [SerializeField] private float skillInvincibleTime = 1.5f;  // 스킬 무적 지속 시간
     [SerializeField] private float blinkInterval = 0.1f;        // 깜빡임 주기
 
+    [Header("플레이어 속도")]
+    [SerializeField] private float maxSpeedMultiplier = 1.2f;
+
     private float _invincibleTime = .0f;
 
     private bool _isInvincible = false;
     private bool _isPassBump = false;
 
     private DamageHandler _damageHandler;
-
+    [SerializeField] private GameObject boosterEffect;
     private MGDCharacterAnimator _characterAnimator;
 
     private bool _isExiting = false;
     public UnityAction OnExitComplete;
+
+    private float _timer = .0f;
+    [SerializeField] private float stdTime = .0f;
 
     public void Start()
     {
@@ -49,9 +56,15 @@ public class MiniGameDeliveryPlayer : Player
         _characterAnimator.SetCrash(true);
     }
 
+    public void OnBoosterEffect(bool isOn)
+    {
+        boosterEffect.SetActive(isOn);
+    }
+
     public void OnMove(float speed)
     {
-        characterAnimator.UpdateMovement(speed);
+        if(_damageHandler.DamageRate > 0.25f)
+            characterAnimator.UpdateMovement(speed);
     }
 
     public void StartExitMove()
@@ -73,6 +86,13 @@ public class MiniGameDeliveryPlayer : Player
                 OnExitComplete?.Invoke();
             }
         }
+        
+        _timer += Time.deltaTime;
+        if (_timer >= stdTime)
+        {
+            _timer = .0f;
+            moveAdditionalMultiplier = Mathf.Clamp((moveAdditionalMultiplier -= moveSpeed * 0.1f), 1f, moveAdditionalMultiplier);
+        }
     }
 
     public void MoveToRight()
@@ -81,20 +101,33 @@ public class MiniGameDeliveryPlayer : Player
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
+    private bool isBumpPass = false;
     private void OnTriggerEnter(Collider coll)
     {
         if (_isInvincible) return;
 
-        if (coll.CompareTag("Enemy"))
+        if (coll.CompareTag("Enemy") || (coll.CompareTag("Bump") && isBumpPass == false))
         {
+            moveAdditionalMultiplier = Mathf.Clamp((moveAdditionalMultiplier -= moveSpeed * 0.1f), 1f, moveAdditionalMultiplier);
             _damageHandler.OnDamage();
-            OnDamageEffect();
+            StartInvincible();
 
-            _characterAnimator.SetHit(true);
+            if(_damageHandler.DamageRate < 1f)
+                _characterAnimator.SetHit(true);
             isHit = true;
 
             Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Player_BeAttacked.ToString());
         }
+    }
+
+    public void OnInteractionButtonClick()
+    {
+        isBumpPass = true;
+    }
+
+    public void OnInteractionButtonRelease()
+    {
+        isBumpPass = false;
     }
 
     public void OnRocketEffect(bool isOn)
@@ -104,6 +137,7 @@ public class MiniGameDeliveryPlayer : Player
             moveMultiplier = 2f;
             _invincibleTime = 3f;
             blinkInterval = 3f;
+            OnBoosterEffect(true);
 
             StartCoroutine(OnInvincible());
         }
@@ -111,12 +145,13 @@ public class MiniGameDeliveryPlayer : Player
         {
             moveMultiplier = 1.0f;
             blinkInterval = 0.1f;
+            OnBoosterEffect(false);
         }
     }
 
-    private void OnDamageEffect()
+    public void StartInvincible(float time = .0f)
     {
-        _invincibleTime = bumpInvincibleTime;
+        _invincibleTime = (time <= .0f) ? bumpInvincibleTime : time;
         if (!_isInvincible)
             StartCoroutine(OnInvincible());
     }

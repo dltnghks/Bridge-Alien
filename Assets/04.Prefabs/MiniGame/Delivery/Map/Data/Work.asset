@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cee05766cdb65246a58eede7e0ea8c1, type: 3}
   m_Name: Work
   m_EditorClassIdentifier: 
-  spawnDelay: 5
+  spawnDelay: 1
   entryPrefab: {fileID: 0}
   mainPrefab: {fileID: 5233089430962675821, guid: fbfb471f5c9aca24d81085b2c0750a23, type: 3}
   endPrefab: {fileID: 0}

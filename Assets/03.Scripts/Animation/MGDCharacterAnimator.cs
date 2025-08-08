@@ -15,8 +15,6 @@ public class MGDCharacterAnimator : CharacterAnimator
 
     public void SetCrash(bool isCrashed)
     {
-        Debug.Log("Crash");
-        
         animator.SetBool(PARAM_IS_CRASH, isCrashed);
     }
 

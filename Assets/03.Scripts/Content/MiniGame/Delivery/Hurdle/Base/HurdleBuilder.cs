@@ -9,30 +9,31 @@ public abstract class HurdleBuilder : ScriptableObject
     protected Transform uiParent;
     protected Transform objParent;
 
-    [SerializeField] protected float spawnDelay = 2f;
+    [SerializeField] protected float spawnDelay = 0.5f;
 
     public abstract GameObject CreateEntry(float yPos);
     public abstract GameObject CreateMain(float yPos);
-    public abstract GameObject CreateEnd(float yPos);
 
-    public void Initialize(Transform uiParent, Transform objParent)
+    public void Initialize(Transform ui, Transform obj)
     {
-        this.uiParent = uiParent;
-        this.objParent = objParent;
+        uiParent = ui;
+        objParent = obj;
     }
 
     public IEnumerator BuildRoutine(float[] origins)
     {
         CreateEntry(origins[0]);
-        // yield로 시간의 흐름을 조정하기.
 
+        GameObject mainObject = null;
         foreach (var origin in origins)
         {
-            if(Managers.MiniGame.CurrentGame.IsPause == false)
-                CreateMain(origin);
-            yield return new WaitForSeconds(spawnDelay);
-        }
+            if (Managers.MiniGame.CurrentGame.IsPause == false)
+            {
+                mainObject = CreateMain(origin);
+            }
 
-        CreateEnd(origins[0]);
+            if(mainObject != null)
+                yield return new WaitForSeconds(spawnDelay);
+        }
     }
 }

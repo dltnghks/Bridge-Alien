@@ -71,13 +71,13 @@ public class MiniGameDeliveryPlayerController : IPlayerController, ISkillControl
         Vector3 targetPos = Player.transform.position + delta;
 
         Vector2 center = _groundRect.center;
-        // 80% 제한, Magic Number.
+
         Vector2 size = _groundRect.size * 0.8f;
 
         float minX = center.x - size.x / 2f;
         float maxX = center.x + size.x / 2f;
         float minY = center.y - size.y / 2f;
-        float maxY = center.y + size.y / 4f;
+        float maxY = center.y + size.y / 2f;
 
         // 위치 제한
         targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
