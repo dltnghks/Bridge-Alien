@@ -22,7 +22,8 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
         _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
 
         _timer.OffTimer();
-        _timer.SetTimer(null, _boxSpawnInterval, CreateInGameBox);
+        _timer.SetTimer(_boxSpawnInterval);
+        _timer.OnEndTime = CreateInGameBox;
 
         _previewQueue.Clear();
         _previewQueue.Enqueue(null);

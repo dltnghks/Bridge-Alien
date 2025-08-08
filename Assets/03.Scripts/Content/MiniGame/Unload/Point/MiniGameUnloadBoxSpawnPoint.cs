@@ -11,9 +11,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     private float _boxHeight = 1.0f;
     private float _boxHeightOffset = 0.8f;
 
-    private UnityAction _triggerAction;
-
-    public void SetBoxSpawnPoint(int maxSpawnBoxIndex, UnityAction triggerAction = null)
+    public void SetBoxSpawnPoint(int maxSpawnBoxIndex)
     {
         Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Truck.ToString(), gameObject);
 
@@ -21,7 +19,6 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         _boxSpawnPosition = transform.position;
         BoxList = new MiniGameUnloadBoxList();
         BoxList.SetBoxList(maxSpawnBoxIndex);
-        _triggerAction = triggerAction;
     }
 
     public bool TrySpawnBox(MiniGameUnloadBox box){
@@ -42,13 +39,11 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         }
     }
 
-    private void OnTriggerEnter(Collider coll)
+    private void OnTriggerStay(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.PickUpBox)){
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.PickUpBox);
         }
     }
     
@@ -56,9 +51,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            if(Managers.MiniGame.CurrentGame.PlayerController.ChangeInteraction((int)MiniGameUnloadInteractionAction.None)){
-                _triggerAction?.Invoke();
-            }
+            OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.None);
         }
        
     }

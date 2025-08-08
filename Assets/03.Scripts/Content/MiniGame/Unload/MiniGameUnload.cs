@@ -15,7 +15,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [Header("Delivery Point")]
     [SerializeField] private List<MiniGameUnloadDeliveryPoint> _deliveryPointList = new List<MiniGameUnloadDeliveryPoint>();
     [SerializeField] private MiniGameUnloadCoolingPoint _coolingPoint;
-    
+
     [Header("Box Spawn Point")]
     [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;                   // 박스 생성 주기
     [SerializeField] private GameObject[] _boxPrefabList;
@@ -26,6 +26,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [Header("Disposal Point")]
     [SerializeField] private MiniGameUnloadDisposalPoint _disposePoint;
 
+    private ComboSystem _comboSystem;
+
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
 
@@ -34,12 +36,21 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public UIScene GameUI { get; set; }
     private UIGameUnloadScene _uiGameUnloadScene;
- 
+
     private TimerBase _timer;
     private ScoreBase _score;
     private MiniGameUnloadBoxPreview _boxPreview;
     private readonly int _minimumWage = 10000;
-    
+
+    public void InitializeUI()
+    {
+        Logger.Log("InitializeUI Starting game");
+
+        _uiGameUnloadScene = Managers.UI.ShowSceneUI<UIGameUnloadScene>();
+        GameUI = _uiGameUnloadScene;
+        GameUI.Init();
+    }
+
     private void Update()
     {
         if (!IsActive || IsPause)
@@ -67,6 +78,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         SetDisposalPoint();
 
         SetPlayerCharacter();
+
+        SetComboSystem();
 
         // 다른 설정이 끝난 후 UI 설정
         SetGameUI();
@@ -105,93 +118,62 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private void SetColdArea()
     {
-        GameObject coolingPointObj = Utils.FindChild(gameObject, "CoolingPoint", true);
-        if (coolingPointObj == null)
-        {
-            Logger.LogError("CoolingPoint object not found!");
-            return;
-        }
-        
-        _coolingPoint = coolingPointObj.GetOrAddComponent<MiniGameUnloadCoolingPoint>();
         if (_coolingPoint == null)
         {
             Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
             return;
         }
-        _coolingPoint.SetColdArea(_gameSetting.MaxColdAreaBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+
+        _coolingPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+        _coolingPoint.SetColdArea(_gameSetting.MaxColdAreaBoxIndex);
     }
-    
+
     private void SetDeliveryPointList()
     {
-        // DeliveryPointList 확인
-        GameObject deliveryPoinListObj = Utils.FindChild(gameObject, "DeliveryPointList", true);
-        if (deliveryPoinListObj == null)
-        {
-            Logger.LogError("DeliveryPointList object not found!");
-            return;
-        }
-        Logger.Log($"Found DeliveryPointList: {deliveryPoinListObj.name}");
-
         // DeliveryPoint 초기화
-        foreach (var deliveryPoint in deliveryPoinListObj.GetComponentsInChildren<MiniGameUnloadDeliveryPoint>())
+        foreach (var deliveryPoint in _deliveryPointList)
         {
             if (deliveryPoint == null)
             {
                 Logger.LogError("Null deliveryPoint encountered!");
                 continue;
             }
-            deliveryPoint.SetAction(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite, _returnPoint.PlaceBox);
-            _deliveryPointList.Add(deliveryPoint);
+
+            deliveryPoint.OnScoreAction += AddScore;
+            deliveryPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+            deliveryPoint.OnReturnAction += _returnPoint.PlaceBox;
+            deliveryPoint.SetAction();
         }
     }
 
     private void SetDisposalPoint()
     {
-        GameObject disposePointObj = Utils.FindChild(gameObject, "DisposalPoint", true);
-        if (disposePointObj == null)
-        {
-            Logger.LogError("DisposalPoint object not found!");
-            return;
-        }
-        
-        MiniGameUnloadDisposalPoint disposePoint = disposePointObj.GetOrAddComponent<MiniGameUnloadDisposalPoint>();
-        disposePoint.SetDisposalPoint(_uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+        _disposePoint.OnScoreAction += AddScore;
+        _disposePoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
     }
 
     private void SetSpawnBoxList()
     {
-        GameObject boxSpawnPointObj = Utils.FindChild(gameObject, "BoxSpawnPoint", true);
-        if (boxSpawnPointObj == null)
-        {
-            Logger.LogError("BoxSpawnPoint object not found!");
-            return;
-        }
-        _boxSpawnPoint = boxSpawnPointObj.GetOrAddComponent<MiniGameUnloadBoxSpawnPoint>();
         if (_boxSpawnPoint == null)
         {
             Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
             return;
         }
-        _boxSpawnPoint.SetBoxSpawnPoint(_gameSetting.MaxSpawnBoxIndex, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+
+        _boxSpawnPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+        _boxSpawnPoint.SetBoxSpawnPoint(_gameSetting.MaxSpawnBoxIndex);
     }
 
     private void SetReturnPoint()
     {
-        GameObject returnPointObj = Utils.FindChild(gameObject, "ReturnPoint", true);
-        if (returnPointObj == null)
-        {
-            Logger.LogError("CoolingPoint object not found!");
-            return;
-        }
-
-        _returnPoint = returnPointObj.GetOrAddComponent<MiniGameUnloadReturnPoint>();
         if (_returnPoint == null)
         {
             Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
             return;
         }
 
-        _returnPoint.SetReturnPoint(AddScore, _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite);
+        _returnPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+        _returnPoint.OnScoreAction += AddScore;
     }
 
     private void SetPlayerCharacter()
@@ -217,7 +199,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             // 스킬 UI
             _uiGameUnloadScene.UIPlayerInput.SetSkillInfo(_skillList);
             _uiGameUnloadScene.UIPlayerInput.SetSkillAction(skillController.OnSkill);
-            
+
             skillController.SetSkillList(_skillList);
         }
         else
@@ -234,11 +216,84 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _score = new ScoreBase();
         _boxPreview = Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
 
-        _timer.SetTimer(_uiGameUnloadScene.UITimer, _gameSetting.GamePlayTime, EndGame);
-        _score.SetScore(_uiGameUnloadScene.UIScoreBoard, 0);
+        _score.OnChangedScore += _uiGameUnloadScene.UIScoreBoard.SetScore;
+        _timer.OnChangedTime += _uiGameUnloadScene.UITimer.SetTimerText;
+        _timer.OnEndTime += EndGame;
+
+        _timer.SetTimer(_gameSetting.GamePlayTime);
+
         _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
+
+        _comboSystem = new ComboSystem();
+        if (_comboSystem != null && _uiGameUnloadScene.UIComboDisplay != null)
+        {
+            _comboSystem.OnComboChanged += _uiGameUnloadScene.UIComboDisplay.UpdateCombo;
+            _comboSystem.OnComboBroken += _uiGameUnloadScene.UIComboDisplay.BreakCombo;
+            _comboSystem.OnChangedComboBox += _uiGameUnloadScene.UIComboBoxView.UpdateUI;
+            _comboSystem.OnComboBoxFull += HandleComboBoxFull; // 이벤트 구독
+        }
     }
-    
+
+    private void SetComboSystem()
+    {
+        _comboSystem = new ComboSystem();
+    }
+
+    private void HandleComboBoxFull()
+    {
+        // 콤보 박스가 가득 찼을 때, 같은 종류인지 확인
+        bool isSpecialCombo = CheckForSpecialCombo();
+        StartCoroutine(ProcessFullComboBox(isSpecialCombo));
+    }
+
+    private bool CheckForSpecialCombo()
+    {
+        var boxList = _comboSystem._comboBoxList.BoxList;
+
+        // 리스트가 비어있거나, 3개가 아니거나, 중간에 null(실패)이 있으면 스페셜 콤보가 아님
+        if (boxList == null || boxList.Count < 3 || boxList.Contains(null))
+        {
+            return false;
+        }
+
+        // 첫 번째 박스의 타입을 기준으로 삼음
+        var firstBoxType = boxList[0].BoxType;
+
+        // 나머지 박스들이 첫 번째 박스와 타입이 같은지 확인
+        for (int i = 1; i < boxList.Count; i++)
+        {
+            if (boxList[i].BoxType != firstBoxType)
+            {
+                return false; // 다른 타입의 박스가 있으면 일반 콤보
+            }
+        }
+
+        // 모든 박스가 같은 타입이면 스페셜 콤보
+        return true;
+    }
+
+    private IEnumerator ProcessFullComboBox(bool isSpecialCombo)
+    {
+        // 1. 추가 점수 부여 (기본 300점)
+        int bonusScore = 300;
+
+        // 스페셜 콤보(같은 종류 3개)일 경우 점수 2배
+        if (isSpecialCombo)
+        {
+            bonusScore *= 2;
+            // 여기에 추가적인 시각/사운드 효과를 넣으면 더 좋습니다!
+        }
+
+        _score.AddScore(bonusScore);
+        GenerateComboTextObj(bonusScore);
+
+        // 2. 플레이어가 UI를 볼 수 있도록 1초 대기
+        yield return new WaitForSeconds(1.0f);
+
+        // 3. 콤보 박스 리스트 초기화
+        _comboSystem.ClearComboBoxList();
+    }
+
     public bool PauseGame()
     {
         if (!IsActive || IsPause)
@@ -289,27 +344,54 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         Logger.Log("UnloadGame Ending game");
     }
 
-    public void InitializeUI()
-    {
-        Logger.Log("InitializeUI Starting game");
-        
-        _uiGameUnloadScene = Managers.UI.ShowSceneUI<UIGameUnloadScene>();
-        GameUI = _uiGameUnloadScene;
-        GameUI.Init();
-    }
-
-    public void AddScore(int score)
+    public void AddScore(int score, MiniGameUnloadBox box)
     {
         if (score > 0)
         {
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
+            
+            // 1. 점수 반영
+            GenerateScoreTextObj(score);
+            _score.AddScore(score);
+
+            // 2. 콤보 등록
+            _comboSystem.RegisterSuccess(box);
+
         }
-        else if (score < 0)
+        else // 점수가 0 이하일 경우 (마이너스 점수)
         {
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.MinusScore.ToString());
-        }
 
-        _score.AddScore(score);
+            // 1. 감점은 배율 없이 그대로 적용
+            GenerateScoreTextObj(score);
+            _score.AddScore(score);
+
+            // 2. 콤보 초기화   
+            _comboSystem.BreakCombo();
+        }
+    }
+
+    private void GenerateScoreTextObj(int amount)
+    {
+        InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
+        string text = "";
+        if (amount < 0)
+        {
+            text = $"<color=#BF0000>{amount}</color>";
+        }
+        else
+        {
+            text = $"<color=#006306>{amount}</color>";
+        }
+        
+        scoreTextObj.Init(PlayerCharacter.transform.position, text);
+    }
+
+    private void GenerateComboTextObj(int amount)
+    {
+        InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
+        string text = $"<color=#FF6F00>COMBO {amount}</color>";
+        scoreTextObj.Init(PlayerCharacter.transform.position, text);
     }
 
 }

@@ -7,6 +7,7 @@ public class FragileBox : MiniGameUnloadBox
     public override void SetRandomInfo()
     {
         base.SetRandomInfo();
+        BoxType = Define.BoxType.Fragile;
     }
     
     public void CheckBrokenBox(int height)

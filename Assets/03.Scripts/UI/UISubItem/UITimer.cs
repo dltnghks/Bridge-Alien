@@ -21,8 +21,6 @@ public class UITimer : UISubItem
     [SerializeField] private bool _onTimerText = true;  
 
     private UIGauge _gauge;
-    private float _curTime;
-    private float _startTime;
 
     public override bool Init()
     {
@@ -47,35 +45,14 @@ public class UITimer : UISubItem
 
         return true;
     }
-    
-    public void SetTimer(float startTime, float time)
+
+    public void SetTimerText(float time, float startTime)
     {
         Init();
-        _startTime = startTime;
-        _curTime = time;
-        SetTimerText(time);
-    }
-
-    public void SetTimer(float time)
-    {
-        Init();
-        _curTime = time;
-        SetTimerText(time);
-    }
-
-    public void AddTime(float time)
-    {
-        _curTime += time;
-        SetTimerText(_curTime);
-    }
-    
-
-    private void SetTimerText(float time)
-    {
         string timeFormat = GetTimeFormat(time);
         GetText((int)Texts.TimerText).SetText(timeFormat);
 
-        _gauge.SetGauge(time/_startTime);
+        _gauge.SetGauge(time / startTime);
         //_timerSlider.value = time/_startTime;
     }
 
