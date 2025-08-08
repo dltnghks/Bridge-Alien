@@ -54,7 +54,7 @@ public class DamageHandler : MonoBehaviour
     {
         if (isOn)
         {
-            DamageRate -= Mathf.Clamp01(0.25f);
+            DamageRate += Mathf.Clamp01(0.25f);
             UpdateSpeedPenalty();
         }
     }

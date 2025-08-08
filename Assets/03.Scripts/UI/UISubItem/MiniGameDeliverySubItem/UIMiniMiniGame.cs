@@ -40,7 +40,7 @@ public class UIMiniMiniGame : UIPopup
     private float _maxAngle = 360f * 10f;
     private float _lastAngle = 0f;
 
-    private float _maxTime = 999f;
+    private float _maxTime = 10f;
     private float _elapsedTime = 0f;
     private bool _isDragging = false;
     private bool _isGameRunning = false;

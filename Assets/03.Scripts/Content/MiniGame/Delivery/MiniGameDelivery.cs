@@ -40,6 +40,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     
     // 게임이 끝났을 때, 플레이어 이벤트를 처리하는 메서드.
     private Coroutine _playerExitCoroutine;
+
+    private float _bonusTimer = .0f;
     
     private void Update()
     {
@@ -50,6 +52,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
 
         totalDistance += Time.deltaTime * _deliveryMap.GroundSpeed * PlayerCharacter.MoveSpeed;
         _pathProgressBar?.ProgressUpdate(totalDistance);
+        
+        _bonusTimer += Time.deltaTime;
     }
 
     public void StartGame()
@@ -186,13 +190,12 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     {
         float experienceBonus = 1f;
         float fatiguePenalty = 1f;
-        float scoreBonus = 1f;
+        float scoreBonus = Mathf.Clamp((100f - (_bonusTimer / 48f) * 100f), 15f, 60f);
         float totalScore = totalDistance;
 
         Managers.Player.AddGold((int)totalScore);
 
         Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(500, 500, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
-        
     }
     
     public void InitializeUI()
