@@ -55,7 +55,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     public void StartGame()
     {
         _pathProgressBar = new MiniGameDeliveryPathProgress();
-
+        
         PlayerCharacter = Utils.FindChild<MiniGameDeliveryPlayer>(gameObject, "Player", true);
         if (PlayerCharacter == null)
         {
@@ -93,6 +93,10 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             ((MiniGameDeliveryPlayerController)PlayerController).onRocketAction = OnRocketSkill;
             skillController.SetSkillList(_skillList);
         }
+        
+        _uiGameDeliveryScene.UIInteraction.SetUp(
+            ((MiniGameDeliveryPlayer)PlayerCharacter).OnInteractionButtonClick,
+            ((MiniGameDeliveryPlayer)PlayerCharacter).OnInteractionButtonRelease);
 
         _uiGameDeliveryScene.UIDamageView.Initialize(_damageHandler, null);
 

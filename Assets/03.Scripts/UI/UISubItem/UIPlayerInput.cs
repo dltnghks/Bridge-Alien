@@ -42,7 +42,6 @@ public class UIPlayerInput : UISubItem
     }
 
     public void OnInteraction(){
-        Logger.Log($"Interaction");
         Managers.MiniGame.CurrentGame.PlayerController.Interaction();
     }
 

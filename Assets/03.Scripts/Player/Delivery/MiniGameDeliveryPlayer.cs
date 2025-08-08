@@ -101,11 +101,12 @@ public class MiniGameDeliveryPlayer : Player
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
+    private bool isBumpPass = false;
     private void OnTriggerEnter(Collider coll)
     {
         if (_isInvincible) return;
 
-        if (coll.CompareTag("Enemy"))
+        if (coll.CompareTag("Enemy") || (coll.CompareTag("Bump") && isBumpPass == false))
         {
             moveAdditionalMultiplier = Mathf.Clamp((moveAdditionalMultiplier -= moveSpeed * 0.1f), 1f, moveAdditionalMultiplier);
             _damageHandler.OnDamage();
@@ -118,6 +119,16 @@ public class MiniGameDeliveryPlayer : Player
             // TODO: SFX 추가
             Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Player_BeAttacked.ToString());
         }
+    }
+
+    public void OnInteractionButtonClick()
+    {
+        isBumpPass = true;
+    }
+
+    public void OnInteractionButtonRelease()
+    {
+        isBumpPass = false;
     }
 
     public void OnRocketEffect(bool isOn)

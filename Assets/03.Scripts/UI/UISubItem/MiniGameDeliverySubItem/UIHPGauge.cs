@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UIHPGauge : UISubItem
 {
-    enum Images{
+    enum Images
+    {
         HPGaugeImage,
-
     }
     
     private Image _hpImage;
@@ -32,5 +32,4 @@ public class UIHPGauge : UISubItem
         // DOTween으로 fillAmount를 부드럽게 변경
         _hpImage.DOFillAmount(targetFillAmount, 0.5f).SetEase(Ease.OutCubic); // 0.5초 동안 부드럽게 감소
     }
-
 }

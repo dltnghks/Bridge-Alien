@@ -10,19 +10,23 @@ public class UIGameDeliveryScene : UIScene
         UIGameMenu,
         UIMiniGameDeliveryPlayerInput,
         UIDamageView,
-        UIMiniMiniGame
+        UIMiniMiniGame,
+        InteractionButton
     }
-    
+
     private UIMiniGameHelpButton _uiGameMenu;
     private UIMiniGameDeliveryPlayerInput _uiPlayerInput;
     private UIPathProgressBar _uiPathProgressBar;
     private UIDamageView _uiDamageView;
     private UIMiniMiniGame _uiMiniMiniGame;
+    private UIDeliveryInteraction _uiInteraction;
     
     public UIMiniGameDeliveryPlayerInput UIPlayerInput { get { return _uiPlayerInput; } }
     public UIPathProgressBar UIPathProgressBar { get { return _uiPathProgressBar;}}
     public UIDamageView UIDamageView { get { return _uiDamageView;}}
     public UIMiniMiniGame UIMiniMiniGame { get { return _uiMiniMiniGame;}}
+    
+    public UIDeliveryInteraction UIInteraction { get { return _uiInteraction;}}
     
     public override bool Init()
     {
@@ -38,6 +42,7 @@ public class UIGameDeliveryScene : UIScene
         _uiPathProgressBar = GetObject((int)Objects.UIPathProgressBar).GetOrAddComponent<UIPathProgressBar>();
         _uiDamageView = GetObject((int)Objects.UIDamageView).GetOrAddComponent<UIDamageView>();
         // _uiMiniMiniGame = GetObject((int)Objects.UIMiniMiniGame).GetOrAddComponent<UIMiniMiniGame>();
+        _uiInteraction = GetObject((int)Objects.InteractionButton).GetOrAddComponent<UIDeliveryInteraction>();
         
         return true;
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4818927779813754761}
   m_Layer: 0
   m_Name: BumpObject
-  m_TagString: Enemy
+  m_TagString: Bump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6514948067786397268}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Enemy
+  m_TagString: Bump
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
