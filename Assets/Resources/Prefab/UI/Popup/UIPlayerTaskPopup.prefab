@@ -1952,7 +1952,6 @@ GameObject:
   - component: {fileID: 2695781067700915922}
   - component: {fileID: 8654374760877185024}
   - component: {fileID: 1189659357744445437}
-  - component: {fileID: 1110803132842120546}
   m_Layer: 0
   m_Name: UIPlayerTaskPopup
   m_TagString: Untagged
@@ -2072,19 +2071,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsBlurBG: 1
   IsBlurBGInputEnable: 1
---- !u!114 &1110803132842120546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6477704080872085278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5ff1a2ecc16a54e995110fd538d4bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsUsing: 0
 --- !u!1 &6665289719860216790
 GameObject:
   m_ObjectHideFlags: 0

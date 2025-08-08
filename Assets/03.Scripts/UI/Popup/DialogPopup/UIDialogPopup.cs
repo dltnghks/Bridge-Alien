@@ -63,6 +63,8 @@ public class UIDialogPopup : UIPopup
     private Tween _typingTween; // 현재 실행 중인 트윈
     
     private Action _callback;
+
+    private bool _isFinish;
     
     public override bool Init()
     {
@@ -76,25 +78,16 @@ public class UIDialogPopup : UIPopup
         BindObject(typeof(Objects));
 
         _dialogText = GetText((int)Texts.DialogText);
-        
+
         GetButton((int)Buttons.SkipButton).gameObject.BindEvent(OnClickScreenButton);
         GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
-        
+
         _nextButton = GetButton((int)Buttons.NextButton);
         _nextButton.gameObject.SetActive(false);
 
         _choiceGroup = GetObject((int)Objects.UIChoiceGroup).GetOrAddComponent<VerticalLayoutGroup>();
         _choiceButtons = _choiceGroup.GetComponentsInChildren<UIChoiceButton>().ToList();
 
-        // 이미지 비활성화
-        GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
-        GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
-
-        foreach (var choiceButton in _choiceButtons)
-        {
-            choiceButton.gameObject.SetActive(false);
-        }
-        
         return true;
     }
 
@@ -106,8 +99,12 @@ public class UIDialogPopup : UIPopup
     
     private void OnClickNextButton()
     {
-        Logger.Log("OnClickNextButton");
+        if (_isFinish == true)
+        {
+            return;
+        }
         
+        Logger.Log("OnClickNextButton");
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
 
         NextDialog();
@@ -141,13 +138,13 @@ public class UIDialogPopup : UIPopup
             ShowChoices();
         }
     }
-    
+
     public void InitDialog(Define.Dialog dialogue, Define.DialogSceneType sceneType, Action callback = null)
     {
         Init();
-        
-        Logger.Log($"SetDialogs : {dialogue}");   
-        
+
+        Logger.Log($"SetDialogs : {dialogue}");
+
         _callback = callback;
         // 대화 데이터 초기화
         SetDialogData(dialogue);
@@ -156,10 +153,21 @@ public class UIDialogPopup : UIPopup
         SetBackground(sceneType);
 
         // 캐릭터 이미지 초기화
-        GetImage((int)Images.LeftCharacterImage).sprite = _speakerCharacterImages[Define.DialogSpeakerType.UNKNOWN];
-        GetImage((int)Images.RightCharacterImage).sprite = _speakerCharacterImages[Define.DialogSpeakerType.UNKNOWN];
+        SetSpeakerImage(Define.DialogSpeakerType.UNKNOWN, Define.DialogSpeakerPosType.Left);
+        SetSpeakerImage(Define.DialogSpeakerType.UNKNOWN, Define.DialogSpeakerPosType.Right);
+
+        // 이미지 비활성화
+        GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
+        GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
+
+        foreach (var choiceButton in _choiceButtons)
+        {
+            choiceButton.gameObject.SetActive(false);
+        }
 
         UpdateDialog();
+
+        _isFinish = false;
     }
 
     private void SetDialogData(Define.Dialog dialogue)
@@ -371,8 +379,8 @@ public class UIDialogPopup : UIPopup
 
     private void EndDialog()
     {
+        _isFinish = true;
         Logger.Log("EndDialog");
-        Managers.UI.ClosePopupUI(this);
         _callback?.Invoke();
     }
 }

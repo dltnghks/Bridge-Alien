@@ -84,6 +84,8 @@ public class UIManager : MonoBehaviour
         {
             name = typeof(T).Name;
         }
+        
+        _popupStack.Clear();
 
         GameObject go = GameObject.Find($"{name}");
         T sceneUI = Utils.GetOrAddComponent<T>(go);

@@ -150,7 +150,9 @@ public class DailyManager : ISaveable
         {
             Logger.Log($"Daily Event is Dialog : {_currentDailyData.GetParameter<Define.Dialog>()}");
 
-            _dialogPopup = Managers.UI.ShowPopUI<UIDialogPopup>();
+            // 대화 이벤트가 연속되는 경우, 데이터만 교체
+            if (_dialogPopup is null)
+                _dialogPopup = Managers.UI.ShowPopUI<UIDialogPopup>();
             _dialogPopup.InitDialog(_currentDailyData.GetParameter<Define.Dialog>(), _currentDailyData.DialogScene, StartEvent);
         }
         else if (_currentDailyData.EventType == Define.DailyEventType.MiniGame)
@@ -163,6 +165,12 @@ public class DailyManager : ISaveable
             return;
         }
 
+        // 대화 이벤트가 아닐 때는 다이얼로그 팝업 닫기
+        if (_currentDailyData.EventType != Define.DailyEventType.Dialog)
+        {
+            _dialogPopup = null;
+        }
+
         SetNextEvent();
     }
 
@@ -173,7 +181,7 @@ public class DailyManager : ISaveable
             Logger.LogError("EventType is not MiniGame");
             return;
         }
-        
+
         switch (_currentDailyData.GetParameter<Define.MiniGameType>())
         {
             case Define.MiniGameType.Unload:
@@ -182,7 +190,7 @@ public class DailyManager : ISaveable
                 Managers.Scene.ChangeScene(Define.Scene.MiniGameDelivery); break;
             default:
                 Logger.LogError("Not Find MiniGame"); break;
-        }   
+        }
     }
 
     public void EndMiniGameEvent()
