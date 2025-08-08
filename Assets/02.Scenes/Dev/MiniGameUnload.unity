@@ -597,9 +597,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5261962879067572844, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261962879067572844, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261962879067572844, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261962879067572844, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261962879067572844, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6164337620180750308, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
       propertyPath: m_Name
       value: UIGameUnloadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077857572238809020, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077857572238809020, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077857572238809020, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077857572238809020, guid: 1e22764ec19fef44c87294a6a8a88a91, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -866,10 +902,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 734190950}
     m_Modifications:
-    - target: {fileID: 198308219071971733, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 24c6b97483c5a264c922331babf571ca, type: 2}
     - target: {fileID: 1947315248513555530, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -913,10 +945,6 @@ PrefabInstance:
     - target: {fileID: 5737174199348785999, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
       propertyPath: m_Name
       value: MiniGameUnload
-      objectReference: {fileID: 0}
-    - target: {fileID: 5852744502581128277, guid: 22fd4b3413d0b2646bfe346dd6ca2603, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 9.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
