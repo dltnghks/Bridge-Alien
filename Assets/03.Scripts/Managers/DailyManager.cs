@@ -24,7 +24,11 @@ public class DailyManager : ISaveable
     public void Init(int lastDate = 1, DailyData dailyData = null)
     {
         Logger.Log("Initializing daily data");
+
         int initData = lastDate;
+        _currentIndex = Array.IndexOf(_dateList, initData);
+        _dialogPopup = null;
+
         SetCurrentData(initData);
         SetDailyData(dailyData);
     }
@@ -156,7 +160,7 @@ public class DailyManager : ISaveable
         {
             // 일과일 때는 닫기
             if (_currentDailyData.EventType == Define.DailyEventType.Task)
-                _dialogPopup.ClosePopupUI();
+                _dialogPopup?.ClosePopupUI();
 
             _dialogPopup = null;
         }
