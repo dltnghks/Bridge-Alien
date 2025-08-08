@@ -313,11 +313,6 @@ public class UIDialogPopup : UIPopup
         leftImage.color = Color.HSVToRGB(0, 0, 0.3f);
         rightImage.color = Color.HSVToRGB(0, 0, 0.3f);
 
-        if (_leftSpeakerType == Define.DialogSpeakerType.UNKNOWN)
-            leftImage.color = Color.clear;
-        if (_rightSpeakerType == Define.DialogSpeakerType.UNKNOWN)
-            rightImage.color = Color.clear;
-
         if (speakerPosType == Define.DialogSpeakerPosType.Left)
         {
             leftImage.sprite = _speakerCharacterImages[speakerType];
@@ -329,6 +324,11 @@ public class UIDialogPopup : UIPopup
             rightImage.color = Color.white;
         }
 
+        if (_leftSpeakerType == Define.DialogSpeakerType.UNKNOWN)
+            leftImage.color = Color.clear;
+        if (_rightSpeakerType == Define.DialogSpeakerType.UNKNOWN)
+            rightImage.color = Color.clear;
+            
     }
 
     private void SetNameText(string characterName)

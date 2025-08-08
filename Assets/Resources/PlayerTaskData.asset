@@ -42,73 +42,26 @@ MonoBehaviour:
         IntelligenceValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0
-      - TaskID: C01_T03
-        TaskName: "\uC9C0\uAD6C\uC77C\uBCF4 \uAD6C\uB3C5"
-        ThumbnailText: 
-        TaskProgressText: 
-        TaskCompletedText: 
-        RequirementGold: 50
-        FatigueValue: 0
-        ExperienceValue: 5
-        GravityAdaptationValue: 0
-        IntelligenceValue: 2
-        LuckMaxValue: 0
-        LuckMinValue: 0
-      - TaskID: C01_T04
-        TaskName: "\uC9C0\uAD6C\uC0AC \uC5F0\uAD6C"
-        ThumbnailText: 
-        TaskProgressText: 
-        TaskCompletedText: 
-        RequirementGold: 100
-        FatigueValue: 0
-        ExperienceValue: 5
-        GravityAdaptationValue: 0
-        IntelligenceValue: 3
-        LuckMaxValue: 0
-        LuckMinValue: 0
     - Key: 2
       Value:
       - TaskID: C02_T01
         TaskName: "\uAE30\uB3C4"
-        ThumbnailText: 
-        TaskProgressText: 
-        TaskCompletedText: 
+        ThumbnailText: "<\uC6B4\uC138 : \uAE30\uB3C4>"
+        TaskProgressText: "\uAE30\uB3C4\uD558\uB294 \uC911.."
+        TaskCompletedText: "\uC2E0\uBE44\uD55C \uAE30\uC6B4\uC774 \uB290\uAEF4\uC9C0\uB294
+          \uAC83 \uAC19\uB2E4.."
         RequirementGold: 0
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 0
         IntelligenceValue: 0
         LuckMaxValue: 10
-        LuckMinValue: -10
-      - TaskID: C02_T02
-        TaskName: "\uC4F0\uB808\uAE30 \uC90D\uAE30"
-        ThumbnailText: 
-        TaskProgressText: 
-        TaskCompletedText: 
-        RequirementGold: 0
-        FatigueValue: 0
-        ExperienceValue: 5
-        GravityAdaptationValue: 0
-        IntelligenceValue: 0
-        LuckMaxValue: 5
-        LuckMinValue: 0
+        LuckMinValue: 1
     - Key: 3
       Value:
-      - TaskID: C03_T01
-        TaskName: "\uAC00\uB9CC\uD788 \uC788\uAE30"
-        ThumbnailText: 
-        TaskProgressText: 
-        TaskCompletedText: 
-        RequirementGold: 0
-        FatigueValue: 20
-        ExperienceValue: 0
-        GravityAdaptationValue: 0
-        IntelligenceValue: -2
-        LuckMaxValue: 0
-        LuckMinValue: 0
       - TaskID: C03_T02
         TaskName: "\uB178\uB798\uBC29"
-        ThumbnailText: 
+        ThumbnailText: "<\uC720\uD765 : \uB178\uB798\uBC29>"
         TaskProgressText: "\uC2E0\uB098\uAC8C \uB178\uB798 \uBD80\uB974\uB294 \uC911..."
         TaskCompletedText: "\uC2A4\uD2B8\uB808\uC2A4\uAC00 \uD480\uB9B0\uB2E4.."
         RequirementGold: 150
@@ -118,23 +71,11 @@ MonoBehaviour:
         IntelligenceValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0
-      - TaskID: C03_T03
-        TaskName: "\uD5CC\uD305 \uD3EC\uCC28"
-        ThumbnailText: 
-        TaskProgressText: 
-        TaskCompletedText: 
-        RequirementGold: 300
-        FatigueValue: 0
-        ExperienceValue: 0
-        GravityAdaptationValue: 0
-        IntelligenceValue: 0
-        LuckMaxValue: 0
-        LuckMinValue: 0
       - TaskID: C03_T04
         TaskName: "\uBCD1\uC6D0 \uC785\uC6D0"
-        ThumbnailText: 
-        TaskProgressText: 
-        TaskCompletedText: 
+        ThumbnailText: "<\uD734\uC2DD : \uBCD1\uC6D0 \uC785\uC6D0>"
+        TaskProgressText: "\uBCD1\uC6D0\uC5D0\uC11C \uC26C\uB294 \uC911.."
+        TaskCompletedText: "\uD53C\uB85C\uAC00 \uD68C\uBCF5\uB41C\uB2E4.."
         RequirementGold: 500
         FatigueValue: 100
         ExperienceValue: 0

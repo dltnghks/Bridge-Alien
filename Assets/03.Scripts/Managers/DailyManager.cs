@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class DailyManager : ISaveable
 {
-    private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15 };
+    private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15, 16 };
     private int _currentIndex = 0;
     private int _curDate;
-    private readonly int _dueDate = 16;
+    private readonly int _dueDate = 15;
     
     private DailyData _preDailyData;
     private DailyData _currentDailyData;
@@ -19,12 +19,16 @@ public class DailyManager : ISaveable
     public int CurrentDate => _curDate;
     public DailyData PreDailyData => _preDailyData;
     public DailyData CurrentDailyData => _currentDailyData;
-
+    public bool IsTask = true;
 
     public void Init(int lastDate = 1, DailyData dailyData = null)
     {
         Logger.Log("Initializing daily data");
+
         int initData = lastDate;
+        _currentIndex = Array.IndexOf(_dateList, initData);
+        _dialogPopup = null;
+
         SetCurrentData(initData);
         SetDailyData(dailyData);
     }
@@ -39,7 +43,9 @@ public class DailyManager : ISaveable
     private void AddCurrentData(int value)
     {
         _currentIndex += value;
-        _curDate = _dateList[_currentIndex];
+        
+        if (_currentIndex < _dateList.Length)
+            _curDate = _dateList[_currentIndex];
     }
     
     // 일차 진행
@@ -48,7 +54,7 @@ public class DailyManager : ISaveable
         Logger.Log("AddDate");
         AddCurrentData(1);
 
-        if (_curDate >= _dueDate)
+        if (_curDate > _dueDate)
         {
             EndGame();
             return;
@@ -59,6 +65,9 @@ public class DailyManager : ISaveable
         
         // 오늘자 데이터 세팅
         SetDailyData();
+
+        // 다시 일과를 수행할 수 있도록 설정
+        IsTask = true;
         
         Managers.Scene.ChangeScene(Define.Scene.House); 
     }
@@ -146,6 +155,16 @@ public class DailyManager : ISaveable
             return;
         }
 
+        // 대화 이벤트가 아닐 때는 다이얼로그 팝업 닫기
+        if (_currentDailyData.EventType != Define.DailyEventType.Dialog)
+        {
+            // 일과일 때는 닫기
+            if (_currentDailyData.EventType == Define.DailyEventType.Task)
+                _dialogPopup?.ClosePopupUI();
+
+            _dialogPopup = null;
+        }
+
         if (_currentDailyData.EventType == Define.DailyEventType.Dialog)
         {
             Logger.Log($"Daily Event is Dialog : {_currentDailyData.GetParameter<Define.Dialog>()}");
@@ -163,12 +182,6 @@ public class DailyManager : ISaveable
         {
             EndDay();
             return;
-        }
-
-        // 대화 이벤트가 아닐 때는 다이얼로그 팝업 닫기
-        if (_currentDailyData.EventType != Define.DailyEventType.Dialog)
-        {
-            _dialogPopup = null;
         }
 
         SetNextEvent();
@@ -206,7 +219,7 @@ public class DailyManager : ISaveable
     private void EndGame()
     {
         Logger.Log("EndGame");
-        Managers.Scene.ChangeScene(Define.Scene.Ending);
+        Managers.Scene.ChangeScene(Define.Scene.Title);
     }
 
     public void Add(ISaveable saveable)
