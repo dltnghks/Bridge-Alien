@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class DailyManager : ISaveable
 {
-    private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15 };
+    private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15, 16 };
     private int _currentIndex = 0;
     private int _curDate;
-    private readonly int _dueDate = 16;
+    private readonly int _dueDate = 15;
     
     private DailyData _preDailyData;
     private DailyData _currentDailyData;
@@ -19,7 +19,6 @@ public class DailyManager : ISaveable
     public int CurrentDate => _curDate;
     public DailyData PreDailyData => _preDailyData;
     public DailyData CurrentDailyData => _currentDailyData;
-
 
     public void Init(int lastDate = 1, DailyData dailyData = null)
     {
@@ -39,7 +38,9 @@ public class DailyManager : ISaveable
     private void AddCurrentData(int value)
     {
         _currentIndex += value;
-        _curDate = _dateList[_currentIndex];
+        
+        if (_currentIndex < _dateList.Length)
+            _curDate = _dateList[_currentIndex];
     }
     
     // 일차 진행
@@ -48,7 +49,7 @@ public class DailyManager : ISaveable
         Logger.Log("AddDate");
         AddCurrentData(1);
 
-        if (_curDate >= _dueDate)
+        if (_curDate > _dueDate)
         {
             EndGame();
             return;
@@ -210,7 +211,7 @@ public class DailyManager : ISaveable
     private void EndGame()
     {
         Logger.Log("EndGame");
-        Managers.Scene.ChangeScene(Define.Scene.Ending);
+        Managers.Scene.ChangeScene(Define.Scene.Title);
     }
 
     public void Add(ISaveable saveable)
