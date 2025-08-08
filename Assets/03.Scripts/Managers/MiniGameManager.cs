@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniGameManager : MonoBehaviour
+public class MiniGameManager : MonoBehaviour, ISaveable
 {
     private IMiniGame _currentGame;
     private GameObject _gameUI;
@@ -85,6 +85,11 @@ public class MiniGameManager : MonoBehaviour
         Logger.Log("Pause Game");
         Managers.Sound.PauseBGM();
 
+        if (_currentGame is null)
+        {
+            return false;
+        }
+
         return _currentGame.PauseGame();
     }
 
@@ -108,4 +113,26 @@ public class MiniGameManager : MonoBehaviour
         _currentGame?.InitializeUI();
     }
 
+    public void Add(ISaveable saveable)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public object CaptureState()
+    {
+        var data = new MiniGameSaveData();
+        data.MiniGameTutorial = MiniGameTutorial;
+        return data;
+    }
+
+    public void RestoreState(object state)
+    {
+        var data = state as MiniGameSaveData;
+        if (data == null)
+        {
+            data = new MiniGameSaveData();
+            data.MiniGameTutorial = null;
+        }
+        Init(data.MiniGameTutorial);
+    }
 }

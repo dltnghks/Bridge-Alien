@@ -51,7 +51,7 @@ public class DeviceInputManager : MonoBehaviour
                     // 여기서는 앱 종료 확인 팝업을 띄우거나, 바로 종료할 수 있습니다.
                     // UI 띄우기
                     Managers.UI.ShowPopUI<UIGameMenuPopup>();
-                    Managers.Save.Save();    
+                    _ = Managers.Save.SaveAsync();    
                 }
             }
         }
@@ -64,7 +64,7 @@ public class DeviceInputManager : MonoBehaviour
         Managers.Scene.CurrentSceneType != Define.Scene.Unknown 
         )
         {
-            Managers.Save.Save();    
+            _ = Managers.Save.SaveAsync();    
         }
         // 홈 버튼, 앱 전환, 전화 수신 등으로 앱의 활성 상태가 변경될 때 이벤트를 발생시킵니다.
         OnApplicationPaused?.Invoke(pauseStatus);

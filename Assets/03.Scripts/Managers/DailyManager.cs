@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DailyManager
+public class DailyManager : ISaveable
 {
+    private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15 };
+    private int _currentIndex = 0;
     private int _curDate;
-    private readonly int _dueDate = 3;
+    private readonly int _dueDate = 16;
     
     private DailyData _preDailyData;
     private DailyData _currentDailyData;
@@ -32,10 +35,11 @@ public class DailyManager
         
         Logger.Log($"진행일 : {_curDate}");
     }
-    
+
     private void AddCurrentData(int value)
     {
-        _curDate += value;
+        _currentIndex += value;
+        _curDate = _dateList[_currentIndex];
     }
     
     // 일차 진행
@@ -63,7 +67,7 @@ public class DailyManager
     {
         Logger.Log("SetDailyData");
         // DataManager에서 curDate 세팅 값 가져오기
-        _currentDailyDataDict = Managers.Data.DailyData.GetData("Event_D" + _curDate);
+        _currentDailyDataDict = Managers.Data.DailyData.GetData("Event_D" + _curDate); 
         if (_currentDailyDataDict == null)
         {
             Logger.LogError("currentDailyDataDict is null");
@@ -146,7 +150,9 @@ public class DailyManager
         {
             Logger.Log($"Daily Event is Dialog : {_currentDailyData.GetParameter<Define.Dialog>()}");
 
-            _dialogPopup = Managers.UI.ShowPopUI<UIDialogPopup>();
+            // 대화 이벤트가 연속되는 경우, 데이터만 교체
+            if (_dialogPopup is null)
+                _dialogPopup = Managers.UI.ShowPopUI<UIDialogPopup>();
             _dialogPopup.InitDialog(_currentDailyData.GetParameter<Define.Dialog>(), _currentDailyData.DialogScene, StartEvent);
         }
         else if (_currentDailyData.EventType == Define.DailyEventType.MiniGame)
@@ -159,8 +165,13 @@ public class DailyManager
             return;
         }
 
-        // 1차 시연때는 다음 이벤트로 넘어가기 X
-        // SetNextEvent();
+        // 대화 이벤트가 아닐 때는 다이얼로그 팝업 닫기
+        if (_currentDailyData.EventType != Define.DailyEventType.Dialog)
+        {
+            _dialogPopup = null;
+        }
+
+        SetNextEvent();
     }
 
     private void StartMiniGameEvent()
@@ -170,7 +181,7 @@ public class DailyManager
             Logger.LogError("EventType is not MiniGame");
             return;
         }
-        
+
         switch (_currentDailyData.GetParameter<Define.MiniGameType>())
         {
             case Define.MiniGameType.Unload:
@@ -179,7 +190,7 @@ public class DailyManager
                 Managers.Scene.ChangeScene(Define.Scene.MiniGameDelivery); break;
             default:
                 Logger.LogError("Not Find MiniGame"); break;
-        }   
+        }
     }
 
     public void EndMiniGameEvent()
@@ -196,6 +207,31 @@ public class DailyManager
     {
         Logger.Log("EndGame");
         Managers.Scene.ChangeScene(Define.Scene.Ending);
+    }
+
+    public void Add(ISaveable saveable)
+    {
+        throw new NotImplementedException();
+    }
+
+    public object CaptureState()
+    {
+        var data = new DailySaveData();
+        data.LastDailyData = PreDailyData ?? CurrentDailyData;
+        data.LastDate = CurrentDate;
+        return data;
+    }
+
+    public void RestoreState(object state)
+    {
+        var data = state as DailySaveData;
+        if (data == null)
+        {
+            data = new DailySaveData();
+            data.LastDate = 1;
+            data.LastDailyData = null;
+        }
+        Init(data.LastDate, data.LastDailyData);
     }
 }
 

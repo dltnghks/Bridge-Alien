@@ -17,8 +17,8 @@ public class UIHouseScene : UIScene
     {
         PlayerStatusButton,
         TaskButton,
-        // 1차 시연용 버튼
-        MiniGameButton,
+        WorkModuleButton,
+        UINextButton,
     }
 
     enum Objects
@@ -55,11 +55,13 @@ public class UIHouseScene : UIScene
 
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
-        // 1차 시연용 버튼
-        GetButton((int)Buttons.MiniGameButton).gameObject.BindEvent(OnClickMiniGameButton);
+        GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickWorkModuleButton);
+        GetButton((int)Buttons.UINextButton).gameObject.BindEvent(OnClickNextButton);
 
         SetGoldText();
         SetFatigue();
+
+        GetButton((int)Buttons.UINextButton).gameObject.SetActive(false);
 
         return true;
     }
@@ -91,17 +93,24 @@ public class UIHouseScene : UIScene
             _currentPopup.ClosePopupUI();
             return;
         }
-        
+
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
+        UIPlayerTaskPopup taskPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>("UIPlayerTaskPopup", transform);
+        taskPopup.OnClickUpgrade += GetButton((int)Buttons.UINextButton).gameObject.SetActive;
     }
 
-    // 1차 시연용 버튼
-    private void OnClickMiniGameButton()
-    {
 
+    private void OnClickWorkModuleButton()
+    {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        _currentPopup = Managers.UI.ShowPopUI<UIMiniGameChoicePopup>();
+        _currentPopup = Managers.UI.ShowPopUI<UIWorkModulePopup>();
+    }
+
+    private void OnClickNextButton()
+    {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+        Managers.Daily.StartEvent();
+        GetButton((int)Buttons.UINextButton).gameObject.SetActive(false);
     }
 
     private void SetDayText()
@@ -111,7 +120,7 @@ public class UIHouseScene : UIScene
 
     private void SetTimeImage()
     {
-        if (_timeImages.Length < Managers.Daily.CurrentDailyData.Time)
+        if (_timeImages.Length <= Managers.Daily.CurrentDailyData.Time)
         {
             return;
         }

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class UIGameMenuPopup : UIPopup
 {
@@ -46,7 +49,11 @@ public class UIGameMenuPopup : UIPopup
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Logger.Log("OnClickExit");
+#if UNITY_EDITOR
+        EditorApplication.isPlaying = false;
+#else
         Application.Quit(); // 게임 종료
+#endif
     }
 
     private void OnDestroy()

@@ -101,7 +101,7 @@ public class Define
         STORY_D3_03,
         STORY_D3_04,
         STORY_D3_05,
-        
+
         STORY_D4_01,
         STORY_D4_02,
         STORY_D4_03,
@@ -113,6 +113,26 @@ public class Define
         STORY_D11_03,
         STORY_D11_04,
         STORY_D11_05,
+        STORY_D11_06,
+
+        STORY_D14A_01,
+        STORY_D14A_02,
+        STORY_D14A_03,
+        STORY_D14A_04,
+        STORY_D14A_05,
+
+        STORY_D14B_01,
+        STORY_D14B_02,
+        STORY_D14B_03,
+        STORY_D14B_04,
+
+        STORY_D14C_01,
+        STORY_D14C_02,
+        STORY_D14C_03,
+
+        STORY_END_A,
+        STORY_END_B,
+        STORY_END_C,
     }
 
     public enum DialogType
@@ -133,6 +153,7 @@ public class Define
         UnloadWorkplace,   // 하차 작업장
         DeliveryGarage,    // 배송 차고지
         ManagerRoom,       // 소장실
+        END_BACKGROUND,    // 엔딩
     }
 
     public enum DialogSpeakerType
@@ -148,6 +169,7 @@ public class Define
         MANAGER_ANGRY,          // 소장 화남
         PIMPI_DEFAULT,          // 핌피 기본
         PIMPI_CALL,             // 핌피 전화
+        GUIDE,                  // 가이드  
     }
 
     public enum DialogSpeakerPosType

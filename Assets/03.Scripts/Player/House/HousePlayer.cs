@@ -8,7 +8,6 @@ public class HousePlayer : Player
     private HousePlayerAnimator _animator;
     private Vector2? _targetPosition;
     private Vector3 _initialScale;
-    private float _moveInterval = 5f;
 
     public void Start()
     {
@@ -17,8 +16,27 @@ public class HousePlayer : Player
         rb.useGravity = false;
         _animator = GetComponent<HousePlayerAnimator>();
         _initialScale = transform.localScale;
+    }
 
-        InvokeRepeating(nameof(MoveRandomly), 1f, _moveInterval);
+    private void Update()
+    {
+        // 화면에 터치가 하나 이상 감지되면
+        if (Input.touchCount > 0)
+        {
+            // 첫 번째 터치 정보를 가져옴
+            Touch touch = Input.GetTouch(0);
+
+            // 터치가 시작되는 순간을 감지
+            if (touch.phase == TouchPhase.Began)
+            {
+                // 여기에 터치 시 실행할 코드를 작성하세요.
+                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (movementArea.bounds.Contains(touchPosition))
+                {
+                    _targetPosition = touchPosition;
+                }
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -56,19 +74,6 @@ public class HousePlayer : Player
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, movementArea.bounds.min.x, movementArea.bounds.max.x);
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, movementArea.bounds.min.y, movementArea.bounds.max.y);
         rb.position = clampedPosition;
-    }
-
-    public void MoveRandomly()
-    {
-        if (movementArea == null)
-        {
-            Logger.LogWarning("Movement area is not set for HousePlayer.");
-            return;
-        }
-
-        float randomX = Random.Range(movementArea.bounds.min.x, movementArea.bounds.max.x);
-        float randomY = Random.Range(movementArea.bounds.min.y, movementArea.bounds.max.y);
-        _targetPosition = new Vector2(randomX, randomY);
     }
 
     private void FlipCharacter(float moveDirectionX)

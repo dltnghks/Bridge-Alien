@@ -110,7 +110,7 @@ public class UITitleScene : UIScene
 
     private void OnClickLoadButton()
     {
-        Managers.Save.Load();
+        _ = Managers.Save.LoadAsync();
         Managers.Scene.ChangeScene(Define.Scene.House);
     }
 
