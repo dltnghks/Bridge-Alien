@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695a03bdaf100e84d8ce88a67cee0fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBlurBG: 1
   IsBlurBGInputEnable: 0
   onRepairEvent:
     m_PersistentCalls:
@@ -584,7 +585,7 @@ MonoBehaviour:
   m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59f90884f45c00542942263b59b1648f, type: 2}
-  m_sharedMaterial: {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 11f951545a3766a41a97751c06abbafb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -733,7 +734,7 @@ MonoBehaviour:
   m_text: "\uD14D\uC2A4\uD2B8 \uD655\uC778"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59f90884f45c00542942263b59b1648f, type: 2}
-  m_sharedMaterial: {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 11f951545a3766a41a97751c06abbafb, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
