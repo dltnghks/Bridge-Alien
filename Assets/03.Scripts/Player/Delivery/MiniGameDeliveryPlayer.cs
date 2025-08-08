@@ -124,13 +124,13 @@ public class MiniGameDeliveryPlayer : Player
     public void OnInteractionButtonClick()
     {
         isBumpPass = true;
-        moveAdditionalMultiplier *= 0.8f;
+        buttonMoveMultiplier *= 0.8f;
     }
 
     public void OnInteractionButtonRelease()
     {
         isBumpPass = false;
-        moveAdditionalMultiplier = 1f;
+        buttonMoveMultiplier = 1f;
     }
 
     public void OnRocketEffect(bool isOn)
