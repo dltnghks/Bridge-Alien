@@ -146,6 +146,16 @@ public class DailyManager : ISaveable
             return;
         }
 
+        // 대화 이벤트가 아닐 때는 다이얼로그 팝업 닫기
+        if (_currentDailyData.EventType != Define.DailyEventType.Dialog)
+        {
+            // 일과일 때는 닫기
+            if (_currentDailyData.EventType == Define.DailyEventType.Task)
+                _dialogPopup.ClosePopupUI();
+
+            _dialogPopup = null;
+        }
+
         if (_currentDailyData.EventType == Define.DailyEventType.Dialog)
         {
             Logger.Log($"Daily Event is Dialog : {_currentDailyData.GetParameter<Define.Dialog>()}");
@@ -163,12 +173,6 @@ public class DailyManager : ISaveable
         {
             EndDay();
             return;
-        }
-
-        // 대화 이벤트가 아닐 때는 다이얼로그 팝업 닫기
-        if (_currentDailyData.EventType != Define.DailyEventType.Dialog)
-        {
-            _dialogPopup = null;
         }
 
         SetNextEvent();
