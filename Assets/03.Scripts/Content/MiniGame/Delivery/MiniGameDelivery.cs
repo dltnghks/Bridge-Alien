@@ -190,12 +190,12 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     {
         float experienceBonus = 1f;
         float fatiguePenalty = 1f;
-        float scoreBonus = Mathf.Clamp((100f - (_bonusTimer / 48f) * 100f), 15f, 60f);
+        float scoreBonus = Mathf.Clamp((100f - ((_bonusTimer / 48f) * 100f)), 15f, 60f);
         float totalScore = totalDistance;
 
         Managers.Player.AddGold((int)totalScore);
 
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(500, 500, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(1500, 1500, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
     }
     
     public void InitializeUI()
