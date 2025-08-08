@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -188,14 +189,18 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
     
     private void OnPlayerExitScreen()
     {
-        float experienceBonus = 1f;
-        float fatiguePenalty = 1f;
-        float scoreBonus = Mathf.Clamp((100f - ((_bonusTimer / 48f) * 100f)), 15f, 60f);
-        float totalScore = totalDistance;
+        int minimumWage = 10000;
+
+        int score = Math.Clamp(3000 - ((int)_bonusTimer - 48) * 50, 0, int.MaxValue);
+
+        float experienceBonus = Managers.Player.GetExperienceStatsBonus() * 100f;
+        float fatiguePenalty = Managers.Player.GetFatigueStatsPenalty() * 100f;
+        float scoreBonus = score * 0.1f;
+        float totalScore = minimumWage * (scoreBonus + experienceBonus - fatiguePenalty) / 100f;
 
         Managers.Player.AddGold((int)totalScore);
 
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(1500, 1500, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(score, minimumWage, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
     }
     
     public void InitializeUI()
