@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8917699712361600701}
   - component: {fileID: 2856693650645990544}
   m_Layer: 5
-  m_Name: Lever Body
+  m_Name: LeverBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,6 +322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsBlurBGInputEnable: 0
+  onRepairEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4983778177678291832
 GameObject:
   m_ObjectHideFlags: 0

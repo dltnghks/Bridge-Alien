@@ -125,7 +125,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         PauseGame();
         
         _deliveryMap.StartDeliveryMap();
-        
         _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
     }
 

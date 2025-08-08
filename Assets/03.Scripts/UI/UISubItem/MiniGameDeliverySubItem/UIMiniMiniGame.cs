@@ -37,14 +37,13 @@ public class UIMiniMiniGame : UIPopup
     private GameObject _board;
 
     private float _accumulatedAngle = 0f;
-    private float _maxAngle = 360f;
+    private float _maxAngle = 360f * 10f;
     private float _lastAngle = 0f;
 
-    private float _maxTime = 10f;
+    private float _maxTime = 999f;
     private float _elapsedTime = 0f;
     private bool _isDragging = false;
     private bool _isGameRunning = false;
-
 
     private Coroutine _startCoroutine;
     public UnityEvent<bool> onRepairEvent;
@@ -65,7 +64,8 @@ public class UIMiniMiniGame : UIPopup
         _infoText = GetText((int)Texts.MiniGameInfoText);
         _board = GetObject((int)Objects.Board);
 
-        _centerPos = RectTransformUtility.WorldToScreenPoint(Camera.main, _leverRect.position);
+        // UI 월드 좌표로 센터 포지션 설정
+        _centerPos = _leverRect.position;
 
         BindEvent(_leverRect.gameObject, OnPointerDown, Define.UIEvent.PointerDown);
         BindEvent(_leverRect.gameObject, OnDrag, Define.UIEvent.Drag);
@@ -123,11 +123,29 @@ public class UIMiniMiniGame : UIPopup
             EndMiniGame(false, "자가복구 시도중...", Color.red);
         }
     }
-
+    
     private void OnPointerDown()
     {
+        if (!_isGameRunning)
+            return;
+
         _isDragging = true;
-        _lastAngle = GetCurrentAngle();
+
+        // Screen Space - Overlay에서는 카메라가 필요 없음
+        Vector2 mousePos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _leverRect.parent as RectTransform, 
+            Input.mousePosition, 
+            null,  // Overlay 모드에서는 null 사용
+            out mousePos
+        );
+
+        Vector2 leverLocalPos = _leverRect.localPosition;
+        Vector2 direction = mousePos - leverLocalPos;
+        _lastAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        Debug.Log($"Initial angle: {_lastAngle}, Mouse: {mousePos}, Lever: {leverLocalPos}, Direction: {direction}");
+        
         Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Minigame_Lever.ToString());
     }
 
@@ -138,47 +156,45 @@ public class UIMiniMiniGame : UIPopup
 
     private void OnDrag()
     {
-        if (!_isDragging || !_isGameRunning)
+        if (!_isGameRunning || !_isDragging)
             return;
 
-        float currentAngle = GetCurrentAngle();
+        // Screen Space - Overlay에서는 카메라가 필요 없음
+        Vector2 mousePos;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _leverRect.parent as RectTransform, 
+            Input.mousePosition, 
+            null,  // Overlay 모드에서는 null 사용
+            out mousePos
+        );
 
-        // 레버를 해당 각도로 바로 회전
-        _leverRect.rotation = Quaternion.Euler(0f, 0f, currentAngle);
+        // 레버 중심점을 기준으로 한 방향 벡터 계산
+        Vector2 leverLocalPos = _leverRect.localPosition;
+        Vector2 direction = mousePos - leverLocalPos;
+        
+        // 현재 각도 계산
+        float currentAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+        // UI 회전 적용 (기본적으로 오른쪽이 0도)
+        _leverRect.rotation = Quaternion.AngleAxis(currentAngle, Vector3.forward);
 
-        // 시계 방향 회전일 때만 누적 (last - current가 양수면 시계 방향)
-        float delta = Mathf.DeltaAngle(currentAngle, _lastAngle);
-        if (delta > 0f)
-        {
-            _accumulatedAngle += delta;
-            _accumulatedAngle = Mathf.Clamp(_accumulatedAngle, 0f, _maxAngle);
-            UpdateGauge();
-        }
-
+        // 누적 회전량 계산 (각도 차이를 절댓값으로)
+        float deltaAngle = Mathf.DeltaAngle(_lastAngle, currentAngle);
+        _accumulatedAngle += Mathf.Abs(deltaAngle);
         _lastAngle = currentAngle;
+
+        UpdateGauge();
 
         if (_accumulatedAngle >= _maxAngle)
         {
-            EndMiniGame(true, "엔진 수리 성공!", Color.blue);
+            EndMiniGame(true, "수리에 성공했습니다!", Color.green);
         }
-    }
-
-    private float GetCurrentAngle()
-    {
-        Vector2 screenPos = Input.mousePosition;
-        Vector2 dir = screenPos - _centerPos;
-        return Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
     }
 
     private void UpdateGauge()
     {
         float t = _accumulatedAngle / _maxAngle;
         _gaugeFill.fillAmount = t;
-    }
-
-    private void RotateLever(float angle)
-    {
-        _leverRect.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     private void EndMiniGame(bool isSuccess, string message, Color textColor)

@@ -53,7 +53,6 @@ public class MiniGameDeliveryPlayer : Player
 
     public void OnCrash()
     {
-        Debug.Log("On Crash");
         _characterAnimator.SetCrash(true);
     }
 
