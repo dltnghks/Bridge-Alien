@@ -95,8 +95,8 @@ public class UIHouseScene : UIScene
         }
 
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        _currentPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>();
-        GetButton((int)Buttons.UINextButton).gameObject.SetActive(true);
+        UIPlayerTaskPopup taskPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>("UIPlayerTaskPopup", transform);
+        taskPopup.OnClickUpgrade += GetButton((int)Buttons.UINextButton).gameObject.SetActive;
     }
 
 

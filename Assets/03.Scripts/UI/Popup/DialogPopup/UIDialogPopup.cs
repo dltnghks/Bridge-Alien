@@ -204,7 +204,6 @@ public class UIDialogPopup : UIPopup
         else if (_backgroundImage.ContainsKey(sceneType))
         {
             backgroundImage.sprite = _backgroundImage[sceneType];
-            backgroundImage.preserveAspect = true;
             backgroundImage.color = Color.white;
         }
         else

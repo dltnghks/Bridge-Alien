@@ -35,6 +35,7 @@ public class UIBlurBackground : UIPopup
         {
             transform.SetParent(Managers.UI.SceneUI.transform);
             transform.localPosition = Vector3.zero;
+            transform.localScale = Vector3.one;
         }
         else
         {
