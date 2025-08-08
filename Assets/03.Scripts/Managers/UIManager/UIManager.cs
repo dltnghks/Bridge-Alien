@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager
+public class UIManager : MonoBehaviour
 {
     private int _order = 0;
     private Stack<UIPopup> _popupStack = new Stack<UIPopup>();
@@ -84,6 +84,8 @@ public class UIManager
         {
             name = typeof(T).Name;
         }
+        
+        _popupStack.Clear();
 
         GameObject go = GameObject.Find($"{name}");
         T sceneUI = Utils.GetOrAddComponent<T>(go);
@@ -94,11 +96,10 @@ public class UIManager
 
         
         // 백그라운드 블러 생성
-        // TODO : 씬이 변경될 때마다 만들고 있음. Manager에 붙여놓고 사용가능하도록?
         _blurBackground = null;
         if (_blurBackground == null)
         {
-            _blurBackground = ShowPopUI<UIBlurBackground>();
+            _blurBackground = ShowPopUI<UIBlurBackground>("UIBlurBackground", transform);
             _blurBackground.Init();
             _popupStack.Pop();
             
@@ -127,7 +128,7 @@ public class UIManager
         }
     }
     
-    public T ShowPopUI<T>(string name = null, Transform parent = null, bool IsblurBG = true) where T : UIPopup
+    public T ShowPopUI<T>(string name = null, Transform parent = null) where T : UIPopup
     {
         if (string.IsNullOrEmpty(name))
         {
@@ -135,6 +136,16 @@ public class UIManager
         }
 
         GameObject prefab = Managers.Resource.Load<GameObject>($"Prefab/UI/Popup/{name}");
+        bool isBlurBG = prefab.GetComponent<UIPopup>().IsBlurBG;
+
+        // blurbackground가 꺼져있는 경우에만 켜기
+        // blurbackground가 켜져있는데 끄고 싶은 경우에는 끄기
+        if ((isBlurBG == true && _blurBackground?.IsBlurActive == false) ||
+        (isBlurBG == false && _blurBackground.IsBlurActive == true))
+        {
+            _blurBackground?.SetActive(isBlurBG);
+        }
+
         GameObject go = Managers.Resource.Instantiate($"UI/Popup/{name}");
 
         T popup = Utils.GetOrAddComponent<T>(go);
@@ -155,14 +166,6 @@ public class UIManager
 
         go.transform.localScale = Vector3.one;
         go.transform.localPosition = prefab.transform.position;
-
-        // blurbackground가 꺼져있는 경우에만 켜기
-        // blurbackground가 켜져있는데 끄고 싶은 경우에는 끄기
-        if ((IsblurBG == true && _blurBackground?.IsBlurActive == false) ||
-        (IsblurBG == false && _blurBackground.IsBlurActive == true))
-        {
-            _blurBackground?.SetActive(IsblurBG);
-        }
     
         return popup;
     }
@@ -275,7 +278,10 @@ public class UIManager
     // 해당 팝업이 종료되면 true로 다시 변경해줘야 됨.
     public void SetInputBackground(bool isEnabled)
     {
-        _blurBackground.IsInputEnabled = isEnabled;
+        if (_blurBackground is not null)
+        {
+            _blurBackground.IsInputEnabled = isEnabled;
+        }
     }
     
     public void CloseSceneUI()

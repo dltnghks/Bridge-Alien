@@ -37,7 +37,7 @@ public class UIEventHandler : MonoBehaviour, IPointerClickHandler, IPointerDownH
     public void OnPointerUp(PointerEventData eventData)
     {
         _pressed = false;
-        OnPointerDownHandler?.Invoke();
+        OnPointerUpHandler?.Invoke();
     }
     
     public void OnBeginDrag(PointerEventData eventData)

@@ -57,10 +57,14 @@ public class UIDialogPopup : UIPopup
     private Dictionary<string, List<DialogData>> _choiceDict = new Dictionary<string, List<DialogData>>();
     private DialogData _currentDialog;
     private List<DialogData> _currentChoices = new List<DialogData>();
+    private Define.DialogSpeakerType _leftSpeakerType;
+    private Define.DialogSpeakerType _rightSpeakerType;
     
     private Tween _typingTween; // 현재 실행 중인 트윈
     
     private Action _callback;
+
+    private bool _isFinish;
     
     public override bool Init()
     {
@@ -74,25 +78,16 @@ public class UIDialogPopup : UIPopup
         BindObject(typeof(Objects));
 
         _dialogText = GetText((int)Texts.DialogText);
-        
+
         GetButton((int)Buttons.SkipButton).gameObject.BindEvent(OnClickScreenButton);
         GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
-        
+
         _nextButton = GetButton((int)Buttons.NextButton);
         _nextButton.gameObject.SetActive(false);
 
         _choiceGroup = GetObject((int)Objects.UIChoiceGroup).GetOrAddComponent<VerticalLayoutGroup>();
         _choiceButtons = _choiceGroup.GetComponentsInChildren<UIChoiceButton>().ToList();
 
-        // 이미지 비활성화
-        GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
-        GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
-
-        foreach (var choiceButton in _choiceButtons)
-        {
-            choiceButton.gameObject.SetActive(false);
-        }
-        
         return true;
     }
 
@@ -104,8 +99,12 @@ public class UIDialogPopup : UIPopup
     
     private void OnClickNextButton()
     {
-        Logger.Log("OnClickNextButton");
+        if (_isFinish == true)
+        {
+            return;
+        }
         
+        Logger.Log("OnClickNextButton");
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
 
         NextDialog();
@@ -139,13 +138,13 @@ public class UIDialogPopup : UIPopup
             ShowChoices();
         }
     }
-    
+
     public void InitDialog(Define.Dialog dialogue, Define.DialogSceneType sceneType, Action callback = null)
     {
         Init();
-        
-        Logger.Log($"SetDialogs : {dialogue}");   
-        
+
+        Logger.Log($"SetDialogs : {dialogue}");
+
         _callback = callback;
         // 대화 데이터 초기화
         SetDialogData(dialogue);
@@ -154,10 +153,21 @@ public class UIDialogPopup : UIPopup
         SetBackground(sceneType);
 
         // 캐릭터 이미지 초기화
-        GetImage((int)Images.LeftCharacterImage).sprite = _speakerCharacterImages[Define.DialogSpeakerType.UNKNOWN];
-        GetImage((int)Images.RightCharacterImage).sprite = _speakerCharacterImages[Define.DialogSpeakerType.UNKNOWN];
+        SetSpeakerImage(Define.DialogSpeakerType.UNKNOWN, Define.DialogSpeakerPosType.Left);
+        SetSpeakerImage(Define.DialogSpeakerType.UNKNOWN, Define.DialogSpeakerPosType.Right);
+
+        // 이미지 비활성화
+        GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
+        GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
+
+        foreach (var choiceButton in _choiceButtons)
+        {
+            choiceButton.gameObject.SetActive(false);
+        }
 
         UpdateDialog();
+
+        _isFinish = false;
     }
 
     private void SetDialogData(Define.Dialog dialogue)
@@ -194,7 +204,7 @@ public class UIDialogPopup : UIPopup
     private void SetBackground(Define.DialogSceneType sceneType)
     {
         Image backgroundImage = GetImage((int)Images.Background);
-        if (sceneType == Define.DialogSceneType.House && sceneType == Define.DialogSceneType.Unknown)
+        if (sceneType == Define.DialogSceneType.Unknown)
         {
             backgroundImage.sprite = null;
             backgroundImage.color = Color.clear; // 배경 이미지가 없을 경우 투명하게 설정
@@ -202,7 +212,7 @@ public class UIDialogPopup : UIPopup
         else if (_backgroundImage.ContainsKey(sceneType))
         {
             backgroundImage.sprite = _backgroundImage[sceneType];
-            backgroundImage.preserveAspect = true;
+            backgroundImage.color = Color.white;
         }
         else
         {
@@ -283,28 +293,42 @@ public class UIDialogPopup : UIPopup
 
     private void SetSpeakerImage(Define.DialogSpeakerType speakerType, Define.DialogSpeakerPosType speakerPosType)
     {
-        Image speakerImage = null;
         if (speakerPosType == Define.DialogSpeakerPosType.Left)
         {
-            speakerImage = GetImage((int)Images.LeftCharacterImage);
-            GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0.5f);
+            _leftSpeakerType = speakerType;
         }
         else if (speakerPosType == Define.DialogSpeakerPosType.Right)
         {
-            speakerImage = GetImage((int)Images.RightCharacterImage);
-            GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0.5f);
+            _rightSpeakerType = speakerType;
         }
         else
         {
-            GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
-            GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
+            _leftSpeakerType = Define.DialogSpeakerType.UNKNOWN;
+            _rightSpeakerType = Define.DialogSpeakerType.UNKNOWN;
         }
 
-        if (speakerImage is not null)
+        Image leftImage = GetImage((int)Images.LeftCharacterImage);
+        Image rightImage = GetImage((int)Images.RightCharacterImage);
+
+        leftImage.color = Color.HSVToRGB(0, 0, 0.3f);
+        rightImage.color = Color.HSVToRGB(0, 0, 0.3f);
+
+        if (_leftSpeakerType == Define.DialogSpeakerType.UNKNOWN)
+            leftImage.color = Color.clear;
+        if (_rightSpeakerType == Define.DialogSpeakerType.UNKNOWN)
+            rightImage.color = Color.clear;
+
+        if (speakerPosType == Define.DialogSpeakerPosType.Left)
         {
-            speakerImage.color = new Color(1, 1, 1, 1); // 이미지 보이게 설정
-            speakerImage.sprite = _speakerCharacterImages[speakerType];
+            leftImage.sprite = _speakerCharacterImages[speakerType];
+            leftImage.color = Color.white;
         }
+        else if (speakerPosType == Define.DialogSpeakerPosType.Right)
+        {
+            rightImage.sprite = _speakerCharacterImages[speakerType];
+            rightImage.color = Color.white;
+        }
+
     }
 
     private void SetNameText(string characterName)
@@ -355,8 +379,8 @@ public class UIDialogPopup : UIPopup
 
     private void EndDialog()
     {
+        _isFinish = true;
         Logger.Log("EndDialog");
-        Managers.UI.ClosePopupUI(this);
         _callback?.Invoke();
     }
 }

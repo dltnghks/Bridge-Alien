@@ -93,7 +93,6 @@ public class MiniGameDeliveryPlayer : Player
             _characterAnimator.SetHit(true);
             isHit = true;
 
-            // TODO: SFX 추가
             Managers.Sound.PlaySFX(SoundType.MiniGameDeliverySFX, MiniGameDeliverySoundSFX.Player_BeAttacked.ToString());
         }
     }

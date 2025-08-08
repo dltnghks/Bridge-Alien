@@ -45,6 +45,7 @@ public class UIWorkModuleSkillButton : UIActiveButton
 
     public void SetWorkModuleSkillInfo(SkillData skillData)
     {
+        Init();
         int skillLevel = Managers.Player.PlayerData.MiniGameUnloadSkillLevel[skillData.Type];
         GetImage((int)Images.SkillIconImage).sprite = skillData.Icon;
 
@@ -71,7 +72,7 @@ public class UIWorkModuleSkillButton : UIActiveButton
 
     public void Select()
     {
-        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+        //Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Activate();
     }
 

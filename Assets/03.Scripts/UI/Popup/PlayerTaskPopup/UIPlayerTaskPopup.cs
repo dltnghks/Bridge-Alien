@@ -45,7 +45,6 @@ public class UIPlayerTaskPopup : UIPopup
         UITaskAnimPortrait,
     }
 
-    private Define.TaskType _currentTaskType = Define.TaskType.Unknown;
     private UITaskTabButton _currentTaskTab = null;
     private UITaskButton _currentTaskButton = null;
     private UITaskGroup _uiTaskGroup = null;
@@ -53,7 +52,9 @@ public class UIPlayerTaskPopup : UIPopup
     private ScrollRect _scrollRect = null;
     
     private PlayerTaskData _selectedTaskData = null;
-    
+
+    public Action<bool> OnClickUpgrade; 
+
     public TaskAnimator TaskAnimator
     {
         get;
@@ -133,7 +134,10 @@ public class UIPlayerTaskPopup : UIPopup
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;
         }
-        
+
+
+        OnClickUpgrade?.Invoke(true);
+
         // 일과 수행창 예약
         Managers.UI.RequestPopup<UITaskProgressPopup>(_selectedTaskData);
 
@@ -144,6 +148,8 @@ public class UIPlayerTaskPopup : UIPopup
         Managers.Player.AddStats(Define.PlayerStatsType.Luck, Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue));
 
         Managers.Player.AddGold(-_selectedTaskData.RequirementGold);
+
+        // 
         
         ClosePopupUI();
     }

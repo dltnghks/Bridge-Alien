@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.7
+  m_fontSize: 33
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -446,6 +446,7 @@ GameObject:
   - component: {fileID: 1309377091259794461}
   - component: {fileID: 4465050546593673780}
   - component: {fileID: 8735387789373215807}
+  - component: {fileID: 2841479122115677055}
   m_Layer: 0
   m_Name: UITaskProgressPopup
   m_TagString: Untagged
@@ -551,6 +552,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2841479122115677055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7269600880414003746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a02caef91ff27141865490a96e5b25b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsBlurBGInputEnable: 0
 --- !u!1 &7421057970167887779
 GameObject:
   m_ObjectHideFlags: 0

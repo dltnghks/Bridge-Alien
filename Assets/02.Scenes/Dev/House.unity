@@ -344,7 +344,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -640,22 +640,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4496187295962161958, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -671,10 +655,6 @@ PrefabInstance:
     - target: {fileID: 4496187295962161958, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5599207559380118193, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
-      propertyPath: m_Value
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5975088514112621530, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchorMax.y
@@ -928,6 +908,7 @@ GameObject:
   - component: {fileID: 5230041476352999830}
   - component: {fileID: 9014721156779529123}
   - component: {fileID: 9014721156779529124}
+  - component: {fileID: 9014721156779529126}
   - component: {fileID: 9014721156779529125}
   m_Layer: 0
   m_Name: HousePlayer
@@ -1040,6 +1021,7 @@ MonoBehaviour:
   moveMultiplier: 1
   rayDistance: 1
   enableFlip: 1
+  isHit: 0
   movementArea: {fileID: 350180873}
 --- !u!114 &9014721156779529124
 MonoBehaviour:
@@ -1053,7 +1035,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ed907c90b59f343a3624f3a8ab174d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &9014721156779529125
+--- !u!65 &9014721156779529125
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820566472544858261}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.6794972, y: 5.247527, z: 0.2}
+  m_Center: {x: 0.022187915, y: 0.08874995, z: 0}
+--- !u!54 &9014721156779529126
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1075,7 +1078,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
