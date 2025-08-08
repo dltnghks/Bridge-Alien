@@ -69,7 +69,12 @@ public class SaveManager
     {
         storage.Delete();
         Logger.Log("Game Data Reset");
-        _ = LoadAsync();
+        //_ = LoadAsync();
+
+        // 일담 임의로 초기화하기
+        Managers.Player.Init();
+        Managers.Daily.Init();
+        Managers.MiniGame.Init();
     }
 
     // public void Save()
