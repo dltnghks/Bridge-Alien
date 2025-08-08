@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class UIPopup : UIBase
 {
+    // true = 배경에 블러처리, false = 블러X
+    [SerializeField] public bool IsBlurBG = true;
     // 팝업 창 뒤에 있는 투명한 배경에 상호작용이 가능 여부
-    [SerializeField] private bool IsBlurBGInputEnable = false;
+    [SerializeField] public bool IsBlurBGInputEnable = false;
     
     public override bool Init()
     {

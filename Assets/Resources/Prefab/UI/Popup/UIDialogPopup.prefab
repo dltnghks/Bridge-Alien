@@ -1417,6 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680f5e00334c9bd4c98c54a32c6034ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsBlurBG: 0
   IsBlurBGInputEnable: 0
   TypingSpeed: 0.01
   _backgroundImage:

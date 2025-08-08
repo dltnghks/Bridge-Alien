@@ -31,6 +31,15 @@ public class UIBlurBackground : UIPopup
     
     public void SetActive(bool isActive)
     {
+        if (isActive)
+        {
+            transform.SetParent(Managers.UI.SceneUI.transform);
+            transform.localPosition = Vector3.zero;
+        }
+        else
+        {
+            transform.SetParent(Managers.UI.transform);
+        }
         IsBlurActive = isActive;
         gameObject.SetActive(isActive);
     }
