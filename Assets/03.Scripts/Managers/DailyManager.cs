@@ -19,6 +19,7 @@ public class DailyManager : ISaveable
     public int CurrentDate => _curDate;
     public DailyData PreDailyData => _preDailyData;
     public DailyData CurrentDailyData => _currentDailyData;
+    public bool IsTask = true;
 
     public void Init(int lastDate = 1, DailyData dailyData = null)
     {
@@ -60,6 +61,9 @@ public class DailyManager : ISaveable
         
         // 오늘자 데이터 세팅
         SetDailyData();
+
+        // 다시 일과를 수행할 수 있도록 설정
+        IsTask = true;
         
         Managers.Scene.ChangeScene(Define.Scene.House); 
     }

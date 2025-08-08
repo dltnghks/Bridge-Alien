@@ -46,16 +46,17 @@ MonoBehaviour:
       Value:
       - TaskID: C02_T01
         TaskName: "\uAE30\uB3C4"
-        ThumbnailText: 
-        TaskProgressText: 
-        TaskCompletedText: 
+        ThumbnailText: "<\uC6B4\uC138 : \uAE30\uB3C4>"
+        TaskProgressText: "\uAE30\uB3C4\uD558\uB294 \uC911.."
+        TaskCompletedText: "\uC2E0\uBE44\uD55C \uAE30\uC6B4\uC774 \uB290\uAEF4\uC9C0\uB294
+          \uAC83 \uAC19\uB2E4.."
         RequirementGold: 0
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 0
         IntelligenceValue: 0
         LuckMaxValue: 10
-        LuckMinValue: 0
+        LuckMinValue: 1
     - Key: 3
       Value:
       - TaskID: C03_T02
@@ -72,7 +73,7 @@ MonoBehaviour:
         LuckMinValue: 0
       - TaskID: C03_T04
         TaskName: "\uBCD1\uC6D0 \uC785\uC6D0"
-        ThumbnailText: "<\uC720\uD765 : \uBCD1\uC6D0 \uC785\uC6D0>"
+        ThumbnailText: "<\uD734\uC2DD : \uBCD1\uC6D0 \uC785\uC6D0>"
         TaskProgressText: "\uBCD1\uC6D0\uC5D0\uC11C \uC26C\uB294 \uC911.."
         TaskCompletedText: "\uD53C\uB85C\uAC00 \uD68C\uBCF5\uB41C\uB2E4.."
         RequirementGold: 500
