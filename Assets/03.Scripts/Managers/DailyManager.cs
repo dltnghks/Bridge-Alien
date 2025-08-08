@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DailyManager
+public class DailyManager : ISaveable
 {
     private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15 };
     private int _currentIndex = 0;
@@ -199,6 +199,31 @@ public class DailyManager
     {
         Logger.Log("EndGame");
         Managers.Scene.ChangeScene(Define.Scene.Ending);
+    }
+
+    public void Add(ISaveable saveable)
+    {
+        throw new NotImplementedException();
+    }
+
+    public object CaptureState()
+    {
+        var data = new DailySaveData();
+        data.LastDailyData = PreDailyData ?? CurrentDailyData;
+        data.LastDate = CurrentDate;
+        return data;
+    }
+
+    public void RestoreState(object state)
+    {
+        var data = state as DailySaveData;
+        if (data == null)
+        {
+            data = new DailySaveData();
+            data.LastDate = 1;
+            data.LastDailyData = null;
+        }
+        Init(data.LastDate, data.LastDailyData);
     }
 }
 

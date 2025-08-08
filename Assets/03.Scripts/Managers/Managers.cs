@@ -72,12 +72,16 @@ public class Managers : MonoBehaviour
 
             _uiManager = Utils.GetOrAddComponent<UIManager>(go);
             _uiManager.Init();
-            
-            _saveManager.Init();
+        
             _resourceManager.Init();
             _poolManager.Init();
             _playerManager.Init();
             _dailyManager.Init();
+
+            _saveManager.Init(new LocalFileStorage());
+            _saveManager.Register(Player);
+            _saveManager.Register(Daily);
+            _saveManager.Register(MiniGame);
             
             DontDestroyOnLoad(go);
         }

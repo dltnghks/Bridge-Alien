@@ -28,6 +28,7 @@ public class DataManager : MonoBehaviour
 
     public void Init()
     {
+        Logger.Log("DataManager Init");
         LoadAllData();
     }
     

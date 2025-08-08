@@ -13,7 +13,7 @@ public class TitleScene : BaseScene  // Start is called before the first frame u
 
         Managers.UI.ShowSceneUI<UITitleScene>();
 
-        Managers.Save.Load();
+        _ = Managers.Save.LoadAsync();
         
         return true;
     }

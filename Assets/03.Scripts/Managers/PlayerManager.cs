@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerManager
+public class PlayerManager : ISaveable
 {
     private static readonly int[] StatThresholds = { 24, 49, 74, 100 };
     public readonly float[] GoldGainRates = { 1f, 1.1f, 1.3f, 1.5f };
@@ -120,5 +120,29 @@ public class PlayerManager
             return true;
         }
         return false;
+    }
+
+    public void Add(ISaveable saveable)
+    {
+        throw new NotImplementedException();
+    }
+
+    public object CaptureState()
+    {
+        var data = new PlayerSaveData();
+        data.PlayerData = PlayerData;
+        return data;
+    }
+
+    public void RestoreState(object state)
+    {
+        var data = state as PlayerSaveData;
+        if (data == null)
+        {
+            data = new PlayerSaveData();
+            data.PlayerData = null;
+            return;
+        }
+        Init(data.PlayerData);
     }
 }
