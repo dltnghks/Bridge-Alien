@@ -242,6 +242,8 @@ public class UIDialogPopup : UIPopup
                 StartTyping(dialogText);
                 break;
             case Define.DialogType.Monolog:
+                // 이미지 설정
+                SetSpeakerImage(_currentDialog.SpeakerType, _currentDialog.SpeakerPosType);
                 // 이름 변경
                 SetNameText(characterName);
                 // 대화 변경
