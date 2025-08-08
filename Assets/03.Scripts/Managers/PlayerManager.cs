@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class PlayerManager : ISaveable
 {
     private static readonly int[] StatThresholds = { 24, 49, 74, 100 };
-    public readonly float[] GoldGainRates = { 1f, 1.1f, 1.3f, 1.5f };
+    public readonly float[] GoldGainRates = { 0f, 0.1f, 0.3f, 0.5f };
     public readonly float[] MoveSpeedBoostRates = { 1f, 1.05f, 1.05f, 1.1f };
     public readonly int[] FatigueReductionRates = { 30, 25, 20, 20 };
 
