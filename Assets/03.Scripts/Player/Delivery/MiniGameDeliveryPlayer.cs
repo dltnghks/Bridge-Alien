@@ -58,6 +58,7 @@ public class MiniGameDeliveryPlayer : Player
 
     public void OnBoosterEffect(bool isOn)
     {
+        _isInvincible = isOn;
         boosterEffect.SetActive(isOn);
     }
 
