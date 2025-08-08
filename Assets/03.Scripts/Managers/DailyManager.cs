@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DailyManager : ISaveable
 {
-    private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15 };
+    private int[] _dateList = { 1, 2, 3, 4, 11, 14, 15, 16 };
     private int _currentIndex = 0;
     private int _curDate;
     private readonly int _dueDate = 15;
