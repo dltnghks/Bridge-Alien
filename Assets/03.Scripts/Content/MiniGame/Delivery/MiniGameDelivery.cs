@@ -179,13 +179,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         ChangeActive(false);
         _deliveryMap.UpdateSpeedMultiplier(0f);
 
-        var deliveryPlayer = PlayerCharacter as MiniGameDeliveryPlayer;
-    
-        if (deliveryPlayer != null)
-        {
-            deliveryPlayer.OnExitComplete = OnPlayerExitScreen;
-            deliveryPlayer.StartExitMove();
-        }
+        OnPlayerExitScreen();
     }
     
     private void OnPlayerExitScreen()
