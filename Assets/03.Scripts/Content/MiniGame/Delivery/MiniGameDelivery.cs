@@ -23,7 +23,7 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return totalDistance <= (maxDistance * 0.8f);
         } 
     }
-    
+
     public bool IsActive { get; set; }
     public bool IsPause { get; set; } = false;
 
@@ -126,8 +126,6 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
         
         StartTutorial();
         
-        PauseGame();
-        
         _deliveryMap.StartDeliveryMap();
         _pathProgressBar.SetProgressBar(_uiGameDeliveryScene.UIPathProgressBar, maxDistance, EndGame);
     }
@@ -177,6 +175,8 @@ public class MiniGameDelivery : MonoBehaviour, IMiniGame
             return;
 
         ChangeActive(false);
+        IsPause = false;
+        
         _deliveryMap.UpdateSpeedMultiplier(0f);
 
         OnPlayerExitScreen();
