@@ -94,7 +94,7 @@ public class UIPlayerStatusPopup : UIPopup
 
     private void SetExperienceDescText()
     {
-        int value = (int)(Managers.Player.GetExperienceStatsBonus() * 100 - 100);
+        int value = (int)(Managers.Player.GetExperienceStatsBonus() * 100);
         string newText = "미니게임 종료 시 획득하는 골드가 <color=#00FF00>{0}%</color>증가한다.";
         GetText((int)Texts.ExperienceDescText).SetText(string.Format(newText, value));
     }
@@ -102,7 +102,7 @@ public class UIPlayerStatusPopup : UIPopup
     private void SetGravityAdaptationDescText()
     {
         int value = Managers.Player.GetFatigueReductionRate();
-        string newText = "미니게임 시 소모되는 피로도가 <color=#00FF00>{0}%</color>으로 조정된다.";
+        string newText = "미니게임 시 소모되는 피로도가 <color=#00FF00>{0}</color>으로 조정된다.";
         GetText((int)Texts.GravityAdaptationDescText).SetText(string.Format(newText, value));
     }
     private void SetIntelligenceDescText()

@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class CoolingSkill : DurationSkill, IRegainable
 {
+
+    private MiniGameUnloadBoxList boxList;
+
     public override void Initialize(ISkillContext context)
     {
         MGUSkillContext mguSkillContext = context as MGUSkillContext;
 
         OnActiveStateChanged += mguSkillContext.SetCoolingSkillAction;
+        boxList = mguSkillContext.BoxList;
 
         base.Initialize(context); // 부모 클래스의 초기화 호출
     }
@@ -19,6 +23,15 @@ public class CoolingSkill : DurationSkill, IRegainable
         base.OnActivate();
         OnActiveStateChanged?.Invoke(true);
         currentDuration = skillData.MaxDuration;
+
+        foreach (var box in boxList.BoxList)
+        {
+            if (box is ColdBox coldBox)
+            {
+                coldBox.DirectCooling();
+            }
+        }
+
         // 캐릭터 외형 변경, 이펙트 활성화 로직
         Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.CoolingSkill.ToString(), gameObject);
     }
