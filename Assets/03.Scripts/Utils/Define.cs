@@ -205,4 +205,12 @@ public class Define
         BoxWarpSkill,
         SpeedUpSkill,
     }
+
+    public enum StageType
+    {
+        Stage1_1,
+        Stage1_2,
+        Stage1_3,
+
+    }
 }

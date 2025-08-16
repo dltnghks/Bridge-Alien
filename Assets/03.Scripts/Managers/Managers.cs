@@ -26,7 +26,7 @@ public class Managers : MonoBehaviour
     private static PlayerManager _playerManager = new PlayerManager();
     private static SaveManager _saveManager = new SaveManager();
 
-    public static DataManager Data {get { Init(); return _dataManager;}}
+    public static DataManager Data { get { Init(); return _dataManager; } }
     public static ResourceManager Resource { get { Init(); return _resourceManager; } }
     public static UIManager UI { get{ Init(); return _uiManager; } }
     public static SceneManagerEx Scene { get{ Init(); return _sceneManager; } }

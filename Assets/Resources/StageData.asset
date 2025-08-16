@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec65cd3c537819468871a98e9cf9d60, type: 3}
+  m_Name: StageData
+  m_EditorClassIdentifier: 
+  stageData:
+    _serializedList:
+    - Key: 0
+      Value:
+        StagePrefab: {fileID: 0}
+        GameSetting:
+          GamePlayTime: 60
+          MaxSpawnBoxIndex: 3
+          BoxSpawnInterval: 3
+          DetectionBoxRadius: 2
+          MoveSpeedReductionRatio: 2
+          MaxColdAreaBoxIndex: 1
+    - Key: 1
+      Value:
+        StagePrefab: {fileID: 0}
+        GameSetting:
+          GamePlayTime: 60
+          MaxSpawnBoxIndex: 3
+          BoxSpawnInterval: 3
+          DetectionBoxRadius: 2
+          MoveSpeedReductionRatio: 2
+          MaxColdAreaBoxIndex: 1
+    - Key: 2
+      Value:
+        StagePrefab: {fileID: 0}
+        GameSetting:
+          GamePlayTime: 60
+          MaxSpawnBoxIndex: 3
+          BoxSpawnInterval: 3
+          DetectionBoxRadius: 2
+          MoveSpeedReductionRatio: 2
+          MaxColdAreaBoxIndex: 1
