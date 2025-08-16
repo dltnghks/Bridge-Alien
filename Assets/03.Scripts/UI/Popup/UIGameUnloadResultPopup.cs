@@ -106,11 +106,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
 
     private void SetFixedTexts(int minimumWage)
     {
-        if (Managers.MiniGame.CurrentGame is MiniGameDelivery)
-        {
-            GetText((int)Texts.MiniGameTypeText).SetText("배송");
-        }
-        else if (Managers.MiniGame.CurrentGame is MiniGameUnload)
+        if (Managers.MiniGame.CurrentGame is MiniGameUnload)
         {
             GetText((int)Texts.MiniGameTypeText).SetText("하차");
         }

@@ -19,11 +19,6 @@ public class MiniGameSkillScriptableObject : ScriptableObject
                 skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.BoxWarpSkill]);
                 skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.SpeedUpSkill]);
                 break;
-            
-            case Define.MiniGameType.Delivery:
-                skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.EmergencyRepairSkill]);
-                skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.EmergencyRocketSkill]);
-                break;
         }
 
         return skillList;

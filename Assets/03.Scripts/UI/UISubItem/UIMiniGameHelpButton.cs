@@ -34,9 +34,5 @@ public class UIMiniGameHelpButton : UISubItem
         {
             Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
         }
-        else if (Managers.MiniGame.CurrentGame is MiniGameDelivery)
-        {
-            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGDTutorialPopup");
-        }
     }
 }

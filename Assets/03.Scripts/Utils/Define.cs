@@ -204,10 +204,5 @@ public class Define
         CoolingSkill,
         BoxWarpSkill,
         SpeedUpSkill,
-
-        // 배송게임 스킬
-        //TestSkill,
-        EmergencyRepairSkill,
-        EmergencyRocketSkill
     }
 }
