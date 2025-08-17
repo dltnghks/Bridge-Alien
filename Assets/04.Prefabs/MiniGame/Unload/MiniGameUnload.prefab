@@ -719,6 +719,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1947315248513555530}
+  - component: {fileID: 6891467942429133558}
   m_Layer: 0
   m_Name: MiniGameUnload
   m_TagString: Untagged
@@ -748,6 +749,19 @@ Transform:
   - {fileID: 3685815459123979083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6891467942429133558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737174199348785999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab9e0fc73b38e741aa7c8917f36ff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gizmoColor: {r: 0, g: 1, b: 0, a: 0.5}
 --- !u!1 &5938043877802741651
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +776,7 @@ GameObject:
   - component: {fileID: 8438492685125078135}
   m_Layer: 0
   m_Name: Ground (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2055,7 +2069,7 @@ GameObject:
   - component: {fileID: 1640091560187869062}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
