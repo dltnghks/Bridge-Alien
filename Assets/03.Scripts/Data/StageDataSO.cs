@@ -8,6 +8,18 @@ using UnityEngine;
 public class StageDataSO : ScriptableObject
 {
     public SerializedDictionary<Define.StageType, StageData> stageData;
+
+    public StageData GetStageData(Define.StageType stageType)
+    {
+        if (stageData.ContainsKey(stageType))
+        {
+            return stageData[stageType];
+        }
+
+        Logger.LogError($"{stageType} is not stage data");
+
+        return null;
+    }
 }
 
 

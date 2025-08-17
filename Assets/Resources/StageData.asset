@@ -16,31 +16,22 @@ MonoBehaviour:
     _serializedList:
     - Key: 0
       Value:
-        StagePrefab: {fileID: 0}
-        GameSetting:
-          GamePlayTime: 60
-          MaxSpawnBoxIndex: 3
-          BoxSpawnInterval: 3
-          DetectionBoxRadius: 2
-          MoveSpeedReductionRatio: 2
-          MaxColdAreaBoxIndex: 1
+        StageName: 1-1
+        IsLocked: 0
+        RequiredStars: 0
+        ClearReward: 10000
+        ClearScoreList: f4010000e8030000d0070000
     - Key: 1
       Value:
-        StagePrefab: {fileID: 0}
-        GameSetting:
-          GamePlayTime: 60
-          MaxSpawnBoxIndex: 3
-          BoxSpawnInterval: 3
-          DetectionBoxRadius: 2
-          MoveSpeedReductionRatio: 2
-          MaxColdAreaBoxIndex: 1
+        StageName: 1-2
+        IsLocked: 1
+        RequiredStars: 1
+        ClearReward: 10000
+        ClearScoreList: f4010000e8030000d0070000
     - Key: 2
       Value:
-        StagePrefab: {fileID: 0}
-        GameSetting:
-          GamePlayTime: 60
-          MaxSpawnBoxIndex: 3
-          BoxSpawnInterval: 3
-          DetectionBoxRadius: 2
-          MoveSpeedReductionRatio: 2
-          MaxColdAreaBoxIndex: 1
+        StageName: 1-3
+        IsLocked: 1
+        RequiredStars: 0
+        ClearReward: 4
+        ClearScoreList: e8030000d0070000a00f0000

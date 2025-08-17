@@ -16,6 +16,10 @@ public class PlayerData
     // 스킬 데이터, level이 0이면 스킬 해금X, 1이상부터 해금
     public SerializedDictionary<Define.MiniGameSkillType, int> MiniGameUnloadSkillLevel = new SerializedDictionary<Define.MiniGameSkillType, int>();
 
+    // StageData, 완료된 스테이지와 별
+    public Dictionary<Define.StageType, int> ClearedStages = new Dictionary<Define.StageType, int>();
+    public int TotalStars = 0;
+
     public PlayerData()
     {
         // 스탯 초기화
@@ -36,6 +40,8 @@ public class PlayerData
         {
             MiniGameUnloadSkillLevel[skillType] = 1;
         }
+
+        TotalStars = 0;
     }
     
 }

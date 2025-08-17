@@ -127,6 +127,32 @@ public class PlayerManager : ISaveable
         throw new NotImplementedException();
     }
 
+    public void SaveStageProgress(Define.StageType stageType, int star)
+    {
+        // 최고기록일 때만 갱신
+        if (GetStageClearInfo(stageType) < star)
+        {
+            PlayerData.ClearedStages[stageType] = star;
+            PlayerData.TotalStars += star;
+        }
+    }
+
+    public int GetTotalStars()
+    {
+        return PlayerData.TotalStars;
+    }
+
+    // 스테이지 클리어 정보 가져오기 - 별 개수
+    public int GetStageClearInfo(Define.StageType stageType)
+    {
+        if (PlayerData.ClearedStages.ContainsKey(stageType))
+        {
+            return PlayerData.ClearedStages[stageType];
+        }
+
+        return 0;
+    }
+
     public object CaptureState()
     {
         var data = new PlayerSaveData();

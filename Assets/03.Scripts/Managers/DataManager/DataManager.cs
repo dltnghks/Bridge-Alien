@@ -16,6 +16,7 @@ public class DataManager : MonoBehaviour
     public PlayerDataScriptableObject PlayerData;
     public PlayerTaskDataScriptableObject PlayerTaskData;
     public MiniGameSkillScriptableObject MiniGameSkillData;
+    public StageDataSO StageData;
     
     // 데이터 로드 완료 이벤트 (필요하면 UI 업데이트 등과 연결 가능)
     public event Action<Define.DataType> OnDataLoaded;
@@ -63,6 +64,9 @@ public class DataManager : MonoBehaviour
                     case Define.DataType.MiniGameSkill:
                         MiniGameSkillData = Resources.Load<MiniGameSkillScriptableObject>(path);
                         break;
+                    case Define.DataType.Stage:
+                        StageData = Resources.Load<StageDataSO>(path);
+                        break;
                     default:
                         Debug.LogWarning($"⚠️ Unknown DataType: {dataType}");
                         break;
@@ -75,6 +79,7 @@ public class DataManager : MonoBehaviour
             if (DailyData == null) Debug.LogError("❌ DailyDataScriptableObject not found!");
             if (PlayerData == null) Debug.LogError("❌ PlayerStatDataScriptableObject not found!");
             if (MiniGameSkillData == null) Debug.LogError("❌ MiniGameSkillDataScriptableObject not found!");
+            if (StageData == null) Debug.LogError("❌ StageDataSO not found!");
 
             IsLoading = true;
         }

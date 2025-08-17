@@ -74,6 +74,7 @@ public class Define
         PlayerStat,
         PlayerTask,
         MiniGameSkill,
+        Stage,
         End,
     }
 
