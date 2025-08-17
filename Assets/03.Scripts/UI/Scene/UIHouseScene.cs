@@ -61,8 +61,6 @@ public class UIHouseScene : UIScene
         SetGoldText();
         SetFatigue();
 
-        GetButton((int)Buttons.UINextButton).gameObject.SetActive(false);
-
         return true;
     }
 
@@ -96,7 +94,6 @@ public class UIHouseScene : UIScene
 
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         UIPlayerTaskPopup taskPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>("UIPlayerTaskPopup", transform);
-        taskPopup.OnClickUpgrade += GetButton((int)Buttons.UINextButton).gameObject.SetActive;
     }
 
 
@@ -109,8 +106,9 @@ public class UIHouseScene : UIScene
     private void OnClickNextButton()
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        Managers.Daily.StartEvent();
-        GetButton((int)Buttons.UINextButton).gameObject.SetActive(false);
+        Managers.UI.ShowPopUI<UIStagePopup>();
+        //Managers.Daily.StartEvent();
+        //GetButton((int)Buttons.UINextButton).gameObject.SetActive(false);
     }
 
     private void SetDayText()

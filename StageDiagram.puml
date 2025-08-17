@@ -1,0 +1,85 @@
+@startuml
+title Bridge-Alien Stage System Architecture
+
+skinparam classAttributeIconSize 0
+
+package "UI Layer" {
+
+    class UIStagePopup {
+        + SetStageInfo(stageData: StageData)
+        + OnClickStageStartButton()
+    }
+
+    class UIStageButton {
+        - _stageType: Define.StageType
+        + OnClickButton()
+    }
+}
+
+package "Management Layer" {
+    class SceneManagerEx {
+        + ChanageScene(sceneType : Defein.SceneType)
+    }
+
+    class StageManager {
+        - _currentStage: StageData
+        + OnChangeStage: Action<StageData>
+        --
+        + Init()
+        + SetCurrentStage(stageData: StageData)
+        + LoadStage(stageType: Define.StageType)
+        + CompleteStage(stageType: Define.StageType, playerScore: int): int
+        + CheckStageLockStatus(stageType: Define.StageType): bool
+    }
+
+    class PlayerManager {
+        + PlayerData PlayerData
+        --
+        + SaveStageProgress(stageType: Define.StageType, starCount: int)
+        + GetTotalStars(): int
+    }
+}
+
+package "Data Layer" {
+    class PlayerData {
+        + ClearedStages: Dictionary<Define.StageType, int>
+        + totalStars: int
+    }
+
+    class StageDataSO <<ScriptableObject>> {
+        + StageDic: Dictionary<Define.StageType, StageData>
+    }
+
+    class StageData {
+        + StageName: string
+        + IsLocked: bool
+        + requiredStars: int
+        + ClearReward: int
+        + ClearScoreList: int[]
+    }
+    
+    class DataManager {
+      + StageData: StageDataSO
+    }
+}
+
+' --- Relationships ---
+
+' Data Dependencies
+PlayerManager o-- PlayerData
+DataManager o-- StageDataSO
+StageDataSO o-- StageData
+
+' Inter-Manager Dependencies
+' StageManager needs data from other managers
+StageManager ..> DataManager : Reads stage data
+StageManager ..> PlayerManager : Reads or Update player progress
+
+' UI to Manager Dependencies
+UIStagePopup ..> SceneManagerEx : Change Scene
+UIStageButton ..> StageManager : Update Selected Stage
+
+' Event-based/Callback Dependencies
+UIStagePopup <.. StageManager : Subscribes to OnChangeStage
+
+@enduml

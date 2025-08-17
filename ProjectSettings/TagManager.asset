@@ -9,8 +9,7 @@ TagManager:
   - Box
   - BoxSpawnPoint
   - BoxUnloadPoint
-  - Enemy
-  - Bump
+  - Ground
   layers:
   - Default
   - TransparentFX

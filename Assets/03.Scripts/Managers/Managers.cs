@@ -25,6 +25,7 @@ public class Managers : MonoBehaviour
     private static DailyManager _dailyManager = new DailyManager();
     private static PlayerManager _playerManager = new PlayerManager();
     private static SaveManager _saveManager = new SaveManager();
+    private static StageManager _stageManager = new StageManager();
 
     public static DataManager Data { get { Init(); return _dataManager; } }
     public static ResourceManager Resource { get { Init(); return _resourceManager; } }
@@ -39,6 +40,7 @@ public class Managers : MonoBehaviour
     public static DailyManager Daily { get{ Init(); return _dailyManager; } }
     public static PlayerManager Player { get{ Init(); return _playerManager; } }
     public static SaveManager Save { get{ Init(); return _saveManager; } }
+    public static StageManager Stage {get { Init();  return _stageManager; }}
     
     private static void Init()
     {
@@ -52,13 +54,13 @@ public class Managers : MonoBehaviour
 
             _dataManager = Utils.GetOrAddComponent<DataManager>(go);
             _dataManager.Init();
-            
+
             _sceneManager = Utils.GetOrAddComponent<SceneManagerEx>(go);
             _sceneManager.Init();
-            
+
             _fadeManager = Utils.GetOrAddComponent<FadeManager>(go);
             _fadeManager.Init();
-            
+
             _miniGameManager = Utils.GetOrAddComponent<MiniGameManager>(go);
             _miniGameManager.Init();
 
@@ -72,17 +74,18 @@ public class Managers : MonoBehaviour
 
             _uiManager = Utils.GetOrAddComponent<UIManager>(go);
             _uiManager.Init();
-        
+
             _resourceManager.Init();
             _poolManager.Init();
             _playerManager.Init();
             _dailyManager.Init();
+            _stageManager.Init();
 
             _saveManager.Init(new LocalFileStorage());
             _saveManager.Register(Player);
             _saveManager.Register(Daily);
             _saveManager.Register(MiniGame);
-            
+
             DontDestroyOnLoad(go);
         }
     }
