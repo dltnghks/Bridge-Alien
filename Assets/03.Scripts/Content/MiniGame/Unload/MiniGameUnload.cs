@@ -338,7 +338,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         float scoreBonus = _score.CurrentScore * 0.1f;
         float totalScore = _minimumWage * (scoreBonus + experienceBonus - fatiguePenalty) / 100f;
 
-        Managers.Player.AddGold((int)totalScore);
+        Managers.Stage.CompleteStage((int)totalScore);
 
         Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore, _minimumWage, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
         Logger.Log("UnloadGame Ending game");

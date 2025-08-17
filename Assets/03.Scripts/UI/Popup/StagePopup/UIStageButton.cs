@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class UIStageButton : UISubItem
 {
     enum Texts
     {
-        StageNameText
+        StageText
     }
 
     [SerializeField]
@@ -26,10 +27,24 @@ public class UIStageButton : UISubItem
 
         return true;
     }
-
+    
     private void OnClickButton()
     {
         Managers.Stage.LoadStage(_stageType);
+    }
+
+    public void InitStageButton()
+    {
+        // 잠기지 않은 경우만 열어두기
+        if (Managers.Stage.CheckStageLockStatus(_stageType) == false)
+        {
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 }
 

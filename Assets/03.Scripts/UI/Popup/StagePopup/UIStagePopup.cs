@@ -15,6 +15,13 @@ public class UIStagePopup : UIPopup
         StageRewardText,
     }
 
+    enum Objects
+    {
+        UIStageButtonGroup,
+    }
+
+    private UIStageButtonGroup _stageButtonGroup;
+
     public override bool Init()
     {
         if (base.Init() == false)
@@ -24,18 +31,28 @@ public class UIStagePopup : UIPopup
 
         BindText(typeof(Texts));
         BindButton(typeof(Buttons));
+        BindObject(typeof(Objects));
+
+        _stageButtonGroup = GetObject((int)Objects.UIStageButtonGroup).GetOrAddComponent<UIStageButtonGroup>();
 
         GetButton((int)Buttons.StageStartButton).gameObject.BindEvent(OnClickStageStartButton);
 
         // 스테이지 매니저의 정보가 변경되는 경우 UI에 표시해주기
         Managers.Stage.OnChangeStage += SetStageInfo;
 
+        InitStageButtonGroup();
+
         return true;
     }
 
+    private void InitStageButtonGroup()
+    {
+        _stageButtonGroup.InitStageButtonGroup();
+    } 
+
     private void OnClickStageStartButton()
     {
-        Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);   
+        Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);
     }
 
     public void SetStageInfo(StageData stageData)

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class StageManager
 {
+    private Define.StageType _currentStageType;
     private StageData _currentStage;
 
     public Action<StageData> OnChangeStage;
@@ -15,22 +16,19 @@ public class StageManager
         _currentStage = null;
     }
 
-    public void SetCurrentStage(StageData stageData)
+    public void LoadStage(Define.StageType stageType)
     {
+        var stageData = Managers.Data.StageData.GetStageData(stageType);
+
         if (stageData is null) return;
 
+        _currentStageType = stageType;
         _currentStage = stageData;
         OnChangeStage?.Invoke(_currentStage);
     }
 
-    public void LoadStage(Define.StageType stageType)
-    {
-        var stageData = Managers.Data.StageData.GetStageData(stageType);
-        SetCurrentStage(stageData);
-    }
-
     // 스테이지 클리어 처리, 클리어 결과 별 반환
-    public int CompleteStage(Define.StageType stageType, int playerScore)
+    public int CompleteStage(int playerScore)
     {
         int starCount = 0;
 
@@ -42,7 +40,7 @@ public class StageManager
             }
         }
 
-        Managers.Player.SaveStageProgress(stageType, starCount);
+        Managers.Player.SaveStageProgress(_currentStageType, starCount);
 
         return starCount;
     }
@@ -50,12 +48,13 @@ public class StageManager
     // 현재 스테이지를 진행할 수 있는가 확인
     public bool CheckStageLockStatus(Define.StageType stageType)
     {
-        if (_currentStage.IsLocked == true)
+        var stage = Managers.Data.StageData.GetStageData(stageType);
+        if (stage.IsLocked == false)
         {
-            return true;
+            return false;
         }
 
-        if (_currentStage.RequiredStars >= Managers.Player.GetTotalStars())
+        if (stage.RequiredStars >= Managers.Player.GetTotalStars())
         {
             return true;
         }

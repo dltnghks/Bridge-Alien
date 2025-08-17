@@ -32,6 +32,6 @@ MonoBehaviour:
       Value:
         StageName: 1-3
         IsLocked: 1
-        RequiredStars: 0
-        ClearReward: 4
+        RequiredStars: 4
+        ClearReward: 100000
         ClearScoreList: e8030000d0070000a00f0000
