@@ -58,8 +58,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
 
-        _timer.TimerUpdate();
-        _boxPreview.TimerUpdate();
+        if(_timer != null) _timer.TimerUpdate();
+        if(_boxPreview != null) _boxPreview.TimerUpdate();
     }
 
     public void StartGame()
@@ -85,7 +85,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         SetGameUI();
 
         // 카메라 타겟으로 플레이어 캐릭터 설정
-        Managers.Camera.Initialize(PlayerCharacter.transform);
+        if (PlayerCharacter != null)
+        {
+            Managers.Camera.Initialize(PlayerCharacter.transform);
+        }
 
         // 게임 활성화
         IsActive = true;
@@ -120,7 +123,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         if (_coolingPoint == null)
         {
-            Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
+            Logger.LogWarning("CoolingPoint is not set. The cooling area feature will be disabled.");
             return;
         }
 
@@ -130,24 +133,38 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private void SetDeliveryPointList()
     {
+        if (_deliveryPointList == null || _deliveryPointList.Count == 0)
+        {
+            Logger.LogWarning("DeliveryPointList is not set or empty. The delivery feature will be disabled.");
+            return;
+        }
+        
         // DeliveryPoint 초기화
         foreach (var deliveryPoint in _deliveryPointList)
         {
             if (deliveryPoint == null)
             {
-                Logger.LogError("Null deliveryPoint encountered!");
+                Logger.LogWarning("Null deliveryPoint encountered in the list!");
                 continue;
             }
 
             deliveryPoint.OnScoreAction += AddScore;
             deliveryPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
-            deliveryPoint.OnReturnAction += _returnPoint.PlaceBox;
+            if (_returnPoint != null)
+            {
+                deliveryPoint.OnReturnAction += _returnPoint.PlaceBox;
+            }
             deliveryPoint.SetAction();
         }
     }
 
     private void SetDisposalPoint()
     {
+        if (_disposePoint == null)
+        {
+            Logger.LogWarning("DisposePoint is not set. The disposal feature will be disabled.");
+            return;
+        }
         _disposePoint.OnScoreAction += AddScore;
         _disposePoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
     }
@@ -156,7 +173,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         if (_boxSpawnPoint == null)
         {
-            Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
+            Logger.LogWarning("BoxSpawnPoint is not set. The box spawning feature will be disabled.");
             return;
         }
 
@@ -168,7 +185,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         if (_returnPoint == null)
         {
-            Logger.LogError("Failed to get or add MiniGameUnloadBoxSpawnPoint component!");
+            Logger.LogWarning("ReturnPoint is not set. The return feature will be disabled.");
             return;
         }
 
@@ -222,7 +239,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         _timer.SetTimer(_gameSetting.GamePlayTime);
 
-        _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
+        if (_boxSpawnPoint != null)
+        {
+            _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
+        }
 
         _comboSystem = new ComboSystem();
         if (_comboSystem != null && _uiGameUnloadScene.UIComboDisplay != null)
@@ -326,12 +346,18 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
 
         // 남은 폐기 박스 점수 감소
-        _returnPoint.ReturnBoxScore();
+        if (_returnPoint != null)
+        {
+            _returnPoint.ReturnBoxScore();
+        }
 
         IsActive = false;
 
         // 게임 종료 시 플레이어 캐릭터 애니메이션 설정
-        PlayerCharacter.PlayWinPose();
+        if (PlayerCharacter != null)
+        {
+            PlayerCharacter.PlayWinPose();
+        }
 
         float experienceBonus = Managers.Player.GetExperienceStatsBonus() * 100f;
         float fatiguePenalty = Managers.Player.GetFatigueStatsPenalty() * 100f;
