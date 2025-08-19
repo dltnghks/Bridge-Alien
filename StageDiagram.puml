@@ -38,6 +38,10 @@ package "Management Layer" {
         + SaveStageProgress(stageType: Define.StageType, starCount: int)
         + GetTotalStars(): int
     }
+    
+    class DataManager {
+      + StageData: StageDataSO
+    }
 }
 
 package "Data Layer" {
@@ -57,9 +61,19 @@ package "Data Layer" {
         + ClearReward: int
         + ClearScoreList: int[]
     }
-    
-    class DataManager {
-      + StageData: StageDataSO
+}
+
+package "Stage Editor Layer"{
+    class StageEditor{
+        - stageDataSO: StageDataSO
+        - selectedStageType: Define.StageType
+        - loadedPrefab: GameObject
+        --
+        + ShowWindow()
+        - OnGUI()
+        - DrawStageDetails(stageType: Define.StageType)
+        - LoadStagePrefab(stageName: string)
+        - SaveGameSettings()
     }
 }
 
@@ -68,7 +82,7 @@ package "Data Layer" {
 ' Data Dependencies
 PlayerManager o-- PlayerData
 DataManager o-- StageDataSO
-StageDataSO o-- StageData
+StageDataSO "1" o-- "0..*" StageData
 
 ' Inter-Manager Dependencies
 ' StageManager needs data from other managers
@@ -81,5 +95,8 @@ UIStageButton ..> StageManager : Update Selected Stage
 
 ' Event-based/Callback Dependencies
 UIStagePopup <.. StageManager : Subscribes to OnChangeStage
+
+' Stage Editor Dependecies
+StageEditor o-- StageDataSO : Stage Data
 
 @enduml

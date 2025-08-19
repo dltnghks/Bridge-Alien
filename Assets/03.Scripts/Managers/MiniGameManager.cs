@@ -51,7 +51,7 @@ public class MiniGameManager : MonoBehaviour, ISaveable
         switch (gameType)
         {
             case Define.MiniGameType.Unload:
-                _currentGame = Root.GetOrAddComponent<MiniGameUnload>();
+                _currentGame = Root.GetComponentInChildren<MiniGameUnload>();
                 break;
             // 새로운 미니게임을 추가하려면 여기에서 case 추가
             default:

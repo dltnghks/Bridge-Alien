@@ -35,3 +35,17 @@ MonoBehaviour:
         RequiredStars: 4
         ClearReward: 100000
         ClearScoreList: e8030000d0070000a00f0000
+    - Key: 3
+      Value:
+        StageName: 
+        IsLocked: 0
+        RequiredStars: 0
+        ClearReward: 0
+        ClearScoreList: 000000000000000000000000
+    - Key: 4
+      Value:
+        StageName: 
+        IsLocked: 0
+        RequiredStars: 0
+        ClearReward: 0
+        ClearScoreList: 000000000000000000000000

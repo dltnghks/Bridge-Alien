@@ -41,7 +41,7 @@ public class DataManager : MonoBehaviour
         {
             foreach (Define.DataType dataType in Enum.GetValues(typeof(Define.DataType)))
             {
-                string path = dataType.ToString() + "Data";
+                string path = $"Data/{dataType}Data";
                 Debug.Log($"🔍 Loading {dataType} from: {path}");
 
                 switch (dataType)
