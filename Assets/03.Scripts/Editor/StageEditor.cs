@@ -186,7 +186,51 @@ public class StageEditor : EditorWindow
                     SaveGameSettings();
                 }
             }
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Create MiniGame Objects", EditorStyles.boldLabel);
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("Cooling Point(냉각기)"))
+            {
+                CreateObjectFromPrefab("Assets/04.Prefabs/MiniGame/Unload/CoolingUnit.prefab");
+            }
+            if (GUILayout.Button("Disposal Point(폐기구역)"))
+            {
+                CreateObjectFromPrefab("Assets/04.Prefabs/MiniGame/Unload/DisposalUnit.prefab");
+            }
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("Delivery Point(배달레일)"))
+            {
+                CreateObjectFromPrefab("Assets/04.Prefabs/MiniGame/Unload/DeliveryPoint.prefab");
+            }
+            if (GUILayout.Button("Return Rail(반송레일)"))
+            {
+                CreateObjectFromPrefab("Assets/04.Prefabs/MiniGame/Unload/ReturnPoint.prefab");
+            }
+            EditorGUILayout.EndHorizontal();
         }
+    }
+
+    private void CreateObjectFromPrefab(string prefabPath)
+    {
+        if (loadedPrefab == null)
+        {
+            EditorUtility.DisplayDialog("알림", "먼저 Stage Prefab을 로드해야 합니다.", "확인");
+            return;
+        }
+
+        GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+        if (prefab == null)
+        {
+            Debug.LogError($"Prefab not found at {prefabPath}");
+            return;
+        }
+
+        GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+        instance.transform.SetParent(loadedPrefab.transform);
+        Selection.activeObject = instance;
+        Debug.Log($"{instance.name} created.");
     }
 
     private void LoadStagePrefab(string stageName)
