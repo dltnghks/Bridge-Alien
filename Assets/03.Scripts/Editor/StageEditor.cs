@@ -132,6 +132,12 @@ public class StageEditor : EditorWindow
         {
             EditorApplication.EnterPlaymode();
         }
+        
+
+        if (GUILayout.Button("Save Game Settings", GUILayout.ExpandWidth(true)))
+        {
+            SaveGameSettings();
+        }
 
         EditorGUILayout.EndScrollView();
 
@@ -200,16 +206,15 @@ public class StageEditor : EditorWindow
                     miniGameUnloadSerializedObject.Update();
                     EditorGUILayout.PropertyField(miniGameUnloadSerializedObject.FindProperty("_gameSetting"), true);
                     miniGameUnloadSerializedObject.ApplyModifiedProperties();
-
-                    if (GUILayout.Button("Save Game Settings"))
-                    {
-                        SaveGameSettings();
-                    }
                 }
 
                 EditorGUILayout.Space();
                 EditorGUILayout.LabelField("Create MiniGame Objects", EditorStyles.boldLabel);
                 EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button("Box Spawn Point(트럭)"))
+                {
+                    CreateObjectFromPrefab("Assets/04.Prefabs/MiniGame/Unload/Truck.prefab");
+                }
                 if (GUILayout.Button("Cooling Point(냉각기)"))
                 {
                     CreateObjectFromPrefab("Assets/04.Prefabs/MiniGame/Unload/CoolingUnit.prefab");
