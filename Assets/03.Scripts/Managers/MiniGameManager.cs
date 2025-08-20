@@ -6,7 +6,6 @@ public class MiniGameManager : MonoBehaviour, ISaveable
 {
     private IMiniGame _currentGame;
     private GameObject _gameUI;
-    private Define.MiniGameType _currnetMiniGameType = Define.MiniGameType.Unknown;
     public bool[] MiniGameTutorial = new bool[(int)Define.MiniGameType.Delivery + 1];
 
     public IMiniGame CurrentGame
@@ -46,20 +45,13 @@ public class MiniGameManager : MonoBehaviour, ISaveable
 
     
     // 미니게임을 선택 및 생성하는 팩토리 메서드
-    public void SelectMiniGame(Define.MiniGameType gameType)
+    public void LoadStage()
     {
-        switch (gameType)
-        {
-            case Define.MiniGameType.Unload:
-                _currentGame = Root.GetComponentInChildren<MiniGameUnload>();
-                break;
-            // 새로운 미니게임을 추가하려면 여기에서 case 추가
-            default:
-                Logger.LogError("Unknown game type!");
-                break;
-        }
+        // stage Data 가져와서 프리팹 생성
+        var currentStageData = Managers.Stage.GetCurrentStageData();
+        var stageObj = Managers.Resource.Instantiate($"Stages/{currentStageData.StageName}", Root.transform);
 
-        _currnetMiniGameType = gameType;
+        _currentGame = stageObj.GetComponentInChildren<MiniGameUnload>(); //Root.GetComponentInChildren<MiniGameUnload>();
 
         InitializeUI();
         Logger.Log($"{_currentGame.GetType().Name} | Game Start");

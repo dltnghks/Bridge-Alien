@@ -7,24 +7,35 @@ using UnityEngine;
 public class StageManager
 {
     private Define.StageType _currentStageType;
-    private StageData _currentStage;
+    private StageData _currentStageData;
 
     public Action<StageData> OnChangeStage;
 
     public void Init()
     {
-        _currentStage = null;
+        _currentStageData = null;
     }
 
-    public void LoadStage(Define.StageType stageType)
+    public StageData GetCurrentStageData()
+    {
+        if (_currentStageData is null)
+        {
+            Logger.LogWarning("설정된 스테이지 데이터가 없습니다. 1-1 Stage를 로드합니다.");
+            SetCurrentStage(Define.StageType.Stage1_1);
+            return _currentStageData;
+        }
+        return _currentStageData;
+    }
+
+    public void SetCurrentStage(Define.StageType stageType)
     {
         var stageData = Managers.Data.StageData.GetStageData(stageType);
 
         if (stageData is null) return;
 
         _currentStageType = stageType;
-        _currentStage = stageData;
-        OnChangeStage?.Invoke(_currentStage);
+        _currentStageData = stageData;
+        OnChangeStage?.Invoke(_currentStageData);
     }
 
     // 스테이지 클리어 처리, 클리어 결과 별 반환
@@ -32,7 +43,7 @@ public class StageManager
     {
         int starCount = 0;
 
-        foreach (var score in _currentStage.ClearScoreList)
+        foreach (var score in _currentStageData.ClearScoreList)
         {
             if (playerScore >= score)
             {

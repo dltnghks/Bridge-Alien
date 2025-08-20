@@ -11,7 +11,7 @@ public class GameUnloadScene : BaseScene
 
         SceneType = Define.Scene.MiniGameUnload;
         
-        Managers.MiniGame.SelectMiniGame(Define.MiniGameType.Unload);
+        Managers.MiniGame.LoadStage();
         return true;
     }
 }

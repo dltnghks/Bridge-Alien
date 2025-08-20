@@ -30,7 +30,7 @@ public class UIStageButton : UISubItem
     
     private void OnClickButton()
     {
-        Managers.Stage.LoadStage(_stageType);
+        Managers.Stage.SetCurrentStage(_stageType);
     }
 
     public void InitStageButton()

@@ -111,7 +111,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private void SetGameInfo()
     {
-        _gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameUnloadSetting>(Define.MiniGameType.Unload);
+        // 원래는 so로 하나의 세팅값만 필요했는데, 스테이지로 변경하면서 각 프리팹에 세팅하도록 변경
+        //_gameSetting = Managers.Data.MiniGameData.GetMiniGameSettings<MiniGameUnloadSetting>(Define.MiniGameType.Unload);
 
         if (_gameSetting == null)
         {
