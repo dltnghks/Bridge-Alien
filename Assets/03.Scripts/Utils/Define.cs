@@ -12,7 +12,7 @@ public class Define
         Title,
         House,
         MiniGameUnload,
-        MiniGameDelivery,
+        StageEditor,
         Ending,
     }
 

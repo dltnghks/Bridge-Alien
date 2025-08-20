@@ -128,6 +128,11 @@ public class StageEditor : EditorWindow
             }
         }
 
+        if (GUILayout.Button("Test", GUILayout.ExpandWidth(true)))
+        {
+            EditorApplication.EnterPlaymode();
+        }
+
         EditorGUILayout.EndScrollView();
 
         // Right Panel

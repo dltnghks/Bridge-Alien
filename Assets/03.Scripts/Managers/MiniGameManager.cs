@@ -43,7 +43,20 @@ public class MiniGameManager : MonoBehaviour, ISaveable
         }
     }
 
-    
+
+#if UNITY_EDITOR
+    // 스테이지 테스트에만 사용하는 함수
+    public void LoadStageEditor()
+    {
+        _currentGame = Root.GetComponentInChildren<MiniGameUnload>();
+         
+        InitializeUI();
+        Logger.Log($"{_currentGame.GetType().Name} | Game Start");
+
+        UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
+        uIGameStart.PlayGameStartEffect(StartGame);
+    }
+#endif
     // 미니게임을 선택 및 생성하는 팩토리 메서드
     public void LoadStage()
     {
@@ -51,7 +64,7 @@ public class MiniGameManager : MonoBehaviour, ISaveable
         var currentStageData = Managers.Stage.GetCurrentStageData();
         var stageObj = Managers.Resource.Instantiate($"Stages/{currentStageData.StageName}", Root.transform);
 
-        _currentGame = stageObj.GetComponentInChildren<MiniGameUnload>(); //Root.GetComponentInChildren<MiniGameUnload>();
+        _currentGame = stageObj.GetOrAddComponent<MiniGameUnload>(); //Root.GetComponentInChildren<MiniGameUnload>();
 
         InitializeUI();
         Logger.Log($"{_currentGame.GetType().Name} | Game Start");

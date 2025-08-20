@@ -199,8 +199,6 @@ public class DailyManager : ISaveable
         {
             case Define.MiniGameType.Unload:
                 Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload); break;
-            case Define.MiniGameType.Delivery:
-                Managers.Scene.ChangeScene(Define.Scene.MiniGameDelivery); break;
             default:
                 Logger.LogError("Not Find MiniGame"); break;
         }

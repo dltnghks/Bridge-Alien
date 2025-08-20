@@ -22,7 +22,6 @@ public class UIMiniGameChoicePopup : UIPopup
         BindButton(typeof(Buttons));
 
         GetButton((int)Buttons.UnloadGameButton).gameObject.BindEvent(OnClickUnloadGameButton);
-        GetButton((int)Buttons.DeliveryGameButton).gameObject.BindEvent(OnClickDeliveryGameButton);
 
         return true;
     }
@@ -33,13 +32,5 @@ public class UIMiniGameChoicePopup : UIPopup
         Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);
         ClosePopupUI();
     }
-
-    public void OnClickDeliveryGameButton()
-    {
-        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        Managers.Scene.ChangeScene(Define.Scene.MiniGameDelivery);
-        ClosePopupUI();
-    }
-
 
 }
