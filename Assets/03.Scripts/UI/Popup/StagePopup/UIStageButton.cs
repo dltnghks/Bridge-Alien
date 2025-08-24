@@ -11,8 +11,14 @@ public class UIStageButton : UISubItem
         StageText
     }
 
+    enum Objects
+    {
+        StarGroup,
+    }
+
     [SerializeField]
     private Define.StageType _stageType;
+    private UIStageStarGroup _starGroup;
 
     public override bool Init()
     {
@@ -22,6 +28,9 @@ public class UIStageButton : UISubItem
         }
 
         BindText(typeof(Texts));
+        BindObject(typeof(Objects));
+
+        _starGroup = GetObject((int)Objects.StarGroup).GetOrAddComponent<UIStageStarGroup>();
 
         gameObject.BindEvent(OnClickButton);
 
@@ -30,21 +39,26 @@ public class UIStageButton : UISubItem
     
     private void OnClickButton()
     {
+        if(Managers.Player.PlayerData.TotalStars < Managers.Data.StageData.GetStageData(_stageType).RequiredStars)
+        {
+            // 해금 조건이 안된 경우
+            return;
+        }
         Managers.Stage.SetCurrentStage(_stageType);
     }
 
-    public void InitStageButton()
+    
+    private string ToStageString(Define.StageType stageType)
     {
-        // 잠기지 않은 경우만 열어두기
-        if (Managers.Stage.CheckStageLockStatus(_stageType) == false)
-        {
-            gameObject.SetActive(true);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
+        return stageType.ToString().Replace("Stage", "").Replace('_', '-');
+    }
 
+    public void SetStageButton(int starCount)
+    {
+        Init();
+
+        GetText((int)Texts.StageText).SetText(ToStageString(_stageType));
+        _starGroup.SetStarCount(starCount);
     }
 }
 

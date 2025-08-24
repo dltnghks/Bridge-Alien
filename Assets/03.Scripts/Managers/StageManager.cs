@@ -11,6 +11,8 @@ public class StageManager
 
     public Action<StageData> OnChangeStage;
 
+    public Define.StageType CurrentStageType => _currentStageType;
+
     public void Init()
     {
         _currentStageData = null;
@@ -41,6 +43,7 @@ public class StageManager
     // 스테이지 클리어 처리, 클리어 결과 별 반환
     public int CompleteStage(int playerScore)
     {
+        Logger.Log($"Stage Complete! Score : {playerScore}");
         int starCount = 0;
 
         foreach (var score in _currentStageData.ClearScoreList)

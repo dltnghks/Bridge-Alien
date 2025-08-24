@@ -149,6 +149,7 @@ public class UIManager : MonoBehaviour
         GameObject go = Managers.Resource.Instantiate($"UI/Popup/{name}");
 
         T popup = Utils.GetOrAddComponent<T>(go);
+        popup.Init();
         _popupStack.Push(popup);
 
         if (parent != null)

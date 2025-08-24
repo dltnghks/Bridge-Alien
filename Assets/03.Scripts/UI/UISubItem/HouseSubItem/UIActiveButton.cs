@@ -25,11 +25,13 @@ public class UIActiveButton : UISubItem
 
     public void Activate()
     {
+        Init();
         _buttonImage.sprite = _activateSprite;
     }
 
     public void Deactivate()
     {
+        Init();
         _buttonImage.sprite = _deactivateSprite;
     }
 }
