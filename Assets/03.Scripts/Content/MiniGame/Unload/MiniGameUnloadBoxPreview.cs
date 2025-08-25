@@ -13,13 +13,13 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
     private Queue<MiniGameUnloadBox> _previewQueue = new Queue<MiniGameUnloadBox>();
     private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
 
-    public void SetBoxPreview(float boxSpawnInterval, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint, GameObject[] boxPrefabList)
+    public void SetBoxPreview(float boxSpawnInterval, GameObject[] boxPrefabList)
     {
         if (_timer == null)
             _timer = new TimerBase();
 
         _boxSpawnInterval = boxSpawnInterval;
-        _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
+        //_miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
 
         _timer.OffTimer();
         _timer.SetTimer(_boxSpawnInterval);
@@ -34,32 +34,32 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
 
         DequeueBox();
 
-        // 게임 시작 => 박스 max까지 채워두기
-        while (_previewQueue.Count > 0) {
-            MiniGameUnloadBox box = _previewQueue.Peek();
-            if (box != null && _miniGameUnloadBoxSpawnPoint.CanSpawnBox())
-            {
-                _miniGameUnloadBoxSpawnPoint.SpawnBox(box);
-                DequeueBox();
-            }
-            else
-            {
-                break;
-            }
-        }
+        // // 게임 시작 => 박스 max까지 채워두기
+        // while (_previewQueue.Count > 0) {
+        //     MiniGameUnloadBox box = _previewQueue.Peek();
+        //     if (box != null && _miniGameUnloadBoxSpawnPoint.CanSpawnBox())
+        //     {
+        //         _miniGameUnloadBoxSpawnPoint.SpawnBox();
+        //         DequeueBox();
+        //     }
+        //     else
+        //     {
+        //         break;
+        //     }
+        // }
 
     }
 
     public void TimerUpdate()
     {
-        if (!_miniGameUnloadBoxSpawnPoint.BoxList.IsFull)
-        {
-            _timer.TimerUpdate();
-            if (_timer.CurTime <= 0)
-            {
-                _timer.RestartTimer();
-            }
-        }
+        // if (!_miniGameUnloadBoxSpawnPoint.BoxList.IsFull)
+        // {
+        //     _timer.TimerUpdate();
+        //     if (_timer.CurTime <= 0)
+        //     {
+        //         _timer.RestartTimer();
+        //     }
+        // }
     }
     
     public void CreatePreviewBox()
@@ -81,28 +81,28 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
 
     public void CreateInGameBox()
     {
-        // 여유 박스가 없으면 생성해서 넣기
-        if (_previewQueue.Count <= 1)
-        {
-            CreatePreviewBox();
-        }
+        // // 여유 박스가 없으면 생성해서 넣기
+        // if (_previewQueue.Count <= 1)
+        // {
+        //     CreatePreviewBox();
+        // }
         
-        if(_previewQueue.Count > 0){
-            MiniGameUnloadBox box = _previewQueue.Peek();
-            if (box != null && _miniGameUnloadBoxSpawnPoint.CanSpawnBox())
-            {
-                _miniGameUnloadBoxSpawnPoint.SpawnBox(box);
-                DequeueBox();
-            }
-            else
-            {
-                Logger.LogWarning("Fail CreateInGameBox");
-            }
-        }
-        else
-        {
-            Logger.LogWarning("Fail CreateInGameBox");
-        }
+        // if(_previewQueue.Count > 0){
+        //     MiniGameUnloadBox box = _previewQueue.Peek();
+        //     if (box != null && _miniGameUnloadBoxSpawnPoint.CanSpawnBox())
+        //     {
+        //         _miniGameUnloadBoxSpawnPoint.SpawnBox(box);
+        //         DequeueBox();
+        //     }
+        //     else
+        //     {
+        //         Logger.LogWarning("Fail CreateInGameBox");
+        //     }
+        // }
+        // else
+        // {
+        //     Logger.LogWarning("Fail CreateInGameBox");
+        // }
     }
 
     private void EnqueueBox(MiniGameUnloadBox box)

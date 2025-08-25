@@ -48,14 +48,13 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     public void SetResultScore(int score, int minimumWage, float experienceBonus, float fatiguePenalty, float scoreBonus, float totalScore)
     {
         //gameObject.transform.DOScale(Vector3.one, 2);
-        if (Init())
-        {
-            // 고정 텍스트 설정
-            SetFixedTexts(minimumWage);
+        Init();
 
-            SetReceiptText(score, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
-            ShowResultPopupEffect();
-        }
+        // 고정 텍스트 설정
+        SetFixedTexts(minimumWage);
+
+        SetReceiptText(score, experienceBonus, fatiguePenalty, scoreBonus, totalScore);
+        ShowResultPopupEffect();
     }
 
     private void SetReceiptText(int score, float experienceBonus, float fatiguePenalty, float scoreBonus, float totalScore)

@@ -106,7 +106,8 @@ public class UIHouseScene : UIScene
     private void OnClickNextButton()
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        Managers.UI.ShowPopUI<UIStagePopup>();
+        var stagePopup = Managers.UI.ShowPopUI<UIStagePopup>();
+        stagePopup.InitStageButtonGroup();
         //Managers.Daily.StartEvent();
         //GetButton((int)Buttons.UINextButton).gameObject.SetActive(false);
     }

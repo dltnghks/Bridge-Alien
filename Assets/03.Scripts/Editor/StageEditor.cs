@@ -176,6 +176,7 @@ public class StageEditor : EditorWindow
 
         EditorGUILayout.LabelField(stageType.ToString(), EditorStyles.boldLabel);
         data.StageName = EditorGUILayout.TextField("Stage Name", data.StageName);
+        data.StageImage = (Sprite)EditorGUILayout.ObjectField("Stage Image", data.StageImage, typeof(Sprite), false);
         data.IsLocked = EditorGUILayout.Toggle("Is Locked", data.IsLocked);
         data.RequiredStars = EditorGUILayout.IntField("Required Stars", data.RequiredStars);
         data.ClearReward = EditorGUILayout.IntField("Clear Reward", data.ClearReward);

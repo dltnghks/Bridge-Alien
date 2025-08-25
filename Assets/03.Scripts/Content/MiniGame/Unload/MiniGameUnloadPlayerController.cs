@@ -23,8 +23,6 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     private float _boxHeight = 0f;
     private float _boxOffset = 0.8f;
     private float _moveSpeedReductionRatio = 2.0f;
-    private MiniGameUnloadBoxSpawnPoint _miniGameUnloadBoxSpawnPoint;
-    private MiniGameUnloadCoolingPoint _miniGameUnloadCoolingPoint;
     private List<MiniGameUnloadBasePoint> _cachedPoints = new List<MiniGameUnloadBasePoint>();
     private UnityAction<List<MiniGameUnloadBox>> OnBoxListChanged;
     private bool _isPointsCached;
@@ -35,12 +33,10 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     public SkillBase[] SkillList { get; set; }
 
     public MiniGameUnloadPlayerController(){}
-    public MiniGameUnloadPlayerController(Player player, float radius, float moveSpeedReductionRatio, MiniGameUnloadBoxSpawnPoint miniGameUnloadBoxSpawnPoint, MiniGameUnloadCoolingPoint miniGameUnloadCoolingPoint, UnityAction<List<MiniGameUnloadBox>> OnBoxListChangedAction)
+    public MiniGameUnloadPlayerController(Player player, float radius, float moveSpeedReductionRatio, UnityAction<List<MiniGameUnloadBox>> OnBoxListChangedAction)
     {
         Init(player);
         _moveSpeedReductionRatio = moveSpeedReductionRatio;
-        _miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
-        _miniGameUnloadCoolingPoint = miniGameUnloadCoolingPoint;
 
         OnBoxListChanged = OnBoxListChangedAction;
 

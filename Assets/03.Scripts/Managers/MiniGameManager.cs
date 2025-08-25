@@ -51,6 +51,7 @@ public class MiniGameManager : MonoBehaviour, ISaveable
         _currentGame = Root.GetComponentInChildren<MiniGameUnload>();
          
         InitializeUI();
+        _currentGame.Initialize();
         Logger.Log($"{_currentGame.GetType().Name} | Game Start");
 
         UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
@@ -67,6 +68,7 @@ public class MiniGameManager : MonoBehaviour, ISaveable
         _currentGame = stageObj.GetOrAddComponent<MiniGameUnload>(); //Root.GetComponentInChildren<MiniGameUnload>();
 
         InitializeUI();
+        _currentGame.Initialize();
         Logger.Log($"{_currentGame.GetType().Name} | Game Start");
 
         UIGameStartPopup uIGameStart = Managers.UI.ShowPopUI<UIGameStartPopup>();
@@ -75,11 +77,11 @@ public class MiniGameManager : MonoBehaviour, ISaveable
 
     public void StartGame()
     {
-        _currentGame.StartGame();
-        
         // 배경음 재생
         string sceneTypeStr =  System.Enum.GetName(typeof(Define.Scene), Managers.Scene.CurrentSceneType);
         Managers.Sound.PlayBGM(sceneTypeStr);
+        
+        _currentGame.StartGame();
     }
 
     public bool PauseGame()
