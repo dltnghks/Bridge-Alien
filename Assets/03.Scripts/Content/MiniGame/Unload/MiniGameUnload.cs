@@ -17,7 +17,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     [SerializeField] private MiniGameUnloadCoolingPoint _coolingPoint;
 
     [Header("Box Spawn Point")]
-    [SerializeField] private MiniGameUnloadBoxSpawnPoint _boxSpawnPoint;                   // 박스 생성 주기
+    [SerializeField] private List<MiniGameUnloadBoxSpawnPoint> _boxSpawnPoint;                   // 박스 생성 주기
     [SerializeField] private GameObject[] _boxPrefabList;
 
     [Header("Return Point")]
@@ -39,7 +39,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private TimerBase _timer;
     private ScoreBase _score;
-    private MiniGameUnloadBoxPreview _boxPreview;
     private readonly int _minimumWage = 10000;
 
     public void InitializeUI()
@@ -59,13 +58,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
 
         if(_timer != null) _timer.TimerUpdate();
-        if(_boxPreview != null) _boxPreview.TimerUpdate();
     }
 
-    public void StartGame()
+    public void Initialize()
     {
-        Logger.Log("UnloadGame Starting game");
-
         SetGameInfo();
 
         SetReturnPoint();
@@ -89,11 +85,14 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         {
             Managers.Camera.Initialize(PlayerCharacter.transform);
         }
+    }
+
+    public void StartGame()
+    {
+        Logger.Log("UnloadGame Starting game");
 
         // 게임 활성화
         IsActive = true;
-
-        Logger.Log("Game successfully started.");
 
         StartTutorial();
     }
@@ -178,8 +177,18 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
 
-        _boxSpawnPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
-        _boxSpawnPoint.SetBoxSpawnPoint(_gameSetting.MaxSpawnBoxIndex);
+        foreach (var boxSpawnPoint in _boxSpawnPoint)
+        {
+            if (boxSpawnPoint == null)
+            {
+                Logger.LogWarning("Null boxSpawnPoint encountered in the list!");
+                continue;
+            }
+
+            boxSpawnPoint.OnScoreAction += AddScore;
+            boxSpawnPoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+            boxSpawnPoint.SetBoxSpawnPoint();
+        }
     }
 
     private void SetReturnPoint()
@@ -203,7 +212,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             return;
         }
 
-        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _boxSpawnPoint, _coolingPoint, _uiGameUnloadScene.UIBoxPreview.UpdateUI);
+        PlayerController = new MiniGameUnloadPlayerController(PlayerCharacter, _gameSetting.DetectionBoxRadius, _gameSetting.MoveSpeedReductionRatio, _uiGameUnloadScene.UIBoxPreview.UpdateUI);
         if (PlayerController == null)
         {
             Logger.LogError("Failed to initialize PlayerController!");
@@ -232,18 +241,12 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         // UI 초기화
         _timer = new TimerBase();
         _score = new ScoreBase();
-        _boxPreview = Utils.GetOrAddComponent<MiniGameUnloadBoxPreview>(gameObject);
 
         _score.OnChangedScore += _uiGameUnloadScene.UIScoreBoard.SetScore;
         _timer.OnChangedTime += _uiGameUnloadScene.UITimer.SetTimerText;
         _timer.OnEndTime += EndGame;
 
         _timer.SetTimer(_gameSetting.GamePlayTime);
-
-        if (_boxSpawnPoint != null)
-        {
-            _boxPreview.SetBoxPreview(_gameSetting.BoxSpawnInterval, _boxSpawnPoint, _boxPrefabList);
-        }
 
         _comboSystem = new ComboSystem();
         if (_comboSystem != null && _uiGameUnloadScene.UIComboDisplay != null)

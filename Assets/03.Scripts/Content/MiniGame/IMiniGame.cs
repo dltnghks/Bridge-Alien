@@ -13,6 +13,7 @@ public interface IMiniGame
     Player PlayerCharacter { get; set; }
     IPlayerController PlayerController { get; set; }
     
+    void Initialize();   // 게임 초기화
     void StartGame();    // 게임 시작
     void StartTutorial(); // 튜토리얼 시작
     bool PauseGame();    // 게임 일시정지
