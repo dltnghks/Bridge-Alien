@@ -389,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 511768873173325590}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.79, y: 0, z: 0}
+  m_LocalPosition: {x: -11, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1016,6 +1016,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllowedTypes: 
+  _boxSpawnInterval: 3
+  _maxSpawnBoxIndex: 3
+  _spawnBoxType: 0100000001000000010000000300000003000000
 --- !u!135 &8455357266141028951
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1315,9 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameSetting:
-    GamePlayTime: 97.48
-    MaxSpawnBoxIndex: 3
-    BoxSpawnInterval: 3
+    GamePlayTime: 100
     DetectionBoxRadius: 2
     MoveSpeedReductionRatio: 2
     MaxColdAreaBoxIndex: 1
@@ -1331,7 +1332,8 @@ MonoBehaviour:
   - {fileID: 6306225427065526704}
   - {fileID: 8561667422945534096}
   _coolingPoint: {fileID: 0}
-  _boxSpawnPoint: {fileID: 7949769270141331561}
+  _boxSpawnPoint:
+  - {fileID: 7949769270141331561}
   _boxPrefabList:
   - {fileID: 442358387930060806, guid: 18fc05979be929a4695e1433ddf0eba9, type: 3}
   - {fileID: 442358387930060806, guid: 4b708ae4fea0345498e5ebcc254cc0d0, type: 3}
