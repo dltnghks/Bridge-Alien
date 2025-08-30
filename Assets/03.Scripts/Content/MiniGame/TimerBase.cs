@@ -65,9 +65,9 @@ public class TimerBase
     {
         if (IsActive)
         {
+            IsActive = false;
             OnEndTime?.Invoke();
             OnChangedTime?.Invoke(CurTime, StartTime);
-            IsActive = false;
         }
     }
 }

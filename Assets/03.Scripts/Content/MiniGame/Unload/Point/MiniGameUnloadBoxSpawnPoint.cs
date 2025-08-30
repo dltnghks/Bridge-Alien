@@ -101,7 +101,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             // z-ordering, 겹치면 렌더링 충돌나서 z를 살짝 조절, 위로 올라갈수록 앞으로
             spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
 
-            newBox.SetInGameActive(true, spawnPos);
+            newBox.SetSpawnBox(spawnPos);
         }
     }
 

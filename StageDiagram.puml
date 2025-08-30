@@ -6,13 +6,24 @@ skinparam classAttributeIconSize 0
 package "UI Layer" {
 
     class UIStagePopup {
+        + Init()
+        ' 스테이지 초기화
+        + InitStageButtonGroup() 
         + SetStageInfo(stageData: StageData)
         + OnClickStageStartButton()
+    }
+
+    class UIStageButtonGroup{
+
     }
 
     class UIStageButton {
         - _stageType: Define.StageType
         + OnClickButton()
+    }
+
+    class UIStageStarGroup{
+
     }
 }
 
@@ -92,6 +103,8 @@ StageManager ..> PlayerManager : Reads or Update player progress
 ' UI to Manager Dependencies
 UIStagePopup ..> SceneManagerEx : Change Scene
 UIStageButton ..> StageManager : Update Selected Stage
+UIStageButtonGroup o-- UIStagePopup
+UIStageStarGroup o-- UIStagePopup
 
 ' Event-based/Callback Dependencies
 UIStagePopup <.. StageManager : Subscribes to OnChangeStage

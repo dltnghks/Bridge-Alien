@@ -100,6 +100,12 @@ public class MiniGameUnloadBox : MonoBehaviour
         set { _info.BoxType = value; }
     }
 
+    protected virtual void Init()
+    {
+        boxRigidbody = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
+    }
+
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
     {
         _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
@@ -110,6 +116,7 @@ public class MiniGameUnloadBox : MonoBehaviour
         if (value)
         {
             transform.position = pos;
+            transform.localRotation = Quaternion.Euler(Vector3.zero);
 
             Vector3 currentScale = boxCollider.size;
             currentScale.x = 1f;
@@ -120,8 +127,8 @@ public class MiniGameUnloadBox : MonoBehaviour
             boxCollider.size = currentScale;
 
             // offset 계산 및 적용
-            float frontHeight = 100f;   // 앞면 높이
-            float totalHeight = 100f + 100f * 0.4f; // 전체 높이
+            // float frontHeight = 100f;   // 앞면 높이
+            // float totalHeight = 100f + 100f * 0.4f; // 전체 높이
 
             boxCollider.size = currentScale;
 
@@ -137,20 +144,29 @@ public class MiniGameUnloadBox : MonoBehaviour
         }
     }
 
+    public void SetSpawnBox(Vector3 spawnPos)
+    {
+        SetInGameActive(true, spawnPos);
+        boxRigidbody.constraints = RigidbodyConstraints.FreezeAll ^ RigidbodyConstraints.FreezePositionY;
+    }
+
     public void SetIsGrab(bool value)
     {
         _info.IsGrab = value;
-        if(value){
+        if (value)
+        {
             gameObject.layer = _grabBoxLayer;
-            
+
             // 상자의 Rigidbody 비활성화
             boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
             // 놓을 때는 true
             boxCollider.isTrigger = true;
-            
+
             PlayBoxHoldSound();
 
-        }else{
+        }
+        else
+        {
             gameObject.layer = _defaultBoxLayer;
 
             // 상자의 Rigidbody 활성화
@@ -172,10 +188,8 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     public virtual void SetRandomInfo()
     {
+        Init();
         _info.SetRandomInfo();
-
-        boxRigidbody = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();
     }
 }
 

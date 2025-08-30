@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class FragileBox : MiniGameUnloadBox
 {
+    void Start()
+    {
+        Init();
+    }
+
+    protected override void Init()
+    {
+        base.Init();
+    }
+    
     public override void SetRandomInfo()
     {
         base.SetRandomInfo();

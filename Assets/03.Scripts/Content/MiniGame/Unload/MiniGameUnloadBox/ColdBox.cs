@@ -21,6 +21,14 @@ public class ColdBox : MiniGameUnloadBox
 
     void Start()
     {
+        Init();
+    }
+
+    protected override void Init()
+    {
+        base.Init();
+        isCooling = false;
+        isColdbox = false;
         objectRenderer = GetComponent<SpriteRenderer>();
         originalMaterial = objectRenderer.material;
         originalColor = originalMaterial.color;
@@ -91,6 +99,7 @@ public class ColdBox : MiniGameUnloadBox
     public override void SetRandomInfo()
     {
         base.SetRandomInfo();
+        SetCoolingSprite(0);
         _info.BoxState = Define.BoxState.Cold;
         _info.BoxType = Define.BoxType.Cold;
     }

@@ -18,7 +18,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     [Header("Box Spawn Point")]
     [SerializeField] private List<MiniGameUnloadBoxSpawnPoint> _boxSpawnPoint;                   // 박스 생성 주기
-    [SerializeField] private GameObject[] _boxPrefabList;
 
     [Header("Return Point")]
     [SerializeField] private MiniGameUnloadReturnPoint _returnPoint;

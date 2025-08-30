@@ -97,6 +97,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
         box.transform.DOMove(_endPointTransform.position, 1).OnComplete(() =>
             {
+                // 리턴 박스의 경우에는 리턴 액션 호출
                 if (returnBox)
                 {
                     ReturnBox(box);
@@ -113,6 +114,13 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     private void ReturnBox(MiniGameUnloadBox box)
     {
+        // 리턴 액션이 있는 경우에만 호출
+        if (OnReturnAction == null)
+        {
+            Managers.Resource.Destroy(box.gameObject);
+            return;
+        }
+        
         OnReturnAction.Invoke(box);
     } 
     
