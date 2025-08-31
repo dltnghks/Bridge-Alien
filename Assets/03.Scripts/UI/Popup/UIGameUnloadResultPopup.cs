@@ -17,6 +17,10 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         StatsBonusText,         // 스탯 보너스
         FatiguePenaltyText,     // 피로도 페널티
         TotalGoldText,              // 총합
+        Star1ScoreText,
+        Star2ScoreText,
+        Star3ScoreText,
+        ClearRewardText,
     }
 
     enum Images {
@@ -32,6 +36,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     [SerializeField]
     private float _textDelayDuration = 1.5f;
     private bool _isFinished = false;
+    private bool _isEventEnded = false;
 
     private List<UIActiveButton> _stars = new List<UIActiveButton>();
 
@@ -58,33 +63,46 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         }
 
 
+        var textIndices = new[] {
+            (int)Texts.ScoreText,
+            (int)Texts.StatsBonusText,
+            (int)Texts.TotalGoldText,
+        };
+
+        foreach (var idx in textIndices)
+            GetText(idx).color = Color.clear;
+
         return true;
     }
 
     protected override void OnClickConfirmButton()
     {
+        if (_isEventEnded) return;
+        _isEventEnded = true;
+        
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         Managers.Daily.EndMiniGameEvent();
     }
 
 
-    public void SetResultScore(int score, int minimumWage, float experienceBonus, float fatiguePenalty, float scoreBonus, float totalScore)
+    public void SetResultScore(int score, int statsBonus, int totalGold, int starCount, int[] scoreList, int clearReward)
     {
         Init();
 
-        //SetReceiptText(score, experienceBonus, fatiguePenalty, scoreBonus, totalScore);        
+        SetReceiptText(scoreList, clearReward);        
 
-        DG.Tweening.Sequence sequence = DOTween.Sequence();
+        ShowResultPopupEffect();
+        Sequence sequence = DOTween.Sequence();
         sequence.Append(ShowScore(score));
         sequence.AppendInterval(0.2f);
 
-        sequence.Append(ShowStatBonus(score, (int)scoreBonus));
+        sequence.Append(ShowStatsBonus(score, statsBonus));
         sequence.AppendInterval(0.2f);
 
-        sequence.Append(ShowStar(3));
+        sequence.Append(ShowStar(starCount));
         sequence.AppendInterval(0.2f);
 
-        sequence.Append(ShowTotalGold((int)totalScore));
+        sequence.Append(ShowTotalGold(totalGold));
 
         sequence.Play().OnComplete(() =>
         {
@@ -94,50 +112,22 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         });
     }
 
-    private void SetReceiptText(int score, float experienceBonus, float fatiguePenalty, float scoreBonus, float totalScore)
+    private void SetReceiptText(int[] scoreList, int clearReward)
     {
-        // // 텍스트 값 설정
-        // GetText((int)Texts.ScoreText).SetText(score.ToString());
-        // GetText((int)Texts.ScoreBonusText).SetText($"<color=#4B95DA>(+)</color>{scoreBonus:0}%");
-        // GetText((int)Texts.StatsBonusText).SetText($"<color=#4B95DA>(+)</color>{experienceBonus:0}%");
-        // GetText((int)Texts.FatiguePenaltyText).SetText($"<color=#C62E2E>(-)</color>{fatiguePenalty:0}%");
+        // 텍스트 값 설정
+        var scoreTextList = new[] {
+            (int)Texts.Star1ScoreText,
+            (int)Texts.Star2ScoreText,
+            (int)Texts.Star3ScoreText,
+        };
 
-        // // 모든 텍스트 투명하게 초기화
-        // var textIndices = new[] {
-        //     (int)Texts.ScoreText,
-        //     (int)Texts.ScoreBonusText,
-        //     (int)Texts.StatsBonusText,
-        //     (int)Texts.FatiguePenaltyText,
-        //     (int)Texts.TotalText,
-        // };
+        for (int i = 0; i < scoreList.Length && i < scoreTextList.Length; i++)
+        {
+            GetText(scoreTextList[i]).SetText($"{scoreList[i]}");
+        }
 
-        // foreach (var idx in textIndices)
-        //     GetText(idx).DOFade(0f, 0f);
-
-        // // 순차적으로 Fade In
-        // Sequence sequence = DOTween.Sequence();
-        // foreach (var idx in textIndices)
-        // {
-        //     sequence.AppendInterval(_textDelayDuration);
-        //     sequence.Append(
-        //     GetText(idx).DOFade(1f, 0f).SetEase(Ease.InQuad).OnComplete(() =>
-        //         {
-        //             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject);
-        //         })
-        //     );
-        // }
-
-        // sequence.Append(DOVirtual.Int(0, (int)totalScore, 2f, value =>
-        // {
-        //     GetText((int)Texts.TotalGoldText).SetText(value.ToString());
-        // }).SetEase(Ease.InQuad));
-
-        // sequence.Play().OnComplete(() =>
-        // {
-        //     _isFinished = true;
-        //     Managers.UI.SetInputBackground(true);
-        //     Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.LastScore.ToString(), gameObject);
-        // });
+        GetText((int)Texts.ClearRewardText).SetText($"x {clearReward}");
+        
     }
 
     public void ShowResultPopupEffect()
@@ -156,47 +146,96 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         // 2. 잠시 유지
         sequence.AppendInterval(_holdDuration);
 
-        // 3. 투명해지기 (페이드 아웃)
-        sequence.Append(transform.DOScale(Vector3.one, _scaleDuration).SetEase(Ease.InQuad));
+        // 3. 사라지기 (스케일 다운)
+        //sequence.Append(transform.DOScale(Vector3.zero, _scaleDuration).SetEase(Ease.InQuad));
+        sequence.Play();
 
     }
 
     private Tween ShowScore(int score)
     {
         TextMeshProUGUI scoreText = GetText((int)Texts.ScoreText);
+        scoreText.color = Color.black;
+
         return DOVirtual.Int(0, (int)score, 2f, value =>
         {
-            scoreText.SetText(value.ToString());
+            scoreText.SetText($"Score : {value}");
         }).SetEase(Ease.InQuad)
         .OnPlay(() => Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject));
     }
 
-    private Tween ShowStatBonus(int score, int bonuse)
+    private Sequence ShowStatsBonus(int score, int bonuse)
     {
+        TextMeshProUGUI bonusText = GetText((int)Texts.StatsBonusText);
         TextMeshProUGUI scoreText = GetText((int)Texts.ScoreText);
-        return DOVirtual.Int(score, score + bonuse, 2f, value =>
+
+        Sequence bonusSequence = DOTween.Sequence();
+
+        bonusSequence.Append(DOVirtual.Color(bonusText.color, Color.blue, 0.0f, value =>
         {
-            scoreText.SetText(value.ToString());
-        }).SetEase(Ease.InQuad)
-        .OnPlay(() => Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject));
+            bonusText.color = value;
+        }));
+
+        // 이동 후 지우기
+        //Vector2 targetPos = new Vector3(20, 20, 0);
+
+        // bonusSequence.Append(DOVirtual.Vector2(bonusText.rectTransform.anchoredPosition, targetPos, 0.5f, value =>
+        // {
+        //     bonusText.rectTransform.anchoredPosition = value;
+        // })).OnComplete(() => bonusText.color = Color.clear);
+
+        bonusSequence.Append(DOVirtual.Int(score, score + bonuse, 2f, value =>
+            {
+                scoreText.SetText($"Score : {value}");
+            }).SetEase(Ease.InQuad).
+            OnPlay(() => Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject))
+        );
+        return bonusSequence;
     }
 
     // 별 판정
     private Tween ShowStar(int starCount)
     {
-        return DOVirtual.Int(0, starCount-1, starCount, value =>
+        // 1. 새로운 시퀀스를 만듭니다.
+        Sequence sequence = DOTween.Sequence();
+        float interval = 0.5f; // 별이 나타나는 시간 간격 (0.5초)
+
+        for (int i = 0; i < starCount; i++)
         {
-            _stars[value].Activate();
-        });
+            int index = i; // 클로저 문제를 피하기 위해 인덱스를 복사합니다.
+
+            // 2. 시퀀스에 '콜백'을 추가합니다. 이 콜백은 별 활성화와 사운드 재생을 담당합니다.
+            sequence.AppendCallback(() =>
+            {
+                _stars[index].Activate();
+                Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject);
+            });
+
+            // 3. 다음 별이 나타나기 전까지 대기하는 간격을 추가합니다.
+            sequence.AppendInterval(interval);
+        }
+
+        // 4. 완성된 시퀀스를 반환합니다.
+        return sequence;
     }
 
     private Tween ShowTotalGold(int totalGold)
     {
         TextMeshProUGUI totalText = GetText((int)Texts.TotalGoldText);
-        return DOVirtual.Int(0, totalGold, 1f, value =>
+
+        Sequence totalGoldSequence = DOTween.Sequence();
+        
+        totalGoldSequence.Append(DOVirtual.Color(totalText.color, Color.black, 0.0f, value =>
+        {
+            totalText.color = value;
+        }));
+
+        totalGoldSequence.Append(DOVirtual.Int(0, totalGold, 1f, value =>
         {
             totalText.SetText(value.ToString());
-        });
+        }));
+
+        return totalGoldSequence;
     }
 
 

@@ -54,9 +54,17 @@ public class StageManager
             }
         }
 
+        return starCount;
+    }
+
+    public int GetCompleteTotalGold(int starCount)
+    {
+        int totalGold = _currentStageData.ClearReward * Math.Max(0, (starCount - Managers.Player.GetStageClearInfo(_currentStageType)));
+
+        // 골드 계산 후 저장
         Managers.Player.SaveStageProgress(_currentStageType, starCount);
 
-        return starCount;
+        return totalGold;
     }
 
     // 현재 스테이지를 진행할 수 있는가 확인
