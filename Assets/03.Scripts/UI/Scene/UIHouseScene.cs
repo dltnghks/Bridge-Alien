@@ -50,8 +50,8 @@ public class UIHouseScene : UIScene
 
         _fatigueSlider = GetObject((int)Objects.UIFatigue).GetOrAddComponent<Slider>();
 
-        SetDayText();
-        SetTimeImage();
+        // SetDayText();
+        // SetTimeImage();
 
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
@@ -67,8 +67,8 @@ public class UIHouseScene : UIScene
     public override void UIUpdate()
     {
         base.UIUpdate();
-        SetDayText();
-        SetTimeImage();
+        //SetDayText();
+        //SetTimeImage();
     }
 
     private void OnClickPlayerStatusButton()
@@ -112,19 +112,19 @@ public class UIHouseScene : UIScene
         //GetButton((int)Buttons.UINextButton).gameObject.SetActive(false);
     }
 
-    private void SetDayText()
-    {
-        GetText((int)Texts.DayText).SetText($"Day {Managers.Daily.CurrentDate}");
-    }
+    // private void SetDayText()
+    // {
+    //     GetText((int)Texts.DayText).SetText($"Day {Managers.Daily.CurrentDate}");
+    // }
 
-    private void SetTimeImage()
-    {
-        if (_timeImages.Length <= Managers.Daily.CurrentDailyData.Time)
-        {
-            return;
-        }
-        GetImage((int)Images.TimeImage).sprite = _timeImages[Managers.Daily.CurrentDailyData.Time]; 
-    }
+    // private void SetTimeImage()
+    // {
+    //     if (_timeImages.Length <= Managers.Daily.CurrentDailyData.Time)
+    //     {
+    //         return;
+    //     }
+    //     GetImage((int)Images.TimeImage).sprite = _timeImages[Managers.Daily.CurrentDailyData.Time]; 
+    // }
     
     private void SetGoldText()
     {

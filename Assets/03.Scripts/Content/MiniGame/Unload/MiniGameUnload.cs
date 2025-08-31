@@ -102,6 +102,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         {
             Managers.UI.ClosePopupUI();
             Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] = true;
+
+            // TODO. Stage별로 튜토리얼 보여주기.
+            // string stageName = Managers.Stage.GetCurrentStageData().StageName;
+            // Managers.UI.ShowPopUI<UITutorialPopup>($"Tutorial/{stageName}");
             Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
         }
     }

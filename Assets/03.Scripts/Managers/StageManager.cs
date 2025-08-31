@@ -59,7 +59,7 @@ public class StageManager
 
     public int GetCompleteTotalGold(int starCount)
     {
-        int totalGold = _currentStageData.ClearReward * Math.Max(0, (starCount - Managers.Player.GetStageClearInfo(_currentStageType)));
+        int totalGold = _currentStageData.ClearReward * Math.Max(0, starCount - Managers.Player.GetStageClearInfo(_currentStageType));
 
         // 골드 계산 후 저장
         Managers.Player.SaveStageProgress(_currentStageType, starCount);
@@ -83,6 +83,11 @@ public class StageManager
 
 
         return false;
+    }
+
+    public string ToStageString(Define.StageType stageType)
+    {
+        return stageType.ToString().Replace("Stage", "").Replace('_', '-');
     }
 
 }

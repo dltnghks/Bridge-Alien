@@ -47,17 +47,12 @@ public class UIStageButton : UISubItem
         Managers.Stage.SetCurrentStage(_stageType);
     }
 
-    
-    private string ToStageString(Define.StageType stageType)
-    {
-        return stageType.ToString().Replace("Stage", "").Replace('_', '-');
-    }
-
     public void SetStageButton(int starCount)
     {
         Init();
 
-        GetText((int)Texts.StageText).SetText(ToStageString(_stageType));
+        string stageText = Managers.Stage.ToStageString(_stageType);
+        GetText((int)Texts.StageText).SetText(stageText);
         _starGroup.SetStarCount(starCount);
     }
 }

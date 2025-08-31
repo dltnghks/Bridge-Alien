@@ -11,7 +11,9 @@ public class UIStagePopup : UIPopup
 
     enum Texts
     {
+        StageTitleText,
         StageNameText,
+        StageDescriptionText,
         StageRewardText,
         Star1Score,
         Star2Score,
@@ -69,8 +71,18 @@ public class UIStagePopup : UIPopup
 
     public void SetStageInfo(StageData stageData)
     {
+        var stageType = Managers.Stage.CurrentStageType;
+
+        // 스테이지 표시
+        string stageText = Managers.Stage.ToStageString(stageType);
+        GetText((int)Texts.StageTitleText).SetText($"Stage {stageText}");
+
         // 스테이지 이름 표시
         GetText((int)Texts.StageNameText).SetText(stageData.StageName);
+
+        // 스테이지 설명 표시
+        GetText((int)Texts.StageDescriptionText).SetText(stageData.StageDescription);
+
 
         // 스테이지 이미지 표시
         SetStagePreviewImage(stageData.StageImage);
@@ -82,7 +94,7 @@ public class UIStagePopup : UIPopup
         SetStageScore(stageData.ClearScoreList);
 
         // 클리어 별 개수 표시
-        Managers.Player.PlayerData.ClearedStages.TryGetValue(Managers.Stage.CurrentStageType, out int starCount);
+        Managers.Player.PlayerData.ClearedStages.TryGetValue(stageType, out int starCount);
         SetStageStarImage(starCount);
     }
 
