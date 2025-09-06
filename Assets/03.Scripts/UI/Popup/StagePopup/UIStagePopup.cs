@@ -24,6 +24,7 @@ public class UIStagePopup : UIPopup
     enum Images
     {
         StagePreviewImage,
+        StageInfoClearIcon,
     }
 
     enum Objects
@@ -121,6 +122,7 @@ public class UIStagePopup : UIPopup
 
     private void SetStageStarImage(int starCount)
     {
+        GetImage((int)Images.StageInfoClearIcon).color = Color.clear;
         for (int i = 1; i <= 3; i++)
         {
             GetObject((int)Objects.InfoStar1 + i - 1).GetComponent<UIActiveButton>().Deactivate();
@@ -139,6 +141,11 @@ public class UIStagePopup : UIPopup
         if (starCount >= 3)
         {
             GetObject((int)Objects.InfoStar3).gameObject.GetComponent<UIActiveButton>().Activate();
+        }
+
+        if (starCount > 0)
+        {
+            GetImage((int)Images.StageInfoClearIcon).color = Color.white;
         }
     }
 
