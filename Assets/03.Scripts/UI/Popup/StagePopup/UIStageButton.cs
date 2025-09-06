@@ -39,9 +39,9 @@ public class UIStageButton : UISubItem
     
     private void OnClickButton()
     {
-        if(Managers.Player.PlayerData.TotalStars < Managers.Data.StageData.GetStageData(_stageType).RequiredStars)
+        // 잠긴 경우 상호작용 X
+        if (Managers.Stage.IsStageLockStatus(_stageType))
         {
-            // 해금 조건이 안된 경우
             return;
         }
         Managers.Stage.SetCurrentStage(_stageType);

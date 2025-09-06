@@ -30,7 +30,7 @@ public class UIStageButtonGroup : UISubItem
             }
 
             var stageData = Managers.Data.StageData.GetStageData(stageType);
-            UpdateStageButtonState((int)stageType, stageData.RequiredStars);
+            UpdateStageButtonState((int)stageType, stageType);
 
             SetStageStars(stageType, stageData.IsLocked);
 
@@ -38,33 +38,24 @@ public class UIStageButtonGroup : UISubItem
     }
 
     // 스테이지 버튼 그룹의 상태를 업데이트
-    private void UpdateStageButtonState(int index, int requiredStars)
+    private void UpdateStageButtonState(int index, Define.StageType stageType)
     {
-        // 별이 부족한 경우, 비활성화
-        if (Managers.Player.PlayerData.TotalStars < requiredStars)
+        // 스테이지 잠금 여부 확인
+        if (Managers.Stage.IsStageLockStatus(stageType))
         {
-            _uiStageButtonsList[(int)index].GetComponent<UIActiveButton>().Deactivate();
+            _uiStageButtonsList[index].GetComponent<UIActiveButton>().Deactivate();
         }
-        // 별이 충분한 경우, 활성화
         else
         {
-            _uiStageButtonsList[(int)index].GetComponent<UIActiveButton>().Activate();
+            _uiStageButtonsList[index].GetComponent<UIActiveButton>().Activate();
         }
     }
 
     // 스테이지 버튼 그룹의 별 개수를 업데이트
     private void SetStageStars(Define.StageType stageType, bool isLocked)
     {
-        if (Managers.Player.PlayerData.ClearedStages.ContainsKey(stageType) || isLocked == false)
-        {
-            Logger.Log($"{stageType} : {Managers.Player.PlayerData.ClearedStages[stageType]}");
-            _uiStageButtonsList[(int)stageType].SetStageButton(Managers.Player.PlayerData.ClearedStages[stageType]);
-        }
-        else
-        {
-            // 클리어 기록이 없는 경우
-            _uiStageButtonsList[(int)stageType].SetStageButton(0);
-        }
+        int starCount = Managers.Player.GetStageClearInfo(stageType);
+        _uiStageButtonsList[(int)stageType].SetStageButton(starCount);
     }
 
 }

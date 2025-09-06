@@ -35,7 +35,8 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             _timer = new TimerBase();
 
         _timer.OffTimer();
-        _timer.SetTimer(_boxSpawnInterval);
+        // 첫 박스는 0.5초 후 바로 나오도록 설정
+        _timer.SetTimer(_boxSpawnInterval, 0.5f); 
         _timer.OnEndTime = SpawnBox;
     }
 

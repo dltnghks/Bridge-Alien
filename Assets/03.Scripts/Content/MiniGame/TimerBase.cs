@@ -18,13 +18,14 @@ public class TimerBase
         IsActive = false;
     }
     
-    public void SetTimer(float time)
+    public void SetTimer(float time, float curTime = 0)
     {
         if (!IsActive)
         {
             Logger.Log("Set timer");
             StartTime = time;
-            CurTime = time;
+
+            CurTime = curTime == 0 ? time : curTime;
 
             IsActive = true;
         }

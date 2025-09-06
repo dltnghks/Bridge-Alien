@@ -85,10 +85,11 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     }
 
 
-    public void SetResultScore(int score, int statsBonus, int totalGold, int starCount, int[] scoreList, int clearReward)
+    public void SetResultScore(int score, int statsBonus, int totalGold, int preStarCount, int starCount, int[] scoreList, int clearReward)
     {
         Init();
 
+        SetPreStar(preStarCount);
         SetReceiptText(scoreList, clearReward);        
 
         ShowResultPopupEffect();
@@ -112,6 +113,17 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         });
     }
 
+    // 이전에 획득했던 별 개수만큼 불투명하게 표시
+    private void SetPreStar(int preStarCount)
+    {
+        for (int i = 0; i < preStarCount; i++)
+        {
+            _stars[i].Activate();
+            _stars[i].GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+        }
+
+    }
+
     private void SetReceiptText(int[] scoreList, int clearReward)
     {
         // 텍스트 값 설정
@@ -127,7 +139,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         }
 
         GetText((int)Texts.ClearRewardText).SetText($"x {clearReward}");
-        
+
     }
 
     public void ShowResultPopupEffect()
@@ -208,6 +220,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
             sequence.AppendCallback(() =>
             {
                 _stars[index].Activate();
+                _stars[index].GetComponent<Image>().color = Color.white;
                 Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject);
             });
 

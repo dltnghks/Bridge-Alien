@@ -372,6 +372,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int totalScore = _score.CurrentScore + statsBonusScore;
 
         var stageData = Managers.Stage.GetCurrentStageData();
+        int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
         int starCount = Managers.Stage.CompleteStage(totalScore);
         int totalGold = Managers.Stage.GetCompleteTotalGold(starCount);
         int[] scoreList = stageData.ClearScoreList;
@@ -380,7 +381,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         Logger.Log($"Stage Result | starCount : {starCount}, totalGold : {totalGold}, totalScore : {totalScore}, statsBonus : {statsBonus}");
 
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore, statsBonusScore, totalGold, starCount, scoreList, clearReward);
+        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore, statsBonusScore, totalGold, preStarCount, starCount, scoreList, clearReward);
         Logger.Log("UnloadGame Ending game");
     }
 

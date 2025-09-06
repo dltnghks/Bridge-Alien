@@ -142,6 +142,11 @@ public class PlayerManager : ISaveable
         return PlayerData.TotalStars;
     }
 
+    public int GetCleardStageNum()
+    {
+        return PlayerData.ClearedStages.Count;
+    }
+
     // 스테이지 클리어 정보 가져오기 - 별 개수
     public int GetStageClearInfo(Define.StageType stageType)
     {
