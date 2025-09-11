@@ -42,8 +42,6 @@ public class PlayerData
         }
 
         TotalStars = 0;
-
-        ClearedStages[Define.StageType.Stage1_1] = 0; // Stage1-1은 기본 해금
     }
     
 }

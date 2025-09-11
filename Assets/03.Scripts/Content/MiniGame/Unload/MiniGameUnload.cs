@@ -381,7 +381,9 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         Logger.Log($"Stage Result | starCount : {starCount}, totalGold : {totalGold}, totalScore : {totalScore}, statsBonus : {statsBonus}");
 
-        Managers.UI.ShowPopUI<UIGameUnloadResultPopup>().SetResultScore(_score.CurrentScore, statsBonusScore, totalGold, preStarCount, starCount, scoreList, clearReward);
+        var resultPopup = Managers.UI.ShowPopUI<UIGameUnloadResultPopup>();
+        resultPopup.SetResultScore(_score.CurrentScore, statsBonusScore, totalGold, preStarCount, starCount, scoreList, clearReward);
+        
         Logger.Log("UnloadGame Ending game");
     }
 

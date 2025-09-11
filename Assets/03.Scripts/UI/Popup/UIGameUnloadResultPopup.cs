@@ -12,10 +12,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         ScoreText,              // 게임 점수
         MiniGameTypeText,       // 미니게임 종류
         WorkerNameText,         // 이름
-        MinimumWageText,        // 최저임금
-        ScoreBonusText,         // 점수 보너스
         StatsBonusText,         // 스탯 보너스
-        FatiguePenaltyText,     // 피로도 페널티
         TotalGoldText,              // 총합
         Star1ScoreText,
         Star2ScoreText,
@@ -23,10 +20,13 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         ClearRewardText,
     }
 
-    enum Images {
+    enum Images
+    {
         Star1Icon,
         Star2Icon,
         Star3Icon,
+        ClearIconImage,
+        Test,
     }
 
     private float _scaleDuration = 0.5f;
@@ -72,6 +72,8 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         foreach (var idx in textIndices)
             GetText(idx).color = Color.clear;
 
+        GetImage((int)Images.ClearIconImage).color = Color.clear;
+
         return true;
     }
 
@@ -87,8 +89,6 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
 
     public void SetResultScore(int score, int statsBonus, int totalGold, int preStarCount, int starCount, int[] scoreList, int clearReward)
     {
-        Init();
-
         SetPreStar(preStarCount);
         SetReceiptText(scoreList, clearReward);        
 
@@ -246,7 +246,12 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         totalGoldSequence.Append(DOVirtual.Int(0, totalGold, 1f, value =>
         {
             totalText.SetText(value.ToString());
-        }));
+        })).OnComplete(() =>
+        {
+            // 별을 얻었을 때만 돈을 얻기 때문에, 0 이상일 때 Clear 표시
+            if (totalGold > 0)
+                GetImage((int)Images.ClearIconImage).color = Color.white;   
+        });
 
         return totalGoldSequence;
     }

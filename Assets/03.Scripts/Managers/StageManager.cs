@@ -76,8 +76,6 @@ public class StageManager
             return false;
         }
 
-        // 이전 스테이지를 클리어한 경우에만 true
-        Logger.Log($"{(int)stageType}, {Managers.Player.GetCleardStageNum()} : {(int)stageType > Managers.Player.GetCleardStageNum()}");
         // 클리어한 스테이지 수가 현재 스테이지보다 작으면 잠금 상태
         if ((int)stageType > Managers.Player.GetCleardStageNum())
         {
