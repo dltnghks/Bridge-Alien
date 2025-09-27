@@ -6,6 +6,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
+using Microsoft.Unity.VisualStudio.Editor;
 
 [System.Serializable]
 public struct MiniGameUnloadBoxInfo
@@ -72,7 +73,8 @@ public class MiniGameUnloadBox : MonoBehaviour
     protected int _grabBoxLayer;
 
     [SerializeField] protected MiniGameUnloadBoxInfo _info;
-    
+    [SerializeField] protected SpriteRenderer _returnStickerSprite;
+
     protected Rigidbody boxRigidbody;
     protected BoxCollider boxCollider;
 
@@ -84,26 +86,20 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     public bool IsUnloaded
     {
-        get { return _info.IsUnloaded; } 
+        get { return _info.IsUnloaded; }
         set { _info.IsUnloaded = value; }
     }
 
     public Define.BoxState BoxState
     {
-        get { return _info.BoxState; } 
+        get { return _info.BoxState; }
         set { _info.BoxState = value; }
     }
-    
+
     public Define.BoxType BoxType
     {
         get { return _info.BoxType; }
         set { _info.BoxType = value; }
-    }
-
-    protected virtual void Init()
-    {
-        boxRigidbody = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();
     }
 
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
@@ -116,7 +112,6 @@ public class MiniGameUnloadBox : MonoBehaviour
         if (value)
         {
             transform.position = pos;
-            transform.localRotation = Quaternion.Euler(Vector3.zero);
 
             Vector3 currentScale = boxCollider.size;
             currentScale.x = 1f;
@@ -127,8 +122,8 @@ public class MiniGameUnloadBox : MonoBehaviour
             boxCollider.size = currentScale;
 
             // offset 계산 및 적용
-            // float frontHeight = 100f;   // 앞면 높이
-            // float totalHeight = 100f + 100f * 0.4f; // 전체 높이
+            float frontHeight = 100f;   // 앞면 높이
+            float totalHeight = 100f + 100f * 0.4f; // 전체 높이
 
             boxCollider.size = currentScale;
 
@@ -142,12 +137,6 @@ public class MiniGameUnloadBox : MonoBehaviour
             PlayBoxPutSound();
 
         }
-    }
-
-    public void SetSpawnBox(Vector3 spawnPos)
-    {
-        SetInGameActive(true, spawnPos);
-        boxRigidbody.constraints = RigidbodyConstraints.FreezeAll ^ RigidbodyConstraints.FreezePositionY;
     }
 
     public void SetIsGrab(bool value)
@@ -178,18 +167,31 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     private void PlayBoxHoldSound()
     {
-        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BoxHold.ToString()); 
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BoxHold.ToString());
     }
-    
+
     private void PlayBoxPutSound()
     {
-        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BoxPut.ToString(),gameObject); 
+        Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.BoxPut.ToString(), gameObject);
     }
 
     public virtual void SetRandomInfo()
     {
-        Init();
+        SetReturnSticker(false);
         _info.SetRandomInfo();
+
+        boxRigidbody = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
+    }
+
+    public void SetReturnSticker(bool value)
+    {
+        if (_returnStickerSprite == null)
+        {
+            return;
+        }
+
+        _returnStickerSprite.gameObject.SetActive(value);
     }
 }
 
