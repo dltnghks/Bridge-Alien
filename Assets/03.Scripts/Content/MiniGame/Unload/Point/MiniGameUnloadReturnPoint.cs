@@ -69,6 +69,10 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
         box.BoxState = Define.BoxState.Disposal;
         _returnBoxQueue.Enqueue(box);
 
+        // box에 반송 스티커 붙이기
+        box.SetReturnSticker(true);
+        
+
         StartCoroutine(AutoSpawnBox());
     }
 
