@@ -144,14 +144,16 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     public void PlaceBox(MiniGameUnloadBox box)
     {
-        MiniGameUnloadBox boxComponent = box.GetComponent<MiniGameUnloadBox>();
+        if (box is null)
+        {
+            Logger.LogError("놓으려는 박스가 없는 상태");
+            return;   
+        }
 
         box.transform.SetParent(transform);
         box.SetIsGrab(false);
-        if (boxComponent != null)
-        {
-            MoveToUnloadPoint(boxComponent);
-        }
+        MoveToUnloadPoint(box);
     }
 }
+
 

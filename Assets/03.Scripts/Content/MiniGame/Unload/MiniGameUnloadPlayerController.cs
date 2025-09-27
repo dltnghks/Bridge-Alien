@@ -23,6 +23,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     private float _boxHeight = 0f;
     private float _boxOffset = 0.8f;
     private float _moveSpeedReductionRatio = 2.0f;
+    private float _moveSpeedBonus = 1f;
     private List<MiniGameUnloadBasePoint> _cachedPoints = new List<MiniGameUnloadBasePoint>();
     private UnityAction<List<MiniGameUnloadBox>> OnBoxListChanged;
     private bool _isPointsCached;
@@ -37,15 +38,16 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     {
         Init(player);
         _moveSpeedReductionRatio = moveSpeedReductionRatio;
+        _moveSpeedBonus = Managers.Player.GetGravityAdaptationBounus();
 
         OnBoxListChanged = OnBoxListChangedAction;
-
     }
 
     public void Init(Player player)
     {
         Player = player;
         _unloadPlayer = Player as MiniGameUnloadPlayer;
+        _unloadPlayer.SpeedUp(_moveSpeedBonus);
 
         _boxList.SetBoxList(3);
         InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;

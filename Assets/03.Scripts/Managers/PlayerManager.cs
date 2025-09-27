@@ -99,6 +99,15 @@ public class PlayerManager : ISaveable
         return FatigueReductionRates[3];
     }
 
+    public float GetGravityAdaptationBounus()
+    {
+        int gravityAdaptation = PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation];
+        if (gravityAdaptation <= StatThresholds[0]) return MoveSpeedBoostRates[0];
+        if (gravityAdaptation <= StatThresholds[1]) return MoveSpeedBoostRates[1];
+        if (gravityAdaptation <= StatThresholds[2]) return MoveSpeedBoostRates[2];
+        return MoveSpeedBoostRates[3];
+    }
+
     public int GetSkillLevel(Define.MiniGameSkillType skillType)
     {
         return PlayerData.MiniGameUnloadSkillLevel[skillType];
