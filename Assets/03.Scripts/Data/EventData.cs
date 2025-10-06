@@ -7,10 +7,9 @@ using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 [System.Serializable]
-public class DailyData
+public class EventData
 {
     public string EventID;
-    public int Time;
     public Define.EventType EventType;
     public string Parameter;
     public string NextEventID;

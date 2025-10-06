@@ -146,7 +146,7 @@ public class DailyManager : ISaveable
 
         Logger.Log($"StartEvent | Time : {_currentDailyData.Time}, ID : {_currentDailyData.EventID}");
 
-        if (_currentDailyData.EventType == Define.DailyEventType.Unknown)
+        if (_currentDailyData.EventType == Define.EventType.Unknown)
         {
             // 처음인 경우 바로 다음으로 넘어가기
             SetNextEvent();
@@ -156,16 +156,16 @@ public class DailyManager : ISaveable
         }
 
         // 대화 이벤트가 아닐 때는 다이얼로그 팝업 닫기
-        if (_currentDailyData.EventType != Define.DailyEventType.Dialog)
+        if (_currentDailyData.EventType != Define.EventType.Dialog)
         {
             // 일과일 때는 닫기
-            if (_currentDailyData.EventType == Define.DailyEventType.Task)
+            if (_currentDailyData.EventType == Define.EventType.Task)
                 _dialogPopup?.ClosePopupUI();
 
             _dialogPopup = null;
         }
 
-        if (_currentDailyData.EventType == Define.DailyEventType.Dialog)
+        if (_currentDailyData.EventType == Define.EventType.Dialog)
         {
             Logger.Log($"Daily Event is Dialog : {_currentDailyData.GetParameter<Define.Dialog>()}");
 
@@ -174,11 +174,11 @@ public class DailyManager : ISaveable
                 _dialogPopup = Managers.UI.ShowPopUI<UIDialogPopup>();
             _dialogPopup.InitDialog(_currentDailyData.GetParameter<Define.Dialog>(), _currentDailyData.DialogScene, StartEvent);
         }
-        else if (_currentDailyData.EventType == Define.DailyEventType.MiniGame)
+        else if (_currentDailyData.EventType == Define.EventType.MiniGame)
         {
             StartMiniGameEvent();
         }
-        else if (_currentDailyData.EventType == Define.DailyEventType.End)
+        else if (_currentDailyData.EventType == Define.EventType.End)
         {
             EndDay();
             return;
@@ -189,7 +189,7 @@ public class DailyManager : ISaveable
 
     private void StartMiniGameEvent()
     {
-        if (_currentDailyData.EventType != Define.DailyEventType.MiniGame)
+        if (_currentDailyData.EventType != Define.EventType.MiniGame)
         {
             Logger.LogError("EventType is not MiniGame");
             return;

@@ -57,7 +57,7 @@ public class Define
         D,
     }
 
-    public enum DailyEventType
+    public enum EventType
     {
         Unknown,
         Dialog,
