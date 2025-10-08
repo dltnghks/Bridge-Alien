@@ -9,11 +9,11 @@ using Newtonsoft.Json;
 public class GoogleSheetsImporter : EditorWindow
 {
     // Google Apps Script에서 생성한 URL
-    private string _dialogDataURL = "https://script.google.com/macros/s/AKfycbwgAd7p7krlRhlz0xeJHxjA8BhQ5hUEkTmdIrOGZNqPHXyvAPIkZCC-yAJ9PRaaqPU8/exec";
+    private string _dialogDataURL = "https://script.google.com/macros/s/AKfycbzRQRRU7Ym1mKOal-ueaUpYPqGoIRflohZ5ErEn-_YhkinSC6wvUndjqwZrrfA8ebYeNQ/exec";
     private string _miniGameSettingDataURL = "https://script.google.com/macros/s/AKfycbyCzaXRCmG8TwN7bjGK23w-YysJzMeB6_SBvJ_zDz4j8h1FmPJmw51V-x0FqMFpt-NI/exec";
-    private string _dailyDataURL = "https://script.google.com/macros/s/AKfycbztQL4Jix2cBBlocYbbYOuUuPCbU-ExjG1q1cgoXlAwCL2dsRK_vyBnk_uiEBXyPPbNgw/exec";
+    private string _eventDataURL = "https://script.google.com/macros/s/AKfycbzYvVO656CCglltNN3mLiOxQYCSY4EaMHMGLXJVP3y3AZkZF8LqHrWECR6kmpVB5hew/exec";
     private string _playerTaskDataURL = "https://script.google.com/macros/s/AKfycbycs1iOHWpQoMCrt-OWwXdaH0sqgoG5GzvRagF0cBDqO4U0MEoRiRlx-q_SV7uWFSl1/exec";
-    private string savePath = "Assets/Resources";
+    private string savePath = "Assets/Resources/Data";
 
     [MenuItem("Tools/GoogleSheetsImporter")]
     public static void ShowWindow()
@@ -29,15 +29,15 @@ public class GoogleSheetsImporter : EditorWindow
 
         _dialogDataURL = EditorGUILayout.TextField("DialogData Sheet URL", _dialogDataURL);
         if (GUILayout.Button("Import Dialog Data"))
-            ImportData(_dialogDataURL, Define.DataType.Dialog);
+            ImportData(_dialogDataURL, Define.DataType.Event);
 
         _miniGameSettingDataURL = EditorGUILayout.TextField("MiniGameSettingData Sheet URL", _miniGameSettingDataURL);
         if (GUILayout.Button("Import MiniGameSetting Data"))
             ImportData(_miniGameSettingDataURL, Define.DataType.MiniGameSetting);
 
-        _dailyDataURL = EditorGUILayout.TextField("DailyData Sheet URL", _dailyDataURL);
-        if (GUILayout.Button("Import Daily Data"))
-            ImportData(_dailyDataURL, Define.DataType.Daily);
+        _eventDataURL = EditorGUILayout.TextField("EventData Sheet URL", _eventDataURL);
+        if (GUILayout.Button("Import EventData Data"))
+            ImportData(_eventDataURL, Define.DataType.Event);
 
         _playerTaskDataURL = EditorGUILayout.TextField("PlayerTaskData Sheet URL", _playerTaskDataURL);
         if (GUILayout.Button("Import PlayerTask Data"))
@@ -47,7 +47,7 @@ public class GoogleSheetsImporter : EditorWindow
         {
             ImportData(_dialogDataURL, Define.DataType.Dialog);
             ImportData(_miniGameSettingDataURL, Define.DataType.MiniGameSetting);
-            ImportData(_dailyDataURL, Define.DataType.Daily);
+            ImportData(_eventDataURL, Define.DataType.Event);
             ImportData(_playerTaskDataURL, Define.DataType.PlayerTask);
         }
     }
@@ -71,6 +71,7 @@ public class GoogleSheetsImporter : EditorWindow
         catch (System.Exception ex)
         {
             Logger.LogError($"❌ {dataType} 데이터를 다운로드하는 중 오류 발생: {ex.Message}");
+            Logger.LogError($"{url}");
         }
     }
 
@@ -83,10 +84,10 @@ public class GoogleSheetsImporter : EditorWindow
 
         switch (dataType)
         {
-            case Define.DataType.Daily:
-                DailyDataScriptableObject dailyData = CreateInstance<DailyDataScriptableObject>();
-                dailyData.SetData(jsonData);
-                AssetDatabase.CreateAsset(dailyData, assetPath);
+            case Define.DataType.Event:
+                EventDataScriptableObject eventData = CreateInstance<EventDataScriptableObject>();
+                eventData.SetData(jsonData);
+                AssetDatabase.CreateAsset(eventData, assetPath);
                 break;
             case Define.DataType.Dialog:
                 DialogDataScriptableObject dialogData = CreateInstance<DialogDataScriptableObject>();

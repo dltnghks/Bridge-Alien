@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7b7ec80678496449a3365bd193ad26, type: 3}
+  m_Name: EventData
+  m_EditorClassIdentifier: 
+  EventData:
+    _serializedList:
+    - Key: Event_C1
+      Value:
+      - EventID: Start
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: C1_E1
+        DialogScene: 0
+      - EventID: C1_E1
+        EventType: 1
+        Parameter: S1_01
+        NextEventID: C1_E2
+        DialogScene: 3
+      - EventID: C1_E2
+        EventType: 1
+        Parameter: S1_02
+        NextEventID: C1_E3
+        DialogScene: 4
+      - EventID: C1_E3
+        EventType: 1
+        Parameter: S1_03
+        NextEventID: C1_E4
+        DialogScene: 4
+      - EventID: C1_E4
+        EventType: 2
+        Parameter: Unload
+        NextEventID: C1_E5
+        DialogScene: 0
+      - EventID: C1_E5
+        EventType: 1
+        Parameter: S1_04
+        NextEventID: C1_E6
+        DialogScene: 5
+      - EventID: C1_E6
+        EventType: 1
+        Parameter: S1_05
+        NextEventID: C1_E7
+        DialogScene: 1
+      - EventID: C1_E7
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
+    - Key: Event_C2
+      Value:
+      - EventID: Start
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: C2_E1
+        DialogScene: 0
+      - EventID: C2_E1
+        EventType: 1
+        Parameter: S2_01
+        NextEventID: C2_E2
+        DialogScene: 1
+      - EventID: C2_E2
+        EventType: 1
+        Parameter: S2_02
+        NextEventID: C2_E3
+        DialogScene: 3
+      - EventID: C2_E3
+        EventType: 2
+        Parameter: Unload
+        NextEventID: C2_E4
+        DialogScene: 0
+      - EventID: C2_E4
+        EventType: 1
+        Parameter: S2_03
+        NextEventID: C2_E5
+        DialogScene: 4
+      - EventID: C2_E5
+        EventType: 1
+        Parameter: S2_04
+        NextEventID: C2_E6
+        DialogScene: 1
+      - EventID: C2_E6
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
+    - Key: Event_C3
+      Value:
+      - EventID: Start
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: C2_E1
+        DialogScene: 0
+      - EventID: C3_E1
+        EventType: 1
+        Parameter: S3_01
+        NextEventID: C2_E2
+        DialogScene: 3
+      - EventID: C3_E2
+        EventType: 2
+        Parameter: Unload
+        NextEventID: C2_E3
+        DialogScene: 0
+      - EventID: C3_E3
+        EventType: 1
+        Parameter: S3_02
+        NextEventID: C2_E4
+        DialogScene: 5
+      - EventID: C3_E4
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
+    - Key: Event_C4
+      Value:
+      - EventID: Start
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: C2_E1
+        DialogScene: 0
+      - EventID: C4_E1
+        EventType: 1
+        Parameter: S4_01
+        NextEventID: C2_E2
+        DialogScene: 3
+      - EventID: C4_E2
+        EventType: 2
+        Parameter: Unload
+        NextEventID: C2_E3
+        DialogScene: 3
+      - EventID: C4_E3
+        EventType: 1
+        Parameter: S4_02
+        NextEventID: C2_E4
+        DialogScene: 4
+      - EventID: C4_E4
+        EventType: 1
+        Parameter: S4_03
+        NextEventID: C2_E5
+        DialogScene: 1
+      - EventID: C4_E5
+        EventType: 4
+        Parameter: 
+        NextEventID: End
+        DialogScene: 0
+    - Key: Event_C5
+      Value:
+      - EventID: Start
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: C2_E1
+        DialogScene: 0
+      - EventID: C5_E1
+        EventType: 1
+        Parameter: S5_01
+        NextEventID: C2_E2
+        DialogScene: 1
+      - EventID: C5_E2
+        EventType: 1
+        Parameter: S5_02
+        NextEventID: C2_E3
+        DialogScene: 3
+      - EventID: C5_E3
+        EventType: 2
+        Parameter: Unload
+        NextEventID: C2_E4
+        DialogScene: 0
+      - EventID: C5_E4
+        EventType: 1
+        Parameter: S5_03
+        NextEventID: C2_E5
+        DialogScene: 4
+      - EventID: C5_E5
+        EventType: 1
+        Parameter: S5_04
+        NextEventID: C2_E6
+        DialogScene: 6
+      - EventID: C5_E6
+        EventType: 1
+        Parameter: S5_05
+        NextEventID: C2_E7
+        DialogScene: 6
+      - EventID: C5_E5
+        EventType: 4
+        Parameter: End
+        NextEventID: End
+        DialogScene: 0

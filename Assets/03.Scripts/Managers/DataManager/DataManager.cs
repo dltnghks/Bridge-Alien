@@ -13,6 +13,7 @@ public class DataManager : MonoBehaviour
     public DialogDataScriptableObject DialogData;
     public MiniGameSettingDataScriptableObject MiniGameData;
     public DailyDataScriptableObject DailyData;
+    public EventDataScriptableObject EventData;
     public PlayerDataScriptableObject PlayerData;
     public PlayerTaskDataScriptableObject PlayerTaskData;
     public MiniGameSkillScriptableObject MiniGameSkillData;
@@ -55,6 +56,9 @@ public class DataManager : MonoBehaviour
                     case Define.DataType.Daily:
                         DailyData = Resources.Load<DailyDataScriptableObject>(path);
                         break;
+                    case Define.DataType.Event:
+                        EventData = Resources.Load<EventDataScriptableObject>(path);
+                        break;
                     case Define.DataType.PlayerStat:
                         PlayerData = Resources.Load<PlayerDataScriptableObject>(path);
                         break;
@@ -77,6 +81,7 @@ public class DataManager : MonoBehaviour
             if (DialogData == null) Debug.LogError("❌ DialogDataScriptableObject not found!");
             if (MiniGameData == null) Debug.LogError("❌ MiniGameSettingDataScriptableObject not found!");
             if (DailyData == null) Debug.LogError("❌ DailyDataScriptableObject not found!");
+            if (EventData == null) Debug.LogError("❌ EventDataScriptableObject not found!");
             if (PlayerData == null) Debug.LogError("❌ PlayerStatDataScriptableObject not found!");
             if (MiniGameSkillData == null) Debug.LogError("❌ MiniGameSkillDataScriptableObject not found!");
             if (StageData == null) Debug.LogError("❌ StageDataSO not found!");

@@ -67,7 +67,7 @@ public class UIStagePopup : UIPopup
 
     private void OnClickStageStartButton()
     {
-        Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);
+        Managers.Event.PlayEvent();
     }
 
     public void SetStageInfo(StageData stageData)

@@ -69,6 +69,7 @@ public class Define
     public enum DataType
     {
         Dialog,
+        Event,
         MiniGameSetting,
         Daily,
         PlayerStat,
@@ -81,59 +82,30 @@ public class Define
     public enum Dialog
     {
         Unknown,
-        STORY_D1_01,
-        STORY_D1_02,
-        STORY_D1_03,
-        STORY_D1_04,
-        STORY_D1_05,
-        STORY_D1_06,
-        STORY_D1_07,
+        P1_01,
+        S1_01,
+        S1_02,
+        S1_03,
+        S1_04,
+        S1_05,
 
-        STORY_D2_01,
-        STORY_D2_02,
-        STORY_D2_03,
-        STORY_D2_04,
-        STORY_D2_05,
-        STORY_D2_06,
-        STORY_D2_07,
+        S2_01,
+        S2_02,
+        S2_03,
+        S2_04,
 
-        STORY_D3_01,
-        STORY_D3_02,
-        STORY_D3_03,
-        STORY_D3_04,
-        STORY_D3_05,
+        S3_01,
+        S3_02,
 
-        STORY_D4_01,
-        STORY_D4_02,
-        STORY_D4_03,
-        STORY_D4_04,
-        STORY_D4_05,
+        S4_01,
+        S4_02,
+        S4_03,
 
-        STORY_D11_01,
-        STORY_D11_02,
-        STORY_D11_03,
-        STORY_D11_04,
-        STORY_D11_05,
-        STORY_D11_06,
-
-        STORY_D14A_01,
-        STORY_D14A_02,
-        STORY_D14A_03,
-        STORY_D14A_04,
-        STORY_D14A_05,
-
-        STORY_D14B_01,
-        STORY_D14B_02,
-        STORY_D14B_03,
-        STORY_D14B_04,
-
-        STORY_D14C_01,
-        STORY_D14C_02,
-        STORY_D14C_03,
-
-        STORY_END_A,
-        STORY_END_B,
-        STORY_END_C,
+        S5_01,
+        S5_02,
+        S5_03,
+        S5_04,
+        S5_05,
     }
 
     public enum DialogType

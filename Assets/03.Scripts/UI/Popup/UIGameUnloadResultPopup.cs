@@ -37,6 +37,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     private float _textDelayDuration = 1.5f;
     private bool _isFinished = false;
     private bool _isEventEnded = false;
+    private int _starCount = 0;
 
     private List<UIActiveButton> _stars = new List<UIActiveButton>();
 
@@ -81,16 +82,34 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     {
         if (_isEventEnded) return;
         _isEventEnded = true;
-        
+
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
-        Managers.Daily.EndMiniGameEvent();
+        FinishGame();
+    }
+
+    private void FinishGame()
+    {
+        if (_starCount <= 0)
+        {
+            Managers.Scene.ChangeScene(Define.Scene.House);
+        }
+        else
+        {
+            Managers.MiniGame.PauseGame();
+            Managers.Event.SetNextEventData();
+            Managers.Event.PlayEvent();
+        }
+        
+        
     }
 
 
     public void SetResultScore(int score, int statsBonus, int totalGold, int preStarCount, int starCount, int[] scoreList, int clearReward)
     {
+        _starCount = starCount;
+
         SetPreStar(preStarCount);
-        SetReceiptText(scoreList, clearReward);        
+        SetReceiptText(scoreList, clearReward);
 
         ShowResultPopupEffect();
         Sequence sequence = DOTween.Sequence();

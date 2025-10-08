@@ -96,7 +96,6 @@ public class SceneManagerEx : MonoBehaviour
                 Managers.Fade.FadeIn();
                 Managers.Pool.Clear();
                 IsLoding = false;
-                //Managers.Camera.Init(CameraManager.CameraType.ThirdPerson, CameraSettings.Default);
             });
         });
     }
