@@ -181,6 +181,8 @@ public class StageEditor : EditorWindow
         data.IsLocked = EditorGUILayout.Toggle("Is Locked", data.IsLocked);
         data.RequiredStars = EditorGUILayout.IntField("Required Stars", data.RequiredStars);
         data.ClearReward = EditorGUILayout.IntField("Clear Reward", data.ClearReward);
+        data.EventID = (Define.EventDataID)EditorGUILayout.EnumPopup("Event ID", data.EventID);
+        data.ClearEventID = (Define.EventDataID)EditorGUILayout.EnumPopup("Clear Event ID", data.ClearEventID);
 
         EditorGUILayout.LabelField("Clear Score List");
         if (data.ClearScoreList == null)

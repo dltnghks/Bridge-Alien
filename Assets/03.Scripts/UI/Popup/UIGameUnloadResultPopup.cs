@@ -95,12 +95,8 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         }
         else
         {
-            Managers.MiniGame.PauseGame();
-            Managers.Event.SetNextEventData();
-            Managers.Event.PlayEvent();
+            Managers.Stage.EndStage();
         }
-        
-        
     }
 
 

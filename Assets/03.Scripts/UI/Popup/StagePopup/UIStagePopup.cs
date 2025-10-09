@@ -67,7 +67,7 @@ public class UIStagePopup : UIPopup
 
     private void OnClickStageStartButton()
     {
-        Managers.Event.PlayEvent();
+        Managers.Stage.StartStage();
     }
 
     public void SetStageInfo(StageData stageData)

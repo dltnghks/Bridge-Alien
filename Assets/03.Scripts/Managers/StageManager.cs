@@ -40,6 +40,19 @@ public class StageManager
         OnChangeStage?.Invoke(_currentStageData);
     }
 
+    public void StartStage()
+    {
+        Logger.Log("Stage Start");
+        if (_currentStageData is null)
+        {
+            Logger.LogError("설정된 스테이지 데이터가 없습니다.");
+            return;
+        }
+
+        // 스테이지 시작 시 이벤트 재생
+        Managers.Event.Init(_currentStageData.EventID);
+    }
+
     // 스테이지 클리어 처리, 클리어 결과 별 반환
     public int CompleteStage(int playerScore)
     {
@@ -55,6 +68,11 @@ public class StageManager
         }
 
         return starCount;
+    }
+
+    public void EndStage()
+    {
+        Managers.Event.Init(_currentStageData.ClearEventID);
     }
 
     public int GetCompleteTotalGold(int starCount)
