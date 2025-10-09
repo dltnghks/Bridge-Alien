@@ -23,7 +23,6 @@ public class Managers : MonoBehaviour
     private static SoundManager _soundManager;
     private static DeviceInputManager _deviceInputManager;
     private static PoolManager _poolManager = new PoolManager();
-    private static DailyManager _dailyManager = new DailyManager();
     private static EventManager _eventManager = new EventManager();
     private static PlayerManager _playerManager = new PlayerManager();
     private static SaveManager _saveManager = new SaveManager();
@@ -39,7 +38,6 @@ public class Managers : MonoBehaviour
     public static SoundManager Sound{get{Init(); return _soundManager; }}
     public static DeviceInputManager DeviceInput{get{ Init();  return _deviceInputManager; }}
     public static PoolManager Pool { get { Init(); return _poolManager; } }
-    public static DailyManager Daily { get{ Init(); return _dailyManager; } }
     public static EventManager Event {get { Init();  return _eventManager;  }}
     public static PlayerManager Player { get { Init(); return _playerManager; } }
     public static SaveManager Save { get{ Init(); return _saveManager; } }
@@ -81,13 +79,11 @@ public class Managers : MonoBehaviour
             _resourceManager.Init();
             _poolManager.Init();
             _playerManager.Init();
-            _dailyManager.Init();
             _eventManager.Init();
             _stageManager.Init();
 
             _saveManager.Init(new LocalFileStorage());
             _saveManager.Register(Player);
-            _saveManager.Register(Daily);
             _saveManager.Register(MiniGame);
 
             DontDestroyOnLoad(go);

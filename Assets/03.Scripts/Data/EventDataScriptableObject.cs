@@ -7,11 +7,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EventData", menuName = "Game/Data/EventData")]
 public class EventDataScriptableObject : ScriptableObject
 {
-    public SerializedDictionary<string, List<EventData>> EventData = new SerializedDictionary<string, List<EventData>>();
+    public SerializedDictionary<Define.EventDataID, List<EventData>> EventData = new SerializedDictionary<Define.EventDataID, List<EventData>>();
 
     public void SetData(string jsonText)
     {
-        Dictionary<string, List<EventData>> parsedData = JsonConvert.DeserializeObject<Dictionary<string, List<EventData>>>(jsonText);
+        Dictionary<Define.EventDataID, List<EventData>> parsedData = JsonConvert.DeserializeObject<Dictionary<Define.EventDataID, List<EventData>>>(jsonText);
 
         foreach (var key in parsedData.Keys)
         {
@@ -21,13 +21,13 @@ public class EventDataScriptableObject : ScriptableObject
         Debug.Log($"✅ Dialog Data Loaded: {EventData.Count} types loaded.");
     }
     
-    public Dictionary<string, EventData> GetData(string date)
+    public Dictionary<string, EventData> GetData(Define.EventDataID eventDataID)
     {
-        if (EventData.ContainsKey(date))
+        if (EventData.ContainsKey(eventDataID))
         {
             Dictionary<string, EventData> returnData = new Dictionary<string, EventData>();
 
-            foreach (EventData data in EventData[date])
+            foreach (EventData data in EventData[eventDataID])
             {
                 returnData[data.EventID] = data;
             }
@@ -35,7 +35,7 @@ public class EventDataScriptableObject : ScriptableObject
             return returnData;
         }
 
-        Debug.LogWarning($"⚠️ Event Data {date} is null");
+        Debug.LogWarning($"⚠️ Event Data {eventDataID} is null");
         return null;
     }
 }

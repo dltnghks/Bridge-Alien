@@ -9,6 +9,7 @@ public class Define
     {
         Unknown,
         Dev,
+        EventScene,
         Title,
         House,
         MiniGameUnload,
@@ -71,12 +72,27 @@ public class Define
         Dialog,
         Event,
         MiniGameSetting,
-        Daily,
         PlayerStat,
         PlayerTask,
         MiniGameSkill,
         Stage,
         End,
+    }
+
+    public enum EventDataID
+    {
+        Unknown,
+        Event_C1,
+        Event_C2,
+        Event_C3,
+        Event_C4,
+        Event_C5,
+
+        Event_C1_Clear,
+        Event_C2_Clear,
+        Event_C3_Clear,
+        Event_C4_Clear,
+        Event_C5_Clear,
     }
 
     public enum Dialog

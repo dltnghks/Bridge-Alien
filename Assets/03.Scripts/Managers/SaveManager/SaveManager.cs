@@ -73,7 +73,6 @@ public class SaveManager
 
         // 일담 임의로 초기화하기
         Managers.Player.Init();
-        Managers.Daily.Init();
         Managers.MiniGame.Init();
     }
 

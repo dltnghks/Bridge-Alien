@@ -12,7 +12,6 @@ public class DataManager : MonoBehaviour
     // 각 데이터를 관리하는 매니저
     public DialogDataScriptableObject DialogData;
     public MiniGameSettingDataScriptableObject MiniGameData;
-    public DailyDataScriptableObject DailyData;
     public EventDataScriptableObject EventData;
     public PlayerDataScriptableObject PlayerData;
     public PlayerTaskDataScriptableObject PlayerTaskData;
@@ -53,9 +52,6 @@ public class DataManager : MonoBehaviour
                     case Define.DataType.MiniGameSetting:
                         MiniGameData = Resources.Load<MiniGameSettingDataScriptableObject>(path);
                         break;
-                    case Define.DataType.Daily:
-                        DailyData = Resources.Load<DailyDataScriptableObject>(path);
-                        break;
                     case Define.DataType.Event:
                         EventData = Resources.Load<EventDataScriptableObject>(path);
                         break;
@@ -80,7 +76,6 @@ public class DataManager : MonoBehaviour
             // 데이터가 정상적으로 로드되었는지 확인
             if (DialogData == null) Debug.LogError("❌ DialogDataScriptableObject not found!");
             if (MiniGameData == null) Debug.LogError("❌ MiniGameSettingDataScriptableObject not found!");
-            if (DailyData == null) Debug.LogError("❌ DailyDataScriptableObject not found!");
             if (EventData == null) Debug.LogError("❌ EventDataScriptableObject not found!");
             if (PlayerData == null) Debug.LogError("❌ PlayerStatDataScriptableObject not found!");
             if (MiniGameSkillData == null) Debug.LogError("❌ MiniGameSkillDataScriptableObject not found!");

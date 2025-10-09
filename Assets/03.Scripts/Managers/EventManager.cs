@@ -3,25 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : ISaveable
+public class EventManager
 {
-    private string _lastEventID;
+    private Define.EventDataID _lastEventDataID;
     private EventData _curEventData;
     private Dictionary<string, EventData> _currentEventDataDict = new Dictionary<string, EventData>();
     public EventData CurEventData => _curEventData;
     private UIDialogPopup _dialogPopup = null;
 
-    public void Init(string lastEventID = null)
+    public void Init(Define.EventDataID lastEventDataID = Define.EventDataID.Unknown)
     {
-        _lastEventID = lastEventID;
-        SetEventData(_lastEventID);
+        Logger.Log("Event Manager Init");
+        _lastEventDataID = lastEventDataID;
+        if (_lastEventDataID == Define.EventDataID.Unknown)
+        {
+            Logger.Log("EventDataID is Unknown");
+            return;   
+        }
+        SetEventData();
     }
 
-    private void SetEventData(string lastEventID = null)
+    private void SetEventData()
     {
+        Logger.Log($"Set Event Data : {_lastEventDataID}");
         // DataManager에서 curDate 세팅 값 가져오기
-        int curStageNum = Managers.Player.GetCleardStageNum() + 1;
-        _currentEventDataDict = Managers.Data.EventData.GetData($"Event_C{curStageNum}");
+        _currentEventDataDict = Managers.Data.EventData.GetData(_lastEventDataID);
 
         if (_currentEventDataDict == null)
         {
@@ -29,28 +35,14 @@ public class EventManager : ISaveable
             return;
         }
 
-        // 시작 이벤트 설정
-        if (lastEventID == null)
+        // 시작 이벤트로 설정
+        _curEventData = _currentEventDataDict["Start"];
+        if (_curEventData == null)
         {
-            lastEventID = "Start";
+            Logger.LogError("Start Event is null");
+            return;
         }
-
-        // 현재 이벤트 설정
-        if (_currentEventDataDict.ContainsKey(lastEventID))
-        {
-            _curEventData = _currentEventDataDict[lastEventID];
-        }
-        else
-        {
-            Logger.LogError($"{lastEventID} Event data is empty");
-        }
-
-        // 시작 이벤트는 바로 넘어가기
-        if (lastEventID == "Start")
-        {
-            PlayEvent();
-        }
-        
+        PlayEvent();
     }
 
     public void SetNextEventData()
@@ -68,9 +60,18 @@ public class EventManager : ISaveable
 
     public void PlayEvent()
     {
+        if (_curEventData == null)
+        {
+            Logger.LogError("Current Event Data is null");
+            return;
+        }
 
+        if (_curEventData.EventType == Define.EventType.Unknown)
+        {
+            Managers.Scene.ChangeScene(Define.Scene.EventScene);
+        }
         // check event type
-        if (_curEventData.EventType == Define.EventType.Dialog)
+        else if (_curEventData.EventType == Define.EventType.Dialog)
         {
             PlayDialog();
         }
@@ -84,10 +85,6 @@ public class EventManager : ISaveable
         {
             EndEvent();
             return;
-        }
-        else if (_curEventData.EventType == Define.EventType.Unknown)
-        {
-            
         }
         else
         {
@@ -119,33 +116,6 @@ public class EventManager : ISaveable
     public void EndEvent()
     {
         Managers.Scene.ChangeScene(Define.Scene.House);
-
-        // 다음 이벤트 데이터 세팅
-        SetEventData();
-    }
-
-    public void Add(ISaveable saveable)
-    {
-        throw new NotImplementedException();
-    }
-
-    // 현재 상태를 저장 가능한 객체로 캡처하여 반환
-    public object CaptureState()
-    {
-        var data = new EventSaveData();
-        return data;
-    }
-
-    // 캡처된 상태 객체를 받아와서 현재 상태를 복원
-    public void RestoreState(object state)
-    {
-        var data = state as EventSaveData;
-        if (data == null)
-        {
-            data = new EventSaveData();
-            data.LastEventID = null;
-        }
-        Init(data.LastEventID);
     }
 }
 
