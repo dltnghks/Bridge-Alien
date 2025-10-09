@@ -129,13 +129,6 @@ public class UIPlayerTaskPopup : UIPopup
             return;
         }
 
-        // 일과 수행 확인
-        if (Managers.Daily.IsTask == false)
-        {
-            return;
-        }
-        Managers.Daily.IsTask = false;
-
         // 피로도, 골드 조건 체크
         if (Managers.Player.GetGold() < _selectedTaskData.RequirementGold)
         {
