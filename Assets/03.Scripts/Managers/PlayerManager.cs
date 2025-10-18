@@ -136,7 +136,7 @@ public class PlayerManager : ISaveable
         throw new NotImplementedException();
     }
 
-    public void SaveStageProgress(Define.StageType stageType, int star)
+    public void SaveStageProgress(Define.ChapterType stageType, int star)
     {
         // 최고기록일 때만 갱신
         if (GetStageClearInfo(stageType) < star)
@@ -157,7 +157,7 @@ public class PlayerManager : ISaveable
     }
 
     // 스테이지 클리어 정보 가져오기 - 별 개수
-    public int GetStageClearInfo(Define.StageType stageType)
+    public int GetStageClearInfo(Define.ChapterType stageType)
     {
         if (PlayerData.ClearedStages.ContainsKey(stageType))
         {
@@ -165,6 +165,16 @@ public class PlayerManager : ISaveable
         }
 
         return 0;
+    }
+
+    // 해당 스테이지를 진행한 적이 있는가
+    public bool GetStageProgressedStatus(Define.ChapterType stageType)
+    {
+        if (PlayerData.ClearedStages.ContainsKey(stageType))
+        {
+            return true;
+        }
+        return false;
     }
 
     public object CaptureState()

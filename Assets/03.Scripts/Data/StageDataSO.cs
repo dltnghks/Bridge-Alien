@@ -7,9 +7,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StageData", menuName = "Game/Data/StageData")]
 public class StageDataSO : ScriptableObject
 {
-    public SerializedDictionary<Define.StageType, StageData> stageData;
+    public SerializedDictionary<Define.ChapterType, StageData> stageData;
 
-    public StageData GetStageData(Define.StageType stageType)
+    public StageData GetStageData(Define.ChapterType stageType)
     {
         if (stageData.ContainsKey(stageType))
         {

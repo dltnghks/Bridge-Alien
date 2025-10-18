@@ -9,7 +9,6 @@ public class UIStageStarGroup : UISubItem
         Star1,
         Star2,
         Star3,
-        StageClearIcon,
     }
 
     public override bool Init()
@@ -34,12 +33,6 @@ public class UIStageStarGroup : UISubItem
                 GetImage(i).gameObject.GetComponent<UIActiveButton>().Activate();
             else
                 GetImage(i).gameObject.GetComponent<UIActiveButton>().Deactivate();
-        }
-
-        GetImage((int)Images.StageClearIcon).color = Color.clear;
-        if (starCount > 0)
-        {
-            GetImage((int)Images.StageClearIcon).color = Color.white;
         }
     }
 }

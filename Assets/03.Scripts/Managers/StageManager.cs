@@ -6,16 +6,18 @@ using UnityEngine;
 
 public class StageManager
 {
-    private Define.StageType _currentStageType;
+    private Define.ChapterType _currentStageType;
     private StageData _currentStageData;
+    private bool _isStageCleared = false;
 
     public Action<StageData> OnChangeStage;
 
-    public Define.StageType CurrentStageType => _currentStageType;
+    public Define.ChapterType CurrentStageType => _currentStageType;
 
     public void Init()
     {
         _currentStageData = null;
+        _isStageCleared = false;
     }
 
     public StageData GetCurrentStageData()
@@ -23,13 +25,13 @@ public class StageManager
         if (_currentStageData is null)
         {
             Logger.LogWarning("설정된 스테이지 데이터가 없습니다. 1-1 Stage를 로드합니다.");
-            SetCurrentStage(Define.StageType.Stage1_1);
+            SetCurrentStage(Define.ChapterType.CH1);
             return _currentStageData;
         }
         return _currentStageData;
     }
 
-    public void SetCurrentStage(Define.StageType stageType)
+    public void SetCurrentStage(Define.ChapterType stageType)
     {
         var stageData = Managers.Data.StageData.GetStageData(stageType);
 
@@ -49,8 +51,23 @@ public class StageManager
             return;
         }
 
+        // 클리어 여부 세팅
+        _isStageCleared = false;
+        if (Managers.Player.GetStageClearInfo(_currentStageType) > 0)
+        {
+            _isStageCleared = true;
+        }
+
         // 스테이지 시작 시 이벤트 재생
-        Managers.Event.Init(_currentStageData.EventID);
+        // 클리어했던 스테이지거나 이미 진행한 스테이지인 경우 바로 씬 변경
+        if (Managers.Player.GetStageProgressedStatus(_currentStageType))
+        {
+            Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);
+        }
+        else
+        {
+            Managers.Event.Init(_currentStageData.EventID);
+        }
     }
 
     // 스테이지 클리어 처리, 클리어 결과 별 반환
@@ -72,7 +89,14 @@ public class StageManager
 
     public void EndStage()
     {
-        Managers.Event.Init(_currentStageData.ClearEventID);
+        if (_isStageCleared)
+        {
+            Managers.Scene.ChangeScene(Define.Scene.House);
+        }
+        else
+        {
+            Managers.Event.Init(_currentStageData.ClearEventID);
+        }
     }
 
     public int GetCompleteTotalGold(int starCount)
@@ -86,7 +110,7 @@ public class StageManager
     }
 
     // 현재 스테이지를 진행할 수 있는가 확인
-    public bool IsStageLockStatus(Define.StageType stageType)
+    public bool IsStageLockStatus(Define.ChapterType stageType)
     {
         var stage = Managers.Data.StageData.GetStageData(stageType);
         if (stage.IsLocked == false)
@@ -103,9 +127,9 @@ public class StageManager
         return false;
     }
 
-    public string ToStageString(Define.StageType stageType)
+    public string ToStageString(Define.ChapterType stageType)
     {
-        return stageType.ToString().Replace("Stage", "").Replace('_', '-');
+        return stageType.ToString();
     }
 
 }

@@ -9,7 +9,7 @@ public class StageEditor : EditorWindow
     private Vector2 leftScrollPosition;
     private Vector2 rightScrollPosition;
 
-    private Define.StageType? selectedStageType;
+    private Define.ChapterType? selectedStageType;
 
     private GameObject loadedPrefab;
     private SerializedObject miniGameUnloadSerializedObject;
@@ -27,7 +27,7 @@ public class StageEditor : EditorWindow
         string selectedStageName = EditorPrefs.GetString("StageEditor_SelectedStage", "");
         if (!string.IsNullOrEmpty(selectedStageName))
         {
-            if (System.Enum.TryParse<Define.StageType>(selectedStageName, out var stageType))
+            if (System.Enum.TryParse<Define.ChapterType>(selectedStageName, out var stageType))
             {
                 selectedStageType = stageType;
             }
@@ -80,7 +80,7 @@ public class StageEditor : EditorWindow
         
         if (stageDataSO.stageData == null)
         {
-            stageDataSO.stageData = new AYellowpaper.SerializedCollections.SerializedDictionary<Define.StageType, StageData>();
+            stageDataSO.stageData = new AYellowpaper.SerializedCollections.SerializedDictionary<Define.ChapterType, StageData>();
         }
     }
 
@@ -109,7 +109,7 @@ public class StageEditor : EditorWindow
         // Left Panel
         leftScrollPosition = EditorGUILayout.BeginScrollView(leftScrollPosition, GUILayout.Width(150));
         EditorGUILayout.BeginVertical("box");
-        foreach (Define.StageType stageType in System.Enum.GetValues(typeof(Define.StageType)))
+        foreach (Define.ChapterType stageType in System.Enum.GetValues(typeof(Define.ChapterType)))
         {
             if (GUILayout.Button(stageType.ToString()))
             {
@@ -165,7 +165,7 @@ public class StageEditor : EditorWindow
         }
     }
 
-    private void DrawStageDetails(Define.StageType stageType)
+    private void DrawStageDetails(Define.ChapterType stageType)
     {
         if (!stageDataSO.stageData.ContainsKey(stageType))
         {

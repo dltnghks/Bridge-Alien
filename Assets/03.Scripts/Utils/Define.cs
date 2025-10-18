@@ -195,12 +195,12 @@ public class Define
         SpeedUpSkill,
     }
 
-    public enum StageType
+    public enum ChapterType
     {
-        Stage1_1,
-        Stage1_2,
-        Stage1_3,
-        Stage1_4,
-        Stage1_5,
+        CH1,
+        CH2,
+        CH3,
+        CH4,
+        CH5,
     }
 }

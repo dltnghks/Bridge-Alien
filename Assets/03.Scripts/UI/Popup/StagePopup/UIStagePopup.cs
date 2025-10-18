@@ -11,7 +11,7 @@ public class UIStagePopup : UIPopup
 
     enum Texts
     {
-        StageTitleText,
+        //StageTitleText,
         StageNameText,
         StageDescriptionText,
         StageRewardText,
@@ -76,7 +76,7 @@ public class UIStagePopup : UIPopup
 
         // 스테이지 표시
         string stageText = Managers.Stage.ToStageString(stageType);
-        GetText((int)Texts.StageTitleText).SetText($"Stage {stageText}");
+        //GetText((int)Texts.StageTitleText).SetText($"Stage {stageText}");
 
         // 스테이지 이름 표시
         GetText((int)Texts.StageNameText).SetText(stageData.StageName);

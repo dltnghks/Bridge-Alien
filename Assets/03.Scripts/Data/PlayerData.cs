@@ -17,7 +17,7 @@ public class PlayerData
     public SerializedDictionary<Define.MiniGameSkillType, int> MiniGameUnloadSkillLevel = new SerializedDictionary<Define.MiniGameSkillType, int>();
 
     // StageData, 완료된 스테이지와 별
-    public Dictionary<Define.StageType, int> ClearedStages = new Dictionary<Define.StageType, int>();
+    public Dictionary<Define.ChapterType, int> ClearedStages = new Dictionary<Define.ChapterType, int>();
     public int TotalStars = 0;
 
     public PlayerData()

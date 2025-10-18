@@ -21,7 +21,7 @@ public class UIStageButtonGroup : UISubItem
     {
         Init();
 
-        foreach (Define.StageType stageType in System.Enum.GetValues(typeof(Define.StageType)))
+        foreach (Define.ChapterType stageType in System.Enum.GetValues(typeof(Define.ChapterType)))
         {
             // 버튼이 부족한 경우 중단
             if (_uiStageButtonsList.Length <= (int)stageType)
@@ -38,7 +38,7 @@ public class UIStageButtonGroup : UISubItem
     }
 
     // 스테이지 버튼 그룹의 상태를 업데이트
-    private void UpdateStageButtonState(int index, Define.StageType stageType)
+    private void UpdateStageButtonState(int index, Define.ChapterType stageType)
     {
         // 스테이지 잠금 여부 확인
         if (Managers.Stage.IsStageLockStatus(stageType))
@@ -52,7 +52,7 @@ public class UIStageButtonGroup : UISubItem
     }
 
     // 스테이지 버튼 그룹의 별 개수를 업데이트
-    private void SetStageStars(Define.StageType stageType, bool isLocked)
+    private void SetStageStars(Define.ChapterType stageType, bool isLocked)
     {
         int starCount = Managers.Player.GetStageClearInfo(stageType);
         _uiStageButtonsList[(int)stageType].SetStageButton(starCount);

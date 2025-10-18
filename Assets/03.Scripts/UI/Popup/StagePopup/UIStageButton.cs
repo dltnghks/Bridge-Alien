@@ -16,8 +16,13 @@ public class UIStageButton : UISubItem
         StarGroup,
     }
 
+    enum Images
+    {
+        StageClearIcon,
+    }
+
     [SerializeField]
-    private Define.StageType _stageType;
+    private Define.ChapterType _stageType;
     private UIStageStarGroup _starGroup;
 
     public override bool Init()
@@ -29,6 +34,7 @@ public class UIStageButton : UISubItem
 
         BindText(typeof(Texts));
         BindObject(typeof(Objects));
+        BindImage(typeof(Images));
 
         _starGroup = GetObject((int)Objects.StarGroup).GetOrAddComponent<UIStageStarGroup>();
 
@@ -54,6 +60,16 @@ public class UIStageButton : UISubItem
         string stageText = Managers.Stage.ToStageString(_stageType);
         GetText((int)Texts.StageText).SetText(stageText);
         _starGroup.SetStarCount(starCount);
+        SetStageClearIcon(starCount);
+    }
+
+    public void SetStageClearIcon(int starCount)
+    {
+        GetImage((int)Images.StageClearIcon).color = Color.clear;
+        if (starCount > 0)
+        {
+            GetImage((int)Images.StageClearIcon).color = Color.white;
+        }
     }
 }
 
