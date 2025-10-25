@@ -34,4 +34,16 @@ public class UIActiveButton : UISubItem
         Init();
         _buttonImage.sprite = _deactivateSprite;
     }
+
+    public void SetActive(bool isActive)
+    {
+        if (isActive)
+        {
+            Activate();
+        }
+        else
+        {
+            Deactivate();
+        }
+    }
 }

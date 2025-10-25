@@ -101,7 +101,8 @@ public class UIPlayerStatusPopup : UIPopup
 
     private void SetGravityAdaptationDescText()
     {
-        int value = Managers.Player.GetFatigueReductionRate();
+        // TODO: 중력적응에 대한 효과 설명 수정, 미니게임에서 이동속도가 증가하는 것으로 수정
+        int value = 5;
         string newText = "미니게임 시 소모되는 피로도가 <color=#00FF00>{0}</color>으로 조정된다.";
         GetText((int)Texts.GravityAdaptationDescText).SetText(string.Format(newText, value));
     }

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerManager : ISaveable
 {
+    private const int FatigueMaxValue = 3;
     private static readonly int[] StatThresholds = { 24, 49, 74, 100 };
     public readonly float[] GoldGainRates = { 0f, 0.1f, 0.3f, 0.5f };
     public readonly float[] MoveSpeedBoostRates = { 1f, 1.05f, 1.05f, 1.1f };
@@ -33,18 +34,15 @@ public class PlayerManager : ISaveable
 
     public void AddStats(Define.PlayerStatsType type, int value)
     {
-
+        int maxValue = 100;
         // 피로도 감소의 경우
-        if (type == Define.PlayerStatsType.Fatigue && value < 0)
+        if (type == Define.PlayerStatsType.Fatigue)
         {
-            value = -GetFatigueReductionRate();
+            maxValue = FatigueMaxValue;
         }
 
         PlayerData.Stats[type] += value;
-        PlayerData.Stats[type] = Mathf.Clamp(PlayerData.Stats[type], 0, 100);
-
-        OnPlayerDataChanged?.Invoke();
-
+        PlayerData.Stats[type] = Mathf.Clamp(PlayerData.Stats[type], 0, maxValue);
 
         OnPlayerDataChanged?.Invoke();
     }
@@ -88,15 +86,6 @@ public class PlayerManager : ISaveable
     public int GetGold()
     {
         return PlayerData.PlayerGold;
-    }
-
-    public int GetFatigueReductionRate()
-    {
-        int gravityAdaptation = PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation];
-        if (gravityAdaptation <= StatThresholds[0]) return FatigueReductionRates[0];
-        if (gravityAdaptation <= StatThresholds[1]) return FatigueReductionRates[1];
-        if (gravityAdaptation <= StatThresholds[2]) return FatigueReductionRates[2];
-        return FatigueReductionRates[3];
     }
 
     public float GetGravityAdaptationBounus()

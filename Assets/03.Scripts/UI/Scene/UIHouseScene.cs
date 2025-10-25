@@ -8,9 +8,7 @@ using UnityEngine.UI;
 public class UIHouseScene : UIScene
 {
     enum Texts{
-        DayText,
         GoldText,
-        FatigueText,
     }
 
     enum Buttons
@@ -23,17 +21,11 @@ public class UIHouseScene : UIScene
 
     enum Objects
     {
-        UIFatigue,
-    }
-
-    enum Images
-    {
-        TimeImage,    
+        FatigueIconGroup
     }
 
     private UIPopup _currentPopup = null;
-    private Slider _fatigueSlider;
-
+    private UIFatigueIconGroup _fatigueIconGroup;
     [SerializeField] private Sprite[] _timeImages;
 
     public override bool Init()
@@ -46,13 +38,9 @@ public class UIHouseScene : UIScene
         BindText(typeof(Texts));
         BindButton(typeof(Buttons));
         BindObject(typeof(Objects));
-        BindImage(typeof(Images));
 
-        _fatigueSlider = GetObject((int)Objects.UIFatigue).GetOrAddComponent<Slider>();
-
-        // SetDayText();
-        // SetTimeImage();
-
+        _fatigueIconGroup = GetObject((int)Objects.FatigueIconGroup).GetOrAddComponent<UIFatigueIconGroup>();
+        
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
         GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickWorkModuleButton);
@@ -67,8 +55,6 @@ public class UIHouseScene : UIScene
     public override void UIUpdate()
     {
         base.UIUpdate();
-        //SetDayText();
-        //SetTimeImage();
     }
 
     private void OnClickPlayerStatusButton()
@@ -108,23 +94,7 @@ public class UIHouseScene : UIScene
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         var stagePopup = Managers.UI.ShowPopUI<UIStagePopup>();
         stagePopup.InitStageButtonGroup();
-        //Managers.Daily.StartEvent();
-        //GetButton((int)Buttons.UINextButton).gameObject.SetActive(false);
     }
-
-    // private void SetDayText()
-    // {
-    //     GetText((int)Texts.DayText).SetText($"Day {Managers.Daily.CurrentDate}");
-    // }
-
-    // private void SetTimeImage()
-    // {
-    //     if (_timeImages.Length <= Managers.Daily.CurrentDailyData.Time)
-    //     {
-    //         return;
-    //     }
-    //     GetImage((int)Images.TimeImage).sprite = _timeImages[Managers.Daily.CurrentDailyData.Time]; 
-    // }
     
     private void SetGoldText()
     {
@@ -134,8 +104,7 @@ public class UIHouseScene : UIScene
     private void SetFatigue()
     {
         int curFatigue = Managers.Player.GetStats(Define.PlayerStatsType.Fatigue);
-        GetText((int)Texts.FatigueText).text = $"{curFatigue}/100";
-        _fatigueSlider.DOValue((float)curFatigue / 100f, 0.5f);
+        _fatigueIconGroup.SetFatigue(curFatigue);
     }
 
     private void OnEnable()
