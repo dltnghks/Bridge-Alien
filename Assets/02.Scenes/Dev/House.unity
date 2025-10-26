@@ -617,7 +617,7 @@ SpriteRenderer:
   m_Size: {x: 15.36, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1523299158
@@ -736,6 +736,14 @@ PrefabInstance:
     - target: {fileID: 2114216856627369464, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_Name
       value: UIHouseScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362586078429388375, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3203063356898917785, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchorMax.y

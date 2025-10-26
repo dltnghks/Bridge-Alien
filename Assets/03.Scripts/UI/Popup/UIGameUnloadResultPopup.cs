@@ -91,14 +91,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
 
     private void FinishGame()
     {
-        if (_starCount <= 0)
-        {
-            Managers.Scene.ChangeScene(Define.Scene.House);
-        }
-        else
-        {
-            Managers.Stage.EndStage();
-        }
+        Managers.Stage.EndStage(_starCount);
     }
 
 

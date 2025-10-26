@@ -26,7 +26,7 @@ public class PlayerData
         foreach (Define.PlayerStatsType type in Enum.GetValues(typeof(Define.PlayerStatsType)))
         {
             Logger.Log("PlayerStatData");
-            Stats[type] = 0; // 기본값 초기화
+            Stats[type] = 50; // 기본값 초기화
 
             // 피로도는 최대 3
             if (type == Define.PlayerStatsType.Fatigue)

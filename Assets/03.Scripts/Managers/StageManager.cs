@@ -45,18 +45,25 @@ public class StageManager
 
     public void StartStage()
     {
+        Logger.Log("Stage Start");
+        if (_currentStageData is null)
+        {
+            Logger.LogError("설정된 스테이지 데이터가 없습니다.");
+            return;
+        }
+
         if (_isStageStarted)
         {
             Logger.LogWarning("이미 스테이지가 시작되었습니다.");
             return;
         }
-
         _isStageStarted = true;
 
-        Logger.Log("Stage Start");
-        if (_currentStageData is null)
+        int fatigue = Managers.Player.GetStats(Define.PlayerStatsType.Fatigue);
+        if (fatigue <= 0)
         {
-            Logger.LogError("설정된 스테이지 데이터가 없습니다.");
+            Logger.Log("피로도가 부족하여 스테이지를 시작할 수 없습니다.");
+            _isStageStarted = false;
             return;
         }
 
@@ -83,7 +90,7 @@ public class StageManager
     }
 
     // 스테이지 클리어 처리, 클리어 결과 별 반환
-    public int CompleteStage(int playerScore)
+    public int CompleteStage(int playerScore, int preStarCount)
     {
         Logger.Log($"Stage Complete! Score : {playerScore}");
         int starCount = 0;
@@ -96,21 +103,25 @@ public class StageManager
             }
         }
 
+        // 새로 추가된 별 개수만큼 피로도 회복
+        Managers.Player.AddStats(Define.PlayerStatsType.Experience, starCount - preStarCount);
+
         return starCount;
     }
 
-    public void EndStage()
+    public void EndStage(int starCount)
     {
-        if (_isStageCleared)
+        _isStageStarted = false;
+        // 이미 클리어했거나 별 개수가 0인 경우(챕터 클리어 실패)에는 바로 집으로 이동 
+        if (_isStageCleared || starCount == 0)
         {
             Managers.Scene.ChangeScene(Define.Scene.House);
         }
         else
         {
+            Managers.Player.FillFatigue(); // 피로도 최대치 회복
             Managers.Event.Init(_currentStageData.ClearEventID);
         }
-
-        _isStageStarted = false;
     }
 
     public int GetCompleteTotalGold(int starCount)

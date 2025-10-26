@@ -45,13 +45,18 @@ public class PlayerManager : ISaveable
         OnPlayerDataChanged?.Invoke();
     }
 
+    public void FillFatigue()
+    {
+        AddStats(Define.PlayerStatsType.Fatigue, FatigueMaxValue);
+    }
+
     public float GetExperienceStatsBonus()
     {
         // 작업 숙련으로 인한 획득 점수 증가
         float playerExperience = PlayerData.Stats[Define.PlayerStatsType.Experience];
         // 5단위로 나누어서 보너스 적용, 0~4-> 0, 5~9->5 ...
-        playerExperience /= 5;
-        return playerExperience * 5;
+        playerExperience = (playerExperience / 5f) / 100f;
+        return playerExperience;
     }
 
     public float GetFatigueStatsPenalty()
