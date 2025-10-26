@@ -8,8 +8,6 @@ public class PlayerManager : ISaveable
 {
     private const int FatigueMaxValue = 3;
     private static readonly int[] StatThresholds = { 24, 49, 74, 100 };
-    public readonly float[] GoldGainRates = { 0f, 0.1f, 0.3f, 0.5f };
-    public readonly float[] MoveSpeedBoostRates = { 1f, 1.05f, 1.05f, 1.1f };
     public readonly int[] FatigueReductionRates = { 30, 25, 20, 20 };
 
     public PlayerData PlayerData { get; private set; }
@@ -49,12 +47,11 @@ public class PlayerManager : ISaveable
 
     public float GetExperienceStatsBonus()
     {
-        // 작업 숙련으로 인한 획득 골드 증가
-        int playerExperience = PlayerData.Stats[Define.PlayerStatsType.Experience];
-        if (playerExperience <= StatThresholds[0]) return GoldGainRates[0];
-        if (playerExperience <= StatThresholds[1]) return GoldGainRates[1];
-        if (playerExperience <= StatThresholds[2]) return GoldGainRates[2];
-        return GoldGainRates[3];
+        // 작업 숙련으로 인한 획득 점수 증가
+        float playerExperience = PlayerData.Stats[Define.PlayerStatsType.Experience];
+        // 5단위로 나누어서 보너스 적용, 0~4-> 0, 5~9->5 ...
+        playerExperience /= 5;
+        return playerExperience * 5;
     }
 
     public float GetFatigueStatsPenalty()
@@ -63,6 +60,13 @@ public class PlayerManager : ISaveable
         if (playerFatigue <= 0) return 0.9f;
         if (playerFatigue <= 30) return 0.5f;
         return 0;
+    }
+    public float GetGravityAdaptationBounus()
+    {
+        float gravityAdaptation = PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation];
+        // 50 => 1.25, 100 => 1.25 ...
+        gravityAdaptation = (gravityAdaptation * 0.25f / 100f) + 1f;
+        return gravityAdaptation;
     }
 
     public float AddGold(int gold)
@@ -86,15 +90,6 @@ public class PlayerManager : ISaveable
     public int GetGold()
     {
         return PlayerData.PlayerGold;
-    }
-
-    public float GetGravityAdaptationBounus()
-    {
-        int gravityAdaptation = PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation];
-        if (gravityAdaptation <= StatThresholds[0]) return MoveSpeedBoostRates[0];
-        if (gravityAdaptation <= StatThresholds[1]) return MoveSpeedBoostRates[1];
-        if (gravityAdaptation <= StatThresholds[2]) return MoveSpeedBoostRates[2];
-        return MoveSpeedBoostRates[3];
     }
 
     public int GetSkillLevel(Define.MiniGameSkillType skillType)

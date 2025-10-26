@@ -162,13 +162,13 @@ public class Player : MonoBehaviour
         }
 
         // Rigidbody를 통한 이동
-        Vector3 horizontalVelocity = movement * moveSpeed;
+        Vector3 horizontalVelocity = movement * MoveSpeed;
         horizontalVelocity.y = rb.velocity.y;  // 기존 수직 속도 유지
         rb.velocity = horizontalVelocity;
         rb.angularVelocity = Vector3.zero;
             
         // 캐릭터 애니메이터 업데이트
-        characterAnimator.UpdateMovement(movement.magnitude * moveSpeed);
+        characterAnimator.UpdateMovement(movement.magnitude * MoveSpeed);
     }
 
     public void PlayWinPose()
@@ -200,5 +200,10 @@ public class Player : MonoBehaviour
     public void SpeedUp(float speedBoost)
     {
         moveSpeed += speedBoost;
+    }
+
+    public void SpeedUpMultiplier(float multiplier)
+    {
+        moveAdditionalMultiplier *= multiplier;
     }
 }

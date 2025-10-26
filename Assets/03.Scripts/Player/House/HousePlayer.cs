@@ -59,7 +59,7 @@ public class HousePlayer : Player
         {
             // 목표를 향해 속도 설정
             Vector2 direction = (target - currentPosition).normalized;
-            rb.velocity = direction * moveSpeed;
+            rb.velocity = direction * MoveSpeed;
             _animator.UpdateSpeed(rb.velocity.magnitude);
             FlipCharacter(rb.velocity.x);
         }

@@ -6,14 +6,13 @@ using UnityEngine;
 public class SpeedUpSkill : DurationSkill, IRegainable
 {
     private Player _playerCharacter; // 플레이어 캐릭터 참조
-    private float speedBoost;
+    private float speedBoost = 1.1f;
 
     public override void Initialize(ISkillContext context)
     {
         MGUSkillContext mguSkillContext = context as MGUSkillContext;
 
         _playerCharacter = mguSkillContext.Player;
-        speedBoost = _playerCharacter.MoveSpeed * 0.1f; // 속도 증가량 설정
         OnActiveStateChanged += mguSkillContext.SetSpeedUpSkillAction;
 
         base.Initialize(context); // 부모 클래스의 초기화 호출
@@ -50,7 +49,7 @@ public class SpeedUpSkill : DurationSkill, IRegainable
         base.OnActivate();
         OnActiveStateChanged?.Invoke(true);
         currentDuration = skillData.MaxDuration;
-        _playerCharacter.SpeedUp(speedBoost); // 플레이어 속도 증가
+        _playerCharacter.SpeedUpMultiplier(speedBoost); // 플레이어 속도 증가
 
         Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.SpeedUpSkill.ToString(), gameObject);
     }
@@ -58,7 +57,7 @@ public class SpeedUpSkill : DurationSkill, IRegainable
     protected override void EndSkill()
     {
         base.EndSkill();
-        _playerCharacter.SpeedUp(-speedBoost); // 플레이어 속도 초기화
+        _playerCharacter.SpeedUpMultiplier(1/speedBoost); // 플레이어 속도 초기화
     }
 
 }

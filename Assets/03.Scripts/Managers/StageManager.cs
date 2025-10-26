@@ -9,6 +9,7 @@ public class StageManager
     private Define.ChapterType _currentStageType;
     private StageData _currentStageData;
     private bool _isStageCleared = false;
+    private bool _isStageStarted = false;
 
     public Action<StageData> OnChangeStage;
 
@@ -44,6 +45,14 @@ public class StageManager
 
     public void StartStage()
     {
+        if (_isStageStarted)
+        {
+            Logger.LogWarning("이미 스테이지가 시작되었습니다.");
+            return;
+        }
+
+        _isStageStarted = true;
+
         Logger.Log("Stage Start");
         if (_currentStageData is null)
         {
@@ -100,6 +109,8 @@ public class StageManager
         {
             Managers.Event.Init(_currentStageData.ClearEventID);
         }
+
+        _isStageStarted = false;
     }
 
     public int GetCompleteTotalGold(int starCount)

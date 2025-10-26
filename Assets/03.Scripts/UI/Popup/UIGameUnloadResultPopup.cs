@@ -13,6 +13,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         MiniGameTypeText,       // 미니게임 종류
         WorkerNameText,         // 이름
         StatsBonusText,         // 스탯 보너스
+        StatsBonusScoreText,    // 스탯 보너스 점수
         TotalGoldText,              // 총합
         Star1ScoreText,
         Star2ScoreText,
@@ -67,6 +68,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         var textIndices = new[] {
             (int)Texts.ScoreText,
             (int)Texts.StatsBonusText,
+            (int)Texts.StatsBonusScoreText,
             (int)Texts.TotalGoldText,
         };
 
@@ -195,22 +197,33 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     {
         TextMeshProUGUI bonusText = GetText((int)Texts.StatsBonusText);
         TextMeshProUGUI scoreText = GetText((int)Texts.ScoreText);
+        TextMeshProUGUI bonusScoreText = GetText((int)Texts.StatsBonusScoreText);
 
         Sequence bonusSequence = DOTween.Sequence();
 
-        bonusSequence.Append(DOVirtual.Color(bonusText.color, Color.blue, 0.0f, value =>
+        // 보너스 텍스트와 점수 표시    
+        bonusSequence.Append(DOVirtual.Color(bonusText.color, new Color(0, 0.7293525f, 1), 0.0f, value =>
         {
             bonusText.color = value;
+            bonusScoreText.color = value;
+            bonusScoreText.SetText("");
         }));
 
-        // 이동 후 지우기
-        //Vector2 targetPos = new Vector3(20, 20, 0);
+        // 보너스 점수가 등장하며 위쪽으로 이동 후 사라지기
+        bonusSequence.Append(DOVirtual.Vector3(bonusText.transform.localPosition, bonusText.transform.localPosition + new Vector3(0, 30, 0), 0.1f, value =>
+        {
+            bonusText.transform.localPosition = value;
+        }));
 
-        // bonusSequence.Append(DOVirtual.Vector2(bonusText.rectTransform.anchoredPosition, targetPos, 0.5f, value =>
-        // {
-        //     bonusText.rectTransform.anchoredPosition = value;
-        // })).OnComplete(() => bonusText.color = Color.clear);
+        bonusSequence.Join(bonusText.DOColor(Color.clear, 0.5f));
 
+        bonusSequence.Join(DOVirtual.Int(0, bonuse, 1.5f, value =>
+        {
+            bonusScoreText.SetText($"+ {value}");
+        })).SetEase(Ease.InQuad);
+
+
+        // 최종 점수 표시
         bonusSequence.Append(DOVirtual.Int(score, score + bonuse, 2f, value =>
             {
                 scoreText.SetText($"Score : {value}");

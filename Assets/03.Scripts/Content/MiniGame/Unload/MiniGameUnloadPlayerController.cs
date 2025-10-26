@@ -47,7 +47,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     {
         Player = player;
         _unloadPlayer = Player as MiniGameUnloadPlayer;
-        _unloadPlayer.SpeedUp(_moveSpeedBonus);
+        _unloadPlayer.SpeedUpMultiplier(_moveSpeedBonus);
 
         _boxList.SetBoxList(3);
         InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
