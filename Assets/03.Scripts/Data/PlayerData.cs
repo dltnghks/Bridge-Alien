@@ -20,6 +20,9 @@ public class PlayerData
     public Dictionary<Define.ChapterType, int> ClearedStages = new Dictionary<Define.ChapterType, int>();
     public int TotalStars = 0;
 
+    // 피로도 회복 시간
+    public DateTime FatigueRecoveryTime;
+
     public PlayerData()
     {
         // 스탯 초기화
@@ -42,6 +45,9 @@ public class PlayerData
         }
 
         TotalStars = 0;
+
+        // 피로도회복 시간 초기화
+        FatigueRecoveryTime = DateTime.Now;
     }
     
 }
