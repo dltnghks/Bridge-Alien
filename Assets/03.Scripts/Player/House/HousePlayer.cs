@@ -29,13 +29,43 @@ public class HousePlayer : Player
             // 터치가 시작되는 순간을 감지
             if (touch.phase == TouchPhase.Began)
             {
-                // 여기에 터치 시 실행할 코드를 작성하세요.
-                Vector2 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (movementArea.bounds.Contains(touchPosition))
-                {
-                    _targetPosition = touchPosition;
-                }
+                HandleInput(touch.position);
             }
+        }
+
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0))
+        {
+            HandleInput(Input.mousePosition);
+        }
+#endif        
+    }
+    
+    /**
+    * 화면 좌표(screenPosition)를 받아 Raycast를 수행하는 공통 함수
+    */
+    private void HandleInput(Vector2 screenPosition)
+    {
+        // 1. 화면 좌표를 월드 좌표로 변환
+        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+        
+        // 2. Raycast 발사
+        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
+
+        // 3. 오브젝트 터치 확인
+        if (hit.collider != null)
+        {
+            GameObject touchedObject = hit.collider.gameObject;
+            Debug.Log("입력 감지: " + touchedObject.name);
+            // 여기에 오브젝트 터치 시 로직
+
+            hit.collider.gameObject.GetComponent<IHouseInteractiveObject>()?.Interact(this);
+        }
+
+        // 이동을 위한 타겟 위치 설정
+        if (movementArea.bounds.Contains(worldPosition))
+        {
+            _targetPosition = worldPosition;
         }
     }
 
