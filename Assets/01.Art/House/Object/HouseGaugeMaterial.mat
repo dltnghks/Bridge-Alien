@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HouseGaugeMaterial
-  m_Shader: {fileID: 4800000, guid: 744e7c89cf951d74699530633cf91d84, type: 3}
+  m_Shader: {fileID: 4800000, guid: 7ee7b5fc3a8778b4bb24f621da5f6b1a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -82,7 +82,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SegmentCount: 10
+    - _SegmentCount: 30
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
