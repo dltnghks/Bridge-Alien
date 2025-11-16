@@ -5,11 +5,12 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 
-public class HouseBedObject : MonoBehaviour, IHouseInteractiveObject
+public class HouseBedObject : MonoBehaviour, IInteractable
 {
     [Header("피로도 회복 시간 (분)")]
     [SerializeField]
     private float _totalRecoveryTime = 30f;
+    private float _restTime = 5f;
     
     
     [Header("UI 요소")]
@@ -38,31 +39,54 @@ public class HouseBedObject : MonoBehaviour, IHouseInteractiveObject
         return true;
     }
 
-    public void Interact(HousePlayer player)
+    public string GetInteractionPrompt()
     {
+        return "휴식하기";
+    }
+
+    public void Interact(Interactor interactor)
+    {
+        HousePlayer player = interactor.GetComponent<HousePlayer>();
         Logger.Log("OnClickRestButton");
         if (!CanInteract())
             return;
 
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
 
-        // 클릭 시 플레이어 이동 후 애니메이션, 아이콘 변경
+        // Start the interaction sequence as a coroutine
+        StartCoroutine(PerformInteractionSequence(player));
+    }
+
+    private IEnumerator PerformInteractionSequence(HousePlayer player)
+    {
+        // 1. Initiate player movement
         player.MoveToTarget(transform);
+
+        // 2. Wait until the player reaches the target position
+        // Using a small tolerance for floating-point comparison
+        float arrivalThreshold = 1f; // Adjust this value based on your game's needs
+
+        while (Vector3.Distance(player.transform.position, transform.position) > arrivalThreshold)
+        {
+            yield return null; // Wait for the next frame before checking again
+        }
+
+        // 3. Player has reached the target position, perform actions
         player.Rest(true);
-        // 애니메이션이 종료되면 피로도 회복 및 타이머 진행
+        SetInUseIcon();
 
-        //DOTween
-
-        EndInteract();
+        // 4. Initiate the delayed actions (5 seconds later) using DOTween
+        DOVirtual.DelayedCall(_restTime, () =>
+        {
+            player.Rest(false);
+            EndInteract();
+        });
     }
 
     private void EndInteract()
     {
         Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, 1);
         Managers.Player.PlayerData.FatigueRecoveryTime = DateTime.Now + TimeSpan.FromMinutes(_totalRecoveryTime);
-
-        SetInUseIcon();
-        player.Rest(false);
 
         StartCoroutine(StartTimer());
     }

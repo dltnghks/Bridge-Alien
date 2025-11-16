@@ -34,7 +34,7 @@ public class PlayerData
             // 피로도는 최대 3
             if (type == Define.PlayerStatsType.Fatigue)
             {
-                Stats[type] = 3;
+                Stats[type] = 1;
             }
         }
 

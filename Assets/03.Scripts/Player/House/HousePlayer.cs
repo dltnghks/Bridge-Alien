@@ -9,10 +9,13 @@ public class HousePlayer : Player
     private Vector2? _targetPosition;
     private Vector3 _initialScale;
 
+    private bool _isInteract;
+
     public void Start()
     {
         base.Start();
         
+        _isInteract = false;
         rb.useGravity = false;
         _animator = GetComponent<HousePlayerAnimator>();
         _initialScale = transform.localScale;
@@ -20,6 +23,8 @@ public class HousePlayer : Player
 
     private void Update()
     {
+        if(_isInteract == true) return;
+
         // 화면에 터치가 하나 이상 감지되면
         if (Input.touchCount > 0)
         {
@@ -41,11 +46,24 @@ public class HousePlayer : Player
 #endif        
     }
 
+    // 상호작용으로 타겟에게 이동하기 때문에 조건 체크해서 다른 상호작용 불가능하도록 하기
     public void MoveToTarget(Transform target)
     {
+        if(_isInteract == true) return;
+        
         HandleInput(target.position);
     }
-    
+
+    public void StartInteract()
+    {
+        _isInteract = true;
+    }
+
+    public void EndInteract()
+    {
+        _isInteract = false;
+    }
+
     /**
     * 화면 좌표(screenPosition)를 받아 Raycast를 수행하는 공통 함수
     */
@@ -56,16 +74,6 @@ public class HousePlayer : Player
         
         // 2. Raycast 발사
         RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
-
-        // 3. 오브젝트 터치 확인
-        if (hit.collider != null)
-        {
-            GameObject touchedObject = hit.collider.gameObject;
-            Debug.Log("입력 감지: " + touchedObject.name);
-            // 여기에 오브젝트 터치 시 로직
-
-            hit.collider.gameObject.GetComponent<IHouseInteractiveObject>()?.Interact(this);
-        }
 
         // 이동을 위한 타겟 위치 설정
         if (movementArea.bounds.Contains(worldPosition))
