@@ -40,6 +40,11 @@ public class HousePlayer : Player
         }
 #endif        
     }
+
+    public void MoveToTarget(Transform target)
+    {
+        HandleInput(target.position);
+    }
     
     /**
     * 화면 좌표(screenPosition)를 받아 Raycast를 수행하는 공통 함수
@@ -119,6 +124,11 @@ public class HousePlayer : Player
         {
             transform.localScale = new Vector3(-Mathf.Abs(_initialScale.x), _initialScale.y, _initialScale.z);
         }
+    }
+
+    public void Rest(bool value)
+    {
+        _animator.Rest(value);
     }
 }
 

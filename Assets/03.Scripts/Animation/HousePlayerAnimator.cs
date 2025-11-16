@@ -7,8 +7,9 @@ using UnityEngine;
 public class HousePlayerAnimator : MonoBehaviour
 {
     private Animator _animator;
-    private static readonly int IsMovingHash = Animator.StringToHash("IsMoving");
-    private static readonly int MoveSpeedHash = Animator.StringToHash("MoveSpeed");
+    protected static readonly int IsMovingHash = Animator.StringToHash("IsMoving");
+    protected static readonly int MoveSpeedHash = Animator.StringToHash("MoveSpeed");
+    protected static readonly string PARAM_IS_REST = "IsRest";
 
     private void Awake()
     {
@@ -26,5 +27,12 @@ public class HousePlayerAnimator : MonoBehaviour
         // 이동 여부와 속도를 애니메이터에 전달
         _animator.SetBool(IsMovingHash, speed > 0.001f);
         _animator.SetFloat(MoveSpeedHash, speed);
+    }
+
+    public void Rest(bool value)
+    {
+        if (!_animator) return;
+
+        _animator.SetBool(PARAM_IS_REST, value);
     }
 }

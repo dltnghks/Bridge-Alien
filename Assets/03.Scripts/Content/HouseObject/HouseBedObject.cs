@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class HouseBedObject : MonoBehaviour, IHouseInteractiveObject
 {
@@ -12,11 +13,13 @@ public class HouseBedObject : MonoBehaviour, IHouseInteractiveObject
     
     
     [Header("UI 요소")]
-    [SerializeField]
-    private TextMeshPro _restRecoveryTimeText;
+    [SerializeField] private TextMeshPro _restRecoveryTimeText;
 
-    [SerializeField]
-    private SpriteRenderer _progressBarFill;
+    [Header("상호작용 이미지")]
+    [SerializeField] private SpriteRenderer _progressBarFill;
+    [SerializeField] private SpriteRenderer _clickIcon;
+    [SerializeField] private SpriteRenderer _inUseIcon;
+
 
     public void Start()
     {
@@ -37,20 +40,36 @@ public class HouseBedObject : MonoBehaviour, IHouseInteractiveObject
 
     public void Interact(HousePlayer player)
     {
-        // 플레이어 재우기
-        // 피로도 회복
         Logger.Log("OnClickRestButton");
         if (!CanInteract())
             return;
 
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+
+        // 클릭 시 플레이어 이동 후 애니메이션, 아이콘 변경
+        player.MoveToTarget(transform);
+        player.Rest(true);
+        // 애니메이션이 종료되면 피로도 회복 및 타이머 진행
+
+        //DOTween
+
+        EndInteract();
+    }
+
+    private void EndInteract()
+    {
         Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, 1);
         Managers.Player.PlayerData.FatigueRecoveryTime = DateTime.Now + TimeSpan.FromMinutes(_totalRecoveryTime);
+
+        SetInUseIcon();
+        player.Rest(false);
+
         StartCoroutine(StartTimer());
     }
 
     private IEnumerator StartTimer()
     {
+        SetActiveProgressBar();
         DateTime targetTime = Managers.Player.PlayerData.FatigueRecoveryTime;
         while (DateTime.Now < targetTime)
         {
@@ -71,7 +90,34 @@ public class HouseBedObject : MonoBehaviour, IHouseInteractiveObject
             yield return new WaitForSeconds(1f);
         }
 
-        // 타이머가 종료되면 텍스트 초기화
+        EndTimer();
+    }
+
+    // 타이머가 종료되면 상호작용 아이콘 띄우기
+    private void EndTimer()
+    {
+        SetClickIcon();
         _restRecoveryTimeText.SetText("휴식하기");
+    }
+
+    private void SetActiveProgressBar()
+    {
+        _progressBarFill.gameObject.SetActive(true);
+        _clickIcon.gameObject.SetActive(false);
+        _inUseIcon.gameObject.SetActive(false);
+    }
+
+    private void SetClickIcon()
+    {
+        _progressBarFill.gameObject.SetActive(false);
+        _clickIcon.gameObject.SetActive(true);
+        _inUseIcon.gameObject.SetActive(false);
+    }
+
+    private void SetInUseIcon()
+    {
+        _progressBarFill.gameObject.SetActive(false);
+        _clickIcon.gameObject.SetActive(false);
+        _inUseIcon.gameObject.SetActive(true);
     }
 }
