@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class HouseBedObject : MonoBehaviour, IInteractable
 {
+    public int Priority => 0;
+
     [Header("피로도 회복 시간 (분)")]
     [SerializeField]
     private float _totalRecoveryTime = 30f;
@@ -21,9 +23,10 @@ public class HouseBedObject : MonoBehaviour, IInteractable
     [SerializeField] private SpriteRenderer _clickIcon;
     [SerializeField] private SpriteRenderer _inUseIcon;
 
-
+    private bool _isInteract = false;
     public void Start()
     {
+        _isInteract = false;
         // 타이머 동작
         StartCoroutine(StartTimer());
 
@@ -36,6 +39,13 @@ public class HouseBedObject : MonoBehaviour, IInteractable
         {
             return false;
         }
+
+        if (!_isInteract)
+        {
+            return false;
+        }
+
+        _isInteract = false;
         return true;
     }
 
@@ -46,49 +56,51 @@ public class HouseBedObject : MonoBehaviour, IInteractable
 
     public void Interact(Interactor interactor)
     {
+
         HousePlayer player = interactor.GetComponent<HousePlayer>();
         Logger.Log("OnClickRestButton");
         if (!CanInteract())
+        {
+            interactor.InteractionComplete();
             return;
+        }
 
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
 
         // Start the interaction sequence as a coroutine
-        StartCoroutine(PerformInteractionSequence(player));
+        StartCoroutine(PerformInteractionSequence(player, interactor));
     }
 
-    private IEnumerator PerformInteractionSequence(HousePlayer player)
+    private IEnumerator PerformInteractionSequence(HousePlayer player, Interactor interactor)
     {
-        // 1. Initiate player movement
-        player.MoveToTarget(transform);
-
-        // 2. Wait until the player reaches the target position
-        // Using a small tolerance for floating-point comparison
-        float arrivalThreshold = 1f; // Adjust this value based on your game's needs
+        float arrivalThreshold = 1f;
 
         while (Vector3.Distance(player.transform.position, transform.position) > arrivalThreshold)
         {
-            yield return null; // Wait for the next frame before checking again
+            player.MoveToTarget(transform);
+            yield return null; 
         }
 
-        // 3. Player has reached the target position, perform actions
+        // Player has reached the target position, perform actions
         player.Rest(true);
         SetInUseIcon();
 
-        // 4. Initiate the delayed actions (5 seconds later) using DOTween
+        // Initiate the delayed actions (5 seconds later) using DOTween
         DOVirtual.DelayedCall(_restTime, () =>
         {
             player.Rest(false);
-            EndInteract();
+            EndInteract(interactor);
         });
     }
 
-    private void EndInteract()
+    private void EndInteract(Interactor interactor)
     {
         Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, 1);
         Managers.Player.PlayerData.FatigueRecoveryTime = DateTime.Now + TimeSpan.FromMinutes(_totalRecoveryTime);
 
         StartCoroutine(StartTimer());
+        
+        interactor.InteractionComplete();
     }
 
     private IEnumerator StartTimer()
@@ -121,7 +133,8 @@ public class HouseBedObject : MonoBehaviour, IInteractable
     private void EndTimer()
     {
         SetClickIcon();
-        _restRecoveryTimeText.SetText("휴식하기");
+        _isInteract = true;
+        //_restRecoveryTimeText.SetText("휴식하기");
     }
 
     private void SetActiveProgressBar()

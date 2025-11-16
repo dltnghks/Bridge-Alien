@@ -6,13 +6,18 @@ using UnityEngine;
 public interface IInteractable
 {
     /// <summary>
+    /// The priority of the interaction. Higher values take precedence.
+    /// </summary>
+    public int Priority { get; }
+    
+    /// <summary>
     /// The core action to perform when the object is interacted with.
     /// </summary>
-    void Interact(Interactor interactor);
+    public void Interact(Interactor interactor);
 
     /// <summary>
     /// Gets the text prompt to display to the user (e.g., "Open Door", "Rest").
     /// </summary>
     /// <returns>The interaction prompt string.</returns>
-    string GetInteractionPrompt();
+    public string GetInteractionPrompt();
 }

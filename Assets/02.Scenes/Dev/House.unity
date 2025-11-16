@@ -201,7 +201,8 @@ GameObject:
   - component: {fileID: 350180875}
   - component: {fileID: 350180874}
   - component: {fileID: 350180873}
-  m_Layer: 2
+  - component: {fileID: 350180876}
+  m_Layer: 3
   m_Name: Area
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -224,7 +225,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: -1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -320,6 +321,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1523299159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &350180876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350180872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd81821530be0ac4f9c20ac73b805f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &437363047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1127,7 @@ GameObject:
   - component: {fileID: 9014721156779529124}
   - component: {fileID: 9014721156779529126}
   - component: {fileID: 9014721156779529125}
+  - component: {fileID: 9014721156779529127}
   m_Layer: 0
   m_Name: HousePlayer
   m_TagString: Player
@@ -1202,37 +1216,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1292885222}
     m_Modifications:
-    - target: {fileID: 2045153187627529403, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2045153187627529403, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 3069709785343003718, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
       propertyPath: m_Name
       value: Bed
-      objectReference: {fileID: 0}
-    - target: {fileID: 4288318186338816933, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5822692442059886041, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6462104137747359885, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7488228052167381784, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7488228052167381784, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8810333736228118511, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1317,7 +1303,6 @@ MonoBehaviour:
   rayDistance: 1
   enableFlip: 1
   isHit: 0
-  movementArea: {fileID: 350180873}
 --- !u!114 &9014721156779529124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,6 +1363,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9014721156779529127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820566472544858261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d79ebeb6850b54f9b0de4c24afc023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _eventCamera: {fileID: 1818265092}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

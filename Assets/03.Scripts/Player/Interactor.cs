@@ -11,7 +11,9 @@ public class Interactor : MonoBehaviour
 
     // A reference to the camera for screen-to-world point conversion.
     // Assign this in the Inspector if it's not the main camera.
-    [SerializeField] private Camera _eventCamera; 
+    [SerializeField] private Camera _eventCamera;
+
+    private bool _isInteracting = false;
 
     private void Awake()
     {
@@ -26,9 +28,24 @@ public class Interactor : MonoBehaviour
     {
         HandleInteractionInput();
     }
+    
+    /// <summary>
+    /// Call this method to signal that the current interaction is complete.
+    /// </summary>
+    public void InteractionComplete()
+    {
+        _isInteracting = false;
+        Debug.Log("Interaction complete. Ready for new interactions.");
+    }
 
     private void HandleInteractionInput()
     {
+        // 이미 상호작용 중이면 새로운 입력을 처리하지 않음
+        if (_isInteracting)
+        {
+            return;
+        }
+        
         Vector2 screenPosition = Vector2.zero;
         bool inputDetected = false;
 
@@ -51,31 +68,34 @@ public class Interactor : MonoBehaviour
 
         if (inputDetected)
         {
-            // 1. 화면 좌표를 월드 좌표로 변환 (2D Raycast용)
+            // 1. 화면 좌표를 월드 좌표로 변환 (2D)
             Vector2 worldPosition = _eventCamera.ScreenToWorldPoint(screenPosition);
-            
-            // 2. Raycast 발사
-            // Mathf.Infinity 대신 interactionRange를 사용하거나, 2D에서는 필요 없을 수 있음.
-            // 여기서는 무한대로 설정하여 터치 지점의 모든 콜라이더를 검사.
-            RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, Mathf.Infinity, interactionLayer);
 
-            // 3. 오브젝트 터치/클릭 확인
-            if (hit.collider != null)
+            // 2. 해당 지점의 모든 콜라이더를 검출
+            Collider2D[] colliders = Physics2D.OverlapPointAll(worldPosition, interactionLayer);
+
+            IInteractable highestPriorityInteractable = null;
+            int maxPriority = int.MinValue;
+
+            // 3. 검출된 콜라이더 중에서 우선순위가 가장 높은 IInteractable 찾기
+            foreach (var collider in colliders)
             {
-                GameObject touchedObject = hit.collider.gameObject;
-                Debug.Log("입력 감지: " + touchedObject.name);
+                if (collider.TryGetComponent<IInteractable>(out IInteractable interactable))
+                {
+                    if (interactable.Priority > maxPriority)
+                    {
+                        maxPriority = interactable.Priority;
+                        highestPriorityInteractable = interactable;
+                    }
+                }
+            }
 
-                // 터치/클릭된 오브젝트가 IInteractable 인터페이스를 가지고 있는지 확인
-                if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
-                {
-                    Debug.Log("Found and Interacting with: " + interactable.GetInteractionPrompt());
-                    // IInteractable 오브젝트를 찾으면 즉시 상호작용 실행
-                    interactable.Interact(this);
-                }
-                else
-                {
-                    Debug.Log("Touched/Clicked object is not interactable: " + touchedObject.name);
-                }
+            // 4. 가장 우선순위가 높은 오브젝트와 상호작용
+            if (highestPriorityInteractable != null)
+            {
+                _isInteracting = true;
+                Debug.Log("Starting interaction with: " + highestPriorityInteractable.GetInteractionPrompt());
+                highestPriorityInteractable.Interact(this);
             }
             else
             {
