@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1545937407314956395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8592614552422913510}
+  - component: {fileID: 6803002155712786820}
+  m_Layer: 0
+  m_Name: Chapter 1_Tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8592614552422913510
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545937407314956395}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7631007966366282745}
+  - {fileID: 1548162002405801108}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6803002155712786820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545937407314956395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c7ac6f58057f6429a036ca497ec105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steps: []
+  guideTextUI: {fileID: 0}
+  currentStepIndex: 0
+  currentStep: {fileID: 0}
+--- !u!1 &4504033498522849929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7631007966366282745}
+  - component: {fileID: 4258062287338114726}
+  - component: {fileID: 5419353414839723091}
+  m_Layer: 0
+  m_Name: Step01_CreateBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7631007966366282745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504033498522849929}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8592614552422913510}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4258062287338114726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504033498522849929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructionText: "\uBC15\uC2A4\uAC00 \uC0DD\uC131\uB429\uB2C8\uB2E4."
+  targetInteractableTag: Spawn Box
+  autoFinishDelay: 0.5
+  onStepStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MiniGameUnloadBoxSpawnPoint, Assembly-CSharp
+        m_MethodName: SpawnBox
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5419353414839723091}
+          m_ObjectArgumentAssemblyTypeName: BoxTypeDecision, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4258062287338114726}
+        m_TargetAssemblyTypeName: GeneralTutorialStep, Assembly-CSharp
+        m_MethodName: CompleteStep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isConditionMet: 0
+--- !u!114 &5419353414839723091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504033498522849929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36abd8a66ff60c14b877728b531e62ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoxType: 1
+  BoxRegion: 0
+--- !u!1 &8855058320248883322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548162002405801108}
+  - component: {fileID: 7007836645331295366}
+  - component: {fileID: 3751186836193557892}
+  m_Layer: 0
+  m_Name: Step02_CreateBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1548162002405801108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855058320248883322}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8592614552422913510}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7007836645331295366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855058320248883322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructionText: "\uBC15\uC2A4\uAC00 \uC0DD\uC131\uB429\uB2C8\uB2E4."
+  targetInteractableTag: Spawn Box
+  autoFinishDelay: 10
+  onStepStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: MiniGameUnloadBoxSpawnPoint, Assembly-CSharp
+        m_MethodName: SpawnBox
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 3751186836193557892}
+          m_ObjectArgumentAssemblyTypeName: BoxTypeDecision, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7007836645331295366}
+        m_TargetAssemblyTypeName: GeneralTutorialStep, Assembly-CSharp
+        m_MethodName: CompleteStep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isConditionMet: 0
+--- !u!114 &3751186836193557892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855058320248883322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36abd8a66ff60c14b877728b531e62ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoxType: 3
+  BoxRegion: 0
