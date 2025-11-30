@@ -15,24 +15,24 @@ public class MiniGameUnloadBoxPreview : MonoBehaviour
 
     public void SetBoxPreview(float boxSpawnInterval, GameObject[] boxPrefabList)
     {
-        if (_timer == null)
-            _timer = new TimerBase();
+        // if (_timer == null)
+        //     _timer = new TimerBase();
 
-        _boxSpawnInterval = boxSpawnInterval;
-        //_miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
+        // _boxSpawnInterval = boxSpawnInterval;
+        // //_miniGameUnloadBoxSpawnPoint = miniGameUnloadBoxSpawnPoint;
 
-        _timer.OffTimer();
-        _timer.SetTimer(_boxSpawnInterval);
-        _timer.OnEndTime = CreateInGameBox;
+        // _timer.OffTimer();
+        // _timer.SetTimer(_boxSpawnInterval);
+        // _timer.OnEndTime = CreateInGameBox;
 
-        _previewQueue.Clear();
-        _previewQueue.Enqueue(null);
+        // _previewQueue.Clear();
+        // _previewQueue.Enqueue(null);
 
-        _boxPrefabList = boxPrefabList;
-        // 박스 만들기
-        CreatePreviewBox();
+        // _boxPrefabList = boxPrefabList;
+        // // 박스 만들기
+        // CreatePreviewBox();
 
-        DequeueBox();
+        // DequeueBox();
 
         // // 게임 시작 => 박스 max까지 채워두기
         // while (_previewQueue.Count > 0) {
