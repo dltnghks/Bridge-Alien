@@ -25,15 +25,18 @@ public abstract class DurationSkill : SkillBase
 
     protected virtual void Update()
     {
-        if (isActive && !Managers.MiniGame.CurrentGame.IsPause)
+        // 활성화되지 않은 상태이거나 동작이 불가능한 사태인 경우
+        if (!isActive || !Managers.MiniGame.IsAcitvePlayer)
         {
-            currentDuration -= Time.deltaTime;
-            OnCooldownChanged?.Invoke(currentDuration, skillData.MaxDuration);
+            return;
+        }
+        
+        currentDuration -= Time.deltaTime;
+        OnCooldownChanged?.Invoke(currentDuration, skillData.MaxDuration);
 
-            if (currentDuration <= 0)
-            {
-                EndSkill();
-            }
+        if (currentDuration <= 0)
+        {
+            EndSkill();
         }
     }
 
@@ -53,5 +56,5 @@ public abstract class DurationSkill : SkillBase
         // 스킬 종료 후 필요한 로직
     }
 
-    public override bool CanUseSkill() => isReady && !isActive && currentDuration != 0;
+    public override bool CanUseSkill() => isReady && !isActive && currentDuration != 0 && Managers.MiniGame.IsAcitveObject;
 }

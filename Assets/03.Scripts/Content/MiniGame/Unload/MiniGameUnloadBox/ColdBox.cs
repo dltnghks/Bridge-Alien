@@ -52,7 +52,7 @@ public class ColdBox : MiniGameUnloadBox
 
         while (timer < coolingTime)
         {
-            if (Managers.MiniGame.CurrentGame.IsPause)
+            if (!Managers.MiniGame.IsAcitvePlayer)
             {
                 yield return null; // 일시정지 상태에서는 대기
                 continue;

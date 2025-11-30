@@ -27,5 +27,5 @@ public abstract class ChargeSkill : SkillBase
     }
 
     
-    public override bool CanUseSkill() => remainingCharges > 0 && !isActive;
+    public override bool CanUseSkill() => remainingCharges > 0 && !isActive && Managers.MiniGame.IsAcitveObject;
 }

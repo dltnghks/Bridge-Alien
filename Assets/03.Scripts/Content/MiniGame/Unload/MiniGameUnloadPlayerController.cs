@@ -76,7 +76,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
 
     public void OnSkill(int skillIndex)
     {
-        if (Managers.MiniGame.CurrentGame.IsPause)
+        if (!Managers.MiniGame.IsAcitvePlayer)
         {
             return;
         }
@@ -105,7 +105,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
 
     public void InputJoyStick(Vector2 input)
     {
-        if (Managers.MiniGame.CurrentGame.IsPause)
+        if (!Managers.MiniGame.IsAcitvePlayer)
         {
             return;
         }
@@ -117,7 +117,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
 
     public void Interaction()
     {
-        if (Managers.MiniGame.CurrentGame.IsPause)
+        if (!Managers.MiniGame.IsAcitvePlayer)
         {
             return;
         }

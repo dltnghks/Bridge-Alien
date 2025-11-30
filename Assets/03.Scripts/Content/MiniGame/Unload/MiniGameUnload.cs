@@ -25,6 +25,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
+    public bool IsTutorialActive {get; set;}
 
     public Player PlayerCharacter { get; set; }
     public IPlayerController PlayerController { get; set; }
@@ -46,7 +47,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private void Update()
     {
-        if (!IsActive || IsPause)
+        if (!Managers.MiniGame.IsAcitveObject)
         {
             return;
         }
@@ -56,6 +57,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public void Initialize()
     {
+        IsActive = false;
+        IsPause = false;
+        IsTutorialActive = false;
+
         SetGameInfo();
 
         SetReturnPoint();
@@ -87,23 +92,21 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         // 게임 활성화
         IsActive = true;
-
-        StartTutorial();
+        ResumeGame();
+        
+        // 스테이지를 처음 진행하는 경우 튜토리얼 진행
+        if (Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] == false){
+            StartTutorial();
+        }
     }
 
     public void StartTutorial()
     {
-        // 도움말을 처음보는 경우 띄워주기
-        if (Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] == false)
-        {
-            Managers.UI.ClosePopupUI();
-            Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] = true;
-
-            // TODO. Stage별로 튜토리얼 보여주기.
-            // string stageName = Managers.Stage.GetCurrentStageData().StageName;
-            // Managers.UI.ShowPopUI<UITutorialPopup>($"Tutorial/{stageName}");
-            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
-        }
+        IsTutorialActive = true;
+        Managers.UI.ClosePopupUI();
+        Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] = true;
+        
+        TutorialManager.Instance.StartTutorial();
     }
 
     private void SetGameInfo()
@@ -318,7 +321,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public bool PauseGame()
     {
-        if (!IsActive || IsPause)
+        if (!IsActive)
         {
             Logger.LogWarning("Not Active MiniGame");
             return false;
@@ -330,7 +333,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public void ResumeGame()
     {
-        if (!IsActive || !IsPause)
+        if (!IsActive)
         {
             Logger.LogWarning("Not Active MiniGame");
             return;

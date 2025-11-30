@@ -8,6 +8,16 @@ public class MiniGameManager : MonoBehaviour, ISaveable
     private GameObject _gameUI;
     public bool[] MiniGameTutorial = new bool[(int)Define.MiniGameType.Delivery + 1];
 
+    public bool IsAcitveObject
+    {
+        get {return Managers.MiniGame.CurrentGame.IsActive && !Managers.MiniGame.CurrentGame.IsPause && !Managers.MiniGame.CurrentGame.IsTutorialActive; }
+    }
+
+    public bool IsAcitvePlayer
+    {
+        get {return Managers.MiniGame.CurrentGame.IsActive && !Managers.MiniGame.CurrentGame.IsPause; }
+    }
+
     public IMiniGame CurrentGame
     {
         get { return _currentGame; }
