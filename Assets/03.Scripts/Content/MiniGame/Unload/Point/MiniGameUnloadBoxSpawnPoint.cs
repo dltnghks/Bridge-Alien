@@ -42,7 +42,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
 
     public void Update()
     {
-        if (!Managers.MiniGame.CurrentGame.IsActive || Managers.MiniGame.CurrentGame.IsPause)
+        if (!Managers.MiniGame.IsAcitveObject)
             return;
 
         if (CanSpawnBox())
@@ -92,6 +92,41 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
 
         newBox.SetRandomInfo();
+        newBox.SetInGameActive(false);
+
+        if (!newBox.gameObject.activeSelf && BoxList.TryPush(newBox))
+        {
+            _boxHeight += _boxHeightOffset;
+            Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
+
+            // z-ordering, 겹치면 렌더링 충돌나서 z를 살짝 조절, 위로 올라갈수록 앞으로
+            spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
+
+            newBox.SetSpawnBox(spawnPos);
+        }
+    }
+
+    public void SpawnBox(BoxTypeDecision boxTypeDecision)
+    {
+        Logger.Log("SpawnBox");
+        if (!CanSpawnBox())
+        {
+            return;
+        }
+
+        Define.BoxType boxType = boxTypeDecision.BoxType;
+        if(boxType == Define.BoxType.Unknown)
+        {
+            int randomIndex = Random.Range(0, _spawnBoxType.Length);
+            boxType = _spawnBoxType[randomIndex];
+        }
+
+        GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{boxType}Box", transform);
+        MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+
+        newBox.SetRandomInfo();
+        // 지역만 지정
+        newBox.SetRegion(boxTypeDecision.BoxRegion);
         newBox.SetInGameActive(false);
 
         if (!newBox.gameObject.activeSelf && BoxList.TryPush(newBox))

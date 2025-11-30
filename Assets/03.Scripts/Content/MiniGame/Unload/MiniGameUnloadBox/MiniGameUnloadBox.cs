@@ -37,6 +37,12 @@ public struct MiniGameUnloadBoxInfo
 
         Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.D + 1); // 지역 선택
     }
+
+    public void SetRegion(Define.BoxRegion region)
+    {
+        Logger.Log("region : " + region);
+        Region = (Define.BoxRegion)System.Math.Clamp((int)region, (int)Define.BoxRegion.A, (int)Define.BoxRegion.D); // 지역 선택
+    }
     
     private string GenerateRandomString()
     {
@@ -197,6 +203,11 @@ public class MiniGameUnloadBox : MonoBehaviour
 
         boxRigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
+    }
+
+    public void SetRegion(Define.BoxRegion region)
+    {
+        _info.SetRegion(region);
     }
 
     public void SetReturnSticker(bool value)

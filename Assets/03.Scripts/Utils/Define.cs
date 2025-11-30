@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -35,6 +36,7 @@ public class Define
         Delivery,
     }
 
+    [Serializable]
     public enum BoxType
     {
         Unknown,
