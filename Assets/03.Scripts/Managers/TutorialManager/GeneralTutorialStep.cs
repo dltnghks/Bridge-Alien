@@ -19,9 +19,8 @@ public class GeneralTutorialStep : TutorialStep // 아까 만든 부모 클래�
     public override void OnEnter()
     {
         // 1. 매니저에 허용 태그 설정
-        if (TutorialManager.Instance != null)
-            TutorialManager.Instance.AllowedInteractableTag = targetInteractableTag;
-
+        // TutorialManager.Instance.AllowedInteractableTag = targetInteractableTag;
+        Logger.Log($"Tutorial Step Started: Allowed Tag = {targetInteractableTag}");
         // 2. 이벤트 실행 (예: 상자 생성 함수 호출)
         onStepStart?.Invoke();
     }

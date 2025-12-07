@@ -121,6 +121,12 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         {
             return;
         }
+        
+        var interactionPoint = FindNearestValidPoint();
+        if(interactionPoint == null)
+        {
+            return;
+        }
 
         switch ((MiniGameUnloadInteractionAction)InteractionActionNumber)
         {
@@ -138,6 +144,28 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         }
 
         OnBoxListChanged?.Invoke(_boxList.BoxList);
+
+        var interactionObject = interactionPoint.GetComponent<InteractableObject>();
+        if(TutorialManager.Instance != null)
+        {
+            string myTag = interactionObject.myTag; 
+            string allowed = TutorialManager.Instance.AllowedInteractableTag;
+
+            Logger.Log($"MyTag: {myTag}, AllowedTag: {allowed}");
+            
+            // 허용된 태그가 비어있지 않은데, 내 태그랑 다르다면 무시
+            if (!string.IsNullOrEmpty(allowed) && allowed != myTag)
+            {
+                Logger.Log("지금은 이 오브젝트와 상호작용할 수 없습니다.");
+                return; 
+            }
+            // 허용된 오브젝트이면
+            else
+            {
+                Logger.Log("허용된 오브젝트와 상호작용 완료.");
+                TutorialManager.Instance.CompleteCurrentStep();
+            }
+        }
     }
 
     public bool ChangeInteraction(int actionNum)

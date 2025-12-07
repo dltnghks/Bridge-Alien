@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class MiniGameUnloadBasePoint : MonoBehaviour
 {
     public Define.BoxState[] AllowedTypes; // 허용할 상자 타입 배열
-
     public Action<int> OnTriggerAction;
     public Action<int, MiniGameUnloadBox> OnScoreAction;
 

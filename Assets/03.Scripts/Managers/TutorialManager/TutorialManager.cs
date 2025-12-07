@@ -14,7 +14,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TutorialStep currentStep;
 
     // 2. 상호작용 제한을 위한 '허용된 타겟' ID
-    public string AllowedInteractableTag { get; set; } = ""; 
+    public string AllowedInteractableTag; 
 
     void Awake() => Instance = this;
 
@@ -66,10 +66,25 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-        Logger.Log($"Tutorial Step {index + 1} Start");
+        Logger.Log($"Tutorial Step {index} Start");
         currentStep = steps[index];
         guideTextUI.text = currentStep.instructionText; // UI 업데이트
         currentStep.OnEnter();
+    }
+
+    public void CompleteCurrentStep()
+    {
+        if (currentStep != null)
+        {
+            Logger.Log($"Tutorial Step {currentStepIndex + 1} Completed");
+            currentStep.OnExit();
+            currentStepIndex++;
+            
+            if (currentStepIndex < steps.Count)
+                StartStep(currentStepIndex);
+            else
+                EndTutorial();
+        }
     }
 
     void EndTutorial()
