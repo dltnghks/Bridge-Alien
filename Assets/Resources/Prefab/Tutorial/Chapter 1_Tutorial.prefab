@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uC774\uBC88\uC5D0\uB294 \uD2B9\uBCC4\uD55C \uC0C1\uC790\uC57C."
-  targetInteractableTag: Truck1
+  targetInteractableTag: 
   autoFinishDelay: 0.5
   onStepStart:
     m_PersistentCalls:
@@ -60,7 +60,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MiniGameUnloadBoxSpawnPoint, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SpawnBox
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 7815289609941854955}
@@ -72,7 +72,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MiniGameUnloadBoxSpawnPoint, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SpawnBox
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1036176750275127134}
@@ -159,7 +159,7 @@ MonoBehaviour:
     \uC131\uACF5\uD558\uBA74 \uCF64\uBCF4 \uBCF4\uB108\uC2A4 \uC810\uC218\uB97C \uD68D\uB4DD\uD560
     \uC218 \uC788\uC5B4."
   targetInteractableTag: ConveyB
-  autoFinishDelay: 150
+  autoFinishDelay: 0
   onStepStart:
     m_PersistentCalls:
       m_Calls: []
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instructionText: "\uAC00\uAE4C\uC774 \uAC00\uC11C \uC0C1\uC790\uB97C \uC9D1\uC5B4\uBD10."
   targetInteractableTag: Truck1
-  autoFinishDelay: 150
+  autoFinishDelay: 0
   onStepStart:
     m_PersistentCalls:
       m_Calls: []
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 8987059216087188524}
   - component: {fileID: 8005633249405711727}
   m_Layer: 0
-  m_Name: Step05_PickUpBox (1)
+  m_Name: Step05_PickUpBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,11 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uBE68\uAC04\uC0C9 \uCDE8\uAE09 \uC8FC\uC758 \uC0C1\uC790\uB294
-    \uAE68\uC9C0\uC9C0 \uC54A\uAC8C \uBC18\uB4DC\uC2DC \uB9E8 \uB9C8\uC9C0\uB9C9\uC73C\uB85C
-    \uB193\uC544\uC57C \uB3FC. \uD55C\uBC88 \uD574\uBD10."
+  instructionText: "\uC774\uBC88\uC5D0\uB294 \uD2B9\uBCC4\uD55C \uC0C1\uC790\uC57C."
   targetInteractableTag: Truck1
-  autoFinishDelay: 150
+  autoFinishDelay: 0
   onStepStart:
     m_PersistentCalls:
       m_Calls: []
@@ -316,11 +314,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1568546162046737021}
   - {fileID: 7631007966366282745}
   - {fileID: 4089740031211125240}
   - {fileID: 537871765100454600}
   - {fileID: 3224700550069252731}
   - {fileID: 8987059216087188524}
+  - {fileID: 741092924616196300}
   - {fileID: 1931061775882864180}
   - {fileID: 3792920074366326979}
   - {fileID: 1548162002405801108}
@@ -340,10 +340,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steps: []
+  tutorialUI: {fileID: 3918748047168065174}
   guideTextUI: {fileID: 6040224247898765015}
   currentStepIndex: 0
   currentStep: {fileID: 0}
-  AllowedInteractableTag: 
 --- !u!1 &3918748047168065174
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1960557125102799462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -491,9 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uD558\uCC28\uD2B8\uB7ED\uC5D0\uC11C\uB294 \uBC30\uC1A1\uC2DC\uCF1C\uC57C
-    \uD558\uB294 \uC0C1\uC790\uB4E4\uC774 \uB4F1\uC7A5\uD574."
-  targetInteractableTag: Truck1
+  instructionText: "\uAC00\uAE4C\uC774 \uAC00\uC11C \uC0C1\uC790\uB97C \uC9D1\uC5B4\uBD10."
+  targetInteractableTag: 
   autoFinishDelay: 0.5
   onStepStart:
     m_PersistentCalls:
@@ -575,9 +574,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: 
+  instructionText: "\uBE68\uAC04\uC0C9 \uCDE8\uAE09 \uC8FC\uC758 \uC0C1\uC790\uB294
+    \uAE68\uC9C0\uC9C0 \uC54A\uAC8C \uBC18\uB4DC\uC2DC \uB9E8 \uB9C8\uC9C0\uB9C9\uC73C\uB85C
+    \uB193\uC544\uC57C \uB3FC. \uD55C\uBC88 \uD574\uBD10."
   targetInteractableTag: ConveyB
-  autoFinishDelay: 150
+  autoFinishDelay: 0
+  onStepStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExit:
+    m_PersistentCalls:
+      m_Calls: []
+  isConditionMet: 0
+--- !u!1 &4665207058700609392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741092924616196300}
+  - component: {fileID: 1507218829180913472}
+  m_Layer: 0
+  m_Name: Step05_PickUpBox (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741092924616196300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665207058700609392}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8592614552422913510}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1507218829180913472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665207058700609392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructionText: "\uC774\uBC88\uC5D0\uB294 \uD2B9\uBCC4\uD55C \uC0C1\uC790\uC57C."
+  targetInteractableTag: Truck1
+  autoFinishDelay: 0
   onStepStart:
     m_PersistentCalls:
       m_Calls: []
@@ -734,7 +792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1309420583471508363
@@ -775,6 +833,64 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6894062786404278951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1568546162046737021}
+  - component: {fileID: 4036231888981366521}
+  m_Layer: 0
+  m_Name: Step00_Start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1568546162046737021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894062786404278951}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8592614552422913510}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4036231888981366521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894062786404278951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructionText: "\uD558\uCC28\uD2B8\uB7ED\uC5D0\uC11C\uB294 \uBC30\uC1A1\uC2DC\uCF1C\uC57C
+    \uD558\uB294 \uC0C1\uC790\uB4E4\uC774 \uB4F1\uC7A5\uD574."
+  targetInteractableTag: 
+  autoFinishDelay: 1.5
+  onStepStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExit:
+    m_PersistentCalls:
+      m_Calls: []
+  isConditionMet: 0
 --- !u!1 &7255165172009369354
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +938,7 @@ MonoBehaviour:
   instructionText: "\uC62C\uBC14\uB978 \uBC30\uC1A1\uC9C0\uC5ED\uC73C\uB85C \uC0C1\uC790\uB97C
     \uC774\uB3D9\uC2DC\uCF1C."
   targetInteractableTag: ConveyA
-  autoFinishDelay: 150
+  autoFinishDelay: 0
   onStepStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1052,7 +1168,7 @@ MonoBehaviour:
   instructionText: "\uC774\uC81C \uAE30\uBCF8\uC801\uC778\uAC74 \uC54C\uB824\uC92C\uC73C\uB2C8
     \uB098\uBA38\uC9C4 \uB108\uAC00 \uC54C\uC544\uC11C \uD574\uBD10."
   targetInteractableTag: Spawn Box
-  autoFinishDelay: 10
+  autoFinishDelay: 3
   onStepStart:
     m_PersistentCalls:
       m_Calls: []

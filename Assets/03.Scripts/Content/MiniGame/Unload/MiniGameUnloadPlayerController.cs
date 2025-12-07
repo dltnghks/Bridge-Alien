@@ -20,6 +20,7 @@ public enum MiniGameUnloadInteractionAction
 public class MiniGameUnloadPlayerController : IPlayerController, ISkillController
 {
     private MiniGameUnloadBoxList _boxList = new MiniGameUnloadBoxList();
+    private float _interactionRange = 5f;
     private float _boxHeight = 0f;
     private float _boxOffset = 0.8f;
     private float _moveSpeedReductionRatio = 2.0f;
@@ -28,6 +29,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     private UnityAction<List<MiniGameUnloadBox>> OnBoxListChanged;
     private bool _isPointsCached;
     private MiniGameUnloadPlayer _unloadPlayer;
+    private MiniGameUnloadBasePoint _interactionObject = null;
     public Player Player { get; set ; }
     public int InteractionActionNumber { get; set; }
     public bool IsDropBox { get; set; }
@@ -117,13 +119,19 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
 
     public void Interaction()
     {
-        if (!Managers.MiniGame.IsAcitvePlayer)
+        if (!Managers.MiniGame.IsAcitvePlayer || InteractionActionNumber == (int)MiniGameUnloadInteractionAction.None)
         {
             return;
         }
         
-        var interactionPoint = FindNearestValidPoint();
+        FindNearestValidPoint();
+        var interactionPoint = _interactionObject;
         if(interactionPoint == null)
+        {
+            return;
+        }
+
+        if(!CheckTutorialObject())
         {
             return;
         }
@@ -131,6 +139,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         switch ((MiniGameUnloadInteractionAction)InteractionActionNumber)
         {
             case MiniGameUnloadInteractionAction.None:
+                Logger.LogWarning($"{InteractionActionNumber} : Undefined Interaction");
                 break;
             case MiniGameUnloadInteractionAction.PickUpBox:
                 PickupBox();
@@ -144,28 +153,34 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         }
 
         OnBoxListChanged?.Invoke(_boxList.BoxList);
+    }
 
-        var interactionObject = interactionPoint.GetComponent<InteractableObject>();
-        if(TutorialManager.Instance != null)
+    private bool CheckTutorialObject()
+    {
+        if(TutorialManager.Instance != null && Managers.MiniGame.CurrentGame.IsTutorialActive)
         {
+            var interactionObject = _interactionObject.GetComponent<InteractableObject>();
             string myTag = interactionObject.myTag; 
             string allowed = TutorialManager.Instance.AllowedInteractableTag;
 
-            Logger.Log($"MyTag: {myTag}, AllowedTag: {allowed}");
+            Logger.Log($"MyTag: {myTag}, AllowedTag: {allowed} {myTag==allowed}");
             
             // 허용된 태그가 비어있지 않은데, 내 태그랑 다르다면 무시
-            if (!string.IsNullOrEmpty(allowed) && allowed != myTag)
+            if (allowed == "" || allowed != myTag)
             {
                 Logger.Log("지금은 이 오브젝트와 상호작용할 수 없습니다.");
-                return; 
+                return false; 
             }
             // 허용된 오브젝트이면
             else
             {
                 Logger.Log("허용된 오브젝트와 상호작용 완료.");
                 TutorialManager.Instance.CompleteCurrentStep();
+                return true;
             }
         }
+        
+        return true;
     }
 
     public bool ChangeInteraction(int actionNum)
@@ -189,7 +204,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
             return;
         }
 
-        MiniGameUnloadBasePoint nearestPoint = FindNearestValidPoint();
+        MiniGameUnloadBasePoint nearestPoint = _interactionObject;
         MiniGameUnloadBox pickupBox = null;
         // 3. 포인트별 처리 (스폰포인트/냉동포인트 등)
         if (nearestPoint != null)
@@ -236,8 +251,9 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     private void DropBox()
     {
         if (_boxList.IsEmpty) return;
+        Logger.Log("Drop Box");
 
-        MiniGameUnloadBasePoint nearestPoint = FindNearestValidPoint();
+        MiniGameUnloadBasePoint nearestPoint = _interactionObject;
         if (nearestPoint == null)
         {
             Debug.Log("포인트가 감지되지 않음");
@@ -327,19 +343,20 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     }
 
 
-    private MiniGameUnloadBasePoint FindNearestValidPoint()
+    private void FindNearestValidPoint()
     {
         MiniGameUnloadBasePoint nearest = null;
         float minDist = float.MaxValue;
         foreach (var point in _cachedPoints)
         {
             float dist = Vector3.Distance(Player.transform.position, point.transform.position);
-            if (dist < minDist)
+            if (dist < minDist && dist <= _interactionRange)
             {
                 minDist = dist;
                 nearest = point;
             }
         }
-        return nearest;
+        _interactionObject = nearest;
+        //return nearest;
     }
 }

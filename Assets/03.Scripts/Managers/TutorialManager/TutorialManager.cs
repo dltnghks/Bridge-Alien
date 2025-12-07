@@ -8,18 +8,20 @@ public class TutorialManager : MonoBehaviour
     public static TutorialManager Instance { get; private set; }
 
     public List<TutorialStep> steps; // 인스펙터에서 순서대로 등록
+    public GameObject tutorialUI; // 튜토리얼 UI 오브젝트
     public TextMeshProUGUI guideTextUI; // UI 텍스트
 
     [SerializeField] private int currentStepIndex = 0;
     [SerializeField] private TutorialStep currentStep;
 
     // 2. 상호작용 제한을 위한 '허용된 타겟' ID
-    public string AllowedInteractableTag; 
+    public string AllowedInteractableTag { get; set; } = "";
 
     void Awake() => Instance = this;
 
     public void Init()
     {
+        tutorialUI.SetActive(false);
         currentStepIndex = 0;
         currentStep = null;
 
@@ -32,6 +34,7 @@ public class TutorialManager : MonoBehaviour
     {
         Init();
 
+        tutorialUI.SetActive(true);
         if (steps.Count > 0)
         {
             Logger.Log("Tutorial Started");
@@ -76,7 +79,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (currentStep != null)
         {
-            Logger.Log($"Tutorial Step {currentStepIndex + 1} Completed");
+            Logger.Log($"Tutorial Step {currentStepIndex} Completed");
             currentStep.OnExit();
             currentStepIndex++;
             
