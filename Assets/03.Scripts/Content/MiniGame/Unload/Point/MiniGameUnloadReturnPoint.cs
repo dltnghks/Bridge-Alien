@@ -45,6 +45,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
     {
         box.SetSpawnBox(_returnTransform.position);
         box.SetInGameActive(true, _returnTransform.position);
+        box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
         box.transform.DOMove(_dropTransform.position, 1f)
             .OnComplete(() =>
