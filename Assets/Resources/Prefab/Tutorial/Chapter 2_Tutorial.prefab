@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4089740031211125240}
   - component: {fileID: 3608481103832977975}
   m_Layer: 0
-  m_Name: Step02_PickUpBox
+  m_Name: Step02_PickUpBox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 8987059216087188524}
   - component: {fileID: 8005633249405711727}
   m_Layer: 0
-  m_Name: Step05_PickUpBox
+  m_Name: Step05_PickUpBox_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,6 @@ Transform:
   - {fileID: 4089740031211125240}
   - {fileID: 8708802411104792975}
   - {fileID: 5037033785746452922}
-  - {fileID: 537871765100454600}
   - {fileID: 3224700550069252731}
   - {fileID: 8987059216087188524}
   - {fileID: 5368760701171693726}
@@ -377,7 +376,7 @@ GameObject:
   - component: {fileID: 5037033785746452922}
   - component: {fileID: 7646247026610097889}
   m_Layer: 0
-  m_Name: Step03_MoveToA (2)
+  m_Name: Step03_MoveToA_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +435,7 @@ GameObject:
   - component: {fileID: 4258062287338114726}
   - component: {fileID: 5419353414839723091}
   m_Layer: 0
-  m_Name: Step01_CreateBox
+  m_Name: Step01_CreateBox_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,7 +520,7 @@ GameObject:
   - component: {fileID: 4931028487546825790}
   - component: {fileID: 8288078850219429447}
   m_Layer: 0
-  m_Name: Step01_CreateBox (1)
+  m_Name: Step01_CreateBox_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,7 +604,7 @@ GameObject:
   - component: {fileID: 5368760701171693726}
   - component: {fileID: 773763155478263370}
   m_Layer: 0
-  m_Name: Step05_MoveToA (3)
+  m_Name: Step05_MoveToA_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -899,65 +898,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isConditionMet: 0
---- !u!1 &7255165172009369354
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 537871765100454600}
-  - component: {fileID: 6738284401030306403}
-  m_Layer: 0
-  m_Name: Step03_MoveToA
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &537871765100454600
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7255165172009369354}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8592614552422913510}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6738284401030306403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7255165172009369354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  instructionText: "\uD3D0\uAE30 \uC7A5\uCE58\uB294 \uC0C1\uC790 3\uAC1C\uBD80\uD130
-    \uC790\uB3D9\uC73C\uB85C \uC791\uB3D9\uD558\uACE0 \uBC18\uB824\uB418\uC9C0 \uC54A\uC740
-    \uC0C1\uC790\uB4E4\uB3C4 \uD3D0\uAE30\uCC98\uB9AC\uAC00 \uAC00\uB2A5\uD574."
-  targetInteractableTag: ConveyA
-  autoFinishDelay: 3
-  onStepStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onStepExecute:
-    m_PersistentCalls:
-      m_Calls: []
-  onStepExit:
-    m_PersistentCalls:
-      m_Calls: []
-  isConditionMet: 0
 --- !u!1 &7592261926779440758
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,7 +909,7 @@ GameObject:
   - component: {fileID: 7631438172648114201}
   - component: {fileID: 4494193300147627965}
   m_Layer: 0
-  m_Name: Step02_PickUpBox (1)
+  m_Name: Step02_PickUpBox_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1163,7 +1103,7 @@ GameObject:
   - component: {fileID: 8708802411104792975}
   - component: {fileID: 8065836387110571803}
   m_Layer: 0
-  m_Name: Step03_MoveToA (1)
+  m_Name: Step03_MoveToA_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

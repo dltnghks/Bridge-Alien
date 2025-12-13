@@ -2553,58 +2553,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2036399409513034513}
     m_Modifications:
-    - target: {fileID: 890804246789884780, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step02_PickUpBox_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1145832003118968159, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step05_PickUpBox_1
-      objectReference: {fileID: 0}
     - target: {fileID: 1545937407314956395, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
       propertyPath: m_Name
       value: Chapter 2_Tutorial
-      objectReference: {fileID: 0}
-    - target: {fileID: 4167056335940107796, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step03_MoveToA_2
       objectReference: {fileID: 0}
     - target: {fileID: 4258062287338114726, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
       propertyPath: onStepExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3286933182483125853}
-    - target: {fileID: 4504033498522849929, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step01_CreateBox_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4679446499405357187, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step01_CreateBox_2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4754905822985288451, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step05_MoveToA_2
-      objectReference: {fileID: 0}
     - target: {fileID: 4931028487546825790, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
       propertyPath: onStepExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3286933182483125853}
-    - target: {fileID: 7255165172009369354, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step04_MoveToA
-      objectReference: {fileID: 0}
-    - target: {fileID: 7592261926779440758, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step02_PickUpBox_1
-      objectReference: {fileID: 0}
     - target: {fileID: 7752509424027994498, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
       propertyPath: onStepExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7949769270141331561}
-    - target: {fileID: 7852847524722797169, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
-      propertyPath: m_Name
-      value: Step03_MoveToA_1
-      objectReference: {fileID: 0}
     - target: {fileID: 8592614552422913510, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2646,8 +2610,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7255165172009369354, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 795406c8967cbb34c87661c1ce436be7, type: 3}
