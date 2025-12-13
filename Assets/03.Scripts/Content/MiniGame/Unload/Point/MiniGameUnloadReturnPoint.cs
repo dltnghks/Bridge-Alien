@@ -43,6 +43,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
     // 박스를 드롭 지점으로 이동 후 boxList에 추가
     private void MoveBoxToDropPoint(MiniGameUnloadBox box)
     {
+        box.SetSpawnBox(_returnTransform.position);
         box.SetInGameActive(true, _returnTransform.position);
 
         box.transform.DOMove(_dropTransform.position, 1f)
@@ -54,8 +55,9 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 
                 // z-ordering, 겹치면 렌더링 충돌나서 z를 살짝 조절, 위로 올라갈수록 앞으로
                 spawnPos.z += -(_boxHeight / ((float)_boxList.MaxUnloadBoxIndex * 100f));
-                box.SetInGameActive(true, spawnPos);
+                box.transform.position = spawnPos;
             });
+
     }
 
     // IBoxPlaceable: 다른 포인트에서 박스 반송 요청
@@ -74,6 +76,21 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
         
 
         StartCoroutine(AutoSpawnBox());
+    }
+
+    public void PlaceBoxInstantly(MiniGameUnloadBox box)
+    {
+        box.BoxState = Define.BoxState.Disposal;
+        _returnBoxQueue.Enqueue(box);
+
+        // box에 반송 스티커 붙이기
+        box.SetReturnSticker(true);
+
+        if (_returnBoxQueue.Count > 0)
+        {
+            MiniGameUnloadBox returnBox = _returnBoxQueue.Dequeue();
+            MoveBoxToDropPoint(returnBox);
+        }
     }
 
     // 트리거 영역 진입/탈출 시 플레이어 상호작용 변경
@@ -120,5 +137,20 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
                 OnScoreAction?.Invoke(-50, null);
             }
         }
+    }
+
+    public void SpawnBox(BoxTypeDecision boxTypeDecision)
+    {
+        Logger.Log("SpawnBox");
+
+        Define.BoxType boxType = boxTypeDecision.BoxType;
+
+        GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{boxType}Box", transform);
+        MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+
+        newBox.SetRandomInfo();
+        newBox.SetRegion(boxTypeDecision.BoxRegion);
+        newBox.SetInGameActive(true);
+        PlaceBoxInstantly(newBox);
     }
 }
