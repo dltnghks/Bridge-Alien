@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 5606774074011473931}
   - component: {fileID: 3954267650014620670}
   m_Layer: 0
-  m_Name: UIMGUTutorialPopup
+  m_Name: UIMGUTutorialPopup_CH3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,12 +461,8 @@ MonoBehaviour:
   IsBlurBG: 1
   IsBlurBGInputEnable: 1
   _tutorialImages:
-  - {fileID: 21300000, guid: eb7ac32fb684b354abad2e9a8dc7afe2, type: 3}
-  - {fileID: 21300000, guid: 9ace078fda6ff334ca38a430ff913d13, type: 3}
-  - {fileID: 21300000, guid: 7bc2c6dec0c16e1468e81ae86b9108c3, type: 3}
-  - {fileID: 21300000, guid: 1bc410993f69fd94bb7a73292e595c0e, type: 3}
-  - {fileID: 21300000, guid: 9da6be1f74f2bbd4eb65bf06aa10a481, type: 3}
-  - {fileID: 21300000, guid: 42089deb0b00811438af1e56ab1c46d6, type: 3}
+  - {fileID: 21300000, guid: eef71d9c0cd2623499091d8e65bb800c, type: 3}
+  - {fileID: 21300000, guid: ac4abd30f8e1c394cbaf2801b6af5f43, type: 3}
 --- !u!223 &4962005393333547993
 Canvas:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class StageManager
         if (_currentStageData is null)
         {
             Logger.LogWarning("설정된 스테이지 데이터가 없습니다. 1-1 Stage를 로드합니다.");
-            SetCurrentStage(Define.ChapterType.CH1);
+            SetCurrentStage(Define.ChapterType.CH3);
             return _currentStageData;
         }
         return _currentStageData;

@@ -95,7 +95,7 @@ public class UIPlayerStatusPopup : UIPopup
     private void SetExperienceDescText()
     {
         int value = (int)(Managers.Player.GetExperienceStatsBonus() * 100);
-        string newText = "미니게임 종료 시 획득하는 골드가 <color=#00FF00>{0}%</color>증가한다.";
+        string newText = "미니게임 종료 시 <color=#00FF00>{0}%</color>의 추가 점수를 획득합니다.";
         GetText((int)Texts.ExperienceDescText).SetText(string.Format(newText, value));
     }
 
@@ -103,12 +103,12 @@ public class UIPlayerStatusPopup : UIPopup
     {
         // TODO: 중력적응에 대한 효과 설명 수정, 미니게임에서 이동속도가 증가하는 것으로 수정
         int value = 5;
-        string newText = "미니게임 시 소모되는 피로도가 <color=#00FF00>{0}</color>으로 조정된다.";
+        string newText = "작업 진행 시 이동속도가 <color=#00FF00>{0}</color>% 향상됩니다.";
         GetText((int)Texts.GravityAdaptationDescText).SetText(string.Format(newText, value));
     }
     private void SetIntelligenceDescText()
     {
-        string newText = "총명한 자는 선택지가 많아진다.";
+        string newText = "총명한 자는 선택지가 많아집니다.";
         GetText((int)Texts.IntelligenceDescText).SetText(newText);
     }
     private void SetLuckDescText()

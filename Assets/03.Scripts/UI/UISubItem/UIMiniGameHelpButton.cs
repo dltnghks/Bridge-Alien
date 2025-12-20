@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class UIMiniGameHelpButton : UISubItem
 {
@@ -18,6 +19,11 @@ public class UIMiniGameHelpButton : UISubItem
         BindButton(typeof(Buttons));
         GetButton((int)Buttons.MenuButton).gameObject.BindEvent(OnClickOptionButton);
 
+        if(Managers.Stage.CurrentStageType >= Define.ChapterType.CH4)
+        {
+            gameObject.SetActive(false);
+        }
+
         return true;
     }
 
@@ -32,7 +38,8 @@ public class UIMiniGameHelpButton : UISubItem
 
         if (Managers.MiniGame.CurrentGame is MiniGameUnload)
         {
-            Managers.UI.ShowPopUI<UITutorialPopup>("UIMGUTutorialPopup");
+            string str = "UIMGUTutorialPopup_" + Managers.Stage.CurrentStageType.ToString();
+            Managers.UI.ShowPopUI<UITutorialPopup>(str);
         }
     }
 }

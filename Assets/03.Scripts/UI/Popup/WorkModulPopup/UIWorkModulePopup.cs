@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class UIWorkModulePopup : UIPopup
 {
-    enum Buttons
-    {
-        UnloadButton,
-        DeliveryButton,
-    }
 
     enum Objects
     {
@@ -29,7 +24,6 @@ public class UIWorkModulePopup : UIPopup
             return false;
         }
 
-        BindButton(typeof(Buttons));
         BindObject(typeof(Objects));
 
         _upgradeUI = GetObject((int)Objects.UIWorkModuleUpgrade).GetOrAddComponent<UIWorkModuleUpgrade>();
@@ -46,9 +40,8 @@ public class UIWorkModulePopup : UIPopup
             }
         }
 
-        GetButton((int)Buttons.UnloadButton).gameObject.BindEvent(() => OnClickGameTypeButton(Define.MiniGameType.Unload));
-        GetButton((int)Buttons.DeliveryButton).gameObject.BindEvent(() => OnClickGameTypeButton(Define.MiniGameType.Delivery));
-
+        OnClickGameTypeButton(Define.MiniGameType.Unload);
+        
         foreach (var button in _workModuleSkillList)
         {
             button.Init();
