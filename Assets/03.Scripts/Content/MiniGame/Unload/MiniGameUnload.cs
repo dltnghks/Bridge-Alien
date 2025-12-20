@@ -95,7 +95,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         ResumeGame();
         
         // 스테이지를 처음 진행하는 경우 튜토리얼 진행
-        if (Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] == false){
+        if (TutorialManager.Instance != null && Managers.MiniGame.MiniGameTutorial[(int)Managers.Stage.CurrentStageType] == false){
             StartTutorial();
         }
     }
@@ -104,8 +104,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         IsTutorialActive = true;
         Managers.UI.ClosePopupUI();
-        Managers.MiniGame.MiniGameTutorial[(int)Define.MiniGameType.Unload] = true;
-        
+        Managers.MiniGame.MiniGameTutorial[(int)Managers.Stage.CurrentStageType] = true;
+
         TutorialManager.Instance.StartTutorial();
     }
 

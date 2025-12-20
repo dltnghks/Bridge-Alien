@@ -19,11 +19,6 @@ public class UIMiniGameHelpButton : UISubItem
         BindButton(typeof(Buttons));
         GetButton((int)Buttons.MenuButton).gameObject.BindEvent(OnClickOptionButton);
 
-        if(Managers.Stage.CurrentStageType >= Define.ChapterType.CH4)
-        {
-            gameObject.SetActive(false);
-        }
-
         return true;
     }
 

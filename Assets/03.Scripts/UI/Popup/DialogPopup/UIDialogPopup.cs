@@ -79,8 +79,8 @@ public class UIDialogPopup : UIPopup
 
         _dialogText = GetText((int)Texts.DialogText);
 
-        GetButton((int)Buttons.SkipButton).gameObject.BindEvent(OnClickScreenButton);
         GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
+        GetButton((int)Buttons.SkipButton).gameObject.BindEvent(OnClickSkipButton);
 
         _nextButton = GetButton((int)Buttons.NextButton);
         _nextButton.gameObject.SetActive(false);
@@ -90,16 +90,18 @@ public class UIDialogPopup : UIPopup
 
         return true;
     }
-
-    private void OnClickScreenButton()
-    {
-        Logger.Log("OnClickScreenButton");
-        SkipTyping();
-    }
     
+    private void OnClickSkipButton()
+    {
+        Logger.Log("OnClickSkipButton");
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+
+        EndDialog();
+    }
+
     private void OnClickNextButton()
     {
-        if (_isFinish == true)
+        if (_isFinish == true || SkipTyping())
         {
             return;
         }
@@ -364,14 +366,18 @@ public class UIDialogPopup : UIPopup
     }
 
     
-    public void SkipTyping()
+    public bool SkipTyping()
     {
+        Logger.Log("SkipTyping");
         if (_typingTween != null && _typingTween.IsActive())
         {
             _typingTween.Complete(); // 즉시 전체 텍스트 출력
 
             _dialogText.text = _currentDialog.Script;
+            return true;
         }
+
+        return false;
     }
 
     private void EndTyping()

@@ -6,7 +6,7 @@ public class MiniGameManager : MonoBehaviour, ISaveable
 {
     private IMiniGame _currentGame;
     private GameObject _gameUI;
-    public bool[] MiniGameTutorial = new bool[(int)Define.MiniGameType.Delivery + 1];
+    public bool[] MiniGameTutorial = new bool[(int)Define.ChapterType.CH5 + 1];
 
     public bool IsAcitveObject
     {

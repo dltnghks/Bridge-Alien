@@ -92,6 +92,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
             {
                 Logger.Log("False Region");
                 score = -50;
+                returnBox = true;
             }
         }
 
