@@ -10,9 +10,20 @@ public class HouserAreaObject : MonoBehaviour, IInteractable
     public int Priority => -1;
 
     private Vector2 _targetPosition;
+    private Collider2D _areaCollider;
+
+    private void Awake()
+    {
+        _areaCollider = GetComponent<Collider2D>();
+    }
     
     private void Update()
     {
+        if (Managers.UI != null && Managers.UI.IsBlurActive)
+        {
+            return;
+        }
+
         // 화면에 터치가 하나 이상 감지되면
         if (Input.touchCount > 0)
         {
@@ -39,8 +50,18 @@ public class HouserAreaObject : MonoBehaviour, IInteractable
     */
     private void HandleInput(Vector2 screenPosition)
     {
+        if (_areaCollider == null)
+        {
+            return;
+        }
+
         // 1. 화면 좌표를 월드 좌표로 변환
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+
+        if (_areaCollider.OverlapPoint(worldPosition) == false)
+        {
+            return;
+        }
         
         // 2. Raycast 발사
         RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
