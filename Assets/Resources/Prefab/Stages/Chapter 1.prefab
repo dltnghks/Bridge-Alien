@@ -708,7 +708,7 @@ MonoBehaviour:
   AllowedTypes: 
   _boxSpawnInterval: 3
   _maxSpawnBoxIndex: 3
-  _spawnBoxType: 0100000001000000030000000300000003000000
+  _spawnBoxType: 01000000010000000100000001000000010000000100000003000000030000000300000003000000
 --- !u!135 &8455357266141028951
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2936,7 +2936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
       propertyPath: _spawnBoxType.Array.size
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
       propertyPath: _spawnBoxType.Array.data[1]
@@ -2948,11 +2948,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
       propertyPath: _spawnBoxType.Array.data[3]
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
       propertyPath: _spawnBoxType.Array.data[4]
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
+      propertyPath: _spawnBoxType.Array.data[5]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
+      propertyPath: _spawnBoxType.Array.data[6]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
+      propertyPath: _spawnBoxType.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
+      propertyPath: _spawnBoxType.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745624128247133355, guid: 5c491fab86a12ed4dbf6de265815d6c1, type: 3}
+      propertyPath: _spawnBoxType.Array.data[9]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
