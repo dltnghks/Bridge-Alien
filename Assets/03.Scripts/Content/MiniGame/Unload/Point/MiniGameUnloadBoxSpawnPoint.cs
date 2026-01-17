@@ -9,6 +9,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     private TimerBase _timer;
     private float _boxHeight = 1.0f;
     private float _boxHeightOffset = 0.8f;
+    private Define.BoxType _lastSpawnedBoxType = Define.BoxType.Unknown;
 
     [Header("Spawn Setting")]
     [SerializeField]
@@ -26,6 +27,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         _boxSpawnPosition = transform.position;
         BoxList = new MiniGameUnloadBoxList();
         BoxList.SetBoxList(_maxSpawnBoxIndex);
+        _lastSpawnedBoxType = Define.BoxType.Unknown;
         InitTimer();
     }
 
@@ -84,9 +86,8 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         {
             return;
         }
-        
-        int randomIndex = Random.Range(0, _spawnBoxType.Length);
-        Define.BoxType boxType = _spawnBoxType[randomIndex];
+
+        Define.BoxType boxType = GetRandomBoxType();
 
         GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{boxType}Box", transform);
         MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
@@ -103,6 +104,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
 
             newBox.SetSpawnBox(spawnPos);
+            _lastSpawnedBoxType = boxType;
         }
     }
 
@@ -117,8 +119,11 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         Define.BoxType boxType = boxTypeDecision.BoxType;
         if(boxType == Define.BoxType.Unknown)
         {
-            int randomIndex = Random.Range(0, _spawnBoxType.Length);
-            boxType = _spawnBoxType[randomIndex];
+            boxType = GetRandomBoxType();
+        }
+        else if (ShouldAvoidFragileOnTop(boxType))
+        {
+            boxType = GetRandomBoxType(excludeFragile: true);
         }
 
         GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{boxType}Box", transform);
@@ -138,7 +143,47 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
 
             newBox.SetSpawnBox(spawnPos);
+            _lastSpawnedBoxType = boxType;
         }
+    }
+
+    private Define.BoxType GetRandomBoxType(bool excludeFragile = false)
+    {
+        bool avoidFragile = excludeFragile || ShouldAvoidFragileOnTop(Define.BoxType.Fragile);
+        List<Define.BoxType> candidates = new List<Define.BoxType>();
+        foreach (var boxType in _spawnBoxType)
+        {
+            if (avoidFragile && boxType == Define.BoxType.Fragile)
+            {
+                continue;
+            }
+            candidates.Add(boxType);
+        }
+
+        if (candidates.Count == 0)
+        {
+            int randomIndex = Random.Range(0, _spawnBoxType.Length);
+            return _spawnBoxType[randomIndex];
+        }
+
+        int index = Random.Range(0, candidates.Count);
+        return candidates[index];
+    }
+
+    private bool ShouldAvoidFragileOnTop(Define.BoxType nextType)
+    {
+        if (Managers.Stage == null || Managers.Stage.CurrentStageType != Define.ChapterType.CH1)
+        {
+            return false;
+        }
+
+        if (nextType != Define.BoxType.Fragile)
+        {
+            return false;
+        }
+
+        MiniGameUnloadBox topBox = BoxList?.Peek();
+        return topBox != null && topBox.BoxType == Define.BoxType.Fragile;
     }
 
     public bool CanPickupBox()

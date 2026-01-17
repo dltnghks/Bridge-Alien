@@ -114,6 +114,7 @@ public class StageEditor : EditorWindow
             if (GUILayout.Button(stageType.ToString()))
             {
                 selectedStageType = stageType;
+                EditorPrefs.SetString("StageEditor_SelectedStage", stageType.ToString());
             }
         }
         EditorGUILayout.EndVertical();
@@ -130,6 +131,10 @@ public class StageEditor : EditorWindow
 
         if (GUILayout.Button("Test", GUILayout.ExpandWidth(true)))
         {
+            if (selectedStageType.HasValue)
+            {
+                EditorPrefs.SetString("StageEditor_SelectedStage", selectedStageType.Value.ToString());
+            }
             EditorApplication.EnterPlaymode();
         }
         

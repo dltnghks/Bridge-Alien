@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public bool IsBlurActive => _blurBackground != null && _blurBackground.IsBlurActive;
+
     public void Init()
     {
         _blurBackground = null;

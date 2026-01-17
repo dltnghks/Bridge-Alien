@@ -59,6 +59,14 @@ public class MiniGameManager : MonoBehaviour, ISaveable
     public void LoadStageEditor()
     {
         _currentGame = Root.GetComponentInChildren<MiniGameUnload>();
+
+        if (MiniGameTutorial != null && MiniGameTutorial.Length > 0)
+        {
+            for (int i = 0; i < MiniGameTutorial.Length; i++)
+            {
+                MiniGameTutorial[i] = true;
+            }
+        }
          
         InitializeUI();
         _currentGame.Initialize();
