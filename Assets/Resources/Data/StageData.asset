@@ -24,8 +24,9 @@ MonoBehaviour:
           \uC2DC\uC791\uB41C\uB2E4."
         IsLocked: 0
         RequiredStars: 0
-        ClearReward: 10000
-        ClearScoreList: f4010000e8030000d0070000
+        MinimumWage: 500
+        ClearReward: 7000
+        ClearScoreList: 941100007c15000064190000
         EventID: 1
         ClearEventID: 6
     - Key: 1
@@ -36,8 +37,9 @@ MonoBehaviour:
           \uBD80\uD130 \uC0AC\uACE0\uB97C \uCCD0\uBC84\uB9AC\uACE0 \uB9C8\uB294\uB370... "
         IsLocked: 1
         RequiredStars: 1
+        MinimumWage: 700
         ClearReward: 10000
-        ClearScoreList: f4010000e8030000d0070000
+        ClearScoreList: a00f00009411000088130000
         EventID: 2
         ClearEventID: 7
     - Key: 2
@@ -49,8 +51,9 @@ MonoBehaviour:
           \uD0DD\uBC30\uC640 \uB9C8\uC8FC\uD55C\uB2E4. "
         IsLocked: 1
         RequiredStars: 4
-        ClearReward: 100000
-        ClearScoreList: e8030000d0070000a00f0000
+        MinimumWage: 1000
+        ClearReward: 15000
+        ClearScoreList: a00f00009411000088130000
         EventID: 3
         ClearEventID: 8
     - Key: 3
@@ -62,8 +65,9 @@ MonoBehaviour:
           \uC694\uCCAD\uD558\uAC8C \uB418\uB294\uB370..."
         IsLocked: 1
         RequiredStars: 0
-        ClearReward: 0
-        ClearScoreList: 000000000000000000000000
+        MinimumWage: 1200
+        ClearReward: 20000
+        ClearScoreList: ac0d0000a00f000088130000
         EventID: 4
         ClearEventID: 9
     - Key: 4
@@ -75,7 +79,8 @@ MonoBehaviour:
           \uAC00\uAE4C\uC6B4\uACF3\uC5D0 \uC788\uC5C8\uB294\uB370...."
         IsLocked: 1
         RequiredStars: 0
-        ClearReward: 0
-        ClearScoreList: 000000000000000000000000
+        MinimumWage: 1500
+        ClearReward: 25000
+        ClearScoreList: a00f0000941100007c150000
         EventID: 5
         ClearEventID: 10
