@@ -40,6 +40,12 @@ public class Interactor : MonoBehaviour
 
     private void HandleInteractionInput()
     {
+        if (Managers.UI != null && Managers.UI.IsBlurActive)
+        {
+            return;
+        }
+
+
         // 이미 상호작용 중이면 새로운 입력을 처리하지 않음
         if (_isInteracting)
         {
