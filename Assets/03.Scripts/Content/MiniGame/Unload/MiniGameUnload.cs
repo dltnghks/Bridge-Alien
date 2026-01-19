@@ -364,11 +364,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             PlayerCharacter.PlayWinPose();
         }
 
-        // 스탯 보너스
-        float statsBonus = Managers.Player.GetExperienceStatsBonus();
-        int statsBonusScore = (int)(_score.CurrentScore * statsBonus);
-        //float fatiguePenalty = Managers.Player.GetFatigueStatsPenalty() * 100f;
-        int totalScore = _score.CurrentScore + statsBonusScore;
+        int totalScore = _score.CurrentScore;
 
         var stageData = Managers.Stage.GetCurrentStageData();
         int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
@@ -376,12 +372,18 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int totalGold = Managers.Stage.GetCompleteTotalGold(starCount);
         int[] scoreList = stageData.ClearScoreList;
         int clearReward = stageData.ClearReward;
+        totalGold = totalGold + stageData.MinimumWage;
+        
+        int scoreBonus = (int)(totalScore / 10.0f);
+        int statsBonus = totalGold * (int)Managers.Player.GetExperienceStatsBonus();
+        totalGold = totalGold + scoreBonus + statsBonus;
+
         Managers.Player.AddGold(totalGold);
 
         Logger.Log($"Stage Result | starCount : {starCount}, totalGold : {totalGold}, totalScore : {totalScore}, statsBonus : {statsBonus}");
 
         var resultPopup = Managers.UI.ShowPopUI<UIGameUnloadResultPopup>();
-        resultPopup.SetResultScore(_score.CurrentScore, statsBonusScore, totalGold, preStarCount, starCount, scoreList, clearReward);
+        resultPopup.SetResultScore(_score.CurrentScore, totalGold, preStarCount, starCount, scoreList, clearReward, stageData.MinimumWage, scoreBonus, statsBonus);
         
         Logger.Log("UnloadGame Ending game");
     }

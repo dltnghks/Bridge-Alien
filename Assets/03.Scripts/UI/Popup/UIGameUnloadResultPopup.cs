@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -12,13 +12,14 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         ScoreText,              // 게임 점수
         MiniGameTypeText,       // 미니게임 종류
         WorkerNameText,         // 이름
-        StatsBonusText,         // 스탯 보너스
-        StatsBonusScoreText,    // 스탯 보너스 점수
         TotalGoldText,              // 총합
         Star1ScoreText,
         Star2ScoreText,
         Star3ScoreText,
         ClearRewardText,
+        MinimumWageText,
+        ExperimentsBonusText,
+        ScoreBonus,
     }
 
     enum Images
@@ -27,7 +28,6 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         Star2Icon,
         Star3Icon,
         ClearIconImage,
-        Test,
     }
 
     private float _scaleDuration = 0.5f;
@@ -67,9 +67,10 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
 
         var textIndices = new[] {
             (int)Texts.ScoreText,
-            (int)Texts.StatsBonusText,
-            (int)Texts.StatsBonusScoreText,
             (int)Texts.TotalGoldText,
+            (int)Texts.MinimumWageText,
+            (int)Texts.ExperimentsBonusText,
+            (int)Texts.ScoreBonus,
         };
 
         foreach (var idx in textIndices)
@@ -95,22 +96,23 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     }
 
 
-    public void SetResultScore(int score, int statsBonus, int totalGold, int preStarCount, int starCount, int[] scoreList, int clearReward)
+    public void SetResultScore(int score, int totalGold, int preStarCount, int starCount, int[] scoreList, int clearReward, int minimumWage, int scoreBonus, int statsBonus)
     {
         _starCount = starCount;
 
         SetPreStar(preStarCount);
         SetReceiptText(scoreList, clearReward);
+        SetBonusValues(minimumWage, statsBonus, scoreBonus);
 
         ShowResultPopupEffect();
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(ShowScore(score));
-        sequence.AppendInterval(0.2f);
-
-        sequence.Append(ShowStatsBonus(score, statsBonus));
+        sequence.Append(ShowScore(score + statsBonus));
         sequence.AppendInterval(0.2f);
 
         sequence.Append(ShowStar(starCount));
+        sequence.AppendInterval(0.2f);
+
+        sequence.Append(ShowBonusTexts());
         sequence.AppendInterval(0.2f);
 
         sequence.Append(ShowTotalGold(totalGold));
@@ -121,6 +123,37 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
             Managers.UI.SetInputBackground(true);
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.LastScore.ToString(), gameObject);
         });
+    }
+
+    private void SetBonusValues(int minimumWage, int experimentsBonus, int scoreBonus)
+    {
+        GetText((int)Texts.MinimumWageText).SetText(minimumWage.ToString());
+        GetText((int)Texts.ExperimentsBonusText).SetText(experimentsBonus.ToString());
+        GetText((int)Texts.ScoreBonus).SetText(scoreBonus.ToString());
+    }
+
+    private Sequence ShowBonusTexts()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendCallback(() => GetText((int)Texts.MinimumWageText).color = Color.black);
+        sequence.AppendInterval(0.2f);
+        sequence.AppendCallback(() => GetText((int)Texts.ExperimentsBonusText).color = Color.black);
+        sequence.AppendInterval(0.2f);
+        sequence.AppendCallback(() => GetText((int)Texts.ScoreBonus).color = Color.black);
+
+        return sequence;
+    }
+
+    private Tween ShowScore(int score)
+    {
+        TextMeshProUGUI scoreText = GetText((int)Texts.ScoreText);
+        scoreText.color = Color.black;
+
+        return DOVirtual.Int(0, score, 2f, value =>
+        {
+            scoreText.SetText($"Score : {value}");
+        }).SetEase(Ease.InQuad)
+        .OnPlay(() => Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject));
     }
 
     // 이전에 획득했던 별 개수만큼 불투명하게 표시
@@ -173,60 +206,6 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         sequence.Play();
 
     }
-
-    private Tween ShowScore(int score)
-    {
-        TextMeshProUGUI scoreText = GetText((int)Texts.ScoreText);
-        scoreText.color = Color.black;
-
-        return DOVirtual.Int(0, (int)score, 2f, value =>
-        {
-            scoreText.SetText($"Score : {value}");
-        }).SetEase(Ease.InQuad)
-        .OnPlay(() => Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject));
-    }
-
-    private Sequence ShowStatsBonus(int score, int bonuse)
-    {
-        TextMeshProUGUI bonusText = GetText((int)Texts.StatsBonusText);
-        TextMeshProUGUI scoreText = GetText((int)Texts.ScoreText);
-        TextMeshProUGUI bonusScoreText = GetText((int)Texts.StatsBonusScoreText);
-
-        Sequence bonusSequence = DOTween.Sequence();
-
-        // 보너스 텍스트와 점수 표시    
-        bonusSequence.Append(DOVirtual.Color(bonusText.color, new Color(0, 0.7293525f, 1), 0.0f, value =>
-        {
-            bonusText.color = value;
-            bonusScoreText.color = value;
-            bonusScoreText.SetText("");
-        }));
-
-        // 보너스 점수가 등장하며 위쪽으로 이동 후 사라지기
-        bonusSequence.Append(DOVirtual.Vector3(bonusText.transform.localPosition, bonusText.transform.localPosition + new Vector3(0, 30, 0), 0.1f, value =>
-        {
-            bonusText.transform.localPosition = value;
-        }));
-
-        bonusSequence.Join(bonusText.DOColor(Color.clear, 0.5f));
-
-        bonusSequence.Join(DOVirtual.Int(0, bonuse, 1.5f, value =>
-        {
-            bonusScoreText.SetText($"+ {value}");
-        })).SetEase(Ease.InQuad);
-
-
-        // 최종 점수 표시
-        bonusSequence.Append(DOVirtual.Int(score, score + bonuse, 2f, value =>
-            {
-                scoreText.SetText($"Score : {value}");
-            }).SetEase(Ease.InQuad).
-            OnPlay(() => Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString(), gameObject))
-        );
-        return bonusSequence;
-    }
-
-    // 별 판정
     private Tween ShowStar(int starCount)
     {
         // 1. 새로운 시퀀스를 만듭니다.
