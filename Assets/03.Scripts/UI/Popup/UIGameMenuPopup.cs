@@ -58,7 +58,7 @@ public class UIGameMenuPopup : UIPopup
 
     private void OnDestroy()
     {
-        Managers.DeviceInput.IsMenuPopup = false;
+        Managers.DeviceInput.SetMenuPopupState(false);
         Managers.MiniGame.ResumeGame();
     }
 }
