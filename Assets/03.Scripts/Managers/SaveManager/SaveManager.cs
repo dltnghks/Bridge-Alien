@@ -1,6 +1,7 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class SaveManager
 {
     private IDataStorage storage;// 파일 시스템이든, 서버든 상관없이 IDataStorage 타입에 의존
     private List<ISaveable> saveableObjects = new List<ISaveable>();
+    private readonly SemaphoreSlim _saveLock = new SemaphoreSlim(1, 1);
 
     // 생성자 또는 Init 메소드를 통해 외부에서 저장 방식(storage)을 주입받음
     public void Init(IDataStorage storage)
@@ -25,44 +27,61 @@ public class SaveManager
 
     public async Task SaveAsync()
     {
-        Logger.Log("Save");
-        var saveData = new Dictionary<string, object>();
-        foreach (var saveable in saveableObjects)
+        await _saveLock.WaitAsync();
+        try
         {
-            saveData[saveable.GetType().ToString()] = saveable.CaptureState();
+            var saveData = new Dictionary<string, object>();
+            var snapshot = saveableObjects.ToArray();
+            foreach (var saveable in snapshot)
+            {
+                saveData[saveable.GetType().ToString()] = saveable.CaptureState();
+            }
+
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(saveData, Newtonsoft.Json.Formatting.Indented);
+            Logger.Log($"Save ({json.Length} chars)");
+
+            await storage.SaveAsync(json);
         }
-
-        string json = Newtonsoft.Json.JsonConvert.SerializeObject(saveData, Newtonsoft.Json.Formatting.Indented);
-        Logger.Log(json);
-
-        await storage.SaveAsync(json);
+        finally
+        {
+            _saveLock.Release();
+        }
     }
 
     public async Task LoadAsync()
     {
-        if (!storage.Exists())
+        await _saveLock.WaitAsync();
+        try
         {
-            Logger.LogWarning("No save data found");
-            return;
-        }
-
-        string json = await storage.LoadAsync();
-
-        if (string.IsNullOrEmpty(json)) return;
-
-        var saveData = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
-
-        foreach (var saveable in saveableObjects)
-        {
-            string key = saveable.GetType().ToString();
-            if (saveData.TryGetValue(key, out object value))
+            if (!storage.Exists())
             {
-                var restoredValue = Newtonsoft.Json.JsonConvert.DeserializeObject(value.ToString(), saveable.CaptureState().GetType());
-                saveable.RestoreState(restoredValue);
+                Logger.LogWarning("No save data found");
+                return;
             }
-        }
 
-        Logger.Log("Game Loaded");
+            string json = await storage.LoadAsync();
+
+            if (string.IsNullOrEmpty(json)) return;
+
+            var saveData = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+            var snapshot = saveableObjects.ToArray();
+
+            foreach (var saveable in snapshot)
+            {
+                string key = saveable.GetType().ToString();
+                if (saveData.TryGetValue(key, out object value))
+                {
+                    var restoredValue = Newtonsoft.Json.JsonConvert.DeserializeObject(value.ToString(), saveable.CaptureState().GetType());
+                    saveable.RestoreState(restoredValue);
+                }
+            }
+
+            Logger.Log("Game Loaded");
+        }
+        finally
+        {
+            _saveLock.Release();
+        }
     }
 
     public void Reset()
