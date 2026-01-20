@@ -1,12 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
-using Unity.Collections;
 using UnityEngine;
-using TMPro;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.NCalc;
-using Microsoft.Unity.VisualStudio.Editor;
 
 [System.Serializable]
 public struct MiniGameUnloadBoxInfo
