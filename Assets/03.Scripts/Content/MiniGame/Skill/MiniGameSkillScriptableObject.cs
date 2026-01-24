@@ -15,9 +15,9 @@ public class MiniGameSkillScriptableObject : ScriptableObject
         switch (miniGameType)
         {
             case Define.MiniGameType.Unload:
-                skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.CoolingSkill]);
-                skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.BoxWarpSkill]);
                 skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.SpeedUpSkill]);
+                skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.BoxWarpSkill]);
+                skillList.Add(MiniGameSkillData[Define.MiniGameSkillType.CoolingSkill]);
                 break;
         }
 

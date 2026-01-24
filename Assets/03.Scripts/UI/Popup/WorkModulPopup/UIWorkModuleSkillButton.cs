@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UIWorkModuleSkillButton : UIActiveButton
 {
+    private const string HighlightColorHex = "69A96C";
+
     enum Images
     {
         SkillIconImage,
@@ -17,6 +19,7 @@ public class UIWorkModuleSkillButton : UIActiveButton
     }
 
     public Define.MiniGameSkillType SkillType { get; private set; }
+    public bool IsLocked { get; private set; }
     private UIWorkModulePopup _workModuleController;
 
     public override bool Init()
@@ -54,18 +57,41 @@ public class UIWorkModuleSkillButton : UIActiveButton
 
         if (skillData is DurationSkillData durationSkillData)
         {
-            GetText((int)Texts.SkillDescriptionText).SetText(string.Format(durationSkillData.Description, durationSkillData.GetSkillValue(skillLevel)));
+            string description = FormatSkillDescription(durationSkillData.Description, durationSkillData.GetSkillValue(skillLevel));
+            GetText((int)Texts.SkillDescriptionText).SetText(description);
         }
         else if (skillData is ChargeSkillData chargeSkillData)
         {
-            GetText((int)Texts.SkillDescriptionText).SetText(string.Format(chargeSkillData.Description, chargeSkillData.GetSkillValue(skillLevel)));
+            string description = FormatSkillDescription(chargeSkillData.Description, chargeSkillData.GetSkillValue(skillLevel));
+            GetText((int)Texts.SkillDescriptionText).SetText(description);
         }
 
         SkillType = skillData.Type;
     }
 
+    public void SetLocked(bool isLocked, string unlockDescription)
+    {
+        IsLocked = isLocked;
+        var eventHandler = GetComponent<UIEventHandler>();
+        if (eventHandler != null)
+        {
+            eventHandler.enabled = !isLocked;
+        }
+
+        if (isLocked)
+        {
+            GetText((int)Texts.SkillNameText).SetText("???");
+            GetText((int)Texts.SkillDescriptionText).SetText(unlockDescription);
+        }
+    }
+
     private void OnSelectTab()
     {
+        if (IsLocked)
+        {
+            return;
+        }
+
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _workModuleController.SelectSkillButton(this);
     }
@@ -78,5 +104,21 @@ public class UIWorkModuleSkillButton : UIActiveButton
     public void Deselect()
     {
         Deactivate();
+    }
+
+    private static string FormatSkillDescription(string description, int value)
+    {
+        if (string.IsNullOrEmpty(description))
+        {
+            return string.Empty;
+        }
+
+        if (description.Contains("{0}"))
+        {
+            string coloredValue = $"<color=#{HighlightColorHex}>{value}</color>";
+            return string.Format(description, coloredValue);
+        }
+
+        return description;
     }
 }

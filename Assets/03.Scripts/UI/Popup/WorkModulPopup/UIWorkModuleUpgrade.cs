@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class UIWorkModuleUpgrade : UISubItem
 {
+    private const string HighlightColorHex = "69A96C";
+
     enum Images
     {
         BeforeSkillImage,
@@ -98,11 +100,13 @@ public class UIWorkModuleUpgrade : UISubItem
 
         if (_upgradeSkillData is DurationSkillData durationSkillData)
         {
-            GetText((int)Texts.BeforeSkillDescription).SetText(string.Format(durationSkillData.Description, durationSkillData.GetSkillValue(_currentLevel)));
+            string description = FormatSkillDescription(durationSkillData.Description, durationSkillData.GetSkillValue(_currentLevel));
+            GetText((int)Texts.BeforeSkillDescription).SetText(description);
         }
         else if (_upgradeSkillData is ChargeSkillData chargeSkillData)
         {
-            GetText((int)Texts.BeforeSkillDescription).SetText(string.Format(chargeSkillData.Description, chargeSkillData.GetSkillValue(_currentLevel)));
+            string description = FormatSkillDescription(chargeSkillData.Description, chargeSkillData.GetSkillValue(_currentLevel));
+            GetText((int)Texts.BeforeSkillDescription).SetText(description);
         }
 
         GetImage((int)Images.AfterSkillImage).sprite = _upgradeSkillData.Icon;
@@ -121,11 +125,13 @@ public class UIWorkModuleUpgrade : UISubItem
 
         if (_upgradeSkillData is DurationSkillData durationSkillData)
         {
-            GetText((int)Texts.BeforeSkillDescription).SetText(string.Format(durationSkillData.Description, durationSkillData.GetSkillValue(_currentLevel)));
+            string description = FormatSkillDescription(durationSkillData.Description, durationSkillData.GetSkillValue(_currentLevel));
+            GetText((int)Texts.BeforeSkillDescription).SetText(description);
         }
         else if (_upgradeSkillData is ChargeSkillData chargeSkillData)
         {
-            GetText((int)Texts.BeforeSkillDescription).SetText(string.Format(chargeSkillData.Description, chargeSkillData.GetSkillValue(_currentLevel)));
+            string description = FormatSkillDescription(chargeSkillData.Description, chargeSkillData.GetSkillValue(_currentLevel));
+            GetText((int)Texts.BeforeSkillDescription).SetText(description);
         }
     }
 
@@ -139,12 +145,30 @@ public class UIWorkModuleUpgrade : UISubItem
 
         if (_upgradeSkillData is DurationSkillData durationSkillData)
         {
-            GetText((int)Texts.AfterSkillDescription).SetText(string.Format(durationSkillData.Description, durationSkillData.GetSkillValue(upgradeLevel)));
+            string description = FormatSkillDescription(durationSkillData.Description, durationSkillData.GetSkillValue(upgradeLevel));
+            GetText((int)Texts.AfterSkillDescription).SetText(description);
         }
         else if (_upgradeSkillData is ChargeSkillData chargeSkillData)
         {
-            GetText((int)Texts.AfterSkillDescription).SetText(string.Format(chargeSkillData.Description, chargeSkillData.GetSkillValue(upgradeLevel)));
+            string description = FormatSkillDescription(chargeSkillData.Description, chargeSkillData.GetSkillValue(upgradeLevel));
+            GetText((int)Texts.AfterSkillDescription).SetText(description);
         }
 
+    }
+
+    private static string FormatSkillDescription(string description, int value)
+    {
+        if (string.IsNullOrEmpty(description))
+        {
+            return string.Empty;
+        }
+
+        if (description.Contains("{0}"))
+        {
+            string coloredValue = $"<color=#{HighlightColorHex}>{value}</color>";
+            return string.Format(description, coloredValue);
+        }
+
+        return description;
     }
 }

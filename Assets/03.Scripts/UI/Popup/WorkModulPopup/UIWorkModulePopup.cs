@@ -61,8 +61,13 @@ public class UIWorkModulePopup : UIPopup
         for (int i = 0; i < skillTypeList.Count; i++)
         {
             _workModuleSkillList[i].SetWorkModuleSkillInfo(skillTypeList[i]);
+            ApplySkillLockState(_workModuleSkillList[i], skillTypeList[i]);
         }
-        _upgradeUI.SetInfo(_selectedSkillType);
+
+        if (_currentSelectedSkillButton != null && _currentSelectedSkillButton.IsLocked == false)
+        {
+            _upgradeUI.SetInfo(_selectedSkillType);
+        }
     }
 
     private void OnClickGameTypeButton(Define.MiniGameType gameType)
@@ -93,12 +98,23 @@ public class UIWorkModulePopup : UIPopup
         {
             _workModuleSkillList[i].SetWorkModuleSkillInfo(skillTypeList[i]);
             _workModuleSkillList[i].Init(this);
+            ApplySkillLockState(_workModuleSkillList[i], skillTypeList[i]);
             _workModuleSkillList[i].gameObject.SetActive(true);
         }
 
-        if (_workModuleSkillList.Count > 0)
+        UIWorkModuleSkillButton firstUnlocked = null;
+        for (int i = 0; i < _workModuleSkillList.Count; i++)
         {
-            _currentSelectedSkillButton = _workModuleSkillList[0];
+            if (_workModuleSkillList[i].gameObject.activeSelf && _workModuleSkillList[i].IsLocked == false)
+            {
+                firstUnlocked = _workModuleSkillList[i];
+                break;
+            }
+        }
+
+        if (firstUnlocked != null)
+        {
+            _currentSelectedSkillButton = firstUnlocked;
             SelectSkillButton(_currentSelectedSkillButton);
         }
         else
@@ -120,5 +136,38 @@ public class UIWorkModulePopup : UIPopup
 
         _currentSelectedSkillButton.Select();
         _upgradeUI.SetInfo(_selectedSkillType);
+    }
+
+    private void ApplySkillLockState(UIWorkModuleSkillButton button, SkillData skillData)
+    {
+        if (TryGetUnlockStage(skillData.Type, out var stageType, out string stageText))
+        {
+            bool isLocked = Managers.Player.GetStageClearInfo(stageType) <= 0;
+            string unlockDescription = $"해금 조건 : {stageText} 스테이지 최초 클리어";
+            button.SetLocked(isLocked, unlockDescription);
+            return;
+        }
+
+        button.SetLocked(false, string.Empty);
+    }
+
+    private bool TryGetUnlockStage(Define.MiniGameSkillType skillType, out Define.ChapterType stageType, out string stageText)
+    {
+        stageType = default;
+        stageText = string.Empty;
+
+        switch (skillType)
+        {
+            case Define.MiniGameSkillType.BoxWarpSkill:
+                stageType = Define.ChapterType.CH2;
+                stageText = "1-2";
+                return true;
+            case Define.MiniGameSkillType.CoolingSkill:
+                stageType = Define.ChapterType.CH3;
+                stageText = "1-3";
+                return true;
+            default:
+                return false;
+        }
     }
 }
