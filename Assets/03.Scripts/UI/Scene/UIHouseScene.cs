@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class UIHouseScene : UIScene
 {
+    public static bool BlockWorldInputThisFrame { get; private set; }
+
     enum Texts{
         GoldText,
     }
@@ -91,6 +93,8 @@ public class UIHouseScene : UIScene
 
     private void OnClickNextButton()
     {
+        BlockWorldInputThisFrame = true;
+        StartCoroutine(ResetWorldInputBlock());
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         var stagePopup = Managers.UI.ShowPopUI<UIStagePopup>();
         stagePopup.InitStageButtonGroup();
@@ -117,5 +121,11 @@ public class UIHouseScene : UIScene
     {
         Managers.Player.OnPlayerDataChanged -= SetGoldText;
         Managers.Player.OnPlayerDataChanged -= SetFatigue;
+    }
+
+    private IEnumerator ResetWorldInputBlock()
+    {
+        yield return null;
+        BlockWorldInputThisFrame = false;
     }
 }

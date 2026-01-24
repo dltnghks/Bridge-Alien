@@ -33,6 +33,11 @@ public class HouserAreaObject : MonoBehaviour, IInteractable
             // 터치가 시작되는 순간을 감지
             if (touch.phase == TouchPhase.Began)
             {
+                if (UIHouseScene.BlockWorldInputThisFrame)
+                {
+                    return;
+                }
+
                 HandleInput(touch.position);
             }
         }
@@ -40,6 +45,11 @@ public class HouserAreaObject : MonoBehaviour, IInteractable
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
+            if (UIHouseScene.BlockWorldInputThisFrame)
+            {
+                return;
+            }
+
             HandleInput(Input.mousePosition);
         }
 #endif        

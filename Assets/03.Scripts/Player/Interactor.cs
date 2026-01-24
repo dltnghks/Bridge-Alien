@@ -61,6 +61,11 @@ public class Interactor : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)
             {
+                if (UIHouseScene.BlockWorldInputThisFrame)
+                {
+                    return;
+                }
+
                 screenPosition = touch.position;
                 inputDetected = true;
             }
@@ -68,6 +73,11 @@ public class Interactor : MonoBehaviour
         // 마우스 클릭 입력 감지 (PC 테스트용)
         else if (Input.GetMouseButtonDown(0))
         {
+            if (UIHouseScene.BlockWorldInputThisFrame)
+            {
+                return;
+            }
+
             screenPosition = Input.mousePosition;
             inputDetected = true;
         }
@@ -109,4 +119,5 @@ public class Interactor : MonoBehaviour
             }
         }
     }
+
 }
