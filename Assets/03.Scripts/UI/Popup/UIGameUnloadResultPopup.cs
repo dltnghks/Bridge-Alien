@@ -39,6 +39,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     private bool _isFinished = false;
     private bool _isEventEnded = false;
     private int _starCount = 0;
+    private int _preStarCount = 0;
 
     private List<UIActiveButton> _stars = new List<UIActiveButton>();
 
@@ -99,6 +100,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
     public void SetResultScore(int score, int totalGold, int preStarCount, int starCount, int[] scoreList, int clearReward, int minimumWage, int scoreBonus, int statsBonus)
     {
         _starCount = starCount;
+        _preStarCount = preStarCount;
 
         SetPreStar(preStarCount);
         SetReceiptText(scoreList, clearReward);
@@ -248,8 +250,8 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
             totalText.SetText(value.ToString());
         })).OnComplete(() =>
         {
-            // 별을 얻었을 때만 돈을 얻기 때문에, 0 이상일 때 Clear 표시
-            if (totalGold > 0)
+            // 별 1개 이상 획득하거나 이미 클리어한 스테이지면 Clear 표시
+            if (_starCount > 0 || _preStarCount > 0)
                 GetImage((int)Images.ClearIconImage).color = Color.white;   
         });
 
