@@ -372,11 +372,11 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int totalGold = Managers.Stage.GetCompleteTotalGold(starCount);
         int[] scoreList = stageData.ClearScoreList;
         int clearReward = stageData.ClearReward;
-        int scoreBonus = totalScore;
+        int scoreBonus = totalGold;
         totalGold = totalGold + stageData.MinimumWage;
         
         int statsBonus = totalGold * (int)Managers.Player.GetExperienceStatsBonus();
-        totalGold = totalGold + scoreBonus + statsBonus;
+        totalGold = totalGold + statsBonus;
 
         Managers.Player.AddGold(totalGold);
 
