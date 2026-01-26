@@ -77,7 +77,6 @@ public class UIWorkModulePopup : UIPopup
             gameType = Define.MiniGameType.Unload;
         }
 
-        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _selectedGameType = gameType;
         InitSkillList();
     }
