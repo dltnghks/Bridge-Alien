@@ -75,12 +75,13 @@ public class StageManager
 
         // 스테이지 시작 시 이벤트 재생
         // 클리어했던 스테이지거나 이미 진행한 스테이지인 경우 바로 씬 변경
-        if (Managers.Player.GetStageProgressedStatus(_currentStageType))
+        if (Managers.Player.HasSeenEvent(_currentStageData.EventID))
         {
             Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);
         }
         else
         {
+            Managers.Player.MarkEventSeen(_currentStageData.EventID);
             Managers.Event.Init(_currentStageData.EventID);
         }
     }

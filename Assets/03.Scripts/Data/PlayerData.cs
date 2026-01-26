@@ -19,6 +19,7 @@ public class PlayerData
     // StageData, 완료된 스테이지와 별
     public Dictionary<Define.ChapterType, int> ClearedStages = new Dictionary<Define.ChapterType, int>();
     public int TotalStars = 0;
+    public List<Define.EventDataID> SeenEvents = new List<Define.EventDataID>();
 
     // 피로도 회복 시간
     public DateTime FatigueRecoveryTime;
