@@ -101,7 +101,7 @@ public class StageManager
         }
 
         // 새로 추가된 별 개수만큼 피로도 회복
-        Managers.Player.AddStats(Define.PlayerStatsType.Experience, starCount - preStarCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, starCount - preStarCount);
 
         return starCount;
     }

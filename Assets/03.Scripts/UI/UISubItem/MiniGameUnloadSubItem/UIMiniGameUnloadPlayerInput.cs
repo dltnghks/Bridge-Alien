@@ -44,6 +44,7 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
         {
             return false;
         }
+
         _init = true;
 
         BindImage(typeof(Images));
@@ -78,6 +79,7 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
 
     public void SetSkillInfo(SkillBase[] skillList)
     {
+        Init();
         if (_init == false)
         {
             Logger.LogError("UIMiniGameUnloadPlayerInput is not initialized.");
@@ -194,7 +196,16 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
 
     private void SetSkillButtonInteractable(Buttons buttonType, Define.MiniGameSkillType skillType)
     {
-        int skillLevel = Managers.Player.PlayerData.MiniGameUnloadSkillLevel[skillType];
+        int skillLevel = 0;
+        var playerData = Managers.Player.PlayerData;
+        if (playerData != null && playerData.MiniGameUnloadSkillLevel != null)
+        {
+            if (!playerData.MiniGameUnloadSkillLevel.TryGetValue(skillType, out skillLevel))
+            {
+                skillLevel = 0;
+            }
+        }
+
         var button = GetSkillButton(buttonType);
         if (button != null)
         {
@@ -238,7 +249,7 @@ public class UIMiniGameUnloadPlayerInput : UIPlayerInput
             icon.color = targetColor;
         }
 
-        var countText = GetText((int)Texts.BoxWarpSkillCountText);
+        // var countText = GetText((int)Texts.BoxWarpSkillCountText);
         // if (countText != null)
         // {
         //     countText.color = targetColor;
