@@ -48,6 +48,7 @@ public class CharacterAnimator : MonoBehaviour
     //~ 게임 결과 포즈
     public void PlayWinPose()
     {
+        animator.SetFloat(PARAM_MOVE_SPEED, 0);
         animator.SetBool(PARAM_IS_MOVING, false);  
 
         Logger.Log("PlayWinPose");
@@ -57,8 +58,11 @@ public class CharacterAnimator : MonoBehaviour
 
     public void PlayLosePose()
     {
-        Logger.Log("PlayLosePose");
+        animator.SetFloat(PARAM_MOVE_SPEED, 0);
+        animator.SetBool(PARAM_IS_MOVING, false);  
         animator.SetTrigger(TRIGGER_LOSE);
+        
+        Logger.Log("PlayLosePose");
         ChangeState(CharacterState.LosePose);
     }
 
