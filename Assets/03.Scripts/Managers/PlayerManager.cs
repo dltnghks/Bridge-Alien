@@ -84,13 +84,6 @@ public class PlayerManager : ISaveable
         return gold;
     }
 
-    public void AddDate()
-    {
-        AddStats(Define.PlayerStatsType.Fatigue, 50);
-        AddStats(Define.PlayerStatsType.Experience, 2);
-        AddStats(Define.PlayerStatsType.GravityAdaptation, 5);
-    }
-
     public int GetGold()
     {
         return PlayerData.PlayerGold;

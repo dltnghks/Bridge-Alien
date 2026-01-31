@@ -370,6 +370,11 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
         int starCount = Managers.Stage.CompleteStage(totalScore, preStarCount);
         int totalGold = Managers.Stage.GetCompleteTotalGold(starCount);
+        int additionalStars = Mathf.Max(0, starCount - preStarCount);
+        if (additionalStars > 0)
+        {
+            Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, additionalStars);
+        }
         int[] scoreList = stageData.ClearScoreList;
         int clearReward = stageData.ClearReward;
         int scoreBonus = totalGold;

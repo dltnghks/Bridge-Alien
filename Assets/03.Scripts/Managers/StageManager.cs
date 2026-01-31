@@ -100,7 +100,7 @@ public class StageManager
         }
 
         // 새로 추가된 별 개수만큼 피로도 회복
-        Managers.Player.AddStats(Define.PlayerStatsType.Experience, starCount - preStarCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.Experience, (starCount - preStarCount) * 5);
 
         return starCount;
     }
@@ -115,7 +115,10 @@ public class StageManager
         }
         else
         {
-            Managers.Player.FillFatigue(); // 피로도 최대치 회복
+            // 최초 클리어 시 보상 지급
+            Managers.Player.AddStats(Define.PlayerStatsType.GravityAdaptation, 5);
+            Managers.Player.AddStats(Define.PlayerStatsType.Experience, 5);
+            Managers.Player.FillFatigue();
             Managers.Event.Init(_currentStageData.ClearEventID);
         }
     }
