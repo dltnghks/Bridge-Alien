@@ -158,6 +158,40 @@ public class PlayerManager : ISaveable
         return false;
     }
 
+    public bool HasSeenEvent(Define.EventDataID eventId)
+    {
+        if (eventId == Define.EventDataID.Unknown)
+        {
+            return true;
+        }
+
+        if (PlayerData.SeenEvents == null)
+        {
+            PlayerData.SeenEvents = new List<Define.EventDataID>();
+        }
+
+        return PlayerData.SeenEvents.Contains(eventId);
+    }
+
+    public void MarkEventSeen(Define.EventDataID eventId)
+    {
+        if (eventId == Define.EventDataID.Unknown)
+        {
+            return;
+        }
+
+        if (PlayerData.SeenEvents == null)
+        {
+            PlayerData.SeenEvents = new List<Define.EventDataID>();
+        }
+
+        if (!PlayerData.SeenEvents.Contains(eventId))
+        {
+            PlayerData.SeenEvents.Add(eventId);
+            OnPlayerDataChanged?.Invoke();
+        }
+    }
+
     public object CaptureState()
     {
         var data = new PlayerSaveData();

@@ -5137,8 +5137,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2, y: 2, z: 1.37}
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1 &3793861316339367668
 GameObject:
   m_ObjectHideFlags: 0
@@ -5198,6 +5198,7 @@ GameObject:
   - component: {fileID: 7739845862403502212}
   - component: {fileID: 3711256915801400525}
   - component: {fileID: 4454712077984710982}
+  - component: {fileID: 8279882887607985914}
   m_Layer: 0
   m_Name: CoolingPoint
   m_TagString: BoxUnloadPoint
@@ -5265,6 +5266,19 @@ MonoBehaviour:
   _coolingGauge: {fileID: 7221626312116370042}
   _coolingTimer: {fileID: 1043976539407613327}
   _coolingEffect: {fileID: 5745016817645929179}
+--- !u!114 &8279882887607985914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143251425469513571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ddf3bd54f1c0544bbd886cbf68c08dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myTag: Cold
 --- !u!1 &6416393180849556885
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,7 +5505,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
+  - {fileID: 2100000, guid: b3f5bbe95ca42014a8e16696957db691, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5536,7 +5550,7 @@ MonoBehaviour:
   m_text: 00:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59f90884f45c00542942263b59b1648f, type: 2}
-  m_sharedMaterial: {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: b3f5bbe95ca42014a8e16696957db691, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
