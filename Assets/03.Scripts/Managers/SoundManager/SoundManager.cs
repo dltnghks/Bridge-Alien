@@ -30,17 +30,13 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Logger.Log("SoundEvent ScriptableObject loaded successfully.");
-            _soundEvent.InitEventDict(); // 초기화
+            _soundEvent.InitEventDict(); // 초기??
         }
     }
 
     public void LoadSoundBank(string bankName)
     {
-        // SoundBank의 ID가 저장될 변수
         uint bankID = AkBankManager.LoadBank(bankName, false, false);
-
-        Debug.Log($"SoundBank '{bankName}' loaded successfully! Bank ID: {bankID}");
 
     }
 
@@ -55,27 +51,29 @@ public class SoundManager : MonoBehaviour
     }
 
     public void PlayBGM(string eventName){
+        Logger.Log($"BGM Start: {eventName}");
         PlaySound(SoundType.SceneBGM, eventName);
     }
 
     public void PauseBGM()
     {
         Define.Scene type = Managers.Scene.CurrentSceneType;
-        string eventName = $"Pause_BGM_{type}";
-        Logger.Log(eventName);
+        string eventName = $"{type}";
+        Logger.Log($"BGM Pause: {eventName}");
         BGMPauseSound(type, eventName);
     }
 
     public void ResumeBGM()
     {
         Define.Scene type = Managers.Scene.CurrentSceneType;
-        string eventName = $"Resume_BGM_{type}";
-        Logger.Log(eventName);
+        string eventName = $"{type}";
+        Logger.Log($"BGM Resume: {eventName}");
         BGMResumeSound(type, eventName);
     }
 
     public void StopBGM()
     {
+        Logger.Log("BGM Stop: StopAll");
         AkUnitySoundEngine.StopAll();
     }
     
@@ -97,7 +95,7 @@ public class SoundManager : MonoBehaviour
     {
         if (_soundEvent == null || !_soundEvent.BGMPauseEventDic.ContainsKey(type))
         {
-            Debug.LogWarning($"SoundType {type} not found!");
+            Logger.LogWarning($"SoundType {type} not found!");
             return;
         }
 
@@ -109,7 +107,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Key {key} not found in SoundType {type}!");
+            Logger.LogWarning($"Key {key} not found in SoundType {type}!");
         }
     }
 
@@ -117,7 +115,7 @@ public class SoundManager : MonoBehaviour
     {
         if (_soundEvent == null || !_soundEvent.BGMResumeEventDic.ContainsKey(type))
         {
-            Debug.LogWarning($"SoundType {type} not found!");
+            Logger.LogWarning($"SoundType {type} not found!");
             return;
         }
 
@@ -129,7 +127,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Key {key} not found in SoundType {type}!");
+            Logger.LogWarning($"Key {key} not found in SoundType {type}!");
         }
     }
 
@@ -137,7 +135,7 @@ public class SoundManager : MonoBehaviour
     {
         if (_soundEvent == null || !_soundEvent.EventDict.ContainsKey(type))
         {
-            Debug.LogWarning($"SoundType {type} not found!");
+            Logger.LogWarning($"SoundType {type} not found!");
             return;
         }
 
@@ -149,12 +147,11 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Key {key} not found in SoundType {type}!");
+            Logger.LogWarning($"Key {key} not found in SoundType {type}!");
         }
     }
 
     private void PlayEvent(AK.Wwise.Event soundEvent, GameObject soundGameObject){
-
         if(soundGameObject == null)
         {
             soundGameObject = gameObject;
@@ -172,20 +169,17 @@ public class SoundManager : MonoBehaviour
     {
         AllVolume = Mathf.Clamp(volume, 0f, 100f);
         AkUnitySoundEngine.SetRTPCValue("AllVolume", AllVolume);
-        Debug.Log($"All Volume set to {AllVolume}");
     }
     
     public void SetSFXVolume(float volume)
     {
         SFXVolume = Mathf.Clamp(volume, 0f, 100f);
         AkUnitySoundEngine.SetRTPCValue("SFXVolume", SFXVolume);
-        Debug.Log($"SFX Volume set to {SFXVolume}");
     }
     
     public void SetBGMVolume(float volume)
     {
         BGMVolume = Mathf.Clamp(volume, 0f, 100f);
         AkUnitySoundEngine.SetRTPCValue("BGMVolume", BGMVolume);
-        Debug.Log($"BGM Volume set to {BGMVolume}");
     }
 }

@@ -21,6 +21,7 @@ public enum SceneBGM
     Prologue,
     MiniGameUnload,
     MiniGameDelivery,
+    StageEditor,
 }
 public enum CommonSoundSFX
 {

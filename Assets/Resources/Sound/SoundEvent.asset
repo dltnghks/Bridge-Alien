@@ -19,6 +19,11 @@ MonoBehaviour:
         idInternal: 0
         valueGuidInternal: 
         WwiseObjectReference: {fileID: 0}
+    - Key: 6
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 7981a65e26910b94e85be4b978bd3520, type: 2}
     - Key: 1
       Value:
         idInternal: 0
@@ -38,12 +43,12 @@ MonoBehaviour:
       Value:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 7981a65e26910b94e85be4b978bd3520, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 63c31901a691df84bab41d838f403edb, type: 2}
     - Key: 5
       Value:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 8073e071800e1f340b92a406b1d7dbcf, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 7981a65e26910b94e85be4b978bd3520, type: 2}
   BGMResumeEventDic:
     _serializedList:
     - Key: 0
@@ -51,6 +56,11 @@ MonoBehaviour:
         idInternal: 0
         valueGuidInternal: 
         WwiseObjectReference: {fileID: 0}
+    - Key: 6
+      Value:
+        idInternal: 0
+        valueGuidInternal: 
+        WwiseObjectReference: {fileID: 11400000, guid: 8445fbc9360896843be3cdb4170cd90b, type: 2}
     - Key: 1
       Value:
         idInternal: 0
@@ -70,12 +80,12 @@ MonoBehaviour:
       Value:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: 8445fbc9360896843be3cdb4170cd90b, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 69456eab9a228c54f87a8a911a3039fb, type: 2}
     - Key: 5
       Value:
         idInternal: 0
         valueGuidInternal: 
-        WwiseObjectReference: {fileID: 11400000, guid: f985047c5ed14b04fa5adc4bcf6174d9, type: 2}
+        WwiseObjectReference: {fileID: 11400000, guid: 8445fbc9360896843be3cdb4170cd90b, type: 2}
   EventDict:
     _serializedList:
     - Key: 0
@@ -106,6 +116,11 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 1c99c3731f482414b9caf581998c5a7e, type: 2}
+        - Key: StageEditor
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: d37369134653a3d4d82749b8783c9883, type: 2}
     - Key: 1
       Value:
         _serializedList:

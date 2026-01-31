@@ -127,7 +127,7 @@ public class MiniGameManager : MonoBehaviour, ISaveable
     {
         Logger.Log("End Game");
         _currentGame?.EndGame();
-        Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, -30);
+        //Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, -30);
     }
     
     private void InitializeUI()
