@@ -344,6 +344,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     public void EndGame()
     {
+        Managers.Sound.StopBGM();
+        
         if (!IsActive)
         {
             Logger.LogWarning("Not Active MiniGame");
