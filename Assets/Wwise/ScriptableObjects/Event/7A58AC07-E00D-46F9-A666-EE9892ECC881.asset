@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc32ec4493e5094458058d6dfe8a05d2, type: 3}
   m_Name: 7A58AC07-E00D-46F9-A666-EE9892ECC881
   m_EditorClassIdentifier: 
-  objectName: Pause_BGM_Unload
-  id: 242931204
+  objectName: Pause_BGM_MiniGameUnload
+  id: 3330954847
   guid: 7A58AC07-E00D-46F9-A666-EE9892ECC881
   IsInUserDefinedSoundBank: 0
-  IsAutoBankLoaded: 0
+  IsAutoBankLoaded: 1

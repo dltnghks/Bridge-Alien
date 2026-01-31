@@ -9,7 +9,6 @@
     "Id": "314625631",
     "Type": "User",
     "GUID": "{A1B908A2-1584-4108-995D-58768368D076}",
-    "Color": "2",
     "Language": "SFX",
     "Hash": "{90278427-A0A8-D39A-AA0F-A7C111F145BC}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Region\\MiniGameUnload",
@@ -17,6 +16,6 @@
     "Path": "MiniGameUnload.bnk"
    }
   ],
-  "FileHash": "{45F873EF-46EB-D27A-7ACE-7B8023A76E46}"
+  "FileHash": "{D865FED9-8F4E-CF53-86E6-6BFC57D828E0}"
  }
 }

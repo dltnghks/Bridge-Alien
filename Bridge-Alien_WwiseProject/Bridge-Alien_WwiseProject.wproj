@@ -33,9 +33,9 @@
 				<Property Name="SoundBankGenerateEstimatedDuration" Type="bool" Value="True" /><Property Name="SoundBankHeaderFilePath" Type="string" Value="..\..\Bridge-Alien\Assets\StreamingAssets\Audio\GeneratedSoundBanks" />
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>
-						<Value Platform="Windows">..\..\Bridge-Alien\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</Value>
-						<Value Platform="Android">..\..\Bridge-Alien\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Android\</Value>
-						<Value Platform="Mac">..\..\Bridge-Alien\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Mac\</Value>
+						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
+						<Value Platform="Android">GeneratedSoundBanks\Android\</Value>
+						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPostGenerateCustomCmdDescription" Type="string">

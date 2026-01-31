@@ -16,4 +16,4 @@ MonoBehaviour:
   id: 3323914767
   guid: 899265C0-764E-4E60-91A6-C88D14F669D1
   IsInUserDefinedSoundBank: 0
-  IsAutoBankLoaded: 0
+  IsAutoBankLoaded: 1

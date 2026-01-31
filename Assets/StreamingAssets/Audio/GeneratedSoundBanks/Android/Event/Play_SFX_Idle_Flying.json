@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{F1B32C61-948F-4237-AE8D-B80EB456F2B3}",
     "Language": "SFX",
-    "Hash": "{5954AE3C-FD78-65A7-FEEA-0150784AA505}",
+    "Hash": "{3707B15A-AA8A-185B-6EBA-3ACD207758D9}",
     "ObjectPath": "Play_SFX_Idle_Flying",
     "ShortName": "Play_SFX_Idle_Flying",
     "Path": "Event/Play_SFX_Idle_Flying.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "SFX_Idle_Flying.wav",
       "Path": "Media/539572877.wem",
-      "CachePath": "62/{62853ABC-7695-7B8D-7A73-9A64DBC940C3}.wem"
+      "CachePath": "1D/{1DD1344C-1B94-0F61-766F-E28A7A967099}.wem"
      }
     ],
     "Events": [
@@ -51,6 +51,6 @@
     ]
    }
   ],
-  "FileHash": "{247630CE-F00C-56CC-01B7-4296CA3D2B3B}"
+  "FileHash": "{76737330-F159-A3D6-3965-E20139D99C3B}"
  }
 }

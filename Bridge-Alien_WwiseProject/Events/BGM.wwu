@@ -19,7 +19,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Pause_BGM_Unload" ID="{7A58AC07-E00D-46F9-A666-EE9892ECC881}">
+						<Event Name="Pause_BGM_MiniGameUnload" ID="{7A58AC07-E00D-46F9-A666-EE9892ECC881}">
 							<ChildrenList>
 								<Action Name="" ID="{1756A24E-7F02-488E-9165-F0D3718B5FF3}" ShortID="674756612">
 									<PropertyList>
@@ -152,7 +152,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Resume_BGM_Unload" ID="{247FA199-A96D-4F81-90D1-A4F51B2C1EB9}">
+						<Event Name="Resume_BGM_MiniGameUnload" ID="{247FA199-A96D-4F81-90D1-A4F51B2C1EB9}">
 							<ChildrenList>
 								<Action Name="" ID="{B4D7A996-AE89-4392-983C-5CA3B38BDCF6}" ShortID="1067654445">
 									<PropertyList>

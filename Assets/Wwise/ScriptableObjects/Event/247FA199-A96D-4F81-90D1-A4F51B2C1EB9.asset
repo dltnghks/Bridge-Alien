@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc32ec4493e5094458058d6dfe8a05d2, type: 3}
   m_Name: 247FA199-A96D-4F81-90D1-A4F51B2C1EB9
   m_EditorClassIdentifier: 
-  objectName: Resume_BGM_Unload
-  id: 2461900779
+  objectName: Resume_BGM_MiniGameUnload
+  id: 2188400904
   guid: 247FA199-A96D-4F81-90D1-A4F51B2C1EB9
   IsInUserDefinedSoundBank: 0
-  IsAutoBankLoaded: 0
+  IsAutoBankLoaded: 1

@@ -181,7 +181,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\BGM
     guid: 87a70d1a2511654d9554b502e9cf44e9
     GuidInternal: 
-    m_lastTime: -8584460826523251583
+    m_lastTime: -8584317672342261223
     List:
     - name: Pause
       guid: 1f04c0bf5a27f943b7f39de81e1ea013
@@ -272,6 +272,29 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Pause_BGM_MiniGameUnload
+      guid: 07ac587a0de0f946a666ee9892ecc881
+      id: 3330954847
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Pause
+        ObjectType: 4
+        guid: 1f04c0bf5a27f943b7f39de81e1ea013
+      - ElementName: Pause_BGM_MiniGameUnload
+        ObjectType: 3
+        guid: 07ac587a0de0f946a666ee9892ecc881
+      Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_MiniGameUnload
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Pause_BGM_Prologue
       guid: e226182ae0a09d4db87fae751a28344b
       id: 3738416110
@@ -292,29 +315,6 @@ MonoBehaviour:
         ObjectType: 3
         guid: e226182ae0a09d4db87fae751a28344b
       Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_Prologue
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: Pause_BGM_Unload
-      guid: 07ac587a0de0f946a666ee9892ecc881
-      id: 242931204
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 3332395072f10149a81da91bd1e15694
-      - ElementName: BGM
-        ObjectType: 12
-        guid: 87a70d1a2511654d9554b502e9cf44e9
-      - ElementName: Pause
-        ObjectType: 4
-        guid: 1f04c0bf5a27f943b7f39de81e1ea013
-      - ElementName: Pause_BGM_Unload
-        ObjectType: 3
-        guid: 07ac587a0de0f946a666ee9892ecc881
-      Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_Unload
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -542,6 +542,29 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Resume_BGM_MiniGameUnload
+      guid: 99a17f246da9814f90d1a4f51b2c1eb9
+      id: 2188400904
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Resume
+        ObjectType: 4
+        guid: cbe01793da58a049accc6c88aaa301c5
+      - ElementName: Resume_BGM_MiniGameUnload
+        ObjectType: 3
+        guid: 99a17f246da9814f90d1a4f51b2c1eb9
+      Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_MiniGameUnload
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Resume_BGM_Prologue
       guid: 6ac73fd42b665d4abac67d4ca6448246
       id: 3112024457
@@ -562,29 +585,6 @@ MonoBehaviour:
         ObjectType: 3
         guid: 6ac73fd42b665d4abac67d4ca6448246
       Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_Prologue
-      maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
-    - name: Resume_BGM_Unload
-      guid: 99a17f246da9814f90d1a4f51b2c1eb9
-      id: 2461900779
-      PathAndIcons:
-      - ElementName: Events
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 3332395072f10149a81da91bd1e15694
-      - ElementName: BGM
-        ObjectType: 12
-        guid: 87a70d1a2511654d9554b502e9cf44e9
-      - ElementName: Resume
-        ObjectType: 4
-        guid: cbe01793da58a049accc6c88aaa301c5
-      - ElementName: Resume_BGM_Unload
-        ObjectType: 3
-        guid: 99a17f246da9814f90d1a4f51b2c1eb9
-      Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_Unload
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -1499,7 +1499,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8584460828330206725
     List: []
-  ExpandedFileSystemItemIds: 01000000020000000300000004000000050000000a0000000e000000110000001500000016000000180000002a0000002b0000002c00000030000000310000003300000034000000350000003d000000
+  ExpandedFileSystemItemIds: 01000000020000000300000004000000050000000a0000000b0000000e000000110000001500000016000000180000002a0000002b0000002c00000030000000310000003300000034000000350000003d000000
   ExpandedWaapiItemIds: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e000000110000001500000018000000190000001a0000001b0000001d00000024000000250000003b0000003e000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
