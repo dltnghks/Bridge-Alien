@@ -72,9 +72,15 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     [SerializeField] protected MiniGameUnloadBoxInfo _info;
     [SerializeField] protected SpriteRenderer _returnStickerSprite;
+    [SerializeField] protected int _returnStickerSortingOffset = 1;
+    [SerializeField] protected float _sortingOrderScale = 100f;
+    [SerializeField] protected int _sortingOrderBase = 0;
 
+    protected SpriteRenderer boxSpriteRenderer;
     protected Rigidbody boxRigidbody;
     protected BoxCollider boxCollider;
+    private int _lastBoxSortingLayerId = int.MinValue;
+    private int _lastBoxSortingOrder = int.MinValue;
 
     public MiniGameUnloadBoxInfo Info
     {
@@ -102,8 +108,17 @@ public class MiniGameUnloadBox : MonoBehaviour
 
     protected virtual void Init()
     {
+        boxSpriteRenderer = GetComponent<SpriteRenderer>();
         boxRigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
+        UpdateSortingFromZ();
+        SyncReturnStickerSorting();
+    }
+
+    private void LateUpdate()
+    {
+        UpdateSortingFromZ();
+        SyncReturnStickerSortingIfNeeded();
     }
 
 
@@ -210,6 +225,55 @@ public class MiniGameUnloadBox : MonoBehaviour
         }
 
         _returnStickerSprite.gameObject.SetActive(value);
+    }
+
+    private void SyncReturnStickerSorting()
+    {
+        if (_returnStickerSprite == null || boxSpriteRenderer == null)
+        {
+            return;
+        }
+
+        _returnStickerSprite.sortingLayerID = boxSpriteRenderer.sortingLayerID;
+        _returnStickerSprite.sortingOrder = boxSpriteRenderer.sortingOrder + _returnStickerSortingOffset;
+
+        Vector3 pos = _returnStickerSprite.transform.localPosition;
+        pos.z = 0f;
+        _returnStickerSprite.transform.localPosition = pos;
+    }
+
+    private void SyncReturnStickerSortingIfNeeded()
+    {
+        if (_returnStickerSprite == null || boxSpriteRenderer == null || !_returnStickerSprite.gameObject.activeSelf)
+        {
+            return;
+        }
+
+        if (_lastBoxSortingLayerId != boxSpriteRenderer.sortingLayerID ||
+            _lastBoxSortingOrder != boxSpriteRenderer.sortingOrder)
+        {
+            _lastBoxSortingLayerId = boxSpriteRenderer.sortingLayerID;
+            _lastBoxSortingOrder = boxSpriteRenderer.sortingOrder;
+            SyncReturnStickerSorting();
+        }
+    }
+
+    private void UpdateSortingFromZ()
+    {
+        if (boxSpriteRenderer == null)
+        {
+            return;
+        }
+
+        int order = _sortingOrderBase + Mathf.RoundToInt(-transform.position.z * _sortingOrderScale);
+        if (order < 0)
+        {
+            order = 0;
+        }
+        if (boxSpriteRenderer.sortingOrder != order)
+        {
+            boxSpriteRenderer.sortingOrder = order;
+        }
     }
 }
 

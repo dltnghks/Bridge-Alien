@@ -30,6 +30,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     private bool _isPointsCached;
     private MiniGameUnloadPlayer _unloadPlayer;
     private MiniGameUnloadBasePoint _interactionObject = null;
+    private Camera _mainCamera;
     public Player Player { get; set ; }
     public int InteractionActionNumber { get; set; }
     public bool IsDropBox { get; set; }
@@ -50,6 +51,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         Player = player;
         _unloadPlayer = Player as MiniGameUnloadPlayer;
         _unloadPlayer.SpeedUpMultiplier(_moveSpeedBonus);
+        _mainCamera = Camera.main;
 
         _boxList.SetBoxList(3);
         InteractionActionNumber = (int)MiniGameUnloadInteractionAction.None;
@@ -113,10 +115,40 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         }
 
         input = input - (input * (_boxList.CurrentUnloadBoxIndex * (_moveSpeedReductionRatio / 100.0f)));
-        // 플레이어 이동
+        input = ConvertToCameraRelativeInput(input);
         Player.PlayerMovement(input);
     }
 
+    private Vector2 ConvertToCameraRelativeInput(Vector2 input)
+    {
+        if (_mainCamera == null)
+        {
+            _mainCamera = Camera.main;
+        }
+
+        if (_mainCamera == null)
+        {
+            return input;
+        }
+
+        Vector3 camRight = _mainCamera.transform.right;
+        Vector3 camForward = _mainCamera.transform.forward;
+        camRight.y = 0f;
+        camForward.y = 0f;
+
+        if (camRight.sqrMagnitude < 0.0001f || camForward.sqrMagnitude < 0.0001f)
+        {
+            return input;
+        }
+
+        camRight.Normalize();
+        camForward.Normalize();
+
+        Vector3 worldMove = (camRight * input.x) + (camForward * input.y);
+        float horizontal = Vector3.Dot(worldMove, Player.transform.right);
+        float vertical = Vector3.Dot(worldMove, Player.transform.forward);
+        return new Vector2(horizontal, vertical);
+    }
     public void Interaction()
     {
         if (!Managers.MiniGame.IsAcitvePlayer || InteractionActionNumber == (int)MiniGameUnloadInteractionAction.None)

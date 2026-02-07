@@ -125,6 +125,10 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         {
             boxType = GetRandomBoxType(excludeFragile: true);
         }
+        else if (ShouldAvoidColdOnStage3(boxType))
+        {
+            boxType = GetRandomBoxType(excludeCold: true);
+        }
 
         GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{boxType}Box", transform);
         MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
@@ -147,13 +151,18 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         }
     }
 
-    private Define.BoxType GetRandomBoxType(bool excludeFragile = false)
+    private Define.BoxType GetRandomBoxType(bool excludeFragile = false, bool excludeCold = false)
     {
         bool avoidFragile = excludeFragile || ShouldAvoidFragileOnTop(Define.BoxType.Fragile);
+        bool avoidCold = excludeCold || ShouldAvoidColdOnStage3(Define.BoxType.Cold);
         List<Define.BoxType> candidates = new List<Define.BoxType>();
         foreach (var boxType in _spawnBoxType)
         {
             if (avoidFragile && boxType == Define.BoxType.Fragile)
+            {
+                continue;
+            }
+            if (avoidCold && boxType == Define.BoxType.Cold)
             {
                 continue;
             }
@@ -184,6 +193,40 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
 
         MiniGameUnloadBox topBox = BoxList?.Peek();
         return topBox != null && topBox.BoxType == Define.BoxType.Fragile;
+    }
+
+    private bool ShouldAvoidColdOnStage3(Define.BoxType nextType)
+    {
+        if (Managers.Stage == null || Managers.Stage.CurrentStageType != Define.ChapterType.CH3)
+        {
+            return false;
+        }
+
+        if (nextType != Define.BoxType.Cold)
+        {
+            return false;
+        }
+
+        if (BoxList == null || BoxList.BoxList == null)
+        {
+            return false;
+        }
+
+        int coldCount = 0;
+        for (int i = 0; i < BoxList.BoxList.Count; i++)
+        {
+            var box = BoxList.BoxList[i];
+            if (box != null && box.BoxType == Define.BoxType.Cold)
+            {
+                coldCount++;
+                if (coldCount >= 2)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public bool CanPickupBox()

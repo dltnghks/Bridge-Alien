@@ -106,7 +106,7 @@ public class UIStagePopup : UIPopup
 
     private void SetReward(int reward)
     {
-        GetText((int)Texts.StageRewardText).SetText(reward.ToString());
+        GetText((int)Texts.StageRewardText).SetText($"x {reward}");
     }
 
     // 스테이지 별 점수 표시
