@@ -23,6 +23,8 @@ public class UIStageButton : UISubItem
 
     [SerializeField]
     private Define.ChapterType _stageType;
+    [SerializeField] private bool _useStarGroup = true;
+    [SerializeField] private bool _useStageClearIcon = true;
     private UIStageStarGroup _starGroup;
 
     public override bool Init()
@@ -33,10 +35,19 @@ public class UIStageButton : UISubItem
         }
 
         BindText(typeof(Texts));
-        BindObject(typeof(Objects));
-        BindImage(typeof(Images));
+        if (_useStarGroup)
+        {
+            BindObject(typeof(Objects));
+        }
+        if (_useStageClearIcon)
+        {
+            BindImage(typeof(Images));
+        }
 
-        _starGroup = GetObject((int)Objects.StarGroup).GetOrAddComponent<UIStageStarGroup>();
+        if (_useStarGroup && GetObject((int)Objects.StarGroup) != null)
+        {
+            _starGroup = GetObject((int)Objects.StarGroup).GetOrAddComponent<UIStageStarGroup>();
+        }
 
         gameObject.BindEvent(OnClickButton);
 
@@ -59,16 +70,30 @@ public class UIStageButton : UISubItem
 
         string stageText = Managers.Stage.ToStageString(_stageType);
         GetText((int)Texts.StageText).SetText(stageText);
-        _starGroup.SetStarCount(starCount);
+        if (_useStarGroup && _starGroup != null)
+        {
+            _starGroup.SetStarCount(starCount);
+        }
         SetStageClearIcon(starCount);
     }
 
     public void SetStageClearIcon(int starCount)
     {
-        GetImage((int)Images.StageClearIcon).color = Color.clear;
+        if (_useStageClearIcon == false)
+        {
+            return;
+        }
+
+        Image stageClearIcon = GetImage((int)Images.StageClearIcon);
+        if (stageClearIcon == null)
+        {
+            return;
+        }
+
+        stageClearIcon.color = Color.clear;
         if (starCount > 0)
         {
-            GetImage((int)Images.StageClearIcon).color = Color.white;
+            stageClearIcon.color = Color.white;
         }
     }
 }

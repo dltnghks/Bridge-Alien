@@ -204,5 +204,6 @@ public class Define
         CH3,
         CH4,
         CH5,
+        End,
     }
 }

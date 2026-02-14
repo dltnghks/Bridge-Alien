@@ -84,3 +84,15 @@ MonoBehaviour:
         ClearScoreList: a00f0000941100007c150000
         EventID: 5
         ClearEventID: 10
+    - Key: 5
+      Value:
+        StageImage: {fileID: 0}
+        StageName: End
+        StageDescription: "\uC5D4\uB529"
+        IsLocked: 1
+        RequiredStars: 0
+        MinimumWage: 0
+        ClearReward: 0
+        ClearScoreList: 000000000000000000000000
+        EventID: 0
+        ClearEventID: 0
