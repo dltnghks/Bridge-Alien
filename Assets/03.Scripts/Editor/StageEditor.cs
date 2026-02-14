@@ -215,6 +215,14 @@ public class StageEditor : EditorWindow
                 {
                     miniGameUnloadSerializedObject.Update();
                     EditorGUILayout.PropertyField(miniGameUnloadSerializedObject.FindProperty("_gameSetting"), true);
+                    if (stageType == Define.ChapterType.End)
+                    {
+                        SerializedProperty hiddenBoxSpawnInterval = miniGameUnloadSerializedObject.FindProperty("_hiddenBoxSpawnInterval");
+                        if (hiddenBoxSpawnInterval != null)
+                        {
+                            EditorGUILayout.PropertyField(hiddenBoxSpawnInterval, new GUIContent("Hidden Box Spawn Interval"));
+                        }
+                    }
                     miniGameUnloadSerializedObject.ApplyModifiedProperties();
                 }
 

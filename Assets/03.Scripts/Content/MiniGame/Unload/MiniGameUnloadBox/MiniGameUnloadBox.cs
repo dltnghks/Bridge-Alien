@@ -2,7 +2,7 @@ using UnityEngine;
 
 [System.Serializable]
 public struct MiniGameUnloadBoxInfo
-{   
+{
     public string BoxNumber;
     public Define.BoxType BoxType;
     public Define.BoxState BoxState;
@@ -10,6 +10,7 @@ public struct MiniGameUnloadBoxInfo
     public bool IsGrab;
     public bool IsBroken;
     public bool IsUnloaded;
+    public bool IsHidden;
 
     public MiniGameUnloadBoxInfo(string boxNumber, Define.BoxRegion region)
     {
@@ -19,38 +20,44 @@ public struct MiniGameUnloadBoxInfo
         IsBroken = false;
         IsGrab = false;
         IsUnloaded = false;
+        IsHidden = false;
         BoxType = Define.BoxType.Common;
     }
 
-    // 랜덤 정보 생성
     public void SetRandomInfo()
     {
-        BoxNumber = GenerateRandomString();  // AAA-0000형태
+        BoxNumber = GenerateRandomString();
+        Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.D + 1);
+        IsHidden = false;
+    }
 
-        Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.D + 1); // 지역 선택
+    public void SetHiddenInfo()
+    {
+        BoxNumber = $"CHR-{Random.Range(0, 10000):D4}";
+        Region = (Define.BoxRegion)Random.Range(0, (int)Define.BoxRegion.D + 1);
+        BoxState = Define.BoxState.Normal;
+        IsBroken = false;
+        IsHidden = true;
+        BoxType = Define.BoxType.Common;
     }
 
     public void SetRegion(Define.BoxRegion region)
     {
         Logger.Log("region : " + region);
-        Region = (Define.BoxRegion)System.Math.Clamp((int)region, (int)Define.BoxRegion.A, (int)Define.BoxRegion.D); // 지역 선택
+        Region = (Define.BoxRegion)System.Math.Clamp((int)region, (int)Define.BoxRegion.A, (int)Define.BoxRegion.D);
     }
-    
+
     private string GenerateRandomString()
     {
-        // 알파벳과 숫자를 랜덤으로 생성하여 결합
         string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         string digits = "0123456789";
-
-        // 3개의 알파벳과 4개의 숫자 생성 후 결합
         return $"{GetRandomChars(letters, 3)}-{GetRandomChars(digits, 4)}";
     }
 
     private string GetRandomChars(string charSet, int length)
     {
-        // 랜덤 생성기
         System.Random random = new System.Random();
-        
+
         char[] result = new char[length];
         for (int i = 0; i < length; i++)
         {
@@ -121,12 +128,10 @@ public class MiniGameUnloadBox : MonoBehaviour
         SyncReturnStickerSortingIfNeeded();
     }
 
-
     public void SetInGameActive(bool value, Vector3 pos = default(Vector3))
     {
         _defaultBoxLayer = LayerMask.NameToLayer("DefaultBox");
         _grabBoxLayer = LayerMask.NameToLayer("GrabBox");
-
 
         gameObject.SetActive(value);
         if (value)
@@ -138,25 +143,14 @@ public class MiniGameUnloadBox : MonoBehaviour
             currentScale.x = 1f;
             currentScale.z = 1f;
             currentScale.y = 0.8f;
-            // 콜라이더 크기 설정 
 
             boxCollider.size = currentScale;
-
-            // offset 계산 및 적용
-            // float frontHeight = 100f;   // 앞면 높이
-            // float totalHeight = 100f + 100f * 0.4f; // 전체 높이
-
-            boxCollider.size = currentScale;
-
-            // 생성될 때는 false
             boxCollider.isTrigger = false;
             IsUnloaded = false;
 
-            // 이전 중력이 남아있음. -> 속도 초기화
             boxRigidbody.velocity = Vector3.zero;
 
             PlayBoxPutSound();
-
         }
     }
 
@@ -172,22 +166,14 @@ public class MiniGameUnloadBox : MonoBehaviour
         if (value)
         {
             gameObject.layer = _grabBoxLayer;
-
-            // 상자의 Rigidbody 비활성화
             boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-            // 놓을 때는 true
             boxCollider.isTrigger = true;
-
             PlayBoxHoldSound();
-
         }
         else
         {
             gameObject.layer = _defaultBoxLayer;
-
-            // 상자의 Rigidbody 활성화
             boxRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-
             PlayBoxPutSound();
         }
     }
@@ -207,6 +193,16 @@ public class MiniGameUnloadBox : MonoBehaviour
         Init();
         SetReturnSticker(false);
         _info.SetRandomInfo();
+
+        boxRigidbody = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
+    }
+
+    public virtual void SetHiddenInfo()
+    {
+        Init();
+        SetReturnSticker(false);
+        _info.SetHiddenInfo();
 
         boxRigidbody = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
@@ -276,4 +272,3 @@ public class MiniGameUnloadBox : MonoBehaviour
         }
     }
 }
-

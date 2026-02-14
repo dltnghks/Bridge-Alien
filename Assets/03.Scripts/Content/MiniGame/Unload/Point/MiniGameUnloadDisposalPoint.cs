@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 {
+    public Action<MiniGameUnloadBox> OnDisposedAction;
+
     [Header("LampParticle")]
     [SerializeField] private ParticleSystem _lampParticle;
 
@@ -140,6 +142,7 @@ public class MiniGameUnloadDisposalPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
                         .OnComplete(
                             () =>
                             {
+                                OnDisposedAction?.Invoke(box);
                                 box.SetInGameActive(false);
                                 OnScoreAction(-10, null);
                             }

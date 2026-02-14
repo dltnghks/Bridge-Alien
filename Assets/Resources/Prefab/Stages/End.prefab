@@ -1339,6 +1339,7 @@ MonoBehaviour:
   - {fileID: 7949769270141331561}
   _returnPoint: {fileID: 3286933182483125853}
   _disposePoint: {fileID: 7757526296674571461}
+  _hiddenBoxSpawnInterval: 6
 --- !u!114 &3247591405872800741
 MonoBehaviour:
   m_ObjectHideFlags: 0

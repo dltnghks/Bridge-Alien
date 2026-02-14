@@ -170,7 +170,13 @@ MonoBehaviour:
     IsGrab: 0
     IsBroken: 0
     IsUnloaded: 0
+    IsHidden: 0
   _returnStickerSprite: {fileID: 6665022905979586121}
+  _returnStickerSortingOffset: 1
+  _sortingOrderScale: 100
+  _sortingOrderBase: 0
+  _defaultSprite: {fileID: 21300000, guid: 926d8918a9cbc5f4fae1542614a39537, type: 3}
+  _hiddenSprite: {fileID: 21300000, guid: bca68cc86e7b3b84a8baf66f9f01722d, type: 3}
 --- !u!1 &9156988050972348332
 GameObject:
   m_ObjectHideFlags: 0

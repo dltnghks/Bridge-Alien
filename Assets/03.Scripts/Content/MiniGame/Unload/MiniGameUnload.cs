@@ -20,8 +20,15 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     [Header("Disposal Point")]
     [SerializeField] private MiniGameUnloadDisposalPoint _disposePoint;
+    [Header("Hidden Box (Boss Stage)")]
+    [SerializeField] private int _hiddenBoxSpawnInterval = 8;
 
     private ComboSystem _comboSystem;
+    private const int HiddenBoxTargetCount = 2;
+    private int _totalSpawnedBoxCount;
+    private int _hiddenBoxReservedCount;
+    private int _hiddenBoxSpawnedCount;
+    private int _hiddenBoxDisposedCount;
 
     public bool IsActive { get; set; }
     public bool IsPause { get; set; }
@@ -60,6 +67,10 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         IsActive = false;
         IsPause = false;
         IsTutorialActive = false;
+        _totalSpawnedBoxCount = 0;
+        _hiddenBoxReservedCount = 0;
+        _hiddenBoxSpawnedCount = 0;
+        _hiddenBoxDisposedCount = 0;
 
         SetGameInfo();
 
@@ -168,6 +179,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
         _disposePoint.OnScoreAction += AddScore;
         _disposePoint.OnTriggerAction += _uiGameUnloadScene.UIPlayerInput.SetInteractionButtonSprite;
+        _disposePoint.OnDisposedAction += OnDisposedBox;
     }
 
     private void SetSpawnBoxList()
@@ -319,6 +331,60 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _comboSystem.ClearComboBoxList();
     }
 
+    public bool TryReserveHiddenBoxSpawn()
+    {
+        if (Managers.Stage.CurrentStageType != Define.ChapterType.End)
+        {
+            return false;
+        }
+
+        if (_hiddenBoxSpawnInterval <= 0 || _hiddenBoxReservedCount >= HiddenBoxTargetCount)
+        {
+            return false;
+        }
+
+        int nextHiddenSpawnCount = (_hiddenBoxReservedCount + 1) * _hiddenBoxSpawnInterval;
+        if (_totalSpawnedBoxCount + 1 < nextHiddenSpawnCount)
+        {
+            return false;
+        }
+
+        _hiddenBoxReservedCount++;
+        return true;
+    }
+
+    public void NotifyBoxSpawned(MiniGameUnloadBox box)
+    {
+        _totalSpawnedBoxCount++;
+        if (box != null && box.Info.IsHidden)
+        {
+            _hiddenBoxSpawnedCount++;
+            Logger.Log($"Hidden Box Spawned ({_hiddenBoxSpawnedCount}/{HiddenBoxTargetCount})");
+        }
+    }
+
+    public void CancelReservedHiddenBoxSpawn()
+    {
+        if (_hiddenBoxReservedCount > _hiddenBoxSpawnedCount)
+        {
+            _hiddenBoxReservedCount--;
+        }
+    }
+
+    private void OnDisposedBox(MiniGameUnloadBox box)
+    {
+        if (Managers.Stage.CurrentStageType != Define.ChapterType.End)
+        {
+            return;
+        }
+
+        if (box != null && box.Info.IsHidden)
+        {
+            _hiddenBoxDisposedCount++;
+            Logger.Log($"Hidden Box Disposed ({_hiddenBoxDisposedCount}/{HiddenBoxTargetCount})");
+        }
+    }
+
     public bool PauseGame()
     {
         if (!IsActive)
@@ -371,6 +437,11 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         var stageData = Managers.Stage.GetCurrentStageData();
         int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
         int starCount = Managers.Stage.CompleteStage(totalScore, preStarCount);
+        if (Managers.Stage.CurrentStageType == Define.ChapterType.End && _hiddenBoxDisposedCount < HiddenBoxTargetCount)
+        {
+            Logger.LogWarning($"Boss stage failed: hidden disposal { _hiddenBoxDisposedCount}/{HiddenBoxTargetCount }");
+            starCount = 0;
+        }
         int totalGold = Managers.Stage.GetCompleteTotalGold(starCount);
         int additionalStars = Mathf.Max(0, starCount - preStarCount);
         if (additionalStars > 0)

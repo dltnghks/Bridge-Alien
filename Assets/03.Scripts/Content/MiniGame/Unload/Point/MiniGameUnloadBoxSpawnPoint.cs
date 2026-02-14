@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoint, IBoxPickupPoint
 {
@@ -12,12 +10,10 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     private Define.BoxType _lastSpawnedBoxType = Define.BoxType.Unknown;
 
     [Header("Spawn Setting")]
-    [SerializeField]
-    private float _boxSpawnInterval = 5.0f;
-    [SerializeField]
-    private int _maxSpawnBoxIndex = 3;
-    [SerializeField]
-    private Define.BoxType[] _spawnBoxType = new Define.BoxType[] { Define.BoxType.Common, Define.BoxType.Cold, Define.BoxType.Fragile };
+    [SerializeField] private float _boxSpawnInterval = 5.0f;
+    [SerializeField] private int _maxSpawnBoxIndex = 3;
+    [SerializeField] private Define.BoxType[] _spawnBoxType = new Define.BoxType[] { Define.BoxType.Common, Define.BoxType.Cold, Define.BoxType.Fragile };
+
     public MiniGameUnloadBoxList BoxList { get; set; }
 
     public void SetBoxSpawnPoint()
@@ -34,18 +30,21 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     private void InitTimer()
     {
         if (_timer == null)
+        {
             _timer = new TimerBase();
+        }
 
         _timer.OffTimer();
-        // 첫 박스는 0.5초 후 바로 나오도록 설정
-        _timer.SetTimer(_boxSpawnInterval, 0.5f); 
+        _timer.SetTimer(_boxSpawnInterval, 0.5f);
         _timer.OnEndTime = SpawnBox;
     }
 
     public void Update()
     {
         if (!Managers.MiniGame.IsAcitveObject)
+        {
             return;
+        }
 
         if (CanSpawnBox())
         {
@@ -64,14 +63,13 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.PickUpBox);
         }
     }
-    
+
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
         {
             OnTriggerAction?.Invoke((int)MiniGameUnloadInteractionAction.None);
         }
-       
     }
 
     public bool CanSpawnBox()
@@ -87,24 +85,39 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             return;
         }
 
+        bool shouldSpawnHidden = ShouldSpawnHiddenBox();
         Define.BoxType boxType = GetRandomBoxType();
 
-        GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{boxType}Box", transform);
-        MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+        MiniGameUnloadBox newBox = CreateBoxInstance(boxType, shouldSpawnHidden);
+        if (newBox == null)
+        {
+            CancelHiddenBoxReservation(shouldSpawnHidden);
+            return;
+        }
 
-        newBox.SetRandomInfo();
+        if (shouldSpawnHidden)
+        {
+            newBox.SetHiddenInfo();
+        }
+        else
+        {
+            newBox.SetRandomInfo();
+        }
         newBox.SetInGameActive(false);
 
         if (!newBox.gameObject.activeSelf && BoxList.TryPush(newBox))
         {
             _boxHeight += _boxHeightOffset;
             Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
-
-            // z-ordering, 겹치면 렌더링 충돌나서 z를 살짝 조절, 위로 올라갈수록 앞으로
             spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
 
             newBox.SetSpawnBox(spawnPos);
             _lastSpawnedBoxType = boxType;
+            NotifyBoxSpawned(newBox);
+        }
+        else
+        {
+            CancelHiddenBoxReservation(shouldSpawnHidden);
         }
     }
 
@@ -116,8 +129,10 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             return;
         }
 
+        bool shouldSpawnHidden = ShouldSpawnHiddenBox();
+
         Define.BoxType boxType = boxTypeDecision.BoxType;
-        if(boxType == Define.BoxType.Unknown)
+        if (boxType == Define.BoxType.Unknown)
         {
             boxType = GetRandomBoxType();
         }
@@ -130,24 +145,80 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             boxType = GetRandomBoxType(excludeCold: true);
         }
 
-        GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{boxType}Box", transform);
-        MiniGameUnloadBox newBox = newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+        MiniGameUnloadBox newBox = CreateBoxInstance(boxType, shouldSpawnHidden);
+        if (newBox == null)
+        {
+            CancelHiddenBoxReservation(shouldSpawnHidden);
+            return;
+        }
 
-        newBox.SetRandomInfo();
-        // 지역만 지정
-        newBox.SetRegion(boxTypeDecision.BoxRegion);
+        if (shouldSpawnHidden)
+        {
+            newBox.SetHiddenInfo();
+        }
+        else
+        {
+            newBox.SetRandomInfo();
+            newBox.SetRegion(boxTypeDecision.BoxRegion);
+        }
         newBox.SetInGameActive(false);
 
         if (!newBox.gameObject.activeSelf && BoxList.TryPush(newBox))
         {
             _boxHeight += _boxHeightOffset;
             Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
-
-            // z-ordering, 겹치면 렌더링 충돌나서 z를 살짝 조절, 위로 올라갈수록 앞으로
             spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
 
             newBox.SetSpawnBox(spawnPos);
             _lastSpawnedBoxType = boxType;
+            NotifyBoxSpawned(newBox);
+        }
+        else
+        {
+            CancelHiddenBoxReservation(shouldSpawnHidden);
+        }
+    }
+
+    private MiniGameUnloadBox CreateBoxInstance(Define.BoxType boxType, bool hidden)
+    {
+        string prefabName = hidden ? "CommonBox" : $"{boxType}Box";
+        GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{prefabName}", transform);
+        if (newBoxObj == null)
+        {
+            return null;
+        }
+
+        return newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+    }
+
+    private bool ShouldSpawnHiddenBox()
+    {
+        if (Managers.MiniGame.CurrentGame is MiniGameUnload miniGameUnload)
+        {
+            return miniGameUnload.TryReserveHiddenBoxSpawn();
+        }
+
+        return false;
+    }
+
+    private void NotifyBoxSpawned(MiniGameUnloadBox box)
+    {
+        if (Managers.MiniGame.CurrentGame is MiniGameUnload miniGameUnload)
+        {
+            miniGameUnload.NotifyBoxSpawned(box);
+        }
+    }
+
+    private void CancelHiddenBoxReservation(bool hiddenReserved)
+    {
+        if (!hiddenReserved)
+        {
+            return;
+        }
+
+        if (Managers.MiniGame.CurrentGame is MiniGameUnload miniGameUnload)
+        {
+            miniGameUnload.CancelReservedHiddenBoxSpawn();
         }
     }
 
@@ -156,6 +227,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         bool avoidFragile = excludeFragile || ShouldAvoidFragileOnTop(Define.BoxType.Fragile);
         bool avoidCold = excludeCold || ShouldAvoidColdOnStage3(Define.BoxType.Cold);
         List<Define.BoxType> candidates = new List<Define.BoxType>();
+
         foreach (var boxType in _spawnBoxType)
         {
             if (avoidFragile && boxType == Define.BoxType.Fragile)
@@ -215,7 +287,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         int coldCount = 0;
         for (int i = 0; i < BoxList.BoxList.Count; i++)
         {
-            var box = BoxList.BoxList[i];
+            MiniGameUnloadBox box = BoxList.BoxList[i];
             if (box != null && box.BoxType == Define.BoxType.Cold)
             {
                 coldCount++;
@@ -231,7 +303,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
 
     public bool CanPickupBox()
     {
-        return !BoxList.IsEmpty;        
+        return !BoxList.IsEmpty;
     }
 
     public MiniGameUnloadBox PickupBox()
@@ -243,9 +315,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             _boxHeight -= _boxHeightOffset;
             return box;
         }
-        else
-        {
-            return null;
-        }
+
+        return null;
     }
 }
