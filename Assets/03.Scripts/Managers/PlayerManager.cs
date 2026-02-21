@@ -119,11 +119,13 @@ public class PlayerManager : ISaveable
 
     public void SaveStageProgress(Define.ChapterType stageType, int star)
     {
+        int previousStar = GetStageClearInfo(stageType);
+
         // 최고기록일 때만 갱신
-        if (GetStageClearInfo(stageType) < star)
+        if (previousStar < star)
         {
             PlayerData.ClearedStages[stageType] = star;
-            PlayerData.TotalStars += star;
+            PlayerData.TotalStars += (star - previousStar);
         }
     }
 
@@ -148,13 +150,41 @@ public class PlayerManager : ISaveable
         return 0;
     }
 
+    public void SaveStageProgressed(Define.ChapterType stageType)
+    {
+        if (PlayerData.ProgressedStages == null)
+        {
+            PlayerData.ProgressedStages = new List<Define.ChapterType>();
+        }
+
+        if (PlayerData.ProgressedStages.Contains(stageType))
+        {
+            return;
+        }
+
+        PlayerData.ProgressedStages.Add(stageType);
+        OnPlayerDataChanged?.Invoke();
+    }
+
     // 해당 스테이지를 진행한 적이 있는가
     public bool GetStageProgressedStatus(Define.ChapterType stageType)
     {
+        if (PlayerData.ProgressedStages == null)
+        {
+            PlayerData.ProgressedStages = new List<Define.ChapterType>();
+        }
+
+        if (PlayerData.ProgressedStages.Contains(stageType))
+        {
+            return true;
+        }
+
+        // 구세이브 호환: 이전 버전에서는 클리어 정보만 진행 판정에 사용
         if (PlayerData.ClearedStages.ContainsKey(stageType))
         {
             return true;
         }
+
         return false;
     }
 

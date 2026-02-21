@@ -71,11 +71,13 @@ public class StageManager
         }
 
         // 스테이지 시작 시 피로도 차감
+        bool isProgressed = Managers.Player.GetStageProgressedStatus(_currentStageType);
         Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, -1);
+        Managers.Player.SaveStageProgressed(_currentStageType);
 
         // 스테이지 시작 시 이벤트 재생
         // 클리어했던 스테이지거나 이미 진행한 스테이지인 경우 바로 씬 변경
-        if (Managers.Player.GetStageProgressedStatus(_currentStageType))
+        if (isProgressed)
         {
             Managers.Scene.ChangeScene(Define.Scene.MiniGameUnload);
         }

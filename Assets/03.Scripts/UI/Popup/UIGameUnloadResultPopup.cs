@@ -108,7 +108,7 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
 
         ShowResultPopupEffect();
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(ShowScore(score + statsBonus));
+        sequence.Append(ShowScore(score));
         sequence.AppendInterval(0.2f);
 
         sequence.Append(ShowStar(starCount));
@@ -264,8 +264,8 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         base.ClosePopupUI();
     }
 
-    public void OnDestroy()
-    {
-        OnClickConfirmButton();
-    }
+    // public void OnDestroy()
+    // {
+    //     OnClickConfirmButton();
+    // }
 }
