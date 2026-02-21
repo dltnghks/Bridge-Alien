@@ -435,6 +435,13 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int totalScore = _score.CurrentScore;
 
         var stageData = Managers.Stage.GetCurrentStageData();
+        if (Managers.Stage.CurrentStageType == Define.ChapterType.End)
+        {
+            Define.EventDataID endingEventID = stageData.GetEndingEventByHiddenBoxDisposedCount(_hiddenBoxDisposedCount);
+            int endingThumbnailIndex = stageData.GetEndingThumbnailIndexByHiddenBoxDisposedCount(_hiddenBoxDisposedCount);
+            Managers.Stage.SetEndingResult(endingEventID, endingThumbnailIndex);
+        }
+
         int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
         int starCount = Managers.Stage.CompleteStage(totalScore, preStarCount);
         if (Managers.Stage.CurrentStageType == Define.ChapterType.End && _hiddenBoxDisposedCount < HiddenBoxTargetCount)

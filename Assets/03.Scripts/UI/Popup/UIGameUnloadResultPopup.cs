@@ -264,8 +264,8 @@ public class UIGameUnloadResultPopup : UIConfirmPopup
         base.ClosePopupUI();
     }
 
-    // public void OnDestroy()
-    // {
-    //     OnClickConfirmButton();
-    // }
+    public void OnDestroy()
+    {
+        OnClickConfirmButton();
+    }
 }

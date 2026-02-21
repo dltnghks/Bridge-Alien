@@ -89,12 +89,14 @@ public class Define
         Event_C3,
         Event_C4,
         Event_C5,
+        Event_C6,
 
         Event_C1_Clear,
         Event_C2_Clear,
         Event_C3_Clear,
         Event_C4_Clear,
         Event_C5_Clear,
+        Event_C6_Clear,
     }
 
     public enum Dialog
@@ -124,6 +126,18 @@ public class Define
         S5_03,
         S5_04,
         S5_05,
+
+        S6_01,
+        S6_02,
+        S6_03A,
+        S6_04A,
+        S6_05A,
+        S6_06A,
+        END_A,
+
+        S6_03B,
+        S6_04B,
+        END_B,
     }
 
     public enum DialogType
@@ -145,6 +159,7 @@ public class Define
         DeliveryGarage,    // 배송 차고지
         ManagerRoom,       // 소장실
         END_BACKGROUND,    // 엔딩
+        EndBackground,    // 엔딩
     }
 
     public enum DialogSpeakerType

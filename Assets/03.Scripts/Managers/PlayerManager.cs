@@ -188,6 +188,109 @@ public class PlayerManager : ISaveable
         return false;
     }
 
+    public void SaveEndingThumbnailProgress(Define.ChapterType stageType, int thumbnailIndex)
+    {
+        if (thumbnailIndex < 0)
+        {
+            return;
+        }
+
+        if (PlayerData.ClearedEndingThumbnailMask == null)
+        {
+            PlayerData.ClearedEndingThumbnailMask = new Dictionary<Define.ChapterType, int>();
+        }
+
+        int previousMask = 0;
+        if (PlayerData.ClearedEndingThumbnailMask.TryGetValue(stageType, out int savedMask))
+        {
+            previousMask = savedMask;
+        }
+        else if (PlayerData.ClearedEndingThumbnailIndex != null && PlayerData.ClearedEndingThumbnailIndex.TryGetValue(stageType, out int legacyIndex))
+        {
+            previousMask = 1 << Mathf.Clamp(legacyIndex, 0, 30);
+        }
+
+        int currentMask = previousMask | (1 << Mathf.Clamp(thumbnailIndex, 0, 30));
+        if (currentMask == previousMask)
+        {
+            return;
+        }
+
+        PlayerData.ClearedEndingThumbnailMask[stageType] = currentMask;
+        if (PlayerData.ClearedEndingThumbnailIndex == null)
+        {
+            PlayerData.ClearedEndingThumbnailIndex = new Dictionary<Define.ChapterType, int>();
+        }
+        PlayerData.ClearedEndingThumbnailIndex[stageType] = thumbnailIndex;
+        OnPlayerDataChanged?.Invoke();
+    }
+
+    public int GetEndingThumbnailProgress(Define.ChapterType stageType)
+    {
+        if (IsEndingThumbnailUnlocked(stageType, 1))
+        {
+            return 1;
+        }
+
+        if (IsEndingThumbnailUnlocked(stageType, 0))
+        {
+            return 0;
+        }
+
+        return -1;
+    }
+
+    public bool IsEndingThumbnailUnlocked(Define.ChapterType stageType, int thumbnailIndex)
+    {
+        if (thumbnailIndex < 0)
+        {
+            return false;
+        }
+
+        int mask = GetEndingThumbnailMask(stageType);
+        int bit = 1 << Mathf.Clamp(thumbnailIndex, 0, 30);
+        return (mask & bit) != 0;
+    }
+
+    public int GetEndingUnlockedCount(Define.ChapterType stageType, int endingTypeCount)
+    {
+        int count = 0;
+        for (int i = 0; i < endingTypeCount; i++)
+        {
+            if (IsEndingThumbnailUnlocked(stageType, i))
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private int GetEndingThumbnailMask(Define.ChapterType stageType)
+    {
+        if (PlayerData.ClearedEndingThumbnailMask == null)
+        {
+            PlayerData.ClearedEndingThumbnailMask = new Dictionary<Define.ChapterType, int>();
+        }
+
+        if (PlayerData.ClearedEndingThumbnailMask.TryGetValue(stageType, out int mask))
+        {
+            return mask;
+        }
+
+        if (PlayerData.ClearedEndingThumbnailIndex == null)
+        {
+            PlayerData.ClearedEndingThumbnailIndex = new Dictionary<Define.ChapterType, int>();
+        }
+
+        if (PlayerData.ClearedEndingThumbnailIndex.TryGetValue(stageType, out int legacyIndex))
+        {
+            return 1 << Mathf.Clamp(legacyIndex, 0, 30);
+        }
+
+        return 0;
+    }
+
     public bool HasSeenEvent(Define.EventDataID eventId)
     {
         if (eventId == Define.EventDataID.Unknown)

@@ -6,6 +6,8 @@ public class StageManager
     private StageData _currentStageData;
     private bool _isStageCleared = false;
     private bool _isStageStarted = false;
+    private int _endingThumbnailIndex = -1;
+    private Define.EventDataID _endingBranchEventID = Define.EventDataID.Unknown;
 
     public Action<StageData> OnChangeStage;
 
@@ -15,6 +17,8 @@ public class StageManager
     {
         _currentStageData = null;
         _isStageCleared = false;
+        _endingThumbnailIndex = -1;
+        _endingBranchEventID = Define.EventDataID.Unknown;
     }
 
     public StageData GetCurrentStageData()
@@ -33,6 +37,9 @@ public class StageManager
         var stageData = Managers.Data.StageData.GetStageData(stageType);
 
         if (stageData is null) return;
+
+        _endingThumbnailIndex = -1;
+        _endingBranchEventID = Define.EventDataID.Unknown;
 
         _currentStageType = stageType;
         _currentStageData = stageData;
@@ -110,6 +117,20 @@ public class StageManager
     public void EndStage(int starCount)
     {
         _isStageStarted = false;
+
+        if (_currentStageType == Define.ChapterType.End && _endingBranchEventID != Define.EventDataID.Unknown)
+        {
+            if (_endingThumbnailIndex >= 0)
+            {
+                Managers.Player.SaveEndingThumbnailProgress(_currentStageType, _endingThumbnailIndex);
+            }
+
+            Managers.Event.Init(_endingBranchEventID);
+            _endingThumbnailIndex = -1;
+            _endingBranchEventID = Define.EventDataID.Unknown;
+            return;
+        }
+
         // 이미 클리어했거나 별 개수가 0인 경우(챕터 클리어 실패)에는 바로 집으로 이동 
         if (_isStageCleared || starCount == 0)
         {
@@ -123,6 +144,12 @@ public class StageManager
             Managers.Player.FillFatigue();
             Managers.Event.Init(_currentStageData.ClearEventID);
         }
+    }
+
+    public void SetEndingResult(Define.EventDataID eventID, int thumbnailIndex)
+    {
+        _endingBranchEventID = eventID;
+        _endingThumbnailIndex = thumbnailIndex;
     }
 
     public int GetCompleteTotalGold(int starCount)

@@ -182,7 +182,52 @@ public class StageEditor : EditorWindow
         EditorGUILayout.LabelField(stageType.ToString(), EditorStyles.boldLabel);
         data.StageName = EditorGUILayout.TextField("Stage Name", data.StageName);
         data.StageDescription = EditorGUILayout.TextField("Stage Description", data.StageDescription);
+        data.PopupTemplateType = (StagePopupTemplateType)EditorGUILayout.EnumPopup("Popup Template", data.PopupTemplateType);
         data.StageImage = (Sprite)EditorGUILayout.ObjectField("Stage Image", data.StageImage, typeof(Sprite), false);
+        data.EndingLockedThumbnail = (Sprite)EditorGUILayout.ObjectField("Ending Locked Thumbnail", data.EndingLockedThumbnail, typeof(Sprite), false);
+        data.EndingHiddenBoxThreshold = EditorGUILayout.IntField("Ending HiddenBox Threshold", data.EndingHiddenBoxThreshold);
+        data.EndingEventOnLowHiddenBox = (Define.EventDataID)EditorGUILayout.EnumPopup("Ending Event (Low HiddenBox)", data.EndingEventOnLowHiddenBox);
+        data.EndingEventOnHighHiddenBox = (Define.EventDataID)EditorGUILayout.EnumPopup("Ending Event (High HiddenBox)", data.EndingEventOnHighHiddenBox);
+        EditorGUILayout.LabelField("Ending Locked Thumbnails");
+        if (data.EndingLockedThumbnails == null)
+        {
+            data.EndingLockedThumbnails = new List<Sprite>();
+        }
+
+        int endingLockedThumbnailCount = Mathf.Max(0, EditorGUILayout.IntField("Ending Locked Thumbnail Count", data.EndingLockedThumbnails.Count));
+        while (data.EndingLockedThumbnails.Count < endingLockedThumbnailCount)
+        {
+            data.EndingLockedThumbnails.Add(null);
+        }
+        while (data.EndingLockedThumbnails.Count > endingLockedThumbnailCount)
+        {
+            data.EndingLockedThumbnails.RemoveAt(data.EndingLockedThumbnails.Count - 1);
+        }
+        for (int i = 0; i < data.EndingLockedThumbnails.Count; i++)
+        {
+            data.EndingLockedThumbnails[i] = (Sprite)EditorGUILayout.ObjectField($"Ending Locked Thumbnail {i + 1}", data.EndingLockedThumbnails[i], typeof(Sprite), false);
+        }
+
+        EditorGUILayout.LabelField("Popup Thumbnails");
+        if (data.PopupThumbnails == null)
+        {
+            data.PopupThumbnails = new List<Sprite>();
+        }
+
+        int thumbnailCount = Mathf.Max(0, EditorGUILayout.IntField("Thumbnail Count", data.PopupThumbnails.Count));
+        while (data.PopupThumbnails.Count < thumbnailCount)
+        {
+            data.PopupThumbnails.Add(null);
+        }
+        while (data.PopupThumbnails.Count > thumbnailCount)
+        {
+            data.PopupThumbnails.RemoveAt(data.PopupThumbnails.Count - 1);
+        }
+        for (int i = 0; i < data.PopupThumbnails.Count; i++)
+        {
+            data.PopupThumbnails[i] = (Sprite)EditorGUILayout.ObjectField($"Thumbnail {i + 1}", data.PopupThumbnails[i], typeof(Sprite), false);
+        }
+
         data.IsLocked = EditorGUILayout.Toggle("Is Locked", data.IsLocked);
         data.RequiredStars = EditorGUILayout.IntField("Required Stars", data.RequiredStars);
         data.ClearReward = EditorGUILayout.IntField("Clear Reward", data.ClearReward);

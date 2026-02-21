@@ -19,6 +19,8 @@ public class PlayerData
     // StageData, 완료된 스테이지와 별
     public Dictionary<Define.ChapterType, int> ClearedStages = new Dictionary<Define.ChapterType, int>();
     public List<Define.ChapterType> ProgressedStages = new List<Define.ChapterType>();
+    public Dictionary<Define.ChapterType, int> ClearedEndingThumbnailIndex = new Dictionary<Define.ChapterType, int>();
+    public Dictionary<Define.ChapterType, int> ClearedEndingThumbnailMask = new Dictionary<Define.ChapterType, int>();
     public int TotalStars = 0;
     public List<Define.EventDataID> SeenEvents = new List<Define.EventDataID>();
 
