@@ -28,6 +28,7 @@ public class UIDialogPopup : UIPopup
         Background,
         LeftCharacterImage,
         RightCharacterImage,
+        CenterCharacterImage,
     }
 
     enum Buttons
@@ -59,6 +60,7 @@ public class UIDialogPopup : UIPopup
     private List<DialogData> _currentChoices = new List<DialogData>();
     private Define.DialogSpeakerType _leftSpeakerType;
     private Define.DialogSpeakerType _rightSpeakerType;
+    private Define.DialogSpeakerType _centerSpeakerType;
     
     private Tween _typingTween; // 현재 실행 중인 트윈
     
@@ -157,10 +159,12 @@ public class UIDialogPopup : UIPopup
         // 캐릭터 이미지 초기화
         SetSpeakerImage(Define.DialogSpeakerType.UNKNOWN, Define.DialogSpeakerPosType.Left);
         SetSpeakerImage(Define.DialogSpeakerType.UNKNOWN, Define.DialogSpeakerPosType.Right);
+        SetSpeakerImage(Define.DialogSpeakerType.UNKNOWN, Define.DialogSpeakerPosType.Center);
 
         // 이미지 비활성화
         GetImage((int)Images.LeftCharacterImage).color = new Color(1, 1, 1, 0);
         GetImage((int)Images.RightCharacterImage).color = new Color(1, 1, 1, 0);
+        GetImage((int)Images.CenterCharacterImage).color = new Color(1, 1, 1, 0);
 
         foreach (var choiceButton in _choiceButtons)
         {
@@ -305,17 +309,24 @@ public class UIDialogPopup : UIPopup
         {
             _rightSpeakerType = speakerType;
         }
+        else if (speakerPosType == Define.DialogSpeakerPosType.Center)
+        {
+            _centerSpeakerType = speakerType;
+        }
         else
         {
             _leftSpeakerType = Define.DialogSpeakerType.UNKNOWN;
             _rightSpeakerType = Define.DialogSpeakerType.UNKNOWN;
+            _centerSpeakerType = Define.DialogSpeakerType.UNKNOWN;
         }
 
         Image leftImage = GetImage((int)Images.LeftCharacterImage);
         Image rightImage = GetImage((int)Images.RightCharacterImage);
+        Image centerImage = GetImage((int)Images.CenterCharacterImage);
 
         leftImage.color = Color.HSVToRGB(0, 0, 0.3f);
         rightImage.color = Color.HSVToRGB(0, 0, 0.3f);
+        centerImage.color = Color.HSVToRGB(0, 0, 0.3f);
 
         if (speakerPosType == Define.DialogSpeakerPosType.Left)
         {
@@ -327,11 +338,18 @@ public class UIDialogPopup : UIPopup
             rightImage.sprite = _speakerCharacterImages[speakerType];
             rightImage.color = Color.white;
         }
+        else if (speakerPosType == Define.DialogSpeakerPosType.Center)
+        {
+            centerImage.sprite = _speakerCharacterImages[speakerType];
+            centerImage.color = Color.white;
+        }
 
         if (_leftSpeakerType == Define.DialogSpeakerType.UNKNOWN)
             leftImage.color = Color.clear;
         if (_rightSpeakerType == Define.DialogSpeakerType.UNKNOWN)
             rightImage.color = Color.clear;
+        if (_centerSpeakerType == Define.DialogSpeakerType.UNKNOWN)
+            centerImage.color = Color.clear;
             
     }
 

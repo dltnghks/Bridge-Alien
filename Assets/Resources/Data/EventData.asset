@@ -41,22 +41,7 @@ MonoBehaviour:
         Parameter: Unload
         NextEventID: C1_E5
         DialogScene: 0
-      - EventID: C1_E5
-        EventType: 1
-        Parameter: S1_04
-        NextEventID: C1_E6
-        DialogScene: 5
-      - EventID: C1_E6
-        EventType: 1
-        Parameter: S1_05
-        NextEventID: C1_E7
-        DialogScene: 1
-      - EventID: C1_E7
-        EventType: 4
-        Parameter: 
-        NextEventID: End
-        DialogScene: 0
-    - Key: 6
+    - Key: 7
       Value:
       - EventID: Start
         EventType: 0
@@ -100,22 +85,7 @@ MonoBehaviour:
         Parameter: Unload
         NextEventID: C2_E4
         DialogScene: 0
-      - EventID: C2_E4
-        EventType: 1
-        Parameter: S2_03
-        NextEventID: C2_E5
-        DialogScene: 4
-      - EventID: C2_E5
-        EventType: 1
-        Parameter: S2_04
-        NextEventID: C2_E6
-        DialogScene: 1
-      - EventID: C2_E6
-        EventType: 4
-        Parameter: 
-        NextEventID: End
-        DialogScene: 0
-    - Key: 7
+    - Key: 8
       Value:
       - EventID: Start
         EventType: 0
@@ -154,17 +124,7 @@ MonoBehaviour:
         Parameter: Unload
         NextEventID: C3_E3
         DialogScene: 0
-      - EventID: C3_E3
-        EventType: 1
-        Parameter: S3_02
-        NextEventID: C3_E4
-        DialogScene: 5
-      - EventID: C3_E4
-        EventType: 4
-        Parameter: 
-        NextEventID: End
-        DialogScene: 0
-    - Key: 8
+    - Key: 9
       Value:
       - EventID: Start
         EventType: 0
@@ -198,22 +158,7 @@ MonoBehaviour:
         Parameter: Unload
         NextEventID: C4_E3
         DialogScene: 3
-      - EventID: C4_E3
-        EventType: 1
-        Parameter: S4_02
-        NextEventID: C4_E4
-        DialogScene: 4
-      - EventID: C4_E4
-        EventType: 1
-        Parameter: S4_03
-        NextEventID: C4_E5
-        DialogScene: 1
-      - EventID: C4_E5
-        EventType: 4
-        Parameter: 
-        NextEventID: End
-        DialogScene: 0
-    - Key: 9
+    - Key: 10
       Value:
       - EventID: Start
         EventType: 0
@@ -257,27 +202,7 @@ MonoBehaviour:
         Parameter: Unload
         NextEventID: C5_E4
         DialogScene: 0
-      - EventID: C5_E4
-        EventType: 1
-        Parameter: S5_03
-        NextEventID: C5_E5
-        DialogScene: 4
-      - EventID: C5_E5
-        EventType: 1
-        Parameter: S5_04
-        NextEventID: C5_E6
-        DialogScene: 6
-      - EventID: C5_E6
-        EventType: 1
-        Parameter: S5_05
-        NextEventID: C5_E7
-        DialogScene: 6
-      - EventID: C5_E7
-        EventType: 4
-        Parameter: End
-        NextEventID: End
-        DialogScene: 0
-    - Key: 10
+    - Key: 11
       Value:
       - EventID: Start
         EventType: 0
@@ -300,7 +225,98 @@ MonoBehaviour:
         NextEventID: C5_E7
         DialogScene: 6
       - EventID: C5_E7
+        EventType: 1
+        Parameter: S5_06
+        NextEventID: C5_E8
+        DialogScene: 6
+      - EventID: C5_E8
         EventType: 4
         Parameter: End
         NextEventID: End
         DialogScene: 0
+    - Key: 6
+      Value:
+      - EventID: Start
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: C6_E1
+        DialogScene: 0
+      - EventID: C6_E1
+        EventType: 1
+        Parameter: S6_01
+        NextEventID: C6_E2
+        DialogScene: 6
+      - EventID: C6_E2
+        EventType: 1
+        Parameter: S6_02
+        NextEventID: C6_E3
+        DialogScene: 6
+      - EventID: C6_E3
+        EventType: 2
+        Parameter: Unload
+        NextEventID: C6_E4_A, B
+        DialogScene: 0
+    - Key: 13
+      Value:
+      - EventID: Start
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: C6_E4_A
+        DialogScene: 7
+      - EventID: C6_E4_A
+        EventType: 1
+        Parameter: S6_03_A
+        NextEventID: C6_E5_A
+        DialogScene: 7
+      - EventID: C6_E5_A
+        EventType: 1
+        Parameter: S6_04_A
+        NextEventID: C6_E6_A
+        DialogScene: 7
+      - EventID: C6_E6_A
+        EventType: 1
+        Parameter: S6_05_A
+        NextEventID: C6_E7_A
+        DialogScene: 7
+      - EventID: C6_E7_A
+        EventType: 1
+        Parameter: S6_06_A
+        NextEventID: C6_E8_A
+        DialogScene: 7
+      - EventID: C6_E8_A
+        EventType: 1
+        Parameter: END_A
+        NextEventID: C6_E9_A
+        DialogScene: 7
+      - EventID: C6_E9_A
+        EventType: 4
+        Parameter: End
+        NextEventID: End
+        DialogScene: 7
+    - Key: 14
+      Value:
+      - EventID: Start
+        EventType: 0
+        Parameter: Unknown
+        NextEventID: C6_E4_B
+        DialogScene: 7
+      - EventID: C6_E4_B
+        EventType: 1
+        Parameter: S6_03_B
+        NextEventID: C6_E5_B
+        DialogScene: 7
+      - EventID: C6_E5_B
+        EventType: 1
+        Parameter: S6_04_B
+        NextEventID: C6_E6_B
+        DialogScene: 7
+      - EventID: C6_E6_B
+        EventType: 1
+        Parameter: END_B
+        NextEventID: C6_E7_B
+        DialogScene: 7
+      - EventID: C6_E7_B
+        EventType: 4
+        Parameter: End
+        NextEventID: End
+        DialogScene: 7

@@ -97,6 +97,8 @@ public class Define
         Event_C4_Clear,
         Event_C5_Clear,
         Event_C6_Clear,
+        Event_C6_Clear_A,
+        Event_C6_Clear_B,
     }
 
     public enum Dialog
@@ -129,14 +131,14 @@ public class Define
 
         S6_01,
         S6_02,
-        S6_03A,
-        S6_04A,
-        S6_05A,
-        S6_06A,
+        S6_03_A,
+        S6_04_A,
+        S6_05_A,
+        S6_06_A,
         END_A,
 
-        S6_03B,
-        S6_04B,
+        S6_03_B,
+        S6_04_B,
         END_B,
     }
 
@@ -158,7 +160,6 @@ public class Define
         UnloadWorkplace,   // 하차 작업장
         DeliveryGarage,    // 배송 차고지
         ManagerRoom,       // 소장실
-        END_BACKGROUND,    // 엔딩
         EndBackground,    // 엔딩
     }
 
@@ -176,6 +177,8 @@ public class Define
         PIMPI_DEFAULT,          // 핌피 기본
         PIMPI_CALL,             // 핌피 전화
         GUIDE,                  // 가이드  
+        END_A_IMG,
+        END_B_IMG,
     }
 
     public enum DialogSpeakerPosType
@@ -183,6 +186,7 @@ public class Define
         Unknown,
         Left,   // 왼쪽
         Right,  // 오른쪽
+        Center, // 중앙
     }
 
     public enum PlayerStatsType

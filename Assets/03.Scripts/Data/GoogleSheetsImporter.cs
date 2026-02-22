@@ -29,7 +29,7 @@ public class GoogleSheetsImporter : EditorWindow
 
         _dialogDataURL = EditorGUILayout.TextField("DialogData Sheet URL", _dialogDataURL);
         if (GUILayout.Button("Import Dialog Data"))
-            ImportData(_dialogDataURL, Define.DataType.Event);
+            ImportData(_dialogDataURL, Define.DataType.Dialog);
 
         _miniGameSettingDataURL = EditorGUILayout.TextField("MiniGameSettingData Sheet URL", _miniGameSettingDataURL);
         if (GUILayout.Button("Import MiniGameSetting Data"))

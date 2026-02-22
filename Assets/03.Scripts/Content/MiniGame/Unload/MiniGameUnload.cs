@@ -440,15 +440,15 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             Define.EventDataID endingEventID = stageData.GetEndingEventByHiddenBoxDisposedCount(_hiddenBoxDisposedCount);
             int endingThumbnailIndex = stageData.GetEndingThumbnailIndexByHiddenBoxDisposedCount(_hiddenBoxDisposedCount);
             Managers.Stage.SetEndingResult(endingEventID, endingThumbnailIndex);
+
+            Logger.Log($"Ending Branch | hiddenDisposed: {_hiddenBoxDisposedCount}, event: {endingEventID}, thumbnailIndex: {endingThumbnailIndex}");
+            Managers.Stage.EndStage(0);
+            Logger.Log("UnloadGame Ending game (End stage branch)");
+            return;
         }
 
         int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
         int starCount = Managers.Stage.CompleteStage(totalScore, preStarCount);
-        if (Managers.Stage.CurrentStageType == Define.ChapterType.End && _hiddenBoxDisposedCount < HiddenBoxTargetCount)
-        {
-            Logger.LogWarning($"Boss stage failed: hidden disposal { _hiddenBoxDisposedCount}/{HiddenBoxTargetCount }");
-            starCount = 0;
-        }
         int totalGold = Managers.Stage.GetCompleteTotalGold(starCount);
         int additionalStars = Mathf.Max(0, starCount - preStarCount);
         if (additionalStars > 0)
