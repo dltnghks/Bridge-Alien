@@ -54,8 +54,16 @@ public class UIStageButtonGroup : UISubItem
     // 스테이지 버튼 그룹의 별 개수를 업데이트
     private void SetStageStars(Define.ChapterType stageType, bool isLocked)
     {
+        int maxStarCount = 3;
         int starCount = Managers.Player.GetStageClearInfo(stageType);
-        _uiStageButtonsList[(int)stageType].SetStageButton(starCount);
+
+        if (stageType == Define.ChapterType.End)
+        {
+            maxStarCount = 2;
+            starCount = Managers.Player.GetEndingUnlockedCount(stageType, maxStarCount);
+        }
+
+        _uiStageButtonsList[(int)stageType].SetStageButton(starCount, maxStarCount);
     }
 
 }

@@ -64,7 +64,7 @@ public class UIStageButton : UISubItem
         Managers.Stage.SetCurrentStage(_stageType);
     }
 
-    public void SetStageButton(int starCount)
+    public void SetStageButton(int starCount, int maxStarCount = 3)
     {
         Init();
 
@@ -72,7 +72,7 @@ public class UIStageButton : UISubItem
         GetText((int)Texts.StageText).SetText(stageText);
         if (_useStarGroup && _starGroup != null)
         {
-            _starGroup.SetStarCount(starCount);
+            _starGroup.SetStarCount(starCount, maxStarCount);
         }
         SetStageClearIcon(starCount);
     }
