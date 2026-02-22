@@ -181,7 +181,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\BGM
     guid: 87a70d1a2511654d9554b502e9cf44e9
     GuidInternal: 
-    m_lastTime: -8584317672342261223
+    m_lastTime: -8584299491974941240
     List:
     - name: Pause
       guid: 1f04c0bf5a27f943b7f39de81e1ea013
@@ -293,8 +293,8 @@ MonoBehaviour:
         guid: 07ac587a0de0f946a666ee9892ecc881
       Path: Events\Default Work Unit\BGM\Pause\Pause_BGM_MiniGameUnload
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Pause_BGM_Prologue
       guid: e226182ae0a09d4db87fae751a28344b
       id: 3738416110
@@ -563,8 +563,8 @@ MonoBehaviour:
         guid: 99a17f246da9814f90d1a4f51b2c1eb9
       Path: Events\Default Work Unit\BGM\Resume\Resume_BGM_MiniGameUnload
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 0
+      minDuration: 0
     - name: Resume_BGM_Prologue
       guid: 6ac73fd42b665d4abac67d4ca6448246
       id: 3112024457
