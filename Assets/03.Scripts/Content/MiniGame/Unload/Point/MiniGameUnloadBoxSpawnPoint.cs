@@ -195,7 +195,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     {
         if (Managers.MiniGame.CurrentGame is MiniGameUnload miniGameUnload)
         {
-            return miniGameUnload.TryReserveHiddenBoxSpawn();
+            return miniGameUnload.TryReserveHiddenBoxSpawn(this);
         }
 
         return false;
@@ -205,7 +205,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
     {
         if (Managers.MiniGame.CurrentGame is MiniGameUnload miniGameUnload)
         {
-            miniGameUnload.NotifyBoxSpawned(box);
+            miniGameUnload.NotifyBoxSpawned(this, box);
         }
     }
 

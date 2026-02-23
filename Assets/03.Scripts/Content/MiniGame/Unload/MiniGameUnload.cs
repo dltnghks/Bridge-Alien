@@ -14,6 +14,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     [Header("Box Spawn Point")]
     [SerializeField] private List<MiniGameUnloadBoxSpawnPoint> _boxSpawnPoint;                   // 박스 생성 주기
+    [Header("Ending Hidden Box Spawn Points")]
+    [SerializeField] private List<MiniGameUnloadBoxSpawnPoint> _endingHiddenBoxSpawnPoints = new List<MiniGameUnloadBoxSpawnPoint>();
 
     [Header("Return Point")]
     [SerializeField] private MiniGameUnloadReturnPoint _returnPoint;
@@ -26,6 +28,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     private ComboSystem _comboSystem;
     private const int HiddenBoxTargetCount = 2;
     private int _totalSpawnedBoxCount;
+    private int _endingHiddenSpawnPointBoxCount;
     private int _hiddenBoxReservedCount;
     private int _hiddenBoxSpawnedCount;
     private int _hiddenBoxDisposedCount;
@@ -68,6 +71,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         IsPause = false;
         IsTutorialActive = false;
         _totalSpawnedBoxCount = 0;
+        _endingHiddenSpawnPointBoxCount = 0;
         _hiddenBoxReservedCount = 0;
         _hiddenBoxSpawnedCount = 0;
         _hiddenBoxDisposedCount = 0;
@@ -331,9 +335,14 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         _comboSystem.ClearComboBoxList();
     }
 
-    public bool TryReserveHiddenBoxSpawn()
+    public bool TryReserveHiddenBoxSpawn(MiniGameUnloadBoxSpawnPoint spawnPoint)
     {
         if (Managers.Stage.CurrentStageType != Define.ChapterType.End)
+        {
+            return false;
+        }
+        
+        if (!IsEndingHiddenSpawnPoint(spawnPoint))
         {
             return false;
         }
@@ -344,7 +353,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
 
         int nextHiddenSpawnCount = (_hiddenBoxReservedCount + 1) * _hiddenBoxSpawnInterval;
-        if (_totalSpawnedBoxCount + 1 < nextHiddenSpawnCount)
+        if (_endingHiddenSpawnPointBoxCount + 1 < nextHiddenSpawnCount)
         {
             return false;
         }
@@ -353,9 +362,14 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         return true;
     }
 
-    public void NotifyBoxSpawned(MiniGameUnloadBox box)
+    public void NotifyBoxSpawned(MiniGameUnloadBoxSpawnPoint spawnPoint, MiniGameUnloadBox box)
     {
         _totalSpawnedBoxCount++;
+        if (IsEndingHiddenSpawnPoint(spawnPoint))
+        {
+            _endingHiddenSpawnPointBoxCount++;
+        }
+
         if (box != null && box.Info.IsHidden)
         {
             _hiddenBoxSpawnedCount++;
@@ -369,6 +383,26 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         {
             _hiddenBoxReservedCount--;
         }
+    }
+
+    private bool IsEndingHiddenSpawnPoint(MiniGameUnloadBoxSpawnPoint spawnPoint)
+    {
+        if (Managers.Stage == null || Managers.Stage.CurrentStageType != Define.ChapterType.End)
+        {
+            return false;
+        }
+
+        if (spawnPoint == null)
+        {
+            return false;
+        }
+
+        if (_endingHiddenBoxSpawnPoints != null && _endingHiddenBoxSpawnPoints.Count > 0)
+        {
+            return _endingHiddenBoxSpawnPoints.Contains(spawnPoint);
+        }
+
+        return true;
     }
 
     private void OnDisposedBox(MiniGameUnloadBox box)

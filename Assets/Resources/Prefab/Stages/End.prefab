@@ -1337,6 +1337,9 @@ MonoBehaviour:
   _boxSpawnPoint:
   - {fileID: 5316700660637880310}
   - {fileID: 7949769270141331561}
+  _endingFixedBoxSpawnPoint: []
+  _endingHiddenBoxSpawnPoints:
+  - {fileID: 5316700660637880310}
   _returnPoint: {fileID: 3286933182483125853}
   _disposePoint: {fileID: 7757526296674571461}
   _hiddenBoxSpawnInterval: 6
