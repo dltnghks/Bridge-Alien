@@ -26,6 +26,7 @@ public class UIDialogPopup : UIPopup
     enum Images
     {
         Background,
+        NameBackground,
         LeftCharacterImage,
         RightCharacterImage,
         CenterCharacterImage,
@@ -63,6 +64,7 @@ public class UIDialogPopup : UIPopup
     private Define.DialogSpeakerType _centerSpeakerType;
     
     private Tween _typingTween; // 현재 실행 중인 트윈
+    private Color _nameBackgroundDefaultColor = Color.white;
     
     private Action _callback;
 
@@ -80,6 +82,7 @@ public class UIDialogPopup : UIPopup
         BindObject(typeof(Objects));
 
         _dialogText = GetText((int)Texts.DialogText);
+        _nameBackgroundDefaultColor = GetImage((int)Images.NameBackground).color;
 
         GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
         GetButton((int)Buttons.SkipButton).gameObject.BindEvent(OnClickSkipButton);
@@ -243,7 +246,7 @@ public class UIDialogPopup : UIPopup
                 // 이미지 설정
                 SetSpeakerImage(_currentDialog.SpeakerType, _currentDialog.SpeakerPosType);
                 // 이름 변경
-                SetNameText(characterName);
+                SetNameText(characterName, _currentDialog.Type);
                 // 대화 변경
                 StartTyping(dialogText);
                 break;
@@ -251,7 +254,7 @@ public class UIDialogPopup : UIPopup
                 // 이미지 설정
                 SetSpeakerImage(_currentDialog.SpeakerType, _currentDialog.SpeakerPosType);
                 // 이름 변경
-                SetNameText(characterName);
+                SetNameText(characterName, _currentDialog.Type);
                 // 대화 변경
                 StartTyping(dialogText);
                 break;
@@ -353,9 +356,15 @@ public class UIDialogPopup : UIPopup
             
     }
 
-    private void SetNameText(string characterName)
+    private void SetNameText(string characterName, Define.DialogType dialogType)
     {
         GetText((int)Texts.NameText).SetText(characterName);
+        bool hideNameBackground = string.IsNullOrWhiteSpace(characterName) || dialogType == Define.DialogType.Monolog;
+
+        Image nameBackgroundImage = GetImage((int)Images.NameBackground);
+        nameBackgroundImage.color = hideNameBackground
+            ? new Color(_nameBackgroundDefaultColor.r, _nameBackgroundDefaultColor.g, _nameBackgroundDefaultColor.b, 0f)
+            : _nameBackgroundDefaultColor;
     }
     
     public void StartTyping(string message)
