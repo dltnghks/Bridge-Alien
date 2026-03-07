@@ -4,13 +4,14 @@ public class SoundManager : MonoBehaviour
 {
     private SoundEvent _soundEvent;
 
-    // Sound Parameters 
     public float AllVolume { get; private set; }
     public float BGMVolume { get; private set; }
     public float SFXVolume { get; private set; }
+    public SoundType? CurrentBGMType { get; private set; }
+    public string CurrentBGMEventName { get; private set; }
 
     private string _basePath;
-    
+
     public void Init()
     {
         SetAllVolume(100f);
@@ -19,7 +20,6 @@ public class SoundManager : MonoBehaviour
         LoadSoundEvent();
     }
 
-    
     private void LoadSoundEvent()
     {
         _soundEvent = Managers.Resource.Load<SoundEvent>("Sound/SoundEvent");
@@ -30,14 +30,13 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            _soundEvent.InitEventDict(); // 초기??
+            _soundEvent.InitEventDict();
         }
     }
 
     public void LoadSoundBank(string bankName)
     {
-        uint bankID = AkBankManager.LoadBank(bankName, false, false);
-
+        AkBankManager.LoadBank(bankName, false, false);
     }
 
     public void UnloadAllSoundBank()
@@ -50,9 +49,26 @@ public class SoundManager : MonoBehaviour
         AkBankManager.UnloadBank(bankName);
     }
 
-    public void PlayBGM(string eventName){
-        Logger.Log($"BGM Start: {eventName}");
+    public void PlayBGM(string eventName)
+    {
+        PlaySceneBGM(eventName);
+    }
+
+    public void PlaySceneBGM(string eventName)
+    {
+        Logger.Log($"Scene BGM Start: {eventName}");
+        CurrentBGMType = SoundType.SceneBGM;
+        CurrentBGMEventName = eventName;
         PlaySound(SoundType.SceneBGM, eventName);
+    }
+
+    public void PlayDialogBGM(DialogBGM dialogBGM)
+    {
+        string eventName = dialogBGM.ToString();
+        Logger.Log($"Dialog BGM Start: {eventName}");
+        CurrentBGMType = SoundType.DialogBGM;
+        CurrentBGMEventName = eventName;
+        PlaySound(SoundType.DialogBGM, eventName);
     }
 
     public void PauseBGM()
@@ -74,10 +90,13 @@ public class SoundManager : MonoBehaviour
     public void StopBGM()
     {
         Logger.Log("BGM Stop: StopAll");
+        CurrentBGMType = null;
+        CurrentBGMEventName = null;
         AkUnitySoundEngine.StopAll();
     }
-    
-    public void PlaySFX(SoundType type, string eventName, GameObject soundGameObject = null){
+
+    public void PlaySFX(SoundType type, string eventName, GameObject soundGameObject = null)
+    {
         PlaySound(type, eventName, soundGameObject);
     }
 
@@ -88,12 +107,13 @@ public class SoundManager : MonoBehaviour
             Logger.LogWarning("Sound GameObject is null!");
             return;
         }
+
         PlaySound(type, eventName, soundGameObject);
     }
 
     private void BGMPauseSound(Define.Scene type, string key, GameObject soundGameObject = null)
     {
-        if (_soundEvent == null || !_soundEvent.BGMPauseEventDic.ContainsKey(type))
+        if (_soundEvent == null || _soundEvent.BGMPauseEventDic.ContainsKey(type) == false)
         {
             Logger.LogWarning($"SoundType {type} not found!");
             return;
@@ -101,8 +121,6 @@ public class SoundManager : MonoBehaviour
 
         if (_soundEvent.BGMPauseEventDic.TryGetValue(type, out AK.Wwise.Event soundEvent))
         {
-            //Debug.Log($"Playing sound: {soundEvent}");
-            // 이벤트 호출
             PlayEvent(soundEvent, soundGameObject);
         }
         else
@@ -113,7 +131,7 @@ public class SoundManager : MonoBehaviour
 
     private void BGMResumeSound(Define.Scene type, string key, GameObject soundGameObject = null)
     {
-        if (_soundEvent == null || !_soundEvent.BGMResumeEventDic.ContainsKey(type))
+        if (_soundEvent == null || _soundEvent.BGMResumeEventDic.ContainsKey(type) == false)
         {
             Logger.LogWarning($"SoundType {type} not found!");
             return;
@@ -121,8 +139,6 @@ public class SoundManager : MonoBehaviour
 
         if (_soundEvent.BGMResumeEventDic.TryGetValue(type, out AK.Wwise.Event soundEvent))
         {
-            //Debug.Log($"Playing sound: {soundEvent}");
-            // 이벤트 호출
             PlayEvent(soundEvent, soundGameObject);
         }
         else
@@ -133,7 +149,7 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySound(SoundType type, string key, GameObject soundGameObject = null)
     {
-        if (_soundEvent == null || !_soundEvent.EventDict.ContainsKey(type))
+        if (_soundEvent == null || _soundEvent.EventDict.ContainsKey(type) == false)
         {
             Logger.LogWarning($"SoundType {type} not found!");
             return;
@@ -141,8 +157,6 @@ public class SoundManager : MonoBehaviour
 
         if (_soundEvent.EventDict[type].TryGetValue(key, out AK.Wwise.Event soundEvent))
         {
-            //Debug.Log($"Playing sound: {soundEvent}");
-            // 이벤트 호출
             PlayEvent(soundEvent, soundGameObject);
         }
         else
@@ -151,8 +165,9 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void PlayEvent(AK.Wwise.Event soundEvent, GameObject soundGameObject){
-        if(soundGameObject == null)
+    private void PlayEvent(AK.Wwise.Event soundEvent, GameObject soundGameObject)
+    {
+        if (soundGameObject == null)
         {
             soundGameObject = gameObject;
         }
@@ -162,21 +177,20 @@ public class SoundManager : MonoBehaviour
 
     public void PauseSFX()
     {
-
     }
-    
+
     public void SetAllVolume(float volume)
     {
         AllVolume = Mathf.Clamp(volume, 0f, 100f);
         AkUnitySoundEngine.SetRTPCValue("AllVolume", AllVolume);
     }
-    
+
     public void SetSFXVolume(float volume)
     {
         SFXVolume = Mathf.Clamp(volume, 0f, 100f);
         AkUnitySoundEngine.SetRTPCValue("SFXVolume", SFXVolume);
     }
-    
+
     public void SetBGMVolume(float volume)
     {
         BGMVolume = Mathf.Clamp(volume, 0f, 100f);

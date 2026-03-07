@@ -1,13 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public enum SoundType
 {
     SceneBGM,
+    DialogBGM,
     CommonSoundSFX,
     MiniGameUnloadSFX,
     MiniGameDeliverySFX,
@@ -23,6 +22,15 @@ public enum SceneBGM
     MiniGameDelivery,
     StageEditor,
 }
+
+public enum DialogBGM
+{
+    Default,
+    Default2,
+    Second_Half,
+    End,
+}
+
 public enum CommonSoundSFX
 {
     CommonButtonClick,
@@ -37,15 +45,11 @@ public enum PrologueSFX
 
 public enum MiniGameUnloadSoundSFX
 {
-
-    //sfx
     BoxPut,
     BoxHold,
     BrokenBox,
-
     PlusScore,
     MinusScore,
-
     CoolingComplete,
     CoolingSkill,
     Glitch,
@@ -54,24 +58,19 @@ public enum MiniGameUnloadSoundSFX
     LastScore,
     DisposalUnitOpenDoor,
     Siren,
-
-    // Ambient
     Conveyor,
     Truck,
     CoolingMachine,
-
 }
 
 public enum MiniGameDeliverySoundSFX
 {
     Player_BeAttacked,
     Idle_Flying,
-
     Minigame_Start,
     Minigame_Lever,
     Minigame_Success,
     Minigame_Fail,
-
     BoosterSkill,
     RepairSkill,
 }
@@ -93,33 +92,32 @@ public class SoundEvent : ScriptableObject
 
     private void InitSoundDict(SoundType type)
     {
-        // SoundType에 따라 관련 Enum 타입 가져오기
-        // 새로운 타입이 추가되면 여기에 추가
         Type enumType = type switch
         {
             SoundType.SceneBGM => typeof(SceneBGM),
+            SoundType.DialogBGM => typeof(DialogBGM),
             SoundType.CommonSoundSFX => typeof(CommonSoundSFX),
             SoundType.MiniGameUnloadSFX => typeof(MiniGameUnloadSoundSFX),
+            SoundType.MiniGameDeliverySFX => typeof(MiniGameDeliverySoundSFX),
+            SoundType.PrologueSFX => typeof(PrologueSFX),
             _ => null,
         };
 
-        // Enum 타입이 null일 경우 반환
         if (enumType == null)
+        {
             return;
+        }
 
-        // Dictionary 초기화
-        if (!EventDict.ContainsKey(type))
+        if (EventDict.ContainsKey(type) == false)
+        {
             EventDict[type] = new SerializedDictionary<string, AK.Wwise.Event>();
+        }
 
-
-        // Enum 값의 Key를 HashSet으로 수집 (빠른 검사용)
         HashSet<string> validKeys = new HashSet<string>(Enum.GetNames(enumType));
-
-        // 현재 Dictionary에서 유효하지 않은 Key를 제거
-        var keysToRemove = new List<string>();
+        List<string> keysToRemove = new List<string>();
         foreach (var existingKey in EventDict[type].Keys)
         {
-            if (!validKeys.Contains(existingKey))
+            if (validKeys.Contains(existingKey) == false)
             {
                 keysToRemove.Add(existingKey);
             }
@@ -130,11 +128,9 @@ public class SoundEvent : ScriptableObject
             EventDict[type].Remove(key);
         }
 
-        // Enum 값을 기반으로 Key-Value 초기화
-        foreach (int value in Enum.GetValues(enumType))
+        foreach (string keyString in Enum.GetNames(enumType))
         {
-            string keyString = Enum.GetName(enumType, value);
-            if (!string.IsNullOrEmpty(keyString) && !EventDict[type].ContainsKey(keyString))
+            if (EventDict[type].ContainsKey(keyString) == false)
             {
                 EventDict[type].Add(keyString, null);
             }
