@@ -56,6 +56,12 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySceneBGM(string eventName)
     {
+        if (ShouldKeepCurrentBGM(SoundType.SceneBGM, eventName))
+        {
+            return;
+        }
+
+        StopCurrentBGMIfNeeded();
         Logger.Log($"Scene BGM Start: {eventName}");
         CurrentBGMType = SoundType.SceneBGM;
         CurrentBGMEventName = eventName;
@@ -65,6 +71,12 @@ public class SoundManager : MonoBehaviour
     public void PlayDialogBGM(DialogBGM dialogBGM)
     {
         string eventName = dialogBGM.ToString();
+        if (ShouldKeepCurrentBGM(SoundType.DialogBGM, eventName))
+        {
+            return;
+        }
+
+        StopCurrentBGMIfNeeded();
         Logger.Log($"Dialog BGM Start: {eventName}");
         CurrentBGMType = SoundType.DialogBGM;
         CurrentBGMEventName = eventName;
@@ -93,6 +105,21 @@ public class SoundManager : MonoBehaviour
         CurrentBGMType = null;
         CurrentBGMEventName = null;
         AkUnitySoundEngine.StopAll();
+    }
+
+    private bool ShouldKeepCurrentBGM(SoundType nextBGMType, string nextEventName)
+    {
+        return CurrentBGMType == nextBGMType && CurrentBGMEventName == nextEventName;
+    }
+
+    private void StopCurrentBGMIfNeeded()
+    {
+        if (CurrentBGMType.HasValue == false || string.IsNullOrWhiteSpace(CurrentBGMEventName))
+        {
+            return;
+        }
+
+        StopBGM();
     }
 
     public void PlaySFX(SoundType type, string eventName, GameObject soundGameObject = null)

@@ -273,3 +273,26 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: 13936826dd9cf204b8062aaad9814180, type: 2}
+    - Key: 5
+      Value:
+        _serializedList:
+        - Key: Default
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 14496a59b7ea0164fa2c76f142c82430, type: 2}
+        - Key: Default2
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: f0f9e433e502da84783aa50ce1fbf2f1, type: 2}
+        - Key: Second_Half
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: c7091215c0eadcb40ad935e7696a246e, type: 2}
+        - Key: End
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: fa1006fb664773042a5bfcd9f9fc4a22, type: 2}

@@ -366,7 +366,7 @@ public class UIDialogPopup : UIPopup
     private void SetNameText(string characterName, Define.DialogType dialogType)
     {
         GetText((int)Texts.NameText).SetText(characterName);
-        bool hideNameBackground = string.IsNullOrWhiteSpace(characterName) || dialogType == Define.DialogType.Monolog;
+        bool hideNameBackground = string.IsNullOrWhiteSpace(characterName);
 
         Image nameBackgroundImage = GetImage((int)Images.NameBackground);
         nameBackgroundImage.color = hideNameBackground

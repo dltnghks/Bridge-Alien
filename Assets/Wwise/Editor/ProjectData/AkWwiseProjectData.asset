@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: ec37f4ed46d39445b326cdd8dc843a54
     GuidInternal: 
-    m_lastTime: -8584460828330196679
+    m_lastTime: -8584320888966703398
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: a001c75d756c8b4f803cb4fd206035b2
     GuidInternal: 
-    m_lastTime: -8584460828390066614
+    m_lastTime: -8584320888966827029
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -69,7 +69,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\All_In_One
     guid: e9991acf63c3b342a555bba2f19a3f52
     GuidInternal: 
-    m_lastTime: -8584460828330391341
+    m_lastTime: -8584320888966776882
     List: []
   - PhysicalPath: SoundBanks\Context.wwu
     PathAndIcons:
@@ -85,7 +85,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\Context
     guid: 09676fafd793c6489e2d78deffc81509
     GuidInternal: 
-    m_lastTime: -8584460828330381289
+    m_lastTime: -8584320888966776882
     List: []
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -98,7 +98,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: a8315e9c32d8d440b3686a66118a69b1
     GuidInternal: 
-    m_lastTime: -8584460828330332776
+    m_lastTime: -8584320888966756803
     List: []
   - PhysicalPath: SoundBanks\General.wwu
     PathAndIcons:
@@ -114,7 +114,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\General
     guid: 437c4c6e97f95b4ab40eb1bdd7da7542
     GuidInternal: 
-    m_lastTime: -8584460828330298144
+    m_lastTime: -8584320888966746716
     List: []
   - PhysicalPath: SoundBanks\Region.wwu
     PathAndIcons:
@@ -130,7 +130,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit\Region
     guid: 408d14ec23d050498236f6976489c4d3
     GuidInternal: 
-    m_lastTime: -8584460828330286575
+    m_lastTime: -8584320888966746716
     List:
     - name: MiniGameUnload
       guid: a208b9a184150841995d58768368d076
@@ -181,7 +181,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\BGM
     guid: 87a70d1a2511654d9554b502e9cf44e9
     GuidInternal: 
-    m_lastTime: -8584299491974941240
+    m_lastTime: -8584287481955007995
     List:
     - name: Pause
       guid: 1f04c0bf5a27f943b7f39de81e1ea013
@@ -338,6 +338,52 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: Play_BGM_Default
+      guid: c0cb04d14e397c418c82e170364e2fd5
+      id: 2553254310
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
+      - ElementName: Play_BGM_Default
+        ObjectType: 3
+        guid: c0cb04d14e397c418c82e170364e2fd5
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_Default
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_BGM_Default2
+      guid: bd68c7b221664447a10168243188cee4
+      id: 954353760
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
+      - ElementName: Play_BGM_Default2
+        ObjectType: 3
+        guid: bd68c7b221664447a10168243188cee4
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_Default2
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
     - name: Play_BGM_Delivery
       guid: b34ca4702ad0a14d93d4967262509001
       id: 3454433139
@@ -358,6 +404,29 @@ MonoBehaviour:
         ObjectType: 3
         guid: b34ca4702ad0a14d93d4967262509001
       Path: Events\Default Work Unit\BGM\Play\Play_BGM_Delivery
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_BGM_End
+      guid: 3b0b2dd80480b1478a68a479d2f715bc
+      id: 399330178
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
+      - ElementName: Play_BGM_End
+        ObjectType: 3
+        guid: 3b0b2dd80480b1478a68a479d2f715bc
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_End
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -427,6 +496,29 @@ MonoBehaviour:
         ObjectType: 3
         guid: 6cefd6e65d8ed64781fc518daf5b2078
       Path: Events\Default Work Unit\BGM\Play\Play_BGM_Prologue
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_BGM_Second_Half
+      guid: 411315cc9c6f484c88b1639529d8f274
+      id: 130800405
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 3332395072f10149a81da91bd1e15694
+      - ElementName: BGM
+        ObjectType: 12
+        guid: 87a70d1a2511654d9554b502e9cf44e9
+      - ElementName: Play
+        ObjectType: 4
+        guid: 751fd111103a9a42b997088eadb788a0
+      - ElementName: Play_BGM_Second_Half
+        ObjectType: 3
+        guid: 411315cc9c6f484c88b1639529d8f274
+      Path: Events\Default Work Unit\BGM\Play\Play_BGM_Second_Half
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
@@ -602,7 +694,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\Common
     guid: 407965b083924744a196c0a1d52f073d
     GuidInternal: 
-    m_lastTime: -8584460826523237812
+    m_lastTime: -8584320888969009030
     List:
     - name: Play_SFX_CommonButtonClick
       guid: de4caac45e99c8489d909e9bf5c3914e
@@ -675,7 +767,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 3332395072f10149a81da91bd1e15694
     GuidInternal: 
-    m_lastTime: -8584460826523227650
+    m_lastTime: -8584320888968995198
     List: []
   - PhysicalPath: Events\GameMap.wwu
     PathAndIcons:
@@ -691,7 +783,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\GameMap
     guid: 48ad820df5418445a0f9c48fcf129823
     GuidInternal: 
-    m_lastTime: -8584460828449423057
+    m_lastTime: -8584320888968990162
     List:
     - name: Play_SFX_Clickdecide
       guid: 777cc484913b5c44ad46901bd472a8b1
@@ -747,7 +839,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\MiniGameDelivery
     guid: e238cdd63e97f34aa2b829be2a9b2413
     GuidInternal: 
-    m_lastTime: -8584460826523227650
+    m_lastTime: -8584320888968980073
     List:
     - name: Play_SFX_Bomb_Active_2
       guid: db0ef46825686340839574eb6436d195
@@ -1023,7 +1115,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\MiniGameUnload
     guid: 0173d73202b00a4091b7dd334cf670bc
     GuidInternal: 
-    m_lastTime: -8584460826523212587
+    m_lastTime: -8584320888968980073
     List:
     - name: Play_AMB_Conveyor
       guid: a692660cb8d42e44a78a04c86ec7ff24
@@ -1379,7 +1471,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit\Prologue
     guid: 2493f580933b01419591bbd2de1bc7ed
     GuidInternal: 
-    m_lastTime: -8584460826523201585
+    m_lastTime: -8584320888968967154
     List:
     - name: Play_SFX_Prologue_Voice
       guid: 73330f0e7b141c4e9328a37414469578
@@ -1413,7 +1505,7 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: 7283ed376b74d34aba81186fc977eb36
     GuidInternal: 
-    m_lastTime: -8584460828449378085
+    m_lastTime: -8584320888968957068
     List:
     - name: AllVolume
       guid: e933587ae00a504082f9a8015e392e34
@@ -1469,7 +1561,7 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: 6c6ab8a28a3c3e4b849b1e39faddc5b7
     GuidInternal: 
-    m_lastTime: -8584460828330250823
+    m_lastTime: -8584320888966726697
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -1483,7 +1575,7 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: e911d4956d665849b16bc8e0b612f474
     GuidInternal: 
-    m_lastTime: -8584460828330236743
+    m_lastTime: -8584320888966726697
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -1497,7 +1589,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: e3db0410e7e6ba4ab8e8fcc37959276e
     GuidInternal: 
-    m_lastTime: -8584460828330206725
+    m_lastTime: -8584320888966713479
     List: []
   ExpandedFileSystemItemIds: 01000000020000000300000004000000050000000a0000000b0000000e000000110000001500000016000000180000002a0000002b0000002c00000030000000310000003300000034000000350000003d000000
   ExpandedWaapiItemIds: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e000000110000001500000018000000190000001a0000001b0000001d00000024000000250000003b0000003e000000

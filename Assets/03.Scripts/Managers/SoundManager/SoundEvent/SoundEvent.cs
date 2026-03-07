@@ -5,12 +5,12 @@ using UnityEngine;
 
 public enum SoundType
 {
-    SceneBGM,
-    DialogBGM,
-    CommonSoundSFX,
-    MiniGameUnloadSFX,
-    MiniGameDeliverySFX,
-    PrologueSFX,
+    SceneBGM = 0,
+    CommonSoundSFX = 1,
+    MiniGameUnloadSFX = 2,
+    MiniGameDeliverySFX = 3,
+    PrologueSFX = 4,
+    DialogBGM = 5,
 }
 
 public enum SceneBGM
