@@ -8,7 +8,8 @@ public class SoundManager : MonoBehaviour
     public float BGMVolume { get; private set; }
     public float SFXVolume { get; private set; }
     public SoundType? CurrentBGMType { get; private set; }
-    public string CurrentBGMEventName { get; private set; }
+    public SceneBGM? CurrentSceneBGM { get; private set; }
+    public DialogBGM? CurrentDialogBGM { get; private set; }
 
     private string _basePath;
 
@@ -51,36 +52,64 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBGM(string eventName)
     {
-        PlaySceneBGM(eventName);
+        if (System.Enum.TryParse(eventName, out SceneBGM sceneBGM) == false)
+        {
+            Logger.LogWarning($"Scene BGM parse failed: {eventName}");
+            return;
+        }
+
+        PlaySceneBGM(sceneBGM);
     }
 
     public void PlaySceneBGM(string eventName)
     {
-        if (ShouldKeepCurrentBGM(SoundType.SceneBGM, eventName))
+        if (System.Enum.TryParse(eventName, out SceneBGM sceneBGM) == false)
+        {
+            Logger.LogWarning($"Scene BGM parse failed: {eventName}");
+            return;
+        }
+
+        PlaySceneBGM(sceneBGM);
+    }
+
+    public void PlaySceneBGM(SceneBGM sceneBGM)
+    {
+        if (CurrentBGMType == SoundType.SceneBGM && CurrentSceneBGM == sceneBGM)
         {
             return;
         }
 
-        StopCurrentBGMIfNeeded();
-        Logger.Log($"Scene BGM Start: {eventName}");
+        if (CurrentBGMType.HasValue)
+        {
+            StopBGM();
+        }
+
+        Logger.Log($"Scene BGM Start: {sceneBGM}");
         CurrentBGMType = SoundType.SceneBGM;
-        CurrentBGMEventName = eventName;
-        PlaySound(SoundType.SceneBGM, eventName);
+        CurrentSceneBGM = sceneBGM;
+        CurrentDialogBGM = null;
+        PlaySound(SoundType.SceneBGM, sceneBGM.ToString());
     }
 
     public void PlayDialogBGM(DialogBGM dialogBGM)
     {
-        string eventName = dialogBGM.ToString();
-        if (ShouldKeepCurrentBGM(SoundType.DialogBGM, eventName))
+        Logger.Log($"CurrentDialogBGM : {CurrentDialogBGM}, dialogBGM : {dialogBGM}");
+        if (CurrentBGMType == SoundType.DialogBGM && CurrentDialogBGM == dialogBGM)
         {
+            Logger.Log("Keep Dialog BGM");
             return;
         }
 
-        StopCurrentBGMIfNeeded();
-        Logger.Log($"Dialog BGM Start: {eventName}");
+        if (CurrentBGMType.HasValue)
+        {
+            StopBGM();
+        }
+
+        Logger.Log($"Dialog BGM Start: {dialogBGM}");
         CurrentBGMType = SoundType.DialogBGM;
-        CurrentBGMEventName = eventName;
-        PlaySound(SoundType.DialogBGM, eventName);
+        CurrentSceneBGM = null;
+        CurrentDialogBGM = dialogBGM;
+        PlaySound(SoundType.DialogBGM, dialogBGM.ToString());
     }
 
     public void PauseBGM()
@@ -103,23 +132,9 @@ public class SoundManager : MonoBehaviour
     {
         Logger.Log("BGM Stop: StopAll");
         CurrentBGMType = null;
-        CurrentBGMEventName = null;
+        CurrentSceneBGM = null;
+        CurrentDialogBGM = null;
         AkUnitySoundEngine.StopAll();
-    }
-
-    private bool ShouldKeepCurrentBGM(SoundType nextBGMType, string nextEventName)
-    {
-        return CurrentBGMType == nextBGMType && CurrentBGMEventName == nextEventName;
-    }
-
-    private void StopCurrentBGMIfNeeded()
-    {
-        if (CurrentBGMType.HasValue == false || string.IsNullOrWhiteSpace(CurrentBGMEventName))
-        {
-            return;
-        }
-
-        StopBGM();
     }
 
     public void PlaySFX(SoundType type, string eventName, GameObject soundGameObject = null)
@@ -184,6 +199,12 @@ public class SoundManager : MonoBehaviour
 
         if (_soundEvent.EventDict[type].TryGetValue(key, out AK.Wwise.Event soundEvent))
         {
+            if (soundEvent == null)
+            {
+                Logger.LogWarning($"Sound event is not assigned. Type: {type}, Key: {key}");
+                return;
+            }
+
             PlayEvent(soundEvent, soundGameObject);
         }
         else
@@ -194,6 +215,12 @@ public class SoundManager : MonoBehaviour
 
     private void PlayEvent(AK.Wwise.Event soundEvent, GameObject soundGameObject)
     {
+        if (soundEvent == null)
+        {
+            Logger.LogWarning("Sound event is null.");
+            return;
+        }
+
         if (soundGameObject == null)
         {
             soundGameObject = gameObject;

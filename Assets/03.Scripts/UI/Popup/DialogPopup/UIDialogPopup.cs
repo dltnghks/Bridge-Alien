@@ -61,7 +61,7 @@ public class UIDialogPopup : UIPopup
     private Color _nameBackgroundDefaultColor = Color.white;
 
     private Action _callback;
-    private string _previousSceneBGMKey;
+    private SceneBGM? _previousSceneBGM;
     private bool _shouldRestoreSceneBGM;
     private bool _isFinish;
 
@@ -149,8 +149,8 @@ public class UIDialogPopup : UIPopup
 
         _isFinish = false;
         _callback = callback;
-        _previousSceneBGMKey = Managers.Sound.CurrentBGMType == SoundType.SceneBGM
-            ? Managers.Sound.CurrentBGMEventName
+        _previousSceneBGM = Managers.Sound.CurrentBGMType == SoundType.SceneBGM
+            ? Managers.Sound.CurrentSceneBGM
             : null;
         _shouldRestoreSceneBGM = false;
 
@@ -219,13 +219,15 @@ public class UIDialogPopup : UIPopup
     {
         DialogBGM dialogBGM = Managers.Data.DialogData.GetBGM(dialogue);
 
+        Logger.Log($"CurrentDialogBGM : {Managers.Sound.CurrentDialogBGM}, dialogBGM : {dialogBGM}");
+        
         if (Managers.Sound.CurrentBGMType == SoundType.DialogBGM &&
-            Managers.Sound.CurrentBGMEventName == dialogBGM.ToString())
+            Managers.Sound.CurrentDialogBGM == dialogBGM)
         {
             return;
         }
 
-        _shouldRestoreSceneBGM = string.IsNullOrWhiteSpace(_previousSceneBGMKey) == false;
+        _shouldRestoreSceneBGM = _previousSceneBGM.HasValue;
         Managers.Sound.PlayDialogBGM(dialogBGM);
     }
 
@@ -420,13 +422,13 @@ public class UIDialogPopup : UIPopup
         _isFinish = true;
         Logger.Log("EndDialog");
 
-        if (_shouldRestoreSceneBGM && string.IsNullOrWhiteSpace(_previousSceneBGMKey) == false)
+        if (_shouldRestoreSceneBGM && _previousSceneBGM.HasValue)
         {
-            Managers.Sound.PlaySceneBGM(_previousSceneBGMKey);
+            Managers.Sound.PlaySceneBGM(_previousSceneBGM.Value);
         }
 
         _shouldRestoreSceneBGM = false;
-        _previousSceneBGMKey = null;
+        _previousSceneBGM = null;
         _callback?.Invoke();
     }
 }
