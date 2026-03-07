@@ -172,6 +172,106 @@
 						<ActiveSource Name="BGM_House" ID="{BD005DE1-CDA1-47D0-906F-8000027543C5}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="BGM_Default2" ID="{F036951E-FF52-415A-8090-63AB32DAA66C}" ShortID="96256707">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Default2" ID="{043EA3D2-7221-4255-890D-8A4A69821693}">
+							<Language>SFX</Language>
+							<AudioFile>Default2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="312124369"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Default2" ID="{043EA3D2-7221-4255-890D-8A4A69821693}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="BGM_Default" ID="{F6A19D6F-6CDD-42AF-BF2D-3566B1BB459A}" ShortID="662118401">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Default" ID="{075E16B8-3124-4A47-86CF-7A56E2D246FD}">
+							<Language>SFX</Language>
+							<AudioFile>Default.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1054482790"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Default" ID="{075E16B8-3124-4A47-86CF-7A56E2D246FD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="BGM_End" ID="{A22D6A4F-030F-464B-94C4-81485BF13014}" ShortID="667824741">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="End" ID="{16869A0A-0ED4-4EC0-811D-C6F159E705CD}">
+							<Language>SFX</Language>
+							<AudioFile>End.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="211936984"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="End" ID="{16869A0A-0ED4-4EC0-811D-C6F159E705CD}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="BGM_Second_Half" ID="{2FA22D99-D0AF-4840-B156-2F6771DC0717}" ShortID="636869625">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Second_Half" ID="{B6BE56C9-9353-4A0C-9175-21D36D91C154}">
+							<Language>SFX</Language>
+							<AudioFile>Second_Half.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="842118433"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Second_Half" ID="{B6BE56C9-9353-4A0C-9175-21D36D91C154}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

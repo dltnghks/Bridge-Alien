@@ -2991,3 +2991,65 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
+  DialogBGM:
+    _serializedList:
+    - Key: 1
+      Value: 1
+    - Key: 2
+      Value: 1
+    - Key: 3
+      Value: 1
+    - Key: 4
+      Value: 1
+    - Key: 5
+      Value: 1
+    - Key: 6
+      Value: 1
+    - Key: 7
+      Value: 0
+    - Key: 8
+      Value: 0
+    - Key: 9
+      Value: 1
+    - Key: 10
+      Value: 1
+    - Key: 11
+      Value: 1
+    - Key: 12
+      Value: 1
+    - Key: 13
+      Value: 0
+    - Key: 14
+      Value: 0
+    - Key: 15
+      Value: 0
+    - Key: 16
+      Value: 2
+    - Key: 17
+      Value: 1
+    - Key: 18
+      Value: 1
+    - Key: 19
+      Value: 2
+    - Key: 20
+      Value: 2
+    - Key: 21
+      Value: 2
+    - Key: 22
+      Value: 2
+    - Key: 23
+      Value: 2
+    - Key: 24
+      Value: 0
+    - Key: 25
+      Value: 0
+    - Key: 26
+      Value: 2
+    - Key: 27
+      Value: 3
+    - Key: 28
+      Value: 2
+    - Key: 29
+      Value: 2
+    - Key: 30
+      Value: 3

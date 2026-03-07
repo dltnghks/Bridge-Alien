@@ -1,0 +1,54 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "954353760",
+    "Type": "Event",
+    "GUID": "{B2C768BD-6621-4744-A101-68243188CEE4}",
+    "Language": "SFX",
+    "Hash": "{15747394-E555-6FF8-A5EC-6F2B0891E2B0}",
+    "ObjectPath": "Play_BGM_Default2",
+    "ShortName": "Play_BGM_Default2",
+    "Path": "Event/Play_BGM_Default2.bnk",
+    "Media": [
+     {
+      "Id": "312124369",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Default2.wav",
+      "Path": "Media/312124369.wem",
+      "CachePath": "76/{76DECCB3-3CC1-BC7D-47A2-FB4B120D2F0A}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "954353760",
+      "Name": "Play_BGM_Default2",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play\\Play_BGM_Default2",
+      "GUID": "{B2C768BD-6621-4744-A101-68243188CEE4}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "312124369"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{A3A48437-E503-86A4-A610-D4E583DCE645}"
+ }
+}

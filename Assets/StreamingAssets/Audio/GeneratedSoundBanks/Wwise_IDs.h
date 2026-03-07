@@ -21,10 +21,14 @@ namespace AK
         static const AkUniqueID PLAY_AMB_CONVEYOR = 3092289078U;
         static const AkUniqueID PLAY_AMB_COOLINGMACHINE = 3070083385U;
         static const AkUniqueID PLAY_AMB_TRUCK = 626113458U;
+        static const AkUniqueID PLAY_BGM_DEFAULT = 2553254310U;
+        static const AkUniqueID PLAY_BGM_DEFAULT2 = 954353760U;
         static const AkUniqueID PLAY_BGM_DELIVERY = 3454433139U;
+        static const AkUniqueID PLAY_BGM_END = 399330178U;
         static const AkUniqueID PLAY_BGM_GAMEMAPLOOP = 1914102211U;
         static const AkUniqueID PLAY_BGM_HOUSE = 3600540829U;
         static const AkUniqueID PLAY_BGM_PROLOGUE = 3434853244U;
+        static const AkUniqueID PLAY_BGM_SECOND_HALF = 130800405U;
         static const AkUniqueID PLAY_BGM_UNLOAD = 1390403282U;
         static const AkUniqueID PLAY_SFX_BOMB_ACTIVE_2 = 2174444108U;
         static const AkUniqueID PLAY_SFX_BOMB_PRE_2 = 287468067U;

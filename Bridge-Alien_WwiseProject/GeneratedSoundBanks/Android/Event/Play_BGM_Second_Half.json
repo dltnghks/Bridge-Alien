@@ -1,0 +1,54 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Android",
+  "BasePlatform": "Android",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "130800405",
+    "Type": "Event",
+    "GUID": "{CC151341-6F9C-4C48-88B1-639529D8F274}",
+    "Language": "SFX",
+    "Hash": "{7A058F55-4090-8537-73DF-FF76C653D38F}",
+    "ObjectPath": "Play_BGM_Second_Half",
+    "ShortName": "Play_BGM_Second_Half",
+    "Path": "Event/Play_BGM_Second_Half.bnk",
+    "Media": [
+     {
+      "Id": "842118433",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Second_Half.wav",
+      "Path": "Media/842118433.wem",
+      "CachePath": "8B/{8B899740-57EE-21AF-6FDF-C9B0D75CAEC5}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "130800405",
+      "Name": "Play_BGM_Second_Half",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play\\Play_BGM_Second_Half",
+      "GUID": "{CC151341-6F9C-4C48-88B1-639529D8F274}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "842118433"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{AC0E9905-724A-86CA-8C86-94013A87FAFE}"
+ }
+}
