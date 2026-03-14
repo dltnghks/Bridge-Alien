@@ -13,6 +13,7 @@ public class UIDialogPopup : UIPopup
     {
         NameText,
         DialogText,
+        MonologueText,
     }
 
     enum Images
@@ -44,6 +45,7 @@ public class UIDialogPopup : UIPopup
     [SerializeField] private SerializedDictionary<Define.DialogSpeakerType, Sprite> _speakerCharacterImages = new SerializedDictionary<Define.DialogSpeakerType, Sprite>();
 
     private TextMeshProUGUI _dialogText;
+    private TextMeshProUGUI _monologueText;
     private Button _nextButton;
     private VerticalLayoutGroup _choiceGroup;
     private List<UIChoiceButton> _choiceButtons = new List<UIChoiceButton>();
@@ -64,6 +66,7 @@ public class UIDialogPopup : UIPopup
     private SceneBGM? _previousSceneBGM;
     private bool _shouldRestoreSceneBGM;
     private bool _isFinish;
+    private TextMeshProUGUI _currentTypingText;
 
     public override bool Init()
     {
@@ -78,6 +81,7 @@ public class UIDialogPopup : UIPopup
         BindObject(typeof(Objects));
 
         _dialogText = GetText((int)Texts.DialogText);
+        _monologueText = GetText((int)Texts.MonologueText);
         _nameBackgroundDefaultColor = GetImage((int)Images.NameBackground).color;
 
         GetButton((int)Buttons.NextButton).gameObject.BindEvent(OnClickNextButton);
@@ -383,14 +387,19 @@ public class UIDialogPopup : UIPopup
             _typingTween.Kill();
         }
 
+        _currentTypingText = string.IsNullOrWhiteSpace(_currentDialog?.CharacterName)
+            ? _monologueText
+            : _dialogText;
+
         _nextButton.gameObject.SetActive(false);
         _dialogText.text = string.Empty;
+        _monologueText.text = string.Empty;
 
         Sequence sequence = DOTween.Sequence();
         for (int i = 0; i < message.Length; i++)
         {
             string currentText = message.Substring(0, i + 1);
-            sequence.AppendCallback(() => _dialogText.text = currentText);
+            sequence.AppendCallback(() => _currentTypingText.text = currentText);
             sequence.AppendInterval(TypingSpeed);
         }
 
@@ -405,7 +414,7 @@ public class UIDialogPopup : UIPopup
         if (_typingTween != null && _typingTween.IsActive())
         {
             _typingTween.Complete();
-            _dialogText.text = _currentDialog.Script;
+            _currentTypingText.text = _currentDialog.Script;
             return true;
         }
 
@@ -432,3 +441,4 @@ public class UIDialogPopup : UIPopup
         _callback?.Invoke();
     }
 }
+
