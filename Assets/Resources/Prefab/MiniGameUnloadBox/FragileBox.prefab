@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7164355035393003663}
   - component: {fileID: 1353345753525784556}
   - component: {fileID: 4687112392880541853}
+  - component: {fileID: 3865707643335572678}
   m_Layer: 7
   m_Name: FragileBox
   m_TagString: Box
@@ -170,7 +171,25 @@ MonoBehaviour:
     IsGrab: 0
     IsBroken: 0
     IsUnloaded: 0
+    IsHidden: 0
   _returnStickerSprite: {fileID: 4228595571539729970}
+  _returnStickerSortingOffset: 1
+  _sortingOrderScale: 100
+  _sortingOrderBase: 0
+--- !u!114 &3865707643335572678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442358387930060806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0
 --- !u!1 &7683003193363816149
 GameObject:
   m_ObjectHideFlags: 0

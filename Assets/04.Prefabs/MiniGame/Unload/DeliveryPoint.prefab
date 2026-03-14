@@ -30,7 +30,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5518515399451412739}
-  - {fileID: 615211579147795063}
   m_Father: {fileID: 1364845842531037071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &509351890727434347
@@ -45,6 +44,7 @@ GameObject:
   - component: {fileID: 7572077301896826057}
   - component: {fileID: 512796770541026499}
   - component: {fileID: 2648750201431447833}
+  - component: {fileID: 7250005877288554744}
   m_Layer: 0
   m_Name: ImageConveyor
   m_TagString: Untagged
@@ -154,6 +154,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.97, y: 1.76, z: 1.13}
   m_Center: {x: 1.13, y: 0, z: 0.38}
+--- !u!114 &7250005877288554744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509351890727434347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0
 --- !u!1 &3177320871983788071
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,11 +194,11 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3177320871983788071}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.01}
+  m_LocalPosition: {x: 0, y: 0, z: -0.009999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4709002063502909421}
+  m_Father: {fileID: 5518515399451412739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -434,7 +448,7 @@ Transform:
   m_GameObject: {fileID: 6753601350167631752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.63, y: 1.8798048, z: 0}
+  m_LocalPosition: {x: -4.65, y: 1.78, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -454,6 +468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5518515399451412739}
   - component: {fileID: 6611511043553130201}
+  - component: {fileID: 1505367594348527484}
   m_Layer: 0
   m_Name: ViewDeliveryRegionImage
   m_TagString: Untagged
@@ -472,12 +487,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 615211579147795063}
   m_Father: {fileID: 4709002063502909421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.318, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &6611511043553130201
@@ -532,6 +548,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1505367594348527484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7208317746704418079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0
 --- !u!1 &8842339944670045977
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,8 +748,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1275384977450267475, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6055916726071919183}
   m_SourcePrefab: {fileID: 100100000, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+--- !u!1 &899683921119927759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1275384977450267475, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+  m_PrefabInstance: {fileID: 2148008266522767004}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6055916726071919183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899683921119927759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0
 --- !u!4 &6597227314143152168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5062412576599631540, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
@@ -784,8 +836,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1275384977450267475, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8960893486433026318}
   m_SourcePrefab: {fileID: 100100000, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+--- !u!1 &2389034074941990953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1275384977450267475, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+  m_PrefabInstance: {fileID: 3500596757991152506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8960893486433026318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389034074941990953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0
 --- !u!4 &8562982671276490190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5062412576599631540, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
@@ -850,13 +924,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1275384977450267475, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1625044153758147894}
   m_SourcePrefab: {fileID: 100100000, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
 --- !u!4 &378341864519360250 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5062412576599631540, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
   m_PrefabInstance: {fileID: 4828261777741789262}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5958963109378902813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1275384977450267475, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+  m_PrefabInstance: {fileID: 4828261777741789262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1625044153758147894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958963109378902813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0
 --- !u!1001 &5782759360894518777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,10 +1012,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1275384977450267475, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1821982025331356521}
   m_SourcePrefab: {fileID: 100100000, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
 --- !u!4 &1585601778607334221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5062412576599631540, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
   m_PrefabInstance: {fileID: 5782759360894518777}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4752263945046472362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1275384977450267475, guid: 087c8f3e63f990e4dadc5919a264a417, type: 3}
+  m_PrefabInstance: {fileID: 5782759360894518777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1821982025331356521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4752263945046472362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0

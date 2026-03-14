@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7164355035393003663}
   - component: {fileID: 426819201144418885}
   - component: {fileID: 2804532362741545489}
+  - component: {fileID: -7415604444680299429}
   m_Layer: 7
   m_Name: ColdBox
   m_TagString: Box
@@ -170,13 +171,31 @@ MonoBehaviour:
     IsGrab: 0
     IsBroken: 0
     IsUnloaded: 0
+    IsHidden: 0
   _returnStickerSprite: {fileID: 698329501541903427}
+  _returnStickerSortingOffset: 1
+  _sortingOrderScale: 100
+  _sortingOrderBase: 0
   _coolingTime: 5
   _coolingSprites:
   - {fileID: 21300000, guid: 09b6f9b059bc65348b445eb488de9539, type: 3}
   - {fileID: 21300000, guid: 74a9f2a2096d4ae4eba65d2b01fb826e, type: 3}
   - {fileID: 21300000, guid: 47dc1c3917ff59d4e9d4b9365e60e75f, type: 3}
   - {fileID: 21300000, guid: ab588eda93fae9f43bc65a4ed0b47131, type: 3}
+--- !u!114 &-7415604444680299429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442358387930060806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534bebd60a7434644b96d6f92d99c5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billboardAxis: 0
+  freezeXZAxis: 0
 --- !u!1 &6005589210413100347
 GameObject:
   m_ObjectHideFlags: 0
