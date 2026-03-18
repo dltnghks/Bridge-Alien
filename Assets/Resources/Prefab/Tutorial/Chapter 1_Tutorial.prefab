@@ -155,9 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uD2C0\uB9AC\uC9C0 \uC54A\uACE0 3\uBC88 \uC5F0\uC18D \uBC30\uC1A1\uC5D0
-    \uC131\uACF5\uD558\uBA74 \uCF64\uBCF4 \uBCF4\uB108\uC2A4 \uC810\uC218\uB97C \uD68D\uB4DD\uD560
-    \uC218 \uC788\uC5B4."
+  instructionText: "\uC774\uC81C \uAE30\uBCF8\uC801\uC778\uAC74 \uC54C\uB824\uC92C\uC73C\uB2C8
+    \uB098\uBA38\uC9C4 \uC2A4\uC2A4\uB85C \uD574\uBD10."
   targetInteractableTag: ConveyB
   autoFinishDelay: 0
   onStepStart:
@@ -214,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uAC00\uAE4C\uC774 \uAC00\uC11C \uC0C1\uC790\uB97C \uC9D1\uC5B4\uBD10."
+  instructionText: "\uAC00\uAE4C\uC774\uAC00\uC11C \uC0C1\uC790\uB97C \uC9D1\uC5B4\uBD10"
   targetInteractableTag: Truck1
   autoFinishDelay: 0
   onStepStart:
@@ -491,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uAC00\uAE4C\uC774 \uAC00\uC11C \uC0C1\uC790\uB97C \uC9D1\uC5B4\uBD10."
+  instructionText: "\uAC00\uAE4C\uC774\uAC00\uC11C \uC0C1\uC790\uB97C \uC9D1\uC5B4\uBD10"
   targetInteractableTag: 
   autoFinishDelay: 0.5
   onStepStart:
@@ -877,8 +876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uD558\uCC28\uD2B8\uB7ED\uC5D0\uC11C\uB294 \uBC30\uC1A1\uC2DC\uCF1C\uC57C
-    \uD558\uB294 \uC0C1\uC790\uB4E4\uC774 \uB4F1\uC7A5\uD574."
+  instructionText: "\uD558\uCC28\uD2B8\uB7ED\uC5D0\uC11C\uB294 \uBC30\uC1A1\uC2DC\uCF1C\uC57C\uD558\uB294
+    \uC0C1\uC790\uB4E4\uC774 \uB4F1\uC7A5\uD574."
   targetInteractableTag: 
   autoFinishDelay: 1.5
   onStepStart:
@@ -981,8 +980,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1093855233893960140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0.1}
-  m_AnchorMax: {x: 0.9, y: 0.9}
+  m_AnchorMin: {x: 0.03, y: 0.1}
+  m_AnchorMax: {x: 1, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1014,8 +1013,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD558\uCC28\uD2B8\uB7ED\uC5D0\uC11C\uB294 \uBC30\uC1A1\uC2DC\uCF1C\uC57C
-    \uD558\uB294 \uC0C1\uC790\uB4E4\uC774 \uB4F1\uC7A5\uD574."
+  m_text: "\uD3D0\uAE30 \uC7A5\uCE58\uB97C \uC798 \uC774\uC6A9\uD55C\uB2E4\uBA74
+    \uB3D9\uC120\uC744 \uD6A8\uC728\uC801\uC73C\uB85C \uC4F8 \uC218 \uC788\uC9C0\uB9CC,\n\uC791\uB3D9\uC2DC
+    \uB9C8\uB2E4 \uC810\uC218\uAC00 \uAE4C\uC774\uB2C8 \uC870\uC2EC\uD788 \uC0AC\uC6A9\uD558\uB77C\uAD6C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59f90884f45c00542942263b59b1648f, type: 2}
   m_sharedMaterial: {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.32202148, y: 0, z: -3.3222656, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uC774\uC81C \uAE30\uBCF8\uC801\uC778\uAC74 \uC54C\uB824\uC92C\uC73C\uB2C8
-    \uB098\uBA38\uC9C4 \uB108\uAC00 \uC54C\uC544\uC11C \uD574\uBD10."
+    \uB098\uBA38\uC9C4 \uC2A4\uC2A4\uB85C \uD574\uBD10."
   targetInteractableTag: Spawn Box
   autoFinishDelay: 3
   onStepStart:

@@ -103,9 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uD558\uC580\uC0C9 \uB0C9\uC7A5\uBCF4\uAD00 \uC0C1\uC790\uB294
-    \uBC30\uC1A1 \uC804\uC5D0 \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574.
-    \uC0C1\uC790\uB97C \uD55C \uBC88 \uC9D1\uC5B4\uBD10."
+  instructionText: "\uD770\uC0C9 \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB294 \uBC30\uC1A1\uC804
+    \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574. \uC0C1\uC790\uB97C
+    \uD55C\uBC88 \uC9D1\uC5B4\uBD10."
   targetInteractableTag: Truck1
   autoFinishDelay: 150
   onStepStart:
@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uB0C9\uAC01\uC774 \uC644\uB8CC\uB41C \uC0C1\uC790\uB97C \uBC30\uC1A1\uC9C0\uC5ED\uC73C\uB85C
-    \uC774\uB3D9\uC2DC\uD0A4\uBA74 \uC810\uC218\uB97C \uD68D\uB4DD \uAC00\uB2A5\uD574."
+  instructionText: "\uB0C9\uAC01\uC774 \uC644\uB8CC\uB41C \uC0C1\uC790\uB97C \uC774\uB3D9\uC2DC\uCF1C\uC57C\uB9CC
+    \uC810\uC218\uB97C \uD68D\uB4DD \uAC00\uB2A5\uD574. "
   targetInteractableTag: Cold
   autoFinishDelay: 150
   onStepStart:
@@ -382,9 +382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uD558\uC580\uC0C9 \uB0C9\uC7A5\uBCF4\uAD00 \uC0C1\uC790\uB294
-    \uBC30\uC1A1 \uC804\uC5D0 \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574.
-    \uC0C1\uC790\uB97C \uD55C \uBC88 \uC9D1\uC5B4\uBD10."
+  instructionText: "\uD770\uC0C9 \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB294 \uBC30\uC1A1\uC804
+    \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574. \uC0C1\uC790\uB97C
+    \uD55C\uBC88 \uC9D1\uC5B4\uBD10."
   targetInteractableTag: 
   autoFinishDelay: 0.5
   onStepStart:
@@ -467,8 +467,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uB9CC\uC57D \uB0C9\uC7A5\uBCF4\uAD00 \uC0C1\uC790\uB97C \uB0C9\uAC01\uD558\uC9C0
-    \uC54A\uACE0 \uC62E\uAE30\uBA74 \uD070\uC77C\uB098\uB2C8 \uC870\uC2EC\uD558\uB77C\uAD6C."
+  instructionText: "\uB9CC\uC57D \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB97C \uB0C9\uAC01\uD558\uC9C0
+    \uC54A\uACE0 \uC62E\uAE30\uBA74 \uACE0\uAC1D \uCEF4\uD50C\uB808\uC778\uC774 \uB4E4\uC5B4\uC624\uB2C8
+    \uC870\uC2EC\uD558\uB77C\uAD6C."
   targetInteractableTag: ConveyA
   autoFinishDelay: 0
   onStepStart:
@@ -873,8 +874,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1093855233893960140}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0.1}
-  m_AnchorMax: {x: 0.9, y: 0.9}
+  m_AnchorMin: {x: 0.03, y: 0.1}
+  m_AnchorMax: {x: 1, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -906,8 +907,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD558\uCC28\uD2B8\uB7ED\uC5D0\uC11C\uB294 \uBC30\uC1A1\uC2DC\uCF1C\uC57C
-    \uD558\uB294 \uC0C1\uC790\uB4E4\uC774 \uB4F1\uC7A5\uD574."
+  m_text: "\uD3D0\uAE30 \uC7A5\uCE58\uB97C \uC798 \uC774\uC6A9\uD55C\uB2E4\uBA74
+    \uB3D9\uC120\uC744 \uD6A8\uC728\uC801\uC73C\uB85C \uC4F8 \uC218 \uC788\uC9C0\uB9CC,\n\uC791\uB3D9\uC2DC
+    \uB9C8\uB2E4 \uC810\uC218\uAC00 \uAE4C\uC774\uB2C8 \uC870\uC2EC\uD788 \uC0AC\uC6A9\uD558\uB77C\uAD6C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59f90884f45c00542942263b59b1648f, type: 2}
   m_sharedMaterial: {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
@@ -1057,8 +1059,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uB9CC\uC57D \uB0C9\uC7A5\uBCF4\uAD00 \uC0C1\uC790\uB97C \uB0C9\uAC01\uD558\uC9C0
-    \uC54A\uACE0 \uC62E\uAE30\uBA74 \uD070\uC77C\uB098\uB2C8 \uC870\uC2EC\uD558\uB77C\uAD6C."
+  instructionText: "\uB9CC\uC57D \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB97C \uB0C9\uAC01\uD558\uC9C0
+    \uC54A\uACE0 \uC62E\uAE30\uBA74 \uACE0\uAC1D \uCEF4\uD50C\uB808\uC778\uC774 \uB4E4\uC5B4\uC624\uB2C8
+    \uC870\uC2EC\uD558\uB77C\uAD6C."
   targetInteractableTag: Spawn Box
   autoFinishDelay: 3
   onStepStart:
