@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField] protected float rayDistance = 1f;    // 레이캐스트 거리
     [SerializeField] protected bool enableFlip = true;    // 플레이어 플립 활성화 여부
     [SerializeField] protected bool isHit = false;        // 플레이어가 맞았는지 여부
+    [SerializeField] protected float multipleHorizontalValue = 1.0f;
+    [SerializeField] protected float multipleVerticalValue = 200.0f;
+    
 
     protected GameObject spriteObject;                    // 스프라이트 오브젝트
     protected SpriteBillboard billboard;                  // 스프라이트 빌보드
@@ -118,8 +121,15 @@ public class Player : MonoBehaviour
     
     public void PlayerMovement(Vector2 joystickInput)
     {
-        float horizontal = joystickInput.x;
-        float vertical = joystickInput.y;
+        // 대각선 이동 시 속도 보정 (multiplier 적용 전에 정규화)
+        if (joystickInput.magnitude > 1f)
+            joystickInput = joystickInput.normalized;
+
+        // 애니메이션은 multiplier 적용 전 입력 크기 기준으로 재생
+        float animMagnitude = joystickInput.magnitude;
+
+        float horizontal = joystickInput.x * multipleHorizontalValue;
+        float vertical = joystickInput.y * multipleVerticalValue;
         Vector3 movement = Vector3.zero;  // 이동 벡터 초기화
 
         // x축(좌우) 이동과 스프라이트 방향 전환
@@ -135,7 +145,7 @@ public class Player : MonoBehaviour
             playerBody.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
             IsRight = false;
         }
-        
+
         // 회전이 가능한 경우에만 진행
         if(enableFlip)
         {
@@ -146,19 +156,13 @@ public class Player : MonoBehaviour
         if (Mathf.Abs(vertical) > 0.01f)
         {
             if (vertical > 0 && canMove[(int)Direction.Forward])
-            {  
+            {
                 movement += transform.forward * vertical;
             }
             else if (vertical < 0 && canMove[(int)Direction.Back])
             {
                 movement += transform.forward * vertical;
             }
-        }
-
-        // 이동 속도 정규화 및 적용
-        if (movement.magnitude > 1f)
-        {
-            movement.Normalize();
         }
 
         // Rigidbody를 통한 이동
@@ -168,7 +172,7 @@ public class Player : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
             
         // 캐릭터 애니메이터 업데이트
-        characterAnimator.UpdateMovement(movement.magnitude * MoveSpeed);
+        characterAnimator.UpdateMovement(animMagnitude * MoveSpeed);
     }
 
     public void PlayWinPose()
