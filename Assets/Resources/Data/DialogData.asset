@@ -25,18 +25,18 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: P_01_002
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC740\uD558 \uD3EC\uD138\uC774\uB77C \uADF8\uB7F0\uAC00\u2026\n
-          \uD3C9\uC18C \uC655\uBCF5\uC120 \uD0C8\uB54C \uBCF4\uB2E4 \uBA40\uBBF8\uAC00
-          \uB354 \uC2EC\uD55C \uAC83 \uAC19\uC740\uB370."
+        Script: "\uC740\uD558 \uD3EC\uD138\uC774\uB77C \uADF8\uB7F0\uAC00\u2026\n\uD3C9\uC18C
+          \uC655\uBCF5\uC120 \uD0C8\uB54C \uBCF4\uB2E4 \uBA40\uBBF8\uAC00 \uB354
+          \uC2EC\uD55C \uAC83 \uAC19\uC740\uB370."
         NextDialogID: P_01_003
         Type: 1
         SpeakerType: 3
         SpeakerPosType: 1
       - DialogID: P_01_003
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC5B4\uD734, \uADF8\uB098\uC800\uB098 \uC5EC\uAE30\uAC00 \uC9C0\uAD6C\uAD6C\uB9CC..\n
-          \uC911\uB825\uC774 \uC384\uC11C \uADF8\uB7F0\uC9C0 , \uD655\uC2E4\uD788
-          \uBAB8\uC774 \uB9CE\uC774 \uBB34\uAC81\uB2E4"
+        Script: "\uC5B4\uD734, \uADF8\uB098\uC800\uB098 \uC5EC\uAE30\uAC00 \uC9C0\uAD6C\uAD6C\uB9CC..\n\uC911\uB825\uC774
+          \uC384\uC11C \uADF8\uB7F0\uC9C0 , \uD655\uC2E4\uD788 \uBAB8\uC774 \uB9CE\uC774
+          \uBB34\uAC81\uB2E4"
         NextDialogID: P_01_004
         Type: 1
         SpeakerType: 1
@@ -51,9 +51,9 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: P_01_005
         CharacterName: "\uAC00\uC774\uB4DC"
-        Script: "\uC790\uC790~ \uB2E4\uB4E4 \uADF8\uB9CC \uB450\uB9AC\uBC88 \uAC70\uB9AC\uC2DC\uACE0\n
-          \uB2E4 \uB0B4\uB9AC\uC2E0\uAC70 \uAC19\uC73C\uB2C8\uAE50 \uBC88\uD638 \uD55C\uBC88
-          \uC149\uC2DC\uB2E4~\n \uB9E8 \uC55E\uC5D0\uC11C \uBD80\uD130 \uC549\uC544
+        Script: "\uC790\uC790~ \uB2E4\uB4E4 \uADF8\uB9CC \uB450\uB9AC\uBC88 \uAC70\uB9AC\uC2DC\uACE0\n\uB2E4
+          \uB0B4\uB9AC\uC2E0\uAC70 \uAC19\uC73C\uB2C8\uAE50 \uBC88\uD638 \uD55C\uBC88
+          \uC149\uC2DC\uB2E4~\n\uB9E8 \uC55E\uC5D0\uC11C \uBD80\uD130 \uC549\uC544
           \uBC88\uD638 \uC2DC\uC791"
         NextDialogID: P_01_006
         Type: 2
@@ -82,7 +82,7 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: P_01_009
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC544!.. \uC8C4\uC1A1\uD569\uB2C8\uB2E4 \n \uB137!!!"
+        Script: "\uC544!.. \uC8C4\uC1A1\uD569\uB2C8\uB2E4 \n\uB137!!!"
         NextDialogID: P_01_010
         Type: 2
         SpeakerType: 1
@@ -90,7 +90,7 @@ MonoBehaviour:
       - DialogID: P_01_010
         CharacterName: "\uAC00\uC774\uB4DC"
         Script: "\uC544\uC774\uACE0 \uB450\uC57C\u2026 \uBB54 \uC22B\uC790\uB3C4
-          \uBABB\uC138\uB294 \uB188\uB4E4 \uB370\uB9AC\uACE0 \uC654\uC5B4\n \uAC00\uBC29\uB048
+          \uBABB\uC138\uB294 \uB188\uB4E4 \uB370\uB9AC\uACE0 \uC654\uC5B4\n\uAC00\uBC29\uB048
           \uC9E7\uC740 \uB188\uB4E4\uC740 \uC880 \uBF51\uC9C0 \uB9D0\uB77C\uB2C8\uAE50"
         NextDialogID: P_01_011
         Type: 2
@@ -106,17 +106,16 @@ MonoBehaviour:
       - DialogID: P_01_012
         CharacterName: "\uAC00\uC774\uB4DC"
         Script: "\uC790 \uB2E4\uB4E4 \uC624\uC2E0\uAC70 \uD655\uC778\uD588\uC73C\uB2C8\uAE50
-          \n \uD55C\uBD84\uC529 \uBC30\uC815\uB418\uC2E0 \uACF3 \uBD88\uB7EC\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4.\n
-          \uB4E3\uACE0 \uD574\uB2F9 \uC7A5\uC18C\uB85C \uC774\uB3D9\uD558\uC2DC\uBA74
-          \uB429\uB2C8\uB2E4~"
+          \n\uD55C\uBD84\uC529 \uBC30\uC815\uB418\uC2E0 \uACF3 \uBD88\uB7EC\uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4.\n\uB4E3\uACE0
+          \uD574\uB2F9 \uC7A5\uC18C\uB85C \uC774\uB3D9\uD558\uC2DC\uBA74 \uB429\uB2C8\uB2E4~"
         NextDialogID: P_01_013
         Type: 2
         SpeakerType: 11
         SpeakerPosType: 2
       - DialogID: P_01_013
         CharacterName: "\uAC00\uC774\uB4DC"
-        Script: "\uC790 \uD55C\uBD09\uB355\uC528\uB294 \uD5EC\uB9AC\uC624\uC2A4 \uD654\uB85C\uAD6C\uC774\n
-          \uC2E0\uBBFC\uBC94\uC528\uB294 \uD328\uC2A4\uD130 \uC6B4\uC1A1...."
+        Script: "\uC790 \uD55C\uBD09\uB355\uC528\uB294 \uD5EC\uB9AC\uC624\uC2A4 \uD654\uB85C\uAD6C\uC774\n\uC2E0\uBBFC\uBC94\uC528\uB294
+          \uD328\uC2A4\uD130 \uC6B4\uC1A1...."
         NextDialogID: P_01_014
         Type: 2
         SpeakerType: 11
@@ -140,7 +139,7 @@ MonoBehaviour:
       Value:
       - DialogID: S1_01_001
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC5EC\uAE30\uAC00 \uCF54\uC2A4\uBAA8 \uBB3C\uB958....\n \uB0B4\uAC00
+        Script: "\uC5EC\uAE30\uAC00 \uCF54\uC2A4\uBAA8 \uBB3C\uB958....\n\uB0B4\uAC00
           \uBC30\uC815 \uBC1B\uC740 \uACF3\uC774\uB2E4."
         NextDialogID: S1_01_002
         Type: 1
@@ -148,8 +147,8 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S1_01_002
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC544..\uC65C \uD558\uD544 \uD0DD\uBC30\uD68C\uC0AC\uC57C\n \uC124\uB9C8
-          \uC0C1\uD558\uCC28 \uAC19\uC740\uAC70 \uD558\uB294\uAC74\uAC00..?\n \uC544\uBB34\uB9AC
+        Script: "\uC544..\uC65C \uD558\uD544 \uD0DD\uBC30\uD68C\uC0AC\uC57C\n\uC124\uB9C8
+          \uC0C1\uD558\uCC28 \uAC19\uC740\uAC70 \uD558\uB294\uAC74\uAC00..?\n\uC544\uBB34\uB9AC
           \uBD10\uB3C4 \uC798\uBABB \uAC78\uB9B0\uAC70 \uAC19\uC740\uB370\u2026."
         NextDialogID: S1_01_003
         Type: 1
@@ -172,7 +171,7 @@ MonoBehaviour:
       - DialogID: S1_01_005
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC790\uB124\uAC00 \uC624\uB298 \uC628\uB2E4\uB294 \uC0AC\uB78C
-          \uC774\uAD6C\uB9CC \n \uC57C\uBB34\uC9C0\uAC8C \uC0DD\uACBC\uB124 \uC774\uB984\uC774
+          \uC774\uAD6C\uB9CC \n\uC57C\uBB34\uC9C0\uAC8C \uC0DD\uACBC\uB124 \uC774\uB984\uC774
           \uBB50\uC5EC?"
         NextDialogID: S1_01_006
         Type: 2
@@ -180,7 +179,7 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S1_01_006
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC544 \uB124 \uC548\uB155\uD558\uC2ED\uB2C8\uAE4C.\n \uC800\uB294
+        Script: "\uC544 \uB124 \uC548\uB155\uD558\uC2ED\uB2C8\uAE4C.\n\uC800\uB294
           \uAE40\uC774\uBBF8\uB2C8\uC6B0\uC2A4 \uC774\uB808\uBE44\uC2A4 \uBBFC\uB2C8\uC2A4\uD130\u2026."
         NextDialogID: S1_01_007
         Type: 2
@@ -195,7 +194,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S1_01_008
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uAE40.. \uBB50??\n \uC544 \uB410\uACE0 \uADF8\uB0E5 \uAE40\uC528\uB77C\uACE0
+        Script: "\uAE40.. \uBB50??\n\uC544 \uB410\uACE0 \uADF8\uB0E5 \uAE40\uC528\uB77C\uACE0
           \uD3B8\uD558\uAC8C \uBD80\uB97C\uAC8C"
         NextDialogID: S1_01_009
         Type: 2
@@ -210,9 +209,8 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S1_01_010
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC790 \uC77C\uB2E8 \uBB50 \uAC04\uB2E8\uD558\uAC8C \uC18C\uAC1C\uD574\uC904\uD14C\uB2C8\uAE50\n
-          \uC624\uD6C4\uBD80\uD134 \uBC14\uB85C \uC5C5\uBB34 \uC2DC\uC791\uD558\uBA74
-          \uB3FC"
+        Script: "\uC790 \uC77C\uB2E8 \uBB50 \uAC04\uB2E8\uD558\uAC8C \uC18C\uAC1C\uD574\uC904\uD14C\uB2C8\uAE50\n\uC624\uD6C4\uBD80\uD134
+          \uBC14\uB85C \uC5C5\uBB34 \uC2DC\uC791\uD558\uBA74 \uB3FC"
         NextDialogID: S1_01_011
         Type: 2
         SpeakerType: 5
@@ -227,9 +225,9 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S1_01_012
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC5B4\uB514\uBCF4\uC790\uC774\u2026..\n \uC77C\uB2E8 \uC624\uB298\uC740
+        Script: "\uC5B4\uB514\uBCF4\uC790\uC774\u2026..\n\uC77C\uB2E8 \uC624\uB298\uC740
           \uD558\uCC28\uC791\uC5C5 \uCABD\uC5D0 \uC77C\uC190\uC774 \uBD80\uC871\uD558\uB2C8\uAE50
-          \n \uD558\uCC28\uC791\uC5C5\uC744 \uD558\uBA74 \uB418\uACA0\uB124"
+          \n\uD558\uCC28\uC791\uC5C5\uC744 \uD558\uBA74 \uB418\uACA0\uB124"
         NextDialogID: S1_01_013
         Type: 2
         SpeakerType: 5
@@ -237,8 +235,8 @@ MonoBehaviour:
       - DialogID: S1_01_013
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC800~\uAE30 \uBCF4\uBA74 \uC2E0\uD300\uC7A5\uC774\uB77C\uACE0
-          \uC788\uC5B4.\n \uC2E0\uD300\uC7A5 \uD55C\uD14C \uAC00\uC11C \uC5C5\uBB34
-          \uBC30\uC6B0\uACE0 \uBC14\uB85C \uC2DC\uC791\uD558\uBA74\uB3FC\n \uBB50
+          \uC788\uC5B4.\n\uC2E0\uD300\uC7A5 \uD55C\uD14C \uAC00\uC11C \uC5C5\uBB34
+          \uBC30\uC6B0\uACE0 \uBC14\uB85C \uC2DC\uC791\uD558\uBA74\uB3FC\n\uBB50
           \uAD81\uAE08\uD55C\uAC70 \uC788\uC5B4?"
         NextDialogID: S1_01_014
         Type: 2
@@ -253,8 +251,8 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S1_01_015
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC544\uC774 \uCC38.\n \uC6B0\uB9AC\uB294 \uADF8\uB0E5 \uC77C\uD55C\uB9CC\uD07C
-          \uBC1B\uC544\uAC04\uB2E4\uACE0 \uC0DD\uAC01\uD558\uBA74 \uB3FC.\n \uC4F8\uB370\uC5C6\uB294
+        Script: "\uC544\uC774 \uCC38.\n\uC6B0\uB9AC\uB294 \uADF8\uB0E5 \uC77C\uD55C\uB9CC\uD07C
+          \uBC1B\uC544\uAC04\uB2E4\uACE0 \uC0DD\uAC01\uD558\uBA74 \uB3FC.\n\uC4F8\uB370\uC5C6\uB294
           \uC18C\uB9AC \uD558\uC9C0\uB9D0\uACE0 \uBE68\uB9AC \uC774\uB3D9\uD600.
           \uAE40\uC528"
         NextDialogID: End
@@ -279,7 +277,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S1_02_002
         CharacterName: "\uC2E0\uD300\uC7A5"
-        Script: "\uC5B4 \uADF8\uB798\uADF8\uB798 \n \uD669\uBC18\uC7A5\uC774 \uC598\uAE30\uD588\uB358
+        Script: "\uC5B4 \uADF8\uB798\uADF8\uB798 \n\uD669\uBC18\uC7A5\uC774 \uC598\uAE30\uD588\uB358
           \uAE40\uC528\uAD6C\uB9CC"
         NextDialogID: S1_02_003
         Type: 2
@@ -318,8 +316,8 @@ MonoBehaviour:
       Value:
       - DialogID: S1_03_001
         CharacterName: "\uC2E0\uD300\uC7A5"
-        Script: "\uC790\uC790 \uC124\uBA85\uC740 \uC774\uB9CC\uD558\uBA74 \uB41C\uAC70\uAC19\uACE0\n
-          \uC5B4\uB54C \uC0DD\uAC01\uBCF4\uB2E4 \uAC04\uB2E8\uD558\uC9C0?"
+        Script: "\uC790\uC790 \uC124\uBA85\uC740 \uC774\uB9CC\uD558\uBA74 \uB41C\uAC70\uAC19\uACE0\n\uC5B4\uB54C
+          \uC0DD\uAC01\uBCF4\uB2E4 \uAC04\uB2E8\uD558\uC9C0?"
         NextDialogID: S1_03_002
         Type: 2
         SpeakerType: 4
@@ -327,7 +325,7 @@ MonoBehaviour:
       - DialogID: S1_03_002
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uB124.. \uADFC\uB370 \uC544\uC9C1 \uAC10\uC774 \uC7A1\uD788\uC9C4
-          \uC54A\uC544\uC11C..\n \uC870\uAE08\uC529 \uD574\uBCF4\uBA74\uC11C \uC774\uD574\uD574\uBCF4\uB3C4\uB85D
+          \uC54A\uC544\uC11C..\n\uC870\uAE08\uC529 \uD574\uBCF4\uBA74\uC11C \uC774\uD574\uD574\uBCF4\uB3C4\uB85D
           \uD558\uACA0\uC2B5\uB2C8\uB2E4."
         NextDialogID: S1_03_003
         Type: 2
@@ -336,7 +334,7 @@ MonoBehaviour:
       - DialogID: S1_03_003
         CharacterName: "\uC2E0\uD300\uC7A5"
         Script: "\uADF8\uB798 \uAE40\uC528\uAC00 \uC9C1\uC811 \uD558\uBA74\uC11C
-          \uBAA8\uB974\uB294 \uAC70 \uC788\uC73C\uBA74 \n \uB098\uD55C\uD14C \uBB3C\uC5B4\uBCF4\uC9C4
+          \uBAA8\uB974\uB294 \uAC70 \uC788\uC73C\uBA74 \n\uB098\uD55C\uD14C \uBB3C\uC5B4\uBCF4\uC9C4
           \uB9D0\uACE0, \uADF8\uB0E5 \uC54C\uC544\uC11C\uD600~"
         NextDialogID: S1_03_004
         Type: 2
@@ -352,7 +350,7 @@ MonoBehaviour:
       - DialogID: S1_03_005
         CharacterName: "\uC2E0\uD300\uC7A5"
         Script: "14\uC0B4\uC9DC\uB9AC \uC6B0\uB9AC \uC870\uCE74\uB3C4 \uBC29\uD559\uB54C\uBA74
-          \uC640\uC11C \uC798\uB9CC \uD558\uB294\uB370\n \uC5B4\uB824\uC6B8\uAC70
+          \uC640\uC11C \uC798\uB9CC \uD558\uB294\uB370\n\uC5B4\uB824\uC6B8\uAC70
           \uC5C6\uC5B4~"
         NextDialogID: S1_03_006
         Type: 2
@@ -361,7 +359,7 @@ MonoBehaviour:
       - DialogID: S1_03_006
         CharacterName: "\uC2E0\uD300\uC7A5"
         Script: "\uC790\uC790 \uBE68\uB9AC\uBE68\uB9AC \uC6C0\uC9C1\uC785\uC2DC\uB2E4~
-          \uB2E4\uB4E4 \n \uC5B4\uC5EC \uAE40\uC528\uB3C4 \uAC00\uBD10"
+          \uB2E4\uB4E4 \n\uC5B4\uC5EC \uAE40\uC528\uB3C4 \uAC00\uBD10"
         NextDialogID: S1_03_007
         Type: 2
         SpeakerType: 4
@@ -414,9 +412,9 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S1_04_005
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC5B4\uD5C8\uC774 \uC774\uC0AC\uB78C\uC774~ \uB3C8\uB9CC \uBC1D\uD788\uB098\n
-          \uACC4\uC18D\uD558\uB2E4\uBCF4\uBA74 \uC791\uC5C5\uC591\uB3C4 \uB9CE\uC544\uC9C0\uACE0
-          \uBCF4\uB108\uC2A4\uB3C4 \uBC1B\uC744 \uC218 \uC788\uC744\uAC70\uC57C"
+        Script: "\uC5B4\uD5C8\uC774 \uC774\uC0AC\uB78C\uC774~ \uB3C8\uB9CC \uBC1D\uD788\uB098\n\uACC4\uC18D\uD558\uB2E4\uBCF4\uBA74
+          \uC791\uC5C5\uC591\uB3C4 \uB9CE\uC544\uC9C0\uACE0 \uBCF4\uB108\uC2A4\uB3C4
+          \uBC1B\uC744 \uC218 \uC788\uC744\uAC70\uC57C"
         NextDialogID: S1_04_006
         Type: 2
         SpeakerType: 5
@@ -431,7 +429,7 @@ MonoBehaviour:
       - DialogID: S1_04_007
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC77C\uB2E8 \uC624\uB298\uC740 \uCCAB\uB0A0\uC774\uB2C8\uAE50 \uC774\uC815\uB3C4\uB9CC
-          \uD558\uACE0 \uD1F4\uADFC\uD558\uACE0\n \uB4E4\uC5B4\uAC00\uC11C \uD479\uC26C\uC5B4"
+          \uD558\uACE0 \uD1F4\uADFC\uD558\uACE0\n\uB4E4\uC5B4\uAC00\uC11C \uD479\uC26C\uC5B4"
         NextDialogID: S1_04_008
         Type: 2
         SpeakerType: 5
@@ -455,7 +453,7 @@ MonoBehaviour:
       - DialogID: S1_05_001
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC5EC\uAE30\uAC00 \uC778\uB825\uC18C\uC5D0\uC11C \uAD6C\uD574\uB2E4\uC900
-          \uC219\uC18C\uB124..\n \uC0DD\uAC01\uBCF4\uB2E4 \uC9C0\uB0BC\uB9CC \uD55C
+          \uC219\uC18C\uB124..\n\uC0DD\uAC01\uBCF4\uB2E4 \uC9C0\uB0BC\uB9CC \uD55C
           \uAC83 \uAC19\uAE30\uB3C4.."
         NextDialogID: S1_05_002
         Type: 1
@@ -463,7 +461,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S1_05_002
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uADF8\uB098\uC800\uB098 \uD798\uB4E4\uAD6C\uB9CC\n \uC77C\uB3C4
+        Script: "\uADF8\uB098\uC800\uB098 \uD798\uB4E4\uAD6C\uB9CC\n\uC77C\uB3C4
           \uC77C\uC778\uB370 \uC911\uB825\uB54C\uBB38\uC5D0 \uB354 \uD53C\uACE4\uD55C\uAC83
           \uAC19\uB124."
         NextDialogID: S1_05_003
@@ -495,22 +493,22 @@ MonoBehaviour:
         SpeakerPosType: 0
       - DialogID: S2_01_002
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uBB50\uC57C\u2026.. \uC0C8\uBCBD\uBD80\uD130 \uB204\uAD6C\uC57C\n
-          \uBA87\uC2DC\uC57C \uC9C0\uAE08"
+        Script: "\uBB50\uC57C\u2026.. \uC0C8\uBCBD\uBD80\uD130 \uB204\uAD6C\uC57C\n\uBA87\uC2DC\uC57C
+          \uC9C0\uAE08"
         NextDialogID: S2_01_003
         Type: 1
         SpeakerType: 1
         SpeakerPosType: 1
       - DialogID: S2_01_003
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC5D0?? \uBC8C\uC368 9\uC2DC\uB77C\uACE0??\n \uC5EC\uBCF4\uC138\uC694"
+        Script: "\uC5D0?? \uBC8C\uC368 9\uC2DC\uB77C\uACE0??\n\uC5EC..\uC5EC\uBCF4\uC138\uC694?"
         NextDialogID: S2_01_004
         Type: 1
         SpeakerType: 1
         SpeakerPosType: 1
       - DialogID: S2_01_004
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uAE40\uC528 \uC65C \uC804\uD654\uB97C \uC548\uBC1B\uC5B4!!\n \uC9C0\uAE08
+        Script: "\uAE40\uC528 \uC65C \uC804\uD654\uB97C \uC548\uBC1B\uC5B4!!\n\uC9C0\uAE08
           \uC5B4\uB514\uC5EC"
         NextDialogID: S2_01_005
         Type: 1
@@ -518,7 +516,7 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S2_01_005
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4..! \n \uC544\uC9C1 \uC9D1\uC785\uB2C8\uB2E4.
+        Script: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4..! \n\uC544\uC9C1 \uC9D1\uC785\uB2C8\uB2E4.
           \uC9C0\uAE08 \uBC14\uB85C \uCD9C\uADFC\uD558\uB3C4\uB85D \uD558\uACA0\uC2B5\uB2C8\uB2E4.."
         NextDialogID: S2_01_006
         Type: 1
@@ -526,8 +524,8 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S2_01_006
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uD558\u2026\n \uC544\uBB34\uD2BC \uC624\uB298 \uAE09\uD55C\uC77C\uC774
-          \uC880 \uC0DD\uACA8\uC11C \uD560\uAC8C \uB9CE\uC73C\uB2C8\uAE50\n \uCD5C\uB300\uD55C
+        Script: "\uD558\u2026\n\uC544\uBB34\uD2BC \uC624\uB298 \uAE09\uD55C\uC77C\uC774
+          \uC880 \uC0DD\uACA8\uC11C \uD560\uAC8C \uB9CE\uC73C\uB2C8\uAE50\n\uCD5C\uB300\uD55C
           \uBE68\uB9AC\uC640"
         NextDialogID: End
         Type: 1
@@ -551,7 +549,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S2_02_002
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uAE40\uC528 \uADF8\uB807\uAC8C \uC548\uBD24\uB294\uB370\n \uBC8C\uC368\uBD80\uD130
+        Script: "\uAE40\uC528 \uADF8\uB807\uAC8C \uC548\uBD24\uB294\uB370\n\uBC8C\uC368\uBD80\uD130
           \uB2A6\uACE0 \uADF8\uB7EC\uBA74 \uC4F0\uB098"
         NextDialogID: S2_02_003
         Type: 2
@@ -559,8 +557,8 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S2_02_003
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4..\n \uC6D0\uB798\uB294 \uC9C0\uAC01\uAC19\uC740\uAC74
-          \uC808\uB300\uC548\uD558\uB294\uB370\n \uC5B4\uC81C \uB108\uBB34 \uD53C\uACE4\uD574\uC11C
+        Script: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4..\n\uC6D0\uB798\uB294 \uC9C0\uAC01\uAC19\uC740\uAC74
+          \uC808\uB300\uC548\uD558\uB294\uB370\n\uC5B4\uC81C \uB108\uBB34 \uD53C\uACE4\uD574\uC11C
           \uADF8\uB7F0\uAC83 \uAC19\uC2B5\uB2C8\uB2E4"
         NextDialogID: S2_02_004
         Type: 2
@@ -568,9 +566,9 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S2_02_004
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uADF8\uB798, \uBB50 \uADF8\uB7F4\uC218\uB3C4\uC788\uC9C0..\n \uC6D0\uB798
+        Script: "\uADF8\uB798, \uBB50 \uADF8\uB7F4\uC218\uB3C4\uC788\uC9C0..\n\uC6D0\uB798
           \uC678\uB178\uC790\uB4E4\uC774 \uCC98\uC74C\uC5D0\uB294 \uC0DD\uD65C\uB9AC\uB4EC\uC774
-          \uC548\uB9DE\uC544\uC11C\n \uADF8\uB7F0 \uACBD\uC6B0\uAC00 \uB300\uAC8C\uC788\uC5B4"
+          \uC548\uB9DE\uC544\uC11C\n\uADF8\uB7F0 \uACBD\uC6B0\uAC00 \uB300\uAC8C\uC788\uC5B4"
         NextDialogID: S2_02_005
         Type: 2
         SpeakerType: 5
@@ -610,7 +608,7 @@ MonoBehaviour:
       - DialogID: S2_02_009
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC6D0\uB798 \uBC30\uCE58\uB418\uC5B4\uC788\uB358\uB2E4\uB978 \uCE5C\uAD6C\uAC00\uC788\uC5C8\uB294\uB370
-          \uB9D0\uC774\uC57C\n \uAE00\uC384 \uC5B4\uC81C \uC790\uAE30 \uD589\uC131\uC73C\uB85C
+          \uB9D0\uC774\uC57C\n\uAE00\uC384 \uC5B4\uC81C \uC790\uAE30 \uD589\uC131\uC73C\uB85C
           \uCD94\uB178\uB97C \uD588\uB2E4\uB124"
         NextDialogID: S2_02_010
         Type: 2
@@ -626,7 +624,7 @@ MonoBehaviour:
       - DialogID: S2_02_011
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uADF8\uB798, \uADF8\uB798\uC11C \uC9C0\uAE08 \uC791\uC5C5\uC774
-          \uB9CE\uC774 \uBC00\uB824\uC788\uC5B4\n \uC77C\uB2E8 \uC0AC\uB78C \uC0C8\uB85C
+          \uB9CE\uC774 \uBC00\uB824\uC788\uC5B4\n\uC77C\uB2E8 \uC0AC\uB78C \uC0C8\uB85C
           \uAD6C\uD560\uB54C \uAE4C\uC9C0 \uC790\uB124\uAC00 \uB300\uC2E0\uC880 \uD574\uC57C\uD560\uAC83\uAC19\uC544."
         NextDialogID: S2_02_012
         Type: 2
@@ -635,7 +633,7 @@ MonoBehaviour:
       - DialogID: S2_02_012
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uD2B9\uBCC4\uD788 \uC2E0\uACBD\uC368\uC57C \uD560\uAC83\uB4E4\uC740
-          \uB9CE\uC9C0 \uC54A\uC73C\uB2C8\uAE50\n \uC77C\uB2E8 \uC9C1\uC811 \uD574\uBCF4\uBA74\uC11C
+          \uB9CE\uC9C0 \uC54A\uC73C\uB2C8\uAE50\n\uC77C\uB2E8 \uC9C1\uC811 \uD574\uBCF4\uBA74\uC11C
           \uD558\uB098\uC529 \uC775\uD600\uBD10\uBD10"
         NextDialogID: S2_02_013
         Type: 2
@@ -666,9 +664,9 @@ MonoBehaviour:
       - DialogID: S2_02_016
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC5B4. \uC798\uBABB \uBC30\uC1A1\uD55C \uD0DD\uBC30\uB4E4\uC744
-          \uD55C\uACF3\uC5D0 \uBAA8\uC544\uC11C \uCC98\uB9AC\uD558\uB294\uACF3\uC778\uB370\n
-          \uBC11\uC73C\uB85C \uBE60\uC838\uBC84\uB9AC\uBA74, \uC5C5\uBB34\uB294 \uCEE4\uB155
-          \uC798\uBABB\uD558\uB2E4\uAC00 \uAC77\uC9C0\uB3C4 \uBABB\uD560\uACA8.."
+          \uD55C\uACF3\uC5D0 \uBAA8\uC544\uC11C \uCC98\uB9AC\uD558\uB294\uACF3\uC778\uB370\n\uBC11\uC73C\uB85C
+          \uBE60\uC838\uBC84\uB9AC\uBA74, \uC5C5\uBB34\uB294 \uCEE4\uB155 \uC798\uBABB\uD558\uB2E4\uAC00
+          \uAC77\uC9C0\uB3C4 \uBABB\uD560\uACA8.."
         NextDialogID: S2_02_017
         Type: 2
         SpeakerType: 5
@@ -729,9 +727,8 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S2_03_003
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uADF8\uB798\uB3C4 \uC6A9\uCF00 \uC0AC\uACE0\uB294 \uC548\uCCE4\uAD6C\uB9CC\n
-          \uB35C\uB801\uB300\uAE38\uB798 \uCD94\uB77D\uD558\uAE30\uB77C\uB3C4 \uD558\uBA74
-          \uC5B4\uCA4C\uB098 \uAC71\uC815\uD588\uB124~"
+        Script: "\uADF8\uB798\uB3C4 \uC6A9\uCF00 \uC0AC\uACE0\uB294 \uC548\uCCE4\uAD6C\uB9CC\n\uB35C\uB801\uB300\uAE38\uB798
+          \uCD94\uB77D\uD558\uAE30\uB77C\uB3C4 \uD558\uBA74 \uC5B4\uCA4C\uB098 \uAC71\uC815\uD588\uB124~"
         NextDialogID: S2_03_004
         Type: 2
         SpeakerType: 5
@@ -754,7 +751,7 @@ MonoBehaviour:
       - DialogID: S2_03_006
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC77C\uB2E8 \uC0AC\uB78C\uC744 \uB2F9\uC7A5 \uAD6C\uD558\uC9C4
-          \uBABB\uD558\uB2C8\uAE50\n \uC788\uB294 \uC791\uC5C5\uC790\uB4E4\uB07C\uB9AC
+          \uBABB\uD558\uB2C8\uAE50\n\uC788\uB294 \uC791\uC5C5\uC790\uB4E4\uB07C\uB9AC
           \uBE91\uBE91\uC774\uB97C \uB3CC\uB9B4\uAC70 \uAC19\uC740\uB370"
         NextDialogID: S2_03_007
         Type: 2
@@ -763,7 +760,7 @@ MonoBehaviour:
       - DialogID: S2_03_007
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC5B4\uCC28\uD53C \uAE40\uC528 \uC624\uB298 \uD558\uB294\uAC70
-          \uBCF4\uB2C8\uAE50 \uBB50\n \uBB58 \uC2DC\uCF1C\uB3C4 \uC798\uD560\uAC70\uAC19\uC740\uB370?"
+          \uBCF4\uB2C8\uAE50 \uBB50\n\uBB58 \uC2DC\uCF1C\uB3C4 \uC798\uD560\uAC70\uAC19\uC740\uB370?"
         NextDialogID: S2_03_008
         Type: 2
         SpeakerType: 5
@@ -778,15 +775,15 @@ MonoBehaviour:
       - DialogID: S2_03_009
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC6D0\uB798\uB294 \uC9C0\uAC01\uD588\uC73C\uB2C8 \uC624\uB298 \uC77C\uB2F9\uC744
-          \uAE4C\uC57C\uB418\uB294\uB370\n \uAE40\uC528 \uC0DD\uAC01\uD574\uC11C
-          \uB0B4\uAC00 \uD2B9\uBCC4\uD788 \uC548\uAE4E\uC740\uACA8"
+          \uAE4C\uC57C\uB418\uB294\uB370\n\uAE40\uC528 \uC0DD\uAC01\uD574\uC11C \uB0B4\uAC00
+          \uD2B9\uBCC4\uD788 \uC548\uAE4E\uC740\uACA8"
         NextDialogID: S2_03_010
         Type: 2
         SpeakerType: 5
         SpeakerPosType: 2
       - DialogID: S2_03_010
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC544 \uAC10\uC0AC\uD569\uB2C8\uB2E4 \n (\uC774\uAC8C \uC548\uAE4E\uC740\uAC70\uB77C\uACE0..?
+        Script: "\uC544 \uAC10\uC0AC\uD569\uB2C8\uB2E4 \n(\uC774\uAC8C \uC548\uAE4E\uC740\uAC70\uB77C\uACE0..?
           \uB204\uAD6C \uCF54\uC5D0 \uBD99\uD600\u2026)"
         NextDialogID: S2_03_011
         Type: 2
@@ -795,7 +792,7 @@ MonoBehaviour:
       - DialogID: S2_03_011
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uADF8\uB798 \uC544\uBB34\uD2BC \uACE0\uC0DD\uB9CE\uC558\uACE0,
-          \uC774\uB9CC \uD1F4\uADFC\uD574\uBD10.\n \uB0B4\uC77C\uC740 \uAF2D \uB2A6\uC9C0\uB9D0\uACE0"
+          \uC774\uB9CC \uD1F4\uADFC\uD574\uBD10.\n\uB0B4\uC77C\uC740 \uAF2D \uB2A6\uC9C0\uB9D0\uACE0"
         NextDialogID: S2_03_012
         Type: 2
         SpeakerType: 5
@@ -819,7 +816,7 @@ MonoBehaviour:
       - DialogID: S2_04_001
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC5B4\uD734\uC528 \uD558\uB9C8\uD0C0\uBA74 \uB458\uC9F8\uB0A0 \uBD80\uD130
-          \uC9E4\uB9B4\uBED4\uD588\uB124\n \uB0B4\uC77C\uBD80\uD134 \uC54C\uB78C\uC744
+          \uC9E4\uB9B4\uBED4\uD588\uB124\n\uB0B4\uC77C\uBD80\uD134 \uC54C\uB78C\uC744
           3\uC2DC\uAC04 \uC804\uBD80\uD130 \uB9DE\uCDB0\uB194\uC57C\uACA0\uB2E4."
         NextDialogID: S2_04_001
         Type: 1
@@ -828,7 +825,7 @@ MonoBehaviour:
       - DialogID: S2_04_002
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uADF8\uB098\uC800\uB098 \uC774\uB188\uC758 \uC911\uB825\uC740 \uC65C\uC774\uB807\uAC8C
-          \uC801\uC751\uC774 \uC548\uB418\uB0D0\n \uC544\uC73C\u2026 \uC0AD\uC2E0\uC774\uC57C"
+          \uC801\uC751\uC774 \uC548\uB418\uB0D0\n\uC544\uC73C\u2026 \uC0AD\uC2E0\uC774\uC57C"
         NextDialogID: End
         Type: 1
         SpeakerType: 3
@@ -851,7 +848,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S3_01_002
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC5EC~ \uADF8\uB798 \uAE40\uC528 \uC654\uC5B4\n \uC624\uB298\uC740
+        Script: "\uC5EC~ \uADF8\uB798 \uAE40\uC528 \uC654\uC5B4\n\uC624\uB298\uC740
           \uC548\uB2A6\uC5C8\uB124"
         NextDialogID: S3_01_003
         Type: 2
@@ -866,8 +863,8 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S3_01_004
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uADF8\uB824, \uBB50 \uB611\uB611\uD55C \uC591\uBC18\uC774\uB2C8\uAE50\n
-          \uC54C\uC544\uC11C \uC798\uD558\uAC84\uC9C0"
+        Script: "\uADF8\uB824, \uBB50 \uB611\uB611\uD55C \uC591\uBC18\uC774\uB2C8\uAE50\n\uC54C\uC544\uC11C
+          \uC798\uD558\uAC84\uC9C0"
         NextDialogID: S3_01_005
         Type: 2
         SpeakerType: 5
@@ -889,7 +886,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S3_01_007
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uADF8\uB7FC\uADF8\uB7FC \uB2F9\uC5F0\uD558\uC9C0\n \uC774\uC81C
+        Script: "\uADF8\uB7FC\uADF8\uB7FC \uB2F9\uC5F0\uD558\uC9C0\n\uC774\uC81C
           \uC77C\uC880 \uC798\uD558\uAC8C \uC0DD\uACBC\uB2E4~ \uC774\uB9D0\uC774\uC5EC"
         NextDialogID: S3_01_008
         Type: 2
@@ -906,7 +903,7 @@ MonoBehaviour:
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC544 \uADF8\uBCF4\uB2E4 \uC624\uB298 \uC791\uC5C5\uC7A5\uC740
           \uB0C9\uC7A5 \uBCF4\uAD00 \uD0DD\uBC30\uB4E4\uC774 \uC624\uB294\uACF3\uC774\uB77C
-          \uC880 \uCD94\uC6CC\n \uADF8\uB798\uC11C \uC637\uC744\uC880 \uAEF4\uC785\uC5B4\uC57C
+          \uC880 \uCD94\uC6CC\n\uADF8\uB798\uC11C \uC637\uC744\uC880 \uAEF4\uC785\uC5B4\uC57C
           \uB420\uD150\uB370, \uB0B4\uAC00 \uBBF8\uB9AC \uB9D0\uC744 \uBABB\uD588\uB124"
         NextDialogID: S3_01_010
         Type: 2
@@ -915,7 +912,7 @@ MonoBehaviour:
       - DialogID: S3_01_010
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC544 \uC6D0\uB798 \uB124\uC774\uC624\uC2A4\uB294 \uC0AC\uACC4\uC808\uC774
-          \uACA8\uC6B8\uC774\uB77C \n \uBB50 \uCD94\uC6B4\uAC74 \uC798 \uBC84\uD2F0\uB294
+          \uACA8\uC6B8\uC774\uB77C \n\uBB50 \uCD94\uC6B4\uAC74 \uC798 \uBC84\uD2F0\uB294
           \uD3B8\uC785\uB2C8\uB2E4."
         NextDialogID: S3_01_011
         Type: 2
@@ -952,7 +949,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S3_01_015
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uD06C~ \uC5ED\uC2DC \uB0A8\uC790\uC5EC \uB0A8\uC790\n \uB0B4\uAC00
+        Script: "\uD06C~ \uC5ED\uC2DC \uB0A8\uC790\uC5EC \uB0A8\uC790\n\uB0B4\uAC00
           \uC774\uB798\uC11C \uAE40\uC528\uB97C \uC88B\uC544\uD55C\uB2E8 \uB9D0\uC774\uC57C"
         NextDialogID: S3_01_016
         Type: 2
@@ -961,7 +958,7 @@ MonoBehaviour:
       - DialogID: S3_01_016
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uADF8\uB7FC \uC5BC\uB978 \uC900\uBE44\uD574\uC11C \uC791\uC5C5
-          \uC2DC\uC791\uD558\uACE0\n \uC774\uB530 \uBCF4\uC790\uAD6C"
+          \uC2DC\uC791\uD558\uACE0\n\uC774\uB530 \uBCF4\uC790\uAD6C"
         NextDialogID: S3_01_017
         Type: 2
         SpeakerType: 5
@@ -984,7 +981,7 @@ MonoBehaviour:
       Value:
       - DialogID: S3_02_001
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC544\uC73C.. \uCD94\uC6CC\n \uC5BC\uC5B4 \uC8FD\uC744\uBED4\uD588\uB124"
+        Script: "\uC544\uC73C.. \uCD94\uC6CC\n\uC5BC\uC5B4 \uC8FD\uC744\uBED4\uD588\uB124"
         NextDialogID: S3_02_002
         Type: 2
         SpeakerType: 3
@@ -1005,8 +1002,8 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S3_02_004
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "(\uC5B4\uC81C\uBD80\uD130 \uB5A8\uC5B4\uC838 \uC8FD\uB124, \uC5BC\uC5B4\uC8FD\uB124..\n
-          \uC774\uB188\uC758 \uC9C1\uC7A5\uC740 \uBB50 \uBAA9\uC228\uAE4C\uC9C0 \uAC78\uC5B4\uC57C\uB418\uB294\uAC70\uC57C
+        Script: "(\uC5B4\uC81C\uBD80\uD130 \uB5A8\uC5B4\uC838 \uC8FD\uB124, \uC5BC\uC5B4\uC8FD\uB124..\n\uC774\uB188\uC758
+          \uC9C1\uC7A5\uC740 \uBB50 \uBAA9\uC228\uAE4C\uC9C0 \uAC78\uC5B4\uC57C\uB418\uB294\uAC70\uC57C
           \uBB50\uC57C)"
         NextDialogID: S3_02_005
         Type: 2
@@ -1021,7 +1018,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S3_02_006
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC774\uC57C \uADF8\uBCF4\uB2E4\n \uBC8C\uC368 \uC2E0\uD300\uC7A5\uC774\uB791
+        Script: "\uC774\uC57C \uADF8\uBCF4\uB2E4\n\uBC8C\uC368 \uC2E0\uD300\uC7A5\uC774\uB791
           \uC791\uC5C5\uB7C9\uC774 \uBE44\uC2B7\uD574\uC84C\uB124??"
         NextDialogID: S3_02_007
         Type: 2
@@ -1037,17 +1034,16 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S3_02_008
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC544\uC8FC \uCC9C\uC9C1\uC774\uC57C \uCC9C\uC9C1\n \uCF54\uC2A4\uBAA8
-          \uBB3C\uB958\uC5D0 \uB9D0\uB69D \uBC15\uC544\uB3C4 \uB418\uACA0\uB294\uB370??\n
-          \uC0AC\uB78C \uAD6C\uD558\uAE30\uB3C4 \uD798\uB4E0\uB370 \uC815\uADDC\uC9C1
-          \uD574\uBCFC\uD168?"
+        Script: "\uC544\uC8FC \uCC9C\uC9C1\uC774\uC57C \uCC9C\uC9C1\n\uCF54\uC2A4\uBAA8
+          \uBB3C\uB958\uC5D0 \uB9D0\uB69D \uBC15\uC544\uB3C4 \uB418\uACA0\uB294\uB370??\n\uC0AC\uB78C
+          \uAD6C\uD558\uAE30\uB3C4 \uD798\uB4E0\uB370 \uC815\uADDC\uC9C1 \uD574\uBCFC\uD168?"
         NextDialogID: S3_02_009
         Type: 2
         SpeakerType: 5
         SpeakerPosType: 2
       - DialogID: S3_02_009
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uAC10\uC0AC\uD569\uB2C8\uB2E4.. \n \uADFC\uB370 \uD559\uAD50\uB294
+        Script: "\uAC10\uC0AC\uD569\uB2C8\uB2E4.. \n\uADFC\uB370 \uD559\uAD50\uB294
           \uC878\uC5C5\uC744 \uD574\uC57C\uD574\uC11C\u2026"
         NextDialogID: S3_02_010
         Type: 2
@@ -1055,10 +1051,9 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S3_02_010
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uADF8\uB0E5 \uD55C\uC18C\uB9AC\uC5EC~ \n \uAE40\uC528\uAC19\uC740
-          \uCE5C\uAD6C\uB4E4\uB9CC \uB4E4\uC5B4\uC624\uBA74 \uC88B\uACA0\uB294\uB370\n
-          \uC694\uC998\uC560\uB4E4\uC740 \uC880\uB9CC \uD798\uB4E4\uBA74 \uD280\uACE0
-          \uB9D0\uC774\uC57C"
+        Script: "\uADF8\uB0E5 \uD55C\uC18C\uB9AC\uC5EC~ \n\uAE40\uC528\uAC19\uC740
+          \uCE5C\uAD6C\uB4E4\uB9CC \uB4E4\uC5B4\uC624\uBA74 \uC88B\uACA0\uB294\uB370\n\uC694\uC998\uC560\uB4E4\uC740
+          \uC880\uB9CC \uD798\uB4E4\uBA74 \uD280\uACE0 \uB9D0\uC774\uC57C"
         NextDialogID: S3_02_011
         Type: 2
         SpeakerType: 5
@@ -1081,7 +1076,7 @@ MonoBehaviour:
       - DialogID: S3_02_013
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC544 \uBC18\uC7A5\uB2D8 \uADF8\uBCF4\uB2E4, \uC544\uAE4C \uD30C\uC190\uCC98\uB9AC\uB41C
-          \uD0DD\uBC30\uAC00 \uC788\uC5C8\uB294\uB370\n \uBC1C\uC1A1\uC790 \uC815\uBCF4\uAC00
+          \uD0DD\uBC30\uAC00 \uC788\uC5C8\uB294\uB370\n\uBC1C\uC1A1\uC790 \uC815\uBCF4\uAC00
           \uC548\uC801\uD600\uC788\uC5B4\uC11C\uC694..\uC774\uAC74 \uC5B4\uB5BB\uAC8C
           \uCC98\uB9AC\uD574\uC57C\uB420\uAE4C\uC694?"
         NextDialogID: S3_02_014
@@ -1144,10 +1139,9 @@ MonoBehaviour:
       - DialogID: S3_02_021
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC5B4\uCC28\uD53C \uD30C\uC190\uB41C\uAC70\uB294 \uB530\uB85C \uC5F0\uB77D\uD574\uC11C
-          \uC7AC\uD3EC\uC7A5\uC744 \uD574\uC57C\uD558\uB294\uB370\n \uC5F0\uB77D\uCC98\uB3C4
+          \uC7AC\uD3EC\uC7A5\uC744 \uD574\uC57C\uD558\uB294\uB370\n\uC5F0\uB77D\uCC98\uB3C4
           \uC548\uC801\uD600\uC788\uC73C\uB2C8\uAE50 \uADF8\uB0E5 \uAE40\uC528\uAC00
-          \uB9C8\uC2DC\uACE0\n \uB098\uC911\uC5D0 \uC18C\uC7A5\uB2D8\uD55C\uD14C
-          \uBCF4\uACE0\uB4DC\uB824"
+          \uB9C8\uC2DC\uACE0\n\uB098\uC911\uC5D0 \uC18C\uC7A5\uB2D8\uD55C\uD14C \uBCF4\uACE0\uB4DC\uB824"
         NextDialogID: S3_02_022
         Type: 2
         SpeakerType: 5
@@ -1176,7 +1170,7 @@ MonoBehaviour:
       - DialogID: S3_02_025
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uADFC\uB370 \uBB54 \uC131\uBD84\uD45C\uB791 \uB77C\uBCA8\uB3C4
-          \uC548\uBD99\uC5B4\uC788\uB0D0\u2026\n \uD0C4\uC0B0\uC778\uAC00?"
+          \uC548\uBD99\uC5B4\uC788\uB0D0\u2026\n\uD0C4\uC0B0\uC778\uAC00?"
         NextDialogID: S3_02_023
         Type: 1
         SpeakerType: 1
@@ -1198,7 +1192,7 @@ MonoBehaviour:
       - DialogID: S3_02_025
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uADFC\uB370 \uC660\uC9C0 \uBA38\uB9AC\uAC00 \uB9D1\uC544\uC9C0\uB294
-          \uB290\uB08C\uC774\uB124\n \uD53C\uB85C\uD68C\uBCF5\uC81C \uAC19\uC740\uAC74\uAC00.."
+          \uB290\uB08C\uC774\uB124\n\uD53C\uB85C\uD68C\uBCF5\uC81C \uAC19\uC740\uAC74\uAC00.."
         NextDialogID: End
         Type: 1
         SpeakerType: 1
@@ -1229,7 +1223,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S4_01_003
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC544\uC73C \uD53C\uACE4\uD574\u2026\n \uAE40\uC528 \uC654\uB124\uC789?"
+        Script: "\uC544\uC73C \uD53C\uACE4\uD574\u2026\n\uAE40\uC528 \uC654\uB124\uC789?"
         NextDialogID: S4_01_004
         Type: 2
         SpeakerType: 1
@@ -1252,14 +1246,14 @@ MonoBehaviour:
       - DialogID: S4_01_006
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uB124 \uBB50 \uC774\uC81C \uC801\uC751\uC774\uB41C\uAC74\uC9C0,
-          \n \uD558\uB098\uB3C4 \uC548\uD53C\uACE4\uD558\uB124\uC694."
+          \n\uD558\uB098\uB3C4 \uC548\uD53C\uACE4\uD558\uB124\uC694."
         NextDialogID: S4_01_007
         Type: 2
         SpeakerType: 1
         SpeakerPosType: 1
       - DialogID: S4_01_007
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC774\uC57C~ \uAC70\uC758 \uBB50 \uCC9C\uC9C1\uC778\uB370? \n \uC774\uB807\uAC8C
+        Script: "\uC774\uC57C~ \uAC70\uC758 \uBB50 \uCC9C\uC9C1\uC778\uB370? \n\uC774\uB807\uAC8C
           \uB41C\uAC70 \uC9C4\uC9DC \uB9D0\uB69D\uBC15\uC790 \uAE40\uC528"
         NextDialogID: S4_01_008
         Type: 2
@@ -1283,7 +1277,7 @@ MonoBehaviour:
       - DialogID: S4_01_010
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC544 \uC624\uB298 \uC791\uC5C5\uC7A5\uC740 \uBB50 \uD2B9\uBCC4\uD788
-          \uC2E0\uACBD\uC4F8\uAC74 \uC5C6\uACE0,\n \uADF8\uB0E5 \uC791\uC5C5\uB7C9\uC774
+          \uC2E0\uACBD\uC4F8\uAC74 \uC5C6\uACE0,\n\uADF8\uB0E5 \uC791\uC5C5\uB7C9\uC774
           \uC880\uB9CE\uC744\uAC70\uC57C."
         NextDialogID: S4_01_011
         Type: 2
@@ -1292,7 +1286,7 @@ MonoBehaviour:
       - DialogID: S4_01_011
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uB09C \uC880 \uC774\uB530 \uC9C0\uBC29 \uCD9C\uC7A5 \uB2E4\uB140\uC640\uC57C\uB420\uAC83
-          \uAC19\uC544\uC11C\n \uC791\uC5C5 \uB05D\uB098\uBA74 \uB300\uCDA9 \uB9C8\uBB34\uB9AC\uD558\uACE0
+          \uAC19\uC544\uC11C\n\uC791\uC5C5 \uB05D\uB098\uBA74 \uB300\uCDA9 \uB9C8\uBB34\uB9AC\uD558\uACE0
           \uC54C\uC544\uC11C \uD1F4\uADFC\uD600."
         NextDialogID: S4_01_012
         Type: 2
@@ -1324,7 +1318,7 @@ MonoBehaviour:
       - DialogID: S4_02_002
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uBD84\uBA85 \uC544\uAE4C \uC804 \uAE4C\uC9C0\uB9CC \uD574\uB3C4
-          \uC329\uC329\uD588\uB294\uB370,\n \uAC11\uC790\uAE30 \uC65C\uC774\uB807\uAC8C
+          \uC329\uC329\uD588\uB294\uB370,\n\uAC11\uC790\uAE30 \uC65C\uC774\uB807\uAC8C
           \uBAB8\uC774 \uBB34\uAC81\uC9C0"
         NextDialogID: S4_02_003
         Type: 1
@@ -1333,7 +1327,7 @@ MonoBehaviour:
       - DialogID: S4_02_003
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC5B4\uC81C \uB9C8\uC168\uB358 \uC774\uC0C1\uD55C \uC74C\uB8CC\uB54C\uBB38\uC5D0
-          \uAD1C\uCC2E\uC558\uB358\uAC74\uAC00.?\n \uC77C\uB2E8 \uBE68\uB9AC \uC9D1\uAC00\uC11C
+          \uAD1C\uCC2E\uC558\uB358\uAC74\uAC00.?\n\uC77C\uB2E8 \uBE68\uB9AC \uC9D1\uAC00\uC11C
           \uB204\uC6CC\uC57C\uACA0\uB2E4."
         NextDialogID: End
         Type: 1
@@ -1350,7 +1344,7 @@ MonoBehaviour:
       Value:
       - DialogID: S4_03_001
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC5D0\uACE0\uC5D0\uACE0 \uC8FD\uACA0\uB2E4\u2026\n \uC774\uAC70
+        Script: "\uC5D0\uACE0\uC5D0\uACE0 \uC8FD\uACA0\uB2E4\u2026\n\uC774\uAC70
           \uB0B4\uC77C \uCD9C\uADFC \uBABB\uD560\uAC70\uAC19\uC740\uB370"
         NextDialogID: S4_03_002
         Type: 1
@@ -1359,7 +1353,7 @@ MonoBehaviour:
       - DialogID: S4_03_002
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC5B4\uC81C \uADF8\uAC70\uB77C\uB3C4 \uB9C8\uC2DC\uBA74 \uAD1C\uCC2E\uC544\uC9C8\uAC70
-          \uAC19\uC740\uB370.\n \uADFC\uB370 \uBB50 \uB77C\uBCA8\uB3C4 \uC131\uBD84\uD45C\uB3C4
+          \uAC19\uC740\uB370.\n\uADFC\uB370 \uBB50 \uB77C\uBCA8\uB3C4 \uC131\uBD84\uD45C\uB3C4
           \uC5C6\uC5B4\uC11C, \uAD6C\uD560 \uBC29\uBC95\uC774 \uC5C6\uB124."
         NextDialogID: S4_03_003
         Type: 1
@@ -1368,7 +1362,7 @@ MonoBehaviour:
       - DialogID: S4_03_003
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC544 , \uC9C0\uAE08 \uD54C\uD53C\uAC00 \uC5F0\uAD6C\uC2E4\uC5D0
-          \uC788\uC9C0 \uC54A\uB098?? \n \uBA87\uBC29\uC6B8 \uB0A8\uC544\uC788\uC73C\uB2C8\uAE50
+          \uC788\uC9C0 \uC54A\uB098?? \n\uBA87\uBC29\uC6B8 \uB0A8\uC544\uC788\uC73C\uB2C8\uAE50
           \uC131\uBD84 \uBD84\uC11D\uC774\uB098 \uD574\uB2EC\uB77C\uACE0 \uD574\uC57C\uACA0\uB2E4."
         NextDialogID: S4_03_004
         Type: 1
@@ -1405,7 +1399,7 @@ MonoBehaviour:
       - DialogID: S4_03_008
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC544 \uC9C0\uAE08 \uB0B4\uAC00 \uC7A0\uAE50 \uC54C\uBC14\uD558\uB7EC
-          \uC9C0\uAD6C\uC5D0 \uC640\uC788\uB294\uB370\n \uC0D8\uD50C \uD558\uB098
+          \uC9C0\uAD6C\uC5D0 \uC640\uC788\uB294\uB370\n\uC0D8\uD50C \uD558\uB098
           \uBCF4\uB0BC\uD14C\uB2C8\uAE50 \uBD84\uC11D\uD574\uC904\uC218\uC788\uC5B4?"
         NextDialogID: S4_03_009
         Type: 2
@@ -1421,7 +1415,7 @@ MonoBehaviour:
       - DialogID: S4_03_010
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC544 \uBB50 \uC798\uC740 \uBAA8\uB974\uACA0\uACE0, \uD53C\uB85C\uD68C\uBCF5\uC81C
-          \uAC19\uC740\uAC74\uB370\n \uD6A8\uACFC\uAC00 \uC88B\uC544\uC11C \uAD6C\uD558\uACE0
+          \uAC19\uC740\uAC74\uB370\n\uD6A8\uACFC\uAC00 \uC88B\uC544\uC11C \uAD6C\uD558\uACE0
           \uC2F6\uC740\uB370 \uBB50 \uC544\uBB34 \uC815\uBCF4\uAC00 \uC5C6\uC5B4\uC11C\u2026"
         NextDialogID: S4_03_011
         Type: 2
@@ -1445,7 +1439,7 @@ MonoBehaviour:
       - DialogID: S4_03_013
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uADFC\uB370 \uB0B4\uAC00 \uC774\uBBF8 \uB2E4 \uB9C8\uC154\uAC00\uC9C0\uACE0,
-          \n \uBCD1\uB9CC \uBCF4\uB0B4\uB3C4 \uC548\uC5D0 \uC0B4\uC9DD \uB0A8\uC544\uC788\uB294\uAC70\uB85C
+          \n\uBCD1\uB9CC \uBCF4\uB0B4\uB3C4 \uC548\uC5D0 \uC0B4\uC9DD \uB0A8\uC544\uC788\uB294\uAC70\uB85C
           \uBD84\uC11D \uAC00\uB2A5\uD558\uC9C0?"
         NextDialogID: S4_03_014
         Type: 2
@@ -1453,7 +1447,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S4_03_014
         CharacterName: "\uD54C\uD53C"
-        Script: "\uC544\uC73C \uADC0\uCC2E\uC740\uB370\u2026\n \uBB50 \uC5B8\uC81C
+        Script: "\uC544\uC73C \uADC0\uCC2E\uC740\uB370\u2026\n\uBB50 \uC5B8\uC81C
           \uAE4C\uC9C0 \uD574\uC8FC\uBA74 \uB418\uB294\uB370"
         NextDialogID: S4_03_015
         Type: 2
@@ -1482,7 +1476,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S4_03_018
         CharacterName: "\uD54C\uD53C"
-        Script: "\uC608\uB77C\uC774 \uC54C\uACA0\uC5B4.\n \uB300\uC2E0 \uB098\uC911\uC5D0
+        Script: "\uC608\uB77C\uC774 \uC54C\uACA0\uC5B4.\n\uB300\uC2E0 \uB098\uC911\uC5D0
           \uAC1C\uAC15\uD558\uBA74 \uBC25\uC774\uB098\uC0AC\uB77C"
         NextDialogID: End
         Type: 2
@@ -1499,7 +1493,7 @@ MonoBehaviour:
       Value:
       - DialogID: S5_01_001
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC544\uD750 \uD53C\uACE4\uD558\uB2E4\uC789\n \uADFC\uB370 \uD54C\uD53C
+        Script: "\uC544\uD750 \uD53C\uACE4\uD558\uB2E4\uC789\n\uADFC\uB370 \uD54C\uD53C
           \uC598\uB294 \uC2AC\uC2AC \uC5F0\uB77D\uC62C\uB54C\uAC00 \uB41C\uAC70\uAC19\uC740\uB370\u2026"
         NextDialogID: S5_01_002
         Type: 1
@@ -1507,7 +1501,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_01_002
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "(drrrr..drrrrr\u2026..)\n \uD638\uB791\uC774\uB3C4 \uC81C\uB9D0\uD558\uBA74
+        Script: "(drrrr..drrrrr\u2026..)\n\uD638\uB791\uC774\uB3C4 \uC81C\uB9D0\uD558\uBA74
           \uC628\uB2E4\uB354\uB2C8"
         NextDialogID: S5_01_003
         Type: 1
@@ -1522,7 +1516,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_01_004
         CharacterName: "\uD54C\uD53C"
-        Script: "\uC5EC\uBCF4\uC138\uC694? \n \uC57C!! \uB108 \uC774\uAC70 \uC5B4\uB514\uC11C
+        Script: "\uC5EC\uBCF4\uC138\uC694? \n\uC57C!! \uB108 \uC774\uAC70 \uC5B4\uB514\uC11C
           \uB0AC\uC5B4"
         NextDialogID: S5_01_005
         Type: 2
@@ -1538,7 +1532,7 @@ MonoBehaviour:
       - DialogID: S5_01_006
         CharacterName: "\uD54C\uD53C"
         Script: "\uC544\uB2C8 \uC57C\uC784\uB9C8 \uC774\uAC70 \uC5B4\uB514\uC11C
-          \uB0AC\uB0D0\uACE0\n \uB534\uC18C\uB9AC\uD558\uC9C0\uB9D0\uACE0 \uADF8\uAC70\uB098
+          \uB0AC\uB0D0\uACE0\n\uB534\uC18C\uB9AC\uD558\uC9C0\uB9D0\uACE0 \uADF8\uAC70\uB098
           \uB9D0\uD574"
         NextDialogID: S5_01_007
         Type: 2
@@ -1546,15 +1540,15 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S5_01_007
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uB098\uADF8\uB0E5 \uC77C\uD558\uB2E4\uAC00 \uC8FC\uC6B4\uAC74\uB370?\n
-          \uC65C \uADF8\uAC8C \uBB54\uB370"
+        Script: "\uB098\uADF8\uB0E5 \uC77C\uD558\uB2E4\uAC00 \uC8FC\uC6B4\uAC74\uB370?\n\uC65C
+          \uADF8\uAC8C \uBB54\uB370"
         NextDialogID: S5_01_008
         Type: 2
         SpeakerType: 2
         SpeakerPosType: 1
       - DialogID: S5_01_008
         CharacterName: "\uD54C\uD53C"
-        Script: "\uC774\uAC70 \uBC18\uC911\uB825 \uB3C4\uD551\uC81C\uC57C\n \uC6B0\uC8FC\uBC95\uC0C1\uC73C\uB85C
+        Script: "\uC774\uAC70 \uBC18\uC911\uB825 \uB3C4\uD551\uC81C\uC57C\n\uC6B0\uC8FC\uBC95\uC0C1\uC73C\uB85C
           1\uAE09 \uB9C8\uC57D\uB958\uB77C\uACE0"
         NextDialogID: S5_01_009
         Type: 2
@@ -1570,15 +1564,15 @@ MonoBehaviour:
       - DialogID: S5_01_010
         CharacterName: "\uD54C\uD53C"
         Script: "\uB108\uB3C4 \uB4E4\uC5B4\uBD24\uC9C0, \uADF8 \uC62C\uB9BC\uD53D
-          \uC6B0\uC2B9\uD55C \uC0AC\uB78C \uC774 \uC131\uBD84 \uAC78\uB824\uC11C\n
-          \uBA54\uB2EC \uCDE8\uC18C \uB418\uACE0 \uAE5C\uBE75\uAC14\uC796\uC544"
+          \uC6B0\uC2B9\uD55C \uC0AC\uB78C \uC774 \uC131\uBD84 \uAC78\uB824\uC11C\n\uBA54\uB2EC
+          \uCDE8\uC18C \uB418\uACE0 \uAE5C\uBE75\uAC14\uC796\uC544"
         NextDialogID: S5_01_011
         Type: 2
         SpeakerType: 10
         SpeakerPosType: 2
       - DialogID: S5_01_011
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC544 \uB4E4\uC5B4\uBCF8\uAC70 \uAC19\uC544.\n \uADF8\uAC70 \uC18C\uC9C0\uB9CC
+        Script: "\uC544 \uB4E4\uC5B4\uBCF8\uAC70 \uAC19\uC544.\n\uADF8\uAC70 \uC18C\uC9C0\uB9CC
           \uD574\uB3C4 \uBD88\uBC95\uC544\uB2C8\uC57C??"
         NextDialogID: S5_01_012
         Type: 2
@@ -1586,7 +1580,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_01_012
         CharacterName: "\uD54C\uD53C"
-        Script: "\uADF8\uB798 \uC784\uB9C8.\n \uB108 \uC124\uB9C8 \uC774\uAC70 \uB354
+        Script: "\uADF8\uB798 \uC784\uB9C8.\n\uB108 \uC124\uB9C8 \uC774\uAC70 \uB354
           \uAC00\uC9C0\uACE0\uC788\uB294\uAC70 \uC544\uB2C8\uC9C0?"
         NextDialogID: S5_01_013
         Type: 2
@@ -1594,7 +1588,7 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S5_01_013
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC808\uB300 \uC544\uB2C8\uC9C0. \n \uB098\uB3C4 \uADF8\uB0E5 \uC8FC\uC6B4\uAC70\uB77C\uB2C8\uAE50"
+        Script: "\uC808\uB300 \uC544\uB2C8\uC9C0. \n\uB098\uB3C4 \uADF8\uB0E5 \uC8FC\uC6B4\uAC70\uB77C\uB2C8\uAE50"
         NextDialogID: S5_01_014
         Type: 2
         SpeakerType: 2
@@ -1602,7 +1596,7 @@ MonoBehaviour:
       - DialogID: S5_01_014
         CharacterName: "\uD54C\uD53C"
         Script: "\uADFC\uB370 \uC9C4\uC9DC \uC5B4\uB514\uC11C \uB09C\uAC74\uC9C0
-          \uBAB0\uB77C?\n \uC774\uAC70 \uC720\uD1B5\uD55C \uC0AC\uB78C \uC7A1\uC544\uC11C
+          \uBAB0\uB77C?\n\uC774\uAC70 \uC720\uD1B5\uD55C \uC0AC\uB78C \uC7A1\uC544\uC11C
           \uC2E0\uACE0\uD558\uBA74 \uD3EC\uC0C1\uAE08\uC774 1\uC5B5\uC774 \uB118\uC5B4"
         NextDialogID: S5_01_015
         Type: 2
@@ -1610,7 +1604,7 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S5_01_015
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "1\uC5B5????\n \uC774\uAC70 \uC6B0\uB9AC\uD68C\uC0AC \uD0DD\uBC30\uB85C
+        Script: "1\uC5B5????\n\uC774\uAC70 \uC6B0\uB9AC\uD68C\uC0AC \uD0DD\uBC30\uB85C
           \uC628\uAC74\uB370, \uBC1C\uC1A1\uC778 \uC815\uBCF4\uAC00 \uC5C6\uC5C8\uC5B4."
         NextDialogID: S5_01_016
         Type: 2
@@ -1618,7 +1612,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_01_016
         CharacterName: "\uD54C\uD53C"
-        Script: "\uD655\uC2E4\uD558\uC9C4 \uC54A\uC9C0\uB9CC,\n \uC774\uAC70 \uB0B4\uAC00\uBCF4\uAE30\uC5D0
+        Script: "\uD655\uC2E4\uD558\uC9C4 \uC54A\uC9C0\uB9CC,\n\uC774\uAC70 \uB0B4\uAC00\uBCF4\uAE30\uC5D0
           \uC9C0\uAD6C\uC5D0\uC11C \uC804\uBB38\uC801\uC73C\uB85C \uC720\uD1B5\uD558\uB294
           \uC560\uB4E4\uC774 \uBD84\uBA85\uC788\uC5B4."
         NextDialogID: S5_01_017
@@ -1628,7 +1622,7 @@ MonoBehaviour:
       - DialogID: S5_01_017
         CharacterName: "\uD54C\uD53C"
         Script: "\uBC1C\uC1A1\uC778 \uC815\uBCF4\uAC00 \uC548\uC801\uD600\uC788\uB2E4\uACE0
-          \uD574\uB3C4\n \uC804\uC0B0\uC2DC\uC2A4\uD15C\uC5D0\uB294 \uB4F1\uB85D\uB418\uC5B4\uC788\uC744\uAC70\uC544\uB2C8\uC57C."
+          \uD574\uB3C4\n\uC804\uC0B0\uC2DC\uC2A4\uD15C\uC5D0\uB294 \uB4F1\uB85D\uB418\uC5B4\uC788\uC744\uAC70\uC544\uB2C8\uC57C."
         NextDialogID: S5_01_018
         Type: 2
         SpeakerType: 10
@@ -1643,7 +1637,7 @@ MonoBehaviour:
       - DialogID: S5_01_019
         CharacterName: "\uD54C\uD53C"
         Script: "\uB108\uAC00 \uD55C\uBC88 \uCEF4\uD4E8\uD130\uB97C \uB4A4\uC9C0\uB358
-          \uBB58\uD558\uB358\n \uBAB0\uB798 \uD55C\uBC88 \uC870\uC0AC\uD574\uBD10"
+          \uBB58\uD558\uB358\n\uBAB0\uB798 \uD55C\uBC88 \uC870\uC0AC\uD574\uBD10"
         NextDialogID: S5_01_020
         Type: 2
         SpeakerType: 10
@@ -1658,7 +1652,7 @@ MonoBehaviour:
       - DialogID: S5_01_021
         CharacterName: "\uD54C\uD53C"
         Script: "\uADF8\uAC8C \uBB50\uAC00 \uC911\uC694\uD574 \uC784\uB9C8 \uD3EC\uC0C1\uAE08\uC774
-          \uC5BC\uB9CC\uB370\n \uD544\uC694\uD55C\uAC70 \uC788\uC73C\uBA74 \uB098\uB3C4
+          \uC5BC\uB9CC\uB370\n\uD544\uC694\uD55C\uAC70 \uC788\uC73C\uBA74 \uB098\uB3C4
           \uB3C4\uC640\uC904\uD14C\uB2C8\uAE50 \uB098\uC911\uC5D0 \uD55C 30%\uB9CC
           \uB5F4\uC918"
         NextDialogID: S5_01_022
@@ -1676,7 +1670,7 @@ MonoBehaviour:
       - DialogID: S5_01_023
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uADF8\uB798\u2026 \uC54C\uBC14\uB9CC \uD574\uC11C \uC5B8\uC81C
-          \uBC84\uB0D0.\n \uD3EC\uC0C1\uAE08 1\uC5B5\u2026 \uC774\uB7F0\uAC8C \uD55C\uBC29\uC774\uC9C0"
+          \uBC84\uB0D0.\n\uD3EC\uC0C1\uAE08 1\uC5B5\u2026 \uC774\uB7F0\uAC8C \uD55C\uBC29\uC774\uC9C0"
         NextDialogID: End
         Type: 1
         SpeakerType: 1
@@ -1714,17 +1708,17 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S5_02_004
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC608 \uBB50 \uD2B9\uC774\uC0AC\uD56D\uAC19\uC740\uAC70\uB294 \uC5C6\uC5C8\uC2B5\uB2C8\uB2E4.\n
-          \uADFC\uB370 \uD639\uC2DC \uC18C\uC7A5\uB2D8\uC740 \uCD9C\uC7A5 \uC5B8\uC81C
-          \uBCF5\uADC0\uD558\uC2DC\uB294 \uAC78\uAE4C\uC694?"
+        Script: "\uC608 \uBB50 \uD2B9\uC774\uC0AC\uD56D\uAC19\uC740\uAC70\uB294 \uC5C6\uC5C8\uC2B5\uB2C8\uB2E4.\n\uADFC\uB370
+          \uD639\uC2DC \uC18C\uC7A5\uB2D8\uC740 \uCD9C\uC7A5 \uC5B8\uC81C \uBCF5\uADC0\uD558\uC2DC\uB294
+          \uAC78\uAE4C\uC694?"
         NextDialogID: S5_02_005
         Type: 2
         SpeakerType: 1
         SpeakerPosType: 1
       - DialogID: S5_02_005
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uADF8\uAC74 \uB098\uB3C4 \uC798\uBAA8\uB974\uACA0\uB294\uB370.\n
-          \uADF8\uB798\uB3C4 \uBA70\uCE60 \uAC78\uB9AC\uC2DC\uC9C0 \uC54A\uC744\uAE4C?"
+        Script: "\uADF8\uAC74 \uB098\uB3C4 \uC798\uBAA8\uB974\uACA0\uB294\uB370.\n\uADF8\uB798\uB3C4
+          \uBA70\uCE60 \uAC78\uB9AC\uC2DC\uC9C0 \uC54A\uC744\uAE4C?"
         NextDialogID: S5_02_006
         Type: 2
         SpeakerType: 5
@@ -1738,15 +1732,14 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S5_02_007
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC544 \uBB50 \uC5EC\uCB64\uBCFC\uAC8C \uC788\uC5B4\uAC00\uC9C0\uACE0\uC694\n
-          \uAE09\uD55C\uAC74\uC544\uB2D9\uB2C8\uB2E4."
+        Script: "\uC544 \uBB50 \uC5EC\uCB64\uBCFC\uAC8C \uC788\uC5B4\uAC00\uC9C0\uACE0\uC694\n\uAE09\uD55C\uAC74\uC544\uB2D9\uB2C8\uB2E4."
         NextDialogID: S5_02_008
         Type: 2
         SpeakerType: 1
         SpeakerPosType: 1
       - DialogID: S5_02_008
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uC77C\uB2E8 \uC54C\uACA0\uC5B4.\n \uBC8C\uC368 9\uC2DC\uB124, \uBE68\uB9AC
+        Script: "\uC77C\uB2E8 \uC54C\uACA0\uC5B4.\n\uBC8C\uC368 9\uC2DC\uB124, \uBE68\uB9AC
           \uC5C5\uBB34\uB098 \uC2DC\uC791\uD558\uC790\uAD6C"
         NextDialogID: S5_02_009
         Type: 2
@@ -1777,8 +1770,8 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_03_002
         CharacterName: "\uD669\uBC18\uC7A5"
-        Script: "\uADF8\uB798 \uAE40\uC528\uB3C4 \uACE0\uC0DD\uB9CE\uC558\uC5B4.\n
-          \uD53C\uACE4\uD560\uD150\uB370 \uC5B4\uC5EC \uD1F4\uADFC\uD600~"
+        Script: "\uADF8\uB798 \uAE40\uC528\uB3C4 \uACE0\uC0DD\uB9CE\uC558\uC5B4.\n\uD53C\uACE4\uD560\uD150\uB370
+          \uC5B4\uC5EC \uD1F4\uADFC\uD600~"
         NextDialogID: S5_03_003
         Type: 2
         SpeakerType: 5
@@ -1786,7 +1779,7 @@ MonoBehaviour:
       - DialogID: S5_03_003
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC544 \uC800\uB294 \uC794\uC5C5\uC774 \uC870\uAE08 \uB0A8\uC544\uC788\uC5B4\uC11C
-          \n \uBC18\uC7A5\uB2D8 \uBA3C\uC800 \uB4E4\uC5B4\uAC00 \uBCF4\uC154\uB3C4
+          \n\uBC18\uC7A5\uB2D8 \uBA3C\uC800 \uB4E4\uC5B4\uAC00 \uBCF4\uC154\uB3C4
           \uB420\uAC83 \uAC19\uC2B5\uB2C8\uB2E4."
         NextDialogID: S5_03_004
         Type: 2
@@ -1802,7 +1795,7 @@ MonoBehaviour:
       - DialogID: S5_03_005
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC544 \uC2E0\uD300\uC7A5\uB2D8\uAED8\uC11C \uC791\uC131\uD558\uB77C\uB294
-          \uBCF4\uACE0\uC11C\uAC00 \uC788\uC5B4\uC11C \n \uADF8\uAC83\uB9CC \uB9C8\uBB34\uB9AC\uD558\uACE0
+          \uBCF4\uACE0\uC11C\uAC00 \uC788\uC5B4\uC11C \n\uADF8\uAC83\uB9CC \uB9C8\uBB34\uB9AC\uD558\uACE0
           \uD1F4\uADFC\uD574\uBCF4\uB824\uACE0\uD569\uB2C8\uB2E4."
         NextDialogID: S5_03_006
         Type: 2
@@ -1811,7 +1804,7 @@ MonoBehaviour:
       - DialogID: S5_03_006
         CharacterName: "\uD669\uBC18\uC7A5"
         Script: "\uC544\uB530\uB9C8 \uC2E0\uD300\uC7A5 \uC65C \uC544\uB97C \uC57C\uADFC\uC2DC\uD0A4\uACE0
-          \uADF8\uB7EC\uB0D0\n \uC54C\uACA0\uC5B4 \uB098 \uBA3C\uC800 \uB4E4\uC5B4\uAC00\uBCFC\uAED8\uC774?"
+          \uADF8\uB7EC\uB0D0\n\uC54C\uACA0\uC5B4 \uB098 \uBA3C\uC800 \uB4E4\uC5B4\uAC00\uBCFC\uAED8\uC774?"
         NextDialogID: S5_03_007
         Type: 2
         SpeakerType: 5
@@ -1826,7 +1819,7 @@ MonoBehaviour:
       - DialogID: S5_03_008
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC9C0\uAE08 \uC544\uB2C8\uBA74 \uAE30\uD68C\uAC00 \uC5C6\uC744\uAC83
-          \uAC19\uB2E4.\n \uC18C\uC7A5\uB2D8 \uBCF5\uADC0\uD558\uC2DC\uAE30 \uC804\uC5D0
+          \uAC19\uB2E4.\n\uC18C\uC7A5\uB2D8 \uBCF5\uADC0\uD558\uC2DC\uAE30 \uC804\uC5D0
           \uD655\uC778\uD574\uBD10\uC57C\uD574"
         NextDialogID: End
         Type: 2
@@ -1843,8 +1836,8 @@ MonoBehaviour:
       Value:
       - DialogID: S5_04_001
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC5ED\uC2DC \uBB38\uC740 \uC548\uC7A0\uAD6C\uACE0 \uB2E4\uB2C8\uC2DC\uB124.\n
-          \uC18C\uC7A5\uB2D8 \uCEF4\uD4E8\uD130\uAC00\u2026 \uC5EC\uAE44\uB2E4."
+        Script: "\uC5ED\uC2DC \uBB38\uC740 \uC548\uC7A0\uAD6C\uACE0 \uB2E4\uB2C8\uC2DC\uB124.\n\uC18C\uC7A5\uB2D8
+          \uCEF4\uD4E8\uD130\uAC00\u2026 \uC5EC\uAE44\uB2E4."
         NextDialogID: S5_04_002
         Type: 1
         SpeakerType: 1
@@ -1859,7 +1852,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_04_003
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "(\uD0C0\uB2E5\uD0C0\uB2E5)\n 1234.. \uC544\uB2C8\uACE0, 0000.. \uC544\uB2C8\uACE0,
+        Script: "(\uD0C0\uB2E5\uD0C0\uB2E5)\n1234.. \uC544\uB2C8\uACE0, 0000.. \uC544\uB2C8\uACE0,
           1004.. \uC544\uB2C8\uACE0"
         NextDialogID: S5_04_004
         Type: 1
@@ -1867,15 +1860,15 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_04_004
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC18C\uC7A5\uB2D8 \uC804\uD654\uBC88\uD638 \uB4B7\uC790\uB9AC\uAC00\n
-          4834\u2026 \uC544\uB2C8\uACE0"
+        Script: "\uC18C\uC7A5\uB2D8 \uC804\uD654\uBC88\uD638 \uB4B7\uC790\uB9AC\uAC00\n4834\u2026
+          \uC544\uB2C8\uACE0"
         NextDialogID: S5_04_005
         Type: 1
         SpeakerType: 1
         SpeakerPosType: 1
       - DialogID: S5_04_005
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uD760 \uADF8\uB7FC \uC0DD\uC77C\uC778\uAC00?\n 1108\u2026 \uC774\uAC83\uB3C4
+        Script: "\uD760 \uADF8\uB7FC \uC0DD\uC77C\uC778\uAC00?\n1108\u2026 \uC774\uAC83\uB3C4
           \uC544\uB2CC\uB370"
         NextDialogID: S5_04_006
         Type: 1
@@ -1890,9 +1883,9 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_04_007
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uBE44\uBC00\uBC88\uD638 \uBD84\uC2E4 \uC9C8\uBB38\u2026\n \"\uB2F9\uC2E0\uC774
-          \uB098\uC628 \uACE0\uB4F1\uD559\uAD50\uB294 \uBB34\uC5C7\uC785\uB2C8\uAE4C?\"\n
-          \uC544\uB2C8 \uC774\uAC78 \uB0B4\uAC00 \uC5B4\uB5BB\uAC8C \uC54C\uC544?"
+        Script: "\uBE44\uBC00\uBC88\uD638 \uBD84\uC2E4 \uC9C8\uBB38\u2026\n\"\uB2F9\uC2E0\uC774
+          \uB098\uC628 \uACE0\uB4F1\uD559\uAD50\uB294 \uBB34\uC5C7\uC785\uB2C8\uAE4C?\"\n\uC544\uB2C8
+          \uC774\uAC78 \uB0B4\uAC00 \uC5B4\uB5BB\uAC8C \uC54C\uC544?"
         NextDialogID: S5_04_008
         Type: 1
         SpeakerType: 3
@@ -1900,9 +1893,8 @@ MonoBehaviour:
       - DialogID: S5_04_008
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC7A0\uB9CC\u2026 \uADFC\uB370 \uBC18\uC7A5\uB2D8\uC774 \uC800\uBC88\uC5D0
-          \uC18C\uC7A5\uB2D8 \uC9D1 \uD615\uD3B8\uC774 \uC548\uC88B\uC73C\uC154\uC11C\n
-          \uACE0\uB4F1\uD559\uAD50\uB54C\uBD80\uD130 \uACF5\uC7A5\uC5D0\uC11C \uC77C\uD558\uC168\uB2E4\uACE0
-          \uB4E4\uC5C8\uB294\uB370\u2026"
+          \uC18C\uC7A5\uB2D8 \uC9D1 \uD615\uD3B8\uC774 \uC548\uC88B\uC73C\uC154\uC11C\n\uACE0\uB4F1\uD559\uAD50\uB54C\uBD80\uD130
+          \uACF5\uC7A5\uC5D0\uC11C \uC77C\uD558\uC168\uB2E4\uACE0 \uB4E4\uC5C8\uB294\uB370\u2026"
         NextDialogID: S5_04_009
         Type: 1
         SpeakerType: 1
@@ -1924,7 +1916,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_04_011
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uBE68\uB9AC \uCC3E\uC544\uBD10\uC57C\uACA0\uB2E4. \n \uC885\uD569\uC804\uC0B0\uC2DC\uC2A4\uD15C\u2026
+        Script: "\uBE68\uB9AC \uCC3E\uC544\uBD10\uC57C\uACA0\uB2E4. \n\uC885\uD569\uC804\uC0B0\uC2DC\uC2A4\uD15C\u2026
           \uBC1C\uC1A1\uC778 \uC815\uBCF4\u2026 \uD0DD\uBC30\uBC88\uD638\uAC00 UJ3740\u2026"
         NextDialogID: S5_04_012
         Type: 1
@@ -1932,7 +1924,7 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S5_04_012
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "(\uD0C0\uB2E5\uD0C0\uB2E5)\n \uB098\uC654\uB2E4."
+        Script: "(\uD0C0\uB2E5\uD0C0\uB2E5)\n\uB098\uC654\uB2E4."
         NextDialogID: S5_04_013
         Type: 1
         SpeakerType: 1
@@ -1947,8 +1939,7 @@ MonoBehaviour:
       - DialogID: S5_04_014
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC7A0\uAE50\uB9CC \uCC98\uC74C \uB0B4\uAC00 \uBC1C\uACAC\uD588\uB358
-          \uD0DD\uBC30\uAC00\u2026\n \uD3D0\uAE30 \uD0DD\uBC30\uC815\uBCF4\u2026
-          \uC5EC\uAE44\uB2E4."
+          \uD0DD\uBC30\uAC00\u2026\n\uD3D0\uAE30 \uD0DD\uBC30\uC815\uBCF4\u2026 \uC5EC\uAE44\uB2E4."
         NextDialogID: S5_04_015
         Type: 1
         SpeakerType: 1
@@ -2011,7 +2002,7 @@ MonoBehaviour:
       - DialogID: S5_05_003
         CharacterName: "\uC18C\uC7A5"
         Script: "\uC7A0\uACA8\uC788\uB294 \uCEF4\uD4E8\uD130\uB97C \uD480\uC5B4\uB193\uACE0
-          \n \uB9D0\uB3C4 \uC548\uB418\uB294 \uC18C\uB9AC\uB97C \uD558\uACE0\uC788\uAD6C\uB9CC."
+          \n\uB9D0\uB3C4 \uC548\uB418\uB294 \uC18C\uB9AC\uB97C \uD558\uACE0\uC788\uAD6C\uB9CC."
         NextDialogID: S5_05_004
         Type: 2
         SpeakerType: 8
@@ -2319,9 +2310,8 @@ MonoBehaviour:
       Value:
       - DialogID: S6_02_001
         CharacterName: "\uC2E0\uD300\uC7A5"
-        Script: "\uC18C\uC7A5\uB2D8.. \uBB58 \uBBFF\uACE0 \uC800\uAC78 \uB9E1\uAE30\uC2DC\uB294\uC9C0..\n
-          \uB9CC\uC77C \uC99D\uAC70\uB78D\uC2DC\uACE0 \uBE7C\uB3CC\uB9AC\uAE30\uB77C\uB3C4
-          \uD55C\uB2E4\uBA74\u2026"
+        Script: "\uC18C\uC7A5\uB2D8.. \uBB58 \uBBFF\uACE0 \uC800\uAC78 \uB9E1\uAE30\uC2DC\uB294\uC9C0..\n\uB9CC\uC77C
+          \uC99D\uAC70\uB78D\uC2DC\uACE0 \uBE7C\uB3CC\uB9AC\uAE30\uB77C\uB3C4 \uD55C\uB2E4\uBA74\u2026"
         NextDialogID: S6_02_002
         Type: 2
         SpeakerType: 4
@@ -2338,7 +2328,7 @@ MonoBehaviour:
       - DialogID: S6_02_003
         CharacterName: "\uC18C\uC7A5"
         Script: "\uB0B4\uC77C 3\uC791\uC5C5\uC7A5\uC5D0 \uD1B5\uD574\uC11C \uB4E4\uC5B4\uC624\uB294
-          \uBB3C\uAC74\uC740 \uC5C6\uC5B4.\n \uADF8\uC800 \uBE48 \uC0C1\uC790\uC77C
+          \uBB3C\uAC74\uC740 \uC5C6\uC5B4.\n\uADF8\uC800 \uBE48 \uC0C1\uC790\uC77C
           \uBFD0\uC774\uC9C0."
         NextDialogID: S6_02_004
         Type: 2
@@ -2446,7 +2436,7 @@ MonoBehaviour:
       - DialogID: S6_04_002
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC720\uD1B5\uB418\uB294 \uBC00\uC218\uD488\uB4E4\uC740 1\uCC28\uC801\uC73C\uB85C
-          \uC18C\uC7A5\uD55C\uD14C \uB4E4\uC5B4\uC628 \uD6C4,\n \uCF54\uC2A4\uBAA8
+          \uC18C\uC7A5\uD55C\uD14C \uB4E4\uC5B4\uC628 \uD6C4,\n\uCF54\uC2A4\uBAA8
           \uBB3C\uB958\uB97C \uD1B5\uD574\uC11C \uAC1C\uC778\uB4E4\uC5D0\uAC8C \uBC1C\uC1A1\uD558\uB294
           \uD615\uD0DC\uAC00 \uB9DE\uC544."
         NextDialogID: S6_04_003
@@ -2456,7 +2446,7 @@ MonoBehaviour:
       - DialogID: S6_04_003
         CharacterName: "\uD54C\uD53C"
         Script: "\uADFC\uB370 \uADF8\uAC78 \uC785\uC99D\uD560 \uC99D\uAC70\uAC00
-          \uC5C6\uC796\uC544.\n \uB108\uAC00 \uBCF4\uB0B4\uC92C\uB358 \uC0D8\uD50C\uC740
+          \uC5C6\uC796\uC544.\n\uB108\uAC00 \uBCF4\uB0B4\uC92C\uB358 \uC0D8\uD50C\uC740
           \uBC30\uC1A1 \uC815\uBCF4\uB3C4 \uC5C6\uC5C8\uACE0"
         NextDialogID: S6_04_004
         Type: 2
@@ -2484,7 +2474,7 @@ MonoBehaviour:
         CharacterName: "\uD54C\uD53C"
         Script: "\uADF8\uB7FC \uADF8\uB54C \uBCF4\uB0B4\uC900 \uC0D8\uD50C\uC744
           \uBC14\uD0D5\uC73C\uB85C \uC2E0\uACE0\uB97C \uD574\uC11C \uC218\uC0AC\uAC00
-          \uC774\uB904\uC9C0\uBA74,\n \uB108\uAC00 \uCC0D\uC5B4\uB193\uC740 \uD0DD\uBC30\uB4E4\uC744
+          \uC774\uB904\uC9C0\uBA74,\n\uB108\uAC00 \uCC0D\uC5B4\uB193\uC740 \uD0DD\uBC30\uB4E4\uC744
           \uCD94\uC801\uD574\uC11C \uB0B4\uC6A9\uC6A9\uBB3C\uC744 \uD655\uBCF4\uD560
           \uAC83\uC774\uACE0 \uADF8\uB807\uB2E4\uBA74.."
         NextDialogID: S6_04_007
@@ -2493,7 +2483,7 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S6_04_007
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uBE7C\uB3C4 \uBC15\uB3C4 \uBABB\uD558\uB294 \uAC70\uC9C0\n \uC18C\uC7A5\uC774
+        Script: "\uBE7C\uB3C4 \uBC15\uB3C4 \uBABB\uD558\uB294 \uAC70\uC9C0\n\uC18C\uC7A5\uC774
           \uB098\uB97C \uB3C8\uC73C\uB85C \uD68C\uB958\uD558\uB824\uD588\uC9C0\uB9CC,
           \uADF8\uB7F0 \uB9AC\uC2A4\uD06C\uB97C \uC9C8 \uD544\uC694\uAC00\uC5C6\uC9C0."
         NextDialogID: S6_04_008
@@ -2503,8 +2493,8 @@ MonoBehaviour:
       - DialogID: S6_04_008
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uC18C\uC7A5\uC774 \uB098\uB97C \uB3C8\uC73C\uB85C \uD68C\uC720\uD558\uB824\uD588\uC9C0\uB9CC,
-          \uADF8\uB7F0 \uB9AC\uC2A4\uD06C\uB97C \uC9C8 \uD544\uC694\uAC00\uC5C6\uC9C0.\n
-          \uC6B0\uB9B0 \uD3EC\uC0C1\uAE08\uB9CC \uCC59\uAE30\uBA74 \uADF8\uB9CC\uC774\uC57C."
+          \uADF8\uB7F0 \uB9AC\uC2A4\uD06C\uB97C \uC9C8 \uD544\uC694\uAC00\uC5C6\uC9C0.\n\uC6B0\uB9B0
+          \uD3EC\uC0C1\uAE08\uB9CC \uCC59\uAE30\uBA74 \uADF8\uB9CC\uC774\uC57C."
         NextDialogID: S6_04_009
         Type: 2
         SpeakerType: 2
@@ -2512,7 +2502,7 @@ MonoBehaviour:
       - DialogID: S6_04_009
         CharacterName: "\uD54C\uD53C"
         Script: "\uC77C\uB2E8 \uC544\uC9C1 \uB05D\uB09C\uAC8C \uC544\uB2C8\uB2C8
-          \uB108\uBB34 \uB4E4\uB5A0\uC788\uC9C0\uB9D0\uACE0\n \uC0AC\uC9C4\uD30C\uC77C\uC740
+          \uB108\uBB34 \uB4E4\uB5A0\uC788\uC9C0\uB9D0\uACE0\n\uC0AC\uC9C4\uD30C\uC77C\uC740
           \uC5B4\uB514\uC5D0\uC788\uC5B4."
         NextDialogID: S6_04_010
         Type: 2
@@ -2520,9 +2510,8 @@ MonoBehaviour:
         SpeakerPosType: 2
       - DialogID: S6_04_010
         CharacterName: "\uAE40\uC774\uBBFC"
-        Script: "\uC77C\uB2E8 \uC6CC\uD06C \uBAA8\uB4C8\uC5D0 \uC800\uC7A5\uD574\uB1A8\uC5B4.\n
-          \uC790\uC138\uD55C\uAC74 \uC774\uB530 \uB124\uC774\uC624\uC2A4 \uB3C4\uCC29\uD558\uBA74
-          \uC598\uAE30\uD558\uC790"
+        Script: "\uC77C\uB2E8 \uC6CC\uD06C \uBAA8\uB4C8\uC5D0 \uC800\uC7A5\uD574\uB1A8\uC5B4.\n\uC790\uC138\uD55C\uAC74
+          \uC774\uB530 \uB124\uC774\uC624\uC2A4 \uB3C4\uCC29\uD558\uBA74 \uC598\uAE30\uD558\uC790"
         NextDialogID: S6_02_011
         Type: 2
         SpeakerType: 2
@@ -2561,9 +2550,9 @@ MonoBehaviour:
       - DialogID: S6_05_003
         CharacterName: "\uAC00\uC774\uB4DC"
         Script: "\uCD9C\uBC1C\uC774 30\uBD84\uB3C4 \uC548\uB0A8\uC558\uB294\uB370
-          \uC774\uB807\uAC8C \uBE61\uBE61\uD558\uAC8C \uC624\uC2DC\uBA74 \uC6B0\uC9ED\uB2C8\uAE4C.\n
-          \uC77C\uB2E8 \uC815\uAC70\uC7A5\uAE4C\uC9C0 \uC81C \uCC28 \uD0C0\uACE0
-          \uAC00\uC2DC\uC8E0. \uD55C 10\uBD84\uC815\uB3C4 \uAC78\uB9B4\uAC81\uB2C8\uB2E4."
+          \uC774\uB807\uAC8C \uBE61\uBE61\uD558\uAC8C \uC624\uC2DC\uBA74 \uC6B0\uC9ED\uB2C8\uAE4C.\n\uC77C\uB2E8
+          \uC815\uAC70\uC7A5\uAE4C\uC9C0 \uC81C \uCC28 \uD0C0\uACE0 \uAC00\uC2DC\uC8E0.
+          \uD55C 10\uBD84\uC815\uB3C4 \uAC78\uB9B4\uAC81\uB2C8\uB2E4."
         NextDialogID: S6_05_004
         Type: 2
         SpeakerType: 11
@@ -2684,7 +2673,7 @@ MonoBehaviour:
       - DialogID: E_A_01_002
         CharacterName: 
         Script: "\uACE7 \uAE40\uC774\uBBFC\uC5D0 \uB300\uD55C \uC2E4\uC885 \uC2E0\uACE0\uAC00
-          \uC811\uC218\uB418\uC5C8\uACE0,\n \uC9C0\uAD6C \uC815\uAC70\uC7A5\uC5D0
+          \uC811\uC218\uB418\uC5C8\uACE0,\n\uC9C0\uAD6C \uC815\uAC70\uC7A5\uC5D0
           \uB369\uADF8\uB7EC\uB2C8 \uB0A8\uACA8\uC9C4 \uADF8\uC758 \uC218\uD654\uBB3C\uC774
           \uBC1C\uACAC\uB418\uC5C8\uB2E4."
         NextDialogID: E_A_01_003
@@ -2694,10 +2683,9 @@ MonoBehaviour:
       - DialogID: E_A_01_003
         CharacterName: 
         Script: "\uADF8 \uC548\uC5D0\uB294 \uB2E4\uC218\uC758 \uB9C8\uC57D\uB958\uC640
-          \uBE44\uC778\uAC00 \uC7A5\uCE58\uB4E4\uC774 \uBC1C\uACAC\uB418\uC5C8\uACE0,\n
-          \uACBD\uCC30\uC740 \uCD5C\uADFC \uD655\uC0B0\uB418\uACE0 \uC788\uB358 \uBD88\uBC95
-          \uBC00\uC218\uD488 \uC720\uD1B5\uC758 \uBC30\uD6C4\uB85C \uAE40\uC774\uBBFC\uC744
-          \uC9C0\uBAA9\uD558\uC600\uB2E4."
+          \uBE44\uC778\uAC00 \uC7A5\uCE58\uB4E4\uC774 \uBC1C\uACAC\uB418\uC5C8\uACE0,\n\uACBD\uCC30\uC740
+          \uCD5C\uADFC \uD655\uC0B0\uB418\uACE0 \uC788\uB358 \uBD88\uBC95 \uBC00\uC218\uD488
+          \uC720\uD1B5\uC758 \uBC30\uD6C4\uB85C \uAE40\uC774\uBBFC\uC744 \uC9C0\uBAA9\uD558\uC600\uB2E4."
         NextDialogID: E_A_01_004
         Type: 2
         SpeakerType: 0
@@ -2757,9 +2745,9 @@ MonoBehaviour:
       - DialogID: S6_03B_003
         CharacterName: "\uC18C\uC7A5"
         Script: "\uC790\uB124\uAC00 \uC6D0\uD55C\uB2E4\uBA74 \uC6B0\uB9AC \uC870\uC9C1\uC758
-          \uACAC\uC2B5\uC73C\uB85C \uBC1B\uC544\uC8FC\uB3C4\uB85D\uD558\uC9C0.\n
-          \uB2C8\uAC00 \uBC1B\uB358 \uAE09\uC5EC\uC758 \uC218\uBC31\uBC30\uB294 \uC871\uD788
-          \uBC8C \uC218 \uC788\uC744\uAC70\uC57C."
+          \uACAC\uC2B5\uC73C\uB85C \uBC1B\uC544\uC8FC\uB3C4\uB85D\uD558\uC9C0.\n\uB2C8\uAC00
+          \uBC1B\uB358 \uAE09\uC5EC\uC758 \uC218\uBC31\uBC30\uB294 \uC871\uD788 \uBC8C
+          \uC218 \uC788\uC744\uAC70\uC57C."
         NextDialogID: S6_03B_004
         Type: 2
         SpeakerType: 7
@@ -2798,9 +2786,8 @@ MonoBehaviour:
         SpeakerPosType: 1
       - DialogID: S6_03B_008
         CharacterName: "\uC18C\uC7A5"
-        Script: "\uC2E0\uD300\uC7A5\uB3C4 \uBC8C\uC368 10\uB144\uC774 \uB118\uC5C8\uC9C0.\n
-          \uB108\uB791\uC740 \uCF00\uC774\uC2A4\uAC00 \uC880 \uB2E4\uB974\uC9C0\uB9CC
-          \uB9D0\uC774\uC57C"
+        Script: "\uC2E0\uD300\uC7A5\uB3C4 \uBC8C\uC368 10\uB144\uC774 \uB118\uC5C8\uC9C0.\n\uB108\uB791\uC740
+          \uCF00\uC774\uC2A4\uAC00 \uC880 \uB2E4\uB974\uC9C0\uB9CC \uB9D0\uC774\uC57C"
         NextDialogID: S6_03B_009
         Type: 2
         SpeakerType: 7
@@ -2831,8 +2818,8 @@ MonoBehaviour:
       Value:
       - DialogID: S6_04B_001
         CharacterName: "\uC2E0\uD300\uC7A5"
-        Script: "\uC18C\uC7A5\uB2D8\uD55C\uD14C \uC804\uB2EC \uBC1B\uC558\uB2E4.\n
-          \uBC14\uC058\uB2C8 \uBE60\uB974\uAC8C \uC804\uB2EC\uD558\uB3C4\uB85D \uD558\uC9C0."
+        Script: "\uC18C\uC7A5\uB2D8\uD55C\uD14C \uC804\uB2EC \uBC1B\uC558\uB2E4.\n\uBC14\uC058\uB2C8
+          \uBE60\uB974\uAC8C \uC804\uB2EC\uD558\uB3C4\uB85D \uD558\uC9C0."
         NextDialogID: S6_04B_002
         Type: 2
         SpeakerType: 4
@@ -2855,7 +2842,7 @@ MonoBehaviour:
       - DialogID: S6_04B_004
         CharacterName: "\uC2E0\uD300\uC7A5"
         Script: "\uBB3C\uAC74\uB4E4\uC744 \uB2E8\uC21C\uD788 \uB2E4\uB978 \uD0DD\uBC30\uB791
-          \uAC19\uC774 \uBC30\uC1A1\uD560\uB9AC\uAC00 \uC5C6\uC796\uC544?\n \uBB3C\uAC74
+          \uAC19\uC774 \uBC30\uC1A1\uD560\uB9AC\uAC00 \uC5C6\uC796\uC544?\n\uBB3C\uAC74
           \uD558\uB098\uD558\uB098 \uC6B0\uB9AC\uAC00 \uC9C1\uC811 \uBC30\uC1A1\uD55C\uB2E4."
         NextDialogID: S6_04B_005
         Type: 2
@@ -2915,7 +2902,7 @@ MonoBehaviour:
       - DialogID: E_A_01_002
         CharacterName: 
         Script: "\uADF8\uB294 \uC774 \uC77C\uC774 \uBC94\uC8C4\uB77C\uB294 \uC0AC\uC2E4\uC744
-          \uC54C\uACE0 \uC788\uC5C8\uB2E4. \n \uCC98\uC74C\uBD80\uD130, \uBD84\uBA85\uD558\uAC8C"
+          \uC54C\uACE0 \uC788\uC5C8\uB2E4. \n\uCC98\uC74C\uBD80\uD130, \uBD84\uBA85\uD558\uAC8C"
         NextDialogID: E_A_01_003
         Type: 2
         SpeakerType: 0
@@ -2931,8 +2918,8 @@ MonoBehaviour:
       - DialogID: E_A_01_004
         CharacterName: 
         Script: "\uADF8\uB294 \uC7A0\uC7AC \uACE0\uAC1D\uB4E4\uC758 \uAE30\uB85D\uC744
-          \uC870\uC0AC\uD588\uB2E4.\n \uC138\uAE08 \uB204\uB77D, \uBD88\uBC95 \uAC1C\uC870,
-          \uD5C8\uAC00\uB418\uC9C0 \uC54A\uC740 \uAC70\uB798 \uB0B4\uC5ED.\n \uACF5\uAC1C\uB418\uBA74
+          \uC870\uC0AC\uD588\uB2E4.\n\uC138\uAE08 \uB204\uB77D, \uBD88\uBC95 \uAC1C\uC870,
+          \uD5C8\uAC00\uB418\uC9C0 \uC54A\uC740 \uAC70\uB798 \uB0B4\uC5ED.\n\uACF5\uAC1C\uB418\uBA74
           \uACE4\uB780\uD574\uC9C8 \uC815\uBCF4\uB4E4."
         NextDialogID: E_A_01_005
         Type: 2
@@ -2941,17 +2928,17 @@ MonoBehaviour:
       - DialogID: E_A_01_005
         CharacterName: 
         Script: "\uC2E0\uACE0\uD558\uC9C0 \uBABB\uD560 \uC774\uC720\uAC00 \uC788\uB294
-          \uC0AC\uB78C\uB4E4, \uADF8\uB4E4\uC774 \uADF8\uC758 \uC2DC\uC7A5\uC774\uC5C8\uB2E4.\n
-          \uAE40\uC774\uBBFC\uC740 \uADF8\uB4E4\uC758 \uC0C1\uD669\uC744 \uD30C\uC545\uD588\uACE0,
-          \uD544\uC694\uD55C \uBB3C\uAC74\uC744 \uC815\uD655\uD788 \uC81C\uC2DC\uD588\uB2E4."
+          \uC0AC\uB78C\uB4E4, \uADF8\uB4E4\uC774 \uADF8\uC758 \uC2DC\uC7A5\uC774\uC5C8\uB2E4.\n\uAE40\uC774\uBBFC\uC740
+          \uADF8\uB4E4\uC758 \uC0C1\uD669\uC744 \uD30C\uC545\uD588\uACE0, \uD544\uC694\uD55C
+          \uBB3C\uAC74\uC744 \uC815\uD655\uD788 \uC81C\uC2DC\uD588\uB2E4."
         NextDialogID: E_A_01_006
         Type: 2
         SpeakerType: 0
         SpeakerPosType: 0
       - DialogID: E_A_01_006
         CharacterName: 
-        Script: "\uCCAB\uB2EC \uC2E0\uADDC \uACE0\uAC1D 11\uBA85,\n \uC11D\uB2EC\uC9F8\uC5D0
-          49\uBA85,\n \uBD84\uAE30 \uB9E4\uCD9C 318% \uC99D\uAC00"
+        Script: "\uCCAB\uB2EC \uC2E0\uADDC \uACE0\uAC1D 11\uBA85,\n\uC11D\uB2EC\uC9F8\uC5D0
+          49\uBA85,\n\uBD84\uAE30 \uB9E4\uCD9C 318% \uC99D\uAC00"
         NextDialogID: E_A_01_007
         Type: 2
         SpeakerType: 13
@@ -2959,7 +2946,7 @@ MonoBehaviour:
       - DialogID: E_A_01_007
         CharacterName: 
         Script: "\uC2DC\uC7A5\uC5D0\uB294 \uCD9C\uCC98\uB97C \uC54C \uC218 \uC5C6\uB294
-          \uBB3C\uD488\uC774 \uC810\uC810 \uB298\uC5B4\uB0AC\uB2E4.\n \uADF8\uC640
+          \uBB3C\uD488\uC774 \uC810\uC810 \uB298\uC5B4\uB0AC\uB2E4.\n\uADF8\uC640
           \uB3D9\uC2DC\uC5D0 \uAE40\uC774\uBBFC\uC758 \uACC4\uC88C\uB3C4 \uD568\uAED8
           \uBD88\uC5B4\uB0AC\uB2E4."
         NextDialogID: E_A_01_008
@@ -2968,7 +2955,7 @@ MonoBehaviour:
         SpeakerPosType: 3
       - DialogID: E_A_01_008
         CharacterName: 
-        Script: "\uADF8\uB294 \uB3CC\uC544\uAC00\uC9C0 \uC54A\uC558\uB2E4.\n \uC560\uCD08\uC5D0
+        Script: "\uADF8\uB294 \uB3CC\uC544\uAC00\uC9C0 \uC54A\uC558\uB2E4.\n\uC560\uCD08\uC5D0
           \uADF8\uB7F4\uD544\uC694\uAC00 \uC5C6\uC5C8\uB2E4. \uC774\uACF3\uC740 \uB354
           \uC774\uC0C1 \uD0C0\uC9C0\uAC00 \uC544\uB2C8\uB2C8\uAE50"
         NextDialogID: E_A_01_009
@@ -2994,29 +2981,29 @@ MonoBehaviour:
   DialogBGM:
     _serializedList:
     - Key: 1
-      Value: 1
+      Value: 0
     - Key: 2
-      Value: 1
+      Value: 0
     - Key: 3
-      Value: 1
+      Value: 0
     - Key: 4
-      Value: 1
+      Value: 0
     - Key: 5
-      Value: 1
+      Value: 0
     - Key: 6
-      Value: 1
+      Value: 0
     - Key: 7
       Value: 0
     - Key: 8
       Value: 0
     - Key: 9
-      Value: 1
+      Value: 0
     - Key: 10
-      Value: 1
+      Value: 0
     - Key: 11
-      Value: 1
+      Value: 0
     - Key: 12
-      Value: 1
+      Value: 0
     - Key: 13
       Value: 0
     - Key: 14
@@ -3024,32 +3011,32 @@ MonoBehaviour:
     - Key: 15
       Value: 0
     - Key: 16
-      Value: 2
+      Value: 0
     - Key: 17
-      Value: 1
+      Value: 0
     - Key: 18
-      Value: 1
+      Value: 0
     - Key: 19
-      Value: 2
+      Value: 0
     - Key: 20
-      Value: 2
+      Value: 0
     - Key: 21
-      Value: 2
+      Value: 0
     - Key: 22
-      Value: 2
+      Value: 0
     - Key: 23
-      Value: 2
+      Value: 0
     - Key: 24
       Value: 0
     - Key: 25
       Value: 0
     - Key: 26
-      Value: 2
+      Value: 0
     - Key: 27
-      Value: 3
+      Value: 0
     - Key: 28
-      Value: 2
+      Value: 0
     - Key: 29
-      Value: 2
+      Value: 0
     - Key: 30
-      Value: 3
+      Value: 0
