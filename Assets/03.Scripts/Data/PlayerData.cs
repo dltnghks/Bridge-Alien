@@ -35,10 +35,10 @@ public class PlayerData
             Logger.Log("PlayerStatData");
             Stats[type] = 0; // 기본값 초기화
 
-            // 피로도는 최대 3
+            // 피로도는 최대치로 초기화
             if (type == Define.PlayerStatsType.Fatigue)
             {
-                Stats[type] = 1;
+                Stats[type] = PlayerManager.FatigueMaxValue;
             }
         }
 

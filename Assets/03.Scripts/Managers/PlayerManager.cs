@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class PlayerManager : ISaveable
 {
-    private const int FatigueMaxValue = 3;
+    public const int FatigueMaxValue = 3;
     private static readonly int[] StatThresholds = { 24, 49, 74, 100 };
     public readonly int[] FatigueReductionRates = { 30, 25, 20, 20 };
 
