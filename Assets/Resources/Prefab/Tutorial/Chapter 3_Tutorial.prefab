@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3224700550069252731}
   - component: {fileID: 7752509424027994498}
   m_Layer: 0
-  m_Name: Step04_Wait
+  m_Name: Step04_Delay_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   instructionText: "\uD770\uC0C9 \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB294 \uBC30\uC1A1\uC804
     \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574. \uC0C1\uC790\uB97C
     \uD55C\uBC88 \uC9D1\uC5B4\uBD10."
-  targetInteractableTag: 
+  targetInteractableTag: Truck1
   autoFinishDelay: 0.5
   onStepStart:
     m_PersistentCalls:
@@ -408,7 +408,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isConditionMet: 0
+  isConditionMet: 1
 --- !u!114 &5419353414839723091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 3595095947830381140}
   - component: {fileID: 1167438540727957403}
   m_Layer: 0
-  m_Name: Step03_MoveToA (1)
+  m_Name: Step03_Delay_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
