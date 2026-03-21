@@ -818,7 +818,7 @@ MonoBehaviour:
         Script: "\uC5B4\uD734\uC528 \uD558\uB9C8\uD0C0\uBA74 \uB458\uC9F8\uB0A0 \uBD80\uD130
           \uC9E4\uB9B4\uBED4\uD588\uB124\n\uB0B4\uC77C\uBD80\uD134 \uC54C\uB78C\uC744
           3\uC2DC\uAC04 \uC804\uBD80\uD130 \uB9DE\uCDB0\uB194\uC57C\uACA0\uB2E4."
-        NextDialogID: S2_04_001
+        NextDialogID: S2_04_002
         Type: 1
         SpeakerType: 1
         SpeakerPosType: 1
