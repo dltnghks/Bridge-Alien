@@ -19,9 +19,9 @@ public class HouseBedObject : MonoBehaviour, IInteractable
     [SerializeField] private TextMeshPro _restRecoveryTimeText;
 
     [Header("상호작용 이미지")]
-    [SerializeField] private SpriteRenderer _progressBarFill;
-    [SerializeField] private SpriteRenderer _clickIcon;
-    [SerializeField] private SpriteRenderer _inUseIcon;
+    [SerializeField] private GameObject _timerBackground;
+    [SerializeField] private GameObject _clickIcon;
+    [SerializeField] private GameObject _inUseIcon;
 
     private bool _isInteract = false;
     public void Start()
@@ -105,24 +105,14 @@ public class HouseBedObject : MonoBehaviour, IInteractable
 
     private IEnumerator StartTimer()
     {
-        SetActiveProgressBar();
+        SetTimerBackground();
         DateTime targetTime = Managers.Player.PlayerData.FatigueRecoveryTime;
         while (DateTime.Now < targetTime)
         {
-            // mm:ss 형식으로 남은 시간 계산
             TimeSpan remainingTimeSpan = targetTime - DateTime.Now;
             string remainingTime = string.Format("{0:D2}:{1:D2}", remainingTimeSpan.Minutes, remainingTimeSpan.Seconds);
-
-            // 텍스트 업데이트
             _restRecoveryTimeText.SetText(remainingTime);
 
-            // 진행 바 업데이트
-            float totalSeconds = (float)(targetTime - (targetTime - TimeSpan.FromMinutes(_totalRecoveryTime))).TotalSeconds;
-            float remainingSeconds = (float)remainingTimeSpan.TotalSeconds;
-            float fillAmount = 1f - (remainingSeconds / totalSeconds);
-            _progressBarFill.material.SetFloat("_FillAmount", fillAmount);
-
-            // 1초 대기
             yield return new WaitForSeconds(1f);
         }
 
@@ -134,27 +124,26 @@ public class HouseBedObject : MonoBehaviour, IInteractable
     {
         SetClickIcon();
         _isInteract = true;
-        //_restRecoveryTimeText.SetText("휴식하기");
     }
 
-    private void SetActiveProgressBar()
+    private void SetTimerBackground()
     {
-        _progressBarFill.gameObject.SetActive(true);
-        _clickIcon.gameObject.SetActive(false);
-        _inUseIcon.gameObject.SetActive(false);
+        _timerBackground.SetActive(true);
+        _clickIcon.SetActive(false);
+        _inUseIcon.SetActive(false);
     }
 
     private void SetClickIcon()
     {
-        _progressBarFill.gameObject.SetActive(false);
-        _clickIcon.gameObject.SetActive(true);
-        _inUseIcon.gameObject.SetActive(false);
+        _timerBackground.SetActive(false);
+        _clickIcon.SetActive(true);
+        _inUseIcon.SetActive(false);
     }
 
     private void SetInUseIcon()
     {
-        _progressBarFill.gameObject.SetActive(false);
-        _clickIcon.gameObject.SetActive(false);
-        _inUseIcon.gameObject.SetActive(true);
+        _timerBackground.SetActive(false);
+        _clickIcon.SetActive(false);
+        _inUseIcon.SetActive(true);
     }
 }
