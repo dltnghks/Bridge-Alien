@@ -41,7 +41,7 @@ public class MiniGameManager : MonoBehaviour, ISaveable
     {
         if (miniGameTutorial is null || miniGameTutorial.Length == 0)
         {
-            MiniGameTutorial = new bool[(int)Define.MiniGameType.Delivery + 1];
+            MiniGameTutorial = new bool[(int)Define.ChapterType.CH3 + 1];
 
             Logger.Log($"1. Init MiniGame Tutorial : {Managers.MiniGame.MiniGameTutorial.Length}");
 

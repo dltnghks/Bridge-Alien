@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] protected bool enableFlip = true;    // 플레이어 플립 활성화 여부
     [SerializeField] protected bool isHit = false;        // 플레이어가 맞았는지 여부
     [SerializeField] protected float multipleHorizontalValue = 1.0f;
-    [SerializeField] protected float multipleVerticalValue = 200.0f;
+    [SerializeField] protected float multipleVerticalValue = 2.0f;
     
 
     protected GameObject spriteObject;                    // 스프라이트 오브젝트

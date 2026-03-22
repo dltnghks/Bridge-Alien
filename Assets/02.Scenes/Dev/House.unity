@@ -848,6 +848,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4772684217219965419, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772684217219965419, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772684217219965419, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5975088514112621530, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1267,6 +1279,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4801478966784187074, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2243817105305302611, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
 --- !u!4 &9014721156779529122
 Transform:
@@ -1303,6 +1318,8 @@ MonoBehaviour:
   rayDistance: 1
   enableFlip: 1
   isHit: 0
+  multipleHorizontalValue: 1
+  multipleVerticalValue: 200
 --- !u!114 &9014721156779529124
 MonoBehaviour:
   m_ObjectHideFlags: 0
