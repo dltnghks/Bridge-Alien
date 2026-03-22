@@ -10,6 +10,10 @@ public abstract class SkillData : ScriptableObject
     public string Description;
     public int[] UpgradeCostByLevel;
 
+    [Header("해금 조건")]
+    public bool HasUnlockCondition = false;
+    public Define.ChapterType UnlockStage;
+
     public int GetSkillUpgradeCost(int level)
     {
         return UpgradeCostByLevel[level];

@@ -155,18 +155,14 @@ public class UIWorkModulePopup : UIPopup
         stageType = default;
         stageText = string.Empty;
 
-        switch (skillType)
+        var skillData = Managers.Data.MiniGameSkillData.GetSkillData(skillType);
+        if (skillData != null && skillData.HasUnlockCondition)
         {
-            case Define.MiniGameSkillType.BoxWarpSkill:
-                stageType = Define.ChapterType.CH2;
-                stageText = "1-2";
-                return true;
-            case Define.MiniGameSkillType.CoolingSkill:
-                stageType = Define.ChapterType.CH3;
-                stageText = "1-3";
-                return true;
-            default:
-                return false;
+            stageType = skillData.UnlockStage;
+            stageText = skillData.UnlockStage.ToString();
+            return true;
         }
+
+        return false;
     }
 }

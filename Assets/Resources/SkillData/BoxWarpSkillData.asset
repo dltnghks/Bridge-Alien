@@ -18,5 +18,7 @@ MonoBehaviour:
   Description: "\uCD5C\uB300 {0}\uD68C \uAE4C\uC9C0 \uC0C1\uC790\uB97C \uCEE8\uBCA0\uC774\uC5B4\uBCA8\uD2B8\uB85C
     \uC21C\uAC04\uC774\uB3D9 \uC2DC\uD0A8\uB2E4."
   UpgradeCostByLevel: 0000000010270000983a0000204e0000b8880000
-  MaxCharges: 3
+  HasUnlockCondition: 1
+  UnlockStage: 1
+  MaxCharges: 0
   SkillChargesByLevel: 000000000100000002000000030000000400000005000000

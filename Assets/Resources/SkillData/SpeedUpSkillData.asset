@@ -18,5 +18,7 @@ MonoBehaviour:
   Description: "\uC2A4\uD0AC \uC0AC\uC6A9 \uC2DC {0}\uCD08 \uB3D9\uC548 \uC774\uB3D9\uC18D\uB3C4\uAC00
     10% \uC99D\uAC00\uD55C\uB2E4."
   UpgradeCostByLevel: 000000008813000010270000983a0000a8610000
-  MaxDuration: 10
+  HasUnlockCondition: 0
+  UnlockStage: 0
+  MaxDuration: 0
   SkillDurationByLevel: 000000000a0000000c0000000c0000000d0000000f000000

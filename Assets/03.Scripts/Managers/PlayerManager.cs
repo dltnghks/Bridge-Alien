@@ -23,6 +23,30 @@ public class PlayerManager : ISaveable
         }
 
         PlayerData = playerData;
+
+        // DataManager가 준비된 경우 즉시 처리 (기존 유저 세이브 로드 시)
+        if (Managers.Data != null && Managers.Data.MiniGameSkillData != null)
+        {
+            EnsureDefaultSkillLevels();
+        }
+    }
+
+    // 해금 조건 없는 스킬은 기본 레벨 1 보장 (DataManager 준비 후 호출)
+    public void EnsureDefaultSkillLevels()
+    {
+        foreach (var pair in Managers.Data.MiniGameSkillData.MiniGameSkillData)
+        {
+            if (!pair.Value.HasUnlockCondition && PlayerData.MiniGameUnloadSkillLevel[pair.Key] == 0)
+            {
+                UnlockSkill(pair.Key);
+            }
+        }
+    }
+
+    private void UnlockSkill(Define.MiniGameSkillType skillType)
+    {
+        PlayerData.MiniGameUnloadSkillLevel[skillType] = 1;
+        OnPlayerDataChanged?.Invoke();
     }
 
     public int GetStats(Define.PlayerStatsType type)
@@ -126,6 +150,25 @@ public class PlayerManager : ISaveable
         {
             PlayerData.ClearedStages[stageType] = star;
             PlayerData.TotalStars += (star - previousStar);
+        }
+
+        // 최초 클리어 시 해당 스테이지 해금 조건 스킬에 레벨 1 부여
+        if (previousStar == 0 && star > 0)
+        {
+            UnlockSkillsByStage(stageType);
+        }
+    }
+
+    private void UnlockSkillsByStage(Define.ChapterType stageType)
+    {
+        foreach (var pair in Managers.Data.MiniGameSkillData.MiniGameSkillData)
+        {
+            var skillData = pair.Value;
+            if (skillData.HasUnlockCondition && skillData.UnlockStage == stageType
+                && PlayerData.MiniGameUnloadSkillLevel[pair.Key] == 0)
+            {
+                UnlockSkill(pair.Key);
+            }
         }
     }
 
