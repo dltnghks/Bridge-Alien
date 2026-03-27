@@ -142,10 +142,10 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.5833334
+  - time: 0.5833333
     functionName: EventFootStepSound
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 6872702246647186035, guid: 3542df75a4d535b4b938107e73e47f5b, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

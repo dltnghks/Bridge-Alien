@@ -77,12 +77,7 @@ public class Player : MonoBehaviour
 
     protected virtual void SetAnimator()
     {
-        // 캐릭터 애니메이터 설정
         characterAnimator = GetComponentInChildren<CharacterAnimator>();
-        if (characterAnimator == null)
-        {
-            characterAnimator = gameObject.AddComponent<CharacterAnimator>();
-        }
     }
 
     protected void Update()
@@ -183,11 +178,6 @@ public class Player : MonoBehaviour
     public void PlayLosePose()
     {
         characterAnimator.PlayLosePose();
-    }
-
-    public void EventFootStepSound()
-    {
-        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.FootStepPlayerCharacter.ToString());
     }
 
     private void OnDrawGizmos()

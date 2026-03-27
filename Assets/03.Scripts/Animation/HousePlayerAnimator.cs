@@ -35,4 +35,9 @@ public class HousePlayerAnimator : MonoBehaviour
 
         _animator.SetBool(PARAM_IS_REST, value);
     }
+
+    public void EventFootStepSound()
+    {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.FootStepPlayerCharacter.ToString());
+    }
 }

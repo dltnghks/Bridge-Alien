@@ -14,10 +14,6 @@ public class MiniGameUnloadPlayer : Player
     protected override void SetAnimator()
     {
         _unloadAnimator = GetComponentInChildren<MiniGameUnloadCharacterAnimator>();
-        if (characterAnimator == null)
-        {
-            //_unloadAnimator = gameObject.AddComponent<MiniGameUnloadCharacterAnimator>();
-        }
         characterAnimator = _unloadAnimator;
     }
 

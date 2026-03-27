@@ -107,6 +107,8 @@ public class CharacterAnimator : MonoBehaviour
         currentState == CharacterState.LosePose;
 
     public bool IsMoving() =>
-        currentState == CharacterState.Walk || 
+        currentState == CharacterState.Walk ||
         currentState == CharacterState.Run;
+
+    public virtual void EventFootStepSound() { }
 }

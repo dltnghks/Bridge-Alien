@@ -27,4 +27,10 @@ public class MiniGameUnloadCharacterAnimator : CharacterAnimator
     {
         animator.SetBool(PARAM_IS_HOLD_UP, isHoldUp); // HoldUp 상태 파라미터 설정
     }
+
+    // 사운드 이벤트
+    public override void EventFootStepSound()
+    {
+        Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.FootStepPlayerCharacter.ToString());
+    }
 }

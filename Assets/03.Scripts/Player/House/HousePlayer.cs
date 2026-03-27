@@ -10,12 +10,17 @@ public class HousePlayer : Player
     public void Start()
     {
         base.Start();
-        
+
         rb.useGravity = false;
         _animator = GetComponent<HousePlayerAnimator>();
         _initialScale = transform.localScale;
     }
 
+    protected override void SetAnimator()
+    {
+        // HousePlayer는 HousePlayerAnimator를 직접 사용, CharacterAnimator 불필요
+    }
+    
     // 상호작용으로 타겟에게 이동하기 때문에 조건 체크해서 다른 상호작용 불가능하도록 하기
     public void MoveToTarget(Transform target)
     {
