@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
         IsRight = true;
         
         // 스프라이트 오브젝트 설정
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         
         // 캐릭터 애니메이터 설정
         SetAnimator();
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
     protected virtual void SetAnimator()
     {
         // 캐릭터 애니메이터 설정
-        characterAnimator = GetComponent<CharacterAnimator>();
+        characterAnimator = GetComponentInChildren<CharacterAnimator>();
         if (characterAnimator == null)
         {
             characterAnimator = gameObject.AddComponent<CharacterAnimator>();

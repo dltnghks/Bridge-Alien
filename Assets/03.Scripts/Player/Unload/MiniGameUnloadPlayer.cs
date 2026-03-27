@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 
 public class MiniGameUnloadPlayer : Player
 {
+    [SerializeField]
     private MiniGameUnloadCharacterAnimator _unloadAnimator;
     [SerializeField]
     private ParticleSystem _speedUpSkillParticle;
@@ -15,7 +16,7 @@ public class MiniGameUnloadPlayer : Player
         _unloadAnimator = GetComponentInChildren<MiniGameUnloadCharacterAnimator>();
         if (characterAnimator == null)
         {
-            _unloadAnimator = gameObject.AddComponent<MiniGameUnloadCharacterAnimator>();
+            //_unloadAnimator = gameObject.AddComponent<MiniGameUnloadCharacterAnimator>();
         }
         characterAnimator = _unloadAnimator;
     }

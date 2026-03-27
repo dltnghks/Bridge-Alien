@@ -12,12 +12,11 @@ public enum CharacterState
     LosePose,
 }
 
-[RequireComponent(typeof(Animator))]                                            // 애니메이터 컴포넌트 필요
 public class CharacterAnimator : MonoBehaviour
 {
     protected Animator animator;                                                  // 애니메이터 컴포넌트
     protected CharacterState currentState;                                        // 현재 상태 (enum)
-    
+
     //~ 애니메이터 파라미터 이름 상수화
     protected static readonly string PARAM_IS_MOVING = "IsMoving";
     protected static readonly string PARAM_MOVE_SPEED = "MoveSpeed";
@@ -29,7 +28,7 @@ public class CharacterAnimator : MonoBehaviour
     //~ 초기화
     protected void Awake()
     {
-        if (animator == null) { animator = GetComponent<Animator>(); }          // 애니메이터 컴포넌트 참조
+        if (animator == null) { animator = GetComponentInChildren<Animator>(); } // 자식 포함 애니메이터 컴포넌트 참조
         currentState = CharacterState.Idle;                                     // 초기 상태 설정
     }           
 
