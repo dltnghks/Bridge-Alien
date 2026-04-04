@@ -41,7 +41,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     {
         Init(player);
         _moveSpeedReductionRatio = moveSpeedReductionRatio;
-        _moveSpeedBonus = Managers.Player.GetGravityAdaptationBounus();
+        _moveSpeedBonus = Managers.Player.GetGravityAdaptationBonusMultiplier();
 
         OnBoxListChanged = OnBoxListChangedAction;
     }
@@ -392,3 +392,4 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         //return nearest;
     }
 }
+

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -94,7 +94,7 @@ public class UIPlayerStatusPopup : UIPopup
 
     private void SetExperienceDescText()
     {
-        int value = (int)(Managers.Player.GetExperienceStatsBonus() * 100);
+        int value = Managers.Player.GetExperienceStatsBonusPercent();
         string newText = "미니게임 종료 시 <color=#36E100>{0}%</color>의 추가 점수를 획득합니다.";
         GetText((int)Texts.ExperienceDescText).SetText(string.Format(newText, value));
     }
@@ -102,7 +102,7 @@ public class UIPlayerStatusPopup : UIPopup
     private void SetGravityAdaptationDescText()
     {
         // TODO: 중력적응에 대한 효과 설명 수정, 미니게임에서 이동속도가 증가하는 것으로 수정
-        int value = 5;
+        int value = Managers.Player.GetGravityAdaptationBonusPercent();
         string newText = "작업 진행 시 이동속도가 <color=#36E100>{0}%</color> 향상됩니다.";
         GetText((int)Texts.GravityAdaptationDescText).SetText(string.Format(newText, value));
     }
@@ -117,3 +117,5 @@ public class UIPlayerStatusPopup : UIPopup
         GetText((int)Texts.LuckDescText).SetText(newText);
     }
 }
+
+

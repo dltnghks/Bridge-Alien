@@ -74,12 +74,15 @@ public class PlayerManager : ISaveable
         AddStats(Define.PlayerStatsType.Fatigue, FatigueMaxValue);
     }
 
-    public float GetExperienceStatsBonus()
+    public float GetExperienceStatsBonusRate()
     {
-        // 작업 숙련으로 인한 획득 점수 증가
-        float playerExperience = PlayerData.Stats[Define.PlayerStatsType.Experience];
-        playerExperience = (playerExperience / 10f) / 100f;
-        return playerExperience;
+        // 작업 숙련 10당 미니게임 종료 보상 1% 증가
+        return PlayerData.Stats[Define.PlayerStatsType.Experience] / 1000f;
+    }
+
+    public int GetExperienceStatsBonusPercent()
+    {
+        return Mathf.FloorToInt(GetExperienceStatsBonusRate() * 100f);
     }
 
     public float GetFatigueStatsPenalty()
@@ -89,12 +92,14 @@ public class PlayerManager : ISaveable
         if (playerFatigue <= 30) return 0.5f;
         return 0;
     }
-    public float GetGravityAdaptationBounus()
+    public float GetGravityAdaptationBonusMultiplier()
     {
-        float gravityAdaptation = PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation];
-        // 50 => 1.25, 100 => 1.25 ...
-        gravityAdaptation = (gravityAdaptation * 0.25f / 100f) + 1f;
-        return gravityAdaptation;
+        return (PlayerData.Stats[Define.PlayerStatsType.GravityAdaptation] * 0.25f / 100f) + 1f;
+    }
+
+    public int GetGravityAdaptationBonusPercent()
+    {
+        return Mathf.FloorToInt((GetGravityAdaptationBonusMultiplier() - 1f) * 100f);
     }
 
     public float AddGold(int gold)
@@ -387,3 +392,4 @@ public class PlayerManager : ISaveable
         Init(data.PlayerData);
     }
 }
+

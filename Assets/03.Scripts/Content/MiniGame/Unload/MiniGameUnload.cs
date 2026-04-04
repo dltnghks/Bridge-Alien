@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -494,7 +494,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int scoreBonus = totalGold;
         totalGold = totalGold + stageData.MinimumWage;
         
-        int statsBonus = (int)(totalGold * Managers.Player.GetExperienceStatsBonus());
+        int statsBonus = (int)(totalGold * Managers.Player.GetExperienceStatsBonusRate());
         totalGold = totalGold + statsBonus;
 
         Managers.Player.AddGold(totalGold);
