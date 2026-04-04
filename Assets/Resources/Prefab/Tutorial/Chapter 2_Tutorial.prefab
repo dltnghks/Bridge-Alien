@@ -529,8 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uBC18\uB808 \uB808\uC77C\uC5D0\uB294 \uC798\uBABB \uBC30\uC1A1\uD55C
-    \uC0C1\uC790\uAC00 \uB3CC\uC544\uC640."
+  instructionText: "\uBC18\uB824 \uB808\uC77C\uC5D0\uC11C\uB294 \uC798\uBABB \uBC30\uC1A1\uD55C
+    \uC0C1\uC790\uAC00 \uB3CC\uC544\uC640"
   targetInteractableTag: 
   autoFinishDelay: 0.5
   onStepStart:
@@ -614,8 +614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uBC18\uB808 \uB808\uC77C\uC5D0\uB294 \uC798\uBABB \uBC30\uC1A1\uD55C
-    \uC0C1\uC790\uAC00 \uB3CC\uC544\uC640."
+  instructionText: "\uBC18\uB824 \uB808\uC77C\uC5D0\uC11C\uB294 \uC798\uBABB \uBC30\uC1A1\uD55C
+    \uC0C1\uC790\uAC00 \uB3CC\uC544\uC640"
   targetInteractableTag: 
   autoFinishDelay: 2
   onStepStart:
@@ -945,8 +945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uBC18\uB808 \uB808\uC77C\uC5D0\uB294 \uC798\uBABB \uBC30\uC1A1\uD55C
-    \uC0C1\uC790\uAC00 \uB3CC\uC544\uC640."
+  instructionText: "\uBC18\uB824 \uB808\uC77C\uC5D0\uC11C\uB294 \uC798\uBABB \uBC30\uC1A1\uD55C
+    \uC0C1\uC790\uAC00 \uB3CC\uC544\uC640"
   targetInteractableTag: 
   autoFinishDelay: 1.5
   onStepStart:
