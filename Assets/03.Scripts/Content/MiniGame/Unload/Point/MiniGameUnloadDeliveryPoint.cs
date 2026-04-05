@@ -1,18 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
-
 
 [System.Serializable]
 public struct MiniGameUnloadDeliveryPointInfo
 {
     public Define.BoxRegion Region;
-    
+
     public MiniGameUnloadDeliveryPointInfo(Define.BoxRegion region)
     {
         Region = region;
@@ -23,22 +18,109 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 {
     [SerializeField] private MiniGameUnloadDeliveryPointInfo _info;
     [SerializeField] private TextMeshPro _ViewDeliveryRegionText;
-    
+    [SerializeField] private bool _isMirrored;
+    [SerializeField, HideInInspector] private Vector3 _defaultLocalScale = Vector3.one;
+    [SerializeField, HideInInspector] private Vector3 _defaultTextLocalScale = Vector3.one;
+
     private Transform _unloadPointTransform;
     private Transform _endPointTransform;
-    
+
     public Action<MiniGameUnloadBox> OnReturnAction;
 
-    public void Start()
+    private void Awake()
     {
-        AllowedTypes = new Define.BoxState[] { Define.BoxState.Cold, Define.BoxState.Normal};
-        
+        Initialize();
+        CaptureMirrorDefaultsIfNeeded();
+        ApplyMirror();
+    }
+
+    private void OnValidate()
+    {
+        Initialize();
+        CaptureMirrorDefaultsIfNeeded();
+        ApplyMirror();
+    }
+
+    [ContextMenu("Refresh Mirror Defaults")]
+    private void RefreshMirrorDefaults()
+    {
+        CaptureMirrorDefaults();
+        ApplyMirror();
+    }
+
+    private void Initialize()
+    {
+        AllowedTypes = new[] { Define.BoxState.Cold, Define.BoxState.Normal };
+
         _unloadPointTransform = Utils.FindChild<Transform>(gameObject, "UnloadPoint", true);
         _endPointTransform = Utils.FindChild<Transform>(gameObject, "EndPoint", true);
-        _ViewDeliveryRegionText = Utils.FindChild<TextMeshPro>(gameObject,"ViewDeliveryRegionText", true);
-        
-        string regionName = _info.Region.ToString();
-        _ViewDeliveryRegionText.SetText(regionName);
+        _ViewDeliveryRegionText = Utils.FindChild<TextMeshPro>(gameObject, "ViewDeliveryRegionText", true);
+
+        UpdateRegionText();
+    }
+
+    private void UpdateRegionText()
+    {
+        if (_ViewDeliveryRegionText == null)
+        {
+            return;
+        }
+
+        _ViewDeliveryRegionText.SetText(_info.Region.ToString());
+    }
+
+    private void CaptureMirrorDefaultsIfNeeded()
+    {
+        if (_defaultLocalScale == Vector3.zero)
+        {
+            _defaultLocalScale = Vector3.one;
+        }
+
+        if (_defaultTextLocalScale == Vector3.zero)
+        {
+            _defaultTextLocalScale = Vector3.one;
+        }
+
+        if (Mathf.Approximately(_defaultLocalScale.x, 1f) && !Mathf.Approximately(Mathf.Abs(transform.localScale.x), 1f))
+        {
+            CaptureMirrorDefaults();
+            return;
+        }
+
+        if (_ViewDeliveryRegionText != null &&
+            Mathf.Approximately(_defaultTextLocalScale.x, 1f) &&
+            !Mathf.Approximately(Mathf.Abs(_ViewDeliveryRegionText.transform.localScale.x), 1f))
+        {
+            CaptureMirrorDefaults();
+        }
+    }
+
+    private void CaptureMirrorDefaults()
+    {
+        _defaultLocalScale = transform.localScale;
+        _defaultLocalScale.x = Mathf.Abs(_defaultLocalScale.x);
+
+        if (_ViewDeliveryRegionText != null)
+        {
+            _defaultTextLocalScale = _ViewDeliveryRegionText.transform.localScale;
+            _defaultTextLocalScale.x = Mathf.Abs(_defaultTextLocalScale.x);
+        }
+    }
+
+    private void ApplyMirror()
+    {
+        Vector3 localScale = _defaultLocalScale;
+        localScale.x = _isMirrored ? -Mathf.Abs(localScale.x) : Mathf.Abs(localScale.x);
+        transform.localScale = localScale;
+
+        if (_ViewDeliveryRegionText == null)
+        {
+            return;
+        }
+
+        Vector3 textLocalScale = _defaultTextLocalScale;
+        textLocalScale.x = _isMirrored ? -Mathf.Abs(textLocalScale.x) : Mathf.Abs(textLocalScale.x);
+        _ViewDeliveryRegionText.transform.localScale = textLocalScale;
     }
 
     public void SetAction()
@@ -98,7 +180,6 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
         box.transform.DOMove(_endPointTransform.position, 1).OnComplete(() =>
             {
-                // 리턴 박스의 경우에는 리턴 액션 호출
                 if (returnBox)
                 {
                     ReturnBox(box);
@@ -115,16 +196,15 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
 
     private void ReturnBox(MiniGameUnloadBox box)
     {
-        // 리턴 액션이 있는 경우에만 호출
         if (OnReturnAction == null)
         {
             Managers.Resource.Destroy(box.gameObject);
             return;
         }
-        
+
         OnReturnAction.Invoke(box);
-    } 
-    
+    }
+
     private void OnTriggerExit(Collider coll)
     {
         if (coll.gameObject.CompareTag("Player"))
@@ -148,7 +228,7 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         if (box is null)
         {
             Logger.LogError("놓으려는 박스가 없는 상태");
-            return;   
+            return;
         }
 
         box.transform.SetParent(transform);
@@ -156,5 +236,3 @@ public class MiniGameUnloadDeliveryPoint : MiniGameUnloadBasePoint, IBoxPlacePoi
         MoveToUnloadPoint(box);
     }
 }
-
-
