@@ -9,6 +9,7 @@
     "Id": "3705726509",
     "Type": "User",
     "GUID": "{AAA0A60D-D5CD-4474-B0BE-6FF43FCAAA00}",
+    "Color": "2",
     "Language": "SFX",
     "Hash": "{BE91DDC8-15F2-C7EB-C4DF-4D1FD0167908}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Region\\Title",
@@ -16,6 +17,6 @@
     "Path": "Title.bnk"
    }
   ],
-  "FileHash": "{A8ED180C-64C2-4974-2721-BDB2F8E8E956}"
+  "FileHash": "{CA952979-EEBB-9572-CEA0-30C09245A6D5}"
  }
 }

@@ -3,7 +3,7 @@
   "Project": {
    "Name": "Bridge-Alien_WwiseProject",
    "GUID": "{D7EB7EBC-0611-46DE-BB2E-805F0D9ACDCB}",
-   "Generator": "2024.1.0.8669"
+   "Generator": "2024.1.1.8691"
   },
   "CacheRoot": "../../../../Bridge-Alien_WwiseProject/.cache",
   "Platforms": [
@@ -38,6 +38,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{16813C6F-EC77-623F-9534-DA19D460CC4F}"
+  "FileHash": "{CE555999-E333-2A31-6108-D57C910E176E}"
  }
 }
