@@ -849,6 +849,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4772684217219965419, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
+      propertyPath: m_Color.a
+      value: 0.96862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772684217219965419, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -991,6 +995,10 @@ PrefabInstance:
     - target: {fileID: 7272634145985401290, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041894818178839362, guid: d0c7d94c69d6b4e4396d2ae71fad07ae, type: 3}
+      propertyPath: m_Color.a
+      value: 0.96862745
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1231,6 +1239,14 @@ PrefabInstance:
     - target: {fileID: 3069709785343003718, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
       propertyPath: m_Name
       value: Bed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071316697089389836, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e3d4509ab2aca964eb53d7146e44ac33, type: 3}
+    - target: {fileID: 5071316697089389836, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9019608
       objectReference: {fileID: 0}
     - target: {fileID: 8810333736228118511, guid: 4156f4e2a2600304db283ab9c3d71313, type: 3}
       propertyPath: m_LocalPosition.x
