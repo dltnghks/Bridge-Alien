@@ -53,6 +53,9 @@ public class Managers : MonoBehaviour
 
             _instance = Utils.GetOrAddComponent<Managers>(go);
 
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
+
             _dataManager = Utils.GetOrAddComponent<DataManager>(go);
             _dataManager.Init();
 
