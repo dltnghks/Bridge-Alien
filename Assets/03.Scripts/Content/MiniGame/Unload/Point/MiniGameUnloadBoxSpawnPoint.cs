@@ -35,7 +35,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         }
 
         _timer.OffTimer();
-        _timer.SetTimer(_boxSpawnInterval, 0.5f);
+        _timer.SetTimer(_boxSpawnInterval, 0.0001f);
         _timer.OnEndTime = SpawnBox;
     }
 
@@ -87,39 +87,9 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
 
         bool shouldSpawnHidden = ShouldSpawnHiddenBox();
         Define.BoxType boxType = GetRandomBoxType();
-
-        MiniGameUnloadBox newBox = CreateBoxInstance(boxType, shouldSpawnHidden);
-        if (newBox == null)
-        {
-            CancelHiddenBoxReservation(shouldSpawnHidden);
-            return;
-        }
-
-        if (shouldSpawnHidden)
-        {
-            newBox.SetHiddenInfo();
-        }
-        else
-        {
-            newBox.SetRandomInfo();
-        }
-        newBox.SetInGameActive(false);
-
-        if (!newBox.gameObject.activeSelf && BoxList.TryPush(newBox))
-        {
-            _boxHeight += _boxHeightOffset;
-            Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
-            spawnPos.z += -(_boxHeight / ((float)BoxList.MaxUnloadBoxIndex * 100f));
-
-            newBox.SetSpawnBox(spawnPos);
-            _lastSpawnedBoxType = boxType;
-            NotifyBoxSpawned(newBox);
-        }
-        else
-        {
-            CancelHiddenBoxReservation(shouldSpawnHidden);
-        }
+        SpawnPreparedBox(boxType, shouldSpawnHidden, null);
     }
+
 
     public void SpawnBox(BoxTypeDecision boxTypeDecision)
     {
@@ -145,6 +115,23 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             boxType = GetRandomBoxType(excludeCold: true);
         }
 
+        SpawnPreparedBox(boxType, shouldSpawnHidden, boxTypeDecision);
+    }
+
+    private MiniGameUnloadBox CreateBoxInstance(Define.BoxType boxType, bool hidden)
+    {
+        string prefabName = hidden ? "CommonBox" : $"{boxType}Box";
+        GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{prefabName}", transform);
+        if (newBoxObj == null)
+        {
+            return null;
+        }
+
+        return newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+    }
+
+    private void SpawnPreparedBox(Define.BoxType boxType, bool shouldSpawnHidden, BoxTypeDecision boxTypeDecision)
+    {
         MiniGameUnloadBox newBox = CreateBoxInstance(boxType, shouldSpawnHidden);
         if (newBox == null)
         {
@@ -159,8 +146,12 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         else
         {
             newBox.SetRandomInfo();
-            newBox.SetRegion(boxTypeDecision.BoxRegion);
+            if (boxTypeDecision != null)
+            {
+                newBox.SetRegion(boxTypeDecision.BoxRegion);
+            }
         }
+
         newBox.SetInGameActive(false);
 
         if (!newBox.gameObject.activeSelf && BoxList.TryPush(newBox))
@@ -172,23 +163,10 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
             newBox.SetSpawnBox(spawnPos);
             _lastSpawnedBoxType = boxType;
             NotifyBoxSpawned(newBox);
-        }
-        else
-        {
-            CancelHiddenBoxReservation(shouldSpawnHidden);
-        }
-    }
-
-    private MiniGameUnloadBox CreateBoxInstance(Define.BoxType boxType, bool hidden)
-    {
-        string prefabName = hidden ? "CommonBox" : $"{boxType}Box";
-        GameObject newBoxObj = Managers.Resource.Instantiate($"MiniGameUnloadBox/{prefabName}", transform);
-        if (newBoxObj == null)
-        {
-            return null;
+            return;
         }
 
-        return newBoxObj.GetOrAddComponent<MiniGameUnloadBox>();
+        CancelHiddenBoxReservation(shouldSpawnHidden);
     }
 
     private bool ShouldSpawnHiddenBox()
@@ -319,3 +297,7 @@ public class MiniGameUnloadBoxSpawnPoint : MiniGameUnloadBasePoint, IBoxSpawnPoi
         return null;
     }
 }
+
+
+
+
