@@ -2156,6 +2156,64 @@ MonoBehaviour:
         SpeakerPosType: 0
     - Key: 21
       Value:
+      - DialogID: S5_06_001
+        CharacterName: "\uC2E0\uD300\uC7A5"
+        Script: "\uC18C\uC7A5\uB2D8. \uAE40\uC774\uBBFC\uC740 \uC774\uB300\uB85C
+          \uB450\uC2E4 \uAC83\uC778\uC9C0.."
+        NextDialogID: S5_06_002
+        Type: 2
+        SpeakerType: 4
+        SpeakerPosType: 2
+      - DialogID: S5_06_002
+        CharacterName: "\uC18C\uC7A5"
+        Script: "\uC6D0\uB798\uB300\uB85C\uBA74 \uADF8\uB0E5 \uC870\uC6A9\uD788 \uCC98\uB9AC\uD558\uBA74
+          \uB418\uACA0\uC9C0\uB9CC\n\uCD5C\uADFC \uC5EC\uAE30\uC800\uAE30\uC11C \uB4E4\uC464\uC2DC\uACE0
+          \uB2E4\uB2C8\uB294 \uB188\uB4E4\uC774 \uB9CE\uC544\uC84C\uB2E8 \uB9D0\uC774\uC9C0"
+        NextDialogID: S5_06_003
+        Type: 2
+        SpeakerType: 7
+        SpeakerPosType: 1
+      - DialogID: S5_06_003
+        CharacterName: "\uC18C\uC7A5"
+        Script: "\uC123\uBD88\uB9AC \uD589\uB3D9\uD588\uB2E4\uAC04 \uC624\uD788\uB824
+          \uC6B0\uB9AC\uAE4C\uC9C0 \uAF2C\uB9AC\uAC00 \uBC1F\uD790\uC218\uB3C4 \uC788\uC5B4."
+        NextDialogID: S5_06_004
+        Type: 2
+        SpeakerType: 7
+        SpeakerPosType: 1
+      - DialogID: S5_06_004
+        CharacterName: "\uC2E0\uD300\uC7A5"
+        Script: "\uADF8\uB807\uB2E4\uD574\uB3C4 \uC774\uB300\uB85C \uB3CC\uC544\uAC00\uAC8C
+          \uB458 \uC218\uB294 \uC5C6\uC9C0 \uC54A\uC2B5\uB2C8\uAE4C."
+        NextDialogID: S5_06_005
+        Type: 2
+        SpeakerType: 4
+        SpeakerPosType: 2
+      - DialogID: S5_06_005
+        CharacterName: "\uC18C\uC7A5"
+        Script: "\uD760\u2026 \uC5B4\uCA54\uC218\uC5C6\uC9C0. \uC791\uC5C5\uC774
+          \uC804\uBD80 \uB9C8\uBB34\uB9AC\uB418\uBA74 \uAE40\uC774\uBBFC\uC740 \uB530\uB85C
+          \uBD88\uB7EC\uC624\uB77C\uACE0."
+        NextDialogID: S5_06_006
+        Type: 2
+        SpeakerType: 7
+        SpeakerPosType: 1
+      - DialogID: S5_06_006
+        CharacterName: "\uC2E0\uD300\uC7A5"
+        Script: "\uB135 \uC54C\uACA0\uC2B5\uB2C8\uB2E4."
+        NextDialogID: End
+        Type: 2
+        SpeakerType: 4
+        SpeakerPosType: 2
+      - DialogID: End
+        CharacterName: End
+        Script: End
+        NextDialogID: End
+        Type: 4
+        SpeakerType: 0
+        SpeakerPosType: 0
+    - Key: 22
+      Value:
       - DialogID: S6_01_001
         CharacterName: "\uAE40\uC774\uBBFC"
         Script: "\uBD80\uB974\uC168\uC2B5\uB2C8\uAE4C.."
@@ -2306,7 +2364,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 22
+    - Key: 23
       Value:
       - DialogID: S6_02_001
         CharacterName: "\uC2E0\uD300\uC7A5"
@@ -2364,7 +2422,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 23
+    - Key: 24
       Value:
       - DialogID: S6_03_001
         CharacterName: "\uC18C\uC7A5"
@@ -2424,7 +2482,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 24
+    - Key: 25
       Value:
       - DialogID: S6_04_001
         CharacterName: "\uAE40\uC774\uBBFC"
@@ -2530,7 +2588,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 25
+    - Key: 26
       Value:
       - DialogID: S6_05_001
         CharacterName: "\uAC00\uC774\uB4DC"
@@ -2571,7 +2629,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 26
+    - Key: 27
       Value:
       - DialogID: S6_06_001
         CharacterName: "\uAC00\uC774\uB4DC"
@@ -2660,7 +2718,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 27
+    - Key: 28
       Value:
       - DialogID: E_A_01_001
         CharacterName: 
@@ -2724,7 +2782,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 28
+    - Key: 29
       Value:
       - DialogID: S6_03B_001
         CharacterName: "\uC18C\uC7A5"
@@ -2814,7 +2872,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 29
+    - Key: 30
       Value:
       - DialogID: S6_04B_001
         CharacterName: "\uC2E0\uD300\uC7A5"
@@ -2888,7 +2946,7 @@ MonoBehaviour:
         Type: 4
         SpeakerType: 0
         SpeakerPosType: 0
-    - Key: 30
+    - Key: 31
       Value:
       - DialogID: E_A_01_001
         CharacterName: 
@@ -2981,29 +3039,29 @@ MonoBehaviour:
   DialogBGM:
     _serializedList:
     - Key: 1
-      Value: 0
+      Value: 1
     - Key: 2
-      Value: 0
+      Value: 1
     - Key: 3
-      Value: 0
+      Value: 1
     - Key: 4
-      Value: 0
+      Value: 1
     - Key: 5
-      Value: 0
+      Value: 1
     - Key: 6
-      Value: 0
+      Value: 1
     - Key: 7
       Value: 0
     - Key: 8
       Value: 0
     - Key: 9
-      Value: 0
+      Value: 1
     - Key: 10
-      Value: 0
+      Value: 1
     - Key: 11
-      Value: 0
+      Value: 1
     - Key: 12
-      Value: 0
+      Value: 1
     - Key: 13
       Value: 0
     - Key: 14
@@ -3011,32 +3069,34 @@ MonoBehaviour:
     - Key: 15
       Value: 0
     - Key: 16
-      Value: 0
+      Value: 2
     - Key: 17
-      Value: 0
+      Value: 1
     - Key: 18
-      Value: 0
+      Value: 1
     - Key: 19
-      Value: 0
+      Value: 2
     - Key: 20
-      Value: 0
+      Value: 2
     - Key: 21
-      Value: 0
+      Value: 2
     - Key: 22
-      Value: 0
+      Value: 2
     - Key: 23
-      Value: 0
+      Value: 2
     - Key: 24
-      Value: 0
+      Value: 2
     - Key: 25
       Value: 0
     - Key: 26
       Value: 0
     - Key: 27
-      Value: 0
+      Value: 2
     - Key: 28
-      Value: 0
+      Value: 3
     - Key: 29
-      Value: 0
+      Value: 2
     - Key: 30
-      Value: 0
+      Value: 2
+    - Key: 31
+      Value: 3

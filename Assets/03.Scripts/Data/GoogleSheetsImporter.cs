@@ -85,30 +85,43 @@ public class GoogleSheetsImporter : EditorWindow
         switch (dataType)
         {
             case Define.DataType.Event:
-                EventDataScriptableObject eventData = CreateInstance<EventDataScriptableObject>();
+                EventDataScriptableObject eventData = LoadOrCreateAsset<EventDataScriptableObject>(assetPath);
                 eventData.SetData(jsonData);
-                AssetDatabase.CreateAsset(eventData, assetPath);
                 break;
             case Define.DataType.Dialog:
-                DialogDataScriptableObject dialogData = CreateInstance<DialogDataScriptableObject>();
+                DialogDataScriptableObject dialogData = LoadOrCreateAsset<DialogDataScriptableObject>(assetPath);
                 dialogData.SetData(jsonData);
-                AssetDatabase.CreateAsset(dialogData, assetPath);
                 break;
             case Define.DataType.MiniGameSetting:
-                MiniGameSettingDataScriptableObject miniGameData = CreateInstance<MiniGameSettingDataScriptableObject>();
+                MiniGameSettingDataScriptableObject miniGameData = LoadOrCreateAsset<MiniGameSettingDataScriptableObject>(assetPath);
                 miniGameData.SetData(jsonData);
-                AssetDatabase.CreateAsset(miniGameData, assetPath);
                 break;
             case Define.DataType.PlayerTask:
-                PlayerTaskDataScriptableObject playerTaskData = CreateInstance<PlayerTaskDataScriptableObject>();
+                PlayerTaskDataScriptableObject playerTaskData = LoadOrCreateAsset<PlayerTaskDataScriptableObject>(assetPath);
                 playerTaskData.SetData(jsonData);
-                AssetDatabase.CreateAsset(playerTaskData, assetPath);
                 break;
         }
 
         Logger.Log($"✅ {dataType} ScriptableObject 생성 완료: {assetPath}");
 
+        AssetDatabase.Refresh();
         AssetDatabase.SaveAssets();
+        AssetDatabase.ImportAsset(assetPath);
+    }
+
+    private T LoadOrCreateAsset<T>(string assetPath) where T : ScriptableObject
+    {
+        T asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
+        if (asset != null)
+        {
+            EditorUtility.SetDirty(asset);
+            return asset;
+        }
+
+        asset = CreateInstance<T>();
+        AssetDatabase.CreateAsset(asset, assetPath);
+        EditorUtility.SetDirty(asset);
+        return asset;
     }
 }
 #endif

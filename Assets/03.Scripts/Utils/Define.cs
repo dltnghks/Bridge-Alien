@@ -128,6 +128,7 @@ public class Define
         S5_03,
         S5_04,
         S5_05,
+        S5_06,
 
         S6_01,
         S6_02,
