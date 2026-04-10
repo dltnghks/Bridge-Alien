@@ -211,6 +211,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="Default" ID="{075E16B8-3124-4A47-86CF-7A56E2D246FD}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="3.27090828402437"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>Default.wav</AudioFile>
 							<MediaIDList>
