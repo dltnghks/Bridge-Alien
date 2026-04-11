@@ -1,6 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	954353760	Play_BGM_Default2			\Default Work Unit\BGM\Play\Play_BGM_Default2	
-
-Game Parameter	ID	Name			Wwise Object Path	Notes
-	3043206523	BGMVolume			\Default Work Unit\BGMVolume	
-
