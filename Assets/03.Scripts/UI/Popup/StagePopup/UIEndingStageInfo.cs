@@ -55,12 +55,10 @@ public class UIEndingStageInfo : UISubItem
         }
 
         SetText((int)Texts.StageNameText, stageData.StageName);
-        SetText((int)Texts.StageGoalText, "???");
+        SetText((int)Texts.StageGoalText, stageData.StageDescription);
         SetText((int)Texts.StageDescriptionText, stageData.StageDescription);
         SetText((int)Texts.StageRewardText, "???");
-        SetText((int)Texts.Star1Score, "???");
-        SetText((int)Texts.Star2Score, "???");
-        SetText((int)Texts.Star3Score, "???");
+        SetStageScore(stageData.ClearScoreList);
 
         var thumbnails = stageData.GetPopupThumbnails();
         Sprite unlocked0 = GetThumbnail(thumbnails, 0, null);
@@ -80,16 +78,26 @@ public class UIEndingStageInfo : UISubItem
         }
         SetSecondaryThumbnail(secondary, true);
 
-        int unlockedEndingCount = Managers.Player.GetEndingUnlockedCount(stageType, 2);
-        SetStarImage(unlockedEndingCount, 2);
+        int starCount = Managers.Player.GetStageClearInfo(stageType);
+        SetStarImage(starCount, 3);
 
-        SetObjectActive((int)Objects.StageGoalStarGroup, false); // 별 아이콘 그룹
-        var clearIcon = GetImage((int)Images.StageInfoClearIcon);
-        if (clearIcon != null)
+        SetObjectActive((int)Objects.StageGoalStarGroup, true);
+        SetObjectActive((int)Objects.StageReward, false);
+
+
+
+    }
+
+    private void SetStageScore(int[] clearScoreList)
+    {
+        if (clearScoreList == null || clearScoreList.Length < 3)
         {
-            clearIcon.gameObject.SetActive(false); // 클리어 별 아이콘
+            return;
         }
-        SetObjectActive((int)Objects.StageReward, false); // 골드 아이콘
+
+        SetText((int)Texts.Star1Score, clearScoreList[0].ToString());
+        SetText((int)Texts.Star2Score, clearScoreList[1].ToString());
+        SetText((int)Texts.Star3Score, clearScoreList[2].ToString());
     }
 
     private void SetPrimaryThumbnail(Sprite sprite)
@@ -123,6 +131,7 @@ public class UIEndingStageInfo : UISubItem
         var clearIcon = GetImage((int)Images.StageInfoClearIcon);
         if (clearIcon != null)
         {
+            clearIcon.gameObject.SetActive(true);
             clearIcon.color = Color.clear;
         }
 
@@ -156,7 +165,6 @@ public class UIEndingStageInfo : UISubItem
             clearIcon.color = Color.white;
         }
     }
-
     private void SetText(int index, string value)
     {
         TextMeshProUGUI text = GetText(index);
@@ -185,3 +193,6 @@ public class UIEndingStageInfo : UISubItem
         }
     }
 }
+
+
+

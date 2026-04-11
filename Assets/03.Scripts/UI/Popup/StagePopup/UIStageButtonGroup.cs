@@ -23,7 +23,6 @@ public class UIStageButtonGroup : UISubItem
 
         foreach (Define.ChapterType stageType in System.Enum.GetValues(typeof(Define.ChapterType)))
         {
-            // 버튼이 부족한 경우 중단
             if (_uiStageButtonsList.Length <= (int)stageType)
             {
                 break;
@@ -31,16 +30,12 @@ public class UIStageButtonGroup : UISubItem
 
             var stageData = Managers.Data.StageData.GetStageData(stageType);
             UpdateStageButtonState((int)stageType, stageType);
-
             SetStageStars(stageType, stageData.IsLocked);
-
         }
     }
 
-    // 스테이지 버튼 그룹의 상태를 업데이트
     private void UpdateStageButtonState(int index, Define.ChapterType stageType)
     {
-        // 스테이지 잠금 여부 확인
         if (Managers.Stage.IsStageLockStatus(stageType))
         {
             _uiStageButtonsList[index].GetComponent<UIActiveButton>().Deactivate();
@@ -51,19 +46,9 @@ public class UIStageButtonGroup : UISubItem
         }
     }
 
-    // 스테이지 버튼 그룹의 별 개수를 업데이트
     private void SetStageStars(Define.ChapterType stageType, bool isLocked)
     {
-        int maxStarCount = 3;
         int starCount = Managers.Player.GetStageClearInfo(stageType);
-
-        if (stageType == Define.ChapterType.End)
-        {
-            maxStarCount = 2;
-            starCount = Managers.Player.GetEndingUnlockedCount(stageType, maxStarCount);
-        }
-
-        _uiStageButtonsList[(int)stageType].SetStageButton(starCount, maxStarCount);
+        _uiStageButtonsList[(int)stageType].SetStageButton(starCount, 3);
     }
-
 }

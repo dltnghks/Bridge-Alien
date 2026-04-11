@@ -118,7 +118,7 @@ public class StageManager
     {
         _isStageStarted = false;
 
-        if (_currentStageType == Define.ChapterType.End && _endingBranchEventID != Define.EventDataID.Unknown)
+        if (_currentStageType == Define.ChapterType.End && starCount > 0 && _endingBranchEventID != Define.EventDataID.Unknown)
         {
             if (_endingThumbnailIndex >= 0)
             {
@@ -186,3 +186,4 @@ public class StageManager
     }
 
 }
+

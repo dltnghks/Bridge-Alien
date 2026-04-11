@@ -470,22 +470,19 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
 
         int totalScore = _score.CurrentScore;
-
         var stageData = Managers.Stage.GetCurrentStageData();
-        if (Managers.Stage.CurrentStageType == Define.ChapterType.End)
+        int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
+        int starCount = Managers.Stage.CompleteStage(totalScore, preStarCount);
+
+        if (Managers.Stage.CurrentStageType == Define.ChapterType.End && starCount > 0)
         {
             Define.EventDataID endingEventID = stageData.GetEndingEventByHiddenBoxDisposedCount(_hiddenBoxDisposedCount);
             int endingThumbnailIndex = stageData.GetEndingThumbnailIndexByHiddenBoxDisposedCount(_hiddenBoxDisposedCount);
             Managers.Stage.SetEndingResult(endingEventID, endingThumbnailIndex);
 
             Logger.Log($"Ending Branch | hiddenDisposed: {_hiddenBoxDisposedCount}, event: {endingEventID}, thumbnailIndex: {endingThumbnailIndex}");
-            Managers.Stage.EndStage(0);
-            Logger.Log("UnloadGame Ending game (End stage branch)");
-            return;
         }
 
-        int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
-        int starCount = Managers.Stage.CompleteStage(totalScore, preStarCount);
         int totalGold = Managers.Stage.GetCompleteTotalGold(starCount);
         int additionalStars = Mathf.Max(0, starCount - preStarCount);
         if (additionalStars > 0)
@@ -509,7 +506,6 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         
         Logger.Log("UnloadGame Ending game");
     }
-
     public void AddScore(int score, MiniGameUnloadBox box)
     {
         if (score > 0)
@@ -561,6 +557,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     }
 
 }
+
 
 
 
