@@ -8,7 +8,7 @@ public class BoxWarpSkill : ChargeSkill
 {
     private MiniGameUnloadBoxList _playerBoxList; // 플레이어 상자 더미 참조
     private MiniGameUnloadDeliveryPoint[] _deliveryPoints; // 배달 지점 목록
-    
+
     [SerializeField]
     private GameObject warpEffectPrefab; // 워프 이펙트 프리팹
 
@@ -27,11 +27,26 @@ public class BoxWarpSkill : ChargeSkill
 
     protected override void OnActivate()
     {
+        MiniGameUnloadBox targetBox = _playerBoxList?.Peek();
+        if (targetBox == null)
+        {
+            return;
+        }
+
         base.OnActivate();
         remainingCharges--; // 성공적으로 사용했으므로 횟수 감소
         OnCountChanged?.Invoke(remainingCharges); // 사용 횟수 감소 알림
+
+        // 시전 시작 시점의 최상단 박스를 스택에서 분리해 이후 입력과 무관하게 같은 박스를 처리한다.
+        Vector3 targetPosition = targetBox.transform.position;
+        Quaternion targetRotation = targetBox.transform.rotation;
+        OnDropBox?.Invoke();
+        targetBox.transform.SetParent(null, true);
+        targetBox.transform.position = targetPosition;
+        targetBox.transform.rotation = targetRotation;
+
         Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.Glitch.ToString(), gameObject);
-        StartCoroutine(BoxWarpProcess());
+        StartCoroutine(BoxWarpProcess(targetBox));
     }
 
     public override bool CanUseSkill()
@@ -40,10 +55,15 @@ public class BoxWarpSkill : ChargeSkill
         return base.CanUseSkill() && _playerBoxList != null && !_playerBoxList.IsEmpty;
     }
 
-    private IEnumerator BoxWarpProcess()
+    private IEnumerator BoxWarpProcess(MiniGameUnloadBox targetBox)
     {
-        MiniGameUnloadBox topBox = _playerBoxList.Peek();
-        var effect = CreateBoxWarpEffect(topBox.transform); // 이펙트 재생
+        if (targetBox == null)
+        {
+            isActive = false;
+            yield break;
+        }
+
+        GameObject effect = CreateBoxWarpEffect(targetBox.transform); // 이펙트 재생
 
         // 이펙트 표시 1초
         yield return new WaitForSeconds(1.0f);
@@ -54,24 +74,20 @@ public class BoxWarpSkill : ChargeSkill
             Destroy(effect);
         }
 
-        // 상자 이동
-        MiniGameUnloadBox box = _playerBoxList.Peek();
-
         foreach (var deliveryPoint in _deliveryPoints)
         {
-            if (deliveryPoint.CheckBoxInfo(box.Info) && deliveryPoint.CanPlaceBox(box))
+            if (deliveryPoint.CheckBoxInfo(targetBox.Info) && deliveryPoint.CanPlaceBox(targetBox))
             {
                 // 상자를 배달 지점으로 이동
-                box.transform.position = deliveryPoint.transform.position;
-                deliveryPoint.PlaceBox(box);
-                OnDropBox?.Invoke(); // 상자 배달 완료 후 액션 호출
+                targetBox.transform.position = deliveryPoint.transform.position;
+                deliveryPoint.PlaceBox(targetBox);
                 Logger.Log($"Teleported box to {deliveryPoint.name}");
                 isActive = false; // 스킬 사용 완료
-                break;
+                yield break;
             }
         }
 
-        // 이펙트 표시
+        isActive = false;
     }
 
     public override void TryActivate()
@@ -96,6 +112,15 @@ public class BoxWarpSkill : ChargeSkill
         effect.transform.localRotation = Quaternion.identity; // 회전 초기화
         // 지금 이미지 사이즈가 너무 커서 작게 조정
         effect.transform.localScale = Vector3.one * 0.2f;
+
+        SpriteRenderer boxRenderer = boxTransform.GetComponent<SpriteRenderer>();
+        SpriteRenderer effectRenderer = effect.GetComponent<SpriteRenderer>();
+        if (boxRenderer != null && effectRenderer != null)
+        {
+            effectRenderer.sortingLayerID = boxRenderer.sortingLayerID;
+            effectRenderer.sortingOrder = boxRenderer.sortingOrder + 1;
+        }
+
         return effect;
     }
 }
