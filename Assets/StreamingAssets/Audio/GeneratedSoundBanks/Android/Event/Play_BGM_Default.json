@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{D104CBC0-394E-417C-8C82-E170364E2FD5}",
     "Language": "SFX",
-    "Hash": "{C6408375-79A3-D398-9EA2-B2895BD9DCD8}",
+    "Hash": "{61A6FDD6-55E6-4641-1229-970D14B1DF86}",
     "ObjectPath": "Play_BGM_Default",
     "ShortName": "Play_BGM_Default",
     "Path": "Event/Play_BGM_Default.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "Default.wav",
       "Path": "Media/1054482790.wem",
-      "CachePath": "16/{16E59DB1-86FA-6D0A-B6E0-61D6B22E050A}.wem"
+      "CachePath": "F7/{F74FB863-EA01-8BD4-EC83-1837E4D99BCB}.wem"
      }
     ],
     "Events": [
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{1DA4E0A8-ACA0-1421-598B-D9D8AC767980}"
+  "FileHash": "{F310FB8C-D83C-4AE1-B487-13A672AA259A}"
  }
 }

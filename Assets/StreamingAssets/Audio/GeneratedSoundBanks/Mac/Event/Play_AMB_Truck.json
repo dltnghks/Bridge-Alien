@@ -1,0 +1,55 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "626113458",
+    "Type": "Event",
+    "GUID": "{9EEC8B1C-C99F-4F67-AA2E-5408C277CF11}",
+    "Language": "SFX",
+    "Hash": "{F99C92A9-DEE6-832D-0AE6-49BBC9DFEF9B}",
+    "ObjectPath": "Play_AMB_Truck",
+    "ShortName": "Play_AMB_Truck",
+    "Path": "Event/Play_AMB_Truck.bnk",
+    "Media": [
+     {
+      "Id": "761617789",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_truck.wav",
+      "Path": "Media/761617789.wem",
+      "CachePath": "DB/{DBFC884A-23B7-FF3E-828B-D00E6ED4BAFE}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "626113458",
+      "Name": "Play_AMB_Truck",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_AMB_Truck",
+      "GUID": "{9EEC8B1C-C99F-4F67-AA2E-5408C277CF11}",
+      "MaxAttenuation": "20",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "761617789"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{7B1AD624-5F5F-E781-FB4D-602C895E0C97}"
+ }
+}

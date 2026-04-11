@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2883951734",
+    "Type": "Event",
+    "GUID": "{F3104F24-D048-4947-9F00-7D0A7954F8E9}",
+    "Language": "SFX",
+    "Hash": "{2B14E316-890B-D99B-EEE4-5D30793C8A5F}",
+    "ObjectPath": "Play_SFX_RUSH_PRE",
+    "ShortName": "Play_SFX_RUSH_PRE",
+    "Path": "Event/Play_SFX_RUSH_PRE.bnk",
+    "Events": [
+     {
+      "Id": "2883951734",
+      "Name": "Play_SFX_RUSH_PRE",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_RUSH_PRE",
+      "GUID": "{F3104F24-D048-4947-9F00-7D0A7954F8E9}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{76F0377D-89E5-4CC9-630B-8054555598C8}"
+ }
+}

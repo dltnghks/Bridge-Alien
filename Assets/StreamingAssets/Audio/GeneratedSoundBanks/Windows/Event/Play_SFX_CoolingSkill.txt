@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	483605646	Play_SFX_CoolingSkill			\Default Work Unit\MiniGameUnload\Play_SFX_CoolingSkill	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

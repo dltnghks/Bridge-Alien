@@ -10,7 +10,7 @@
     "Type": "Event",
     "GUID": "{D82D0B3B-8004-47B1-8A68-A479D2F715BC}",
     "Language": "SFX",
-    "Hash": "{E081AAB3-988C-2C6C-78BC-E2131B9EE082}",
+    "Hash": "{C3FB7375-525F-EA5A-8D1D-4B01F2BAC975}",
     "ObjectPath": "Play_BGM_End",
     "ShortName": "Play_BGM_End",
     "Path": "Event/Play_BGM_End.bnk",
@@ -22,7 +22,7 @@
       "Location": "Loose",
       "ShortName": "End.wav",
       "Path": "Media/211936984.wem",
-      "CachePath": "91/{91727F06-A5EA-F61A-3DFA-B10FFD7F1868}.wem"
+      "CachePath": "3A/{3AF0474A-2EED-7773-2FDD-FE71E7F1A9FA}.wem"
      }
     ],
     "Events": [
@@ -49,6 +49,6 @@
     ]
    }
   ],
-  "FileHash": "{2DF51FED-E67D-EBCB-EAED-4232BAFF65E5}"
+  "FileHash": "{A6DB1071-2F61-BAA0-D5F7-3B05827093A4}"
  }
 }

@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	993449880	Resume_BGM_Gamemaploop			\Default Work Unit\BGM\Resume\Resume_BGM_Gamemaploop	
+

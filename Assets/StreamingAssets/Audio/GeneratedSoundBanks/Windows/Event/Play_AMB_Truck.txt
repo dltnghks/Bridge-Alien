@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	626113458	Play_AMB_Truck			\Default Work Unit\MiniGameUnload\Play_AMB_Truck	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3112024457",
+    "Type": "Event",
+    "GUID": "{D43FC76A-662B-4A5D-BAC6-7D4CA6448246}",
+    "Language": "SFX",
+    "Hash": "{28897CEE-4729-6F5F-4590-5289F875A984}",
+    "ObjectPath": "Resume_BGM_Prologue",
+    "ShortName": "Resume_BGM_Prologue",
+    "Path": "Event/Resume_BGM_Prologue.bnk",
+    "Events": [
+     {
+      "Id": "3112024457",
+      "Name": "Resume_BGM_Prologue",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Resume\\Resume_BGM_Prologue",
+      "GUID": "{D43FC76A-662B-4A5D-BAC6-7D4CA6448246}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{48E84E05-2582-3EF2-A682-A5E84B5B3721}"
+ }
+}

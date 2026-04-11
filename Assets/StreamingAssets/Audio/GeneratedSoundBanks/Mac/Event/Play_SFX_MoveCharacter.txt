@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3538692530	Play_SFX_MoveCharacter			\Default Work Unit\GameMap\Play_SFX_MoveCharacter	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

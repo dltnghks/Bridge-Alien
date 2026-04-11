@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3961413098",
+    "Type": "Event",
+    "GUID": "{8D8970BB-9E7B-4EA8-AC7E-B6726CB63285}",
+    "Language": "SFX",
+    "Hash": "{659BFFBD-54DE-BA71-9B75-CDA4E3F89D3B}",
+    "ObjectPath": "Resume_BGM_House",
+    "ShortName": "Resume_BGM_House",
+    "Path": "Event/Resume_BGM_House.bnk",
+    "Events": [
+     {
+      "Id": "3961413098",
+      "Name": "Resume_BGM_House",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Resume\\Resume_BGM_House",
+      "GUID": "{8D8970BB-9E7B-4EA8-AC7E-B6726CB63285}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{CB906821-540E-5436-9CEA-65A1676A5A6D}"
+ }
+}

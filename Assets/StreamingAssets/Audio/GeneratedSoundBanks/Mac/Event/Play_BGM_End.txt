@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	399330178	Play_BGM_End			\Default Work Unit\BGM\Play\Play_BGM_End	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3043206523	BGMVolume			\Default Work Unit\BGMVolume	
+

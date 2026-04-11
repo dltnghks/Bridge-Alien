@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "731417429",
+    "Type": "Event",
+    "GUID": "{A6E2B132-A6B5-4A8A-AD18-74FCC721FD15}",
+    "Language": "SFX",
+    "Hash": "{FF88F9DD-2C7F-6270-75F1-C0912CB68E3B}",
+    "ObjectPath": "Pause_BGM_Gamemaploop",
+    "ShortName": "Pause_BGM_Gamemaploop",
+    "Path": "Event/Pause_BGM_Gamemaploop.bnk",
+    "Events": [
+     {
+      "Id": "731417429",
+      "Name": "Pause_BGM_Gamemaploop",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Pause\\Pause_BGM_Gamemaploop",
+      "GUID": "{A6E2B132-A6B5-4A8A-AD18-74FCC721FD15}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{B151D690-76AA-2547-1B4B-3EB069861810}"
+ }
+}

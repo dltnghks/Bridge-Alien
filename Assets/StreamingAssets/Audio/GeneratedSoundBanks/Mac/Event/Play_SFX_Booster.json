@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "4218745022",
+    "Type": "Event",
+    "GUID": "{73894803-A471-4D31-9A8A-392E135EF4B4}",
+    "Language": "SFX",
+    "Hash": "{67C5042D-FE51-414C-FED7-BAF4FB6A1F72}",
+    "ObjectPath": "Play_SFX_Booster",
+    "ShortName": "Play_SFX_Booster",
+    "Path": "Event/Play_SFX_Booster.bnk",
+    "Media": [
+     {
+      "Id": "621400455",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Booster.wav",
+      "Path": "Media/621400455.wem",
+      "CachePath": "FF/{FF963C03-6212-602C-6F0B-C0A16FE2455C}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "4218745022",
+      "Name": "Play_SFX_Booster",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_Booster",
+      "GUID": "{73894803-A471-4D31-9A8A-392E135EF4B4}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8",
+      "DurationMax": "1.8",
+      "MediaRefs": [
+       {
+        "Id": "621400455"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{03BB92A2-18BF-7BEE-8997-0D3765C7435A}"
+ }
+}
