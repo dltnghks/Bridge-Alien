@@ -135,8 +135,8 @@ MonoBehaviour:
         EndingEventOnHighHiddenBox: 13
         StageName: End
         StageDescription: "\uC18C\uC7A5\uC758 \uB9C8\uC9C0\uB9C9 \uC2DC\uD5D8\uB300\uC5D0
-          \uC624\uB974\uAC8C \uB41C \uAE40\uC774\uBBFC.. \\n\uADF8\uC758 \uC120\uD0DD\uC5D0
-          \uB538 \u314F\uC5B4\uB5A4 \uBBF8\uB798\uAC00 \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC744\uAC83\uC778\uAC00..."
+          \uC624\uB974\uAC8C \uB41C \uAE40\uC774\uBBFC.. <br>\uADF8\uC758 \uC120\uD0DD\uC5D0
+          \uB530\uB77C \uC5B4\uB5A4 \uBBF8\uB798\uAC00 \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC744\uAC83\uC778\uAC00..."
         IsLocked: 1
         RequiredStars: 0
         MinimumWage: 0
