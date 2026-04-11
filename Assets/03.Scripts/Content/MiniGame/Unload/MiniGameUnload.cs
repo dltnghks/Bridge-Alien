@@ -282,15 +282,17 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private void HandleComboBoxFull()
     {
-        // 콤보 박스가 가득 찼을 때, 같은 종류인지 확인
-        bool isSpecialCombo = CheckForSpecialCombo();
-        StartCoroutine(ProcessFullComboBox(isSpecialCombo));
+        List<MiniGameUnloadBox> comboSnapshot = new List<MiniGameUnloadBox>(_comboSystem._comboBoxList.BoxList);
+
+        // 현재 콤보 결과만 스냅샷으로 보존하고, 실제 스택은 즉시 비워 다음 입력을 받는다.
+        _comboSystem.ClearComboBoxList();
+
+        bool isSpecialCombo = CheckForSpecialCombo(comboSnapshot);
+        StartCoroutine(ProcessFullComboBox(isSpecialCombo, comboSnapshot));
     }
 
-    private bool CheckForSpecialCombo()
+    private bool CheckForSpecialCombo(List<MiniGameUnloadBox> boxList)
     {
-        var boxList = _comboSystem._comboBoxList.BoxList;
-
         // 리스트가 비어있거나, 3개가 아니거나, 중간에 null(실패)이 있으면 스페셜 콤보가 아님
         if (boxList == null || boxList.Count < 3 || boxList.Contains(null))
         {
@@ -313,8 +315,13 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         return true;
     }
 
-    private IEnumerator ProcessFullComboBox(bool isSpecialCombo)
+    private IEnumerator ProcessFullComboBox(bool isSpecialCombo, List<MiniGameUnloadBox> comboSnapshot)
     {
+        if (comboSnapshot == null || comboSnapshot.Count == 0)
+        {
+            yield break;
+        }
+
         // 1. 추가 점수 부여 (기본 300점)
         int bonusScore = 300;
 
@@ -330,11 +337,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         // 2. 플레이어가 UI를 볼 수 있도록 1초 대기
         yield return new WaitForSeconds(1.0f);
-
-        // 3. 콤보 박스 리스트 초기화
-        _comboSystem.ClearComboBoxList();
     }
-
     public bool TryReserveHiddenBoxSpawn(MiniGameUnloadBoxSpawnPoint spawnPoint)
     {
         if (Managers.Stage.CurrentStageType != Define.ChapterType.End)
@@ -558,6 +561,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     }
 
 }
+
 
 
 
