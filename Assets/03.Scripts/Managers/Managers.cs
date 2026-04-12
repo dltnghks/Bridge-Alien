@@ -27,6 +27,7 @@ public class Managers : MonoBehaviour
     private static PlayerManager _playerManager = new PlayerManager();
     private static SaveManager _saveManager = new SaveManager();
     private static StageManager _stageManager = new StageManager();
+    private static AnalyticsService _analyticsService = new AnalyticsService();
 
     public static DataManager Data { get { Init(); return _dataManager; } }
     public static ResourceManager Resource { get { Init(); return _resourceManager; } }
@@ -42,7 +43,24 @@ public class Managers : MonoBehaviour
     public static PlayerManager Player { get { Init(); return _playerManager; } }
     public static SaveManager Save { get{ Init(); return _saveManager; } }
     public static StageManager Stage {get { Init();  return _stageManager; }}
+    public static AnalyticsService Analytics { get { Init(); return _analyticsService; } }
     
+    private void Update()
+    {
+        _analyticsService?.Update();
+    }
+
+    private void OnApplicationQuit()
+    {
+        _analyticsService?.TrackSessionEnd();
+    }
+
+    private void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused)
+            _analyticsService?.TrackSessionEnd();
+    }
+
     private static void Init()
     {
         if (_instance == null)
@@ -88,6 +106,9 @@ public class Managers : MonoBehaviour
             _saveManager.Init(new LocalFileStorage());
             _saveManager.Register(Player);
             _saveManager.Register(MiniGame);
+
+            _analyticsService.Init();
+            _analyticsService.TrackSessionStart();
 
             DontDestroyOnLoad(go);
         }
