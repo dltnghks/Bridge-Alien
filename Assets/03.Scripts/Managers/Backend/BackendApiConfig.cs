@@ -7,3 +7,4 @@ public static class BackendApiConfig
     public const string TemporaryApiKey = "asdfzxcvqwer123";
     public const string ApiKeyHeaderName = "X-Api-Key";
 }
+

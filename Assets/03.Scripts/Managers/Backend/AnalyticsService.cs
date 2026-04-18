@@ -169,7 +169,12 @@ public class AnalyticsService
 
     public void Flush()
     {
-//#if !UNITY_EDITOR
+        if (!GameConfigProvider.Config.EnableAnalytics)
+        {
+            _queue.Clear();
+            return;
+        }
+
         if (_queue.Count == 0) return;
 
         var batch = new List<AnalyticsEvent>(_queue);
@@ -183,17 +188,20 @@ public class AnalyticsService
                 onFailure: () => _queue.InsertRange(0, batch)
             )
         );
-//#endif
     }
 
     private void FlushSync()
     {
-//#if !UNITY_EDITOR
+        if (!GameConfigProvider.Config.EnableAnalytics)
+        {
+            _queue.Clear();
+            return;
+        }
+
         if (_queue.Count == 0) return;
         var batch = new List<AnalyticsEvent>(_queue);
         _queue.Clear();
         AnalyticsHttpClient.SendBatchSync(batch);
-//#endif
     }
 }
 
