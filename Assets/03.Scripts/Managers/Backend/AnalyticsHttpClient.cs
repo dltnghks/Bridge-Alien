@@ -38,7 +38,11 @@ public static class AnalyticsHttpClient
         }
         else
         {
-            Logger.LogWarning($"Analytics: 전송 실패 ({request.error}), 큐 재적재");
+            string responseBody = request.downloadHandler?.text ?? "";
+            Logger.LogWarning($"Analytics: 전송 실패 (HTTP {(long)request.responseCode}, {request.error})");
+            if (!string.IsNullOrEmpty(responseBody))
+                Logger.LogWarning($"Analytics: 응답 본문 {responseBody}");
+            Logger.LogWarning($"Analytics: 요청 본문 {sb}");
             onFailure?.Invoke();
         }
     }
@@ -65,8 +69,18 @@ public static class AnalyticsHttpClient
                 Content = new StringContent(sb.ToString(), Encoding.UTF8, "application/json")
             };
             request.Headers.Add(BackendApiConfig.ApiKeyHeaderName, BackendApiConfig.TemporaryApiKey);
-            client.SendAsync(request).GetAwaiter().GetResult();
-            Logger.Log($"Analytics: session_end 동기 전송 완료");
+            using HttpResponseMessage response = client.SendAsync(request).GetAwaiter().GetResult();
+            if (response.IsSuccessStatusCode)
+            {
+                Logger.Log($"Analytics: session_end 동기 전송 완료");
+                return;
+            }
+
+            string responseBody = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            Logger.LogWarning($"Analytics: session_end 전송 실패 (HTTP {(int)response.StatusCode} {response.ReasonPhrase})");
+            if (!string.IsNullOrEmpty(responseBody))
+                Logger.LogWarning($"Analytics: session_end 응답 본문 {responseBody}");
+            Logger.LogWarning($"Analytics: session_end 요청 본문 {sb}");
         }
         catch (Exception e)
         {

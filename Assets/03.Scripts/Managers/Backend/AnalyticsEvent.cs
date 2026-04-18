@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Text;
 using UnityEngine;
 
@@ -22,12 +23,12 @@ public class AnalyticsEvent
         if (StageId != null)
             sb.Append($"\"stage_id\":\"{Escape(StageId)}\",");
         else
-            sb.Append("\"stage_id\":null,");
+        sb.Append("\"stage_id\":null,");
 
         sb.Append($"\"payload\":{(string.IsNullOrEmpty(PayloadJson) ? "null" : PayloadJson)},");
         sb.Append($"\"client_version\":\"{Escape(Application.version)}\",");
         sb.Append($"\"platform\":\"{Escape(Application.platform.ToString())}\",");
-        sb.Append($"\"created_at\":\"{CreatedAt:yyyy-MM-ddTHH:mm:ssZ}\"");
+        sb.Append($"\"created_at\":\"{CreatedAt.ToUniversalTime().ToString("O", CultureInfo.InvariantCulture)}\"");
         sb.Append("}");
         return sb.ToString();
     }

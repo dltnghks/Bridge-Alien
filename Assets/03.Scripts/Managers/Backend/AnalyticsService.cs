@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class AnalyticsService
@@ -52,7 +53,7 @@ public class AnalyticsService
         _sessionEnded = true;
 
         float duration = Time.realtimeSinceStartup - _sessionStartTime;
-        Enqueue(Build("session_end", null, $"{{\"duration_sec\":{duration:F1}}}"));
+        Enqueue(Build("session_end", null, $"{{\"duration_sec\":{FormatFloat(duration)}}}"));
         FlushSync(); // 앱 종료 시 코루틴이 실행되지 않으므로 동기 전송
     }
 
@@ -63,14 +64,14 @@ public class AnalyticsService
 
     public void TrackStageClear(string stageId, int score, int starCount, float durationSec)
     {
-        string payload = $"{{\"score\":{score},\"star_count\":{starCount},\"duration_sec\":{durationSec:F1}}}";
+        string payload = $"{{\"score\":{score},\"star_count\":{starCount},\"duration_sec\":{FormatFloat(durationSec)}}}";
         Enqueue(Build("stage_clear", stageId, payload));
         Flush();
     }
 
     public void TrackStageFail(string stageId, int score, float durationSec)
     {
-        string payload = $"{{\"score\":{score},\"duration_sec\":{durationSec:F1}}}";
+        string payload = $"{{\"score\":{score},\"duration_sec\":{FormatFloat(durationSec)}}}";
         Enqueue(Build("stage_fail", stageId, payload));
         Flush();
     }
@@ -78,7 +79,7 @@ public class AnalyticsService
     public void TrackMinigameResult(string stageId, string minigameType, int score, float durationSec, bool success, int comboCount)
     {
         string successStr = success ? "true" : "false";
-        string payload    = $"{{\"minigame_type\":\"{minigameType}\",\"score\":{score},\"duration_sec\":{durationSec:F1},\"success\":{successStr},\"combo_count\":{comboCount}}}";
+        string payload    = $"{{\"minigame_type\":\"{EscapeJson(minigameType)}\",\"score\":{score},\"duration_sec\":{FormatFloat(durationSec)},\"success\":{successStr},\"combo_count\":{comboCount}}}";
         Enqueue(Build("minigame_result", stageId, payload));
         // Flush는 뒤이어 호출되는 TrackStageClear/TrackStageFail에서 담당
     }
@@ -101,6 +102,16 @@ public class AnalyticsService
         _queue.Add(e);
         if (_queue.Count >= MaxQueueSize)
             Flush();
+    }
+
+    private static string FormatFloat(float value)
+    {
+        return value.ToString("0.0", CultureInfo.InvariantCulture);
+    }
+
+    private static string EscapeJson(string value)
+    {
+        return value?.Replace("\\", "\\\\").Replace("\"", "\\\"") ?? "";
     }
 
     public void Flush()
