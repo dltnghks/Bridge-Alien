@@ -16,6 +16,8 @@ public class AnalyticsService
     private float _sessionStartTime;
     private float _lastFlushTime;
     private bool _sessionEnded;
+    private string _currentStageId;
+    private float _currentStageEnterTime;
 
     public void Init()
     {
@@ -29,17 +31,16 @@ public class AnalyticsService
 
         SessionId = Guid.NewGuid().ToString();
         _sessionStartTime = Time.realtimeSinceStartup;
-        _lastFlushTime    = Time.realtimeSinceStartup;
+        _lastFlushTime = Time.realtimeSinceStartup;
+        _currentStageId = null;
+        _currentStageEnterTime = 0f;
     }
 
-    // Managers.Update()에서 호출
     public void Update()
     {
         if (Time.realtimeSinceStartup - _lastFlushTime >= FlushIntervalSec)
             Flush();
     }
-
-    // ── 이벤트 추적 ─────────────────────────────────────────────────────────
 
     public void TrackSessionStart()
     {
@@ -54,11 +55,13 @@ public class AnalyticsService
 
         float duration = Time.realtimeSinceStartup - _sessionStartTime;
         Enqueue(Build("session_end", null, $"{{\"duration_sec\":{FormatFloat(duration)}}}"));
-        FlushSync(); // 앱 종료 시 코루틴이 실행되지 않으므로 동기 전송
+        FlushSync();
     }
 
     public void TrackStageEnter(string stageId)
     {
+        _currentStageId = stageId;
+        _currentStageEnterTime = Time.realtimeSinceStartup;
         Enqueue(Build("stage_enter", stageId, null));
     }
 
@@ -79,22 +82,67 @@ public class AnalyticsService
     public void TrackMinigameResult(string stageId, string minigameType, int score, float durationSec, bool success, int comboCount)
     {
         string successStr = success ? "true" : "false";
-        string payload    = $"{{\"minigame_type\":\"{EscapeJson(minigameType)}\",\"score\":{score},\"duration_sec\":{FormatFloat(durationSec)},\"success\":{successStr},\"combo_count\":{comboCount}}}";
+        string payload = $"{{\"minigame_type\":\"{EscapeJson(minigameType)}\",\"score\":{score},\"duration_sec\":{FormatFloat(durationSec)},\"success\":{successStr},\"combo_count\":{comboCount}}}";
         Enqueue(Build("minigame_result", stageId, payload));
-        // Flush는 뒤이어 호출되는 TrackStageClear/TrackStageFail에서 담당
     }
 
-    // ── 내부 ────────────────────────────────────────────────────────────────
+    public void TrackTaskExecute(
+        string taskId,
+        string taskName,
+        string taskType,
+        int requiredGold,
+        int fatigueDelta,
+        int experienceDelta,
+        int intelligenceDelta,
+        int gravityAdaptationDelta,
+        int luckMin,
+        int luckMax,
+        int actualLuckDelta,
+        int balanceAfter)
+    {
+        string payload =
+            $"{{\"task_id\":\"{EscapeJson(taskId)}\",\"task_name\":\"{EscapeJson(taskName)}\",\"task_type\":\"{EscapeJson(taskType)}\",\"required_gold\":{requiredGold},\"fatigue_delta\":{fatigueDelta},\"experience_delta\":{experienceDelta},\"intelligence_delta\":{intelligenceDelta},\"gravity_adaptation_delta\":{gravityAdaptationDelta},\"luck_min\":{luckMin},\"luck_max\":{luckMax},\"actual_luck_delta\":{actualLuckDelta},\"balance_after\":{balanceAfter}}}";
+        Enqueue(Build("task_execute", null, payload));
+    }
+
+    public void TrackSkillUse(string stageId, string minigameType, string skillType, int skillLevel, bool success, string failureReason)
+    {
+        float usedAtStageSec = 0f;
+        if (!string.IsNullOrEmpty(stageId) && string.Equals(stageId, _currentStageId, StringComparison.Ordinal))
+        {
+            usedAtStageSec = Time.realtimeSinceStartup - _currentStageEnterTime;
+        }
+
+        string successStr = success ? "true" : "false";
+        string payload =
+            $"{{\"minigame_type\":\"{EscapeJson(minigameType)}\",\"skill_type\":\"{EscapeJson(skillType)}\",\"skill_level\":{skillLevel},\"success\":{successStr},\"failure_reason\":{ToJsonStringOrNull(failureReason)},\"used_at_stage_sec\":{FormatFloat(usedAtStageSec)}}}";
+        Enqueue(Build("skill_use", stageId, payload));
+    }
+
+    public void TrackSkillUpgrade(string skillType, int prevLevel, int newLevel, int upgradeCost, int balanceAfter, bool success, string failureReason)
+    {
+        string successStr = success ? "true" : "false";
+        string payload =
+            $"{{\"skill_type\":\"{EscapeJson(skillType)}\",\"prev_level\":{prevLevel},\"new_level\":{newLevel},\"upgrade_cost\":{upgradeCost},\"balance_after\":{balanceAfter},\"success\":{successStr},\"failure_reason\":{ToJsonStringOrNull(failureReason)}}}";
+        Enqueue(Build("skill_upgrade", null, payload));
+    }
+
+    public void TrackGoldChange(string stageId, int delta, int balanceAfter, string reason, string sourceId)
+    {
+        string payload =
+            $"{{\"delta\":{delta},\"balance_after\":{balanceAfter},\"reason\":\"{EscapeJson(reason)}\",\"source_id\":{ToJsonStringOrNull(sourceId)}}}";
+        Enqueue(Build("gold_change", stageId, payload));
+    }
 
     private AnalyticsEvent Build(string eventName, string stageId, string payloadJson) =>
         new AnalyticsEvent
         {
-            PlayerId    = PlayerId,
-            SessionId   = SessionId,
-            EventName   = eventName,
-            StageId     = stageId,
+            PlayerId = PlayerId,
+            SessionId = SessionId,
+            EventName = eventName,
+            StageId = stageId,
             PayloadJson = payloadJson,
-            CreatedAt   = DateTime.UtcNow,
+            CreatedAt = DateTime.UtcNow,
         };
 
     private void Enqueue(AnalyticsEvent e)
@@ -114,9 +162,14 @@ public class AnalyticsService
         return value?.Replace("\\", "\\\\").Replace("\"", "\\\"") ?? "";
     }
 
+    private static string ToJsonStringOrNull(string value)
+    {
+        return string.IsNullOrEmpty(value) ? "null" : $"\"{EscapeJson(value)}\"";
+    }
+
     public void Flush()
     {
-#if !UNITY_EDITOR
+//#if !UNITY_EDITOR
         if (_queue.Count == 0) return;
 
         var batch = new List<AnalyticsEvent>(_queue);
@@ -130,16 +183,17 @@ public class AnalyticsService
                 onFailure: () => _queue.InsertRange(0, batch)
             )
         );
-#endif
+//#endif
     }
 
     private void FlushSync()
     {
-#if !UNITY_EDITOR
+//#if !UNITY_EDITOR
         if (_queue.Count == 0) return;
         var batch = new List<AnalyticsEvent>(_queue);
         _queue.Clear();
         AnalyticsHttpClient.SendBatchSync(batch);
-#endif
+//#endif
     }
 }
+

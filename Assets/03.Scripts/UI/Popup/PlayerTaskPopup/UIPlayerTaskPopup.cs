@@ -129,29 +129,39 @@ public class UIPlayerTaskPopup : UIPopup
             return;
         }
 
-        // 피로도, 골드 조건 체크
         if (Managers.Player.GetGold() < _selectedTaskData.RequirementGold)
         {
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;
         }
 
+        int actualLuckDelta = Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue);
 
         OnClickUpgrade?.Invoke(true);
-
-        // 일과 수행창 예약
         Managers.UI.RequestPopup<UITaskProgressPopup>(_selectedTaskData);
 
         Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, _selectedTaskData.FatigueValue);
         Managers.Player.AddStats(Define.PlayerStatsType.Experience, _selectedTaskData.ExperienceValue);
         Managers.Player.AddStats(Define.PlayerStatsType.Intelligence, _selectedTaskData.IntelligenceValue);
         Managers.Player.AddStats(Define.PlayerStatsType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue);
-        Managers.Player.AddStats(Define.PlayerStatsType.Luck, Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue));
+        Managers.Player.AddStats(Define.PlayerStatsType.Luck, actualLuckDelta);
 
-        Managers.Player.AddGold(-_selectedTaskData.RequirementGold);
+        Managers.Player.AddGold(-_selectedTaskData.RequirementGold, "task_execute", _selectedTaskData.TaskID);
+        Managers.Analytics.TrackTaskExecute(
+            _selectedTaskData.TaskID,
+            _selectedTaskData.TaskName,
+            _currentTaskTab.TaskType.ToString(),
+            _selectedTaskData.RequirementGold,
+            _selectedTaskData.FatigueValue,
+            _selectedTaskData.ExperienceValue,
+            _selectedTaskData.IntelligenceValue,
+            _selectedTaskData.GravityAdaptationValue,
+            _selectedTaskData.LuckMinValue,
+            _selectedTaskData.LuckMaxValue,
+            actualLuckDelta,
+            Managers.Player.GetGold());
+        Managers.Analytics.Flush();
 
-        // 
-        
         ClosePopupUI();
     }
     

@@ -508,7 +508,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int statsBonus = (int)(totalGold * Managers.Player.GetExperienceStatsBonusRate());
         totalGold = totalGold + statsBonus;
 
-        Managers.Player.AddGold(totalGold);
+        Managers.Player.AddGold(totalGold, "stage_reward", Managers.Stage.CurrentStageType.ToString(), Managers.Stage.CurrentStageType.ToString());
+        Managers.Analytics.Flush();
 
         Logger.Log($"Stage Result | starCount : {starCount}, totalGold : {totalGold}, totalScore : {totalScore}, statsBonus : {statsBonus}");
 
@@ -568,8 +569,3 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     }
 
 }
-
-
-
-
-

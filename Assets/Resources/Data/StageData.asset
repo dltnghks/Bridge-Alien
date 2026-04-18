@@ -141,6 +141,6 @@ MonoBehaviour:
         RequiredStars: 0
         MinimumWage: 0
         ClearReward: 0
-        ClearScoreList: 000000000000000000000000
+        ClearScoreList: b80b0000a00f000088130000
         EventID: 6
         ClearEventID: 12

@@ -85,14 +85,58 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
             return;
         }
 
-        if (skillIndex < 0 || skillIndex >= SkillList.Length)
+        if (SkillList == null || skillIndex < 0 || skillIndex >= SkillList.Length)
         {
             Logger.LogError($"Invalid skill index: {skillIndex}");
             return;
         }
 
-        SkillList[skillIndex].TryActivate();
+        string stageId = Managers.Stage.CurrentStageType.ToString();
+        SkillBase skill = SkillList[skillIndex];
+        bool canUse = skill != null && skill.CanUseSkill();
+        if (!canUse)
+        {
+            skill?.TryActivate();
+            return;
+        }
+
+        string skillType = GetSkillTypeName(skill);
+        int skillLevel = GetSkillLevel(skill);
+
+        skill.TryActivate();
+        Managers.Analytics.TrackSkillUse(stageId, "Unload", skillType, skillLevel, true, null);
     }
+
+    private static string GetSkillTypeName(SkillBase skill)
+    {
+        if (skill is DurationSkill durationSkill)
+        {
+            return durationSkill.SkillData.Type.ToString();
+        }
+
+        if (skill is ChargeSkill chargeSkill)
+        {
+            return chargeSkill.SkillData.Type.ToString();
+        }
+
+        return skill?.GetType().Name ?? "Unknown";
+    }
+
+    private static int GetSkillLevel(SkillBase skill)
+    {
+        if (skill is DurationSkill durationSkill)
+        {
+            return Managers.Player.GetSkillLevel(durationSkill.SkillData.Type);
+        }
+
+        if (skill is ChargeSkill chargeSkill)
+        {
+            return Managers.Player.GetSkillLevel(chargeSkill.SkillData.Type);
+        }
+
+        return 0;
+    }
+
 
     private void CacheAllPoints()
     {
@@ -392,4 +436,8 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
         //return nearest;
     }
 }
+
+
+
+
 
