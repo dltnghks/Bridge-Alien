@@ -8,7 +8,7 @@ public class UITaskResultPopup : UIPopup
     {
         ExperienceValueText,
         GravityAdaptationValueText,
-        IntelligenceValueText,
+        StrengthValueText,
         LuckValueText,
         TaskCompletedText,
     }
@@ -17,11 +17,11 @@ public class UITaskResultPopup : UIPopup
     {
         ExperienceValueTextIncreaseImage,
         GravityAdaptationValueTextIncreaseImage,
-        IntelligenceValueTextIncreaseImage,
+        StrengthValueTextIncreaseImage,
         LuckValueTextIncreaseImage,
         ExperienceValueTextDecreaseImage,
         GravityAdaptationValueTextDecreaseImage,
-        IntelligenceValueTextDecreaseImage,
+        StrengthValueTextDecreaseImage,
         LuckValueTextDecreaseImage,
     }
 
@@ -68,7 +68,7 @@ public class UITaskResultPopup : UIPopup
         PlayerData playerData = Managers.Player.PlayerData;
         GetText((int)Texts.ExperienceValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Experience]} / 100";
         GetText((int)Texts.GravityAdaptationValueText).text = $"{playerData.Stats[Define.PlayerStatsType.GravityAdaptation]} / 100";
-        GetText((int)Texts.IntelligenceValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Intelligence]} / 100";
+        GetText((int)Texts.StrengthValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Strength]} / 100";
         GetText((int)Texts.LuckValueText).text = $"{playerData.Stats[Define.PlayerStatsType.Luck]} / 100";
 
         if (_selectedTaskData != null)
@@ -94,15 +94,15 @@ public class UITaskResultPopup : UIPopup
         }
 
 
-        if (_selectedTaskData.IntelligenceValue > 0)
+        if (_selectedTaskData.StrengthValue > 0)
         {
-            GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
-            GetText((int)Texts.IntelligenceValueText).color = Color.green;
+            GetImage((int)Images.StrengthValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.StrengthValueText).color = Color.green;
         }
-        else if (_selectedTaskData.IntelligenceValue < 0)
+        else if (_selectedTaskData.StrengthValue < 0)
         {
-            GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
-            GetText((int)Texts.IntelligenceValueText).color = Color.red;
+            GetImage((int)Images.StrengthValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
+            GetText((int)Texts.StrengthValueText).color = Color.red;
         }
 
 
@@ -129,12 +129,12 @@ public class UITaskResultPopup : UIPopup
     {
         float value = active == true ? 1.0f : 0.0f;
         GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
-        GetImage((int)Images.IntelligenceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.StrengthValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
 
         GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
-        GetImage((int)Images.IntelligenceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+        GetImage((int)Images.StrengthValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.LuckValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
     }

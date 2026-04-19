@@ -19,7 +19,7 @@ public class PlayerTaskData
     public int FatigueValue;
     public int ExperienceValue;
     public int GravityAdaptationValue;
-    public int IntelligenceValue;
+    public int StrengthValue;
     public int LuckMaxValue;
     public int LuckMinValue;
 }

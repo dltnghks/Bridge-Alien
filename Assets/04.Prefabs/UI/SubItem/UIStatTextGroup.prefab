@@ -95,15 +95,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1c0f7a791ddd0cc40bcf4e2871ca738f, type: 3}
     - target: {fileID: 211085833492856281, guid: 9caff8440d7f55e45ab19cece5e6c6ed, type: 3}
       propertyPath: m_Name
-      value: IntelligenceValueTextIncreaseImage
+      value: StrengthValueTextIncreaseImage
       objectReference: {fileID: 0}
     - target: {fileID: 550893815989638975, guid: 9caff8440d7f55e45ab19cece5e6c6ed, type: 3}
       propertyPath: m_Name
-      value: IntelligenceValueText
+      value: StrengthValueText
       objectReference: {fileID: 0}
     - target: {fileID: 914670699472405586, guid: 9caff8440d7f55e45ab19cece5e6c6ed, type: 3}
       propertyPath: m_text
-      value: "\uC9C0\uB2A5"
+      value: "\uADFC\uB825"
       objectReference: {fileID: 0}
     - target: {fileID: 914670699472405586, guid: 9caff8440d7f55e45ab19cece5e6c6ed, type: 3}
       propertyPath: m_fontSize
@@ -203,11 +203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6388645644368263698, guid: 9caff8440d7f55e45ab19cece5e6c6ed, type: 3}
       propertyPath: m_Name
-      value: IntelligenceValueTextDecreaseImage
+      value: StrengthValueTextDecreaseImage
       objectReference: {fileID: 0}
     - target: {fileID: 8578631940886799251, guid: 9caff8440d7f55e45ab19cece5e6c6ed, type: 3}
       propertyPath: m_Name
-      value: IntelligenceTextObj
+      value: StrengthTextObj
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

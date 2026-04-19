@@ -20,13 +20,13 @@ MonoBehaviour:
         TaskName: "\uD5EC\uC2A4"
         ThumbnailText: "<\uC6B4\uB3D9 : \uD5EC\uC2A4 >"
         TaskProgressText: "\uADFC\uC131\uC7A5 \uC911...."
-        TaskCompletedText: "\uC9C0\uAD6C \uC911\uB825\uC5D0 \uB354 \uC775\uC219\uD574\uC9C4
-          \uAC83 \uAC19\uB2E4.."
-        RequirementGold: 1000
+        TaskCompletedText: "\uC624\uC6B4\uC644. \uBAB8\uC774 \uC870\uAE08 \uC88B\uC544\uC9C4\uAC83
+          \uAC19\uB2E4.."
+        RequirementGold: 2000
         FatigueValue: 0
         ExperienceValue: 0
-        GravityAdaptationValue: 2
-        IntelligenceValue: 0
+        GravityAdaptationValue: 0
+        StrengthValue: 5
         LuckMaxValue: 0
         LuckMinValue: 0
       - TaskID: C01_T02
@@ -39,7 +39,7 @@ MonoBehaviour:
         FatigueValue: 0
         ExperienceValue: 0
         GravityAdaptationValue: 5
-        IntelligenceValue: 0
+        StrengthValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0
     - Key: 2
@@ -54,7 +54,7 @@ MonoBehaviour:
         FatigueValue: 0
         ExperienceValue: 0
         GravityAdaptationValue: 0
-        IntelligenceValue: 0
+        StrengthValue: 0
         LuckMaxValue: 10
         LuckMinValue: 1
     - Key: 3
@@ -68,7 +68,7 @@ MonoBehaviour:
         FatigueValue: 0
         ExperienceValue: 5
         GravityAdaptationValue: 0
-        IntelligenceValue: 0
+        StrengthValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0
       - TaskID: C03_T04
@@ -80,6 +80,6 @@ MonoBehaviour:
         FatigueValue: 3
         ExperienceValue: 0
         GravityAdaptationValue: 0
-        IntelligenceValue: 0
+        StrengthValue: 0
         LuckMaxValue: 0
         LuckMinValue: 0

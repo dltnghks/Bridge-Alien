@@ -102,6 +102,16 @@ public class PlayerManager : ISaveable
         return Mathf.FloorToInt((GetGravityAdaptationBonusMultiplier() - 1f) * 100f);
     }
 
+    public int GetStrengthBonusPercent()
+    {
+        return PlayerData.Stats[Define.PlayerStatsType.Strength];
+    }
+
+    public int GetLuckBonusPercent()
+    {
+        return PlayerData.Stats[Define.PlayerStatsType.Luck];
+    }
+
     public float AddGold(int gold, string reason = "unknown", string sourceId = null, string stageId = null)
     {
         PlayerData.PlayerGold += gold;

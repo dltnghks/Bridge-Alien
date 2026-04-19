@@ -195,7 +195,7 @@ public class Define
         Fatigue,               // 피로도
         Experience,            // 작업 숙련
         GravityAdaptation,     // 중력 적응
-        Intelligence,          // 지능
+        Strength,              // 근력
         Luck,                  // 운
     }
 

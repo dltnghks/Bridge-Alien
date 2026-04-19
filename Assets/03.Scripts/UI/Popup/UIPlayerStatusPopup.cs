@@ -10,15 +10,15 @@ public class UIPlayerStatusPopup : UIPopup
         // Status
         ExperienceText,            // 작업 숙련
         GravityAdaptationText,     // 중력 적응
-        IntelligenceText,          // 지능
-        LuckText,                  // 운
+        StrengthText,              // 근력
+        LuckText,                  // 운빨
 
 
         // Detail
         ExperienceDescText,            // 작업 숙련
         GravityAdaptationDescText,     // 중력 적응
-        IntelligenceDescText,          // 지능
-        LuckDescText,                  // 운
+        StrengthDescText,              // 근력
+        LuckDescText,                  // 운빨
     }
 
     enum Buttons
@@ -88,7 +88,7 @@ public class UIPlayerStatusPopup : UIPopup
     {
         SetExperienceDescText();
         SetGravityAdaptationDescText();
-        SetIntelligenceDescText();
+        SetStrengthDescText();
         SetLuckDescText();
     }
 
@@ -106,15 +106,17 @@ public class UIPlayerStatusPopup : UIPopup
         string newText = "작업 진행 시 이동속도가 <color=#36E100>{0}%</color> 향상됩니다.";
         GetText((int)Texts.GravityAdaptationDescText).SetText(string.Format(newText, value));
     }
-    private void SetIntelligenceDescText()
+    private void SetStrengthDescText()
     {
-        string newText = "총명한 자는 선택지가 많아집니다.";
-        GetText((int)Texts.IntelligenceDescText).SetText(newText);
+        int value = Managers.Player.GetStrengthBonusPercent();
+        string newText = "상자 운반 시 이동속도가 <color=#36E100>{0}%</color> 상승합니다.";
+        GetText((int)Texts.StrengthDescText).SetText(string.Format(newText, value));
     }
     private void SetLuckDescText()
     {
-        string newText = "운이 좋다면 특별한 일이 생길지도?";
-        GetText((int)Texts.LuckDescText).SetText(newText);
+        int value = Managers.Player.GetLuckBonusPercent();
+        string newText = "럭키 보너스 확률이 <color=#36E100>{0}%</color> 증가합니다.";
+        GetText((int)Texts.LuckDescText).SetText(string.Format(newText, value));
     }
 }
 

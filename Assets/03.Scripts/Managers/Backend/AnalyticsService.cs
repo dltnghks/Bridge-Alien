@@ -93,7 +93,7 @@ public class AnalyticsService
         int requiredGold,
         int fatigueDelta,
         int experienceDelta,
-        int intelligenceDelta,
+        int strengthDelta,
         int gravityAdaptationDelta,
         int luckMin,
         int luckMax,
@@ -101,7 +101,7 @@ public class AnalyticsService
         int balanceAfter)
     {
         string payload =
-            $"{{\"task_id\":\"{EscapeJson(taskId)}\",\"task_name\":\"{EscapeJson(taskName)}\",\"task_type\":\"{EscapeJson(taskType)}\",\"required_gold\":{requiredGold},\"fatigue_delta\":{fatigueDelta},\"experience_delta\":{experienceDelta},\"intelligence_delta\":{intelligenceDelta},\"gravity_adaptation_delta\":{gravityAdaptationDelta},\"luck_min\":{luckMin},\"luck_max\":{luckMax},\"actual_luck_delta\":{actualLuckDelta},\"balance_after\":{balanceAfter}}}";
+            $"{{\"task_id\":\"{EscapeJson(taskId)}\",\"task_name\":\"{EscapeJson(taskName)}\",\"task_type\":\"{EscapeJson(taskType)}\",\"required_gold\":{requiredGold},\"fatigue_delta\":{fatigueDelta},\"experience_delta\":{experienceDelta},\"strength_delta\":{strengthDelta},\"gravity_adaptation_delta\":{gravityAdaptationDelta},\"luck_min\":{luckMin},\"luck_max\":{luckMax},\"actual_luck_delta\":{actualLuckDelta},\"balance_after\":{balanceAfter}}}";
         Enqueue(Build("task_execute", null, payload));
     }
 

@@ -9,7 +9,7 @@ public class UIStatusTextGroup : UISubItem
     {
         ExperienceValueText,
         GravityValueText,
-        IntelligenceValueText,
+        StrengthValueText,
         LuckValueText,
     }
 
@@ -39,8 +39,8 @@ public class UIStatusTextGroup : UISubItem
                 case Define.PlayerStatsType.GravityAdaptation:
                     SetGravityAdaptationText(value);
                     break;
-                case Define.PlayerStatsType.Intelligence:
-                    SetIntelligenceText(value);
+                case Define.PlayerStatsType.Strength:
+                    SetStrengthText(value);
                     break;
                 case Define.PlayerStatsType.Luck:
                     SetLuckText(value);
@@ -64,10 +64,10 @@ public class UIStatusTextGroup : UISubItem
         string newText = text;
         GetText((int)Texts.GravityValueText).SetText(newText);
     }
-    private void SetIntelligenceText(string text)
+    private void SetStrengthText(string text)
     {
         string newText = text;
-        GetText((int)Texts.IntelligenceValueText).SetText(newText);
+        GetText((int)Texts.StrengthValueText).SetText(newText);
     }
     private void SetLuckText(string text)
     {
