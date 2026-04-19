@@ -2,18 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using TMPro;
+
+public enum ScoreBoardFeedbackType
+{
+    Normal,
+    Penalty,
+    Combo,
+    Lucky
+}
 
 public class UIScoreBoard : UISubItem
 {
+    private static readonly Color DefaultScoreColor = new Color32(0xB0, 0xD7, 0x9E, 0xFF);
+
     enum Texts
     {
         ScoreText,
     }
 
     private int _curScore;
-    
-    private readonly float _textScaleDuration = 0.3f; // 텍스트 확대/축소에 걸리는 시간
-    private readonly float _textScaleFactor = 1.2f;   // 텍스트가 확대될 비율
+    private Tween _feedbackTween;
     
     public override bool Init()
     {
@@ -40,12 +49,50 @@ public class UIScoreBoard : UISubItem
     {
         string scoreFormat = GetScoreFormat(score);
         GetText((int)Texts.ScoreText).SetText(scoreFormat);
-        
-        // DOTween을 이용한 점수 텍스트 확대/축소 애니메이션
-        var scoreText = GetText((int)Texts.ScoreText).transform;
-        scoreText.DOScale(_textScaleFactor, _textScaleDuration)
-            .SetEase(Ease.OutQuad)  // 부드러운 애니메이션을 위해 Ease 설정
-            .OnComplete(() => scoreText.DOScale(1f, _textScaleDuration).SetEase(Ease.InQuad)); // 원래 크기로 복귀
+    }
+
+    public void PlayFeedback(ScoreBoardFeedbackType feedbackType)
+    {
+        Init();
+
+        TextMeshProUGUI scoreLabel = GetText((int)Texts.ScoreText);
+        Transform scoreTransform = scoreLabel.transform;
+        scoreTransform.DOKill();
+        scoreLabel.DOKill();
+        _feedbackTween?.Kill();
+        scoreTransform.localScale = Vector3.one;
+        scoreLabel.color = DefaultScoreColor;
+
+        float scale = 1.2f;
+        float duration = 0.3f;
+
+        switch (feedbackType)
+        {
+            case ScoreBoardFeedbackType.Penalty:
+                scale = 1.08f;
+                duration = 0.14f;
+                break;
+            case ScoreBoardFeedbackType.Combo:
+                scale = 1.2f;
+                duration = 0.3f;
+                break;
+            case ScoreBoardFeedbackType.Lucky:
+                scale = 1.2f;
+                duration = 0.3f;
+                break;
+        }
+
+        _feedbackTween = scoreTransform.DOScale(scale, duration)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() =>
+            {
+                scoreTransform.DOScale(1f, duration).SetEase(Ease.InQuad);
+            })
+            .OnKill(() =>
+            {
+                scoreTransform.localScale = Vector3.one;
+                scoreLabel.color = DefaultScoreColor;
+            });
     }
 
     private string GetScoreFormat(int score)

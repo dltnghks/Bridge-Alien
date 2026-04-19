@@ -79,6 +79,10 @@ MonoBehaviour:
   mRigidBody: {fileID: 4817798523536871245}
   mDamageLabel: {fileID: 930828705004018035}
   mChildTransform: {fileID: 7030541785382495086}
+  _normalMaterial: {fileID: 2100000, guid: 9bfb9739429a41e6b3f96f62f911f0b1, type: 2}
+  _penaltyMaterial: {fileID: 2100000, guid: 7d8435af6ccd42ce99e5fa2980408fc7, type: 2}
+  _comboMaterial: {fileID: 2100000, guid: 3c827f7b2d504d40b7dbb5e6bc9edb58, type: 2}
+  _luckyMaterial: {fileID: 2100000, guid: 66d9bb44249e43ed9f7f18cbf5eaf1a0, type: 2}
   _size: 0.4
 --- !u!114 &6209744936069539057
 MonoBehaviour:

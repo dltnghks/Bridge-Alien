@@ -524,10 +524,11 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         if (score > 0)
         {
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
-            
+             
             // 1. 점수 반영
             GenerateScoreTextObj(score);
             _score.AddScore(score);
+            _uiGameUnloadScene.UIScoreBoard.PlayFeedback(ScoreBoardFeedbackType.Normal);
             TryAddLuckyBonus();
 
             // 2. 콤보 등록
@@ -541,6 +542,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             // 1. 감점은 배율 없이 그대로 적용
             GenerateScoreTextObj(score);
             _score.AddScore(score);
+            _uiGameUnloadScene.UIScoreBoard.PlayFeedback(ScoreBoardFeedbackType.Penalty);
 
             // 2. 콤보 초기화   
             _comboSystem.BreakCombo();
@@ -560,14 +562,16 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             text = $"<color=#006306>{amount}</color>";
         }
         
-        scoreTextObj.Init(PlayerCharacter.transform.position, text);
+        InGameTextIndicatorStyle style = amount < 0 ? InGameTextIndicatorStyle.Penalty : InGameTextIndicatorStyle.NormalScore;
+        scoreTextObj.Init(PlayerCharacter.transform.position, text, style);
     }
 
     private void GenerateComboTextObj(int amount)
     {
         InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
         string text = $"<color=#FF6F00>COMBO {amount}</color>";
-        scoreTextObj.Init(PlayerCharacter.transform.position, text);
+        scoreTextObj.Init(PlayerCharacter.transform.position, text, InGameTextIndicatorStyle.Combo);
+        _uiGameUnloadScene.UIScoreBoard.PlayFeedback(ScoreBoardFeedbackType.Combo);
     }
 
     private void TryAddLuckyBonus()
@@ -581,13 +585,14 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
         _score.AddScore(LuckyBonusScore);
         GenerateLuckyBonusTextObj(LuckyBonusScore);
+        _uiGameUnloadScene.UIScoreBoard.PlayFeedback(ScoreBoardFeedbackType.Lucky);
     }
 
     private void GenerateLuckyBonusTextObj(int amount)
     {
         InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
         string text = $"<color=#EFD863>LUCKY + {amount}</color>";
-        scoreTextObj.Init(PlayerCharacter.transform.position, text);
+        scoreTextObj.Init(PlayerCharacter.transform.position, text, InGameTextIndicatorStyle.Lucky);
     }
 
 }
