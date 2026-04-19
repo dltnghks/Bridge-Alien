@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MiniGameUnload : MonoBehaviour, IMiniGame
 {
+    private const int LuckyBonusScore = 200;
     [Header("Game Setting")]
     [SerializeField] private MiniGameUnloadSetting _gameSetting;
     [SerializeField] private SkillBase[] _skillList; // 스킬 리스트
@@ -527,6 +528,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
             // 1. 점수 반영
             GenerateScoreTextObj(score);
             _score.AddScore(score);
+            TryAddLuckyBonus();
 
             // 2. 콤보 등록
             _comboSystem.RegisterSuccess(box);
@@ -565,6 +567,26 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
         string text = $"<color=#FF6F00>COMBO {amount}</color>";
+        scoreTextObj.Init(PlayerCharacter.transform.position, text);
+    }
+
+    private void TryAddLuckyBonus()
+    {
+        int luckyChancePercent = Managers.Player.GetLuckyBonusTotalChancePercent();
+        float roll = Random.Range(0f, 100f);
+        if (roll >= luckyChancePercent)
+        {
+            return;
+        }
+
+        _score.AddScore(LuckyBonusScore);
+        GenerateLuckyBonusTextObj(LuckyBonusScore);
+    }
+
+    private void GenerateLuckyBonusTextObj(int amount)
+    {
+        InGameTextIndicator scoreTextObj = Managers.Resource.Instantiate("ScoreTextObj", transform).GetOrAddComponent<InGameTextIndicator>();
+        string text = $"<color=#EFD863>LUCKY + {amount}</color>";
         scoreTextObj.Init(PlayerCharacter.transform.position, text);
     }
 

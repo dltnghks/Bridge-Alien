@@ -119,7 +119,12 @@ public class PlayerManager : ISaveable
 
     public int GetLuckBonusPercent()
     {
-        return PlayerData.Stats[Define.PlayerStatsType.Luck];
+        return Mathf.FloorToInt(PlayerData.Stats[Define.PlayerStatsType.Luck] / 10f);
+    }
+
+    public int GetLuckyBonusTotalChancePercent()
+    {
+        return 5 + GetLuckBonusPercent();
     }
 
     public float AddGold(int gold, string reason = "unknown", string sourceId = null, string stageId = null)
