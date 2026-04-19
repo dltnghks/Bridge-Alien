@@ -45,6 +45,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private TimerBase _timer;
     private ScoreBase _score;
+    private float _gameStartTime;
 
     public void InitializeUI()
     {
@@ -70,6 +71,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         IsActive = false;
         IsPause = false;
         IsTutorialActive = false;
+        _gameStartTime = 0f;
         _totalSpawnedBoxCount = 0;
         _endingHiddenSpawnPointBoxCount = 0;
         _hiddenBoxReservedCount = 0;
@@ -104,6 +106,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     public void StartGame()
     {
         Logger.Log("UnloadGame Starting game");
+        _gameStartTime = UnityEngine.Time.realtimeSinceStartup;
 
         // 게임 활성화
         IsActive = true;
@@ -474,6 +477,14 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int preStarCount = Managers.Player.GetStageClearInfo(Managers.Stage.CurrentStageType);
         int starCount = Managers.Stage.CompleteStage(totalScore, preStarCount);
 
+        float gameDuration = UnityEngine.Time.realtimeSinceStartup - _gameStartTime;
+        string stageId = Managers.Stage.CurrentStageType.ToString();
+        Managers.Analytics.TrackMinigameResult(stageId, "Unload", totalScore, gameDuration, starCount > 0, _comboSystem.MaxCombo);
+        if (starCount > 0)
+            Managers.Analytics.TrackStageClear(stageId, totalScore, starCount, gameDuration);
+        else
+            Managers.Analytics.TrackStageFail(stageId, totalScore, gameDuration);
+
         if (Managers.Stage.CurrentStageType == Define.ChapterType.End && starCount > 0)
         {
             Define.EventDataID endingEventID = stageData.GetEndingEventByHiddenBoxDisposedCount(_hiddenBoxDisposedCount);
@@ -497,7 +508,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         int statsBonus = (int)(totalGold * Managers.Player.GetExperienceStatsBonusRate());
         totalGold = totalGold + statsBonus;
 
-        Managers.Player.AddGold(totalGold);
+        Managers.Player.AddGold(totalGold, "stage_reward", Managers.Stage.CurrentStageType.ToString(), Managers.Stage.CurrentStageType.ToString());
+        Managers.Analytics.Flush();
 
         Logger.Log($"Stage Result | starCount : {starCount}, totalGold : {totalGold}, totalScore : {totalScore}, statsBonus : {statsBonus}");
 
@@ -557,8 +569,3 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     }
 
 }
-
-
-
-
-

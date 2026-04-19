@@ -82,6 +82,8 @@ public class StageManager
         Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, -1);
         Managers.Player.SaveStageProgressed(_currentStageType);
 
+        Managers.Analytics.TrackStageEnter(_currentStageType.ToString());
+
         // 스테이지 시작 시 이벤트 재생
         // 클리어했던 스테이지거나 이미 진행한 스테이지인 경우 바로 씬 변경
         if (isProgressed)
@@ -165,6 +167,11 @@ public class StageManager
     // 현재 스테이지를 진행할 수 있는가 확인
     public bool IsStageLockStatus(Define.ChapterType stageType)
     {
+        if (GameConfigProvider.Config.UnlockAllStagesForTest)
+        {
+            return false;
+        }
+
         var stage = Managers.Data.StageData.GetStageData(stageType);
         if (stage.IsLocked == false)
         {
@@ -186,4 +193,3 @@ public class StageManager
     }
 
 }
-

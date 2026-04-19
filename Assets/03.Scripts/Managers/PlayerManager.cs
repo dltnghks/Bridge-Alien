@@ -102,13 +102,18 @@ public class PlayerManager : ISaveable
         return Mathf.FloorToInt((GetGravityAdaptationBonusMultiplier() - 1f) * 100f);
     }
 
-    public float AddGold(int gold)
+    public float AddGold(int gold, string reason = "unknown", string sourceId = null, string stageId = null)
     {
         PlayerData.PlayerGold += gold;
 
         PlayerData.PlayerGold = Math.Clamp(PlayerData.PlayerGold, 0, Int32.MaxValue);
 
         OnPlayerDataChanged?.Invoke();
+
+        if (gold != 0)
+        {
+            Managers.Analytics.TrackGoldChange(stageId, gold, PlayerData.PlayerGold, reason, sourceId);
+        }
 
         return gold;
     }
@@ -125,19 +130,27 @@ public class PlayerManager : ISaveable
 
     public bool UpgradeSkill(Define.MiniGameSkillType skillType, int gold)
     {
+        int prevLevel = PlayerData.MiniGameUnloadSkillLevel[skillType];
+
         if (PlayerData.PlayerGold < gold)
         {
-            return false; // Not enough gold
+            Managers.Analytics.TrackSkillUpgrade(skillType.ToString(), prevLevel, prevLevel, gold, PlayerData.PlayerGold, false, "insufficient_gold");
+            return false;
         }
 
         int maxLevel = Managers.Data.MiniGameSkillData.MiniGameSkillData[skillType].GetMaxLevel();
-        if (PlayerData.MiniGameUnloadSkillLevel[skillType] < maxLevel)
+        if (prevLevel < maxLevel)
         {
-            PlayerData.MiniGameUnloadSkillLevel[skillType]++;
+            int newLevel = prevLevel + 1;
+            PlayerData.MiniGameUnloadSkillLevel[skillType] = newLevel;
             OnPlayerDataChanged?.Invoke();
-            AddGold(-gold);
+            AddGold(-gold, "skill_upgrade", skillType.ToString());
+            Managers.Analytics.TrackSkillUpgrade(skillType.ToString(), prevLevel, newLevel, gold, PlayerData.PlayerGold, true, null);
+            Managers.Analytics.Flush();
             return true;
         }
+
+        Managers.Analytics.TrackSkillUpgrade(skillType.ToString(), prevLevel, prevLevel, gold, PlayerData.PlayerGold, false, "max_level");
         return false;
     }
 
@@ -392,4 +405,3 @@ public class PlayerManager : ISaveable
         Init(data.PlayerData);
     }
 }
-
