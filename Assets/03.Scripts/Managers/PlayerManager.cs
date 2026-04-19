@@ -107,6 +107,16 @@ public class PlayerManager : ISaveable
         return PlayerData.Stats[Define.PlayerStatsType.Strength];
     }
 
+    public int GetStrengthMoveSpeedReductionDecreasePercent()
+    {
+        return Mathf.FloorToInt(PlayerData.Stats[Define.PlayerStatsType.Strength] / 20f);
+    }
+
+    public float GetStrengthAdjustedMoveSpeedReductionRatio(float baseReductionRatioPerBox)
+    {
+        return Mathf.Max(0f, baseReductionRatioPerBox - GetStrengthMoveSpeedReductionDecreasePercent());
+    }
+
     public int GetLuckBonusPercent()
     {
         return PlayerData.Stats[Define.PlayerStatsType.Luck];

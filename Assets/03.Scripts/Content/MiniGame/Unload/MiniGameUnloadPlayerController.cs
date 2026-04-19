@@ -23,7 +23,7 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
     private float _interactionRange = 5f;
     private float _boxHeight = 0f;
     private float _boxOffset = 0.8f;
-    private float _moveSpeedReductionRatio = 2.0f;
+    private float _moveSpeedReductionRatio = 5.0f;
     private float _moveSpeedBonus = 1f;
     private List<MiniGameUnloadBasePoint> _cachedPoints = new List<MiniGameUnloadBasePoint>();
     private UnityAction<List<MiniGameUnloadBox>> OnBoxListChanged;
@@ -158,7 +158,9 @@ public class MiniGameUnloadPlayerController : IPlayerController, ISkillControlle
             return;
         }
 
-        input = input - (input * (_boxList.CurrentUnloadBoxIndex * (_moveSpeedReductionRatio / 100.0f)));
+        float adjustedReductionRatio = Managers.Player.GetStrengthAdjustedMoveSpeedReductionRatio(_moveSpeedReductionRatio);
+        float totalReductionRatio = _boxList.CurrentUnloadBoxIndex * (adjustedReductionRatio / 100.0f);
+        input = input - (input * totalReductionRatio);
         input = ConvertToCameraRelativeInput(input);
         Player.PlayerMovement(input);
     }

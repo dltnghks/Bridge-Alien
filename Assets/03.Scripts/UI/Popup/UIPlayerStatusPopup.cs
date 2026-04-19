@@ -108,8 +108,8 @@ public class UIPlayerStatusPopup : UIPopup
     }
     private void SetStrengthDescText()
     {
-        int value = Managers.Player.GetStrengthBonusPercent();
-        string newText = "상자 운반 시 이동속도가 <color=#36E100>{0}%</color> 상승합니다.";
+        int value = Managers.Player.GetStrengthMoveSpeedReductionDecreasePercent();
+        string newText = "상자 운반 시 이동속도 감소량이 <color=#36E100>{0}%</color> 감소합니다.";
         GetText((int)Texts.StrengthDescText).SetText(string.Format(newText, value));
     }
     private void SetLuckDescText()

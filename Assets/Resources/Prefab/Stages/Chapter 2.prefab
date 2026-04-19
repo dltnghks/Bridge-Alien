@@ -1335,7 +1335,7 @@ MonoBehaviour:
   _gameSetting:
     GamePlayTime: 100
     DetectionBoxRadius: 2
-    MoveSpeedReductionRatio: 2
+    MoveSpeedReductionRatio: 5
     MaxColdAreaBoxIndex: 1
   _skillList:
   - {fileID: 3759451618711719680}
