@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,6 +7,9 @@ using Random = UnityEngine.Random;
 
 public class UIPlayerTaskPopup : UIPopup
 {
+    private const string DefaultTaskId = "C01_T01";
+    private static string s_lastExecutedTaskId = string.Empty;
+
     enum Texts
     {
         ExperienceValueText,
@@ -45,21 +46,16 @@ public class UIPlayerTaskPopup : UIPopup
         UITaskAnimPortrait,
     }
 
-    private UITaskTabButton _currentTaskTab = null;
-    private UITaskButton _currentTaskButton = null;
-    private UITaskGroup _uiTaskGroup = null;
-    private UIActiveButton _uiConfirmButton = null;
-    private ScrollRect _scrollRect = null;
-    
-    private PlayerTaskData _selectedTaskData = null;
+    private UITaskTabButton _currentTaskTab;
+    private UITaskButton _currentTaskButton;
+    private UITaskGroup _uiTaskGroup;
+    private UIActiveButton _uiConfirmButton;
+    private ScrollRect _scrollRect;
+    private PlayerTaskData _selectedTaskData;
 
-    public Action<bool> OnClickUpgrade; 
+    public Action<bool> OnClickUpgrade;
 
-    public TaskAnimator TaskAnimator
-    {
-        get;
-        private set;
-    }
+    public TaskAnimator TaskAnimator { get; private set; }
 
     public override bool Init()
     {
@@ -67,58 +63,41 @@ public class UIPlayerTaskPopup : UIPopup
         {
             return false;
         }
-        
+
         BindButton(typeof(Buttons));
         BindImage(typeof(Images));
         BindObject(typeof(Objects));
         BindText(typeof(Texts));
-        
+
         TaskAnimator = GetObject((int)Objects.UITaskAnimPortrait).GetComponent<TaskAnimator>();
-        
+
         _uiConfirmButton = GetButton((int)Buttons.ConfirmButton).gameObject.GetOrAddComponent<UIActiveButton>();
         _uiConfirmButton.Init();
         _uiConfirmButton.gameObject.BindEvent(OnClickConfirmButton);
-        
+
         InitTabGroup();
         InitTaskGroup();
-        
+
         SetTaskStatText();
-        
-        // 초기화가 끝난 후, 첫 번째 탭 선택
-        if (Managers.Player.GetStats(Define.PlayerStatsType.Fatigue) == 0)
-        {
-            // 피로도가 없으면 휴식&유흥 탭
-            SelectTabButton(GetButton((int)Buttons.EntertainmentButton).GetComponent<UITaskTabButton>());    
-        }
-        else
-        {
-            // 기본은 자기계발
-            SelectTabButton(GetButton((int)Buttons.SelfDevelopmentButton).GetComponent<UITaskTabButton>());
-        }
-        
-        
+        SelectInitialTask();
+
         return true;
     }
 
     private void InitTabGroup()
     {
-        // 버튼 3개 세팅
         GetButton((int)Buttons.SelfDevelopmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.SelfDevelopment);
         GetButton((int)Buttons.EntertainmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.Entertainment);
         GetButton((int)Buttons.InvestmentButton).GetOrAddComponent<UITaskTabButton>().Init(this, Define.TaskType.Fortune);
     }
-        
 
     private void InitTaskGroup()
     {
         _uiTaskGroup = GetObject((int)Objects.UITaskGroup).GetOrAddComponent<UITaskGroup>();
         _uiTaskGroup.Init(this);
-        
-        // 처음 킬 때 스크롤 제일 위로 올려두기
         _scrollRect = _uiTaskGroup.GetOrAddComponent<ScrollRect>();
     }
 
-    // 수행하기
     private void OnClickConfirmButton()
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
@@ -147,6 +126,7 @@ public class UIPlayerTaskPopup : UIPopup
         Managers.Player.AddStats(Define.PlayerStatsType.Luck, actualLuckDelta);
 
         Managers.Player.AddGold(-_selectedTaskData.RequirementGold, "task_execute", _selectedTaskData.TaskID);
+        s_lastExecutedTaskId = _selectedTaskData.TaskID;
         Managers.Analytics.TrackTaskExecute(
             _selectedTaskData.TaskID,
             _selectedTaskData.TaskName,
@@ -164,10 +144,34 @@ public class UIPlayerTaskPopup : UIPopup
 
         ClosePopupUI();
     }
-    
+
+    private void SelectInitialTask()
+    {
+        string taskId = s_lastExecutedTaskId;
+        if (string.IsNullOrEmpty(taskId))
+        {
+            taskId = DefaultTaskId;
+        }
+
+        if (!Managers.Data.PlayerTaskData.TryGetTaskType(taskId, out Define.TaskType taskType))
+        {
+            taskId = DefaultTaskId;
+            taskType = Define.TaskType.SelfDevelopment;
+        }
+
+        UITaskTabButton taskTabButton = GetTaskTabButton(taskType);
+        if (taskTabButton == null)
+        {
+            taskTabButton = GetButton((int)Buttons.SelfDevelopmentButton).GetComponent<UITaskTabButton>();
+            taskId = DefaultTaskId;
+        }
+
+        SelectTabButton(taskTabButton);
+        SelectTaskButtonById(taskId);
+    }
+
     public void SelectTabButton(UITaskTabButton taskTabButton)
     {
-        // 현재 고른 Task Type 변경
         if (_currentTaskTab != null)
         {
             _currentTaskTab.Deselect();
@@ -176,45 +180,66 @@ public class UIPlayerTaskPopup : UIPopup
         _currentTaskTab = taskTabButton;
         _currentTaskTab.Select();
         SetTaskGroup();
-        
-        // 스크롤 제일 위로 올리기
         _scrollRect.verticalNormalizedPosition = 1.0f;
     }
 
-    // 타입을 가지고 task 세팅
     private void SetTaskGroup()
     {
         Logger.Log($"{_currentTaskTab.TaskType} task group set");
-        
-        // 처음 일과 팝업 오픈 시 일과 선택
-        bool first = !(_uiTaskGroup.TaskButtons.Count > 1);
-        
-        if (_uiTaskGroup != null)
+
+        if (_uiTaskGroup == null)
         {
-            _uiTaskGroup.Setup(_currentTaskTab.TaskType);
-            if (first)
-            {
-                SelectTaskButton(_uiTaskGroup.TaskButtons[0]);
-            }
-            else
-            {
-                _currentTaskButton?.Deselect();
-            }
+            return;
         }
+
+        _uiTaskGroup.Setup(_currentTaskTab.TaskType);
+        _currentTaskButton?.Deselect();
 
         foreach (var taskButton in _uiTaskGroup.TaskButtons)
         {
             if (taskButton.PlayerTaskData == _selectedTaskData)
             {
                 SelectTaskButton(taskButton);
-                break;
+                return;
+            }
+        }
+
+        if (_uiTaskGroup.TaskButtons.Count > 0)
+        {
+            SelectTaskButton(_uiTaskGroup.TaskButtons[0]);
+        }
+    }
+
+    private UITaskTabButton GetTaskTabButton(Define.TaskType taskType)
+    {
+        return taskType switch
+        {
+            Define.TaskType.SelfDevelopment => GetButton((int)Buttons.SelfDevelopmentButton).GetComponent<UITaskTabButton>(),
+            Define.TaskType.Entertainment => GetButton((int)Buttons.EntertainmentButton).GetComponent<UITaskTabButton>(),
+            Define.TaskType.Fortune => GetButton((int)Buttons.InvestmentButton).GetComponent<UITaskTabButton>(),
+            _ => null,
+        };
+    }
+
+    private void SelectTaskButtonById(string taskId)
+    {
+        if (string.IsNullOrEmpty(taskId) || _uiTaskGroup == null)
+        {
+            return;
+        }
+
+        foreach (var taskButton in _uiTaskGroup.TaskButtons)
+        {
+            if (taskButton.PlayerTaskData != null && taskButton.PlayerTaskData.TaskID == taskId)
+            {
+                SelectTaskButton(taskButton);
+                return;
             }
         }
     }
 
     public void SelectTaskButton(UITaskButton taskButton)
     {
-        // 현재 고른 Task 변경
         if (_currentTaskButton != null)
         {
             _currentTaskButton.Deselect();
@@ -222,7 +247,7 @@ public class UIPlayerTaskPopup : UIPopup
 
         _currentTaskButton = taskButton;
         _selectedTaskData = _currentTaskButton.PlayerTaskData;
-        
+
         _currentTaskButton.Select();
         SetTaskStatTextImage();
         SetTaskConfirmButton();
@@ -238,12 +263,12 @@ public class UIPlayerTaskPopup : UIPopup
         if (_selectedTaskData.RequirementGold > Managers.Player.GetGold())
         {
             _uiConfirmButton?.Deactivate();
-            GetText((int)Texts.ConfirmButtonText).text = "소지금 부족";
+            GetText((int)Texts.ConfirmButtonText).text = "\uC18C\uC9C0\uAE08 \uBD80\uC871";
         }
         else
         {
             _uiConfirmButton?.Activate();
-            GetText((int)Texts.ConfirmButtonText).text = "수행하기";
+            GetText((int)Texts.ConfirmButtonText).text = "\uC218\uD589\uD558\uAE30";
         }
     }
 
@@ -258,13 +283,11 @@ public class UIPlayerTaskPopup : UIPopup
     }
 
     private void SetTaskStatTextImage()
-    {   
+    {
         TaskAnimator.TriggerTask(_selectedTaskData.TaskID);
 
-
         SetTaskStatImages(false);
-            
-        // 능력치 상승치 표기
+
         if (_selectedTaskData.ExperienceValue > 0)
         {
             GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
@@ -273,18 +296,16 @@ public class UIPlayerTaskPopup : UIPopup
         {
             GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
-        
-        
+
         if (_selectedTaskData.StrengthValue > 0)
         {
-            GetImage((int)Images.StrengthValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);   
+            GetImage((int)Images.StrengthValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
         else if (_selectedTaskData.StrengthValue < 0)
         {
             GetImage((int)Images.StrengthValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
-        
-        
+
         if (_selectedTaskData.GravityAdaptationValue > 0)
         {
             GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
@@ -293,25 +314,23 @@ public class UIPlayerTaskPopup : UIPopup
         {
             GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
-        
+
         if (_selectedTaskData.LuckMinValue != 0)
         {
-            // 운 랜덤 상승
             GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, 1f);
         }
-        
-        // 썸네일 텍스트 설정
+
         GetText((int)Texts.ThumbnailText).text = _selectedTaskData.ThumbnailText;
     }
 
     private void SetTaskStatImages(bool active)
     {
-        float value = active == true ? 1.0f : 0.0f;
+        float value = active ? 1.0f : 0.0f;
         GetImage((int)Images.ExperienceValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.StrengthValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.GravityAdaptationValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.LuckValueTextIncreaseImage).color = new Color(1f, 1f, 1f, value);
-        
+
         GetImage((int)Images.ExperienceValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.StrengthValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);

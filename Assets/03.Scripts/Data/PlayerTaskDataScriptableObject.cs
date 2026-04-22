@@ -43,4 +43,27 @@ public class PlayerTaskDataScriptableObject : ScriptableObject
         return null;
     }
 
+    public bool TryGetTaskType(string taskId, out Define.TaskType taskType)
+    {
+        foreach (var pair in PlayerTaskData)
+        {
+            if (pair.Value == null)
+            {
+                continue;
+            }
+
+            foreach (var taskData in pair.Value)
+            {
+                if (taskData != null && taskData.TaskID == taskId)
+                {
+                    taskType = pair.Key;
+                    return true;
+                }
+            }
+        }
+
+        taskType = Define.TaskType.Unknown;
+        return false;
+    }
+
 }
