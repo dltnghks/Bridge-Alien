@@ -13,7 +13,7 @@ public class MiniGameSettingBase
 public class MiniGameUnloadSetting :MiniGameSettingBase
 {
     public float DetectionBoxRadius = 2.0f;
-    public float MoveSpeedReductionRatio = 5.0f;
+    public float MoveSpeedReductionRatio = 10.0f;
     public int MaxColdAreaBoxIndex = 1;
 }
 
