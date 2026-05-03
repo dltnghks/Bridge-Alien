@@ -15,6 +15,8 @@ public class UIHouseScene : UIScene
     private const float FatigueRecoverEffectEndScale = 0.55f;
     private const int FatigueRecoverEffectSortingOrder = 1000;
     private const int GoldGainPerEffect = 500;
+    private const int GoldGainMaxEffectCount = 12;
+    private const float GoldGainEffectTotalDuration = 1.6f;
     private const float GoldGainEffectDuration = 0.65f;
     private const float GoldGainEffectSpawnInterval = 0.12f;
     private const float GoldGainEffectStartScale = 1.25f;
@@ -86,7 +88,7 @@ public class UIHouseScene : UIScene
         GetButton((int)Buttons.WorkModuleButton).gameObject.BindEvent(OnClickWorkModuleButton);
         GetButton((int)Buttons.UINextButton).gameObject.BindEvent(OnClickNextButton);
 
-        SetGoldText();
+        PlayPendingGoldGainEffects();
         SetFatigue();
         PlayPendingFatigueRecoverEffects();
         
@@ -206,8 +208,26 @@ public class UIHouseScene : UIScene
             return;
         }
 
+        Managers.Player.ConsumePendingGoldGainEffectAmount(curGold - animationBaseGold);
         _goldEffectTargetGold = curGold;
         StartCoroutine(PlayGoldGainEffects(curGold - animationBaseGold));
+    }
+
+    private void PlayPendingGoldGainEffects()
+    {
+        int curGold = Managers.Player.GetGold();
+        int pendingGoldGain = Managers.Player.ConsumePendingGoldGainEffectAmount(curGold);
+
+        if (pendingGoldGain <= 0)
+        {
+            SetGoldText();
+            return;
+        }
+
+        int previousGold = Mathf.Max(0, curGold - pendingGoldGain);
+        _goldEffectTargetGold = curGold;
+        SetDisplayedGold(previousGold);
+        StartCoroutine(PlayGoldGainEffects(curGold - previousGold));
     }
 
     private void SetDisplayedGold(int gold)
@@ -218,14 +238,39 @@ public class UIHouseScene : UIScene
 
     private IEnumerator PlayGoldGainEffects(int gainedGold)
     {
-        int remainingGold = gainedGold;
-        while (remainingGold > 0)
+        int effectCount = Mathf.Min(GoldGainMaxEffectCount, Mathf.CeilToInt(gainedGold / (float)GoldGainPerEffect));
+        if (effectCount <= 0)
         {
-            int effectGold = Mathf.Min(GoldGainPerEffect, remainingGold);
+            yield break;
+        }
+
+        float spawnInterval = GetGoldGainEffectSpawnInterval(effectCount);
+        int remainingGold = gainedGold;
+        int remainingEffectCount = effectCount;
+
+        while (remainingGold > 0 && remainingEffectCount > 0)
+        {
+            int effectGold = Mathf.CeilToInt(remainingGold / (float)remainingEffectCount);
             PlayGoldGainEffect(effectGold);
             remainingGold -= effectGold;
-            yield return new WaitForSeconds(GoldGainEffectSpawnInterval);
+            remainingEffectCount--;
+
+            if (remainingEffectCount > 0)
+            {
+                yield return new WaitForSeconds(spawnInterval);
+            }
         }
+    }
+
+    private float GetGoldGainEffectSpawnInterval(int effectCount)
+    {
+        if (effectCount <= 1)
+        {
+            return GoldGainEffectSpawnInterval;
+        }
+
+        float spawnWindow = Mathf.Max(0.0f, GoldGainEffectTotalDuration - GoldGainEffectDuration);
+        return spawnWindow / (effectCount - 1);
     }
 
     private void PlayGoldGainEffect(int effectGold)
