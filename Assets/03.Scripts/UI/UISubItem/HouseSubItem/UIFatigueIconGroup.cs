@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIFatigueIconGroup : UISubItem
 {
@@ -39,5 +40,17 @@ public class UIFatigueIconGroup : UISubItem
         {
             _fatigueIcons[i].SetActive(i < iconCount);
         }
+    }
+
+    public Image GetFatigueIconImage(int index)
+    {
+        Init();
+
+        if (index < 0 || index >= _fatigueIcons.Length)
+        {
+            return null;
+        }
+
+        return GetImage(index);
     }
 }

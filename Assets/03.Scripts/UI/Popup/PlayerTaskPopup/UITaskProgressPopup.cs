@@ -19,6 +19,8 @@ public class UITaskProgressPopup : UIPopup
     
     private TaskAnimator _taskAnimator;
     private Slider _slider;
+    private PlayerTaskExecutionData _executionData;
+    private PlayerTaskData _taskData;
 
     public override bool Init()
     {
@@ -37,6 +39,7 @@ public class UITaskProgressPopup : UIPopup
         _slider.DOValue(1.0f, 5f).OnComplete(
             () =>
             {
+                CompleteTask();
                 ClosePopupUI();
             });
         
@@ -47,20 +50,48 @@ public class UITaskProgressPopup : UIPopup
     {
         base.Init(data);
         
-        if (data is PlayerTaskData taskData)
-        {    
-            // 결과 팝업 예약
-            Managers.UI.RequestPopup<UITaskResultPopup>(data);
-            
-            // 애니메이션 설정
-            _taskAnimator.TriggerTask(taskData.TaskID);
-
-            // 텍스트 설정
-            GetText((int)Texts.TaskProgressText).text = taskData.TaskProgressText;
+        if (data is PlayerTaskExecutionData executionData)
+        {
+            _executionData = executionData;
+            _taskData = executionData.TaskData;
+            SetTaskData(_taskData);
+        }
+        else if (data is PlayerTaskData taskData)
+        {
+            _taskData = taskData;
+            SetTaskData(_taskData);
         }
         else
         {
             Logger.LogWarning("data is not PlayerTaskData");
+        }
+    }
+
+    private void SetTaskData(PlayerTaskData taskData)
+    {
+        if (taskData == null)
+        {
+            return;
+        }
+
+        // 애니메이션 설정
+        _taskAnimator.TriggerTask(taskData.TaskID);
+
+        // 텍스트 설정
+        GetText((int)Texts.TaskProgressText).text = taskData.TaskProgressText;
+    }
+
+    private void CompleteTask()
+    {
+        _executionData?.Apply();
+
+        if (_executionData != null)
+        {
+            Managers.UI.RequestPopup<UITaskResultPopup>(_executionData);
+        }
+        else if (_taskData != null)
+        {
+            Managers.UI.RequestPopup<UITaskResultPopup>(_taskData);
         }
     }
 

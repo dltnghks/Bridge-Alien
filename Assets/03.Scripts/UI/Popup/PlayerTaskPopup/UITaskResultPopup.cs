@@ -44,7 +44,15 @@ public class UITaskResultPopup : UIPopup
     public override void Init(object data)
     {
         base.Init(data);
-        if (data is PlayerTaskData taskData)
+        if (data is PlayerTaskExecutionData executionData)
+        {
+            _selectedTaskData = executionData.TaskData;
+
+            // 텍스트 세팅
+            SetText();
+            SetTaskStatTextImage();
+        }
+        else if (data is PlayerTaskData taskData)
         {
             _selectedTaskData = taskData;
 

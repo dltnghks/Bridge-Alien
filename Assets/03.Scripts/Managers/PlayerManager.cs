@@ -13,6 +13,7 @@ public class PlayerManager : ISaveable
     public PlayerData PlayerData { get; private set; }
 
     public UnityAction OnPlayerDataChanged { get; set; }
+    private int _pendingFatigueRecoverEffectCount;
 
     public void Init(PlayerData playerData = null)
     {
@@ -57,6 +58,8 @@ public class PlayerManager : ISaveable
     public void AddStats(Define.PlayerStatsType type, int value)
     {
         int maxValue = 100;
+        int previousValue = PlayerData.Stats[type];
+
         // 피로도 감소의 경우
         if (type == Define.PlayerStatsType.Fatigue)
         {
@@ -66,7 +69,19 @@ public class PlayerManager : ISaveable
         PlayerData.Stats[type] += value;
         PlayerData.Stats[type] = Mathf.Clamp(PlayerData.Stats[type], 0, maxValue);
 
+        if (type == Define.PlayerStatsType.Fatigue && PlayerData.Stats[type] > previousValue)
+        {
+            _pendingFatigueRecoverEffectCount += PlayerData.Stats[type] - previousValue;
+        }
+
         OnPlayerDataChanged?.Invoke();
+    }
+
+    public int ConsumePendingFatigueRecoverEffectCount(int maxCount = int.MaxValue)
+    {
+        int count = Math.Min(_pendingFatigueRecoverEffectCount, maxCount);
+        _pendingFatigueRecoverEffectCount -= count;
+        return count;
     }
 
     public void FillFatigue()

@@ -189,37 +189,15 @@ public class UIPlayerTaskPopup : UIPopup
             return;
         }
 
-        int actualLuckDelta = 0;
-        for (int i = 0; i < effectiveTaskCount; i++)
-        {
-            actualLuckDelta += Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue);
-        }
-
         OnClickUpgrade?.Invoke(true);
-        Managers.UI.RequestPopup<UITaskProgressPopup>(_selectedTaskData);
+        PlayerTaskExecutionData executionData = new PlayerTaskExecutionData(
+            _selectedTaskData,
+            _currentTaskTab.TaskType,
+            effectiveTaskCount,
+            taskCost);
+        Managers.UI.RequestPopup<UITaskProgressPopup>(executionData);
 
-        Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, _selectedTaskData.FatigueValue * effectiveTaskCount);
-        Managers.Player.AddStats(Define.PlayerStatsType.Experience, _selectedTaskData.ExperienceValue * effectiveTaskCount);
-        Managers.Player.AddStats(Define.PlayerStatsType.Strength, _selectedTaskData.StrengthValue * effectiveTaskCount);
-        Managers.Player.AddStats(Define.PlayerStatsType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue * effectiveTaskCount);
-        Managers.Player.AddStats(Define.PlayerStatsType.Luck, actualLuckDelta);
-
-        Managers.Player.AddGold(-taskCost, "task_execute", _selectedTaskData.TaskID);
         s_lastExecutedTaskId = _selectedTaskData.TaskID;
-        Managers.Analytics.TrackTaskExecute(
-            _selectedTaskData.TaskID,
-            _selectedTaskData.TaskName,
-            _currentTaskTab.TaskType.ToString(),
-            taskCost,
-            _selectedTaskData.FatigueValue * effectiveTaskCount,
-            _selectedTaskData.ExperienceValue * effectiveTaskCount,
-            _selectedTaskData.StrengthValue * effectiveTaskCount,
-            _selectedTaskData.GravityAdaptationValue * effectiveTaskCount,
-            _selectedTaskData.LuckMinValue * effectiveTaskCount,
-            _selectedTaskData.LuckMaxValue * effectiveTaskCount,
-            actualLuckDelta,
-            Managers.Player.GetGold());
-        Managers.Analytics.Flush();
 
         ClosePopupUI();
     }
@@ -482,5 +460,60 @@ public class UIPlayerTaskPopup : UIPopup
         GetImage((int)Images.StrengthValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.GravityAdaptationValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
         GetImage((int)Images.LuckValueTextDecreaseImage).color = new Color(1f, 1f, 1f, value);
+    }
+}
+
+public class PlayerTaskExecutionData
+{
+    public PlayerTaskData TaskData { get; }
+    public Define.TaskType TaskType { get; }
+    public int TaskCount { get; }
+    public int TaskCost { get; }
+    public int ActualLuckDelta { get; private set; }
+    public bool IsApplied { get; private set; }
+
+    public PlayerTaskExecutionData(PlayerTaskData taskData, Define.TaskType taskType, int taskCount, int taskCost)
+    {
+        TaskData = taskData;
+        TaskType = taskType;
+        TaskCount = taskCount;
+        TaskCost = taskCost;
+    }
+
+    public void Apply()
+    {
+        if (IsApplied || TaskData == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < TaskCount; i++)
+        {
+            ActualLuckDelta += Random.Range(TaskData.LuckMinValue, TaskData.LuckMaxValue);
+        }
+
+        Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, TaskData.FatigueValue * TaskCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.Experience, TaskData.ExperienceValue * TaskCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.Strength, TaskData.StrengthValue * TaskCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.GravityAdaptation, TaskData.GravityAdaptationValue * TaskCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.Luck, ActualLuckDelta);
+
+        Managers.Player.AddGold(-TaskCost, "task_execute", TaskData.TaskID);
+        Managers.Analytics.TrackTaskExecute(
+            TaskData.TaskID,
+            TaskData.TaskName,
+            TaskType.ToString(),
+            TaskCost,
+            TaskData.FatigueValue * TaskCount,
+            TaskData.ExperienceValue * TaskCount,
+            TaskData.StrengthValue * TaskCount,
+            TaskData.GravityAdaptationValue * TaskCount,
+            TaskData.LuckMinValue * TaskCount,
+            TaskData.LuckMaxValue * TaskCount,
+            ActualLuckDelta,
+            Managers.Player.GetGold());
+        Managers.Analytics.Flush();
+
+        IsApplied = true;
     }
 }
