@@ -28,12 +28,16 @@ public class UIHouseScene : UIScene
 
     enum Objects
     {
+        UIGold,
+        UIFatigue,
         FatigueIconGroup
     }
 
     private UIPopup _currentPopup = null;
     private UIFatigueIconGroup _fatigueIconGroup;
     private RectTransform _rectTransform;
+    private RectTransform _goldUI;
+    private RectTransform _fatigueUI;
     private Canvas _canvas;
     private int _displayedFatigue = -1;
     [SerializeField] private Sprite[] _timeImages;
@@ -51,7 +55,10 @@ public class UIHouseScene : UIScene
 
         _rectTransform = transform as RectTransform;
         _canvas = GetComponentInParent<Canvas>();
+        _goldUI = GetObject((int)Objects.UIGold).transform as RectTransform;
+        _fatigueUI = GetObject((int)Objects.UIFatigue).transform as RectTransform;
         _fatigueIconGroup = GetObject((int)Objects.FatigueIconGroup).GetOrAddComponent<UIFatigueIconGroup>();
+        MoveStatusUIToSceneRoot();
         
         GetButton((int)Buttons.PlayerStatusButton).gameObject.BindEvent(OnClickPlayerStatusButton);
         GetButton((int)Buttons.TaskButton).gameObject.BindEvent(OnClickTaskButton);
@@ -80,6 +87,7 @@ public class UIHouseScene : UIScene
         
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _currentPopup = Managers.UI.ShowPopUI<UIPlayerStatusPopup>();
+        PlaceStatusUIBehindPopup(_currentPopup);
     }
 
     private void OnClickTaskButton()
@@ -93,6 +101,7 @@ public class UIHouseScene : UIScene
 
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         UIPlayerTaskPopup taskPopup = Managers.UI.ShowPopUI<UIPlayerTaskPopup>("UIPlayerTaskPopup", transform);
+        PlaceStatusUIBehindPopup(taskPopup);
     }
 
 
@@ -100,6 +109,7 @@ public class UIHouseScene : UIScene
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         _currentPopup = Managers.UI.ShowPopUI<UIWorkModulePopup>();
+        PlaceStatusUIBehindPopup(_currentPopup);
     }
 
     private void OnClickNextButton()
@@ -108,7 +118,46 @@ public class UIHouseScene : UIScene
         StartCoroutine(ResetWorldInputBlock());
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
         var stagePopup = Managers.UI.ShowPopUI<UIStagePopup>();
+        PlaceStatusUIBehindPopup(stagePopup);
         stagePopup.InitStageButtonGroup();
+    }
+
+    private void MoveStatusUIToSceneRoot()
+    {
+        MoveToSceneRoot(_goldUI);
+        MoveToSceneRoot(_fatigueUI);
+    }
+
+    private void MoveToSceneRoot(RectTransform target)
+    {
+        if (target == null || target.parent == transform)
+        {
+            return;
+        }
+
+        target.SetParent(transform, false);
+    }
+
+    private void PlaceStatusUIBehindPopup(UIPopup popup)
+    {
+        if (popup == null || popup.transform.parent != transform)
+        {
+            return;
+        }
+
+        PlaceBeforePopup(_goldUI, popup.transform);
+        PlaceBeforePopup(_fatigueUI, popup.transform);
+    }
+
+    private void PlaceBeforePopup(RectTransform target, Transform popupTransform)
+    {
+        if (target == null || target.parent != transform)
+        {
+            return;
+        }
+
+        int popupIndex = popupTransform.GetSiblingIndex();
+        target.SetSiblingIndex(Mathf.Max(0, popupIndex - 1));
     }
     
     private void SetGoldText()
