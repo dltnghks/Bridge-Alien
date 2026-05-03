@@ -8,14 +8,26 @@ using UnityEngine.UI;
 public class UIHouseScene : UIScene
 {
     public static bool BlockWorldInputThisFrame { get; private set; }
+    private const string HousePlayerObjectName = "HousePlayer";
     private const float FatigueRecoverEffectDuration = 0.65f;
     private const float FatigueRecoverEffectSpawnInterval = 0.18f;
     private const float FatigueRecoverEffectStartScale = 1.25f;
     private const float FatigueRecoverEffectEndScale = 0.55f;
     private const int FatigueRecoverEffectSortingOrder = 1000;
+    private const int GoldGainPerEffect = 500;
+    private const float GoldGainEffectDuration = 0.65f;
+    private const float GoldGainEffectSpawnInterval = 0.12f;
+    private const float GoldGainEffectStartScale = 1.25f;
+    private const float GoldGainEffectEndScale = 0.55f;
+    private const int GoldGainEffectSortingOrder = 1000;
 
     enum Texts{
         GoldText,
+    }
+
+    enum Images
+    {
+        GoldIcon,
     }
 
     enum Buttons
@@ -38,7 +50,12 @@ public class UIHouseScene : UIScene
     private RectTransform _rectTransform;
     private RectTransform _goldUI;
     private RectTransform _fatigueUI;
+    private Transform _housePlayerTransform;
+    private Image _goldIconImage;
+    private Vector3 _goldIconDefaultScale = Vector3.one;
     private Canvas _canvas;
+    private int _displayedGold = -1;
+    private int _goldEffectTargetGold = -1;
     private int _displayedFatigue = -1;
     [SerializeField] private Sprite[] _timeImages;
 
@@ -50,6 +67,7 @@ public class UIHouseScene : UIScene
         }
 
         BindText(typeof(Texts));
+        BindImage(typeof(Images));
         BindButton(typeof(Buttons));
         BindObject(typeof(Objects));
 
@@ -57,6 +75,9 @@ public class UIHouseScene : UIScene
         _canvas = GetComponentInParent<Canvas>();
         _goldUI = GetObject((int)Objects.UIGold).transform as RectTransform;
         _fatigueUI = GetObject((int)Objects.UIFatigue).transform as RectTransform;
+        _housePlayerTransform = GameObject.Find(HousePlayerObjectName)?.transform;
+        _goldIconImage = GetImage((int)Images.GoldIcon);
+        _goldIconDefaultScale = _goldIconImage != null ? _goldIconImage.rectTransform.localScale : Vector3.one;
         _fatigueIconGroup = GetObject((int)Objects.FatigueIconGroup).GetOrAddComponent<UIFatigueIconGroup>();
         MoveStatusUIToSceneRoot();
         
@@ -68,7 +89,7 @@ public class UIHouseScene : UIScene
         SetGoldText();
         SetFatigue();
         PlayPendingFatigueRecoverEffects();
-
+        
         return true;
     }
 
@@ -162,7 +183,100 @@ public class UIHouseScene : UIScene
     
     private void SetGoldText()
     {
-        GetText((int)Texts.GoldText).text = $"{Managers.Player.GetGold()}N";
+        int curGold = Managers.Player.GetGold();
+
+        if (_displayedGold < 0)
+        {
+            _goldEffectTargetGold = curGold;
+            SetDisplayedGold(curGold);
+            return;
+        }
+
+        if (curGold <= _displayedGold)
+        {
+            _goldEffectTargetGold = curGold;
+            SetDisplayedGold(curGold);
+            return;
+        }
+
+        int animationBaseGold = Mathf.Max(_displayedGold, _goldEffectTargetGold);
+        if (curGold <= animationBaseGold)
+        {
+            _goldEffectTargetGold = curGold;
+            return;
+        }
+
+        _goldEffectTargetGold = curGold;
+        StartCoroutine(PlayGoldGainEffects(curGold - animationBaseGold));
+    }
+
+    private void SetDisplayedGold(int gold)
+    {
+        _displayedGold = gold;
+        GetText((int)Texts.GoldText).text = $"{_displayedGold}N";
+    }
+
+    private IEnumerator PlayGoldGainEffects(int gainedGold)
+    {
+        int remainingGold = gainedGold;
+        while (remainingGold > 0)
+        {
+            int effectGold = Mathf.Min(GoldGainPerEffect, remainingGold);
+            PlayGoldGainEffect(effectGold);
+            remainingGold -= effectGold;
+            yield return new WaitForSeconds(GoldGainEffectSpawnInterval);
+        }
+    }
+
+    private void PlayGoldGainEffect(int effectGold)
+    {
+        if (_goldIconImage == null || _rectTransform == null)
+        {
+            return;
+        }
+
+        RectTransform targetRectTransform = _goldIconImage.rectTransform;
+        GameObject effectObject = new GameObject("UIGoldGainEffect", typeof(RectTransform), typeof(Canvas), typeof(CanvasRenderer), typeof(Image));
+        effectObject.transform.SetParent(transform, false);
+        effectObject.transform.SetAsLastSibling();
+
+        Canvas effectCanvas = effectObject.GetComponent<Canvas>();
+        effectCanvas.overrideSorting = true;
+        effectCanvas.sortingOrder = GoldGainEffectSortingOrder;
+
+        Image effectImage = effectObject.GetComponent<Image>();
+        effectImage.sprite = _goldIconImage.sprite;
+        effectImage.preserveAspect = true;
+        effectImage.raycastTarget = false;
+
+        RectTransform effectRectTransform = effectObject.GetComponent<RectTransform>();
+        effectRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+        effectRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        effectRectTransform.pivot = new Vector2(0.5f, 0.5f);
+        effectRectTransform.anchoredPosition = GetEffectStartPosition();
+        effectRectTransform.sizeDelta = targetRectTransform.rect.size;
+        effectRectTransform.localScale = Vector3.one * GoldGainEffectStartScale;
+
+        Vector2 targetPosition = GetAnchoredPosition(targetRectTransform);
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(effectRectTransform.DOAnchorPos(targetPosition, GoldGainEffectDuration).SetEase(Ease.InOutCubic));
+        sequence.Join(effectRectTransform.DOScale(GoldGainEffectEndScale, GoldGainEffectDuration).SetEase(Ease.InQuad));
+        sequence.Join(effectImage.DOFade(0.0f, 0.18f).SetDelay(GoldGainEffectDuration - 0.18f));
+        sequence.OnComplete(() =>
+        {
+            if (_goldEffectTargetGold > _displayedGold)
+            {
+                SetDisplayedGold(Mathf.Min(_displayedGold + effectGold, _goldEffectTargetGold));
+            }
+
+            targetRectTransform.DOKill();
+            targetRectTransform.localScale = _goldIconDefaultScale;
+            targetRectTransform
+                .DOPunchScale(Vector3.one * 0.2f, 0.25f, 6, 0.7f)
+                .OnComplete(() => targetRectTransform.localScale = _goldIconDefaultScale);
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
+            Destroy(effectObject);
+        });
     }
     
     private void SetFatigue()
@@ -232,7 +346,7 @@ public class UIHouseScene : UIScene
         effectRectTransform.anchorMin = new Vector2(0.5f, 0.5f);
         effectRectTransform.anchorMax = new Vector2(0.5f, 0.5f);
         effectRectTransform.pivot = new Vector2(0.5f, 0.5f);
-        effectRectTransform.anchoredPosition = Vector2.zero;
+        effectRectTransform.anchoredPosition = GetEffectStartPosition();
         effectRectTransform.sizeDelta = targetRectTransform.rect.size;
         effectRectTransform.localScale = Vector3.one * FatigueRecoverEffectStartScale;
 
@@ -245,6 +359,7 @@ public class UIHouseScene : UIScene
         {
             targetRectTransform.DOKill();
             targetRectTransform.DOPunchScale(Vector3.one * 0.2f, 0.25f, 6, 0.7f);
+            Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
             Destroy(effectObject);
         });
     }
@@ -258,6 +373,32 @@ public class UIHouseScene : UIScene
         }
 
         Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(uiCamera, target.position);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(_rectTransform, screenPoint, uiCamera, out Vector2 localPoint);
+        return localPoint;
+    }
+
+    private Vector2 GetEffectStartPosition()
+    {
+        return _housePlayerTransform != null
+            ? GetWorldAnchoredPosition(_housePlayerTransform.position)
+            : Vector2.zero;
+    }
+
+    private Vector2 GetWorldAnchoredPosition(Vector3 worldPosition)
+    {
+        Camera worldCamera = Camera.main;
+        if (worldCamera == null)
+        {
+            return Vector2.zero;
+        }
+
+        Vector2 screenPoint = worldCamera.WorldToScreenPoint(worldPosition);
+        Camera uiCamera = null;
+        if (_canvas != null && _canvas.renderMode != RenderMode.ScreenSpaceOverlay)
+        {
+            uiCamera = _canvas.worldCamera;
+        }
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(_rectTransform, screenPoint, uiCamera, out Vector2 localPoint);
         return localPoint;
     }
