@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,7 +9,14 @@ using Random = UnityEngine.Random;
 public class UIPlayerTaskPopup : UIPopup
 {
     private const string DefaultTaskId = "C01_T01";
+    private const string TaskCountExcludedTaskId = "C03_T04";
+    private const int MinTaskCount = 1;
+    private const int MaxTaskCount = 99;
+    private const float TaskCountRepeatStartDelay = 0.35f;
+    private const float TaskCountRepeatInterval = 0.08f;
     private static string s_lastExecutedTaskId = string.Empty;
+    private static string s_lastSelectedTaskId = string.Empty;
+    private static int s_lastTaskCount = MinTaskCount;
 
     enum Texts
     {
@@ -18,6 +26,7 @@ public class UIPlayerTaskPopup : UIPopup
         LuckValueText,
         ThumbnailText,
         ConfirmButtonText,
+        TaskNumberText,
     }
 
     enum Images
@@ -38,6 +47,8 @@ public class UIPlayerTaskPopup : UIPopup
         EntertainmentButton,
         InvestmentButton,
         ConfirmButton,
+        PlusButton,
+        MinusButton,
     }
 
     enum Objects
@@ -52,10 +63,13 @@ public class UIPlayerTaskPopup : UIPopup
     private UIActiveButton _uiConfirmButton;
     private ScrollRect _scrollRect;
     private PlayerTaskData _selectedTaskData;
+    private int _taskCount = s_lastTaskCount;
+    private Coroutine _taskCountRepeatCoroutine;
 
     public Action<bool> OnClickUpgrade;
 
     public TaskAnimator TaskAnimator { get; private set; }
+    public int TaskCount => _taskCount;
 
     public override bool Init()
     {
@@ -74,11 +88,20 @@ public class UIPlayerTaskPopup : UIPopup
         _uiConfirmButton = GetButton((int)Buttons.ConfirmButton).gameObject.GetOrAddComponent<UIActiveButton>();
         _uiConfirmButton.Init();
         _uiConfirmButton.gameObject.BindEvent(OnClickConfirmButton);
+        GetButton((int)Buttons.PlusButton).gameObject.BindEvent(OnPressPlusButton, Define.UIEvent.PointerDown);
+        GetButton((int)Buttons.PlusButton).gameObject.BindEvent(StopTaskCountRepeat, Define.UIEvent.PointerUp);
+        GetButton((int)Buttons.PlusButton).gameObject.BindEvent(StopTaskCountRepeat, Define.UIEvent.BeginDrag);
+        GetButton((int)Buttons.PlusButton).gameObject.BindEvent(StopTaskCountRepeat, Define.UIEvent.EndDrag);
+        GetButton((int)Buttons.MinusButton).gameObject.BindEvent(OnPressMinusButton, Define.UIEvent.PointerDown);
+        GetButton((int)Buttons.MinusButton).gameObject.BindEvent(StopTaskCountRepeat, Define.UIEvent.PointerUp);
+        GetButton((int)Buttons.MinusButton).gameObject.BindEvent(StopTaskCountRepeat, Define.UIEvent.BeginDrag);
+        GetButton((int)Buttons.MinusButton).gameObject.BindEvent(StopTaskCountRepeat, Define.UIEvent.EndDrag);
 
         InitTabGroup();
         InitTaskGroup();
 
         SetTaskStatText();
+        SetTaskCountText();
         SelectInitialTask();
 
         return true;
@@ -98,6 +121,55 @@ public class UIPlayerTaskPopup : UIPopup
         _scrollRect = _uiTaskGroup.GetOrAddComponent<ScrollRect>();
     }
 
+    private void OnDisable()
+    {
+        StopTaskCountRepeat();
+    }
+
+    private void OnPressPlusButton()
+    {
+        StartTaskCountRepeat(1);
+    }
+
+    private void OnPressMinusButton()
+    {
+        StartTaskCountRepeat(-1);
+    }
+
+    private void StartTaskCountRepeat(int delta)
+    {
+        if (IsTaskCountExcluded(_selectedTaskData))
+        {
+            return;
+        }
+
+        StopTaskCountRepeat();
+        SetTaskCount(_taskCount + delta);
+        _taskCountRepeatCoroutine = StartCoroutine(RepeatTaskCountChange(delta));
+    }
+
+    private IEnumerator RepeatTaskCountChange(int delta)
+    {
+        yield return new WaitForSeconds(TaskCountRepeatStartDelay);
+
+        while (true)
+        {
+            SetTaskCount(_taskCount + delta);
+            yield return new WaitForSeconds(TaskCountRepeatInterval);
+        }
+    }
+
+    private void StopTaskCountRepeat()
+    {
+        if (_taskCountRepeatCoroutine == null)
+        {
+            return;
+        }
+
+        StopCoroutine(_taskCountRepeatCoroutine);
+        _taskCountRepeatCoroutine = null;
+    }
+
     private void OnClickConfirmButton()
     {
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
@@ -108,36 +180,43 @@ public class UIPlayerTaskPopup : UIPopup
             return;
         }
 
-        if (Managers.Player.GetGold() < _selectedTaskData.RequirementGold)
+        int effectiveTaskCount = GetEffectiveTaskCount(_selectedTaskData);
+        int taskCost = GetTaskCost(_selectedTaskData);
+
+        if (Managers.Player.GetGold() < taskCost)
         {
             Logger.LogWarning("You do not have enough gold to complete task!");
             return;
         }
 
-        int actualLuckDelta = Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue);
+        int actualLuckDelta = 0;
+        for (int i = 0; i < effectiveTaskCount; i++)
+        {
+            actualLuckDelta += Random.Range(_selectedTaskData.LuckMinValue, _selectedTaskData.LuckMaxValue);
+        }
 
         OnClickUpgrade?.Invoke(true);
         Managers.UI.RequestPopup<UITaskProgressPopup>(_selectedTaskData);
 
-        Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, _selectedTaskData.FatigueValue);
-        Managers.Player.AddStats(Define.PlayerStatsType.Experience, _selectedTaskData.ExperienceValue);
-        Managers.Player.AddStats(Define.PlayerStatsType.Strength, _selectedTaskData.StrengthValue);
-        Managers.Player.AddStats(Define.PlayerStatsType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue);
+        Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, _selectedTaskData.FatigueValue * effectiveTaskCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.Experience, _selectedTaskData.ExperienceValue * effectiveTaskCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.Strength, _selectedTaskData.StrengthValue * effectiveTaskCount);
+        Managers.Player.AddStats(Define.PlayerStatsType.GravityAdaptation, _selectedTaskData.GravityAdaptationValue * effectiveTaskCount);
         Managers.Player.AddStats(Define.PlayerStatsType.Luck, actualLuckDelta);
 
-        Managers.Player.AddGold(-_selectedTaskData.RequirementGold, "task_execute", _selectedTaskData.TaskID);
+        Managers.Player.AddGold(-taskCost, "task_execute", _selectedTaskData.TaskID);
         s_lastExecutedTaskId = _selectedTaskData.TaskID;
         Managers.Analytics.TrackTaskExecute(
             _selectedTaskData.TaskID,
             _selectedTaskData.TaskName,
             _currentTaskTab.TaskType.ToString(),
-            _selectedTaskData.RequirementGold,
-            _selectedTaskData.FatigueValue,
-            _selectedTaskData.ExperienceValue,
-            _selectedTaskData.StrengthValue,
-            _selectedTaskData.GravityAdaptationValue,
-            _selectedTaskData.LuckMinValue,
-            _selectedTaskData.LuckMaxValue,
+            taskCost,
+            _selectedTaskData.FatigueValue * effectiveTaskCount,
+            _selectedTaskData.ExperienceValue * effectiveTaskCount,
+            _selectedTaskData.StrengthValue * effectiveTaskCount,
+            _selectedTaskData.GravityAdaptationValue * effectiveTaskCount,
+            _selectedTaskData.LuckMinValue * effectiveTaskCount,
+            _selectedTaskData.LuckMaxValue * effectiveTaskCount,
             actualLuckDelta,
             Managers.Player.GetGold());
         Managers.Analytics.Flush();
@@ -147,7 +226,12 @@ public class UIPlayerTaskPopup : UIPopup
 
     private void SelectInitialTask()
     {
-        string taskId = s_lastExecutedTaskId;
+        string taskId = s_lastSelectedTaskId;
+        if (string.IsNullOrEmpty(taskId))
+        {
+            taskId = s_lastExecutedTaskId;
+        }
+
         if (string.IsNullOrEmpty(taskId))
         {
             taskId = DefaultTaskId;
@@ -247,9 +331,11 @@ public class UIPlayerTaskPopup : UIPopup
 
         _currentTaskButton = taskButton;
         _selectedTaskData = _currentTaskButton.PlayerTaskData;
+        s_lastSelectedTaskId = _selectedTaskData.TaskID;
 
         _currentTaskButton.Select();
         SetTaskStatTextImage();
+        SetTaskCountText();
         SetTaskConfirmButton();
     }
 
@@ -260,7 +346,7 @@ public class UIPlayerTaskPopup : UIPopup
             return;
         }
 
-        if (_selectedTaskData.RequirementGold > Managers.Player.GetGold())
+        if (GetTaskCost(_selectedTaskData) > Managers.Player.GetGold())
         {
             _uiConfirmButton?.Deactivate();
             GetText((int)Texts.ConfirmButtonText).text = "\uC18C\uC9C0\uAE08 \uBD80\uC871";
@@ -270,6 +356,67 @@ public class UIPlayerTaskPopup : UIPopup
             _uiConfirmButton?.Activate();
             GetText((int)Texts.ConfirmButtonText).text = "\uC218\uD589\uD558\uAE30";
         }
+    }
+
+    private void SetTaskCount(int taskCount)
+    {
+        if (IsTaskCountExcluded(_selectedTaskData))
+        {
+            SetTaskCountText();
+            return;
+        }
+
+        int clampedTaskCount = Mathf.Clamp(taskCount, MinTaskCount, MaxTaskCount);
+        if (_taskCount == clampedTaskCount)
+        {
+            return;
+        }
+
+        _taskCount = clampedTaskCount;
+        s_lastTaskCount = _taskCount;
+        SetTaskCountText();
+        RefreshTaskButtonGolds();
+        SetTaskConfirmButton();
+    }
+
+    private void SetTaskCountText()
+    {
+        int effectiveTaskCount = GetEffectiveTaskCount(_selectedTaskData);
+        GetText((int)Texts.TaskNumberText).text = effectiveTaskCount.ToString();
+
+        bool isTaskCountEnabled = !IsTaskCountExcluded(_selectedTaskData);
+        GetButton((int)Buttons.PlusButton).interactable = isTaskCountEnabled;
+        GetButton((int)Buttons.MinusButton).interactable = isTaskCountEnabled;
+    }
+
+    private void RefreshTaskButtonGolds()
+    {
+        _uiTaskGroup?.RefreshTaskButtonGolds();
+    }
+
+    public int GetTaskCost(PlayerTaskData taskData)
+    {
+        if (taskData == null)
+        {
+            return 0;
+        }
+
+        return taskData.RequirementGold * GetEffectiveTaskCount(taskData);
+    }
+
+    public int GetEffectiveTaskCount(PlayerTaskData taskData)
+    {
+        if (IsTaskCountExcluded(taskData))
+        {
+            return MinTaskCount;
+        }
+
+        return _taskCount;
+    }
+
+    private bool IsTaskCountExcluded(PlayerTaskData taskData)
+    {
+        return taskData != null && taskData.TaskID == TaskCountExcludedTaskId;
     }
 
     private void SetTaskStatText()

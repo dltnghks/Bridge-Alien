@@ -46,8 +46,19 @@ public class UITaskButton : UIActiveButton
     public void SetData(PlayerTaskData data)
     {
         GetText((int)Texts.TaskButtonText).text = data.TaskName;
-        GetText((int)Texts.GoldText).text = data.RequirementGold.ToString();
         PlayerTaskData = data;
+        RefreshGold();
+    }
+
+    public void RefreshGold()
+    {
+        if (PlayerTaskData == null)
+        {
+            return;
+        }
+
+        int gold = _tabController != null ? _tabController.GetTaskCost(PlayerTaskData) : PlayerTaskData.RequirementGold;
+        GetText((int)Texts.GoldText).text = gold.ToString();
     }
     
     public void Select()

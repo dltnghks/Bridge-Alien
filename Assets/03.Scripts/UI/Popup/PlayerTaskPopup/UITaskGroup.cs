@@ -71,6 +71,14 @@ public class UITaskGroup : UISubItem
         }
     }
 
+    public void RefreshTaskButtonGolds()
+    {
+        foreach (UITaskButton taskButton in _taskButtons)
+        {
+            taskButton.RefreshGold();
+        }
+    }
+
     private void AddTaskButton()
     {
         GameObject taskButtonPrefab = GetButton((int)Buttons.TaskButton).gameObject;
