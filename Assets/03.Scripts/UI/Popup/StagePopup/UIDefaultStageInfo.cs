@@ -25,7 +25,10 @@ public class UIDefaultStageInfo : UISubItem
         InfoStar1,
         InfoStar2,
         InfoStar3,
+        StageStoryPlayButton,
     }
+
+    private UIStageStoryPlayButton _storyPlayButton;
 
     public override bool Init()
     {
@@ -37,6 +40,8 @@ public class UIDefaultStageInfo : UISubItem
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindObject(typeof(Objects));
+
+        _storyPlayButton = GetObject((int)Objects.StageStoryPlayButton).gameObject.GetOrAddComponent<UIStageStoryPlayButton>();
 
         return true;
     }
@@ -64,6 +69,7 @@ public class UIDefaultStageInfo : UISubItem
 
         int starCount = Managers.Player.GetStageClearInfo(stageType);
         SetStarImage(starCount, 3);
+        SetStoryPlayButton(stageType);
     }
 
     private void SetStageScore(int[] clearScoreList)
@@ -124,6 +130,14 @@ public class UIDefaultStageInfo : UISubItem
         {
             text.SetText(value);
         }
+    }
+
+    private void SetStoryPlayButton(Define.ChapterType stageType)
+    {
+        // 현재 스테이지를 플레이한 적이 없다면 스토리 플레이 버튼을 비활성화합니다.
+        Logger.Log($"SetStoryPlayButton - stageType: {stageType}, ProgressedStatus: {Managers.Player.GetStageProgressedStatus(stageType)}");
+
+        _storyPlayButton?.Apply(stageType, Managers.Player.GetStageProgressedStatus(stageType));
     }
 
     private static Sprite GetThumbnail(System.Collections.Generic.List<Sprite> thumbnails, int index, Sprite fallback)

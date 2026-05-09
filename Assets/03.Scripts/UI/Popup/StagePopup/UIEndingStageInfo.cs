@@ -30,7 +30,10 @@ public class UIEndingStageInfo : UISubItem
         InfoStar1,
         InfoStar2,
         InfoStar3,
+        StageStoryPlayButton,
     }
+
+    private UIStageStoryPlayButton _storyPlayButton;
 
     public override bool Init()
     {
@@ -42,6 +45,8 @@ public class UIEndingStageInfo : UISubItem
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindObject(typeof(Objects));
+
+        _storyPlayButton = GetObject((int)Objects.StageStoryPlayButton).gameObject.GetOrAddComponent<UIStageStoryPlayButton>();
 
         return true;
     }
@@ -83,9 +88,7 @@ public class UIEndingStageInfo : UISubItem
 
         SetObjectActive((int)Objects.StageGoalStarGroup, true);
         SetObjectActive((int)Objects.StageReward, false);
-
-
-
+        SetStoryPlayButton(stageType);
     }
 
     private void SetStageScore(int[] clearScoreList)
@@ -191,6 +194,11 @@ public class UIEndingStageInfo : UISubItem
         {
             target.SetActive(isActive);
         }
+    }
+
+    private void SetStoryPlayButton(Define.ChapterType stageType)
+    {
+        _storyPlayButton?.Apply(stageType, Managers.Player.GetStageProgressedStatus(stageType));
     }
 }
 
