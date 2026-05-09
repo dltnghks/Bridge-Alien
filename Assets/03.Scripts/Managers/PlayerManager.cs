@@ -14,7 +14,6 @@ public class PlayerManager : ISaveable
 
     public UnityAction OnPlayerDataChanged { get; set; }
     private int _pendingFatigueRecoverEffectCount;
-    private int _pendingGoldGainEffectAmount;
 
     public void Init(PlayerData playerData = null)
     {
@@ -85,13 +84,6 @@ public class PlayerManager : ISaveable
         return count;
     }
 
-    public int ConsumePendingGoldGainEffectAmount(int maxAmount = int.MaxValue)
-    {
-        int amount = Math.Min(_pendingGoldGainEffectAmount, maxAmount);
-        _pendingGoldGainEffectAmount -= amount;
-        return amount;
-    }
-
     public void FillFatigue()
     {
         AddStats(Define.PlayerStatsType.Fatigue, FatigueMaxValue);
@@ -155,11 +147,6 @@ public class PlayerManager : ISaveable
         PlayerData.PlayerGold += gold;
 
         PlayerData.PlayerGold = Math.Clamp(PlayerData.PlayerGold, 0, Int32.MaxValue);
-
-        if (gold > 0)
-        {
-            _pendingGoldGainEffectAmount += gold;
-        }
 
         OnPlayerDataChanged?.Invoke();
 
