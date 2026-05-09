@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uAC8C\uC774\uC9C0\uAC00 \uB2E4 \uCC28\uBA74 \uB0C9\uAC01 \uC644\uB8CC
-    \uC0C1\uD0DC\uAC00 \uB418\uB2C8 \uADF8\uB3D9\uC548 \uB2E4\uB978\uC77C\uC744 \uD558\uACE0
-    \uC788\uC5B4\uB3C4 \uC88B\uC544."
+    \uC0C1\uD0DC\uAC00 \uB418\uB2C8<br>\uADF8\uB3D9\uC548 \uB2E4\uB978\uC77C\uC744
+    \uD558\uACE0 \uC788\uC5B4\uB3C4 \uC88B\uC544."
   targetInteractableTag: 
   autoFinishDelay: 5
   onStepStart:
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uD770\uC0C9 \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB294 \uBC30\uC1A1\uC804
-    \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574. \uC0C1\uC790\uB97C
+    \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574.<br>\uC0C1\uC790\uB97C
     \uD55C\uBC88 \uC9D1\uC5B4\uBD10."
   targetInteractableTag: Truck1
   autoFinishDelay: 150
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uD770\uC0C9 \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB294 \uBC30\uC1A1\uC804
-    \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574. \uC0C1\uC790\uB97C
+    \uBC18\uB4DC\uC2DC \uB0C9\uAC01\uC791\uC5C5\uC774 \uD544\uC694\uD574.<br>\uC0C1\uC790\uB97C
     \uD55C\uBC88 \uC9D1\uC5B4\uBD10."
   targetInteractableTag: Truck1
   autoFinishDelay: 0.5
@@ -468,8 +468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uB9CC\uC57D \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB97C \uB0C9\uAC01\uD558\uC9C0
-    \uC54A\uACE0 \uC62E\uAE30\uBA74 \uACE0\uAC1D \uCEF4\uD50C\uB808\uC778\uC774 \uB4E4\uC5B4\uC624\uB2C8
-    \uC870\uC2EC\uD558\uB77C\uAD6C."
+    \uC54A\uACE0 \uC62E\uAE30\uBA74<br>\uACE0\uAC1D \uCEF4\uD50C\uB808\uC778\uC774
+    \uB4E4\uC5B4\uC624\uB2C8 \uC870\uC2EC\uD558\uB77C\uAD6C."
   targetInteractableTag: ConveyA
   autoFinishDelay: 0
   onStepStart:
@@ -1060,8 +1060,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uB9CC\uC57D \uB0C9\uC7A5 \uBCF4\uAD00 \uC0C1\uC790\uB97C \uB0C9\uAC01\uD558\uC9C0
-    \uC54A\uACE0 \uC62E\uAE30\uBA74 \uACE0\uAC1D \uCEF4\uD50C\uB808\uC778\uC774 \uB4E4\uC5B4\uC624\uB2C8
-    \uC870\uC2EC\uD558\uB77C\uAD6C."
+    \uC54A\uACE0 \uC62E\uAE30\uBA74<br>\uACE0\uAC1D \uCEF4\uD50C\uB808\uC778\uC774
+    \uB4E4\uC5B4\uC624\uB2C8 \uC870\uC2EC\uD558\uB77C\uAD6C."
   targetInteractableTag: Spawn Box
   autoFinishDelay: 3
   onStepStart:

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uD3D0\uAE30 \uC7A5\uCE58\uB294 \uC0C1\uC790 3\uAC1C\uBD80\uD130
-    \uC790\uB3D9\uC73C\uB85C \uC791\uB3D9\uD558\uACE0, \uBC18\uB824\uB418\uC9C0 \uC54A\uC740
-    \uC0C1\uC790\uB4E4\uB3C4 \uD3D0\uAE30\uCC98\uB9AC\uAC00 \uAC00\uB2A5\uD574."
+    \uC790\uB3D9\uC73C\uB85C \uC791\uB3D9\uD558\uACE0,<br>\uBC18\uB824\uB418\uC9C0
+    \uC54A\uC740 \uC0C1\uC790\uB4E4\uB3C4 \uD3D0\uAE30\uCC98\uB9AC\uAC00 \uAC00\uB2A5\uD574."
   targetInteractableTag: 
   autoFinishDelay: 0.5
   onStepStart:
@@ -189,8 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uD3D0\uAE30 \uC7A5\uCE58\uB294 \uC0C1\uC790 3\uAC1C\uBD80\uD130
-    \uC790\uB3D9\uC73C\uB85C \uC791\uB3D9\uD558\uACE0, \uBC18\uB824\uB418\uC9C0 \uC54A\uC740
-    \uC0C1\uC790\uB4E4\uB3C4 \uD3D0\uAE30\uCC98\uB9AC\uAC00 \uAC00\uB2A5\uD574."
+    \uC790\uB3D9\uC73C\uB85C \uC791\uB3D9\uD558\uACE0,<br>\uBC18\uB824\uB418\uC9C0
+    \uC54A\uC740 \uC0C1\uC790\uB4E4\uB3C4 \uD3D0\uAE30\uCC98\uB9AC\uAC00 \uAC00\uB2A5\uD574."
   targetInteractableTag: 
   autoFinishDelay: 3
   onStepStart:
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uBC18\uB824 \uC0C1\uC790\uB4E4\uC744 \uCC98\uB9AC\uD558\uC9C0
-    \uC54A\uC73C\uBA74 \uC77C\uB2F9\uC774 \uAE4C\uC77C\uAC70\uC57C. \uC0C1\uC790\uB97C
+    \uC54A\uC73C\uBA74 \uC77C\uB2F9\uC774 \uAE4C\uC77C\uAC70\uC57C.<br>\uC0C1\uC790\uB97C
     \uD55C \uBC88 \uC9D1\uC5B4\uBD10."
   targetInteractableTag: Return
   autoFinishDelay: 200
@@ -299,6 +299,7 @@ Transform:
   - {fileID: 5871122981983174227}
   - {fileID: 8708802411104792975}
   - {fileID: 5037033785746452922}
+  - {fileID: 2316887642133148647}
   - {fileID: 3224700550069252731}
   - {fileID: 746940007497276953}
   - {fileID: 8987059216087188524}
@@ -470,8 +471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionText: "\uC774\uC81C \uD3D0\uAE30 \uAD6C\uC5ED\uC73C\uB85C \uC774\uB3D9\uD574\uC11C
-    \uC0C1\uC790\uB97C \uCC98\uB9AC\uD574\uBD10."
+  instructionText: "\uD3D0\uAE30 \uC7A5\uCE58\uB97C \uD1B5\uD574\uC11C \uC0C1\uC790\uB97C
+    \uD3D0\uAE30\uCC98\uB9AC\uD560 \uC218 \uC788\uC5B4.<br>\uD55C\uBC88 \uC0C1\uC790\uB97C
+    \uC62C\uB824\uBD10"
   targetInteractableTag: DispoalPoint
   autoFinishDelay: 200
   onStepStart:
@@ -699,9 +701,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uD3D0\uAE30 \uC7A5\uCE58\uB97C \uC798 \uC774\uC6A9\uD55C\uB2E4\uBA74
-    \uB3D9\uC120\uC744 \uD6A8\uC728\uC801\uC73C\uB85C \uC4F8 \uC218 \uC788\uC9C0\uB9CC,
-    \uC791\uB3D9\uC2DC \uB9C8\uB2E4 \uC810\uC218\uAC00 \uAE4C\uC774\uB2C8 \uC870\uC2EC\uD788
-    \uC0AC\uC6A9\uD558\uB77C\uAD6C"
+    \uB3D9\uC120\uC744 \uD6A8\uC728\uC801\uC73C\uB85C \uC4F8 \uC218 \uC788\uC9C0\uB9CC,<br>\uC791\uB3D9\uC2DC
+    \uB9C8\uB2E4 \uC810\uC218\uAC00 \uAE4C\uC774\uB2C8 \uC870\uC2EC\uD788 \uC0AC\uC6A9\uD558\uB77C\uAD6C"
   targetInteractableTag: DispoalPoint
   autoFinishDelay: 200
   onStepStart:
@@ -1004,7 +1005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uBC18\uB824 \uC0C1\uC790\uB4E4\uC744 \uCC98\uB9AC\uD558\uC9C0
-    \uC54A\uC73C\uBA74 \uC77C\uB2F9\uC774 \uAE4C\uC77C\uAC70\uC57C. \uC0C1\uC790\uB97C
+    \uC54A\uC73C\uBA74 \uC77C\uB2F9\uC774 \uAE4C\uC77C\uAC70\uC57C.<br>\uC0C1\uC790\uB97C
     \uD55C \uBC88 \uC9D1\uC5B4\uBD10."
   targetInteractableTag: Return
   autoFinishDelay: 200
@@ -1154,6 +1155,65 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &7796551372024748660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2316887642133148647}
+  - component: {fileID: 490458933971718746}
+  m_Layer: 0
+  m_Name: Step03_Delay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2316887642133148647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7796551372024748660}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8592614552422913510}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &490458933971718746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7796551372024748660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31ff779f7ee856843b03ac6d6ac37584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructionText: "\uD3D0\uAE30 \uC7A5\uCE58\uB97C \uD1B5\uD574\uC11C \uC0C1\uC790\uB97C
+    \uD3D0\uAE30\uCC98\uB9AC\uD560 \uC218 \uC788\uC5B4.<br>\uD55C\uBC88 \uC0C1\uC790\uB97C
+    \uC62C\uB824\uBD10"
+  targetInteractableTag: 
+  autoFinishDelay: 3
+  onStepStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepExit:
+    m_PersistentCalls:
+      m_Calls: []
+  isConditionMet: 0
 --- !u!1 &7852847524722797169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,9 +1354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionText: "\uD3D0\uAE30 \uC7A5\uCE58\uB97C \uC798 \uC774\uC6A9\uD55C\uB2E4\uBA74
-    \uB3D9\uC120\uC744 \uD6A8\uC728\uC801\uC73C\uB85C \uC4F8 \uC218 \uC788\uC9C0\uB9CC,
-    \uC791\uB3D9\uC2DC \uB9C8\uB2E4 \uC810\uC218\uAC00 \uAE4C\uC774\uB2C8 \uC870\uC2EC\uD788
-    \uC0AC\uC6A9\uD558\uB77C\uAD6C"
+    \uB3D9\uC120\uC744 \uD6A8\uC728\uC801\uC73C\uB85C \uC4F8 \uC218 \uC788\uC9C0\uB9CC,<br>\uC791\uB3D9\uC2DC
+    \uB9C8\uB2E4 \uC810\uC218\uAC00 \uAE4C\uC774\uB2C8 \uC870\uC2EC\uD788 \uC0AC\uC6A9\uD558\uB77C\uAD6C"
   targetInteractableTag: 
   autoFinishDelay: 5
   onStepStart:
