@@ -360,7 +360,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
 
         int nextHiddenSpawnCount = (_hiddenBoxReservedCount + 1) * _hiddenBoxSpawnInterval;
-        if (_endingHiddenSpawnPointBoxCount + 1 < nextHiddenSpawnCount)
+        if (_totalSpawnedBoxCount + 1 < nextHiddenSpawnCount)
         {
             return false;
         }
