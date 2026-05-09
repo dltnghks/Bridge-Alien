@@ -89,6 +89,7 @@ public class UIHouseScene : UIScene
         SetGoldText();
         SetFatigue();
         PlayPendingFatigueRecoverEffects();
+        StartCoroutine(OpenPendingStagePopupNextFrame());
         
         return true;
     }
@@ -138,6 +139,27 @@ public class UIHouseScene : UIScene
         BlockWorldInputThisFrame = true;
         StartCoroutine(ResetWorldInputBlock());
         Managers.Sound.PlaySFX(SoundType.CommonSoundSFX, CommonSoundSFX.CommonButtonClick.ToString());
+        OpenStagePopup();
+    }
+
+    private void OpenPendingStagePopup()
+    {
+        if (Managers.Stage.ConsumeShouldOpenStagePopupOnHouse() == false)
+        {
+            return;
+        }
+
+        OpenStagePopup();
+    }
+
+    private IEnumerator OpenPendingStagePopupNextFrame()
+    {
+        yield return null;
+        OpenPendingStagePopup();
+    }
+
+    private void OpenStagePopup()
+    {
         var stagePopup = Managers.UI.ShowPopUI<UIStagePopup>();
         PlaceStatusUIBehindPopup(stagePopup);
         stagePopup.InitStageButtonGroup();

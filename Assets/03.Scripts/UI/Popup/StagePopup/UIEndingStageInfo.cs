@@ -31,9 +31,11 @@ public class UIEndingStageInfo : UISubItem
         InfoStar2,
         InfoStar3,
         StageStoryPlayButton,
+        StageStoryPlayButtonSecondary,
     }
 
     private UIStageStoryPlayButton _storyPlayButton;
+    private UIStageStoryPlayButton _storyPlayButtonSecondary;
 
     public override bool Init()
     {
@@ -46,7 +48,8 @@ public class UIEndingStageInfo : UISubItem
         BindImage(typeof(Images));
         BindObject(typeof(Objects));
 
-        _storyPlayButton = GetObject((int)Objects.StageStoryPlayButton).gameObject.GetOrAddComponent<UIStageStoryPlayButton>();
+        _storyPlayButton = GetStoryPlayButton(Objects.StageStoryPlayButton);
+        _storyPlayButtonSecondary = GetStoryPlayButton(Objects.StageStoryPlayButtonSecondary);
 
         return true;
     }
@@ -88,7 +91,8 @@ public class UIEndingStageInfo : UISubItem
 
         SetObjectActive((int)Objects.StageGoalStarGroup, true);
         SetObjectActive((int)Objects.StageReward, false);
-        SetStoryPlayButton(stageType);
+        SetStoryPlayButton(stageType, stageData.EndingEventOnLowHiddenBox, isUnlocked0);
+        SetStoryPlayButtonSecondary(stageType, stageData.EndingEventOnHighHiddenBox, isUnlocked1);
     }
 
     private void SetStageScore(int[] clearScoreList)
@@ -196,11 +200,24 @@ public class UIEndingStageInfo : UISubItem
         }
     }
 
-    private void SetStoryPlayButton(Define.ChapterType stageType)
+    private void SetStoryPlayButton(Define.ChapterType stageType, Define.EventDataID clearEventID, bool isUnlocked)
     {
-        _storyPlayButton?.Apply(stageType, Managers.Player.GetStageProgressedStatus(stageType));
+        _storyPlayButton?.Apply(stageType, clearEventID, isUnlocked);
+    }
+
+    private void SetStoryPlayButtonSecondary(Define.ChapterType stageType, Define.EventDataID clearEventID, bool isUnlocked)
+    {
+        _storyPlayButtonSecondary?.Apply(stageType, clearEventID, isUnlocked);
+    }
+
+    private UIStageStoryPlayButton GetStoryPlayButton(Objects objectType)
+    {
+        var storyPlayButtonObject = GetObject((int)objectType);
+        if (storyPlayButtonObject == null)
+        {
+            return null;
+        }
+
+        return storyPlayButtonObject.GetOrAddComponent<UIStageStoryPlayButton>();
     }
 }
-
-
-

@@ -69,7 +69,7 @@ public class UIDefaultStageInfo : UISubItem
 
         int starCount = Managers.Player.GetStageClearInfo(stageType);
         SetStarImage(starCount, 3);
-        SetStoryPlayButton(stageType);
+        SetStoryPlayButton(stageType, stageData.ClearEventID);
     }
 
     private void SetStageScore(int[] clearScoreList)
@@ -132,12 +132,12 @@ public class UIDefaultStageInfo : UISubItem
         }
     }
 
-    private void SetStoryPlayButton(Define.ChapterType stageType)
+    private void SetStoryPlayButton(Define.ChapterType stageType, Define.EventDataID clearEventID)
     {
-        // 현재 스테이지를 플레이한 적이 없다면 스토리 플레이 버튼을 비활성화합니다.
-        Logger.Log($"SetStoryPlayButton - stageType: {stageType}, ProgressedStatus: {Managers.Player.GetStageProgressedStatus(stageType)}");
+        bool isStageCleared = Managers.Player.GetStageClearInfo(stageType) > 0;
+        Logger.Log($"SetStoryPlayButton - stageType: {stageType}, IsStageCleared: {isStageCleared}");
 
-        _storyPlayButton?.Apply(stageType, Managers.Player.GetStageProgressedStatus(stageType));
+        _storyPlayButton?.Apply(stageType, clearEventID, isStageCleared);
     }
 
     private static Sprite GetThumbnail(System.Collections.Generic.List<Sprite> thumbnails, int index, Sprite fallback)

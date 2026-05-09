@@ -10,10 +10,12 @@ public class EventManager
     private Dictionary<string, EventData> _currentEventDataDict = new Dictionary<string, EventData>();
     public EventData CurEventData => _curEventData;
     private UIDialogPopup _dialogPopup = null;
+    private bool _isStageStoryMode;
 
     public void Init(Define.EventDataID lastEventDataID = Define.EventDataID.Unknown)
     {
         Logger.Log("Event Manager Init");
+        _isStageStoryMode = false;
         _lastEventDataID = lastEventDataID;
         if (_lastEventDataID == Define.EventDataID.Unknown)
         {
@@ -23,7 +25,21 @@ public class EventManager
         SetEventData();
     }
 
-    private void SetEventData()
+    public void InitStageStory(Define.EventDataID eventDataID)
+    {
+        Logger.Log("Stage Story Event Manager Init");
+        _isStageStoryMode = true;
+        _lastEventDataID = eventDataID;
+        if (_lastEventDataID == Define.EventDataID.Unknown)
+        {
+            Logger.Log("EventDataID is Unknown");
+            return;
+        }
+
+        SetEventData();
+    }
+
+    private void SetEventData(bool playImmediately = true)
     {
         Logger.Log($"Set Event Data : {_lastEventDataID}");
         // DataManager에서 curDate 세팅 값 가져오기
@@ -66,6 +82,7 @@ public class EventManager
             return;
         }
 
+
         if (_curEventData.EventType == Define.EventType.Unknown)
         {
             Managers.Scene.ChangeScene(Define.Scene.EventScene);
@@ -77,6 +94,12 @@ public class EventManager
         }
         else if (_curEventData.EventType == Define.EventType.MiniGame)
         {
+            if (_isStageStoryMode)
+            {
+                EndEvent();
+                return;
+            }
+
             // 게임을 클리어했을 때만 다음 이벤트 진행
             PlayGame();
             return;
@@ -115,6 +138,15 @@ public class EventManager
 
     public void EndEvent()
     {
+        _isStageStoryMode = false;
+        _dialogPopup = null;
+        Managers.Scene.ChangeScene(Define.Scene.House);
+    }
+
+    private void EndStageStory()
+    {
+        _isStageStoryMode = false;
+        _dialogPopup = null;
         Managers.Scene.ChangeScene(Define.Scene.House);
     }
 }

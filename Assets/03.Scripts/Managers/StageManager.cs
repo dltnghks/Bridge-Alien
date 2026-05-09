@@ -8,6 +8,7 @@ public class StageManager
     private bool _isStageStarted = false;
     private int _endingThumbnailIndex = -1;
     private Define.EventDataID _endingBranchEventID = Define.EventDataID.Unknown;
+    private bool _shouldOpenStagePopupOnHouse;
 
     public Action<StageData> OnChangeStage;
 
@@ -19,6 +20,7 @@ public class StageManager
         _isStageCleared = false;
         _endingThumbnailIndex = -1;
         _endingBranchEventID = Define.EventDataID.Unknown;
+        _shouldOpenStagePopupOnHouse = false;
     }
 
     public StageData GetCurrentStageData()
@@ -94,6 +96,26 @@ public class StageManager
         {
             Managers.Event.Init(_currentStageData.EventID);
         }
+    }
+
+    public void PlayStageStory(Define.EventDataID eventDataID)
+    {
+        _shouldOpenStagePopupOnHouse = true;
+        if (eventDataID == Define.EventDataID.Unknown)
+        {
+            Logger.LogWarning("설정된 스테이지 스토리 이벤트가 없습니다.");
+            Managers.Scene.ChangeScene(Define.Scene.House);
+            return;
+        }
+
+        Managers.Event.InitStageStory(eventDataID);
+    }
+
+    public bool ConsumeShouldOpenStagePopupOnHouse()
+    {
+        bool shouldOpen = _shouldOpenStagePopupOnHouse;
+        _shouldOpenStagePopupOnHouse = false;
+        return shouldOpen;
     }
 
     // 스테이지 클리어 처리, 클리어 결과 별 반환

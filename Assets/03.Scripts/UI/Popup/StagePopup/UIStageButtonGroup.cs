@@ -12,7 +12,7 @@ public class UIStageButtonGroup : UISubItem
             return false;
         }
 
-        _uiStageButtonsList = GetComponentsInChildren<UIStageButton>();
+        _uiStageButtonsList = GetComponentsInChildren<UIStageButton>(true);
 
         return true;
     }
@@ -20,6 +20,11 @@ public class UIStageButtonGroup : UISubItem
     public void InitStageButtonGroup()
     {
         Init();
+
+        if (_uiStageButtonsList == null || _uiStageButtonsList.Length == 0)
+        {
+            _uiStageButtonsList = GetComponentsInChildren<UIStageButton>(true);
+        }
 
         foreach (Define.ChapterType stageType in System.Enum.GetValues(typeof(Define.ChapterType)))
         {
