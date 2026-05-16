@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Bridge-Alien.sln"
+    "dotnet.defaultSolution": "Bridge-Alien.slnx"
 }

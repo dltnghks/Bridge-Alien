@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6baa7426b7da4d2f8ddf69246907ec82, type: 3}
   m_Name: AppConfig
   m_EditorClassIdentifier: 
-  ActiveGameConfig: {fileID: 11400000, guid: 2ef1879702c5ed248a8a398f2339aff2, type: 2}
+  ActiveGameConfig: {fileID: 11400000, guid: 3b773fd8fbef4e2a9cd9eb933601aaba, type: 2}

@@ -148,7 +148,7 @@ public class MiniGameUnloadBox : MonoBehaviour
             boxCollider.isTrigger = false;
             IsUnloaded = false;
 
-            boxRigidbody.velocity = Vector3.zero;
+            boxRigidbody.linearVelocity = Vector3.zero;
 
             PlayBoxPutSound();
         }

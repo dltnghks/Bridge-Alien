@@ -60,7 +60,7 @@ public class InGameTextIndicator : MonoBehaviour
         _moveTween?.Kill();
         _scaleTween?.Kill();
         mRigidBody.angularVelocity = Vector3.zero;
-        mRigidBody.velocity = Vector3.zero;
+        mRigidBody.linearVelocity = Vector3.zero;
         transform.localScale = Vector3.one * GetBaseScale();
 
         mRigidBody.AddForce(GetImpulse(), ForceMode.Impulse);

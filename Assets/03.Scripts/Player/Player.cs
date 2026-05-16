@@ -162,8 +162,8 @@ public class Player : MonoBehaviour
 
         // Rigidbody를 통한 이동
         Vector3 horizontalVelocity = movement * MoveSpeed;
-        horizontalVelocity.y = rb.velocity.y;  // 기존 수직 속도 유지
-        rb.velocity = horizontalVelocity;
+        horizontalVelocity.y = rb.linearVelocity.y;  // 기존 수직 속도 유지
+        rb.linearVelocity = horizontalVelocity;
         rb.angularVelocity = Vector3.zero;
             
         // 캐릭터 애니메이터 업데이트

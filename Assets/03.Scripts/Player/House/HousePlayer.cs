@@ -36,7 +36,7 @@ public class HousePlayer : Player
     {
         if (!_targetPosition.HasValue)
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             _animator.UpdateSpeed(0f);
             return;
         }
@@ -52,9 +52,9 @@ public class HousePlayer : Player
         {
             // 목표를 향해 속도 설정
             Vector2 direction = (target - currentPosition).normalized;
-            rb.velocity = direction * MoveSpeed;
-            _animator.UpdateSpeed(rb.velocity.magnitude);
-            FlipCharacter(rb.velocity.x);
+            rb.linearVelocity = direction * MoveSpeed;
+            _animator.UpdateSpeed(rb.linearVelocity.magnitude);
+            FlipCharacter(rb.linearVelocity.x);
         }
     }
 

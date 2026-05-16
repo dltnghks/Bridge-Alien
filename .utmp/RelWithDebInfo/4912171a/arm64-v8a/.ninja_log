@@ -1,0 +1,5 @@
+# ninja log v5
+224	361	8006315342601330	P:/Unity/Bridge-Alien/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4912171a/obj/arm64-v8a/libswappywrapper.so	aa94bee4c420efa0
+0	223	8006315341301787	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	679730004bacf50c
+2	107	8006319690244252	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	679730004bacf50c
+107	221	8006319691317650	P:/Unity/Bridge-Alien/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4912171a/obj/arm64-v8a/libswappywrapper.so	aa94bee4c420efa0
