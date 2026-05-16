@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f0f4b2dd8e247a59b6b9c5efc44f0c1, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  EnableAnalytics: 1
+  EnableAnalytics: 0
+  UnlockAllStagesForTest: 0

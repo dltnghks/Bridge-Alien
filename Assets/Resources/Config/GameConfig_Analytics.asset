@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc32ec4493e5094458058d6dfe8a05d2, type: 3}
-  m_Name: 6F3CFD09-7269-44CD-8CA7-383B9955B057
+  m_Script: {fileID: 11500000, guid: 8f0f4b2dd8e247a59b6b9c5efc44f0c1, type: 3}
+  m_Name: GameConfig_Analytics
   m_EditorClassIdentifier: 
-  objectName: Play_SFX_SIREN3
-  id: 950967108
-  guid: 6F3CFD09-7269-44CD-8CA7-383B9955B057
-  IsInUserDefinedSoundBank: 0
-  IsAutoBankLoaded: 0
+  EnableAnalytics: 1
