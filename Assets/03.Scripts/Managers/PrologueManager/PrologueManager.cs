@@ -67,11 +67,11 @@ public class PrologueManager : MonoBehaviour
 
     public void PlayPrologueVoice()
     {
-        DOTween.To(() => 100f, x =>
-        {
-            Managers.Sound.SetBGMVolume(x);
-        }, 50f, 3f);
+        // DOTween.To(() => 100f, x =>
+        // {
+        //     Managers.Sound.SetBGMVolume(x);
+        // }, 50f, 3f);
         
-        Managers.Sound.PlaySFX(SoundType.PrologueSFX, PrologueSFX.Voice.ToString());
+        //Managers.Sound.PlaySFX(SoundType.PrologueSFX, PrologueSFX.Voice.ToString());
     }
 }

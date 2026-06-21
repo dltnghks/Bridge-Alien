@@ -23,6 +23,7 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 0
+  directorOnClipEnd: 0
 --- !u!114 &-8255590761013907745
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,6 +69,7 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 2
+  directorOnClipEnd: 0
 --- !u!114 &-8144251360321308924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,7 +321,7 @@ MonoBehaviour:
     m_Start: 32.38333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 8505322737846290395}
-    m_Duration: 30
+    m_Duration: 5
     m_TimeScale: 1
     m_ParentTrack: {fileID: -6615028311471789221}
     m_EaseInDuration: 0
@@ -853,6 +855,7 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 2
+  directorOnClipEnd: 0
 --- !u!114 &-2656514424829739300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,6 +925,7 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 2
+  directorOnClipEnd: 0
 --- !u!114 &-448713523059735212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1037,6 +1041,7 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 2
+  directorOnClipEnd: 0
 --- !u!114 &-33054931986933106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1198,6 +1203,7 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 2
+  directorOnClipEnd: 0
 --- !u!114 &2099034399723386017
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1221,6 +1227,7 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 2
+  directorOnClipEnd: 0
 --- !u!114 &2173352797138940408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1750,6 +1757,7 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 2
+  directorOnClipEnd: 0
 --- !u!114 &6683091482766732119
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1813,7 +1821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 62.36666666666667
+  m_Time: 37.733333333333334
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: f152d04643790df44864cdc4cb40bf8c, type: 2}
@@ -2043,3 +2051,4 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 2
+  directorOnClipEnd: 0
