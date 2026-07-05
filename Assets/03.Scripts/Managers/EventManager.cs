@@ -11,11 +11,13 @@ public class EventManager
     public EventData CurEventData => _curEventData;
     private UIDialogPopup _dialogPopup = null;
     private bool _isStageStoryMode;
+    private Define.Scene _nextSceneOnEnd = Define.Scene.House;
 
-    public void Init(Define.EventDataID lastEventDataID = Define.EventDataID.Unknown)
+    public void Init(Define.EventDataID lastEventDataID = Define.EventDataID.Unknown, Define.Scene nextSceneOnEnd = Define.Scene.House)
     {
         Logger.Log("Event Manager Init");
         _isStageStoryMode = false;
+        _nextSceneOnEnd = nextSceneOnEnd;
         _lastEventDataID = lastEventDataID;
         if (_lastEventDataID == Define.EventDataID.Unknown)
         {
@@ -29,6 +31,7 @@ public class EventManager
     {
         Logger.Log("Stage Story Event Manager Init");
         _isStageStoryMode = true;
+        _nextSceneOnEnd = Define.Scene.House;
         _lastEventDataID = eventDataID;
         if (_lastEventDataID == Define.EventDataID.Unknown)
         {
@@ -140,7 +143,9 @@ public class EventManager
     {
         _isStageStoryMode = false;
         _dialogPopup = null;
-        Managers.Scene.ChangeScene(Define.Scene.House);
+        Define.Scene nextScene = _nextSceneOnEnd;
+        _nextSceneOnEnd = Define.Scene.House;
+        Managers.Scene.ChangeScene(nextScene);
     }
 
     private void EndStageStory()

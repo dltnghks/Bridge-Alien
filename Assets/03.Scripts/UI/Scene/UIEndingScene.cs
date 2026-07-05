@@ -15,6 +15,11 @@ public class UIEndingScene : UIScene
     [SerializeField] private float _scrollPaddingY = 120.0f;
     [SerializeField] private bool _autoScroll = true;
 
+    [Header("Ending Character")]
+    [SerializeField] private RectTransform _endingCharacter;
+    [SerializeField] private float _characterFloatAmplitude = 18.0f;
+    [SerializeField] private float _characterFloatSpeed = 1.2f;
+
     [Header("Background")]
     [SerializeField] private RectTransform _backgroundGroup;
     [SerializeField] private RectTransform _star;
@@ -30,10 +35,12 @@ public class UIEndingScene : UIScene
     private RectTransform _rightEdgeGradient;
     private Vector2 _starStartPosition;
     private Vector2 _galaxyStartPosition;
+    private Vector2 _endingCharacterStartPosition;
     private float _viewportHeight;
     private float _creditsHeight;
     private float _endY;
     private float _scrollSpeed;
+    private bool _isChangingScene;
 
     public override bool Init()
     {
@@ -45,6 +52,7 @@ public class UIEndingScene : UIScene
         ResolveReferences();
         SetCreditsText();
         SetupBackgroundAnimation();
+        SetupEndingCharacterAnimation();
         SetupEdgeGradients();
         ResetScrollPosition();
 
@@ -55,6 +63,7 @@ public class UIEndingScene : UIScene
     {
         UpdateCreditsScroll();
         UpdateBackgroundAnimation();
+        UpdateEndingCharacterAnimation();
     }
 
     private void UpdateCreditsScroll()
@@ -71,7 +80,19 @@ public class UIEndingScene : UIScene
         if (position.y >= _endY)
         {
             _autoScroll = false;
+            ChangeToTitle();
         }
+    }
+
+    private void ChangeToTitle()
+    {
+        if (_isChangingScene)
+        {
+            return;
+        }
+
+        _isChangingScene = true;
+        Managers.Scene.ChangeScene(Define.Scene.Title);
     }
 
     private void ResolveReferences()
@@ -87,6 +108,15 @@ public class UIEndingScene : UIScene
             if (textGroup != null)
             {
                 _creditsContent = textGroup.transform as RectTransform;
+            }
+        }
+
+        if (_endingCharacter == null)
+        {
+            GameObject endingCharacter = Utils.FindChild(gameObject, "Ending Character", true);
+            if (endingCharacter != null)
+            {
+                _endingCharacter = endingCharacter.transform as RectTransform;
             }
         }
 
@@ -196,6 +226,28 @@ public class UIEndingScene : UIScene
         position.y = -_scrollPaddingY;
         _creditsContent.anchoredPosition = position;
         _autoScroll = true;
+    }
+
+    private void SetupEndingCharacterAnimation()
+    {
+        if (_endingCharacter == null)
+        {
+            return;
+        }
+
+        _endingCharacterStartPosition = _endingCharacter.anchoredPosition;
+    }
+
+    private void UpdateEndingCharacterAnimation()
+    {
+        if (_endingCharacter == null)
+        {
+            return;
+        }
+
+        Vector2 position = _endingCharacterStartPosition;
+        position.y += Mathf.Sin(Time.time * _characterFloatSpeed) * _characterFloatAmplitude;
+        _endingCharacter.anchoredPosition = position;
     }
 
     private void SetupBackgroundAnimation()

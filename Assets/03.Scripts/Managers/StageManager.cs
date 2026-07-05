@@ -2,6 +2,7 @@ using System;
 
 public class StageManager
 {
+    private const int EndingTypeCount = 2;
     private Define.ChapterType _currentStageType;
     private StageData _currentStageData;
     private bool _isStageCleared = false;
@@ -149,12 +150,14 @@ public class StageManager
 
         if (_currentStageType == Define.ChapterType.End && starCount > 0 && _endingBranchEventID != Define.EventDataID.Unknown)
         {
+            bool isAllEndingsCleared = false;
             if (_endingThumbnailIndex >= 0)
             {
                 Managers.Player.SaveEndingThumbnailProgress(_currentStageType, _endingThumbnailIndex);
+                isAllEndingsCleared = Managers.Player.GetEndingUnlockedCount(_currentStageType, EndingTypeCount) >= EndingTypeCount;
             }
 
-            Managers.Event.Init(_endingBranchEventID);
+            Managers.Event.Init(_endingBranchEventID, isAllEndingsCleared ? Define.Scene.Ending : Define.Scene.House);
             _endingThumbnailIndex = -1;
             _endingBranchEventID = Define.EventDataID.Unknown;
             return;
