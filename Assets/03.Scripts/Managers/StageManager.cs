@@ -83,6 +83,7 @@ public class StageManager
         bool isProgressed = Managers.Player.GetStageProgressedStatus(_currentStageType);
         Managers.Player.AddStats(Define.PlayerStatsType.Fatigue, -1);
         Managers.Player.SaveStageProgressed(_currentStageType);
+        Managers.Player.AddStageAttemptCount();
 
         Managers.Analytics.TrackStageEnter(_currentStageType.ToString());
 
@@ -141,6 +142,10 @@ public class StageManager
     public void EndStage(int starCount)
     {
         _isStageStarted = false;
+        if (starCount == 0)
+        {
+            Managers.Player.AddStageFailCount();
+        }
 
         if (_currentStageType == Define.ChapterType.End && starCount > 0 && _endingBranchEventID != Define.EventDataID.Unknown)
         {

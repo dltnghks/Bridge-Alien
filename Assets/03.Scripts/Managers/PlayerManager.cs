@@ -147,6 +147,14 @@ public class PlayerManager : ISaveable
         PlayerData.PlayerGold += gold;
 
         PlayerData.PlayerGold = Math.Clamp(PlayerData.PlayerGold, 0, Int32.MaxValue);
+        if (gold > 0)
+        {
+            PlayerData.TotalEarnedGold = Math.Clamp(PlayerData.TotalEarnedGold + gold, 0, Int32.MaxValue);
+        }
+        else if (gold < 0)
+        {
+            PlayerData.TotalSpentGold = Math.Clamp(PlayerData.TotalSpentGold + Math.Abs(gold), 0, Int32.MaxValue);
+        }
 
         OnPlayerDataChanged?.Invoke();
 
@@ -156,6 +164,42 @@ public class PlayerManager : ISaveable
         }
 
         return gold;
+    }
+
+    public void AddDeliveredBoxCount(int count = 1)
+    {
+        AddEndingStat(ref PlayerData.DeliveredBoxCount, count);
+    }
+
+    public void AddDisposedBoxCount(int count = 1)
+    {
+        AddEndingStat(ref PlayerData.DisposedBoxCount, count);
+    }
+
+    public void AddFailedDeliveryBoxCount(int count = 1)
+    {
+        AddEndingStat(ref PlayerData.FailedDeliveryBoxCount, count);
+    }
+
+    public void AddStageAttemptCount(int count = 1)
+    {
+        AddEndingStat(ref PlayerData.StageAttemptCount, count);
+    }
+
+    public void AddStageFailCount(int count = 1)
+    {
+        AddEndingStat(ref PlayerData.StageFailCount, count);
+    }
+
+    private void AddEndingStat(ref int stat, int count)
+    {
+        if (count <= 0)
+        {
+            return;
+        }
+
+        stat = Math.Clamp(stat + count, 0, Int32.MaxValue);
+        OnPlayerDataChanged?.Invoke();
     }
 
     public int GetGold()
