@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	3323914767	Play_SFX_SpeedUpSkill			\Default Work Unit\MiniGameUnload\Play_SFX_SpeedUpSkill	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

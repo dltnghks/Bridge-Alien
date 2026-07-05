@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "19523114",
+    "Type": "Event",
+    "GUID": "{2AA01ED3-9A0C-4C2C-B377-CE931B1A99A5}",
+    "Language": "SFX",
+    "Hash": "{A80D1FE0-616E-F27D-126A-192F2565B7DF}",
+    "ObjectPath": "Play_BGM_Bridge_ailen_credit",
+    "ShortName": "Play_BGM_Bridge_ailen_credit",
+    "Path": "Event/Play_BGM_Bridge_ailen_credit.bnk",
+    "Media": [
+     {
+      "Id": "233602522",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "BGM_Bridge_ailen_credit.wav",
+      "Path": "Media/233602522.wem",
+      "CachePath": "60/{60B21552-6AF4-47D8-6129-FEAA2C114DF7}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "19523114",
+      "Name": "Play_BGM_Bridge_ailen_credit",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Play\\Play_BGM_Bridge_ailen_credit",
+      "GUID": "{2AA01ED3-9A0C-4C2C-B377-CE931B1A99A5}",
+      "DurationType": "OneShot",
+      "DurationMin": "57.32",
+      "DurationMax": "57.32",
+      "MediaRefs": [
+       {
+        "Id": "233602522"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "3043206523",
+      "Name": "BGMVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\BGMVolume",
+      "GUID": "{79719558-2CD2-4C59-AF76-8462845987F1}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{B28C022D-4CCD-490C-48CF-E9356998707D}"
+ }
+}

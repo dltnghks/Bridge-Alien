@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PAUSE_BGM_BRIDGE_AILEN_CREDIT = 3887903400U;
         static const AkUniqueID PAUSE_BGM_DELIVERY = 1518925573U;
         static const AkUniqueID PAUSE_BGM_GAMEMAPLOOP = 731417429U;
         static const AkUniqueID PAUSE_BGM_HOUSE = 1408522931U;
@@ -21,6 +22,7 @@ namespace AK
         static const AkUniqueID PLAY_AMB_CONVEYOR = 3092289078U;
         static const AkUniqueID PLAY_AMB_COOLINGMACHINE = 3070083385U;
         static const AkUniqueID PLAY_AMB_TRUCK = 626113458U;
+        static const AkUniqueID PLAY_BGM_BRIDGE_AILEN_CREDIT = 19523114U;
         static const AkUniqueID PLAY_BGM_DEFAULT = 2553254310U;
         static const AkUniqueID PLAY_BGM_DEFAULT2 = 954353760U;
         static const AkUniqueID PLAY_BGM_DELIVERY = 3454433139U;
@@ -63,6 +65,7 @@ namespace AK
         static const AkUniqueID PLAY_SFX_SPEEDUPSKILL = 3323914767U;
         static const AkUniqueID PLAY_SFX_STANDARDBOXHOLD = 3045790947U;
         static const AkUniqueID PLAY_SFX_STANDARDBOXPUT = 1744893023U;
+        static const AkUniqueID RESUME_BGM_BRIDGE_AILEN_CREDIT = 2596678601U;
         static const AkUniqueID RESUME_BGM_DELIVERY = 1219789434U;
         static const AkUniqueID RESUME_BGM_GAMEMAPLOOP = 993449880U;
         static const AkUniqueID RESUME_BGM_HOUSE = 3961413098U;

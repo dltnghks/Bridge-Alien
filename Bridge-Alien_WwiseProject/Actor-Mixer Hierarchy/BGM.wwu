@@ -276,6 +276,35 @@
 						<ActiveSource Name="Second_Half" ID="{B6BE56C9-9353-4A0C-9175-21D36D91C154}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="BGM_Bridge_ailen_credit" ID="{878297FE-1E60-4622-A7C9-32FDD152C3D7}" ShortID="582189981">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C778EC1A-CFE3-4550-ACE9-7B4C4C2FF7D9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5DC701A0-6C75-4F8B-803C-B4FD206035B2}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="BGM_Bridge_ailen_credit" ID="{A1ADC2CD-F49C-4912-BA86-A27F583AB14B}">
+							<PropertyList>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>BGM_Bridge_ailen_credit.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="233602522"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="BGM_Bridge_ailen_credit" ID="{A1ADC2CD-F49C-4912-BA86-A27F583AB14B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

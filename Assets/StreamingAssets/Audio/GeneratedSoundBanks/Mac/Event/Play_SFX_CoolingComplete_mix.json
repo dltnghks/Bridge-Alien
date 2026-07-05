@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "2892493377",
+    "Type": "Event",
+    "GUID": "{CCBEE56C-0F7F-42D4-B6D6-80C404CF537D}",
+    "Language": "SFX",
+    "Hash": "{000B6D1D-F1E5-520D-E9FF-E3388E6BD55B}",
+    "ObjectPath": "Play_SFX_CoolingComplete_mix",
+    "ShortName": "Play_SFX_CoolingComplete_mix",
+    "Path": "Event/Play_SFX_CoolingComplete_mix.bnk",
+    "Media": [
+     {
+      "Id": "371112319",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "02_0629_ice_complete_mix.wav",
+      "Path": "Media/371112319.wem",
+      "CachePath": "07/{07C2F2A3-166F-9A8E-2023-F69F9712F241}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2892493377",
+      "Name": "Play_SFX_CoolingComplete_mix",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_CoolingComplete_mix",
+      "GUID": "{CCBEE56C-0F7F-42D4-B6D6-80C404CF537D}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.2382292",
+      "DurationMax": "1.2382292",
+      "MediaRefs": [
+       {
+        "Id": "371112319"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{BEFCD5B3-4CD1-0177-7C9E-338FCCAAE114}"
+ }
+}

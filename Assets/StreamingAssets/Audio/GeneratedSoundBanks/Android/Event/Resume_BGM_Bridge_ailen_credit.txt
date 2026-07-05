@@ -1,0 +1,3 @@
+Event	ID	Name			Wwise Object Path	Notes
+	2596678601	Resume_BGM_Bridge_ailen_credit			\Default Work Unit\BGM\Resume\Resume_BGM_Bridge_ailen_credit	
+

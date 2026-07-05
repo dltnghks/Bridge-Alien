@@ -21,6 +21,7 @@ public enum SceneBGM
     MiniGameUnload,
     MiniGameDelivery,
     StageEditor,
+    Ending,
 }
 
 public enum DialogBGM

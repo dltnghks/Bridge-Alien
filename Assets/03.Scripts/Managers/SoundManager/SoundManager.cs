@@ -91,6 +91,20 @@ public class SoundManager : MonoBehaviour
         PlaySound(SoundType.SceneBGM, sceneBGM.ToString());
     }
 
+    public bool PlaySceneBGMWithEndCallback(SceneBGM sceneBGM, System.Action onEnd)
+    {
+        if (CurrentBGMType.HasValue)
+        {
+            StopBGM();
+        }
+
+        Logger.Log($"Scene BGM Start: {sceneBGM}");
+        CurrentBGMType = SoundType.SceneBGM;
+        CurrentSceneBGM = sceneBGM;
+        CurrentDialogBGM = null;
+        return TryPlaySound(SoundType.SceneBGM, sceneBGM.ToString(), null, onEnd);
+    }
+
     public void PlayDialogBGM(DialogBGM dialogBGM)
     {
         Logger.Log($"CurrentDialogBGM : {CurrentDialogBGM}, dialogBGM : {dialogBGM}");
@@ -191,34 +205,38 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySound(SoundType type, string key, GameObject soundGameObject = null)
     {
+        TryPlaySound(type, key, soundGameObject);
+    }
+
+    private bool TryPlaySound(SoundType type, string key, GameObject soundGameObject = null, System.Action onEnd = null)
+    {
         if (_soundEvent == null || _soundEvent.EventDict.ContainsKey(type) == false)
         {
             Logger.LogWarning($"SoundType {type} not found!");
-            return;
+            return false;
         }
 
-        if (_soundEvent.EventDict[type].TryGetValue(key, out AK.Wwise.Event soundEvent))
-        {
-            if (soundEvent == null)
-            {
-                Logger.LogWarning($"Sound event is not assigned. Type: {type}, Key: {key}");
-                return;
-            }
-
-            PlayEvent(soundEvent, soundGameObject);
-        }
-        else
+        if (_soundEvent.EventDict[type].TryGetValue(key, out AK.Wwise.Event soundEvent) == false)
         {
             Logger.LogWarning($"Key {key} not found in SoundType {type}!");
+            return false;
         }
+
+        if (soundEvent == null)
+        {
+            Logger.LogWarning($"Sound event is not assigned. Type: {type}, Key: {key}");
+            return false;
+        }
+
+        return PlayEvent(soundEvent, soundGameObject, onEnd);
     }
 
-    private void PlayEvent(AK.Wwise.Event soundEvent, GameObject soundGameObject)
+    private bool PlayEvent(AK.Wwise.Event soundEvent, GameObject soundGameObject, System.Action onEnd = null)
     {
         if (soundEvent == null)
         {
             Logger.LogWarning("Sound event is null.");
-            return;
+            return false;
         }
 
         if (soundGameObject == null)
@@ -226,7 +244,17 @@ public class SoundManager : MonoBehaviour
             soundGameObject = gameObject;
         }
 
-        soundEvent.Post(soundGameObject);
+        uint playingId = onEnd == null
+            ? soundEvent.Post(soundGameObject)
+            : soundEvent.Post(soundGameObject, (uint)AkCallbackType.AK_EndOfEvent, (_, callbackType, _) =>
+            {
+                if (callbackType == AkCallbackType.AK_EndOfEvent)
+                {
+                    onEnd.Invoke();
+                }
+            });
+
+        return playingId != AkUnitySoundEngine.AK_INVALID_PLAYING_ID;
     }
 
     public void PauseSFX()

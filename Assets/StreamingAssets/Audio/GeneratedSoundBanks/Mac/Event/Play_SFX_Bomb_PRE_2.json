@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "287468067",
+    "Type": "Event",
+    "GUID": "{1014A415-4E7F-406C-8565-D3CC1FE95D67}",
+    "Language": "SFX",
+    "Hash": "{AAA75A10-7405-2D1A-5636-160741B6C8D9}",
+    "ObjectPath": "Play_SFX_Bomb_PRE_2",
+    "ShortName": "Play_SFX_Bomb_PRE_2",
+    "Path": "Event/Play_SFX_Bomb_PRE_2.bnk",
+    "Media": [
+     {
+      "Id": "723018029",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_Bomb_PRE-2.wav",
+      "Path": "Media/723018029.wem",
+      "CachePath": "16/{16DDD71A-DF4A-7C97-6FDC-AC6923475485}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "287468067",
+      "Name": "Play_SFX_Bomb_PRE_2",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameDelivery\\Play_SFX_Bomb_PRE_2",
+      "GUID": "{1014A415-4E7F-406C-8565-D3CC1FE95D67}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.625",
+      "DurationMax": "0.625",
+      "MediaRefs": [
+       {
+        "Id": "723018029"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{34592F8E-1BB8-4304-7224-7DF83AC4EF37}"
+ }
+}

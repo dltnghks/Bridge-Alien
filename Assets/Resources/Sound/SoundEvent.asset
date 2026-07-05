@@ -121,6 +121,11 @@ MonoBehaviour:
             idInternal: 0
             valueGuidInternal: 
             WwiseObjectReference: {fileID: 11400000, guid: d37369134653a3d4d82749b8783c9883, type: 2}
+        - Key: Ending
+          Value:
+            idInternal: 0
+            valueGuidInternal: 
+            WwiseObjectReference: {fileID: 11400000, guid: 2aa01ed39a0c4c2cb377ce931b1a99a5, type: 2}
     - Key: 1
       Value:
         _serializedList:

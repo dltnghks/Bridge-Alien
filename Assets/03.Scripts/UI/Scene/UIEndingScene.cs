@@ -41,6 +41,8 @@ public class UIEndingScene : UIScene
     private float _endY;
     private float _scrollSpeed;
     private bool _isChangingScene;
+    private bool _isCreditBgmEnded;
+    private bool _useScrollEndFallback;
 
     public override bool Init()
     {
@@ -55,12 +57,18 @@ public class UIEndingScene : UIScene
         SetupEndingCharacterAnimation();
         SetupEdgeGradients();
         ResetScrollPosition();
+        PlayCreditBGM();
 
         return true;
     }
 
     private void Update()
     {
+        if (_isCreditBgmEnded)
+        {
+            ChangeToTitle();
+        }
+
         UpdateCreditsScroll();
         UpdateBackgroundAnimation();
         UpdateEndingCharacterAnimation();
@@ -80,8 +88,23 @@ public class UIEndingScene : UIScene
         if (position.y >= _endY)
         {
             _autoScroll = false;
-            ChangeToTitle();
+
+            if (_useScrollEndFallback)
+            {
+                ChangeToTitle();
+            }
         }
+    }
+
+    private void PlayCreditBGM()
+    {
+        _isCreditBgmEnded = false;
+        _useScrollEndFallback = !Managers.Sound.PlaySceneBGMWithEndCallback(SceneBGM.Ending, OnCreditBGMEnded);
+    }
+
+    private void OnCreditBGMEnded()
+    {
+        _isCreditBgmEnded = true;
     }
 
     private void ChangeToTitle()

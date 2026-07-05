@@ -33,8 +33,8 @@ RectTransform:
   m_Father: {fileID: 471056098295902443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &14182931424438556
@@ -65,21 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Player Information\r\n\r\n\uBC30\uC1A1\uD55C \uBC15\uC2A4 \uC218\r\n1234
-    \r\n\r\n\uD3D0\uAE30 \uCC98\uB9AC\uD55C \uBC15\uC2A4 \uC218\r\n1234  \r\n\r\n\uBC30\uC1A1
-    \uC2E4\uD328\uD55C \uBC15\uC2A4 \uC218\r\n1234 \r\n\r\n\uCD1D \uD68D\uB4DD\uD55C
-    \uACE8\uB4DC\r\n10,000\r\n\r\n\uCD1D \uC0AC\uC6A9\uD55C \uACE8\uB4DC\r\n8,000\r\n\r\n\uC2A4\uD14C\uC774\uC9C0
-    \uB3C4\uC804 \uD69F\uC218\r\n3\r\n\r\n\uC2A4\uD14C\uC774\uC9C0 \uC2E4\uD328 \uD69F\uC218\r\n2\r\n\r\n--------------------------------------------------\r\n\r\nGame
-    Design\r\n\r\nSystem Planning\r\n\uC774\uC815\uD6C8 / \uAE40\uC9C4\uC131\r\n\r\nEvent
-    Planning\r\n\uC774\uC815\uD6C8\r\n\r\nScript\r\n\uC774\uC815\uD6C8\r\n\r\nUI
-    Planning\r\n\uC774\uC815\uD6C8 / \uAE40\uC9C4\uC131\r\n\r\nStage Planning\r\n\uC774\uC815\uD6C8\r\n\r\n--------------------------------------------------\r\n\r\nDevelopers\r\n\r\nLead
-    Programmer\r\n\uC774\uC218\uD658\r\n\r\nAdditional Programmers\r\n\uC18C\uBCD1\uC6B1
-    / \uB958\uBCD1\uD604\r\n\r\n\r\n\r\n--------------------------------------------------\r\n\r\nArt\r\n\r\nPlayer
-    Design\r\n\uBBFC\uC124\r\n\r\nCharacter Design\r\n\uBBFC\uC124\r\n\r\nAnimation\r\n\uBBFC\uC124\r\n\r\nField
-    Design\r\n\uBB38\uCC44\uC6D0 / \uC740\uC815\uBBFC\r\n\r\nUI Design\r\n\uC740\uC815\uBBFC\r\n\r\nEffect
-    Design\r\n\uBBFC\uC124\r\n\r\nBackground Design\r\n\uC740\uC815\uBBFC\r\n\r\nObject
-    Design\r\n\uBB38\uCC44\uC6D0\r\n\r\n--------------------------------------------------\r\n\r\nSound\r\n\r\nBackground
-    Music\r\n\uAE40\uC608\uB098\r\n\r\nSFX\r\n\uAE40\uC608\uB098\r\n\r\n"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59f90884f45c00542942263b59b1648f, type: 2}
   m_sharedMaterial: {fileID: -2047925969333350615, guid: 59f90884f45c00542942263b59b1648f, type: 2}
@@ -371,10 +357,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4285592965232605424}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00012207031, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.000102796046, y: 0}
+  m_SizeDelta: {x: 2800.0002, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2412021298995331562
 CanvasRenderer:
@@ -534,7 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIEndingScene
   _creditsText: {fileID: 0}
   _creditsContent: {fileID: 0}
-  _scrollDuration: 30
+  _scrollDuration: 50
   _scrollPaddingY: 120
   _autoScroll: 1
   _endingCharacter: {fileID: 4008824592756224819}
@@ -546,7 +532,7 @@ MonoBehaviour:
   _starMoveSpeed: 28
   _galaxyMoveSpeed: 12
   _edgeGradientWidth: 280
-  _edgeGradientAlpha: 0.78
+  _edgeGradientAlpha: 0.914
 --- !u!1 &8130399712160641239
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +542,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 471056098295902443}
-  - component: {fileID: 5146812627399521698}
   m_Layer: 5
   m_Name: TextGroup
   m_TagString: Untagged
@@ -584,32 +569,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &5146812627399521698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8130399712160641239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 1
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &9020745801155415873
 GameObject:
   m_ObjectHideFlags: 0

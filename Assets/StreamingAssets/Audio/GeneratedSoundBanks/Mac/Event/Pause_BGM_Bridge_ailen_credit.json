@@ -1,0 +1,33 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3887903400",
+    "Type": "Event",
+    "GUID": "{2974338D-E5FA-4821-B2B8-AF146656ED7B}",
+    "Language": "SFX",
+    "Hash": "{94719A08-9A68-AE53-ABF4-59C87B2D2157}",
+    "ObjectPath": "Pause_BGM_Bridge_ailen_credit",
+    "ShortName": "Pause_BGM_Bridge_ailen_credit",
+    "Path": "Event/Pause_BGM_Bridge_ailen_credit.bnk",
+    "Events": [
+     {
+      "Id": "3887903400",
+      "Name": "Pause_BGM_Bridge_ailen_credit",
+      "ObjectPath": "\\Events\\Default Work Unit\\BGM\\Pause\\Pause_BGM_Bridge_ailen_credit",
+      "GUID": "{2974338D-E5FA-4821-B2B8-AF146656ED7B}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{3CD451B6-D392-F46E-D024-D28EC4079D9E}"
+ }
+}

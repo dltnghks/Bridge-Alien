@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	4165352769	Play_SFX_Minigame_Success			\Default Work Unit\MiniGameDelivery\Play_SFX_Minigame_Success	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

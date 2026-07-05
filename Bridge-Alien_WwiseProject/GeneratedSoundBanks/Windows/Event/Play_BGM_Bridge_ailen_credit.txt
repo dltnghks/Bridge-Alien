@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	19523114	Play_BGM_Bridge_ailen_credit			\Default Work Unit\BGM\Play\Play_BGM_Bridge_ailen_credit	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3043206523	BGMVolume			\Default Work Unit\BGMVolume	
+

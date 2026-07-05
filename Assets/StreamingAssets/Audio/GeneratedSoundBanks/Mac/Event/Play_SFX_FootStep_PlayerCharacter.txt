@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	562923629	Play_SFX_FootStep_PlayerCharacter			\Default Work Unit\Common\Play_SFX_FootStep_PlayerCharacter	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	988953028	SFXVolume			\Default Work Unit\SFXVolume	
+

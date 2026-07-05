@@ -75,6 +75,20 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Pause_BGM_Bridge_ailen_credit" ID="{2974338D-E5FA-4821-B2B8-AF146656ED7B}">
+							<ChildrenList>
+								<Action Name="" ID="{88C2D172-ABF6-417E-AF47-91791FC3B175}" ShortID="96885206">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="7"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Bridge_ailen_credit" ID="{878297FE-1E60-4622-A7C9-32FDD152C3D7}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Play" ID="{11D11F75-3A10-429A-B997-088EADB788A0}" ShortID="766625818">
@@ -178,6 +192,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Play_BGM_Bridge_ailen_credit" ID="{2AA01ED3-9A0C-4C2C-B377-CE931B1A99A5}">
+							<ChildrenList>
+								<Action Name="" ID="{0AF4FB98-854A-4333-ABB6-4C7077484B8A}" ShortID="439510147">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Bridge_ailen_credit" ID="{878297FE-1E60-4622-A7C9-32FDD152C3D7}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Resume" ID="{9317E0CB-58DA-49A0-ACCC-6C88AAA301C5}" ShortID="282663958">
@@ -247,6 +272,20 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="BGM_House" ID="{A2470E92-1800-4815-B1B1-122E3EB23FF4}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Resume_BGM_Bridge_ailen_credit" ID="{37C96E29-61CC-408D-BDF5-73E0E5886BA7}">
+							<ChildrenList>
+								<Action Name="" ID="{4F975875-6E8A-401A-95C0-41AECF3FB83F}" ShortID="646554891">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="9"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BGM_Bridge_ailen_credit" ID="{878297FE-1E60-4622-A7C9-32FDD152C3D7}" WorkUnitID="{F533C3A5-E0A3-4315-B21C-A79E8815B01C}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

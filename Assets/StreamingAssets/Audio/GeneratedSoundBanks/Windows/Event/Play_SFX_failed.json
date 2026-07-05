@@ -1,0 +1,56 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3929437841",
+    "Type": "Event",
+    "GUID": "{C1E574B1-1EE8-4C33-9FD0-AA4845BEF1F5}",
+    "Language": "SFX",
+    "Hash": "{568A69FF-0A7A-5F82-C054-2901AEE44384}",
+    "ObjectPath": "Play_SFX_failed",
+    "ShortName": "Play_SFX_failed",
+    "Path": "Event/Play_SFX_failed.bnk",
+    "Media": [
+     {
+      "Id": "410912351",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "SFX_failed.wav",
+      "Path": "Media/410912351.wem",
+      "CachePath": "76/{76C3B48C-1C32-CD90-526E-9E39701B08A6}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3929437841",
+      "Name": "Play_SFX_failed",
+      "ObjectPath": "\\Events\\Default Work Unit\\MiniGameUnload\\Play_SFX_failed",
+      "GUID": "{C1E574B1-1EE8-4C33-9FD0-AA4845BEF1F5}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.30525228",
+      "DurationMax": "0.30525228",
+      "MediaRefs": [
+       {
+        "Id": "410912351"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "988953028",
+      "Name": "SFXVolume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SFXVolume",
+      "GUID": "{73045ABE-F854-4759-B68D-05FB73A7EE91}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{30C36CA1-C771-3CFB-45D7-6477016A0547}"
+ }
+}
