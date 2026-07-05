@@ -414,6 +414,8 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
 
     private void OnDisposedBox(MiniGameUnloadBox box)
     {
+        Managers.Player.AddDisposedBoxCount();
+
         if (Managers.Stage.CurrentStageType != Define.ChapterType.End)
         {
             return;
@@ -523,6 +525,7 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
     {
         if (score > 0)
         {
+            Managers.Player.AddDeliveredBoxCount();
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.PlusScore.ToString());
              
             // 1. 점수 반영
@@ -537,6 +540,11 @@ public class MiniGameUnload : MonoBehaviour, IMiniGame
         }
         else // 점수가 0 이하일 경우 (마이너스 점수)
         {
+            if (box != null)
+            {
+                Managers.Player.AddFailedDeliveryBoxCount();
+            }
+
             Managers.Sound.PlaySFX(SoundType.MiniGameUnloadSFX, MiniGameUnloadSoundSFX.MinusScore.ToString());
 
             // 1. 감점은 배율 없이 그대로 적용
