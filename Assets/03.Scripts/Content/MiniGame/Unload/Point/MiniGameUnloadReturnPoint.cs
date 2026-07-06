@@ -53,6 +53,8 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
                 _boxList.TryPush(box); // boxList에 반환
                 _boxHeight += _boxHeightOffset;
                 Vector3 spawnPos = _boxSpawnPosition + Vector3.up * _boxHeight;
+                // 빌보드로 인해 컨베이어벨트가 보이는 문제를 해결하기 위한 z값 조정
+                spawnPos.z += -0.05f;
 
                 // z-ordering, 겹치면 렌더링 충돌나서 z를 살짝 조절, 위로 올라갈수록 앞으로
                 spawnPos.z += -(_boxHeight / ((float)_boxList.MaxUnloadBoxIndex * 100f));
@@ -74,7 +76,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
 
         // box에 반송 스티커 붙이기
         box.SetReturnSticker(true);
-        
+
 
         StartCoroutine(AutoSpawnBox());
     }
@@ -126,7 +128,7 @@ public class MiniGameUnloadReturnPoint : MiniGameUnloadBasePoint, IBoxPlacePoint
         }
         return null;
     }
-    
+
     // 게임 종료될 때 남은 박스 수만큼 점수 감소
     public void ReturnBoxScore()
     {
